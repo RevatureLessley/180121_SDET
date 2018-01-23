@@ -1,4 +1,4 @@
-package com.revature.day2.accessMods2;
+package com.revature.day2.accessmods2;
 
 import com.revature.day2.accessmods.Silence;
 
