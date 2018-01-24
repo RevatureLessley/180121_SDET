@@ -36,7 +36,7 @@ public class Silence {
 	 * -synchronized
 	 * ---Limits amount of threads that can access resource to one at a time
 	 * -transient
-	 * ---TBD
+	 * ---Anything transient is withheld from serialization
 	 */
 	
 	private String priv = "Private";

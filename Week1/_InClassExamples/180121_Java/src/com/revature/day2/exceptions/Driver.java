@@ -5,13 +5,16 @@ import java.io.IOException;
 import javax.crypto.ExemptionMechanismException;
 
 public class Driver {
-
+	final int TIME = 800;
+	
+	
 	public static void main(String[] args){
 		Driver d = new Driver();
 		//d.ohBoy();
 		d.ohYay();
 		//d.anotherException();
 		//System.out.println(d.weirdStuff());
+		d.crossBridge();
 
 		try{
 			d.propogate1();
@@ -132,6 +135,16 @@ public class Driver {
 	
 	public void propagate3() throws IOException{
 		throw new IOException();
+	}
+	
+	public void crossBridge(){
+		if(TIME>0){
+			try {
+				throw new BridgeBlocked();
+			} catch (BridgeBlocked e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
