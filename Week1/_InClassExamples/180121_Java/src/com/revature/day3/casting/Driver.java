@@ -45,6 +45,7 @@ public class Driver {
 		c = (char)b; //chars are unsigned
 		c = (char)-5;
 		
+		System.out.println(b);
 		boolean bool = false;
 		//i = (int)bool;
 	}

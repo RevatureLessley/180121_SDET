@@ -10,14 +10,14 @@ public class Driver {
 		 * can take 0 - many inputs of that type.
 		 */
 		Driver d = new Driver();
-		System.out.println(d.sum(1));
-		System.out.println(d.sum(1,2));
-		System.out.println(d.sum(1,2,3));
-		System.out.println(d.sum(1,2,3,4));
-		System.out.println(d.sum());
+		//System.out.println(d.sum(1));
+		//System.out.println(d.sum(1,2));
+		//System.out.println(d.sum(1,2,3));
+		//System.out.println(d.sum(1,2,3,4));
+		System.out.println(d.sum(1,2,3,4,5,6,7,5,4,3,2));
 	}
 	
-	public int sum(int a){
+	/*public int sum(int a){
 		return a;
 	}
 	public int sum(int a, int b){
@@ -25,7 +25,7 @@ public class Driver {
 	}
 	public int sum(int a, int b, int c){
 		return a + b + c;
-	}
+	}*/
 	//... denotes a vararg that can take 0 - many arguments. Note: nums is an array.
 	public int sum(int ... nums ){
 		int result = 0;
