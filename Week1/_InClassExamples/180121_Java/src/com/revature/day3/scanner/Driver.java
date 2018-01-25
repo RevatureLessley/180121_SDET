@@ -24,27 +24,12 @@ public class Driver {
 		
 		int i;
 		while(true){
-/*			String input = in.nextLine();
+			String input = in.nextLine();
 			if (input.equals("exit")){
 				System.out.println("Goodbye!");
 				break;
 			}else{
 				System.out.println(input);
-			}*/
-			i = 0;
-			System.out.println("Start point");
-			try{
-				i = in.nextInt();
-			}catch(InputMismatchException e){
-				System.out.println("Input must ONLY be numbers!");
-				in.next();
-			}
-			//Parse out the first instance of a number
-			if(i != 0){
-				System.out.println("I inputted the number: " + i);
-			}
-			if(i == -1){
-				break;
 			}
 			
 		}
