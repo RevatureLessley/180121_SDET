@@ -10,9 +10,12 @@ This is a Java mini project of a Bank application with console as front end and 
 - [x] New User cannot access account untill Admin approves it
 - [x] All User data is persisted via file storage
 - [x] Admin only approves new accounts and do not have bank account
+- [x] [Logger](harish/logs/exampleLog.log) is also added to application to track and debug the process
 
 ## Demo
 ![demo](demo.gif)
+
+
 
 
 
