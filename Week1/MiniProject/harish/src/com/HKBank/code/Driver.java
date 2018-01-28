@@ -7,14 +7,13 @@ public class Driver {
 	public static void main(String[] args) {
 		
 		Bank bank = new Bank();
+		
+		//Run Bank Application
 		try {
 			bank.run();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-		
+		}	
 	}
 
 }

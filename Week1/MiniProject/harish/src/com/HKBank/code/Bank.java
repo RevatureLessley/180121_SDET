@@ -11,12 +11,18 @@ import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+
 public class Bank {
+	
+	//logger
+	final static Logger logger = Logger.getLogger(Bank.class);
 	
 	// Runs Bank console application
 	public void run() throws IOException {
 		
 		//Load User data
+		logger.info("Application Started");
 		Set<User> users = loadUserData();
 		
 		boolean session = true;
@@ -49,11 +55,13 @@ public class Bank {
 	// Exit greet
 	public boolean exit() {
 		System.out.println("Thank you for Banking with us\n");
+		logger.debug("User done with application");
 		return false;
 	}
 
 	//User Account Page
 	public void userPage(User p) {
+		logger.info("In User Page");
 		System.out.println("Welcome "+p.getUserName()+"\n"+
 							"Your current Balance is "+p.getAmount()+"\n"+
 							"=========================================\n"+
@@ -70,6 +78,7 @@ public class Bank {
 			}catch(InputMismatchException e) {
 				e.printStackTrace();
 				System.out.println("\n Enter numbers only \n");
+				logger.error("Wrong user input value");
 			}
 		    if(action == 1) {
 		    	try {
@@ -78,9 +87,11 @@ public class Bank {
 					p.setAmount(p.getAmount()+amount);
 					System.out.println(amount+" is deposited to your account\n"+
 										"Your new balance is "+p.getAmount());
+					logger.debug("deposit made for "+amount);
 				}catch(InputMismatchException e) {
 					e.printStackTrace();
 					System.out.println("\n Enter numbers only \n");
+					logger.error("Wrong user input value");
 				}
 		    	break;
 		    }
@@ -91,9 +102,11 @@ public class Bank {
 					p.setAmount(p.getAmount()-amount);
 					System.out.println(amount+" is withdrawn from your account\n"+
 										"Your new balance is "+p.getAmount());
+					logger.debug("withdraw made for "+amount);
 				}catch(InputMismatchException e) {
 					e.printStackTrace();
 					System.out.println("\n Enter numbers only \n");
+					logger.error("Wrong user input value");
 				}
 		    	break;
 		    }
@@ -105,6 +118,7 @@ public class Bank {
 
 	//Administrator Page to Approve or Reject new accounts
 	public void AdminPage(Set<User> users) throws IOException {
+		logger.info("In Administrator Page");
 		System.out.println("Welcome Administrator\n");
 		Iterator<User> it = users.iterator();
 		while (it.hasNext()) {
@@ -125,13 +139,16 @@ public class Bank {
 					}catch(InputMismatchException e) {
 						e.printStackTrace();
 						System.out.println("\n Enter numbers only \n");
+						logger.error("Wrong user input value");
 					}
 				    if(action == 1) {
 				    	p.setStatus("Approved");
+				    	logger.debug(p.getUserName()+" account Approved");
 				    	break;
 				    }
 				    if(action == 2) {
 				    	it.remove();
+				    	logger.debug(p.getUserName()+" account Rejected");
 				    	break;
 				    }
 				}
@@ -144,12 +161,14 @@ public class Bank {
 
 	//Load User data at start of application
 	public Set<User> loadUserData() throws IOException{
+		logger.info("Loading user data from file");
 		ObjectInputStream ois = null;
 		try {
 			ois = new ObjectInputStream(new FileInputStream("src/com/HKBank/files/usersData.ser"));
 			return (HashSet<User>)ois.readObject();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			logger.error(e);
 		}finally {
 			if(ois!=null){
 				ois.close();
@@ -161,6 +180,7 @@ public class Bank {
 	//Home Page of the Bank
 	public int homePage() {
 			//Welcome screen and Menu option
+			logger.info("In Home Page");
 			int selection = 0;
 			System.out.println("======= Welcome to HKBank ========");
 			System.out.println(	"1.Login\n"+
@@ -174,6 +194,7 @@ public class Bank {
 				System.out.println("Your selection is: "+selection+"\n");
 			}catch(InputMismatchException e) {
 				e.printStackTrace();
+				logger.error("Wrong user input value"+e);
 				System.out.println("\n Enter numbers only \n");
 			}
 			return selection;
@@ -181,6 +202,7 @@ public class Bank {
 	
 	//Login Page for Administrator and User
 	int loginPage(Set<User> users) throws IOException {
+		logger.info("In Login page");
 		Scanner i = new Scanner(System.in);
 		System.out.print("Enter User Name: ");
 		String userName = i.nextLine();
@@ -198,16 +220,19 @@ public class Bank {
 					return 0;
 				}else {
 					System.out.println("Sorry your account is not Approved yet\n");
+					logger.warn("Need Admin Approval");
 					return 0;
 				}
 			}
 		}
-		System.out.println("Invaid login. Try again or create new account\n");		
+		System.out.println("Invaid login. Try again or create new account\n");	
+		logger.debug("Invalid login");
 		return 0;
 	}
 	
 	//New user Registration Page
 	public User newUser() throws IOException {
+		logger.info("New User register");
 		System.out.println("Welcome New User\n");
 		Scanner i = new Scanner(System.in);
 		System.out.print("Enter User Name: ");
@@ -217,11 +242,13 @@ public class Bank {
 		System.out.println("Thank you registering with us.\n"+
 							"Please wait until our Admin approves your account\n");
 		System.in.read();
+		logger.warn("Need Admin Approval");
 		return new User(userName, password, 0.0, "notApproved");
 		}	
 	
 	//Save user data before ending application
 	public void saveUserData(Set<User> save) throws IOException {
+			logger.debug("Saving data");
 			ObjectOutputStream oos = null;
 			try{
 				oos = new ObjectOutputStream(new FileOutputStream("src/com/HKBank/files/usersData.ser"));

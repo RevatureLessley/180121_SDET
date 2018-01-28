@@ -1,0 +1,28 @@
+2018-01-27 20:27:10 INFO  Bank:25 - Application Started
+2018-01-27 20:27:10 INFO  Bank:164 - Loading user data from file
+2018-01-27 20:27:10 INFO  Bank:183 - In Home Page
+2018-01-27 20:27:19 INFO  Bank:235 - New User register
+2018-01-27 20:27:46 WARN  Bank:245 - Need Admin Approval
+2018-01-27 20:27:46 DEBUG Bank:251 - Saving data before closing
+2018-01-27 20:27:46 INFO  Bank:183 - In Home Page
+2018-01-27 20:27:51 INFO  Bank:205 - In Login page
+2018-01-27 20:28:04 WARN  Bank:223 - Need Admin Approval
+2018-01-27 20:28:07 DEBUG Bank:251 - Saving data before closing
+2018-01-27 20:28:07 INFO  Bank:183 - In Home Page
+2018-01-27 20:28:10 INFO  Bank:205 - In Login page
+2018-01-27 20:28:18 INFO  Bank:121 - In Administrator Page
+2018-01-27 20:28:22 DEBUG Bank:146 - bob account Approved
+2018-01-27 20:28:25 DEBUG Bank:251 - Saving data before closing
+2018-01-27 20:28:25 INFO  Bank:183 - In Home Page
+2018-01-27 20:28:31 INFO  Bank:205 - In Login page
+2018-01-27 20:28:37 INFO  Bank:64 - In User Page
+2018-01-27 20:28:46 DEBUG Bank:90 - deposit made for 500.0
+2018-01-27 20:28:48 DEBUG Bank:251 - Saving data before closing
+2018-01-27 20:28:48 INFO  Bank:183 - In Home Page
+2018-01-27 20:28:53 INFO  Bank:205 - In Login page
+2018-01-27 20:28:59 INFO  Bank:64 - In User Page
+2018-01-27 20:29:11 DEBUG Bank:105 - withdraw made for 200.0
+2018-01-27 20:29:17 DEBUG Bank:251 - Saving data before closing
+2018-01-27 20:29:17 INFO  Bank:183 - In Home Page
+2018-01-27 20:29:20 DEBUG Bank:58 - User done with application
+2018-01-27 20:29:20 DEBUG Bank:251 - Saving data before closing
