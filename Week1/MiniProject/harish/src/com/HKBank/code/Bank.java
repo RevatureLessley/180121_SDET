@@ -35,7 +35,7 @@ public class Bank {
 				break;
 			case 2:
 				//New User Page
-				users.add(newUser());		
+				users.add(newUser());
 				break;
 			case 3:
 				//Exit from bank
@@ -61,7 +61,7 @@ public class Bank {
 
 	//User Account Page
 	public void userPage(User p) {
-		logger.info("In User Page");
+		logger.info(p.getUserName()+" sign in");
 		System.out.println("Welcome "+p.getUserName()+"\n"+
 							"Your current Balance is "+p.getAmount()+"\n"+
 							"=========================================\n"+
@@ -87,7 +87,7 @@ public class Bank {
 					p.setAmount(p.getAmount()+amount);
 					System.out.println(amount+" is deposited to your account\n"+
 										"Your new balance is "+p.getAmount());
-					logger.debug("deposit made for "+amount);
+					logger.debug(p.getUserName()+" deposit made for "+amount);
 				}catch(InputMismatchException e) {
 					e.printStackTrace();
 					System.out.println("\n Enter numbers only \n");
@@ -102,7 +102,7 @@ public class Bank {
 					p.setAmount(p.getAmount()-amount);
 					System.out.println(amount+" is withdrawn from your account\n"+
 										"Your new balance is "+p.getAmount());
-					logger.debug("withdraw made for "+amount);
+					logger.debug(p.getUserName()+" withdraw made for "+amount);
 				}catch(InputMismatchException e) {
 					e.printStackTrace();
 					System.out.println("\n Enter numbers only \n");
@@ -118,7 +118,7 @@ public class Bank {
 
 	//Administrator Page to Approve or Reject new accounts
 	public void AdminPage(Set<User> users) throws IOException {
-		logger.info("In Administrator Page");
+		logger.debug("Admin sign in");
 		System.out.println("Welcome Administrator\n");
 		Iterator<User> it = users.iterator();
 		while (it.hasNext()) {
@@ -180,7 +180,6 @@ public class Bank {
 	//Home Page of the Bank
 	public int homePage() {
 			//Welcome screen and Menu option
-			logger.info("In Home Page");
 			int selection = 0;
 			System.out.println("======= Welcome to HKBank ========");
 			System.out.println(	"1.Login\n"+
@@ -202,7 +201,6 @@ public class Bank {
 	
 	//Login Page for Administrator and User
 	int loginPage(Set<User> users) throws IOException {
-		logger.info("In Login page");
 		Scanner i = new Scanner(System.in);
 		System.out.print("Enter User Name: ");
 		String userName = i.nextLine();
@@ -216,11 +214,12 @@ public class Bank {
 		for (User p: users) {
 			if(userName.equals(p.getUserName())&&password.equals(p.getPassword())){
 				if((p.getStatus().equals("Approved"))) {
+					logger.debug(p.getUserName()+" sign in");
 					userPage(p);
 					return 0;
 				}else {
 					System.out.println("Sorry your account is not Approved yet\n");
-					logger.warn("Need Admin Approval");
+					logger.warn(p.getUserName()+" needs Admin Approval");
 					return 0;
 				}
 			}
@@ -242,7 +241,7 @@ public class Bank {
 		System.out.println("Thank you registering with us.\n"+
 							"Please wait until our Admin approves your account\n");
 		System.in.read();
-		logger.warn("Need Admin Approval");
+		logger.warn(userName+" needs Admin Approval");
 		return new User(userName, password, 0.0, "notApproved");
 		}	
 	
