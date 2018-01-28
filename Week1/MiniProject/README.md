@@ -5,7 +5,7 @@ This is a Java mini project of a Bank application with console as front end and 
 ## Task Completed
 
 - [x] User login and Admin login
-- [x] User can Deposit and Withdraw money form their account
+- [x] User can Deposit and Withdraw money from their account
 - [x] New User can register for a new account
 - [x] New User cannot access account untill Admin approves it
 - [x] All User data is persisted via file storage
