@@ -26,3 +26,55 @@
 2018-01-27 20:29:17 INFO  Bank:183 - In Home Page
 2018-01-27 20:29:20 DEBUG Bank:58 - User done with application
 2018-01-27 20:29:20 DEBUG Bank:251 - Saving data before closing
+2018-01-27 20:52:09 INFO  Bank:25 - Application Started
+2018-01-27 20:52:09 INFO  Bank:164 - Loading user data from file
+2018-01-27 20:52:09 INFO  Bank:183 - In Home Page
+2018-01-27 20:57:14 INFO  Bank:25 - Application Started
+2018-01-27 20:57:14 INFO  Bank:164 - Loading user data from file
+2018-01-27 20:57:14 INFO  Bank:183 - In Home Page
+2018-01-27 20:57:21 INFO  Bank:235 - New User register
+2018-01-27 20:57:35 WARN  Bank:245 - Need Admin Approval
+2018-01-27 20:57:35 DEBUG Bank:251 - Saving data
+2018-01-27 20:57:35 INFO  Bank:183 - In Home Page
+2018-01-27 20:57:37 INFO  Bank:205 - In Login page
+2018-01-27 20:57:45 INFO  Bank:121 - In Administrator Page
+2018-01-27 20:57:50 DEBUG Bank:146 - google account Approved
+2018-01-27 20:57:55 DEBUG Bank:251 - Saving data
+2018-01-27 20:57:55 INFO  Bank:183 - In Home Page
+2018-01-27 20:57:58 INFO  Bank:235 - New User register
+2018-01-27 20:58:17 WARN  Bank:245 - Need Admin Approval
+2018-01-27 20:58:17 DEBUG Bank:251 - Saving data
+2018-01-27 20:58:17 INFO  Bank:183 - In Home Page
+2018-01-27 20:58:20 INFO  Bank:205 - In Login page
+2018-01-27 20:58:26 INFO  Bank:64 - In User Page
+2018-01-27 20:58:37 INFO  Bank:25 - Application Started
+2018-01-27 20:58:37 INFO  Bank:164 - Loading user data from file
+2018-01-27 20:58:37 INFO  Bank:183 - In Home Page
+2018-01-27 20:58:57 INFO  Bank:205 - In Login page
+2018-01-27 20:59:05 DEBUG Bank:229 - Invalid login
+2018-01-27 20:59:07 DEBUG Bank:251 - Saving data
+2018-01-27 20:59:07 INFO  Bank:183 - In Home Page
+2018-01-27 20:59:09 INFO  Bank:235 - New User register
+2018-01-27 20:59:17 WARN  Bank:245 - Need Admin Approval
+2018-01-27 20:59:17 DEBUG Bank:251 - Saving data
+2018-01-27 20:59:17 INFO  Bank:183 - In Home Page
+2018-01-27 20:59:19 INFO  Bank:205 - In Login page
+2018-01-27 20:59:29 WARN  Bank:223 - Need Admin Approval
+2018-01-27 20:59:33 DEBUG Bank:251 - Saving data
+2018-01-27 20:59:33 INFO  Bank:183 - In Home Page
+2018-01-27 20:59:35 INFO  Bank:205 - In Login page
+2018-01-27 20:59:41 INFO  Bank:121 - In Administrator Page
+2018-01-27 20:59:44 DEBUG Bank:146 - google account Approved
+2018-01-27 20:59:49 DEBUG Bank:146 - amazon account Approved
+2018-01-27 20:59:52 DEBUG Bank:251 - Saving data
+2018-01-27 20:59:52 INFO  Bank:183 - In Home Page
+2018-01-27 20:59:55 INFO  Bank:205 - In Login page
+2018-01-27 21:00:02 INFO  Bank:64 - In User Page
+2018-01-27 21:00:13 DEBUG Bank:90 - deposit made for 1000.0
+2018-01-27 21:00:15 DEBUG Bank:251 - Saving data
+2018-01-27 21:00:15 INFO  Bank:183 - In Home Page
+2018-01-27 21:00:17 INFO  Bank:205 - In Login page
+2018-01-27 21:00:24 INFO  Bank:64 - In User Page
+2018-01-27 21:00:30 DEBUG Bank:105 - withdraw made for 500.0
+2018-01-27 21:00:35 DEBUG Bank:251 - Saving data
+2018-01-27 21:00:35 INFO  Bank:183 - In Home Page
