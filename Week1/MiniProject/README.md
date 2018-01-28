@@ -12,7 +12,7 @@ This is a Java mini project of a Bank application with console as front end and 
 - [x] Admin only approves new accounts and do not have bank account
 
 ## Demo
-![alt text][demo.gif]
+![alt text](.demo.gif)
 
 
 
