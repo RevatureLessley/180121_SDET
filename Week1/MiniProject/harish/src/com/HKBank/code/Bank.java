@@ -16,7 +16,7 @@ public class Bank {
 	// Runs Bank console application
 	public void run() throws IOException {
 		
-		//Load user data
+		//Load User data
 		Set<User> users = loadUserData();
 		
 		boolean session = true;
@@ -24,29 +24,16 @@ public class Bank {
 			switch(homePage()) {
 			case 1:
 				//Login Page for Administrator and User
-				switch(loginPage(users)) {
-				case 0:
-					//Administrator Screen
-					System.out.println("Welcome Administrator\n");
-					AdminPage(users);
-					break;
-				case 1:
-					//User Screen
-					System.out.println("Welcome User");
-					break;
-				default:
-					System.in.read();
-				}
+				loginPage(users);
+				System.in.read();
 				break;
 			case 2:
 				//New User Page
-				System.out.println("Welcome New User\n");
 				users.add(newUser());		
 				break;
 			case 3:
 				//Exit from bank
-				System.out.println("Thank you for Banking with us\n");
-				session = false;
+				session = exit();
 				break;
 			default:
 				//Out of range in Menu
@@ -59,8 +46,66 @@ public class Bank {
 		
 	}
 	
+	// Exit greet
+	public boolean exit() {
+		System.out.println("Thank you for Banking with us\n");
+		return false;
+	}
+
+	//User Account Page
+	public void userPage(User p) {
+		System.out.println("Welcome "+p.getUserName()+"\n"+
+							"Your current Balance is "+p.getAmount()+"\n"+
+							"=========================================\n"+
+							"1.Deposit\n"+
+							"2.Withdraw\n"+
+							"========================================+\n");
+		Scanner i = new Scanner(System.in);
+		int action = 0;
+		while(true) {
+			try {
+				System.out.print("Enter your selection: ");
+				action= i.nextInt();
+				System.out.println("Your selection is: "+action+"\n");
+			}catch(InputMismatchException e) {
+				e.printStackTrace();
+				System.out.println("\n Enter numbers only \n");
+			}
+		    if(action == 1) {
+		    	try {
+					System.out.print("Enter your Amount: ");
+					double amount= i.nextDouble();
+					p.setAmount(p.getAmount()+amount);
+					System.out.println(amount+" is deposited to your account\n"+
+										"Your new balance is "+p.getAmount());
+				}catch(InputMismatchException e) {
+					e.printStackTrace();
+					System.out.println("\n Enter numbers only \n");
+				}
+		    	break;
+		    }
+		    if(action == 2) {
+		    	try {
+					System.out.print("Enter your Amount: ");
+					double amount= i.nextDouble();
+					p.setAmount(p.getAmount()-amount);
+					System.out.println(amount+" is withdrawn from your account\n"+
+										"Your new balance is "+p.getAmount());
+				}catch(InputMismatchException e) {
+					e.printStackTrace();
+					System.out.println("\n Enter numbers only \n");
+				}
+		    	break;
+		    }
+		}
+		
+		
+		
+	}
+
 	//Administrator Page to Approve or Reject new accounts
 	public void AdminPage(Set<User> users) throws IOException {
+		System.out.println("Welcome Administrator\n");
 		Iterator<User> it = users.iterator();
 		while (it.hasNext()) {
 		     User p = it.next();
@@ -97,7 +142,7 @@ public class Bank {
 
 	}
 
-	//Load user data at start
+	//Load User data at start of application
 	public Set<User> loadUserData() throws IOException{
 		ObjectInputStream ois = null;
 		try {
@@ -113,7 +158,7 @@ public class Bank {
 		return null;
 	}
 	
-	//Home Page of Bank
+	//Home Page of the Bank
 	public int homePage() {
 			//Welcome screen and Menu option
 			int selection = 0;
@@ -134,8 +179,8 @@ public class Bank {
 			return selection;
 		}
 	
-	//Login Page
-	int loginPage(Set<User> u) {
+	//Login Page for Administrator and User
+	int loginPage(Set<User> users) throws IOException {
 		Scanner i = new Scanner(System.in);
 		System.out.print("Enter User Name: ");
 		String userName = i.nextLine();
@@ -143,24 +188,27 @@ public class Bank {
 		String password = i.nextLine();
 		
 		if(userName.equals("Admin")&&password.equals("Admin")) {
+			AdminPage(users);
 			return 0;
 		}
-		for (User p: u) {
+		for (User p: users) {
 			if(userName.equals(p.getUserName())&&password.equals(p.getPassword())){
 				if((p.getStatus().equals("Approved"))) {
-					return 1;
+					userPage(p);
+					return 0;
 				}else {
 					System.out.println("Sorry your account is not Approved yet\n");
-					return -1;
+					return 0;
 				}
 			}
 		}
 		System.out.println("Invaid login. Try again or create new account\n");		
-		return -1;
+		return 0;
 	}
 	
-	//New user registration Page
+	//New user Registration Page
 	public User newUser() throws IOException {
+		System.out.println("Welcome New User\n");
 		Scanner i = new Scanner(System.in);
 		System.out.print("Enter User Name: ");
 		String userName = i.nextLine();
