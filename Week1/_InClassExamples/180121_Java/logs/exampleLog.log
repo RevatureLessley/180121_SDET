@@ -1,0 +1,9 @@
+2018-01-25 15:19:27 TRACE Driver:16 - Test log
+2018-01-25 15:19:27 DEBUG Driver:17 - Test log
+2018-01-25 15:19:27 INFO  Driver:18 - Test log
+2018-01-25 15:19:27 WARN  Driver:19 - Test log
+2018-01-25 15:19:27 ERROR Driver:20 - Test log
+2018-01-25 15:19:27 FATAL Driver:21 - Test log
+2018-01-25 15:31:57 WARN  Driver:19 - Test log
+2018-01-25 15:31:57 ERROR Driver:20 - Test log
+2018-01-25 15:31:57 FATAL Driver:21 - Test log

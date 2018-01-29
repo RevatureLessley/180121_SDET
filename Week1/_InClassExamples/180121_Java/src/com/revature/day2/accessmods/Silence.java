@@ -20,13 +20,25 @@ public class Silence {
 	 * 
 	 * The other subset can be called non-access modifiers:
 	 * -static
+	 * ---Sets resource to be available without instance of class
+	 * ---Limits to only one instance of resource shared among all other instances of class
 	 * -final
+	 * ---Depending on where it goes, limits scaleabilty of resource
 	 * -abstract
+	 * ---Foregoes body implementation of a method until inherited.
 	 * -native
+	 * ---No body for the method, implementation is done outside of java
 	 * -strictfp
+	 * ---if on class, all methods are strictfp
+	 * ---all floating points conform to IEEE standards
 	 * -volatile
+	 * ---An volatile variable must be accessed via main memory, not an individual
+	 * ---thread's stack memory. It essentially marks the variable as an important
+	 * ---resource that will be hit my multiple threads.
 	 * -synchronized
+	 * ---Limits amount of threads that can access resource to one at a time
 	 * -transient
+	 * ---Anything transient is withheld from serialization
 	 */
 	
 	private String priv = "Private";

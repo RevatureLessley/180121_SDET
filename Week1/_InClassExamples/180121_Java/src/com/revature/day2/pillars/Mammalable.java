@@ -13,24 +13,40 @@ package com.revature.day2.pillars;
  * -As of Java 8
  * 		-You are now allowed to make static methods.
  * 		-You are now given a 'default' which allows you to implement an interface method.
+ * 
+ * Interfaces VS Abstract classes
+ * -Both can have, both, concrete and abstract methods.
+ * -As well both can NOT be instantiated as a standalone instance
+ * -Interfaces are typically used for actions that should required by classes 
+ * where as abstract classes are typically used as class to be extended from with
+ * base functionality.
+ * -You can extend a class, but you must implement an interface.
+ * -You can only extend ONE class at most, whereas you an implement as many
+ * interfaces as you want. (NOTE: You EXTEND abstract classes, and IMPLEMENT interfaces)
+ * 
  */
 public interface Mammalable {
 	int i = 2;
-	//Java will implicitly change i to be public, static and final, should you choose
-	//to write is as above.
+
+	// Java will implicitly change i to be public, static and final, should you
+	// choose
+	// to write is as above.
 	public String speak();
+
 	public String eat();
-	
-	public static String ear(float f, int x){
+
+	public static String ear(float f, int x) {
 		return "...yeah...";
 	};
+
 	/*
-	 * This is an example of overloading.
-	 * When you have 2 or more methods with the same name in the same class, you are
-	 * overloading them. The only requirement is that the input parameters are different,
-	 * otherwise java will not know which method you are rerferencing by name.
+	 * This is an example of overloading. When you have 2 or more methods with
+	 * the same name in the same class, you are overloading them. The only
+	 * requirement is that the input parameters are different, otherwise java
+	 * will not know which method you are rerferencing by name.
 	 */
-	public default String ear(int x, float f){
+	public default String ear(int x, float f) {
 		return "...is this allowed?";
 	}
+
 }

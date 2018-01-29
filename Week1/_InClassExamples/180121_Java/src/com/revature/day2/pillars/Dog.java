@@ -5,6 +5,8 @@ package com.revature.day2.pillars;
 //default as well.
 //NOTE3: Every class file MUST have a public class that is named the same as the file.
 public abstract class Dog extends Animal{
+	public String secret = "Dog";
+	
 	/*
 	 * By utilizing the 'extends' keyword, we are able to inherit from another
 	 * CLASS and receive all of its methods and field. Since this class is ALSO
