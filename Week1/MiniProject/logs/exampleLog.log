@@ -1,0 +1,69 @@
+2018-01-28 16:13:31 DEBUG Driver:21 - deserialized
+2018-01-28 16:14:19 DEBUG Driver:21 - deserialized
+2018-01-28 16:14:46 DEBUG Driver:21 - deserialized
+2018-01-28 16:15:56 DEBUG Driver:21 - deserialized
+2018-01-28 16:16:14 DEBUG Driver:21 - deserialized
+2018-01-28 16:18:53 DEBUG Driver:21 - deserialized
+2018-01-28 16:19:07 DEBUG Driver:21 - deserialized
+2018-01-28 16:24:06 DEBUG Driver:21 - deserialized
+2018-01-28 16:25:06 DEBUG Driver:21 - deserialized
+2018-01-28 16:27:18 DEBUG Driver:21 - deserialized
+2018-01-28 16:33:54 DEBUG Driver:21 - deserialized
+2018-01-28 16:34:51 DEBUG Driver:21 - deserialized
+2018-01-28 16:37:08 DEBUG Driver:21 - deserialized
+2018-01-28 16:42:13 DEBUG Driver:21 - deserialized
+2018-01-28 16:43:22 DEBUG Driver:21 - deserialized
+2018-01-28 16:59:02 DEBUG Driver:21 - deserialized
+2018-01-28 17:01:55 DEBUG Driver:21 - deserialized
+2018-01-28 17:09:33 DEBUG Driver:21 - deserialized
+2018-01-28 17:09:49 DEBUG Driver:21 - deserialized
+2018-01-28 17:13:06 DEBUG Driver:21 - deserialized
+2018-01-28 17:13:41 DEBUG Driver:21 - deserialized
+2018-01-28 17:16:01 DEBUG Driver:21 - deserialized
+2018-01-28 17:17:48 DEBUG Driver:21 - deserialized
+2018-01-28 17:22:59 DEBUG Driver:21 - deserialized
+2018-01-28 17:42:55 DEBUG Driver:21 - deserialized
+2018-01-28 17:57:00 DEBUG Driver:21 - deserialized
+2018-01-28 17:58:46 DEBUG Driver:21 - deserialized
+2018-01-28 17:59:31 DEBUG Driver:21 - deserialized
+2018-01-28 18:10:34 DEBUG Driver:21 - deserialized
+2018-01-28 18:11:21 DEBUG Driver:21 - deserialized
+2018-01-28 18:11:58 INFO  AdminView:54 - lynda APPROVED
+2018-01-28 18:16:32 INFO  AdminView:54 - myra APPROVED
+2018-01-28 18:21:30 DEBUG Driver:21 - deserialized
+2018-01-28 19:20:32 DEBUG Driver:21 - deserialized
+2018-01-28 19:58:07 DEBUG Driver:21 - deserialized
+2018-01-28 20:00:59 DEBUG Driver:21 - deserialized
+2018-01-28 20:02:08 DEBUG Driver:21 - deserialized
+2018-01-28 20:03:33 DEBUG Driver:21 - deserialized
+2018-01-28 20:05:10 INFO  User:56 - bob APPROVED
+2018-01-28 20:05:20 INFO  User:56 - dylan APPROVED
+2018-01-28 20:05:40 DEBUG Driver:21 - deserialized
+2018-01-28 20:07:08 DEBUG Driver:21 - deserialized
+2018-01-28 20:08:27 DEBUG Driver:21 - deserialized
+2018-01-28 20:23:04 INFO  DollarsTest:18 - BEFORECLASS
+2018-01-28 20:23:04 INFO  DollarsTest:23 - AFTERCLASS
+2018-01-28 20:23:28 INFO  DollarsTest:18 - BEFORECLASS
+2018-01-28 20:23:28 INFO  DollarsTest:23 - AFTERCLASS
+2018-01-28 20:26:17 INFO  DollarsTest:18 - BEFORECLASS
+2018-01-28 20:26:17 INFO  DollarsTest:23 - AFTERCLASS
+2018-01-28 20:27:22 INFO  DollarsTest:18 - BEFORECLASS
+2018-01-28 20:27:22 INFO  DollarsTest:23 - AFTERCLASS
+2018-01-28 20:29:37 INFO  DollarsTest:18 - BEFORECLASS
+2018-01-28 20:29:37 INFO  DollarsTest:23 - AFTERCLASS
+2018-01-28 20:30:38 INFO  DollarsTest:18 - BEFORECLASS
+2018-01-28 20:30:38 INFO  DollarsTest:23 - AFTERCLASS
+2018-01-28 20:31:06 INFO  DollarsTest:18 - BEFORECLASS
+2018-01-28 20:31:06 INFO  DollarsTest:23 - AFTERCLASS
+2018-01-28 20:31:29 INFO  DollarsTest:18 - BEFORECLASS
+2018-01-28 20:31:29 INFO  DollarsTest:23 - AFTERCLASS
+2018-01-28 20:32:12 INFO  DollarsTest:18 - BEFORECLASS
+2018-01-28 20:32:12 INFO  DollarsTest:23 - AFTERCLASS
+2018-01-28 20:35:48 INFO  DollarsTest:18 - BEFORECLASS
+2018-01-28 20:35:48 INFO  DollarsTest:23 - AFTERCLASS
+2018-01-28 22:48:31 DEBUG Driver:21 - deserialized
+2018-01-28 22:49:34 INFO  User:56 - myra APPROVED
+2018-01-28 23:11:20 DEBUG Driver:21 - deserialized
+2018-01-28 23:12:42 INFO  User:56 - hannan APPROVED
+2018-01-28 23:12:48 INFO  User:56 - bob APPROVED
+2018-01-28 23:19:33 DEBUG MiniSaver:22 - deserialized
