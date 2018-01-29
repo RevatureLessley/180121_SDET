@@ -1,0 +1,35 @@
+[28 Jan 2018 16:22:54,135] controller.Controller.main() - Application started
+[28 Jan 2018 16:22:58,017] controller.Controller.mainMenu() - Chose login
+[28 Jan 2018 16:22:58,033] functions.SerializeAndDeserialize.deserializeUsers() - Attempting to deserialize users
+[28 Jan 2018 16:22:58,158] functions.SerializeAndDeserialize.deserializeUsers() - Deserialized successfully
+[28 Jan 2018 16:22:58,158] functions.SerializeAndDeserialize.deserializeUsers() - Attempting to deserialize users
+[28 Jan 2018 16:22:58,158] functions.SerializeAndDeserialize.deserializeUsers() - Deserialized successfully
+[28 Jan 2018 16:22:58,158] functions.FetchUsers.usernameList() - Returned username list
+[28 Jan 2018 16:22:58,158] model.User.toString() - User printed: userName=null, password=null, id=1993, bank_balance=0.0, isApproved=false
+[28 Jan 2018 16:22:58,158] model.User.<init>() - New User initialized: userName=null, password=null, id=1993, bank_balance=0.0, isApproved=false
+[28 Jan 2018 16:22:58,158] functions.UserLogIn.logInUsername() - Size of users array: 7
+[28 Jan 2018 16:22:58,158] functions.UserLogIn.logInUsername() - Array access count: 0
+[28 Jan 2018 16:22:58,158] functions.UserLogIn.logInUsername() - Array access count: 1
+[28 Jan 2018 16:22:58,158] functions.UserLogIn.logInUsername() - Array access count: 2
+[28 Jan 2018 16:22:58,170] functions.UserLogIn.logInUsername() - Array access count: 3
+[28 Jan 2018 16:22:58,171] functions.UserLogIn.logInUsername() - Array access count: 4
+[28 Jan 2018 16:22:58,171] functions.UserLogIn.logInUsername() - Array access count: 5
+[28 Jan 2018 16:22:58,171] functions.UserLogIn.logInUsername() - Array access count: 6
+[28 Jan 2018 16:23:02,873] functions.UserLogIn.logInUsername() - 5 feet tall entered in login screen
+[28 Jan 2018 16:23:02,873] functions.UserLogIn.logInUsername() - found match for 5 feet tall
+[28 Jan 2018 16:23:02,873] functions.UserLogIn.logInUsername() - User blocked at approval screen
+[28 Jan 2018 16:23:04,440] controller.Controller.mainMenu() - Application closed
+[29 Jan 2018 08:58:52,613] controller.Controller.main() - Application started
+[29 Jan 2018 08:58:56,308] controller.Controller.mainMenu() - Chose admin
+[29 Jan 2018 08:58:57,423] functions.AdminFunctions.adminLogin() - admin entered username successfully
+[29 Jan 2018 08:59:00,738] functions.AdminFunctions.adminLogin() - admin password was unsuccessful
+[29 Jan 2018 08:59:02,502] controller.Controller.mainMenu() - Chose show
+[29 Jan 2018 08:59:02,705] functions.SerializeAndDeserialize.deserializeUsers() - Attempting to deserialize users
+[29 Jan 2018 08:59:02,939] functions.SerializeAndDeserialize.deserializeUsers() - Deserialized successfully
+[29 Jan 2018 08:59:02,939] model.User.toString() - User printed: userName=Cats, password=9 lives, id=2933, bank_balance=5.0, isApproved=false
+[29 Jan 2018 08:59:02,950] model.User.toString() - User printed: userName=USA, password=USA, id=6560, bank_balance=1002.0, isApproved=true
+[29 Jan 2018 08:59:02,951] model.User.toString() - User printed: userName=Hairy, password=Must Shave, id=7678, bank_balance=3.0, isApproved=false
+[29 Jan 2018 08:59:02,951] model.User.toString() - User printed: userName=Blob, password=Eat less, id=570, bank_balance=99.0, isApproved=true
+[29 Jan 2018 08:59:02,951] model.User.toString() - User printed: userName=Food, password=yumm, id=6985, bank_balance=33.0, isApproved=true
+[29 Jan 2018 08:59:02,951] model.User.toString() - User printed: userName=Blobbier, password=yum food, id=9197, bank_balance=45.0, isApproved=false
+[29 Jan 2018 08:59:02,951] model.User.toString() - User printed: userName=5 feet tall, password=with shoes, id=8029, bank_balance=432.0, isApproved=false
