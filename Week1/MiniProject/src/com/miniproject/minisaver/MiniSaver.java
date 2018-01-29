@@ -10,6 +10,11 @@ import com.miniproject.users.UsersCollection;
 import com.miniproject.util.InputReader;
 import com.miniproject.util.Serializer;
 
+/*
+ * MiniSaver
+ * contains the logic for picking which option to go through next
+ * Also serializes and de-serializes our data collection class
+ */
 public class MiniSaver {
 	final static Logger logger = Logger.getLogger(MiniSaver.class);
 	

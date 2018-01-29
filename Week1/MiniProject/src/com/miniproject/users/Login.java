@@ -2,6 +2,9 @@ package com.miniproject.users;
 
 import com.miniproject.util.InputReader;
 
+/*
+ * Handles logging in a user.  Checking for correct password and type of user
+ */
 public class Login {
 	private UsersCollection uc;
 	private String username;
@@ -16,8 +19,8 @@ public class Login {
 		enterPassword();
 		Account u = checkLogin();
 		while(u == null) {
-			System.out.println("Username & Password pair does not exist. 'ENTER' to try Again."
-					+ "\nOr type 'B' to go back to the previous menu");
+			System.out.println("Username & Password pair does not exist. 'A' to try (A)gain."
+					+ "\nOr type 'B' to go (B)ack to the previous menu");
 			String response = InputReader.readString();
 			if(response.equals("B")){
 				break;

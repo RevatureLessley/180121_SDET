@@ -5,6 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+/*
+ * A file used for reading files and parsing the specific input need for a task
+ */
 public class FileParser {
 	public static String parseFile(String fileName, String option) {
 		String setting = null;

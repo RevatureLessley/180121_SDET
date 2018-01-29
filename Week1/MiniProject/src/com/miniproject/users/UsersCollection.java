@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * UsersCollection
+ * class that holds the collection that stores all the user accounts
+ */
 public class UsersCollection implements Serializable {
 	
 	private static final long serialVersionUID = 40L;

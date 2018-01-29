@@ -7,13 +7,16 @@ import javax.print.DocFlavor.INPUT_STREAM;
 import org.apache.log4j.Logger;
 import com.miniproject.util.InputReader;
 
+/*
+ * The view for an Admin user and the commands they can run
+ */
 public class AdminView {
 	final static Logger logger = Logger.getLogger(AdminView.class);
 	private static final int EXITNUM = 5;
 	private Admin authorizer;
 	UsersCollection allUsers;
 	Map<String, Account> accountsMap;
-	private String viewPrompt = "1) View All Users\n2) Approve User \n3) Ban\\Un-Ban User \n" + EXITNUM + ") Exit";
+	private String viewPrompt = "1) View All Users\n2) Approve User \n3) Ban\\Un-Ban User \n" + EXITNUM + ") LogOut";
 	private String viewFormat = "|%-15s|%-7s|%-10s|%-7s|\n";
 	private String logout = "+++++ADMIN LOGOUT+++++";
 	public AdminView(Admin inAuth, UsersCollection inUsers) {

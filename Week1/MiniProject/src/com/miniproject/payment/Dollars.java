@@ -1,5 +1,8 @@
 package com.miniproject.payment;
 
+/*
+ * Dollars extends AbstractCurrency for a currency based off of US (American) dollars
+ */
 public class Dollars extends AbstractCurrency{
 
 	private static final long serialVersionUID = -8406410769549441944L;

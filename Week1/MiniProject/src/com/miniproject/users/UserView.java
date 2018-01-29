@@ -2,13 +2,17 @@ package com.miniproject.users;
 
 import com.miniproject.util.InputReader;
 
+/*
+ * UserView
+ * Contains the commands that the regular User can see when logged in
+ */
 public class UserView {
 	private User loggedUser;
 	private final int EXITNUM = 4;
 	private String notAppr = "Your account has either been banned or has not been approved yet.\n1) Log Out";
 	private String title = "-----USERVIEW-----";
 	private String logout = "-----USER LOGOUT-----";
-	private String viewPrompt = "1) Current Balance \n2) Deposit Money \n3) Withdraw Money\n" + EXITNUM + ") Exit";
+	private String viewPrompt = "1) Current Balance \n2) Deposit Money \n3) Withdraw Money\n" + EXITNUM + ") LogOut";
 	
 	public UserView(User inLU) {
 		this.loggedUser = inLU;

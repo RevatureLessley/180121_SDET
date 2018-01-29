@@ -2,6 +2,10 @@ package com.miniproject.users;
 
 import java.io.Serializable;
 
+/*
+ * Account base class for the other two types of accounts to extend.  Sets up methods
+ * and interface methods for the classes that extend this class to use.
+ */
 public abstract class Account implements Comparable<Account>, Serializable {
 
 	private static final long serialVersionUID = 1657445948440785920L;

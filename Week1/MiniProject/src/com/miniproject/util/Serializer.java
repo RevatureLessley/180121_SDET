@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/*
+ * Class used to serialize and deserialize classes
+ */
 public class Serializer {
 	ObjectOutputStream oos = null;
 	ObjectInputStream ois = null;

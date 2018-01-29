@@ -4,6 +4,9 @@ import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/*
+ * Class used to read input and and handle exceptions
+ */
 public class InputReader {
 	private static Scanner input = new Scanner(System.in);
 	

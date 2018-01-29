@@ -2,6 +2,9 @@ package com.miniproject.users;
 
 import java.io.Serializable;
 
+/*
+ * Admin class defines methods to use on an admin user.
+ */
 public class Admin extends Account implements Serializable{
 	
 	private static final long serialVersionUID = -181823672366575954L;

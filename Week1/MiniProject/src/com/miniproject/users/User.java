@@ -5,6 +5,9 @@ import org.apache.log4j.Logger;
 
 import com.miniproject.payment.*;
 
+/*
+ * User
+ */
 public class User extends Account implements Serializable {
 	
 	final static Logger logger = Logger.getLogger(User.class);
@@ -12,6 +15,7 @@ public class User extends Account implements Serializable {
 	private String username;
 	private String password;
 	private AbstractCurrency currency;
+	//Was going to be used for a feature that increased amount of money in account
 	public int daysLoggedIn;
 	private boolean accountApproved;
 	private boolean banned;

@@ -67,3 +67,5 @@
 2018-01-28 23:12:42 INFO  User:56 - hannan APPROVED
 2018-01-28 23:12:48 INFO  User:56 - bob APPROVED
 2018-01-28 23:19:33 DEBUG MiniSaver:22 - deserialized
+2018-01-28 23:59:42 DEBUG MiniSaver:27 - deserialized
+2018-01-29 00:00:22 DEBUG MiniSaver:27 - deserialized

@@ -5,10 +5,15 @@ import java.util.Map;
 import com.miniproject.util.FileParser;
 import com.miniproject.util.InputReader;
 
+/*
+ * Handles the creation of an account.  Making sure that the username and password are
+ * valid.
+ */
 public class AccountCreate {
 	private String username;
 	private String password01;
 	private String password02;
+	//Code used to create a new admin account
 	private String secretCode = FileParser.parseFile("src/configs", "SECRETCODE"); //get from file
 	private Account newAccount;
 	private boolean createAdmin = false;

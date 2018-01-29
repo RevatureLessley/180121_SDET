@@ -9,6 +9,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+/*
+ * A class to test some of the methods of the Dollars class
+ */
 public class DollarsTest {
 	final static Logger logger = Logger.getLogger(DollarsTest.class);
 	Dollars d;
