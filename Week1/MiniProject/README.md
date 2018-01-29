@@ -21,7 +21,3 @@ This application allows the user to display all user data, login and change bank
 ## Demo 1
 
 ![demo](Run5.gif)
-
-## Demo 2 showing Persistant data
-
-![demo](Run6.gif)
