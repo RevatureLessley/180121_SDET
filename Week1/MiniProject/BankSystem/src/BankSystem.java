@@ -1,9 +1,11 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
@@ -15,38 +17,32 @@ public class BankSystem {
 	private static BufferedReader br;
 	private static BufferedWriter bw;
 	private static Scanner sc;
+	private static ObjectInputStream ois;
+	private static ObjectOutputStream oos;
 
 	public static void main(String[] args) throws IOException {
 
-		Account acc = new Account();
+		// Read accounts from file, created an admin account if file does not
+		// exist.
+		if (!new File("accounts.ser").exists()) {
+			Account newAccount = new Account("admin", "12345", true, true);
+			accounts.add(newAccount);
+		} else {
+			try {
+				ois = new ObjectInputStream(new FileInputStream("accounts.ser"));
+				accounts = (ArrayList<Account>) ois.readObject();
 
-		// Read from data file
-		String line = "";
-		try {
-			br = new BufferedReader(new FileReader("bankAccounts.dat"));
-			while ((line = br.readLine()) != null) {
-				acc = new Account();
-				acc.setUsername(line);
-				line = br.readLine();
-				acc.setPassword(line);
-				line = br.readLine();
-				acc.setAdmin(Boolean.parseBoolean(line));
-				line = br.readLine();
-				acc.setApproved(Boolean.parseBoolean(line));
-				line = br.readLine();
-				acc.setBalance(Double.parseDouble(line));
-
-				accounts.add(acc);
+			} catch (IOException | ClassNotFoundException e) {
+				e.printStackTrace();
+			} finally {
+				if (ois != null)
+					ois.close();
 			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null)
-				br.close();
+
 		}
 
-//		for (Account a : accounts)
-//			System.out.println(a);
+		// for (Account a : accounts)
+		// System.out.println(a);
 
 		// Read user input
 		sc = new Scanner(System.in);
@@ -82,16 +78,16 @@ public class BankSystem {
 		}
 
 		// Write to data file
-		bw = new BufferedWriter(new FileWriter("bankAccounts.dat"));
-		for (Account a : accounts) {
-			bw.write(a.getUsername() + "\r\n");
-			bw.write(a.getPassword() + "\r\n");
-			bw.write(a.isAdmin() + "\r\n");
-			bw.write(a.isApproved() + "\r\n");
-			bw.write(a.getBalance() + "\r\n");
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream("accounts.ser"));
+			oos.writeObject(accounts);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (oos != null)
+				oos.close();
 		}
 
-		bw.close();
 		sc.close();
 	}
 
@@ -107,10 +103,12 @@ public class BankSystem {
 		password = sc.nextLine();
 
 		// Create account and add to collection
-		Account newAccount = new Account(username, password);
+		Account newAccount = new Account(username, password, false, false);
 		accounts.add(newAccount);
 
-		System.out.println("\nAccount registered.\n");
+		BankLogger.infoMsg("Account '" + newAccount.getUsername()
+				+ "' registered.");
+		// System.out.println("\nAccount registered.\n");
 	}
 
 	private static void login() {
@@ -171,10 +169,11 @@ public class BankSystem {
 				withdraw();
 				break;
 			case "3":
-				System.out.println("Your balance is $" + currentAccount.getBalance());
+				System.out.println("Your balance is $"
+						+ currentAccount.getBalance());
 				break;
 			case "4":
-				if(currentAccount.isAdmin()){
+				if (currentAccount.isAdmin()) {
 					approveAccount();
 					break;
 				}
@@ -188,29 +187,33 @@ public class BankSystem {
 
 	private static void approveAccount() {
 		System.out.println("Accounts pending for approval:");
-		for(Account a: accounts){
-			if(!a.isApproved()){
+		for (Account a : accounts) {
+			if (!a.isApproved()) {
 				System.out.println(a.getUsername());
 			}
 		}
 		String input = "";
-		while(true){
-			System.out.println("Approve an account by typing in its username (Or type in 'back' to go back):");
+		while (true) {
+			System.out
+					.println("Approve an account by typing in its username (Or type in 'back' to go back):");
 			sc = new Scanner(System.in);
 			input = sc.nextLine();
-			
-			if(input.equals("back"))
+
+			if (input.equals("back"))
 				return;
-			for(Account a: accounts){
-				if(a.getUsername().equals(input)){
+			for (Account a : accounts) {
+				if (a.getUsername().equals(input)) {
 					a.setApproved(true);
+					System.out.println();
+					BankLogger.infoMsg("Account '" + a.getUsername()
+							+ "' is Approved.");
+					System.out.println();
 					return;
 				}
 			}
 			System.out.println("Invalid username.");
 		}
-		
-		
+
 	}
 
 	private static void withdraw() {
@@ -219,13 +222,18 @@ public class BankSystem {
 		System.out.println("Enter the amount:");
 		try {
 			amount = Double.parseDouble(sc.nextLine());
-			if(amount < currentAccount.getBalance()){
+			if (amount < currentAccount.getBalance()) {
 				currentAccount.setBalance(currentAccount.getBalance() - amount);
-				System.out.println("Successfully withdrew $" + amount +". Your balance now is $" + currentAccount.getBalance());
-			}else{
+				System.out.println();
+				BankLogger.infoMsg("$" + amount + " is withdrew from account '"
+						+ currentAccount.getUsername()
+						+ "'. Your balance now is $"
+						+ currentAccount.getBalance());
+				System.out.println();
+			} else {
 				System.out.println("You have insuffcient balance.");
 			}
-			
+
 		} catch (NumberFormatException e) {
 			System.out.println("Invalid input.");
 		}
@@ -239,7 +247,11 @@ public class BankSystem {
 		try {
 			amount = Double.parseDouble(sc.nextLine());
 			currentAccount.setBalance(currentAccount.getBalance() + amount);
-			System.out.println("Successfully deposited $" + amount +". Your balance now is $" + currentAccount.getBalance());
+			System.out.println();
+			BankLogger.infoMsg("$" + amount + " is deposited into account '"
+					+ currentAccount.getUsername() + "'. Your balance now is $"
+					+ currentAccount.getBalance());
+			System.out.println();
 		} catch (NumberFormatException e) {
 			System.out.println("Invalid input.");
 		}

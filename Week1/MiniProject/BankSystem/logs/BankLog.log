@@ -1,0 +1,7 @@
+2018-01-29 14:58:49 INFO  BankSystem:24 - Account '1234' registered.
+2018-01-29 15:01:04 INFO  BankSystem:24 - Account 'jiaqi' registered.
+2018-01-29 15:06:12 INFO  BankSystem:24 - Account 'jiaqi' registered.
+2018-01-29 15:19:51 INFO  BankSystem:24 - Account 'jiaqi' registered.
+2018-01-29 15:23:00 INFO  BankSystem:24 - Account 'jiaqi' registered.
+2018-01-29 15:31:22 INFO  BankSystem:24 - Account 'jiaqi' is Approved.
+2018-01-29 15:31:57 INFO  BankSystem:24 - $200.0 is withdrew from account 'jiaqi'. Your balance now is $1800.0

@@ -1,6 +1,12 @@
+import java.io.Serializable;
 
-public class Account {
+
+public class Account implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
 	private boolean isAdmin;
@@ -12,9 +18,11 @@ public class Account {
 	public Account() {
 		super();
 	}
-	public Account(String username, String password) {
+	public Account(String username, String password, boolean isAdmin, boolean isApproved) {
 		this.username = username;
 		this.password = password;
+		this.isAdmin = isAdmin;
+		this.isApproved = isApproved;
 	}
 	/**
 	 * @return the username
