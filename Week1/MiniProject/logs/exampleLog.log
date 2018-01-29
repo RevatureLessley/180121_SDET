@@ -72,3 +72,23 @@
 2018-01-29 00:01:41 DEBUG MiniSaver:27 - deserialized
 2018-01-29 00:03:38 INFO  User:60 - dylan approved=true
 2018-01-29 00:04:18 INFO  User:74 - 24.229999542236328deposited
+2018-01-29 11:20:29 DEBUG MiniSaver:27 - deserialized
+2018-01-29 11:22:15 DEBUG MiniSaver:27 - deserialized
+2018-01-29 11:22:45 INFO  User:74 - 9.949999809265137deposited
+2018-01-29 11:25:09 DEBUG MiniSaver:27 - deserialized
+2018-01-29 11:25:35 INFO  User:74 - 450.0deposited
+2018-01-29 11:26:06 DEBUG MiniSaver:27 - deserialized
+2018-01-29 11:26:26 INFO  User:74 - 20.0deposited
+2018-01-29 11:39:09 DEBUG MiniSaver:27 - deserialized
+2018-01-29 11:40:07 DEBUG MiniSaver:27 - deserialized
+2018-01-29 11:41:57 DEBUG MiniSaver:27 - deserialized
+2018-01-29 11:44:28 DEBUG MiniSaver:27 - deserialized
+2018-01-29 11:47:34 DEBUG MiniSaver:27 - deserialized
+2018-01-29 13:29:23 DEBUG MiniSaver:28 - deserialized
+2018-01-29 13:29:42 INFO  Serializer:25 - Write to: src/testUser
+2018-01-29 14:24:50 INFO  Serializer:42 - Read from: src/testUser
+2018-01-29 14:24:50 DEBUG MiniSaver:28 - deserialized
+2018-01-29 14:26:09 INFO  Serializer:42 - Read from: src/users.ser
+2018-01-29 14:26:09 DEBUG MiniSaver:29 - deserialized
+2018-01-29 14:27:08 INFO  User:60 - bob approved=true
+2018-01-29 14:27:14 INFO  Serializer:25 - Write to: src/users.ser

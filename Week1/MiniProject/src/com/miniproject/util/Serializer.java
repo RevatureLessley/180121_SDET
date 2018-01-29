@@ -8,10 +8,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import org.apache.log4j.Logger;
+
 /*
  * Class used to serialize and deserialize classes
  */
 public class Serializer {
+	final static Logger logger = Logger.getLogger(Serializer.class);
 	ObjectOutputStream oos = null;
 	ObjectInputStream ois = null;
 	
@@ -19,6 +22,7 @@ public class Serializer {
 		try {
 			oos = new ObjectOutputStream(new FileOutputStream(fileName));
 			oos.writeObject(o);
+			logger.info("Write to: " + fileName);
 		} catch(FileNotFoundException e) {
 			e.printStackTrace();
 		} finally {
@@ -35,6 +39,7 @@ public class Serializer {
 			if(checkFile.exists()) {
 				ois = new ObjectInputStream(new FileInputStream(fileName));
 				o = ois.readObject();
+				logger.info("Read from: " + fileName);
 			}
 		} catch(FileNotFoundException | ClassNotFoundException e) {
 			e.printStackTrace();

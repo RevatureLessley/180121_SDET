@@ -20,10 +20,12 @@ public class MiniSaver {
 	
 	UsersCollection users = null;
 	Serializer sr = new Serializer();
+	String usersFile = "src/users.ser";
 	
 	void runProgram(){
 		try {
-			users = (UsersCollection)sr.deserialize("src/users.ser");
+			//users = (UsersCollection)sr.deserialize("src/users.ser");
+			users = (UsersCollection)sr.deserialize(usersFile);
 			logger.debug("deserialized");
 		} catch(IOException e) {
 			e.printStackTrace();
@@ -50,16 +52,12 @@ public class MiniSaver {
 				AccountCreate createAccount = new AccountCreate(users.getRegAccounts());
 				createAccount.createAccount();
 				users.createUser(createAccount.getNewAccount());
-				try {
-					sr.serialize(users, "src/users.ser");
-				} catch(IOException e) {
-					e.printStackTrace();
-					break;
-				}
+				serializeObject(users, users.getClass(), usersFile);
 				
 			} else {
 				System.out.println("INVALID CHOICE PLEAE TRY AGAIN");
 			}
+			System.out.println("=====MINISAVER=====");
 			System.out.println(options);
 			choice = InputReader.readInt(options);
 		}
@@ -67,15 +65,19 @@ public class MiniSaver {
 		if(choice == 3) {
 			InputReader.closeReader();
 			
-			try {
-				sr.serialize(users, "src/users.ser");
-			} catch(IOException e) {
-				e.printStackTrace();
-			}
+			serializeObject(users, users.getClass(), usersFile);
 			
 			System.out.println("GOOD BYE!");
 		} else {
 			System.out.println("ABRUPT EXIT");
+		}
+	}
+	
+	private void serializeObject(Object o, Class c, String fileName) {
+		try {
+			sr.serialize(c.cast(o), fileName);
+		} catch(IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

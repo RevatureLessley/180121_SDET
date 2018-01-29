@@ -71,8 +71,9 @@ public class User extends Account implements Serializable {
 	}
 
 	public void depositCurrency(double inCurr) {
-		logger.info(inCurr + "deposited");
 		this.currency.increaseCurrency(inCurr);
+		String fmt = String.format("%.2f  |deposited", inCurr);
+		logger.info(fmt);
 	}
 	
 	public void withdrawCurrency(double inCurr) {

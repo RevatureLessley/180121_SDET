@@ -1,10 +1,13 @@
 package com.miniproject.payment;
 
+import org.apache.log4j.Logger;
+
 /*
  * Dollars extends AbstractCurrency for a currency based off of US (American) dollars
  */
 public class Dollars extends AbstractCurrency{
 
+	final static Logger logger = Logger.getLogger(Dollars.class);
 	private static final long serialVersionUID = -8406410769549441944L;
 	private double currency = 0.0f;
 	
@@ -38,6 +41,7 @@ public class Dollars extends AbstractCurrency{
 			this.currency -= inCurr;
 		}
 		
+		logger.info(String.format("%.2f |amount removed", decAmnt));
 		return decAmnt;
 	}
 }
