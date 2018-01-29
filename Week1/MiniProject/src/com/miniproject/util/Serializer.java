@@ -18,6 +18,10 @@ public class Serializer {
 	ObjectOutputStream oos = null;
 	ObjectInputStream ois = null;
 	
+	public Serializer() {
+		
+	}
+	
 	public void serialize(Object o, String fileName) throws IOException {
 		try {
 			oos = new ObjectOutputStream(new FileOutputStream(fileName));

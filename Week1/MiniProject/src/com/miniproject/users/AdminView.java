@@ -1,24 +1,26 @@
 package com.miniproject.users;
 
+import java.io.IOException;
 import java.util.Map;
-
-import javax.print.DocFlavor.INPUT_STREAM;
 
 import org.apache.log4j.Logger;
 import com.miniproject.util.InputReader;
+import com.miniproject.util.Serializer;
 
 /*
  * The view for an Admin user and the commands they can run
  */
 public class AdminView {
 	final static Logger logger = Logger.getLogger(AdminView.class);
-	private static final int EXITNUM = 5;
+	private static final int EXITNUM = 6;
 	private Admin authorizer;
 	UsersCollection allUsers;
 	Map<String, Account> accountsMap;
-	private String viewPrompt = "1) View All Users\n2) Approve User \n3) Ban\\Un-Ban User \n" + EXITNUM + ") LogOut";
+	private String viewPrompt = "1) View All Users\n2) Approve User \n3) "
+			+ "Ban\\Un-Ban User \n4) Delete User \n5) Delete My Account \n" + EXITNUM + ") LogOut";
 	private String viewFormat = "|%-15s|%-7s|%-10s|%-7s|\n";
 	private String logout = "+++++ADMIN LOGOUT+++++";
+	
 	public AdminView(Admin inAuth, UsersCollection inUsers) {
 		this.authorizer = inAuth;
 		this.allUsers = inUsers;
@@ -29,16 +31,23 @@ public class AdminView {
 	void adminSees() {
 		System.out.println("+++++ADMINVIEW+++++\n" + viewPrompt);
 		int response = InputReader.readInt(viewPrompt);
-		while(response != EXITNUM) {
+		while(response != EXITNUM && this.authorizer != null) {
 			if(response == 1) {
 				viewUsers();
 			} else if(response == 2) {
 				approveUser();
 			} else if(response == 3) {
 				banning();
+			} else if(response == 4) {
+				deleteUser();
+			} else if(response == 5) {
+				deleteAccount();
 			}
-			System.out.println(viewPrompt);
-			response = InputReader.readInt(viewPrompt);
+			
+			if(response != EXITNUM && this.authorizer != null) {
+				System.out.println(viewPrompt);
+				response = InputReader.readInt(viewPrompt);
+			}	
 		}
 		logOut();
 	}
@@ -93,11 +102,43 @@ public class AdminView {
 		} else {
 			System.out.println("Account does not exist");
 		}
+	}
+	
+	private void deleteUser() {
+		viewUsers();
+		System.out.println("Enter name of user to Delete");
+		String name = InputReader.readString();
+		if(accountsMap.get(name) != null && !accountsMap.get(name).getIsAdmin()) {
+			accountsMap.remove(name);
+			Serializer s = new Serializer();
+			try {
+				s.serialize(this.allUsers, "src/users.ser");
+			} catch(IOException e) {
+				e.printStackTrace();
+			}	
+		} else {
+			System.out.println("Cannot delete admin or non-existent user.");
+		}
+	}
+	
+	private void deleteAccount() {
+		System.out.print("Are you sure you want to delete your account? (Y/N): ");
+		String response = InputReader.readString();
+		if(response.equals("Y")) {
+			accountsMap.remove(authorizer.getUsername());
+			Serializer s = new Serializer();
+			try {
+				s.serialize(this.allUsers, "src/users.ser");
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+			logOut();
+		}
 		
 	}
 	
 	private void logOut() {
-		authorizer = null;
+		this.authorizer = null;
 		System.out.println(logout);
 	}
 }

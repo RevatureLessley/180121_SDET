@@ -92,3 +92,18 @@
 2018-01-29 14:26:09 DEBUG MiniSaver:29 - deserialized
 2018-01-29 14:27:08 INFO  User:60 - bob approved=true
 2018-01-29 14:27:14 INFO  Serializer:25 - Write to: src/users.ser
+2018-01-29 14:48:39 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 14:48:39 DEBUG MiniSaver:29 - deserialized
+2018-01-29 14:49:14 INFO  Serializer:29 - Write to: src/users.ser
+2018-01-29 14:50:01 INFO  Serializer:29 - Write to: src/users.ser
+2018-01-29 14:50:04 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 14:50:04 DEBUG MiniSaver:29 - deserialized
+2018-01-29 14:50:17 INFO  Serializer:29 - Write to: src/users.ser
+2018-01-29 15:05:00 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 15:05:00 DEBUG MiniSaver:29 - deserialized
+2018-01-29 15:05:17 INFO  Serializer:29 - Write to: src/users.ser
+2018-01-29 15:14:48 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 15:14:48 DEBUG MiniSaver:29 - deserialized
+2018-01-29 15:15:06 INFO  Serializer:29 - Write to: src/users.ser
+2018-01-29 15:15:41 INFO  Serializer:29 - Write to: src/users.ser
+2018-01-29 15:18:48 INFO  Serializer:29 - Write to: src/users.ser
