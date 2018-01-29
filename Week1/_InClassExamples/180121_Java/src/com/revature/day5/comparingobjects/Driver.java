@@ -1,6 +1,5 @@
 package com.revature.day5.comparingobjects;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

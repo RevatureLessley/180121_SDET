@@ -139,3 +139,19 @@
 2018-01-28 14:51:42 DEBUG Bank:250 - Saving data
 2018-01-28 14:51:45 DEBUG Bank:58 - User done with application
 2018-01-28 14:51:45 DEBUG Bank:250 - Saving data
+2018-01-29 10:01:45 INFO  Bank:25 - Application Started
+2018-01-29 10:01:45 INFO  Bank:164 - Loading user data from file
+2018-01-29 10:02:10 INFO  Bank:25 - Application Started
+2018-01-29 10:02:10 INFO  Bank:164 - Loading user data from file
+2018-01-29 10:03:23 DEBUG Bank:217 - harish sign in
+2018-01-29 10:03:23 INFO  Bank:64 - harish sign in
+2018-01-29 10:03:31 DEBUG Bank:90 - harish deposit made for 25.0
+2018-01-29 10:03:34 DEBUG Bank:250 - Saving data
+2018-01-29 17:24:36 INFO  Bank:25 - Application Started
+2018-01-29 17:24:36 INFO  Bank:164 - Loading user data from file
+2018-01-29 17:24:44 DEBUG Bank:217 - harish sign in
+2018-01-29 17:24:44 INFO  Bank:64 - harish sign in
+2018-01-29 17:24:50 DEBUG Bank:105 - harish withdraw made for 45.0
+2018-01-29 17:24:51 DEBUG Bank:250 - Saving data
+2018-01-29 17:24:57 DEBUG Bank:58 - User done with application
+2018-01-29 17:24:57 DEBUG Bank:250 - Saving data
