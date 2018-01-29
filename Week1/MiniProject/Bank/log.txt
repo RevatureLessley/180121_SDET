@@ -1,0 +1,20 @@
+2018-01-29 16:19:41 FATAL Menu:15 - Started menu: LOGGER *************************s
+2018-01-29 16:20:08 DEBUG Menu:15 - Started menu: LOGGER *************************s
+2018-01-29 16:24:31 DEBUG Menu:15 - Started menu: LOGGER *************************s
+2018-01-29 16:24:31 DEBUG Menu:55 - Chose option 0
+2018-01-29 16:24:52 DEBUG Menu:15 - Started menu: LOGGER *************************s
+2018-01-29 16:24:52 DEBUG Menu:55 - Chose option 0
+2018-01-29 16:25:36 DEBUG Menu:15 - Started menu: LOGGER *************************s
+2018-01-29 16:25:37 DEBUG Menu:55 - Chose option 0
+2018-01-29 16:27:48 DEBUG Menu:15 - Started menu: LOGGER *************************s
+2018-01-29 16:27:48 DEBUG Menu:55 - Chose option
+2018-01-29 16:28:02 DEBUG Menu:55 - Chose option
+2018-01-29 16:28:10 DEBUG Menu:55 - Chose option
+2018-01-29 16:28:14 DEBUG Menu:97 - Checked balance 5000.0
+2018-01-29 16:28:14 DEBUG Menu:55 - Chose option
+2018-01-29 16:28:24 DEBUG Menu:104 - User deposited 2.0
+2018-01-29 16:28:24 DEBUG Menu:55 - Chose option
+2018-01-29 16:28:25 DEBUG Menu:97 - Checked balance 5002.0
+2018-01-29 16:28:25 DEBUG Menu:55 - Chose option
+2018-01-29 16:28:32 DEBUG Menu:113 - User withdrew 9.9999999E7
+2018-01-29 16:28:32 DEBUG Menu:55 - Chose option
