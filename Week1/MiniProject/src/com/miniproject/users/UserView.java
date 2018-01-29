@@ -12,7 +12,7 @@ public class UserView {
 	private String notAppr = "Your account has either been banned or has not been approved yet.\n1) Log Out";
 	private String title = "-----USERVIEW-----";
 	private String logout = "-----USER LOGOUT-----";
-	private String viewPrompt = "1) Current Balance \n2) Deposit Money \n3) Withdraw Money\n" + EXITNUM + ") LogOut";
+	private String viewPrompt = "1) Current Balance \n2) Deposit Money \n3) Withdraw Money \n" + EXITNUM + ") LogOut";
 	
 	public UserView(User inLU) {
 		this.loggedUser = inLU;
@@ -29,7 +29,11 @@ public class UserView {
 					deposit();
 				} else if(response == 3) {
 					withdraw();
-				}
+				} /*else if(response == 4) {
+					System.out.println("GAME");
+					TypingGame game = new TypingGame(this.loggedUser);
+					game.playGame();
+				}*/
 				System.out.println(viewPrompt);
 				response = InputReader.readInt(viewPrompt);
 			}
