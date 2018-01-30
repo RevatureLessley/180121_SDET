@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ListIterator;
 import java.util.Scanner;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class MainMenu extends Backend{
 /*This is the function that will be called by the driver to start the SleepyPupper Banking system.
@@ -21,9 +21,17 @@ public class MainMenu extends Backend{
 		Scanner s = singleScanner.getScanner();
 		startMenu(s);
 	}
-	
-	private final static Logger LOGGER = Logger.getLogger(MainMenu.class.getName());
-	public static void simpleLogging(String msg){LOGGER.info(msg);}
+	//single instance of a loggin in main menu.
+	final static Logger logger = Logger.getRootLogger();
+	//simple loggin function that logs every rank of log.
+	public static void simpleLogging(String message){
+		logger.trace(message);
+		logger.debug(message);
+		logger.info(message);
+		logger.warn(message);
+		logger.error(message);
+		logger.fatal(message);
+	}
 	
 	//This function is used to create a singleton scanner object to be used throughout the whole of the application.
 	public static class singleScanner {
