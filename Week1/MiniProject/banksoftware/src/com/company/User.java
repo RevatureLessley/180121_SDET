@@ -1,7 +1,8 @@
 package com.company;
-
-import javax.jws.soap.SOAPBinding;
+import org.junit.*;
 import java.io.Serializable;
+
+import static org.junit.Assert.assertEquals;
 
 public class User implements Serializable{
     private String password;
@@ -22,6 +23,12 @@ public class User implements Serializable{
         this.amount = amount;
     }
 
+    public User(String password, Float amount, String username){
+        this.password = password;
+        this.amount = amount;
+        this.username = username;
+    }
+
     public User(){
         amount = 0f;
     }
@@ -40,6 +47,15 @@ public class User implements Serializable{
 
     public void setAmount(Float amount) {
         this.amount = amount;
+    }
+
+    @Test
+    public void UserCreationTest() {
+        User tester = new User("badpassword", 0f, "john doe"); // MyClass is tested
+
+        // assert statements
+        assertEquals("badpassword", tester.getPassword());
+        assertEquals("john doe", tester.getUsername());
     }
 
 }

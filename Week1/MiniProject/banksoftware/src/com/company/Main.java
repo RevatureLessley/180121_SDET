@@ -1,14 +1,18 @@
 package com.company;
-
 import java.io.*;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
-* Name : Ernst Nathaniel blanchard
-* Project : Mini Project Bank Account
-*
+ * Name : Ernst Nathaniel blanchard
+ * Project : Mini Project Bank Account
+ *
  */
 public class Main {
+
+    private static final Logger LOGGER = Logger.getLogger( Main.class.getName() );
 
     /* print informative prompt to the user */
     private static void PrintUserPrompt (){
@@ -113,6 +117,7 @@ public class Main {
                     // ex.printStackTrace();
                     System.out.println("\n\n\n\n\n");
                     System.out.println("The input you entered is invalid please enter another input");
+                    LOGGER.log( Level.SEVERE, ex.toString(), ex );
                 }
             }
 
