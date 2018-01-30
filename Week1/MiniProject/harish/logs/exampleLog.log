@@ -155,3 +155,49 @@
 2018-01-29 17:24:51 DEBUG Bank:250 - Saving data
 2018-01-29 17:24:57 DEBUG Bank:58 - User done with application
 2018-01-29 17:24:57 DEBUG Bank:250 - Saving data
+2018-01-29 18:10:18 INFO  Bank:25 - Application Started
+2018-01-29 18:10:18 INFO  Bank:156 - Loading user data from file
+2018-01-29 18:10:27 DEBUG Bank:209 - harish sign in
+2018-01-29 18:10:27 INFO  Bank:64 - harish sign in
+2018-01-29 18:10:35 DEBUG Bank:97 - harish withdraw made for 32.0
+2018-01-29 18:10:37 DEBUG Bank:242 - Saving data
+2018-01-29 18:10:38 DEBUG Bank:58 - User done with application
+2018-01-29 18:10:38 DEBUG Bank:242 - Saving data
+2018-01-29 18:22:03 INFO  Bank:25 - Application Started
+2018-01-29 18:22:03 INFO  Bank:156 - Loading user data from file
+2018-01-29 18:22:10 DEBUG Bank:209 - harish sign in
+2018-01-29 18:22:10 INFO  Bank:64 - harish sign in
+2018-01-29 18:22:33 DEBUG Bank:82 - harish deposit made for 23.0
+2018-01-29 18:22:34 DEBUG Bank:242 - Saving data
+2018-01-29 18:22:36 DEBUG Bank:58 - User done with application
+2018-01-29 18:22:36 DEBUG Bank:242 - Saving data
+2018-01-29 18:28:20 INFO  Bank:25 - Application Started
+2018-01-29 18:28:20 INFO  Bank:142 - Loading user data from file
+2018-01-29 18:28:35 DEBUG Bank:195 - harish sign in
+2018-01-29 18:28:35 INFO  Bank:64 - harish sign in
+2018-01-29 18:29:00 DEBUG Bank:80 - harish deposit made for 234.0
+2018-01-29 18:29:06 DEBUG Bank:228 - Saving data
+2018-01-29 18:29:09 DEBUG Bank:58 - User done with application
+2018-01-29 18:29:09 DEBUG Bank:228 - Saving data
+2018-01-29 18:30:57 INFO  Bank:25 - Application Started
+2018-01-29 18:30:57 INFO  Bank:164 - Loading user data from file
+2018-01-29 18:31:04 DEBUG Bank:217 - harish sign in
+2018-01-29 18:31:04 INFO  Bank:64 - harish sign in
+2018-01-29 18:31:12 DEBUG Bank:90 - harish deposit made for 345.0
+2018-01-29 18:31:15 DEBUG Bank:250 - Saving data
+2018-01-29 18:34:23 DEBUG Bank:58 - User done with application
+2018-01-29 18:45:01 DEBUG Bank:58 - User done with application
+2018-01-29 18:45:12 ERROR Bank:196 - Wrong user input valuejava.util.InputMismatchException
+2018-01-29 18:46:00 INFO  Bank:25 - Application Started
+2018-01-29 18:46:00 INFO  Bank:164 - Loading user data from file
+2018-01-29 18:46:04 ERROR Bank:196 - Wrong user input valuejava.util.InputMismatchException
+2018-01-29 18:46:04 DEBUG Bank:250 - Saving data
+2018-01-29 18:47:49 DEBUG Bank:58 - User done with application
+2018-01-29 19:00:43 DEBUG Bank:58 - User done with application
+2018-01-29 19:02:19 INFO  Bank:25 - Application Started
+2018-01-29 19:02:19 INFO  Bank:164 - Loading user data from file
+2018-01-29 19:02:31 DEBUG Bank:121 - Admin sign in
+2018-01-29 19:02:34 DEBUG Bank:146 - petar account Approved
+2018-01-29 19:02:36 DEBUG Bank:250 - Saving data
+2018-01-29 19:02:39 DEBUG Bank:58 - User done with application
+2018-01-29 19:02:39 DEBUG Bank:250 - Saving data
