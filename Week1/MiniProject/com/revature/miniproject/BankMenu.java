@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
+
 public class BankMenu {
 	private Scanner scan = new Scanner(System.in);
 	private boolean logout = false;
@@ -14,9 +17,8 @@ public class BankMenu {
 	private AccountFile f = new AccountFile();
 	private boolean loggedIn = false;
 	private BankAccount d;
-
-	public BankMenu()
-	{
+	final static Logger logger = Logger.getLogger(BankMenu.class);
+	public BankMenu(){
 	}
 
 	public void loginMenu(int input){
@@ -27,14 +29,13 @@ public class BankMenu {
 		{
 			switch(input){
 			case 0:
-				System.out.println("Quit");
+				System.out.println("CASE 0 QUIT");
 				this.logout = true;
 				f.saveAccount();
 				setLoggedIn(false);
 				break;
 			case 1: 	
-				System.out.println("Register Account\n");
-				System.out.println("Create username:");
+				System.out.println("Register Account\n" + "Create username:");
 				this.user = scan.nextLine();
 				while (!f.duplicateCheck(user))
 				{
@@ -47,7 +48,7 @@ public class BankMenu {
 				d.setAmount(0);
 				f.addAccounts(d);
 				d.setApproval(false);
-				System.out.println("Account created. Please wait for admin to verify account");
+				logInfo("Account created. Please wait for admin to verify account.");
 				break;
 			case 2:	
 				System.out.println("Login Page\n" + "Enter username: ");
@@ -60,13 +61,13 @@ public class BankMenu {
 					if(d.isApproved())
 					{
 						setLoggedIn(true);
-						System.out.println("Login successful");
+						logInfo("Login Sucessful.");
 					}
 					else
-						System.out.println("ERROR. Account not approved");	
+						logError("ERROR. Account has not been approved");	
 				}
 				else
-					System.out.println("ERROR. Account does not exist or password is wrong");
+					logError("ERROR. Account does not exist or password is wrong");
 				break;
 			case 6:
 				System.out.println("Admin Login Page\n" + "Enter username: ");
@@ -79,14 +80,14 @@ public class BankMenu {
 					this.user = scan.nextLine();
 					d = f.checkAccounts(user);
 					admin.verifyAccount(d);
-					System.out.println("Account " + d.getUser() + " successfully verified." );
+					logInfo("Account " + d.getUser() + " successfully verified." );
 				}
 				else
-					System.out.println("Error incorrect login.");
+					logError("Error incorrect login.");
 				break;
 
 			default:
-				System.out.println("Login first or register account");
+				logError("Login first or register account");
 			}	
 		}	
 		else	
@@ -94,26 +95,27 @@ public class BankMenu {
 			switch(input)
 			{
 			case 3:
-				System.out.println("Withdrawing.....\n" + "Current Balance is"+ 
+				logInfo("Withdrawing.....\n" + "Current Balance is"+ 
 						d.getAmount() + " dollars\n" + "Enter amount to withdraw: ");
 				amount = this.scan.nextDouble();
 				d.withdraw(amount);
 				break;
 			case 4:
-				System.out.println("Depositing.....\n" + "Current Balance is"+ 
+				logInfo("Depositing.....\n" + "Current Balance is"+ 
 						d.getAmount() + " dollars\n");
 				System.out.println("Enter amount to deposit: ");
 				amount = this.scan.nextDouble();
 				d.deposit(amount);
 				break;
 			case 0:
-				System.out.println("Logging out....");
+				logInfo("Logging out....");
 				this.logout = true;
 				f.saveAccount();
 				setLoggedIn(false);
 				break;
+			
 			default:
-				System.out.println("INVALID INPUT");
+				logError("INVALID INPUT");
 			}
 		}
 
@@ -138,6 +140,14 @@ public class BankMenu {
 	}
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
+	}
+	public void logInfo(String message)
+	{
+		logger.info(message);
+	}
+	public void logError(String message)
+	{
+		logger.error(message);
 	}
 
 }
