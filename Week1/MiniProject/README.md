@@ -1,3 +1,4 @@
+
 # Console Banking application with Java and serialization
 
 This application allows the user to display all user data, login and change bank balance, create accounts, and the admin can delete or approve accounts
@@ -16,3 +17,7 @@ This application allows the user to display all user data, login and change bank
 - [x] Admin can delete accounts
 - [x] Duplicate account cannot be created
 - [x] Ids are randomly generated at creation time and run through an algorithm to ensure they are unique
+
+## Demo 1
+
+![demo](Run5.gif)
