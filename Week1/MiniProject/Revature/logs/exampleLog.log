@@ -1,0 +1,6 @@
+2018-01-25 15:22:02 TRACE root:18 - Test Log
+2018-01-25 15:22:02 DEBUG root:19 - Test Log
+2018-01-25 15:22:02 WARN  root:20 - Test Log
+2018-01-25 15:22:02 INFO  root:21 - Test Log
+2018-01-25 15:22:02 ERROR root:22 - Test Log
+2018-01-25 15:22:02 FATAL root:23 - Test Log
