@@ -29,10 +29,15 @@ DQL
 
 
 --Database cleanup
-DROP TABLE pets;
-DROP TABLE pet_shop;
-DROP TABLE owners;
-DROP TABLE animals;
+/*
+    CASCADE CONSTRAINTS will drop any constraints that are conflicted by
+    the specific drop statement.
+*/
+DROP TABLE animals cascade constraints;
+DROP TABLE pets cascade constraints;
+DROP TABLE pet_shop cascade constraints;
+DROP TABLE owners cascade constraints;
+
 / --Separates transactions
 
 --DDL
@@ -58,7 +63,7 @@ CREATE TABLE pet_shop (
     CONSTRAINT shop_id_pk PRIMARY KEY (shop_id),
     --CONSTRAINT constraintName CONSTRAINT TYPE (applicable column)
     CONSTRAINT shop_owner_id_fk FOREIGN KEY (shop_owner_id) 
-        REFERENCES owners (owner_id)
+        REFERENCES owners (owner_id) ON DELETE CASCADE
 );
 
 CREATE TABLE pets (
@@ -69,11 +74,11 @@ CREATE TABLE pets (
     owner_id number(6),
     CONSTRAINT pet_id_pk PRIMARY KEY (pet_id),
     CONSTRAINT shop_id_fk FOREIGN KEY (shop_id) 
-        REFERENCES pet_shop (shop_id),
+        REFERENCES pet_shop (shop_id)  ON DELETE CASCADE,
     CONSTRAINT animal_id_fk FOREIGN KEY (animal_id) 
-        REFERENCES animals (animal_id),
+        REFERENCES animals (animal_id) ON DELETE CASCADE,
     CONSTRAINT owner_id_fk FOREIGN KEY (owner_id) 
-        REFERENCES owners (owner_id)
+        REFERENCES owners (owner_id) ON DELETE CASCADE
     --CONSTRAINT null_check1 CHECK (shop_id is null AND owner_id is null)
     --,CONSTRAINT null_check2 CHECK (shop_id = '(null)' AND owner_id = '(null)')
 );
@@ -149,9 +154,9 @@ select * from owners;
     Use a WHERE clause to apply any conditions to a CRUD operation.
     
 */
-select * from pets where PET_ID > 2;
-delete from pets where pet_id > 4;
-delete from owners where owner_id = 3;
+--select * from pets where PET_ID > 2;
+--delete from pets where pet_id > 4;
+--delete from owners where owner_id = 3;
 
 --UPDATE
 --Used to change date of records
@@ -208,3 +213,5 @@ select * from pets;
 --TRUNCATE TABLE pets;
 --rollback;
 --select * from pets;
+
+
