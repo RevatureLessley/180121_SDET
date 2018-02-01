@@ -5,12 +5,12 @@ package com.revature.beans;
  * Typically, each table gets its own bean.
  */
 public class Employee {
-	private int empId;
+	private Integer empId;
 	private String empName;
-	private int empSalary;
+	private Integer empSalary;
 	private String title;
 	//For retrieving full objects from the database
-	public Employee(int empId, String empName, int empSalary, String title) {
+	public Employee(int empId, String empName, Integer empSalary, String title) {
 		super();
 		this.empId = empId;
 		this.empName = empName;
@@ -24,14 +24,14 @@ public class Employee {
 	}
 	
 	//For creating objects that assume the ID will be generated
-	public Employee(String empName, int empSalary, String title) {
+	public Employee(String empName, Integer empSalary, String title) {
 		super();
 		this.empName = empName;
 		this.empSalary = empSalary;
 		this.title = title;
 	}
 
-	public int getEmpId() {
+	public Integer getEmpId() {
 		return empId;
 	}
 
@@ -47,7 +47,7 @@ public class Employee {
 		this.empName = empName;
 	}
 
-	public int getEmpSalary() {
+	public Integer getEmpSalary() {
 		return empSalary;
 	}
 
