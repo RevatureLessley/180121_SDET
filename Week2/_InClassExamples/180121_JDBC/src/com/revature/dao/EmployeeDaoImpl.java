@@ -6,6 +6,7 @@ package com.revature.dao;
 import static com.revature.util.CloseStreams.close;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,7 +20,18 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 	@Override
 	public void insertEmployee(Employee emp) {
-		// TODO Auto-generated method stub
+		PreparedStatement ps = null;
+		
+		try(Connection conn = Connections.getConnection()){
+			String sql = "";
+			ps = conn.prepareStatement("");
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			
+		}
+		
 		
 	}
 

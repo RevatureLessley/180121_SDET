@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
 
+import com.banksystem.beans.Account;
+
 public class BankSystem {
 
 	private static Collection<Account> accounts = new ArrayList<>();
