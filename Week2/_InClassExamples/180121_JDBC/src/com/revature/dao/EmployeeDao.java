@@ -11,7 +11,7 @@ import com.revature.beans.Employee;
  */
 public interface EmployeeDao {
 	public void insertEmployee(Employee emp);
-	public Employee selectEmployeeById(int id);
+	public Employee selectEmployeeById(String id);
 	public List<Employee> getAllEmployee();
 	public int deleteEmployeeById();
 	public int updateEmployeeById(Employee emp);
