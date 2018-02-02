@@ -77,6 +77,25 @@ ADD CONSTRAINT FK_INVOICECUSTOMERID FOREIGN KEY (CUSTOMERID) REFERENCES CUSTOMER
 DELETE FROM CUSTOMER 
 WHERE FIRSTNAME = 'Robert' AND LASTNAME = 'Walter';
 
+--3.0 SQL Functions
+
+--Create a function that returns the current time
+CREATE OR REPLACE FUNCTION get_time
+RETURN VARCHAR2
+IS
+    cur_time VARCHAR2(100);
+BEGIN
+    SELECT TO_CHAR(CURRENT_TIMESTAMP, 'HH.MI PM') INTO cur_time FROM DUAL;
+    RETURN cur_time;
+END;
+/
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('The Time is ' || get_time());
+END;
+/
+
+--create a function that returns the length of a mediatype from the mediatype table
+
 --4.0 Stored Procedures
 
 --Create a stored procedure that selects the first and last names of all the employees.
@@ -110,21 +129,42 @@ END;
 /
 
 --Create a stored procedure that returns the managers of an employee.
-CREATE OR REPLACE PROCEDURE GET_MANAGER(NAME_IN IN varchar2)
+CREATE OR REPLACE PROCEDURE GET_MANAGER(EMP_NAME IN VARCHAR2, MANAGER_NAME OUT VARCHAR2)
 IS
 BEGIN
-    FOR i IN (SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE
+    SELECT FIRSTNAME INTO MANAGER_NAME FROM EMPLOYEE
     WHERE EMPLOYEEID = (SELECT REPORTSTO FROM EMPLOYEE 
-    WHERE FIRSTNAME = NAME_IN)) LOOP
-            dbms_output.put_line(i.FIRSTNAME || ' ' ||i.LASTNAME);
-	END LOOP;
+    WHERE FIRSTNAME = EMP_NAME);
 END;
 /
+DECLARE
+    MANAGER VARCHAR2(100);
 BEGIN
-    GET_MANAGER('harish');
+    GET_MANAGER('Harish', MANAGER);
+    dbms_output.put_line(MANAGER);
 END;
 /
 
---SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE
---    WHERE EMPLOYEEID = (SELECT REPORTSTO FROM EMPLOYEE 
---    WHERE FIRSTNAME = 'Harish');
+--Create a stored procedure that returns the name and company of a customer.
+CREATE OR REPLACE PROCEDURE CUSTOMER_DETAILS(cursorParam OUT SYS_REFCURSOR)
+IS
+BEGIN
+    OPEN cursorParam FOR 
+    SELECT FIRSTNAME, LASTNAME, COMPANY FROM CUSTOMER;
+END;
+
+DECLARE
+    my_cursor SYS_REFCURSOR;
+    CUS_F_NAME CUSTOMER.FIRSTNAME%TYPE;
+    CUS_L_NAME CUSTOMER.LASTNAME%TYPE;
+    CUS_COMPANY CUSTOMER.COMPANY%TYPE;
+BEGIN
+    CUSTOMER_DETAILS(my_cursor);
+    LOOP
+        FETCH my_cursor INTO CUS_F_NAME, CUS_L_NAME, CUS_COMPANY;
+        EXIT WHEN my_cursor%NOTFOUND; 
+        DBMS_OUTPUT.PUT_LINE('Customer name '||CUS_F_NAME || ' ' || CUS_L_NAME || '  Company name ' || CUS_COMPANY);
+    END LOOP;
+END;
+
+
