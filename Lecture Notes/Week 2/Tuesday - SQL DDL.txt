@@ -1,0 +1,67 @@
+Postgresql is gaining popularity
+NoSQL has fewer rules
+Sublanguages
+
+CREATE USER animals IDENTIFIED BY sdfsdf
+GRANT DBA TO animals
+
+DDL - (Data Definition Language)
+- Anything related to DB Structure (tables in their entirety) - can't roll back DDL commands
+	- CREATE
+	- ALTER - change a table
+	- DROP - delete a table
+	- TRUNCATE - clear all data from a table. Cannot be rolled back
+
+DML - Data Manipulation Language
+- Anything related to the data held by tables data within table
+	- INSERT create a record
+	- SELECT read a record
+	- UPDATE 
+	- DELETE 
+
+DQL - Data Query Language
+	- SELECT
+	- Not recognized by Oracle
+
+DCL - Data Control Language
+	- grant
+	- revoke
+
+TCL - Transaction Control Language
+	- Commit - persist data
+	- Rollback - revert to last commit or savepoint
+	- Savepoint - a marker you can roll back to instead of last commit
+	- Set transaction
+
+CONTSTRAINTS
+PRIMARY KEY - ENFORCES A COLUMN TO BE NOT NULL & UNIQUE
+	- SERVES AS THE MAIN WAY TO IDENTIFY DISTINCT RECORDS
+FOREIGN KEY 
+	- RELATION BETWEEN TWO TABLES
+	- ALWAYS REFERENCES A DISTINCT COLUMN OF ANOTHER TABLE
+UNIQUE
+NULL / NOT NULL
+CHECK -APPLIES AN EXTRACONDITIONAL TO DATA OF THE COLUMN
+
+REFERENTIAL INTEGRITY
+The enforcement of foreign key relationships. It prevents a user from inserting a record into
+a table with a FK that points to a non existent element. It also prevents a user from deleting
+a record that another table is referencing. On top of this, we cant drop a table, that another table references.
+This is all to prevent orphan records, IE a record with no parent
+
+WHERE CLAUSE
+Use a where clause to apply any conditions to a CRUD operation
+
+SELECT * FROM pets WHERE PET_ID > 2;
+delete from pets where pet_id > 4;
+delete from owners where owner_id = 3;
+
+ALTER TABLE pets
+RENAME TO pet_list;
+
+rollback;
+commit;
+
+SQL Developer does not autocommit data. You must use commit to persist data
+
+

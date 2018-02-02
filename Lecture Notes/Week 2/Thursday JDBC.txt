@@ -1,0 +1,69 @@
+JDBC - Java Database Connectivity
+
+Java Application
+	|
+	|
+	|
+    JDBC API
+
+JDBC Driver Manager  ---- Can have multiple driver to connect multiple databases
+	|
+  JDBC Driver
+
+     Oracle
+
+Components of JDBC Driver Manager (interview question)
+list of all database drivers
+
+Driver
+interface that handles communications with DB
+
+Connection
+All communications with a database rest solely within this database
+
+Statements
+These are objects that are used to submit SQL statements to the DB
+
+Resultset
+Objects that store data retrieved from the DB
+
+SQL Exceptions
+Exceptions for handling SQL errors
+
+Statements
+-Statement
+	- General purpose access to your database
+	- static sql statements at runtime
+	- SQL injection possible
+
+Prepared Statements - precompiled, checks if table exists, confirms table types, parses for correct syntax, caches query
+- more dynamic
+- parameterized
+- accepts input runtime
+- prevent sql injection
+- prepared statements check that it is one single statement
+
+Normalization
+Database design technique for removing duplicate data and redundancies
+In addition to this it aims to decrease data dependencies
+
+ONF Zeroth normal form
+- a database with no normalization
+- a denormalized database
+
+1NF
+-All data must be atomic. Smallest form
+-Each record must be unique
+
+2NF
+- Be in first normal form
+- No composite keys for unique ID
+
+3NF (what we need to know. Anything beyond is company standard)
+- Be in 2nd normal form
+- No transitive dependencies
+
+BCNF (3.5NF) (Boyce Codd Normal Form)
+
+4NF 5NF 6NF 7,8,9
+

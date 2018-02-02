@@ -62,9 +62,6 @@ END;
     call proc_name();
 */
 
-
-
-
 commit;
 
 CREATE OR REPLACE PROCEDURE hello_world_procedure
@@ -126,7 +123,7 @@ DECLARE --NOTE, you must provide datatype sizes in the declaration block.
     input number(6);
     results varchar(200);
 BEGIN
-    input := 5;
+    input := 4;
     get_name(input, results);
     DBMS_OUTPUT.PUT_LINE(results);
 END;

@@ -1,0 +1,19 @@
+Indices
+
+Provides a means to distinctly identify records
+
+Allow for faster retrieval of data from a table
+at a cost of increased DML times
+
+2 types: clustered & non-clustered
+
+Clustered index
+implicit index
+Made automatically when you create a PK / unique
+Uses actual data of the table to index it
+
+Non-clustered index
+explicit
+can make it for any column
+creates an object that uses its own manner of identifying each record uniquely
+more indices

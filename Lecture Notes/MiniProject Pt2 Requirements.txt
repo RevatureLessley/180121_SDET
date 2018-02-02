@@ -1,0 +1,20 @@
+MiniProject Pt2 Requirements
+
+- A fully functional backend
+	- SQL Database representation
+	- at least 3 tables
+	- at least one stored procedure
+	- Full JDBC connection
+		- Includes proper DAO implementation
+- Logging
+
+- Stretch goal: Mockito (fake database)
+
+
+
+
+
+
+
+
+

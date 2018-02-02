@@ -1,0 +1,57 @@
+Primitive datatypes
+boolean -- 1 or 8 bits
+byte -- 8 bits
+short -- 16 bits
+char -- 16 bits
+int -- 32 bit
+float --  32 bits
+double -- 64 bits
+long -- 64 bits
+bits are basic, 8 bit bytes.
+What is Java
+OOP programming language
+fast, reliable, secure programming language
+One of the main goals of java is portability
+Java applications run similarily on any combination of hardware and platform / operating systems "Write once run anywhere"
+Achieved by compiling java language code to java byte code
+Java byte code is readable by JVM Java Virtual Machine
+JVM works on top of an OS to provide an environment
+-Can only read java byte code
+Java runtime environment
+-Contains EVERYTHING required to run a java application including JVM and all compiled files needed to run java
+Java Development Kit JDK
+- includes all libraries needed to develop java applications
+- provides the java compiler, javadocs, jars (java archive file) and the debugger
+JDK includes JRE includes JVM
+
+Stack vs Heap
+
+Stack      
+bottom     
+ ----      
+ ----      
+ ----      
+ ----      
+ ----      
+ top
+local variables and function calls
+one stack per thread
+no 2 stacks reference each other's local variables
+
+Heap       
+*drawn like a mess*
+- store objects
+- string pool inside the heap
+- instance variables (global variable)
+- static variable
+
+
+
+Tomorrow:
+Exceptions
+File I/O
+Pillars
+Everything Strings
+Scanner
+
+

@@ -1,0 +1,30 @@
+Front End
+[3] html css xml
+[4] javascript / angular
+[4/7] REST / soap
+
+MiddleWare/BusinessLogic
+[1] Java
+[5] Hibernate
+[x] [spring]
+[3] Servlets, REST Servers
+[2] JDBC
+
+Backend
+[2] 
+
+Automation
+[6] Selenium Webdriver
+[7] Protractor with Korma - Study this stuff
+[6] Cucumber
+[?] Mockito
+[6] Testing
+[1] JUnit
+- SOAP-UI
+- POSTMAN
+
+DevOps - Study this stuff
+Developers that handle operation
+[5] Cloud Computing (AWS)
+[5] Jenkins Ci/CD Continuos integration / continous deployment
+[6] SonarQube

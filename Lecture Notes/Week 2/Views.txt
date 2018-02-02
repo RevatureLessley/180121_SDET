@@ -1,0 +1,8 @@
+Common interview question
+Select third highest salary from a table
+
+/*
+Views are virtual tables that can be created to ease the complexity of in depth queries.
+You can query a database 
+
+*/

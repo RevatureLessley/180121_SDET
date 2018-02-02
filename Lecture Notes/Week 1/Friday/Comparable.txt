@@ -1,0 +1,85 @@
+Comprable defines natural ordering of objects
+it is implemented in the objects class itself
+uses compareTo()
+
+Comparator
+-implemented in own class
+-compares two external objects to each other
+compare()
+
+6 states of a thread
+New - thread is created, not started
+Runnable - Thread has started
+Waiting - Thread is indefinitely sleeping or waiting
+Timed-Waiting 
+Blocked - Thread encounters a locked resource
+Terminated - finished task
+
+Synchronization
+Enforcing a resource to only one thread to interact with it at a time
+Makes resources thread safe
+
+Synchronized method/var name;
+Synchronized {
+	~~~
+~~~
+~~~
+}
+
+static {
+
+//dealt with first
+
+}
+
+statics, instances, methods, loops in that order
+
+https://www.youtube.com/watch?v=IYBrtzOvfqo Java Tutorial # 24 | Thread Safety and code synchronization in java | Multithreading in Java part 3 
+https://www.youtube.com/watch?v=VuahrRY0TgU  06.5 Synchronized Threads wait, notify, notifyAll 
+
+
+Race condition
+- any situation where the results of resource interaction will differ
+ based on the order threads interact with it
+
+Thread Starvation
+Situation where a thread cannot complete its task
+
+Deadlock
+Situation where 2+ threads have a resource that the other threads want but wont give
+up their current resource until they get the other
+
+LiveLock
+Situation where threads will not grab a new resource
+until competing thread grabs their current one
+
+Each thread has its own stack
+
+Thread methods
+- setPriority()
+1 low 10 high 5 default
+-wait/sleep() . wait can be notify, sleep is only exception woken up
+notify. wake a thread at discretion of scheduler
+notifyAll()
+isAlive() 
+join() . places thread in wait until another thread finishes tasks(s) then joins together. combine 
+Daemon thread includes garbage collection
+
+Producer Class ->  size 6 queue -> Consumer Class
+offers to a full queue		   risk: consumes from empty queue
+
+Sol'n					Sol'n
+Check if full. If true sleep		Check if empty. If true, sleep
+Every I place resources, notify()	Everytime I take resources: notify()
+
+
+
+
+
+
+
+
+
+
+
+

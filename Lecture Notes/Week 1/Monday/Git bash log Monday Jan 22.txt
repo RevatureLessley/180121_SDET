@@ -1,0 +1,412 @@
+Petar Z@PC-Petar MINGW64 ~/Documents/180122
+$ mkdir practiceRepo
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122
+$ cd practiceRepo
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo
+$ git init
+Initialized empty Git repository in C:/Users/Petar Z/Documents/180122/practiceRe                         po/.git/
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ git remote add origin https://github.com/RevatureLessley/180121_SDET.git
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ git pull origin master
+remote: Counting objects: 4, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 0), reused 4 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), done.
+From https://github.com/RevatureLessley/180121_SDET
+ * branch            master     -> FETCH_HEAD
+ * [new branch]      master     -> origin/master
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ git remote
+origin
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ ^C
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ vim zigic
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ cat zigic
+1st line of stuff
+2nd line
+3rd line done
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ ls
+README.md  zigic
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ git add *
+warning: LF will be replaced by CRLF in zigic.
+The file will have its original line endings in your working directory.
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   zigic
+
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ git commit -m "Commited a test file"
+[master d5e88ba] Commited a test file
+ 1 file changed, 3 insertions(+)
+ create mode 100644 zigic
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ git push -u origin master
+To https://github.com/RevatureLessley/180121_SDET.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/RevatureLessley/180121_SDET.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ git push -u origin master
+To https://github.com/RevatureLessley/180121_SDET.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/RevatureLessley/180121_SDET.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ ^C
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ git log > gitpractice.txt
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ git log | clip
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ cd ..
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122
+$ git cd practiceRepo
+git: 'cd' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122
+$ cd practiceRepo
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ git checkout -b petar
+Switched to a new branch 'petar'
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (petar)
+$ git checkout master
+Switched to branch 'master'
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ git checkout ryan
+error: pathspec 'ryan' did not match any file(s) known to git.
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/practiceRepo (master)
+$ cd ..
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122
+$ ls
+ 180121_SDET/  'how to clone from git the hard way.txt'   practiceRepo/  'VIm notes.txt'
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122
+$ cd 180121_SDET
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (master)
+$ git checkout -b petar
+Switched to a new branch 'petar'
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (petar)
+$ git checkout ryan
+error: pathspec 'ryan' did not match any file(s) known to git.
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (petar)
+$ git pull origin master
+remote: Counting objects: 8, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 8 (delta 1), reused 8 (delta 1), pack-reused 0
+Unpacking objects: 100% (8/8), done.
+From https://github.com/RevatureLessley/180121_SDET
+ * branch            master     -> FETCH_HEAD
+   e46f19e..f324df0  master     -> origin/master
+Updating e46f19e..f324df0
+Fast-forward
+ Lessley                          | 3 +++
+ Week1/Exercises/README.md        | 0
+ Week1/MiniProject/README.md      | 0
+ Week1/_InClassExamples/README.md | 0
+ 4 files changed, 3 insertions(+)
+ create mode 100644 Lessley
+ create mode 100644 Week1/Exercises/README.md
+ create mode 100644 Week1/MiniProject/README.md
+ create mode 100644 Week1/_InClassExamples/README.md
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (petar)
+$ ^C
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (petar)
+$ git pull
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> petar
+
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (petar)
+$ git push -u origin master
+To https://github.com/RevatureLessley/180121_SDET.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/RevatureLessley/180121_SDET.git'
+hint: Updates were rejected because a pushed branch tip is behind its remote
+hint: counterpart. Check out this branch and integrate the remote changes
+hint: (e.g. 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (petar)
+$ ls
+Lessley  README.md  Week1/
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (petar)
+$ cd Week1/
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1 (petar)
+$ ls
+_InClassExamples/  Exercises/  MiniProject/
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1 (petar)
+$ ls Exercises/
+README.md
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1 (petar)
+$ cd Exercises/
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (petar)
+$ ls
+README.md
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (petar)
+$ vim petar_zigic
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (petar)
+$ git add petar_zigic
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (petar)
+$ git commit "added file with my name"
+error: pathspec 'added file with my name' did not match any file(s) known to git.
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (petar)
+$ git commit -m "added file with my name"
+[petar 7854cf9] added file with my name
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 Week1/Exercises/petar_zigic
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (petar)
+$ git push -u petar
+fatal: 'petar' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (petar)
+$ cd ..
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1 (petar)
+$ cd ..
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (petar)
+$ git checkout -b petar
+fatal: A branch named 'petar' already exists.
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (petar)
+$ git checkout master
+Switched to branch 'master'
+Your branch is behind 'origin/master' by 2 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (master)
+$ git pull
+remote: Counting objects: 15, done.
+remote: Compressing objects: 100% (9/9), done.
+remote: Total 15 (delta 6), reused 14 (delta 5), pack-reused 0
+Unpacking objects: 100% (15/15), done.
+From https://github.com/RevatureLessley/180121_SDET
+   f324df0..14677e3  master     -> origin/master
+ * [new branch]      Richard    -> origin/Richard
+ * [new branch]      omowumi    -> origin/omowumi
+Updating e46f19e..14677e3
+Fast-forward
+ Week1/Exercises/README.md        | 0
+ Week1/MiniProject/README.md      | 0
+ Week1/_InClassExamples/README.md | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 Week1/Exercises/README.md
+ create mode 100644 Week1/MiniProject/README.md
+ create mode 100644 Week1/_InClassExamples/README.md
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (master)
+$ git checkout petar
+Switched to branch 'petar'
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (petar)
+$ git push origin petar
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 418 bytes | 418.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/RevatureLessley/180121_SDET.git
+ * [new branch]      petar -> petar
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (petar)
+$ git push origin petar_zigic
+error: src refspec petar_zigic does not match any.
+error: failed to push some refs to 'https://github.com/RevatureLessley/180121_SDET.git'
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (petar)
+$ ls
+Lessley  README.md  Week1/
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET (petar)
+$ cd Week1/
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1 (petar)
+$ ls
+_InClassExamples/  Exercises/  MiniProject/
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1 (petar)
+$ cd Exercises/
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (petar)
+$ ls
+petar_zigic  README.md
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (petar)
+$ git push origin petar_zigic
+error: src refspec petar_zigic does not match any.
+error: failed to push some refs to 'https://github.com/RevatureLessley/180121_SDET.git'
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (petar)
+$ git add *
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (petar)
+$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (master)
+$ git pull origin master
+remote: Counting objects: 21, done.
+remote: Compressing objects: 100% (12/12), done.
+remote: Total 21 (delta 11), reused 16 (delta 8), pack-reused 0
+Unpacking objects: 100% (21/21), done.
+From https://github.com/RevatureLessley/180121_SDET
+ * branch            master     -> FETCH_HEAD
+   14677e3..acd210f  master     -> origin/master
+Updating 14677e3..acd210f
+Fast-forward
+ myfile | 6 ++++++
+ 1 file changed, 6 insertions(+)
+ create mode 100644 myfile
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (master)
+$ git pull origin petar
+From https://github.com/RevatureLessley/180121_SDET
+ * branch            petar      -> FETCH_HEAD
+Merge made by the 'recursive' strategy.
+ Week1/Exercises/petar_zigic | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 Week1/Exercises/petar_zigic
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (master)
+$ git checkout petar
+Switched to branch 'petar'
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (petar)
+$ git pull origin master
+From https://github.com/RevatureLessley/180121_SDET
+ * branch            master     -> FETCH_HEAD
+hint: Waiting for your editor to close the file... Removing Lessley
+Merge made by the 'recursive' strategy.
+ Lessley | 3 ---
+ myfile  | 6 ++++++
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+ delete mode 100644 Lessley
+ create mode 100644 myfile
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (petar)
+$ git pull origin petar
+From https://github.com/RevatureLessley/180121_SDET
+ * branch            petar      -> FETCH_HEAD
+Already up to date.
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (petar)
+$ git branch
+  master
+* petar
+
+Petar Z@PC-Petar MINGW64 ~/Documents/180122/180121_SDET/Week1/Exercises (petar)
+$ git log
+commit 8860ba5bf83358f89118fcd637d8e7084e7dffae (HEAD -> petar)
+Merge: 7854cf9 acd210f
+Author: Petar Zigic <zigic@outlook.com>
+Date:   Mon Jan 22 14:50:23 2018 -0500
+
+    Merge branch 'master' of https://github.com/RevatureLessley/180121_SDET into petar
+
+commit acd210fa83b11c4ec35011d6bb625f1ad1aec2e2 (origin/master, origin/HEAD)
+Merge: ccb2ec5 3cc6578
+Author: Ryan Lessley <ryan.lessley@revature.com>
+Date:   Mon Jan 22 14:48:03 2018 -0500
+
+    Stuff again.... bobbert
+
+commit ccb2ec5ffb966881e6dce22c4048fb11d0a6e325
+Author: Ryan Lessley <ryan.lessley@revature.com>
+Date:   Mon Jan 22 14:46:07 2018 -0500
+
+    Stuff
+
+commit 3cc65788b3eca726cf492ef7a04b91ebec991aee
+Author: rlessley <ryan.lessley@revature.com>
+Date:   Mon Jan 22 14:45:43 2018 -0500
+
+    Update myfile
+
+commit e40dd2fead59e03ce22e5604adafa760c7f6cf2c
+Merge: d3a8b63 55bae96
+Author: Ryan Lessley <ryan.lessley@revature.com>
+Date:   Mon Jan 22 14:44:47 2018 -0500
+
+    Fixed Bobberts gosh darn mistake
+
+commit d3a8b6337cebd8a75fcfe76bc38bdc569c115162
+Author: Ryan Lessley <ryan.lessley@revature.com>
+Date:   Mon Jan 22 14:42:51 2018 -0500
+
+    Stuff
+
+commit 55bae9641c1c59545edb8632478e9f0c89358c24
+Author: rlessley <ryan.lessley@revature.com>
+:

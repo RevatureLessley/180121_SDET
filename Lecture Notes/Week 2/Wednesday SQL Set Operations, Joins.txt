@@ -1,0 +1,109 @@
+ERD - Entity Relationhip Diagram
+
+Foreign key must point to PK
+
+Cardinality
+(1:1) One to one
+(1:M) One to many
+(M:1) Many to one
+(M:M) Many to many (done with join tables)
+
+Multiplicity (ranges)
+
+>|----- one or many
+>0----- zero or many
+|| one and only one
+0| zero or one
+
+Classroom
+FK PK 	ID Number
+	Room Num
+	Teach_ID
+
+Teacher
+PK	T_ID
+	FNAME
+	LNAME
+
+Student
+PK	S_ID
+
+Join table
+Class_2_Student
+FK PK	C_ID
+FK	S_ID
+The two FK are primary key
+
+Classroom Info
+PK	C_ID
+	width
+	capacity
+	depth
+
+------------------------------
+Lookup table
+
+Student
+PK S_ID
+--
+--
+--
+FK Degree
+Many to one
+
+Degrees
+PK D_ID
+   Degree
+
+1 Math
+2 Science
+3 C.S.
+
+Database Joins
+Combining data of 2 tables based on a matching criteria
+-Right join. Everything of right with matching from left
+-Left join. Everything from left with matching from right
+-Inner join. Only matches from both tables
+-Full join. All data from both tables combined
+-Outer join
+
+Conceptual Joins
+- Self joins. Any join on itself
+- Cross join. All different combinations of data together
+- theta join. Any join performed by NOT using an = comparator
+- equi join. Any join using = comparator
+
+- natural join. Removes need for the ON clause for joins
+joins 2 tables together based on matching column names
+omits duplicate columns from results
+
+
+Set operations
+Operations that combine 2 query results into one
+Requires both queries have the same datatypes and order
+UNION
+UNION ALL
+INTERSECT
+MINUS
+EXCEPT (Not supported by Oracle)
+
+SELECT * FROM T1
+SET_OPERATION
+SELECT * FROM T2;
+
+Union
+- Combines both queries data into one
+- Omits duplicates
+UNION ALL
+-Exact same as Union but includes duplicates
+
+INTERSECT VS INNER JOIN interview question
+-Combines 2 queries while omitting any data that is unique to either query
+
+MINUS
+-Only gives data of top query omitting matching data of bottom query
+
+EXCEPT
+Opposite of intersect
+
+

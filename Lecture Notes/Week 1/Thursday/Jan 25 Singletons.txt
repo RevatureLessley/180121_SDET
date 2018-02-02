@@ -1,0 +1,47 @@
+Singleton
+-design pattern that restricts the instances of a specific class to one or zero
+-aims to share the same instance among entire application
+
+Factory
+A design pattern that aims to provide instances of a class for you at request
+
+Logging
+A tool that provides details of an applications execution
+Useful for determining what went wrong in the event of an application crash
+
+Components
+Logger
+The actual tool that takes the log
+
+Appender
+Determines how log information gets saved
+
+Layout
+THe format in which logs are displayed
+
+List
+ordered collection
+supports random access
+dynamically sized
+
+ArrayList
+unsynchronized
+increase size by 50% when needed
+
+Vector
+Synchronized
+doubles in size when needed
+
+LinkedList
+no random access
+
+Set
+No duplicates
+automatically sorted
+stores indexes in a hashtable
+
+Queue
+a FIFO
+
+Deque
+Double sided queue

@@ -245,7 +245,6 @@ left join TB b
 on a.nums = b.nums
 where b.nums is null;
 
-
 select * from ta 
 natural join tb;
 
@@ -282,8 +281,11 @@ select * from pets where EXISTS(
         select * from owners WHERE owner_name = 'Bobbert' AND pet_shop.shop_owner_id = owners.owner_id
     )   AND pets.SHOP_ID = pet_Shop.shop_id 
 );
-
-
+SELECT * from pets;
+SELECT * from pet_shop;
+SELECT * from owners;
+SELECT * from pet_shop; WHERE EXISTS
+(SELECT * FROM owners where owner_name = 'Bobbert');
 
 /*
     EXISTS VS IN
@@ -301,7 +303,7 @@ select * from pets where EXISTS(
     But Vice versa is significantly faster.
 */
 
-select * from owners where exists(
+select * from owners in(
     select * from pet_shop where owners.owner_id = pet_shop.shop_owner_id
 );
 

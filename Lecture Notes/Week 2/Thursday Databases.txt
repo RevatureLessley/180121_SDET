@@ -1,0 +1,52 @@
+Thursday Transactions
+
+An atomic unit of work on a database
+
+What are the properties of a transaction
+
+Atomicity
+- All or nothing
+- If at any point a transaction fails, the operation is aborted and rolled back
+
+Consistency
+- Any transcation must adhere to the rules of a DV
+- State of a DB is always valid
+
+Isolation
+- No transaction should alter the result of another if ran concurrently
+- Expected results should be the same if transactions were ran sequentially vs concurrently
+
+Durability
+- All successful transactions must be persistent
+- If a DB fails, the data should never last lost
+
+Transaction Isolation Levels		 Dirty Reads	non Repeatable Reads	Serialization
+Read uncommitted			      X			X		      X
+Read committed	(oracle default)	     	 		X		      X
+repeatable reads			      	 				      X	
+Serializable (table lock)				      	 					
+
+Dirty Read
+Any moment where a transaction pulls data from another transaction's uncommitted changes
+
+Non Repeatable Reads
+- Whenever a transaction pulls different data from the same query during the same transaction
+
+Phantom Read
+-If I perform the query twice in one transaction and I get more/les records than last time
+
+Oracle has an extension called PL/SQL (Procedural language Stuctured Query Language)
+It provides tools that we can use with SQL
+Such as functions, stored procedures, sequences, and triggers
+As well as exception handling
+In other words, it provides a means to write actual code in SQL
+
+Sequence
+A sequence is an object that will maintain a counter for you
+
+--Difference between stored procedure and function
+
+function cannot do DML
+
+
+

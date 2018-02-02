@@ -1,0 +1,85 @@
+Pillars of OOP
+
+-Encapsulation
+-- Data hiding
+-- restrict access to data of an object
+-- hiding internal module data
+
+-Abstraction
+-- exposes what it does not how it does
+-- HIDES CODE COMPLEXITY
+-- offers only needed functionality for use
+
+-Polymorphism
+-- Offers multiple forms for components
+-- done via overloading, overriding and covariance
+
+-Inheritance
+-- inherits previous functionality and properties from superclasses expands on it
+-- alter functionality as subclasses get more specific
+
+Interface vs abstract classes
+Both can have concrete and abstract methods. Interfaces allow definitions as of Java 1.8
+Neither can be instantiated
+Interfaces are typically used to create required actions
+Extend only one class, implement multiple interfaces
+
+Varargs is a variable container that allows you to make the amount of input a method can have dynamic
+Method can take 0-many inputs of that type
+//... denotes a var arg that can take 0-many arguments
+//nums is an array
+public int sum (int ... nums)
+	int result = 0;
+	for (int i : nums)	
+		result += i
+	return result;
+
+The final keyword can be used to limit various entities of a class
+It behaves a little differently whether attached to a class, method or variable
+
+//Final class cannot be extended
+public final class FinalClass2 extends FinalClass
+
+public class FinalClass {
+	
+	//WORD can never be changed
+	private final String WORD = "Something indeed"
+	
+	//can't be overridden
+	public final void someThing(){
+		System.out.println("Something indeed");
+
+	}
+}
+
+String class is one of the most important classes in Java as it provides us a means to use
+human language throughout applications
+conveniently
+
+String is essentially an array of characters
+String is also a Final class
+String is immutable / unchangeable
+
+== vs .equals
+
+== checks if object is the same reference
+.equals compares the values of the objects together
+
+
+Garbage collection
+Any object created will be cleaned up of any of the following occurs
+-reference points to null
+-method that created object ends
+-reference is reassigned to a new object
+See Something class in GitHub
+Java collects objects in  a seemingly random order
+System.gc significantly slows down the program
+
+Exceptions - 1 of 2
+
+IOExceptions - checked exception
+
+RuntimeExceptions - unchecked exception. Everything else is checked
+
+A checked exception is an exception that is looked for at compile timme and demands you code a handler
+for it before actually running the code
