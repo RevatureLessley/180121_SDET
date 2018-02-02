@@ -116,3 +116,46 @@
 2018-01-29 16:30:33 DEBUG MiniSaver:29 - deserialized
 2018-01-29 16:30:45 INFO  User:76 - 2.00  |deposited
 2018-01-29 16:31:00 INFO  Serializer:29 - Write to: src/users.ser
+2018-01-29 16:35:58 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 16:35:58 DEBUG MiniSaver:29 - deserialized
+2018-01-29 16:38:42 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 16:38:42 DEBUG MiniSaver:29 - deserialized
+2018-01-29 16:45:32 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 16:45:32 DEBUG MiniSaver:29 - deserialized
+2018-01-29 19:45:14 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 19:45:14 DEBUG MiniSaver:29 - deserialized
+2018-01-29 19:46:06 INFO  Serializer:29 - Write to: src/users.ser
+2018-01-29 19:46:09 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 19:46:09 DEBUG MiniSaver:29 - deserialized
+2018-01-29 19:46:33 INFO  Serializer:29 - Write to: src/users.ser
+2018-01-29 19:48:33 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 19:48:33 DEBUG MiniSaver:29 - deserialized
+2018-01-29 19:51:43 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 19:51:43 DEBUG MiniSaver:29 - deserialized
+2018-01-29 19:52:26 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 19:52:26 DEBUG MiniSaver:29 - deserialized
+2018-01-29 19:52:44 INFO  Serializer:29 - Write to: src/users.ser
+2018-01-29 20:04:28 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 20:04:28 DEBUG MiniSaver:29 - deserialized
+2018-01-29 20:05:31 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 20:05:31 DEBUG MiniSaver:29 - deserialized
+2018-01-29 20:05:48 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 20:05:48 DEBUG MiniSaver:29 - deserialized
+2018-01-29 20:10:23 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 20:10:23 DEBUG MiniSaver:29 - deserialized
+2018-01-29 20:13:23 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 20:13:23 DEBUG MiniSaver:29 - deserialized
+2018-01-29 20:16:06 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 20:16:06 DEBUG MiniSaver:29 - deserialized
+2018-01-29 20:17:45 INFO  Serializer:29 - Write to: src/users.ser
+2018-01-29 20:29:25 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 20:29:25 DEBUG MiniSaver:29 - deserialized
+2018-01-29 20:31:23 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 20:31:23 DEBUG MiniSaver:29 - deserialized
+2018-01-29 20:32:27 INFO  Serializer:29 - Write to: src/users.ser
+2018-01-29 20:32:37 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 20:32:37 DEBUG MiniSaver:29 - deserialized
+2018-01-29 20:33:42 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 20:33:42 DEBUG MiniSaver:29 - deserialized
+2018-01-29 20:34:07 INFO  Serializer:46 - Read from: src/users.ser
+2018-01-29 20:34:07 DEBUG MiniSaver:29 - deserialized

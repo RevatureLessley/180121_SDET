@@ -43,8 +43,14 @@ public class InputReader {
 	public static int readInt(int falseInt, String prompt) {
 		int choice = falseInt;
 		try {
-			choice = input.nextInt();
-		} catch(InputMismatchException e) {
+			if(input.hasNextInt()) {
+				choice = input.nextInt();
+			} else {
+				if(input.hasNext()) {
+					input.next();
+				}
+			}
+		} catch(InputMismatchException | IndexOutOfBoundsException e) {
 			System.err.println("Please input a integer number.");
 			e.printStackTrace();
 		}

@@ -29,11 +29,7 @@ public class UserView {
 					deposit();
 				} else if(response == 3) {
 					withdraw();
-				} /*else if(response == 4) {
-					System.out.println("GAME");
-					TypingGame game = new TypingGame(this.loggedUser);
-					game.playGame();
-				}*/
+				}
 				System.out.println(viewPrompt);
 				response = InputReader.readInt(viewPrompt);
 			}
