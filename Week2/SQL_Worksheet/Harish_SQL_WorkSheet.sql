@@ -95,6 +95,34 @@ END;
 /
 
 --create a function that returns the length of a mediatype from the mediatype table
+CREATE OR REPLACE FUNCTION get_media_len
+RETURN NUMBER
+IS
+    media_len NUMBER(9);
+BEGIN
+    SELECT COUNT(*) INTO media_len FROM MEDIATYPE;
+    RETURN media_len;
+END;
+/
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('No of Media type files are ' || get_media_len());
+END;
+/
+
+--Create a function that returns the average total of all invoices
+CREATE OR REPLACE FUNCTION get_invoice_avg
+RETURN NUMBER
+IS
+    media_len NUMBER(9);
+BEGIN
+    SELECT COUNT(*) INTO media_len FROM MEDIATYPE;
+    RETURN media_len;
+END;
+/
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('No of Media type files are ' || get_media_len());
+END;
+/
 
 --4.0 Stored Procedures
 
