@@ -112,4 +112,20 @@ END;
 /
 
 call insertIntoEmployee('bobbert', 53427, 'Professional Bob');
-select * from employees;
+
+CREATE OR REPLACE PROCEDURE get_name(emp_id IN number, emp_name OUT varchar2)
+IS
+BEGIN
+    select e_name into emp_name from employees where e_id = emp_id;
+END;
+/
+
+--Calling this procedure in SQL
+DECLARE
+    input number(6);
+    result varchar(200);
+BEGIN
+    input := 5;
+    get_name(input, results);
+    DBMS_OUTPUE
+    

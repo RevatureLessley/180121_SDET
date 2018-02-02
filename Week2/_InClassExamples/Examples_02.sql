@@ -116,8 +116,8 @@ where lower(e_name) LIKE 'far%y%o%l__';
 
 --JOINS
 select a.pet_name as "PET NAME",
-CASE b.animal_name 
-    WHEN NULL THEN 'UNKNOWN'
+CASE --b.animal_name 
+    WHEN b.animal_name IS NULL THEN 'UNKNOWN'
     ELSE b.animal_name
 END as "ANIMAL"
 ,
@@ -261,7 +261,11 @@ select nums, lower(otherchars), otherchars as "OTHERCHARS" from tb;
 */
 
 select * from animals
-where ANIMAL_NAME IN ('Dog','cat','Ocelet');
+where ANIMAL_NAME IN ('Dog','cat','Ocelot');
+
+select * from animals where exists(
+    select * from animals where animal_name = 'Dog' or animal_name = 'cat' or animal_name = 'Ocelot'
+);
 
 --HOWEVER, the IN clause is very powerful in that it lets us utilize
 --nested select statements.
@@ -347,8 +351,8 @@ select * from employees where e_salary between 50000 and 200000;
 DROP VIEW PET_OWNERSHIP;
 CREATE VIEW Pet_Ownership AS
 select a.pet_name as "PET NAME",
-CASE b.animal_name 
-    WHEN NULL THEN 'UNKNOWN'
+CASE
+    WHEN b.animal_name IS NULL THEN 'UNKNOWN'
     ELSE b.animal_name
 END as "ANIMAL"
 ,
