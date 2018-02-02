@@ -2,6 +2,7 @@ package com.miniproject.users;
 
 import java.util.Map;
 
+import com.miniproject.services.AdminService;
 import com.miniproject.util.FileParser;
 import com.miniproject.util.InputReader;
 
@@ -95,7 +96,8 @@ public class AccountCreate {
 		if(secretPassword()) {
 			System.out.println("Create an Admin Account");
 			accountSetUp();
-			newAccount = new Admin(this.username, this.password01);
+			//newAccount = new Admin(this.username, this.password01);
+			AdminService.addAdmin(this.username, this.password01);
 		} else {
 			newAccount = new User(this.username, this.password01);
 		}

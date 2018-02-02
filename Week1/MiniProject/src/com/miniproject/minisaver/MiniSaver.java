@@ -51,8 +51,8 @@ public class MiniSaver {
 				System.out.println("CREATE!");
 				AccountCreate createAccount = new AccountCreate(users.getRegAccounts());
 				createAccount.createAccount();
-				users.createUser(createAccount.getNewAccount());
-				serializeObject(users, users.getClass(), usersFile);
+				//users.createUser(createAccount.getNewAccount());
+				//serializeObject(users, users.getClass(), usersFile);
 				
 			} else {
 				System.out.println("INVALID CHOICE PLEAE TRY AGAIN");
