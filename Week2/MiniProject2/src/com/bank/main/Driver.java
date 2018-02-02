@@ -1,20 +1,23 @@
 package com.bank.main;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.util.List;
 
-import com.bank.util.Connections;
-
-
+import com.bank.beans.User;
+import com.bank.dao.UserDao;
+import com.bank.dao.UserDaoImp;
 
 public class Driver {
 
 	public static void main(String[] args) {
-		try(Connection conn = Connections.getConnection()){
-			System.out.println("Success");	
-		}catch(SQLException e){
-			e.printStackTrace();
+		
+		UserDao dao = new UserDaoImp();
+		List<User> users = dao.getAllUser();
+		
+		System.out.println("====LIST OF User====");
+		for(User u: users){
+			System.out.println(u.getUserName());
 		}
+		
 	}
 
 }
