@@ -83,15 +83,48 @@ WHERE FIRSTNAME = 'Robert' AND LASTNAME = 'Walter';
 CREATE OR REPLACE PROCEDURE GET_EMPLOYEE_NAME 
 IS
 BEGIN
-dbms_output.put_line('Hello World');
---  FOR i IN (SELECT FIRSTNAME, LASTNAME
---		  FROM EMPLOYEE) LOOP
---            dbms_output.put_line(i.FIRSTNAME || ' ' ||i.LASTNAME);
---	END LOOP;
+  FOR i IN (SELECT FIRSTNAME, LASTNAME
+		  FROM EMPLOYEE) LOOP
+            dbms_output.put_line(i.FIRSTNAME || ' ' ||i.LASTNAME);
+	END LOOP;
 END GET_EMPLOYEE_NAME;
 /
-
 BEGIN
-    dbms_output.put_line('Hello World');
+GET_EMPLOYEE_NAME();
 END;
 /
+
+--Create a stored procedure that updates the personal information of an employee.
+CREATE OR REPLACE PROCEDURE UPDATE_CITY
+IS
+BEGIN
+    UPDATE EMPLOYEE
+	SET CITY = 'Bellerose'
+	WHERE FIRSTNAME = 'Harish';
+    COMMIT;
+END;
+/
+BEGIN
+    UPDATE_CITY;
+END;
+/
+
+--Create a stored procedure that returns the managers of an employee.
+CREATE OR REPLACE PROCEDURE GET_MANAGER(NAME_IN IN varchar2)
+IS
+BEGIN
+    FOR i IN (SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE
+    WHERE EMPLOYEEID = (SELECT REPORTSTO FROM EMPLOYEE 
+    WHERE FIRSTNAME = NAME_IN)) LOOP
+            dbms_output.put_line(i.FIRSTNAME || ' ' ||i.LASTNAME);
+	END LOOP;
+END;
+/
+BEGIN
+    GET_MANAGER('harish');
+END;
+/
+
+--SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE
+--    WHERE EMPLOYEEID = (SELECT REPORTSTO FROM EMPLOYEE 
+--    WHERE FIRSTNAME = 'Harish');
