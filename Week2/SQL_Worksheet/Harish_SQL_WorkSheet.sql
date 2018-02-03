@@ -313,6 +313,8 @@ BEGIN
     INSERT INTO EMPLOYEE(EMPLOYEEID, FIRSTNAME, LASTNAME) VALUES(11,'BOB','Bobbert');
 END;
 /
+--Create an after update trigger on the album table that fires after a row is inserted in the table
+--Create an after delete trigger on the customer table that fires after a row is deleted from the table.
 
 --7.0 JOINS
 
@@ -335,4 +337,10 @@ ON ARTIST.ARTISTID = ALBUM.ARTISTID;
 SELECT ARTIST.NAME , ALBUM.TITLE 
 FROM ARTIST CROSS JOIN ALBUM 
 ORDER BY ARTIST.NAME;
+
+--Perform a self-join on the employee table, joining on the reportsto column.
+select a.FIRSTNAME, count(a.EMPLOYEEID) from EMPLOYEE a
+inner join EMPLOYEE b
+on a.EMPLOYEEID = b.REPORTSTO
+group by a.FIRSTNAME;
 
