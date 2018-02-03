@@ -3,6 +3,7 @@ package com.miniproject.users;
 import java.util.Map;
 
 import com.miniproject.services.AdminService;
+import com.miniproject.services.UserService;
 import com.miniproject.util.FileParser;
 import com.miniproject.util.InputReader;
 
@@ -99,7 +100,8 @@ public class AccountCreate {
 			//newAccount = new Admin(this.username, this.password01);
 			AdminService.addAdmin(this.username, this.password01);
 		} else {
-			newAccount = new User(this.username, this.password01);
+			//newAccount = new User(this.username, this.password01);
+			UserService.addUser(this.username, this.password01);
 		}
 	}
 	

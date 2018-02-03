@@ -36,6 +36,12 @@ public class User extends Account implements Serializable {
 		this.currency = new Dollars();
 	}
 	
+	public User(String inUn, int accountApproved, int banned) {
+		this.username = inUn;
+		this.accountApproved = (accountApproved == 1);
+		this.banned = (banned == 1);
+	}
+	
 	public void setUsername(String inUn) {
 		this.username = inUn;
 	}

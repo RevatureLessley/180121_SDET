@@ -1,9 +1,12 @@
 package com.miniproject.users;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+
+import com.miniproject.services.UserService;
 import com.miniproject.util.InputReader;
 import com.miniproject.util.Serializer;
 
@@ -16,9 +19,10 @@ public class AdminView {
 	private Admin authorizer;
 	UsersCollection allUsers;
 	Map<String, Account> accountsMap;
+	List<User> users;
 	private String viewPrompt = "1) View All Users\n2) Approve User \n3) "
 			+ "Ban\\Un-Ban User \n4) Delete User \n5) Delete My Account \n" + EXITNUM + ") LogOut";
-	private String viewFormat = "|%-15s|%-7s|%-10s|%-7s|\n";
+	private String viewFormat = "|%-15s|%-10s|%-7s|\n";
 	private String logout = "+++++ADMIN LOGOUT+++++";
 	
 	public AdminView(Admin inAuth, UsersCollection inUsers) {
@@ -53,11 +57,12 @@ public class AdminView {
 	}
 	
 	private void viewUsers() {
-		System.out.printf(viewFormat, "Username", "Type", "Approved", "Banned");
-		for(String s : accountsMap.keySet()) {
-			System.out.printf(viewFormat, accountsMap.get(s), accountsMap.get(s).getIsAdmin() ? "Admin" : "User", 
-					accountsMap.get(s).isAccountApproved() ? "Yes" : "No",
-					accountsMap.get(s).isBanned() ? "Yes" : "No");
+		users = UserService.getUsersForAdminForAdmin();
+		System.out.printf(viewFormat, "Username", "Approved", "Banned");
+		for(User u : users) {
+			System.out.printf(viewFormat, u.getUsername(),
+					u.isAccountApproved() ? "Yes" : "No",
+					u.isBanned() ? "Yes" : "No");
 		}
 		System.out.println("\n");
 	}
