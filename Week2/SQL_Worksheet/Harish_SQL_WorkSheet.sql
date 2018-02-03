@@ -113,16 +113,80 @@ END;
 CREATE OR REPLACE FUNCTION get_invoice_avg
 RETURN NUMBER
 IS
-    media_len NUMBER(9);
+    invoice_avg NUMBER(9);
 BEGIN
-    SELECT COUNT(*) INTO media_len FROM MEDIATYPE;
-    RETURN media_len;
+    SELECT AVG(TOTAL) INTO invoice_avg FROM INVOICE;
+    RETURN invoice_avg;
 END;
 /
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('No of Media type files are ' || get_media_len());
+    DBMS_OUTPUT.PUT_LINE('The Average of Invoice total is ' || get_invoice_avg());
 END;
 /
+
+--Create a function that returns the most expensive track
+CREATE OR REPLACE FUNCTION get_expensive_track
+    RETURN SYS_REFCURSOR
+AS
+    sys_cursor SYS_REFCURSOR;
+BEGIN
+    OPEN sys_cursor FOR 
+    SELECT TRACK.NAME FROM TRACK 
+    WHERE UNITPRICE = (SELECT  MAX(UNITPRICE) FROM TRACK);
+    RETURN sys_cursor;
+END;
+/
+DECLARE
+    my_cursor SYS_REFCURSOR;
+    track_name TRACK.NAME%TYPE;
+BEGIN
+    my_cursor := GET_EXPENSIVE_TRACK();
+    LOOP
+        FETCH my_cursor INTO track_name;
+        EXIT WHEN my_cursor%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(track_name);
+    END LOOP;
+END;
+/
+
+--Create a function that returns the average price of invoiceline items in the invoiceline table
+CREATE OR REPLACE FUNCTION get_invoiceline_avg
+RETURN NUMBER
+IS
+    invoiceline_avg NUMBER(9);
+BEGIN
+    SELECT AVG(UNITPRICE) INTO invoiceline_avg FROM INVOICELINE;
+    RETURN invoiceline_avg;
+END;
+/
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('The Average of Invoiceline Unitprice is ' || get_invoiceline_avg());
+END;
+/
+
+--Create a function that returns all employees who are born after 1968.
+CREATE OR REPLACE FUNCTION born_after_1968
+    RETURN SYS_REFCURSOR
+AS
+    sys_cursor SYS_REFCURSOR;
+BEGIN
+    OPEN sys_cursor FOR 
+    SELECT FIRSTNAME FROM EMPLOYEE 
+    WHERE BIRTHDATE > TO_DATE('1968-12-31 00:00:00', 'YYYY-MM-DD HH24:MI:SS');
+    RETURN sys_cursor;
+END;
+/
+DECLARE
+    my_cursor SYS_REFCURSOR;
+    emp_name EMPLOYEE.FIRSTNAME%TYPE;
+BEGIN
+    my_cursor := born_after_1968();
+    LOOP
+        FETCH my_cursor INTO emp_name;
+        EXIT WHEN my_cursor%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(emp_name);
+    END LOOP;
+END;
 
 --4.0 Stored Procedures
 
@@ -195,4 +259,80 @@ BEGIN
     END LOOP;
 END;
 
+--5.0 Transactions
+
+--Create a transaction that given a invoiceId will delete that invoice (There may be constraints that rely on this, 
+--find out how to resolve them).
+CREATE OR REPLACE PROCEDURE delete_invoice_byID(id_in IN NUMBER)
+IS
+BEGIN
+    DELETE FROM INVOICE WHERE INVOICEID = id_in;
+    COMMIT;
+END;
+/
+BEGIN
+    delete_invoice_byID(405);
+END;
+/
+
+-- Create a transaction nested within a stored procedure that inserts a new record in the Customer table
+
+
+CREATE OR REPLACE PROCEDURE add_customer(c_id CUSTOMER.CUSTOMERID%TYPE,c_fname CUSTOMER.FIRSTNAME%TYPE,
+c_lname CUSTOMER.LASTNAME%TYPE,c_email CUSTOMER.EMAIL%TYPE)
+IS
+BEGIN
+    INSERT INTO CUSTOMER(CUSTOMERID, FIRSTNAME, LASTNAME, EMAIL) VALUES (c_id,c_fname,c_lname,c_email);
+    COMMIT;
+END;
+/
+BEGIN
+    add_customer(63,'Bobert','Bob','bobbert@gmail.com');
+END;
+/
+
+--6.0 Triggers
+
+--Create an after insert trigger on the employee table fired after a new record is inserted into the table.
+DROP SEQUENCE emp_seq;
+CREATE SEQUENCE emp_seq
+    start with 100
+    increment by 1;
+
+CREATE OR REPLACE TRIGGER trig_after_insert
+AFTER INSERT ON EMPLOYEE
+FOR EACH ROW
+DECLARE
+    default_title VARCHAR2(100);
+BEGIN 
+    default_title := 'New Hire';
+    INSERT INTO EMPLOYEE(EMPLOYEEID, FIRSTNAME, LASTNAME, TITLE) VALUES(:new.EMPLOYEEID, :new.FIRSTNAME, :new.LASTNAME, default_title);
+END;    
+/
+BEGIN
+    INSERT INTO EMPLOYEE(EMPLOYEEID, FIRSTNAME, LASTNAME) VALUES(11,'BOB','Bobbert');
+END;
+/
+
+--7.0 JOINS
+
+--Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
+SELECT CUSTOMER.FIRSTNAME, INVOICE.INVOICEID 
+FROM CUSTOMER INNER JOIN INVOICE 
+ON CUSTOMER.CUSTOMERID = INVOICE.CUSTOMERID;
+
+--Create an outer join that joins the customer and invoice table, specifying the CustomerId, firstname, lastname, invoiceId, and total.
+SELECT CUSTOMER.CUSTOMERID, CUSTOMER.FIRSTNAME, CUSTOMER.LASTNAME, INVOICE.INVOICEID, INVOICE.TOTAL 
+FROM CUSTOMER FULL OUTER JOIN INVOICE 
+ON CUSTOMER.CUSTOMERID = INVOICE.CUSTOMERID;
+
+--Create a right join that joins album and artist specifying artist name and title.
+SELECT ARTIST.NAME , ALBUM.TITLE 
+FROM ARTIST RIGHT OUTER JOIN ALBUM 
+ON ARTIST.ARTISTID = ALBUM.ARTISTID;
+
+--Create a cross join that joins album and artist and sorts by artist name in ascending order.
+SELECT ARTIST.NAME , ALBUM.TITLE 
+FROM ARTIST CROSS JOIN ALBUM 
+ORDER BY ARTIST.NAME;
 
