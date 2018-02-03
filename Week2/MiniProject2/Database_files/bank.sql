@@ -1,0 +1,90 @@
+--Status Table to Store User Status
+DROP TABLE STATUS;
+CREATE TABLE STATUS(
+    STATUSID NUMBER(9) PRIMARY KEY,
+    STATUS VARCHAR2(100) 
+);
+
+--Setup Super User status
+INSERT INTO STATUS 
+VALUES(0, 'SuperUser');
+
+--Setup User status
+INSERT INTO STATUS 
+VALUES(1, 'User');
+
+--Setup NonUser status
+INSERT INTO STATUS 
+VALUES(2, 'NonUser');
+
+
+
+--Login table to store Username and Password
+DROP TABLE LOGIN;
+CREATE TABLE LOGIN(
+    USERID NUMBER(9) PRIMARY KEY,
+    USERNAME VARCHAR2(100) UNIQUE,
+    PASSWORD VARCHAR2(100),
+    STATUSID NUMBER(9),
+    CONSTRAINT STATUS_FK FOREIGN KEY(STATUSID) REFERENCES STATUS(STATUSID) ON DELETE CASCADE
+);
+
+--Sequence to Generate UserID 
+DROP SEQUENCE USER_SEQ;
+CREATE SEQUENCE USER_SEQ
+    start with 1000
+    increment by 1;
+
+--Trigger to add UserID before Insertion    
+CREATE OR REPLACE TRIGGER USER_SEQ_TRIGGER 
+BEFORE INSERT ON LOGIN
+FOR EACH ROW
+BEGIN 
+    IF :NEW.USERID IS NULL THEN
+    SELECT USER_SEQ.NEXTVAL INTO :NEW.USERID FROM DUAL;
+    END IF;
+END;    
+/
+
+--Insert Super User Login info
+INSERT INTO LOGIN(USERNAME, PASSWORD, STATUSID) 
+VALUES('Admin', 'Admin',0);
+
+--Insert User Login info
+INSERT INTO LOGIN(USERNAME, PASSWORD, STATUSID) 
+VALUES('Harish', 'Kumar',1);
+
+--Insert Non User Login info
+INSERT INTO LOGIN(USERNAME, PASSWORD, STATUSID) 
+VALUES('Bob', 'Bobbert',2);
+
+
+--Table to store Account Info
+DROP TABLE ACCOUNT;
+CREATE TABLE ACCOUNT(
+    USERID NUMBER(9) PRIMARY KEY,
+    AMOUNT NUMBER(9,2),
+    CONSTRAINT ACCOUNT_FK FOREIGN KEY (USERID) REFERENCES LOGIN(USERID) ON DELETE CASCADE   
+);
+
+--Setup User status
+INSERT INTO ACCOUNT 
+VALUES((SELECT USERID FROM LOGIN WHERE USERNAME = 'Harish'), 0.0);
+
+--Create new user stored procedure
+CREATE OR REPLACE PROCEDURE createNewUser(in_username IN varchar2, in_password IN varchar2)
+IS
+BEGIN
+    INSERT INTO LOGIN(USERNAME, PASSWORD, STATUSID) 
+    VALUES(in_username, in_password,2);
+    commit;
+END;
+/
+
+call createNewUser('goole', 'amazon');
+
+--SELECT a.USERNAME, a.PASSWORD, b.STATUS 
+--FROM LOGIN a INNER JOIN STATUS b 
+--ON b.userid = a.USERID;
+
+    

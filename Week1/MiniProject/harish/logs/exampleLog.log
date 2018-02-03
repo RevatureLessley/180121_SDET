@@ -201,3 +201,7 @@
 2018-01-29 19:02:36 DEBUG Bank:250 - Saving data
 2018-01-29 19:02:39 DEBUG Bank:58 - User done with application
 2018-01-29 19:02:39 DEBUG Bank:250 - Saving data
+2018-02-03 17:14:48 INFO  Bank:25 - Application Started
+2018-02-03 17:14:48 INFO  Bank:164 - Loading user data from file
+2018-02-03 17:14:54 DEBUG Bank:58 - User done with application
+2018-02-03 17:14:54 DEBUG Bank:250 - Saving data

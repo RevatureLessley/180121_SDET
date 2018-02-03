@@ -181,7 +181,7 @@ public class Bank {
 	public int homePage() {
 			//Welcome screen and Menu option
 			int selection = 0;
-			System.out.println("======= Welcome to HKBank ========");
+			System.out.println("======= Welcome to Bank ========");
 			System.out.println(	"1.Login\n"+
 								"2.New User\n"+
 								"3.Exit");

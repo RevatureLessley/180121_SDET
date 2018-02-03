@@ -6,15 +6,16 @@ import java.sql.SQLException;
 
 public class Connections {
 	public static Connection getConnection() throws SQLException{
+		String props[] = System.getenv("DBProps").split(";");
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName(props[0]);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:xe",
-					"bank",
-					"bank"
+					props[1],
+					props[2],
+					props[3]
 				);
 	}
 }

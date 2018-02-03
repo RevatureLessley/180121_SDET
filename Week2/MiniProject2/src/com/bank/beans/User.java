@@ -4,14 +4,12 @@ public class User {
 	
 	private String userName;
 	private String password;
-	private double amount;
 	private String status;
 	
-	public User(String userName, String password, double amount, String status) {
+	public User(String userName, String password, String status) {
 		super();
 		this.userName = userName;
 		this.password = password;
-		this.amount = amount;
 		this.status = status;
 	}
 	
@@ -21,7 +19,7 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [userName=" + userName + ", password=" + password + ", amount=" + amount + ", status=" + status
+		return "User [userName=" + userName + ", password=" + password + ", status=" + status
 				+ "]";
 	}
 
@@ -37,12 +35,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public double getAmount() {
-		return amount;
-	}
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
+		
 	public String getStatus() {
 		return status;
 	}

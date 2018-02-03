@@ -1,3 +1,4 @@
+
 --2.0 SQL Queries
 
 -- Select all records from the Employee table.

@@ -28,12 +28,13 @@ public class UserDaoImp implements UserDao {
 		
 		try (Connection conn = Connections.getConnection()) {
 
-			String sql = "SELECT * FROM BANK";
+			String sql = "SELECT a.USERNAME, a.PASSWORD, b.STATUS \r\n" + 
+					"FROM LOGIN a NATURAL INNER JOIN STATUS b \r\n";
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql); 
 		
 			while (rs.next()) {
-				users.add(new User(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4)));
+				users.add(new User(rs.getString(1), rs.getString(2), rs.getString(3)));
 			}
 
 		} catch (SQLException e) {
