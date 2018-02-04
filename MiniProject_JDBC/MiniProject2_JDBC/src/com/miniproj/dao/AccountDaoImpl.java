@@ -24,7 +24,8 @@ public class AccountDaoImpl implements AccountDao {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	String sql;
-	
+
+//======================= INSERTION METHODS =================================//
 	@Override
 	public void insertIntoUserInfo(String email, String fname, String lname) {
 		try (Connection conn = Connections.getConnection()) {
@@ -41,7 +42,8 @@ public class AccountDaoImpl implements AccountDao {
 			close(ps);
 		}
 	}
-	
+
+
 	@Override
 	public void insertIntoAccountInfo(String email, String uname, String pw, int isAd, int isAc, int isCl) {
 		try (Connection conn = Connections.getConnection()) {
@@ -79,27 +81,7 @@ public class AccountDaoImpl implements AccountDao {
 		}
 	}
 
-	@Override
-	public Account selectAccountByEmail(String email) {
-//		try (Connection conn = Connections.getConnection()) {
-//		sql = "SELECT * FROM user_info, account_info, balance_info";
-//		ps = conn.prepareStatement(sql);
-//		rs = stmt.executeQuery(sql); // Executing queries, brings back ResultSet object
-//
-//		while (rs.next()) {	//starts at 0
-//			
-		//rs.getString
-//		}
-//
-//	} catch (SQLException e) {
-//		e.printStackTrace();
-//	} finally {
-//		close(stmt);
-//		close(rs);
-//	}
-		return account;
-	}
-
+//======================= RETRIEVAL METHODS =================================//
 	@Override
 	public List<Account> getAllAccounts() {
 		accounts = new ArrayList<>();
@@ -129,14 +111,111 @@ public class AccountDaoImpl implements AccountDao {
 	}
 
 	@Override
-	public void deleteAccountByEmail(String email) {
-		
-		return;
+	public Account selectAccountByEmail(String email) {
+		try (Connection conn = Connections.getConnection()) {
+			sql = "SELECT * FROM user_info " + 
+					"FULL OUTER JOIN account_info " + 
+					"ON user_info.u_email = account_info.a_email " + 
+					"FULL OUTER JOIN balance_info " + 
+					"ON account_info.a_email = balance_info.b_email " + 
+					"WHERE b_email = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			rs = ps.executeQuery();
+
+			account = new Account(rs.getString(1), rs.getString(2), rs.getString(3), 
+				rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8), 
+				rs.getInt(9), rs.getDouble(11), rs.getDouble(12));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return account;
 	}
 
+	
+	
+//======================= UPDATE METHODS =================================//
 	@Override
-	public void updateAccountByEmail(String email) {
-		
-		return;
+	public void updateUserInfo(String email, String col, String newVal) {
+		try (Connection conn = Connections.getConnection()) {
+			sql = "UPDATE user_info " + 
+					"SET ? = ? " + 
+					"WHERE u_email = ?"; 
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, col);
+			ps.setString(2, newVal);
+			ps.setString(3, email);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
 	}
+	
+	@Override
+	public void updateAccountInfo(String email, String col, String newVal) {
+		try (Connection conn = Connections.getConnection()) {
+			sql = "UPDATE account_info " + 
+					"SET ? = ? " + 
+					"WHERE u_email = ?"; 
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, col);
+			ps.setString(2, newVal);
+			ps.setString(3, email);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+	}
+	
+	@Override
+	public void updateAccountStatusInfo(String email, String col, int newVal) {
+		try (Connection conn = Connections.getConnection()) {
+			sql = "UPDATE account_info " + 
+					"SET ? = ? " + 
+					"WHERE u_email = ?"; 
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, col);
+			ps.setInt(2, newVal);
+			ps.setString(3, email);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+	}
+	
+	@Override
+	public void updateBalanceInfo(String email, String col, double newVal) {
+		try (Connection conn = Connections.getConnection()) {
+			sql = "UPDATE balance_info " + 
+					"SET ? = ? " + 
+					"WHERE u_email = ?"; 
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, col);
+			ps.setDouble(2, newVal);
+			ps.setString(3, email);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+	}
+	
+//	@Override
+//	public void deleteAccountByEmail(String email) {
+//		return;
+//	}
 }

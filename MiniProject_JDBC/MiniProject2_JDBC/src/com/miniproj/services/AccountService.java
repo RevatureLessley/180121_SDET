@@ -75,4 +75,20 @@ public class AccountService {
 		return dao.getAllAccounts();
 	}
 	
+	public void depositCheckings(Account acc, double amount) {
+		dao = new AccountDaoImpl();
+		gatherAccountInstances(acc);
+		double newVal = acc.getCheckingsBalance() + amount;
+		String column = "b_checkings";
+		dao.updateBalanceInfo(email, column, newVal);
+	}
+	
+	public void depositSavings(Account acc, double amount) {
+		dao = new AccountDaoImpl();
+		gatherAccountInstances(acc);
+		double newVal = acc.getSavingsBalance() + amount;
+		String column = "b_savings";
+		dao.updateBalanceInfo(email, column, newVal);
+	}
+	
 }
