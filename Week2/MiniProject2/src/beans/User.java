@@ -4,12 +4,11 @@ import java.io.Serializable;
 
 import org.apache.log4j.Logger;
 
-public class User implements Serializable{
+public class User{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7154337998203696611L;
 	private String userName;
 	private String password;
 	private int id;

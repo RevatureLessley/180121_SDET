@@ -1,29 +1,41 @@
 package util;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class Connections {
+	
+	private static Properties prop = null;
+//	private final static String FILE_NAME = "dbprops.properties";
+
+	
 	public static Connection getConnection() throws SQLException{
 
-		/*
-		 * ClassLoader
-		 * -The classloader is a tool that is utilized at runtime. It is what
-		 * Java uses to bring in all the classes to be used by our application at
-		 * runtime.
-		 * -It also has the added benefit of manually bring in classes to be used
-		 * for execution.
-		 */
+/*		try{
+			prop = new Properties();
+			prop.load(new FileInputStream(FILE_NAME));
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+*/	
+		
+		String props[] = System.getenv("DBProps").split(";");
+		
+		
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName(props[0]);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		return DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:xe",
-					"MiniProject2",
-					"miniproject2"
-				);
+				
+		return DriverManager.getConnection(props[1], props[2],props[3]);
 	}
+	
+
 }

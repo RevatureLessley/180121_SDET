@@ -40,10 +40,8 @@ public class UserDaoImpl implements UserDao{
 								String what = rs.getString("userName");
 								String password = rs.getString("userPassword");
 								Double d = rs.getDouble("bank_balance");
-								System.out.println(what + " dgdfgd " + password + "dfgdfgdf  " + d);
+								System.out.println("username: " + what + " password: " + password + " bank balance: " + d);
 				}
-
-				System.out.println("sdfsdf");
 				
 			}catch(SQLException e){
 				e.printStackTrace();

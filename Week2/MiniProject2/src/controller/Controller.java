@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
-import dao.UserDao;
-import dao.UserDaoImpl;
+import beans.Ship;
+import dao.ShipDao;
+import dao.ShipDaoImpl;
 import functions.AdminFunctions;
 import functions.CreateUser;
-import functions.FetchUsers;
 import functions.UserLogIn;
 
 /*
@@ -29,64 +29,72 @@ public class Controller {
 	
 	public static void main(String[] args) {
 		logger.debug("Application started");
-		UserDaoImpl.insertUser("User3", "new password", new Double(65));
-				
+		ShipDao dao = new ShipDaoImpl();
+//		Ship ship = new Ship(1004, "XK41", false, 104);
+		dao.flyShip(new Ship(1004), 100);
+		System.out.println(dao.getAllShips());
+//		System.out.println(dao.shipsWithoutPilots());
+		mainMenu();
 	}
 	
 	public static void mainMenu() {
 		Scanner scan = new Scanner(System.in);
+		ShipDao shipDao = new ShipDaoImpl();
 		while(true) {
 			scan = new Scanner(System.in);
-			System.out.println("Main menu");
-			System.out.println("Type\n\'login\' to change bank balance");
-			System.out.println("\'admin\' for admin login");
-			System.out.println("\'create\' to create a new user");
-			System.out.println("\'show\' to print all users");
+			System.out.println("\n=============================================");
+			System.out.println("Welcome to the StarFleet Management Portal. \nYour base number is 12683 in the Andromeda galaxy");
+			System.out.println("\nAll spaceships must be approved \nby a mechanic before \nbeing allowed to fly\n");
+			System.out.println("0 to add fuel to a ship");
+			System.out.println("1 for mechanic login");
+			System.out.println("2 to buy a new spaceship");
+			System.out.println("3 to display all ship data");
 			System.out.println("or \'q\'");
 			String s = scan.nextLine();
 			
-			if (s.equals("Login") || s.equals("login")) {
+			if (s.equals("0")) {
 				logger.debug("Chose login");
 				UserLogIn.logInUsername(scan,USERS);
 			}
-			if (s.equals("admin") || s.equals("Admin")) {
+			if (s.equals("1")) {
 				logger.debug("Chose admin");
 				AdminFunctions.adminLogin(scan);
 			}
-			if (s.equals("create") || s.equals("Create")) {
+			if (s.equals("2")) {
 				logger.debug("Chose create");
 				CreateUser.createUserDialog(scan, USERS);
 			}
-			if (s.equals("Show") || s.equals("show")) {
+			if (s.equals("3")) {
 				logger.debug("Chose show");
-				FetchUsers.showAll(USERS);
+				shipDao.getAllShips();
 			}
 			if (s.equals("quit") || s.equals("q")) {
 				logger.debug("Application closed");
 				break;
 			}
+			break;
 		}
 		scan.close();		
 	}
 	
-	public static void adminMenu(Scanner scan) {
+	public static void mechanicMenu(Scanner scan) {
 
-		logger.debug("Accessed adminMenu");
+		logger.debug("Accessed mechanicMenu");
 		
 		String s = "";
 		while(true) {
-			System.out.println("Admin main menu:");
-			System.out.println("Type \'auth\' to authenticate User");
-			System.out.println("Type \'delete\' to delete a User");
-			System.out.println("or type \'q\'");
+			System.out.println("Mechanic main menu:");
+			System.out.println("0 to inspect a spaceship");
+			System.out.println("1 to decommission and recycle a ship");
+			System.out.println("3 for main menu");
 			s = scan.nextLine();		
 			
-			if (s.equals("authenticate") || s.equals("auth")) {
+			if (s.equals("0")) {
 				logger.debug("accessing authenticate");
 				AdminFunctions.authenticateUser(scan, USERS, -1);
 			}
 			
-			if (s.equals("delete") || s.equals("Delete")) {
+			if (s.equals("1")) {
 				logger.debug("accessing delete");
 				AdminFunctions.deleteUser(scan, USERS, null);
 

@@ -25,7 +25,7 @@ public class AdminFunctions {
 			System.out.println("What is the password?");
 			if(scan.nextLine().equals("password")) {
 				logger.debug("admin entered password successfully");
-				Controller.adminMenu(scan);
+				Controller.mechanicMenu(scan);
 			}
 			else {
 				logger.debug("admin password was unsuccessful");
