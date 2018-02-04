@@ -1,0 +1,12 @@
+2018-02-04 13:25:14 WARN  MainMenu:11 - This is Warn
+2018-02-04 13:25:14 ERROR MainMenu:12 - This is Error
+2018-02-04 13:25:14 FATAL MainMenu:13 - This is Fatal
+2018-02-04 13:33:24 WARN  MainMenu:11 - This is Warn
+2018-02-04 13:33:24 ERROR MainMenu:12 - This is Error
+2018-02-04 13:33:24 FATAL MainMenu:13 - This is Fatal
+2018-02-04 13:34:08 WARN  MainMenu:11 - This is Warn
+2018-02-04 13:34:08 ERROR MainMenu:12 - This is Error
+2018-02-04 13:34:08 FATAL MainMenu:13 - This is Fatal
+2018-02-04 13:34:55 WARN  MainMenu:11 - This is Warn
+2018-02-04 13:34:55 ERROR MainMenu:12 - This is Error
+2018-02-04 13:34:55 FATAL MainMenu:13 - This is Fatal

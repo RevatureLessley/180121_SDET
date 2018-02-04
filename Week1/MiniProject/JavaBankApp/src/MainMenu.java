@@ -21,6 +21,9 @@ public class MainMenu {
 			getMainMenu();
 			int choice = getInput();
 			execute(choice);
+			MakeaDeposit();
+			MakeaWithrawl();
+			selectAccount();
 		}
 	}
 
@@ -35,11 +38,10 @@ public class MainMenu {
 	private void getMainMenu() {
 		System.out.println("Hello, how can we help you?");
 		System.out.println("1) Admin Login");
-		System.out.println("2) Returning User Login");
-		System.out.println("3) Create a new Account");
-		System.out.println("4) Make a Deposit");
-		System.out.println("5) Make a Withdrawal");
-		System.out.println("6) List Account Balance");
+		System.out.println("2) Create a new Account");
+		System.out.println("3) Make a Deposit");
+		System.out.println("4) Make a Withdrawal");
+		System.out.println("5) List Account Balance");
 		System.out.println("0) Exit");
 
 	}
@@ -48,9 +50,9 @@ public class MainMenu {
 		int choice = -1;
 		//if I don't add a do while loop condition only runs once
 		do {
-			System.out.println("Enter your Choice:");
+			System.out.print("Enter your Choice:");
 			try {
-				//Attempt to convert userinput to a integer from scanner
+				//Attempt to convert user input to a integer from scanner
 				choice = Integer.parseInt(input.nextLine());
 			}
 			catch (NumberFormatException e) {
@@ -75,17 +77,29 @@ public class MainMenu {
 			break;
 		case 1:
 			AdminLogin();
+			System.exit(0);
+			
+			break;
+
+		case 2:
+			CreateNewAccount();
+			System.exit(0);
 
 			break;
-		case 2:
-			ReturningUserLogin();
 		case 3:
-			CreateNewAccount();
-
+			MakeaDeposit();
+			System.exit(0);
+			
 			break;
 		case 4:
-			MakeaDeposit();
-
+			MakeaWithrawl();
+			System.exit(0);
+			
+			break;
+		case 5:
+			selectAccount();
+			System.exit(0);
+			
 			break;
 
 		default:
@@ -95,15 +109,12 @@ public class MainMenu {
 
 	}
 
+
 	private void AdminLogin() {
 		// TODO Auto-generated method stub
 
 	}
 
-	private void ReturningUserLogin() {
-		// TODO Auto-generated method stub
-
-	}
 
 	private void CreateNewAccount() {
 		String firstname, lastname, SSN, DOB, Email, AccountType = null;
@@ -111,7 +122,7 @@ public class MainMenu {
 		boolean verify = false;
 		//while not verify is not false
 		while(!verify) {
-			System.out.print("Please Enter Your Account Type:    ");
+			System.out.print("Please Enter Your Account Type(checking or savings):    ");
 			AccountType = input.nextLine();
 			//this is to compare user input to string value
 			if (AccountType.equals("checking") || AccountType.equals("savings")){
@@ -135,7 +146,7 @@ public class MainMenu {
 
 		verify = false;
 		while(!verify) {
-			System.out.println("Please Enter your Deposit:   ");
+			System.out.print("Please Enter your Deposit:   ");
 
 			try {
 				//this is to catch the error that would stop the program when user input is not a number
@@ -170,10 +181,10 @@ public class MainMenu {
 		else {
 			account = new savings(DirectDeposit);
 		}
-		User customer = new User(firstname, lastname, SSN, DOB, Email, account);
-		Bank.addUser(customer); //revisit
+		User user = new User(firstname, lastname, SSN, DOB, Email, account);
+		Bank.addUser(user); 
 	}
-	
+
 
 	private void MakeaDeposit() {
 		int account = selectAccount();
@@ -184,27 +195,48 @@ public class MainMenu {
 		}
 		catch(NumberFormatException e) {
 			System.out.println("Invalid, Try Again");
+			amount = 0;
 		}
-		((Bank) bank.getCustomer(account)).getUserAccount().deposit(amount); //revisit
+		bank.getUser(account).getUserAccount().deposit(amount);;
 	}
 
+	private void MakeaWithrawl() {
+		int account = selectAccount();
+		System.out.print("How much do you want to withdrawal?     ");
+		double amount = 0;
+		try {
+			amount = Double.parseDouble(input.nextLine());
+		}
+		catch(NumberFormatException e) {
+			System.out.println("Invalid, Try Again");
+			amount = 0;
+		}
+		bank.getUser(account).getUserAccount().withdrawal(amount);;
+
+	}
+
+
 	private int selectAccount() {
-		ArrayList<User> customers = Bank.getUser();
+		ArrayList<User> users = Bank.getUser();
+		if (users.size() <= 0) {
+			System.out.println("No Customers at this Bank");
+			return -1;
+		}
 		System.out.println("Select Account:    ");
-		for (int i = 0; i < customers.size(); i++) {
-			System.out.println((i+1) + "|" + customers.get(i).basicinformation());
+		for (int i = 0; i < users.size(); i++) {
+			System.out.println((i+1) + "|" + users.get(i).basicinformation());
 		}
 		int account = 0;
 		System.out.print("Make your selection");
 		try {
-			account = Integer.parseInt(input.nextLine()) - 1;
+			account = Integer.parseInt(input.nextLine());
 		}
 		catch (NumberFormatException e) {
 			account = -1;
 		}
 		return account;
 	}
-	
 
-	}
+
+}
 

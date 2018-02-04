@@ -1,20 +1,19 @@
-import java.util.ArrayList;
 
 public class User {
 
-	private String firstname;
-	private String lasttname;
-	private String SSNtname;
-	private String dOB;
-	private String email;
-	private UserAccount UserAccount;
+	private final String firstname;
+	private final String lasttname;
+	private final String SSNtname;
+	private final String DOB;
+	private final String email;
+	private final UserAccount UserAccount;
 
-	public User(String firstname, String lastname, String sSN, String dOB, String email, UserAccount account) {
-		this.firstname = firstname;
-		this.lasttname = lastname;
-		this.SSNtname  = sSN;
-		this.dOB       = dOB;
-		this.email     = email;
+	public User(String firstname, String lastname, String SSN, String DOB, String email, UserAccount account) {
+		this.firstname   = firstname;
+		this.lasttname   = lastname;
+		this.SSNtname    = SSN;
+		this.DOB         = DOB;
+		this.email       = email;
 		this.UserAccount = account;
 		
 	}
@@ -25,7 +24,7 @@ public class User {
 				"Firs Name" + firstname +  
 				"last Name" + lasttname + "\n" +
 				"SSN"       + SSNtname  + "\n" +
-				"DOB"       + dOB       + "\n" +
+				"DOB"       + DOB       + "\n" +
 				"Email"     + email     + "\n" +
 				"User Account" + UserAccount;
 	}
@@ -34,7 +33,7 @@ public class User {
 				"Firs Name" + firstname +  
 				"last Name" + lasttname + "\n" +
 				"SSN"       + SSNtname  + "\n" +
-				"DOB"       + dOB       + "\n" +
+				"DOB"       + DOB       + "\n" +
 				"Email"     + email     + "\n" +
 				"User Account" + UserAccount;
 	}

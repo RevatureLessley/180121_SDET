@@ -1,24 +1,26 @@
 import java.util.*;
 public class Bank {
 
-	 static ArrayList<User> customers = new ArrayList<User>();
-	
-	
-	
+	ArrayList<User> users = new ArrayList<User>();
 
-	 //Revisit
-	 Object getCustomer(int account) {
-		return customers.get(account);
+	public static void addUser(User user) {
+		users.add(user);
 	}
-	 static ArrayList getUser() {
-		 return customers;
-	 }
-	 
-	 UserAccount getUserAccount() {
-		 return getUserAccount();
-	 }
-	public static User addUser(User customer) {
-		return customer;
+
+    ArrayList<User> getUser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	User getUser(int account) {
+		return users.get(account);
+	}
+	
+	ArrayList<User> getusers() {
+		return users;
+	}
+
+	
 		
 	}
-}
+

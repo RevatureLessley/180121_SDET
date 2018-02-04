@@ -62,7 +62,7 @@ public class UserAccount {
 		}else {
 			interest = 0.05;
 		}
-		
+	
 	}
 	
 }
