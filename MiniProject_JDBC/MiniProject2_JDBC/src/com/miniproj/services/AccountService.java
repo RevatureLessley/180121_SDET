@@ -1,5 +1,6 @@
 package com.miniproj.services;
 
+import java.util.List;
 import com.miniproj.beans.Account;
 import com.miniproj.dao.AccountDao;
 import com.miniproj.dao.AccountDaoImpl;
@@ -67,6 +68,11 @@ public class AccountService {
 				           + "Checkings balance: " + checkingsBalance + "\n"
 				           + "Savings balance: " + savingsBalance + "\n"
 				           + "===========================================");
+	}
+	
+	public List<Account> accounts() {
+		dao = new AccountDaoImpl();
+		return dao.getAllAccounts();
 	}
 	
 }

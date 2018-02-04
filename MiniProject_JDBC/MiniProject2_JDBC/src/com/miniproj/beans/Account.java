@@ -27,6 +27,22 @@ public class Account {
 		isClosed = 0; 
 	}
 
+	public Account(String email, String firstName, String lastName, String username, String password, 
+			int isAdmin, int isActive, int isClosed, double checkingsBalance, double savingsBalance) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.checkingsBalance = checkingsBalance;
+		this.savingsBalance = savingsBalance;
+		this.isAdmin = isAdmin;
+		this.isActive = isActive;
+		this.isClosed = isClosed;
+	}
+
+
+
 	public String getFirstName() {
 		return firstName;
 	}

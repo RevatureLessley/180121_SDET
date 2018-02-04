@@ -19,6 +19,8 @@ public class AccountDaoImpl implements AccountDao {
  * Accounts cannot be deleted (for practical purposes), 
  * so a closed account will just be deactivated, with no funds in either account.
  */
+	List<Account> accounts;
+	Account account;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	String sql;
@@ -79,28 +81,50 @@ public class AccountDaoImpl implements AccountDao {
 
 	@Override
 	public Account selectAccountByEmail(String email) {
-		return null;
+//		try (Connection conn = Connections.getConnection()) {
+//		sql = "SELECT * FROM user_info, account_info, balance_info";
+//		ps = conn.prepareStatement(sql);
+//		rs = stmt.executeQuery(sql); // Executing queries, brings back ResultSet object
+//
+//		while (rs.next()) {	//starts at 0
+//			
+		//rs.getString
+//		}
+//
+//	} catch (SQLException e) {
+//		e.printStackTrace();
+//	} finally {
+//		close(stmt);
+//		close(rs);
+//	}
+		return account;
 	}
 
 	@Override
 	public List<Account> getAllAccounts() {
-		List<Account> accounts = new ArrayList<>();
-//		try (Connection conn = Connections.getConnection()) {
-//			sql = "SELECT * FROM accounts";
-//			ps = conn.prepareStatement(sql);
-//			rs = stmt.executeQuery(sql); // Executing queries, brings back ResultSet object
-//
-//			while (rs.next()) {	//starts at 0
-//				accounts.add(new Account(rs.getString(1), rs.getString(2), rs.getDouble(3), rs.getDouble(4)));
-//			}
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			close(stmt);
-//			close(rs);
-//		}
-//		for (Account a : accounts) System.out.println(a);
+		accounts = new ArrayList<>();
+		try (Connection conn = Connections.getConnection()) {
+			sql = "SELECT * FROM user_info " + 
+					"FULL OUTER JOIN account_info " + 
+					"ON user_info.u_email = account_info.a_email " + 
+					"FULL OUTER JOIN balance_info " + 
+					"ON account_info.a_email = balance_info.b_email";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				accounts.add(new Account(rs.getString(1), rs.getString(2), rs.getString(3), 
+				rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8), 
+				rs.getInt(9), rs.getDouble(11), rs.getDouble(12)));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		for (Account a : accounts) System.out.println(a);
 		return accounts;
 	}
 
