@@ -20,7 +20,7 @@ public class Main {
 		Account a = new Account();
 		a.setEmail("Goop@r.com");
 		//as.insertNewUser(a);
-		//as.depositCheckings(a, 100.56);
+		as.depositSavings(a, 2345.56);
 		System.out.println(as.getAccount("Goop@r.com"));
 		
 	}
