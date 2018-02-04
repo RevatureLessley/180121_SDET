@@ -231,7 +231,6 @@ public class Bank {
 	
 	//New user Registration Page
 	public User newUser() throws IOException {
-		logger.info("New User register");
 		System.out.println("Welcome New User\n");
 		Scanner i = new Scanner(System.in);
 		System.out.print("Enter User Name: ");
@@ -241,7 +240,7 @@ public class Bank {
 		System.out.println("Thank you registering with us.\n"+
 							"Please wait until our Admin approves your account\n");
 		System.in.read();
-		logger.warn(userName+" needs Admin Approval");
+		logger.warn("New User "+userName+" registered");
 		return new User(userName, password, 0.0, "notApproved");
 		}	
 	

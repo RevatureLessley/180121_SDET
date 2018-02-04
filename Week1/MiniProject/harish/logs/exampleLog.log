@@ -205,3 +205,13 @@
 2018-02-03 17:14:48 INFO  Bank:164 - Loading user data from file
 2018-02-03 17:14:54 DEBUG Bank:58 - User done with application
 2018-02-03 17:14:54 DEBUG Bank:250 - Saving data
+2018-02-04 02:23:38 INFO  Bank:25 - Application Started
+2018-02-04 02:23:38 INFO  Bank:164 - Loading user data from file
+2018-02-04 02:23:50 DEBUG Bank:121 - Admin sign in
+2018-02-04 02:23:51 DEBUG Bank:249 - Saving data
+2018-02-04 02:23:59 DEBUG Bank:217 - harish sign in
+2018-02-04 02:23:59 INFO  Bank:64 - harish sign in
+2018-02-04 02:24:05 DEBUG Bank:105 - harish withdraw made for 23.0
+2018-02-04 02:24:07 DEBUG Bank:249 - Saving data
+2018-02-04 02:24:09 DEBUG Bank:58 - User done with application
+2018-02-04 02:24:09 DEBUG Bank:249 - Saving data
