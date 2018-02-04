@@ -15,7 +15,16 @@ public class Account {
 	private int isClosed; 
 	
 	public Account() {
-		super();
+		firstName = "N/A";
+		lastName = "N/A";
+		email = "N/A";
+		username = "N/A";
+		password = "N/A";
+		checkingsBalance = 0.0;
+		savingsBalance = 0.0;
+		isAdmin = 0;
+		isActive = 0;	
+		isClosed = 0; 
 	}
 
 	public String getFirstName() {
