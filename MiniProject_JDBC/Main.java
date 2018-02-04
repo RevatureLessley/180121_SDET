@@ -19,8 +19,9 @@ public class Main {
 		AccountService as = new AccountService();
 		Account a = new Account();
 		a.setEmail("Goop@r.com");
-		as.insertNewUser(a);
-		as.depositCheckings(a, 100.56);
+		//as.insertNewUser(a);
+		//as.depositCheckings(a, 100.56);
+		System.out.println(as.getAccount("Goop@r.com"));
 		
 	}
 //	List<Account> accounts;
