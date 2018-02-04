@@ -1,5 +1,6 @@
 package com.bank.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,8 +16,19 @@ public class UserDaoImp implements UserDao {
 
 	@Override
 	public boolean insertUser(User u) {
-		// TODO Auto-generated method stub
-		return false;
+		// Add new user to data base
+		CallableStatement stmt = null;
+		try(Connection conn = Connections.getConnection()){
+			stmt = conn.prepareCall("{call createNewUser(?,?)}");
+			stmt.setString(1, u.getUserName());
+			stmt.setString(2, u.getPassword());
+			stmt.execute();
+		}catch(SQLException e){
+			return false;
+		}finally{
+			CloseStreams.close(stmt);
+		}
+		return true;
 	}
 
 	@Override
@@ -50,14 +62,34 @@ public class UserDaoImp implements UserDao {
 
 	@Override
 	public boolean deleteUser(User u) {
-		// TODO Auto-generated method stub
-		return false;
+		// Delete the user record
+		CallableStatement stmt = null;
+		try(Connection conn = Connections.getConnection()){
+			stmt = conn.prepareCall("DELETE LOGIN WHERE USERNAME = ?");
+			stmt.setString(1, u.getUserName());
+			stmt.execute();
+		}catch(SQLException e){
+			return false;
+		}finally{
+			CloseStreams.close(stmt);
+		}
+		return true;
 	}
 
 	@Override
 	public boolean updateUser(User u) {
-		// TODO Auto-generated method stub
-		return false;
+		// Change status from NonUser to User
+		CallableStatement stmt = null;
+		try(Connection conn = Connections.getConnection()){
+			stmt = conn.prepareCall("{call updateUser(?)}");
+			stmt.setString(1, u.getUserName());
+			stmt.execute();
+		}catch(SQLException e){
+			return false;
+		}finally{
+			CloseStreams.close(stmt);
+		}
+		return true;
 	}
 
 }
