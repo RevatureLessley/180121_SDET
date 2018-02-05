@@ -10,3 +10,12 @@
 2018-02-04 13:34:55 WARN  MainMenu:11 - This is Warn
 2018-02-04 13:34:55 ERROR MainMenu:12 - This is Error
 2018-02-04 13:34:55 FATAL MainMenu:13 - This is Fatal
+2018-02-05 08:53:40 WARN  MainMenu:11 - This is Warn
+2018-02-05 08:53:40 ERROR MainMenu:12 - This is Error
+2018-02-05 08:53:40 FATAL MainMenu:13 - This is Fatal
+2018-02-05 08:54:10 WARN  MainMenu:11 - This is Warn
+2018-02-05 08:54:10 ERROR MainMenu:12 - This is Error
+2018-02-05 08:54:10 FATAL MainMenu:13 - This is Fatal
+2018-02-05 08:55:56 WARN  MainMenu:11 - This is Warn
+2018-02-05 08:55:56 ERROR MainMenu:12 - This is Error
+2018-02-05 08:55:56 FATAL MainMenu:13 - This is Fatal

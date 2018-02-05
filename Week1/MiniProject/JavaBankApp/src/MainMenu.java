@@ -77,28 +77,23 @@ public class MainMenu {
 			break;
 		case 1:
 			AdminLogin();
-			System.exit(0);
 			
 			break;
 
 		case 2:
 			CreateNewAccount();
-			System.exit(0);
 
 			break;
 		case 3:
 			MakeaDeposit();
-			System.exit(0);
 			
 			break;
 		case 4:
 			MakeaWithrawl();
-			System.exit(0);
 			
 			break;
 		case 5:
 			selectAccount();
-			System.exit(0);
 			
 			break;
 
@@ -106,15 +101,18 @@ public class MainMenu {
 			System.out.println("Oh no error");
 
 		}
-
 	}
-
 
 	private void AdminLogin() {
-		// TODO Auto-generated method stub
+		
+	    Scanner keyboard = new Scanner (System.in);
+	    System.out.print("What is your Username?");
+	    String user = keyboard.nextLine();
+	    System.out.print("What is your password?");
+	    String pass = keyboard.nextLine();
 
+	    System.out.print("Welcome to Admin how can we help you");
 	}
-
 
 	private void CreateNewAccount() {
 		String firstname, lastname, SSN, DOB, Email, AccountType = null;
@@ -182,14 +180,27 @@ public class MainMenu {
 			account = new savings(DirectDeposit);
 		}
 		User user = new User(firstname, lastname, SSN, DOB, Email, account);
-		Bank.addUser(user); 
+	
 	}
 
 
 	private void MakeaDeposit() {
-		int account = selectAccount();
+		Scanner keyboard = new Scanner (System.in);
+		    
+		System.out.print("What is your Username?");
+		String user = keyboard.nextLine();
+		System.out.print("What is your password?");
+		String pass = keyboard.nextLine();
+		System.out.print("Welcome, how can we help you");
+		
 		System.out.print("How much do you want to deposit?     ");
+		String deposit = keyboard.nextLine();
+		
+		System.out.print("You now have deposited $" + deposit + " into your account ");
+		System.exit(0);
+		
 		double amount = 0;
+
 		try {
 			amount = Double.parseDouble(input.nextLine());
 		}
@@ -197,12 +208,25 @@ public class MainMenu {
 			System.out.println("Invalid, Try Again");
 			amount = 0;
 		}
-		bank.getUser(account).getUserAccount().deposit(amount);;
 	}
 
 	private void MakeaWithrawl() {
-		int account = selectAccount();
+		Scanner keyboard = new Scanner (System.in);
+	    
+		System.out.print("What is your Username?");
+		String user = keyboard.nextLine();
+		System.out.print("What is your password?");
+		String pass = keyboard.nextLine();
+		System.out.print("Welcome, how can we help you");
+		    
 		System.out.print("How much do you want to withdrawal?     ");
+		String withdrawan = keyboard.nextLine();
+		
+		System.out.print("You now have withdrawan $" + withdrawan + "into your account ");
+		
+		System.out.println("Thank you, GoodBye");
+		System.exit(0);
+		
 		double amount = 0;
 		try {
 			amount = Double.parseDouble(input.nextLine());
@@ -211,30 +235,11 @@ public class MainMenu {
 			System.out.println("Invalid, Try Again");
 			amount = 0;
 		}
-		bank.getUser(account).getUserAccount().withdrawal(amount);;
-
 	}
 
-
 	private int selectAccount() {
-		ArrayList<User> users = Bank.getUser();
-		if (users.size() <= 0) {
-			System.out.println("No Customers at this Bank");
-			return -1;
-		}
-		System.out.println("Select Account:    ");
-		for (int i = 0; i < users.size(); i++) {
-			System.out.println((i+1) + "|" + users.get(i).basicinformation());
-		}
-		int account = 0;
-		System.out.print("Make your selection");
-		try {
-			account = Integer.parseInt(input.nextLine());
-		}
-		catch (NumberFormatException e) {
-			account = -1;
-		}
-		return account;
+		return 0;
+	
 	}
 
 
