@@ -6,7 +6,7 @@ import com.miniproj.dao.AccountDao;
 import com.miniproj.dao.AccountDaoImpl;
 
 public class AccountService {
-	AccountDao dao;
+	AccountDao dao = new AccountDaoImpl();
 	Account account;
 	private String firstName, lastName, email, username, password;
 	private double checkingsBalance, savingsBalance;
@@ -26,6 +26,7 @@ public class AccountService {
 		isClosed = acc.getIsClosed();
 		accountStatus();
 	}
+	
 	public void accountStatus() {
 		if(isAdmin == 0) isAdminStatus = "Regular account";
 		else isAdminStatus = "Administrator";	
@@ -40,7 +41,6 @@ public class AccountService {
 	
 	public void insertNewUser(Account acc) {
 		gatherAccountInstances(acc);
-		dao = new AccountDaoImpl();
 		dao.insertIntoUserInfo(email, firstName, lastName);
 		dao.insertIntoAccountInfo(email, username, password, isAdmin, isActive, isClosed);
 		dao.insertIntoBalanceInfo(email, savingsBalance, checkingsBalance);
@@ -72,18 +72,15 @@ public class AccountService {
 	}
 	
 	public Account getAccount(String email) {
-		dao = new AccountDaoImpl();
 		account = dao.selectAccountByEmail(email);
 		return account;
 	}
 	
 	public List<Account> getAccounts() {
-		dao = new AccountDaoImpl();
 		return dao.getAllAccounts();
 	}
 	
 	public void depositCheckings(Account acc, double amount) {
-		dao = new AccountDaoImpl();
 		gatherAccountInstances(acc);
 		double newVal = acc.getCheckingsBalance() + amount;
 		String column = "b_checkings";
@@ -91,7 +88,6 @@ public class AccountService {
 	}
 	
 	public void depositSavings(Account acc, double amount) {
-		dao = new AccountDaoImpl();
 		gatherAccountInstances(acc);
 		double newVal = acc.getSavingsBalance() + amount;
 		String column = "b_savings";
@@ -99,7 +95,6 @@ public class AccountService {
 	}
 	
 	public void withdrawCheckings(Account acc, double amount) {
-		dao = new AccountDaoImpl();
 		gatherAccountInstances(acc);
 		double newVal = acc.getCheckingsBalance() - amount;
 		String column = "b_checkings";
@@ -107,11 +102,14 @@ public class AccountService {
 	}
 	
 	public void withdrawSavings(Account acc, double amount) {
-		dao = new AccountDaoImpl();
 		gatherAccountInstances(acc);
 		double newVal = acc.getCheckingsBalance() - amount;
 		String column = "b_checkings";
 		dao.updateBalanceInfo(email, column, newVal);
 	}
 	
+	public void updateAccountStatus(String e, int val, char x) {
+		if (x == 'a') dao.updateAccountStatusInfo(e, "a_is_active", val); 
+		else dao.updateAccountStatusInfo(e, "a_is_closed", val); 
+	}
 }

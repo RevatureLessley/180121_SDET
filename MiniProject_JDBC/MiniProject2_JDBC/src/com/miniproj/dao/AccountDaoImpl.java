@@ -106,7 +106,6 @@ public class AccountDaoImpl implements AccountDao {
 			close(ps);
 			close(rs);
 		}
-		for (Account a : accounts) System.out.println(a);
 		return accounts;
 	}
 

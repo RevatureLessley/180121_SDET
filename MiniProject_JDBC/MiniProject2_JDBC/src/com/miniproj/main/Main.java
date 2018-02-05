@@ -173,7 +173,7 @@ public class Main {
 			System.out.println("That is incorrect. Try again: ");
 			password = input.nextLine();
 		}
-		if (currentUser.getIsAdmin() == 1 && currentUser.getIsActive() == 1); //administrative(currentUser);
+		if (currentUser.getIsAdmin() == 1 && currentUser.getIsActive() == 1) administrative(currentUser);
 		else if (currentUser.getIsClosed() == 2) {
 			System.out.println("Sorry. Your account has been terminated. Contact administrator for details.");
 			return;
@@ -269,7 +269,7 @@ public class Main {
 			}
 		}
 	}
-/*	
+
 //============ Administrative controls ============//
 	public void administrative(Account acc) throws IOException {
 		String accStatus;
@@ -288,18 +288,12 @@ public class Main {
 					+ "6) withdraw savings \n"
 					+ "7) Checkings balance \n"
 					+ "8) Savings balance \n"
+					+ "9) Terminate/reopen account"
 					+ "Type 'sign out' to return to login."
 					+ "===========================================");
 			userSelection = input.nextLine();
 			switch (userSelection) {
-				case "1": for (Account a : accounts) {
-							if (a.getCanAccess()) accStatus = "Activated";
-							else accStatus = "Not activated";
-							System.out.println(a.getUsername() + "\n"
-									+ "Checkings: $" + a.getCheckingsBalance() + "\n"
-									+ "Savings: $" + a.getSavingsBalance() + "\n"
-									+ "Account status: " + accStatus + "\n");
-						  }
+				case "1": for (Account a : accounts) as.displayInfoForAdmin(a);
 						  break;
 				case "2": activateAccount();
 						  break;
@@ -332,28 +326,42 @@ public class Main {
 		boolean accExists = false;
 		input = new Scanner(System.in);
 		System.out.println("Which account would you like to activate/deactivate?");
-		username = input.nextLine();
+		email = input.nextLine();
 		for (Account a : accounts) {
-			if (username.equals(a.getUsername()) && !a.getCanAccess()) {
-				accountIndex = accounts.indexOf(a);
-				accExists = true;
-				a.setCanAccess(true);
-				accounts.set(accountIndex, a);
-				refreshDatabase();
+			if (email.equals(a.getEmail()) && a.getIsActive() == 0) {
+				as.updateAccountStatus(email, 1, 'a');
 				logger.info("Account has been activated by admin.");
 				System.out.println("Account has been activated. \n");
-			}
-			else if (username.equals(a.getUsername()) && a.getCanAccess()) {
-				accountIndex = accounts.indexOf(a);
 				accExists = true;
-				a.setCanAccess(false);
-				accountIndex = accounts.indexOf(a);
-				refreshDatabase();
-				logger.info("Account has been deactivated by admin.");
+			} else if (email.equals(a.getEmail()) && a.getIsActive() == 1) {
+				as.updateAccountStatus(email, 0, 'a');
+				logger.info("Account has been activated by admin.");
 				System.out.println("Account has been deactivated. \n");
+				accExists = true;
 			} else continue;
 		  }
 		if (!accExists) System.out.println("Account does not exist.");
-	}*/
+	}
+	
+	public void terminateAccount() throws IOException {
+		boolean accExists = false;
+		input = new Scanner(System.in);
+		System.out.println("Which account would you like to terminate/reopen?");
+		email = input.nextLine();
+		for (Account a : accounts) {
+			if (email.equals(a.getEmail()) && a.getIsActive() == 1) {
+				as.updateAccountStatus(email, 2, 'c');
+				logger.info("Account has been terminated by admin.");
+				System.out.println("Account has been terminated. \n");
+				accExists = true;
+			} else if (email.equals(a.getEmail()) && a.getIsActive() == 2) {
+				as.updateAccountStatus(email, 1, 'c');
+				logger.info("Account has been reopened by admin.");
+				System.out.println("Account has been reopened. \n");
+				accExists = true;
+			} else continue;
+		  }
+		if (!accExists) System.out.println("Account does not exist.");
+	}
 }
 
