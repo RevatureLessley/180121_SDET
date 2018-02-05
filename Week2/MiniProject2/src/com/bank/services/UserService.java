@@ -44,10 +44,10 @@ public class UserService {
 					return 0;
 				}else if (u.getStatus().equals("User")){
 					Page.customerPage(u);
-					return 0;
+					return 1;
 				}else if (u.getStatus().equals("NonUser")){
 					Page.nonUser();
-					return 0;
+					return 2;
 				}
 			}
 		}
