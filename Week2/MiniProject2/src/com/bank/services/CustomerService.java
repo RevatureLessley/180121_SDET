@@ -35,12 +35,6 @@ public class CustomerService {
 		return null;
 	}
 
-	
-	public static void addAmount(Customer p) {
-		
-		
-	}
-
 	public static void updateAmount(Customer p) {
 		// // add amount or subtract amount in customer account
 		if(Cdao.update(p)){
