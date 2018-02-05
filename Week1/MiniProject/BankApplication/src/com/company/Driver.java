@@ -1,7 +1,5 @@
 package com.company;
 
-import com.connection.BankConnection;
-import com.connection.User;
 import com.management.BankManagement;
 
 import java.util.logging.Logger;
@@ -19,15 +17,6 @@ public class Driver {
     public static void main(String[] args) {
         ProgramState currentState = ProgramState.USER_PROMPT;
         BankManagement bankManagement = new BankManagement();
-        BankConnection bankConnection = new BankConnection();
-        User user = bankConnection.getUser("adam", "adam");
-        if(user== null){
-            System.out.println("user not found");
-        }else{
-            System.out.println(user.toString());
-        }
-        //bankConnection.insertUser(new User("jim", 0f, "jim"));
-        bankConnection.updateUserById(new User("jim", 40f, "jim", 60));
 
         while(currentState != ProgramState.USER_LOGOUT){
             currentState = bankManagement.process(currentState);
