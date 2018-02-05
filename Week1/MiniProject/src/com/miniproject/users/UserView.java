@@ -1,5 +1,8 @@
 package com.miniproject.users;
 
+import org.apache.log4j.Logger;
+
+import com.miniproject.services.UserService;
 import com.miniproject.util.InputReader;
 
 /*
@@ -7,8 +10,10 @@ import com.miniproject.util.InputReader;
  * Contains the commands that the regular User can see when logged in
  */
 public class UserView {
+	final static Logger logger = Logger.getLogger(UserView.class);
 	private User loggedUser;
 	private final int EXITNUM = 4;
+	private final int LOGINCOMBONUM = 3;
 	private String notAppr = "Your account has either been banned or has not been approved yet.\n1) Log Out";
 	private String title = "-----USERVIEW-----";
 	private String logout = "-----USER LOGOUT-----";
@@ -20,6 +25,7 @@ public class UserView {
 	
 	public void userSees() {
 		if(loggedUser.isAccountApproved() && !loggedUser.isBanned()) {
+			lastLogin();
 			System.out.println(title + '\n' + viewPrompt);
 			int response = InputReader.readInt(viewPrompt);
 			while(response != EXITNUM) {
@@ -62,6 +68,13 @@ public class UserView {
 	
 	private void currentBalance() {
 		System.out.printf("|BALANCE:  $%.2f|\n", loggedUser.getCurrency().getCurrency());
+	}
+	
+	private void lastLogin() {
+		this.loggedUser.setDaysLoggedIn(UserService.loginStreak(this.loggedUser.getUsername()));
+		if(this.loggedUser.getDaysLoggedIn() != 0 && this.loggedUser.getDaysLoggedIn() % LOGINCOMBONUM == 0) {
+			logger.info("Get Coupon"); //BUG can get mulitple coupons in the same day
+		}
 	}
 	
 	private void logOut() {

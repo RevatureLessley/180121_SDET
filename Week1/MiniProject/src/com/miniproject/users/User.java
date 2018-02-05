@@ -109,6 +109,19 @@ public class User extends Account implements Serializable {
 		return this.currency;
 	}
 
+	public void setDaysLoggedIn(int inDays) {
+		logger.info(this.username + " login streak=" + inDays);
+		this.daysLoggedIn = inDays;
+	}
+	
+	public int getDaysLoggedIn() {
+		return this.daysLoggedIn;
+	}
+	
+	public int getBeverageId() {
+		return this.beverageId;
+	}
+	
 	@Override
 	public boolean getIsAdmin() {
 		return this.isAdmin;

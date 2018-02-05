@@ -137,4 +137,33 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 
+	@Override
+	public int loginStreak(String inUsername) {
+		CallableStatement stmt = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int loginStreak = -1;
+		
+		try(Connection conn = Connections.getConnection()){
+			stmt = conn.prepareCall("{call login_streak	(?)}");
+			stmt.setString(1, inUsername);
+			stmt.execute();
+			
+			ps = conn.prepareStatement("SELECT login_streak FROM users WHERE username = ?");
+			ps.setString(1, inUsername);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				loginStreak = rs.getInt(1);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(stmt);
+		}
+		
+		return loginStreak;
+	}
+
 }

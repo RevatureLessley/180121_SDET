@@ -11,4 +11,5 @@ public interface UserDao {
 	public String getUsername(String inUsername);
 	public void approveUser(String inUsername);
 	public void uBanUser(String inUsername, int inOption);
+	public int loginStreak(String inUsername);
 }

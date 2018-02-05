@@ -245,3 +245,51 @@
 2018-02-05 14:03:06 INFO  Serializer:46 - Read from: src/users.ser
 2018-02-05 14:03:06 DEBUG MiniSaver:29 - deserialized
 2018-02-05 14:03:23 INFO  Serializer:29 - Write to: src/users.ser
+2018-02-05 15:21:07 INFO  Serializer:46 - Read from: src/users.ser
+2018-02-05 15:21:07 DEBUG MiniSaver:29 - deserialized
+2018-02-05 15:21:32 INFO  User:113 - ruth login streak=0
+2018-02-05 15:29:13 INFO  Serializer:29 - Write to: src/users.ser
+2018-02-05 15:29:16 INFO  Serializer:46 - Read from: src/users.ser
+2018-02-05 15:29:16 DEBUG MiniSaver:29 - deserialized
+2018-02-05 15:29:41 INFO  Serializer:29 - Write to: src/users.ser
+2018-02-05 15:29:45 INFO  Serializer:46 - Read from: src/users.ser
+2018-02-05 15:29:45 DEBUG MiniSaver:29 - deserialized
+2018-02-05 15:29:51 INFO  User:113 - bobby login streak=0
+2018-02-05 15:29:51 INFO  UserView:76 - Get Coupon
+2018-02-05 15:30:02 INFO  User:113 - ruth login streak=0
+2018-02-05 15:30:02 INFO  UserView:76 - Get Coupon
+2018-02-05 15:32:24 INFO  User:113 - charle login streak=0
+2018-02-05 15:32:24 INFO  UserView:76 - Get Coupon
+2018-02-05 15:33:19 INFO  Serializer:46 - Read from: src/users.ser
+2018-02-05 15:33:19 DEBUG MiniSaver:29 - deserialized
+2018-02-05 15:33:41 INFO  Serializer:46 - Read from: src/users.ser
+2018-02-05 15:33:41 DEBUG MiniSaver:29 - deserialized
+2018-02-05 15:33:53 INFO  User:113 - charle login streak=0
+2018-02-05 15:35:35 INFO  User:113 - bobby login streak=0
+2018-02-05 15:35:38 INFO  Serializer:29 - Write to: src/users.ser
+2018-02-05 15:35:52 INFO  Serializer:46 - Read from: src/users.ser
+2018-02-05 15:35:52 DEBUG MiniSaver:29 - deserialized
+2018-02-05 15:35:59 INFO  User:113 - charle login streak=0
+2018-02-05 15:36:07 INFO  User:113 - bobby login streak=0
+2018-02-05 15:56:50 INFO  Serializer:29 - Write to: src/users.ser
+2018-02-05 15:56:53 INFO  Serializer:46 - Read from: src/users.ser
+2018-02-05 15:56:53 DEBUG MiniSaver:29 - deserialized
+2018-02-05 15:56:59 INFO  User:113 - bobby login streak=3
+2018-02-05 15:56:59 INFO  UserView:76 - Get Coupon
+2018-02-05 15:57:06 INFO  User:113 - ruth login streak=4
+2018-02-05 15:57:15 INFO  User:113 - charle login streak=0
+2018-02-05 15:57:19 INFO  Serializer:29 - Write to: src/users.ser
+2018-02-05 15:57:34 INFO  Serializer:46 - Read from: src/users.ser
+2018-02-05 15:57:34 DEBUG MiniSaver:29 - deserialized
+2018-02-05 15:57:43 INFO  User:113 - bobby login streak=3
+2018-02-05 15:57:43 INFO  UserView:76 - Get Coupon
+2018-02-05 16:21:30 INFO  Serializer:29 - Write to: src/users.ser
+2018-02-05 16:29:10 INFO  Serializer:46 - Read from: src/users.ser
+2018-02-05 16:29:10 DEBUG MiniSaver:29 - deserialized
+2018-02-05 16:29:17 INFO  User:113 - bobby login streak=3
+2018-02-05 16:29:17 INFO  UserView:76 - Get Coupon
+2018-02-05 16:29:24 INFO  User:101 - 43.00  |deposited
+2018-02-05 16:29:33 INFO  User:113 - bobby login streak=3
+2018-02-05 16:29:33 INFO  UserView:76 - Get Coupon
+2018-02-05 16:29:41 INFO  User:113 - ruth login streak=4
+2018-02-05 16:29:50 INFO  Serializer:29 - Write to: src/users.ser

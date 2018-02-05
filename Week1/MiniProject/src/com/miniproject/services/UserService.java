@@ -35,4 +35,9 @@ public class UserService {
 		UserDao dao = new UserDaoImpl();
 		dao.uBanUser(in_username, in_option);
 	}
+	
+	public static int loginStreak(String in_username) {
+		UserDao dao = new UserDaoImpl();
+		return dao.loginStreak(in_username);
+	}
 }
