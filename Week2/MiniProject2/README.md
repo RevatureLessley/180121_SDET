@@ -15,9 +15,11 @@ This is a Java mini project of a Bank application with console as front end and 
 - [x] Junit with Mockito tests essential methods in the application.
 
 ## Demo
+
 ![demo](demo.gif)
 
 ## Entity Relationship Diagram
+
 ![ERD](ERD.png)
 
 
