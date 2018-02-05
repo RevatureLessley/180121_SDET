@@ -30,4 +30,9 @@ public class UserService {
 		UserDao dao = new UserDaoImpl();
 		dao.approveUser(in_username);
 	}
+	
+	public static void unBanUser(String in_username, int in_option) {
+		UserDao dao = new UserDaoImpl();
+		dao.uBanUser(in_username, in_option);
+	}
 }

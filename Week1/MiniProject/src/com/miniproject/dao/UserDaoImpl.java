@@ -107,12 +107,28 @@ public class UserDaoImpl implements UserDao {
 		return s;
 	}
 	
-	public void approveUser(String in_Username) {
+	public void approveUser(String inUsername) {
 		CallableStatement stmt = null;
 		
 		try(Connection conn = Connections.getConnection()){
 			stmt = conn.prepareCall("{call approve_user(?)}");
-			stmt.setString(1, in_Username);
+			stmt.setString(1, inUsername);
+			stmt.execute();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(stmt);
+		}
+	}
+
+	@Override
+	public void uBanUser(String inUsername, int inOption) {
+		CallableStatement stmt = null;
+		
+		try(Connection conn = Connections.getConnection()){
+			stmt = conn.prepareCall("{call ban_un_user(?, ?)}");
+			stmt.setString(1, inUsername);
+			stmt.setInt(2, inOption);
 			stmt.execute();
 		} catch(SQLException e) {
 			e.printStackTrace();

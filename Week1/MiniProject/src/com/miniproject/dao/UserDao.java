@@ -10,4 +10,5 @@ public interface UserDao {
 	public List<User> getAllUsersForAdmin();
 	public String getUsername(String inUsername);
 	public void approveUser(String inUsername);
+	public void uBanUser(String inUsername, int inOption);
 }

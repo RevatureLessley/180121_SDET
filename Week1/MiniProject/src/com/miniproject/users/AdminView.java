@@ -15,13 +15,15 @@ import com.miniproject.util.Serializer;
  */
 public class AdminView {
 	final static Logger logger = Logger.getLogger(AdminView.class);
-	private static final int EXITNUM = 6;
+	private static final int EXITNUM = 4;
 	private Admin authorizer;
 	UsersCollection allUsers;
 	Map<String, Account> accountsMap;
 	List<User> users;
 	private String viewPrompt = "1) View All Users\n2) Approve User \n3) "
-			+ "Ban\\Un-Ban User \n4) Delete User \n5) Delete My Account \n" + EXITNUM + ") LogOut";
+			+ "Ban\\Un-Ban User \n" + EXITNUM + ") LogOut";
+	//private String viewPrompt = "1) View All Users\n2) Approve User \n3) "
+			//+ "Ban\\Un-Ban User \n4) Delete User \n5) Delete My Account \n" + EXITNUM + ") LogOut";
 	private String viewFormat = "|%-15s|%-10s|%-7s|\n";
 	private String logout = "+++++ADMIN LOGOUT+++++";
 	
@@ -42,11 +44,11 @@ public class AdminView {
 				approveUser();
 			} else if(response == 3) {
 				banning();
-			} else if(response == 4) {
+			} /*else if(response == 4) {
 				deleteUser();
 			} else if(response == 5) {
 				deleteAccount();
-			}
+			}*/
 			
 			if(response != EXITNUM && this.authorizer != null) {
 				System.out.println(viewPrompt);
@@ -84,23 +86,20 @@ public class AdminView {
 		viewUsers();
 		System.out.print("Enter the name of the user to ban/un-ban: ");
 		String bUser = InputReader.readString();
-		if(accountsMap.get(bUser) != null) {
-			if(!accountsMap.get(bUser).getIsAdmin()) {
-				String prompt = "Would you like to 1) Ban or 2) Un-Ban: ";
-				System.out.println(prompt);
-				int response = InputReader.readInt(prompt);
-				switch(response) {
-				case 1:
-					accountsMap.get(bUser).setBanned(true);
-					break;
-				case 2:
-					accountsMap.get(bUser).setBanned(false);
-					break;
-				default:
-					System.out.println("Option does not exist.");
-				}
-			} else {
-				System.out.println("Cannot ban/un-ban an Admin");
+		bUser = UserService.getUsername(bUser);
+		if(bUser != null) {
+			String prompt = "Would you like to 1) Ban or 2) Un-Ban: ";
+			System.out.println(prompt);
+			int response = InputReader.readInt(prompt);
+			switch(response) {
+			case 1:
+				UserService.unBanUser(bUser, 1);
+				break;
+			case 2:
+				UserService.unBanUser(bUser, 0);
+				break;
+			default:
+				System.out.println("Option does not exist.");
 			}
 		} else {
 			System.out.println("Account does not exist");
