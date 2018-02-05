@@ -9,7 +9,7 @@ This is a Java mini project of a Bank application with console as front end and 
 - [x] New User can register for a new account
 - [x] New User cannot access account untill Admin approves it
 - [x] All User data is persisted via Oracle Database
-- [X} Checks for Duplicate and avoids creating duplicate accounts.
+- [X] Checks for Duplicate and avoids creating duplicate accounts.
 - [x] Admin approves new accounts and do not have bank account
 - [X] Admin can view exsiting users and acount value
 - [x] [Logger](MiniProject2/logs/exampleLog.log) is also to application to track and debug the process
