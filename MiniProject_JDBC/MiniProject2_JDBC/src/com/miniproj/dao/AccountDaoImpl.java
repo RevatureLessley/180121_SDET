@@ -139,18 +139,13 @@ public class AccountDaoImpl implements AccountDao {
 	
 //======================= UPDATE METHODS =================================//
 	@Override
-	public void updateUserInfo(String email, String col, String newVal) {
+	public void updateFirstName(String email, String first) {
 		try (Connection conn = Connections.getConnection()) {
-			if (col == "u_first_name")
-				sql = "UPDATE account_info " + 
+				sql = "UPDATE user_info " + 
 						"SET u_first_name = ? " + 
 						"WHERE u_email = ?"; 
-			else
-				sql = "UPDATE balance_info " + 
-						"SET u_last_name = ? " + 
-						"WHERE u_email = ?"; 
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, newVal);
+			ps.setString(1, first);
 			ps.setString(2, email);
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -162,18 +157,31 @@ public class AccountDaoImpl implements AccountDao {
 	}
 	
 	@Override
-	public void updateAccountInfo(String email, String col, String newVal) {
+	public void updateLastName(String email, String last) {
 		try (Connection conn = Connections.getConnection()) {
-			if (col == "a_username")
-				sql = "UPDATE account_info " + 
-						"SET a_username = ? " + 
-						"WHERE a_email = ?"; 
-			else
+				sql = "UPDATE user_info " + 
+						"SET u_last_name = ? " + 
+						"WHERE u_email = ?"; 
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, last);
+			ps.setString(2, email);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+	}
+	
+	@Override
+	public void updatePassword(String email, String pass) {
+		try (Connection conn = Connections.getConnection()) {
 				sql = "UPDATE balance_info " + 
 						"SET a_password = ? " + 
 						"WHERE a_email = ?"; 
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, newVal);
+			ps.setString(1, pass);
 			ps.setString(2, email);
 			ps.executeUpdate();
 		} catch (SQLException e) {

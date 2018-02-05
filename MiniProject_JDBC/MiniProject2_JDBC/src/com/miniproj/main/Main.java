@@ -184,7 +184,7 @@ public class Main {
 
 //============ User main menu ============//
 	public void userMenu(Account a) throws IOException {
-		logger.info("User has successsfully signed in.");
+		logger.info("User has successsfully signed in. \n");
 		input = new Scanner(System.in);
 		boolean signout;
 		while (true) {
@@ -199,7 +199,7 @@ public class Main {
 					+ "6) Withdraw from savings \n"
 					+ "7) General account info \n"
 					+ "8) Edit user info \n"
-					+ "9) close account"
+					+ "9) close account \n"
 					+ "Type 'sign out' to return to login. \n"
 					+ "===========================================");
 			userSelection = input.nextLine();
@@ -222,7 +222,7 @@ public class Main {
 						break;
 				case "7": as.displayInfoForUser(a);
 						break;
-				case "8": editInfo(a);
+				case "8": editAccountInfo(a);
 						break;
 				case "9": if (terminateAccountUser(a)) signout = true;
 						  break;
@@ -345,7 +345,7 @@ public class Main {
 				accExists = true;
 			} else if (email.equals(a.getEmail()) && a.getIsActive() == 1) {
 				as.updateAccountStatus(email, 0, 'a');
-				logger.info("Account has been activated by admin.");
+				logger.info("Account has been deactivated by admin.");
 				System.out.println("Account has been deactivated. \n");
 				accExists = true;
 			} else continue;
@@ -375,12 +375,11 @@ public class Main {
 	}
 	
 	public boolean terminateAccountUser(Account acc) throws IOException {
+		input = new Scanner(System.in);
 		String choice;
 		System.out.println("Are you sure you want to terminate your account? \n"
 				+ "Once terminated, you will need to contact the administrator to reopen. \n"
 				+ "Type 'yes' or 'no'");
-			
-		input = new Scanner(System.in);
 		choice = input.nextLine();
 		while (true) {
 			if (choice.equals("yes")) {
@@ -403,8 +402,30 @@ public class Main {
 			}
 		}
 	
-	public void editInfo(Account acc) {
-		
+	public void editAccountInfo(Account acc) {
+		String first, last;
+		input = new Scanner(System.in);
+		System.out.println("=========================================== \n"
+				+ "What would you like to edit? \n"
+				+ "1) Name \n"
+				+ "2) Change password \n"
+				+ "3) Return to main menu \n"
+				+ "=========================================== \n");
+		userSelection = input.nextLine();
+		while (true) {
+			switch (userSelection) {
+			case "1": System.out.println("Enter your first name: ");
+					  first = input.nextLine();
+					  System.out.println("Enter your last name: ");
+					  last = input.nextLine();
+					  as.updateName(first,  last, acc.getEmail());
+					  break;
+			case "2": System.out.println("What would you like to change your password to? ");
+			  		  password = input.nextLine();
+			case "3": return;
+			default: System.out.println("Invalid entry.");
+			}
+		}
 	}
 }
 

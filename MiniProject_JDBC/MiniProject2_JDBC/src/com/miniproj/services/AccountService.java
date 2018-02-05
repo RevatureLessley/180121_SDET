@@ -108,6 +108,17 @@ public class AccountService {
 		dao.updateBalanceInfo(email, column, newVal);
 	}
 	
+	public void updateName(String first, String last, String e) {
+		dao.updateFirstName(e, first);
+		dao.updateLastName(e, last);
+		System.out.println("Name has been updated! Thanks, " + first + " " + last + "! \n");
+	}
+	
+	public void updatePassword(String pass, String e) {
+		dao.updatePassword(e, pass);
+		System.out.println("Your password has been updated! \n");
+	}
+	
 	public void updateAccountStatus(String e, int val, char x) {
 		if (x == 'a') dao.updateAccountStatusInfo(e, "a_is_active", val); 
 		else dao.updateAccountStatusInfo(e, "a_is_closed", val); 
