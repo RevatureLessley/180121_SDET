@@ -1,5 +1,7 @@
 package com.miniproject.users;
 
+import com.miniproject.services.AdminService;
+import com.miniproject.services.UserService;
 import com.miniproject.util.InputReader;
 
 /*
@@ -9,12 +11,14 @@ public class Login {
 	private UsersCollection uc;
 	private String username;
 	private String password;
+	private boolean admin;
 	
 	public Login(UsersCollection inUc) {
 		uc = inUc;
 	}
 	
 	public void loginUser() {
+		checkAdmin();
 		enterUsername();
 		enterPassword();
 		Account u = checkLogin();
@@ -42,6 +46,23 @@ public class Login {
 		}
 	}
 	
+	private void checkAdmin() {
+		System.out.print("Login as (A)dmin or (U)ser?: ");
+		String response = InputReader.readString();
+		response = response.toUpperCase();
+		while(!response.equals("A") && !response.equals("U")) {
+			System.out.print("Please enter (A) or (U): ");
+			response = InputReader.readString();
+			response = response.toUpperCase();
+		}
+		
+		if(response.equals("A")) {
+			admin = true;
+		} else if(response.equals("U")){
+			admin = false;
+		}	
+	}
+	
 	private void enterUsername() {
 		System.out.print("Enter your username: ");
 		this.username = InputReader.readString();
@@ -53,12 +74,12 @@ public class Login {
 	}
 	
 	private Account checkLogin() {
-		Account u = uc.getAccount(this.username);
-		if(u != null) {
-			if(!this.password.equals(u.getPassword())) {
-				u = null;
-			}
+		Account a = null;
+		if(admin) {
+			a = AdminService.getAdmin(this.username, this.password);
+		} else {
+			a = UserService.getUser(this.username, this.password);
 		}
-		return u;
+		return a;
 	}
 }

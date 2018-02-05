@@ -9,4 +9,9 @@ public class AdminService {
 		AdminDao dao = new AdminDaoImpl();
 		dao.insertAdmin(new Admin(in_Username, in_Password));
 	}
+	
+	public static Admin getAdmin(String in_Username, String in_Password) {
+		AdminDao dao = new AdminDaoImpl();
+		return dao.getAdmin(in_Username, in_Password);
+	}
 }

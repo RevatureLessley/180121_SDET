@@ -20,6 +20,7 @@ public class User extends Account implements Serializable {
 	private boolean accountApproved;
 	private boolean banned;
 	private boolean isAdmin = false;
+	private int beverageId;
 	
 	public User() {
 		this.accountApproved = false;
@@ -42,6 +43,14 @@ public class User extends Account implements Serializable {
 		this.banned = (banned == 1);
 	}
 	
+	public User(String username, double currency, int daysLoggedIn, int beverageId) {
+		this.username = username;
+		this.currency = new Dollars();
+		this.currency.setCurrency(currency);
+		this.daysLoggedIn = daysLoggedIn;
+		this.beverageId = beverageId;
+	}
+
 	public void setUsername(String inUn) {
 		this.username = inUn;
 	}

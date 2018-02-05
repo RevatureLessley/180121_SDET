@@ -4,6 +4,7 @@ import static com.miniproject.util.CloseStreams.close;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -53,6 +54,56 @@ public class UserDaoImpl implements UserDao {
 		}
 		
 		return users;
+	}
+
+	@Override
+	public User getUser(String inUsername, String inPassword) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		User u = null;
+		
+		try(Connection conn = Connections.getConnection()){
+			String sql = "SELECT username, currency, login_streak, beverage_id "
+					+ "FROM users WHERE username = ? AND p_word = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, inUsername);
+			ps.setString(2, inPassword);
+			
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				u = new User(rs.getString(1), rs.getDouble(2), rs.getInt(3), rs.getInt(4));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return u;
+	}
+
+	@Override
+	public String getUsername(String inUsername) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String s = null;
+		
+		try(Connection conn = Connections.getConnection()){
+			String sql = "SELECT username FROM users WHERE username = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, inUsername);
+			
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				s = rs.getString(1);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return s;
 	}
 
 }

@@ -16,6 +16,10 @@ public class Admin extends Account implements Serializable{
 		this.username = inUn;
 		this.password = inPw;
 	}
+	
+	public Admin(String inUn) {
+		this.username = inUn;
+	}
 
 	public String getUsername() {
 		return username;
