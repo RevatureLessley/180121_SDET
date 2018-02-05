@@ -288,40 +288,49 @@ public class Main {
 			signout = false;
 			System.out.println("=========================================== \n"
 					+ "Hello, Mr. Rosario. How can I help you today? \n"
-					+ "1) View user accounts \n"
-					+ "2) Activate/deactivate account \n"
-					+ "3) Deposit checkings \n"
-					+ "4) Deposit savings \n"
-					+ "5) withdraw checkings \n"
-					+ "6) withdraw savings \n"
-					+ "7) Checkings balance \n"
-					+ "8) Savings balance \n"
-					+ "9) Terminate/reopen account \n"
+					+ "1) View all user accounts"
+					+ "2) View user account \n"
+					+ "3) Activate/deactivate account \n"
+					+ "4) Edit account info \n"
+					+ "5) Deposit checkings \n"
+					+ "6) Deposit savings \n"
+					+ "7) withdraw checkings \n"
+					+ "8) withdraw savings \n"
+					+ "9) Checkings balance \n"
+					+ "10) Savings balance \n"
+					+ "11) Terminate/reopen account \n"
 					+ "Type 'sign out' to return to login. \n"
 					+ "===========================================");
 			userSelection = input.nextLine();
 			switch (userSelection) {
 				case "1": for (Account a : accounts) as.displayInfoForAdmin(a);
 						  break;
-				case "2": activateAccount();
+				case "2": System.out.println("What is the user's email? \n");
+				          email = input.nextLine();
+						  for (Account a : accounts) if (email.equals(a.getEmail())) as.displayInfoForAdmin(a);
+						  System.out.println("User not found. \n");
 						  break;
-				case "3": deposit(acc);
+				case "3": activateAccount();
 						  break;
-				case "4": deposit(acc);
+				case "4": editAccountInfo(acc);
 						  break;
-				case "5": withdraw(acc);
+				case "5": deposit(acc);
 						  break;
-				case "6": withdraw(acc);
+				case "6": deposit(acc);
 						  break;
-				case "7": System.out.println("Your current balance is $" + acc.getCheckingsBalance() + "\n"
+				case "7": withdraw(acc);
+						  break;
+				case "8": withdraw(acc);
+						  break;
+				case "9": System.out.println("Your current balance is $" + acc.getCheckingsBalance() + "\n"
 						+ "Press any key to return to main menu");
 						userSelection = input.nextLine();
 						break;
-				case "8": System.out.println("Your current balance is $" + acc.getSavingsBalance() + "\n"
+				case "10": System.out.println("Your current balance is $" + acc.getSavingsBalance() + "\n"
 						+ "Press any key to return to main menu");
 						userSelection = input.nextLine();
 						break;
-				case "9": terminateAccountAdmin();
+				case "11": terminateAccountAdmin();
 						break;
 				case "sign out": signout = true;
 						break;
