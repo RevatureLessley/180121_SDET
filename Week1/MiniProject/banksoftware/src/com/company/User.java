@@ -7,6 +7,16 @@ import static org.junit.Assert.assertEquals;
 public class User implements Serializable{
     private String password;
     private Float amount;
+    private String username;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
@@ -16,17 +26,25 @@ public class User implements Serializable{
         this.username = username;
     }
 
-    private String username;
-
     public User(String password, Float amount){
+        super();
         this.password = password;
         this.amount = amount;
     }
 
     public User(String password, Float amount, String username){
+        super();
         this.password = password;
         this.amount = amount;
         this.username = username;
+    }
+
+    public User(String password, Float amount, String username, int id){
+        super();
+        this.password = password;
+        this.amount = amount;
+        this.username = username;
+        this.id = id;
     }
 
     public User(){
@@ -56,6 +74,11 @@ public class User implements Serializable{
         // assert statements
         assertEquals("badpassword", tester.getPassword());
         assertEquals("john doe", tester.getUsername());
+    }
+
+    @Override
+    public String toString() {
+        return "Bank User [username=" + getUsername() + ", password=" + getPassword() + ", amount=" + getAmount() + "]";
     }
 
 }
