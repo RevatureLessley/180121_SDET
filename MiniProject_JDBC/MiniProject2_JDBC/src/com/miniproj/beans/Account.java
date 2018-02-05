@@ -111,7 +111,7 @@ public class Account {
 		return isActive;
 	}
 
-	public void setIsActive(char isActive) {
+	public void setIsActive(int isActive) {
 		this.isActive = isActive;
 	}
 
@@ -119,7 +119,7 @@ public class Account {
 		return isClosed;
 	}
 
-	public void setIsClosed(char isClosed) {
+	public void setIsClosed(int isClosed) {
 		this.isClosed = isClosed;
 	}
 

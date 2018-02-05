@@ -7,6 +7,7 @@ import com.miniproj.dao.AccountDaoImpl;
 
 public class AccountService {
 	AccountDao dao;
+	Account account;
 	private String firstName, lastName, email, username, password;
 	private double checkingsBalance, savingsBalance;
 	private int isAdmin, isActive, isClosed;
@@ -70,7 +71,13 @@ public class AccountService {
 				           + "===========================================");
 	}
 	
-	public List<Account> accounts() {
+	public Account getAccount(String email) {
+		dao = new AccountDaoImpl();
+		account = dao.selectAccountByEmail(email);
+		return account;
+	}
+	
+	public List<Account> getAccounts() {
 		dao = new AccountDaoImpl();
 		return dao.getAllAccounts();
 	}
@@ -88,6 +95,22 @@ public class AccountService {
 		gatherAccountInstances(acc);
 		double newVal = acc.getSavingsBalance() + amount;
 		String column = "b_savings";
+		dao.updateBalanceInfo(email, column, newVal);
+	}
+	
+	public void withdrawCheckings(Account acc, double amount) {
+		dao = new AccountDaoImpl();
+		gatherAccountInstances(acc);
+		double newVal = acc.getCheckingsBalance() - amount;
+		String column = "b_checkings";
+		dao.updateBalanceInfo(email, column, newVal);
+	}
+	
+	public void withdrawSavings(Account acc, double amount) {
+		dao = new AccountDaoImpl();
+		gatherAccountInstances(acc);
+		double newVal = acc.getCheckingsBalance() - amount;
+		String column = "b_checkings";
 		dao.updateBalanceInfo(email, column, newVal);
 	}
 	

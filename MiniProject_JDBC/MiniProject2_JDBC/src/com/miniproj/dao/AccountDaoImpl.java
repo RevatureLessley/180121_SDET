@@ -17,7 +17,7 @@ public class AccountDaoImpl implements AccountDao {
 /*
  * All queries and updates will happen in this class.
  * Accounts cannot be deleted (for practical purposes), 
- * so a closed account will just be deactivated, with no funds in either account.
+ * so a closed account will just be terminated, with no funds in either account.
  */
 	List<Account> accounts;
 	Account account;
@@ -122,7 +122,8 @@ public class AccountDaoImpl implements AccountDao {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, email);
 			rs = ps.executeQuery();
-
+			rs.next();
+			
 			account = new Account(rs.getString(1), rs.getString(2), rs.getString(3), 
 				rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8), 
 				rs.getInt(9), rs.getDouble(11), rs.getDouble(12));
@@ -141,13 +142,17 @@ public class AccountDaoImpl implements AccountDao {
 	@Override
 	public void updateUserInfo(String email, String col, String newVal) {
 		try (Connection conn = Connections.getConnection()) {
-			sql = "UPDATE user_info " + 
-					"SET ? = ? " + 
-					"WHERE u_email = ?"; 
+			if (col == "u_first_name")
+				sql = "UPDATE account_info " + 
+						"SET u_first_name = ? " + 
+						"WHERE u_email = ?"; 
+			else
+				sql = "UPDATE balance_info " + 
+						"SET u_last_name = ? " + 
+						"WHERE u_email = ?"; 
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, col);
-			ps.setString(2, newVal);
-			ps.setString(3, email);
+			ps.setString(1, newVal);
+			ps.setString(2, email);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -160,13 +165,17 @@ public class AccountDaoImpl implements AccountDao {
 	@Override
 	public void updateAccountInfo(String email, String col, String newVal) {
 		try (Connection conn = Connections.getConnection()) {
-			sql = "UPDATE account_info " + 
-					"SET ? = ? " + 
-					"WHERE u_email = ?"; 
+			if (col == "a_username")
+				sql = "UPDATE account_info " + 
+						"SET a_username = ? " + 
+						"WHERE a_email = ?"; 
+			else
+				sql = "UPDATE balance_info " + 
+						"SET a_password = ? " + 
+						"WHERE a_email = ?"; 
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, col);
-			ps.setString(2, newVal);
-			ps.setString(3, email);
+			ps.setString(1, newVal);
+			ps.setString(2, email);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -179,13 +188,21 @@ public class AccountDaoImpl implements AccountDao {
 	@Override
 	public void updateAccountStatusInfo(String email, String col, int newVal) {
 		try (Connection conn = Connections.getConnection()) {
-			sql = "UPDATE account_info " + 
-					"SET ? = ? " + 
-					"WHERE u_email = ?"; 
+			if (col == "a_is_admin")
+				sql = "UPDATE account_info " + 
+						"SET a_is_admin = ? " + 
+						"WHERE a_email = ?"; 
+			else if (col == "a_is_active")
+				sql = "UPDATE balance_info " + 
+						"SET a_is_active = ? " + 
+						"WHERE a_email = ?"; 
+			else
+				sql = "UPDATE balance_info " + 
+						"SET a_is_closed = ? " + 
+						"WHERE a_email = ?"; 
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, col);
-			ps.setInt(2, newVal);
-			ps.setString(3, email);
+			ps.setInt(1, newVal);
+			ps.setString(2, email);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -198,13 +215,17 @@ public class AccountDaoImpl implements AccountDao {
 	@Override
 	public void updateBalanceInfo(String email, String col, double newVal) {
 		try (Connection conn = Connections.getConnection()) {
-			sql = "UPDATE balance_info " + 
-					"SET ? = ? " + 
-					"WHERE u_email = ?"; 
+			if (col == "b_checkings")
+				sql = "UPDATE balance_info " + 
+						"SET b_checkings = ? " + 
+						"WHERE b_email = ?"; 
+			else
+				sql = "UPDATE balance_info " + 
+						"SET b_savings = ? " + 
+						"WHERE b_email = ?"; 
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, col);
-			ps.setDouble(2, newVal);
-			ps.setString(3, email);
+			ps.setDouble(1, newVal);
+			ps.setString(2, email);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
