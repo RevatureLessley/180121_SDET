@@ -25,4 +25,9 @@ public class UserService {
 		UserDao dao = new UserDaoImpl();
 		return dao.getUsername(in_username);
 	}
+	
+	public static void approveUser(String in_username) {
+		UserDao dao = new UserDaoImpl();
+		dao.approveUser(in_username);
+	}
 }

@@ -9,4 +9,5 @@ public interface UserDao {
 	public User getUser(String inUsername, String inPassword);
 	public List<User> getAllUsersForAdmin();
 	public String getUsername(String inUsername);
+	public void approveUser(String inUsername);
 }

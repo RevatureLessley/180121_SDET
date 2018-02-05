@@ -71,13 +71,11 @@ public class AdminView {
 		viewUsers();
 		System.out.print("Type name of user you want to approved: ");
 		String appUser = InputReader.readString();
-		if(accountsMap.get(appUser) != null) {
-			if(!accountsMap.get(appUser).getIsAdmin()) {
-				accountsMap.get(appUser).setAccountApproved(true);
-			} else {
-				System.out.println("You can't approve an Admin");
-			}
-			
+		String u = UserService.getUsername(appUser);
+		if(u != null) {
+			UserService.approveUser(u);
+		} else {
+			System.out.println("Username does not exist.");
 		}
 		viewUsers();
 	}
