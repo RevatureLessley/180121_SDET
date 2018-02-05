@@ -293,3 +293,8 @@
 2018-02-05 16:29:33 INFO  UserView:76 - Get Coupon
 2018-02-05 16:29:41 INFO  User:113 - ruth login streak=4
 2018-02-05 16:29:50 INFO  Serializer:29 - Write to: src/users.ser
+2018-02-05 17:22:27 INFO  Serializer:46 - Read from: src/users.ser
+2018-02-05 17:22:27 DEBUG MiniSaver:29 - deserialized
+2018-02-05 17:22:37 INFO  User:113 - bobby login streak=3
+2018-02-05 17:22:37 INFO  UserView:78 - Get Coupon
+2018-02-05 17:22:47 INFO  Serializer:29 - Write to: src/users.ser

@@ -161,6 +161,8 @@ public class UserDaoImpl implements UserDao {
 			e.printStackTrace();
 		} finally {
 			close(stmt);
+			close(ps);
+			close(rs);
 		}
 		
 		return loginStreak;

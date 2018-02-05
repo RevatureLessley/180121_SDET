@@ -2,6 +2,8 @@ package com.miniproject.users;
 
 import org.apache.log4j.Logger;
 
+import com.miniproject.beverages.BeverageBrand;
+import com.miniproject.services.BeverageBrandService;
 import com.miniproject.services.UserService;
 import com.miniproject.util.InputReader;
 
@@ -74,6 +76,8 @@ public class UserView {
 		this.loggedUser.setDaysLoggedIn(UserService.loginStreak(this.loggedUser.getUsername()));
 		if(this.loggedUser.getDaysLoggedIn() != 0 && this.loggedUser.getDaysLoggedIn() % LOGINCOMBONUM == 0) {
 			logger.info("Get Coupon"); //BUG can get mulitple coupons in the same day
+			BeverageBrand bb = BeverageBrandService.getBevBrand(this.loggedUser.getBeverageId());
+			System.out.println("You get one coupon for one " + bb.getBrandName() + " " + bb.getBevType() + " drink!");
 		}
 	}
 	
