@@ -63,7 +63,7 @@ public class UserDaoImpl implements UserDao {
 		User u = null;
 		
 		try(Connection conn = Connections.getConnection()){
-			String sql = "SELECT username, currency, login_streak, beverage_id "
+			String sql = "SELECT username, account_approved, currency, login_streak, beverage_id, banned "
 					+ "FROM users WHERE username = ? AND p_word = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, inUsername);
@@ -71,7 +71,8 @@ public class UserDaoImpl implements UserDao {
 			
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				u = new User(rs.getString(1), rs.getDouble(2), rs.getInt(3), rs.getInt(4));
+				u = new User(rs.getString(1), rs.getInt(2), rs.getDouble(3), 
+						rs.getInt(4), rs.getInt(5), rs.getInt(6));
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
