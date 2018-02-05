@@ -20,4 +20,9 @@ public class UserService {
 		UserDao dao = new UserDaoImpl();
 		return dao.getAllUsersForAdmin();
 	}
+	
+	public static String getUsername(String in_username) {
+		UserDao dao = new UserDaoImpl();
+		return dao.getUsername(in_username);
+	}
 }

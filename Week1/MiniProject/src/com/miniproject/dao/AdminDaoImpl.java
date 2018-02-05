@@ -55,5 +55,29 @@ public class AdminDaoImpl implements AdminDao {
 		}
 		return a;
 	}
+
+	@Override
+	public String getUsername(String inUsername) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String s = null;
+		
+		try(Connection conn = Connections.getConnection()){
+			String sql = "SELECT username FROM admins WHERE username = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, inUsername);
+			
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				s = rs.getString(1);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return s;
+	}
 	
 }

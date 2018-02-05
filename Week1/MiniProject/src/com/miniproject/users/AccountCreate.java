@@ -61,7 +61,7 @@ public class AccountCreate {
 	public void setUsername() {
 		System.out.print("Enter desired username: ");
 		String userName = InputReader.readString();
-		this.username = userName;
+		this.username = userName.toLowerCase();
 	}
 	
 	public String getUsername() {
@@ -73,7 +73,8 @@ public class AccountCreate {
 	}
 	
 	public boolean uniqueUsername() {
-		return this.accounts.get(this.username) == null;
+		return UserService.getUsername(this.username) == null && 
+				AdminService.getUsername(this.username) == null;
 	}
 	
 	public void accountSetUp() {

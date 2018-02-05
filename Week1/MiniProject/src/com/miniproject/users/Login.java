@@ -65,7 +65,7 @@ public class Login {
 	
 	private void enterUsername() {
 		System.out.print("Enter your username: ");
-		this.username = InputReader.readString();
+		this.username = InputReader.readString().toLowerCase();
 	}
 	
 	private void enterPassword() {

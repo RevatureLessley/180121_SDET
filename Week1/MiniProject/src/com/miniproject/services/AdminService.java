@@ -14,4 +14,9 @@ public class AdminService {
 		AdminDao dao = new AdminDaoImpl();
 		return dao.getAdmin(in_Username, in_Password);
 	}
+	
+	public static String getUsername(String in_Username) {
+		AdminDao dao = new AdminDaoImpl();
+		return dao.getUsername(in_Username);
+	}
 }
