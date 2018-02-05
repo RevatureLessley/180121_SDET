@@ -1,6 +1,5 @@
 package com.miniproj.main;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.io.IOException;
@@ -17,7 +16,6 @@ public class Main {
 	private Account newUser;
 	private Account currentUser;
 	private double amount;
-	private int accountIndex;
 	Scanner input;
 	AccountService as = new AccountService();
 	List<Account> accounts = as.getAccounts();
@@ -88,8 +86,10 @@ public class Main {
 			//Now we check to see if the name already exists in the database
 			while (true) {
 				boolean duplicate = false;
+				String x = username.toUpperCase();
 				for (Account a : accounts) {
-					if (username.equals(a.getUsername())) {
+					String y = a.getUsername().toUpperCase();
+					if (x.equals(y)) {
 						duplicate = true;
 						System.out.println("This username already exists. Try again: ");
 						break;
@@ -115,8 +115,10 @@ public class Main {
 		//Now we check to see if the name already exists in the database
 		while (true) {
 			boolean duplicate = false;
+			String x = email.toUpperCase();
 			for (Account a : accounts) {
-				if (email.equals(a.getEmail())) {
+				 String y = a.getEmail().toUpperCase();
+				if (x.equals(y)) {
 					duplicate = true;
 					System.out.println("This email already exists. Try again: ");
 					break;
@@ -155,7 +157,6 @@ public class Main {
 			boolean validUser = false;
 			for (Account a : accounts) {
 				if (username.equals(a.getUsername())) {
-					accountIndex = accounts.indexOf(a);
 					currentUser = a;
 					validUser = true;
 				}	
@@ -182,7 +183,7 @@ public class Main {
 	}
 
 //============ User main menu ============//
-	public void userMenu(Account a) {
+	public void userMenu(Account a) throws IOException {
 		logger.info("User has successsfully signed in.");
 		input = new Scanner(System.in);
 		boolean signout;
@@ -197,6 +198,8 @@ public class Main {
 					+ "5) Withdraw from checkings \n"
 					+ "6) Withdraw from savings \n"
 					+ "7) General account info \n"
+					+ "8) Edit user info \n"
+					+ "9) close account"
 					+ "Type 'sign out' to return to login. \n"
 					+ "===========================================");
 			userSelection = input.nextLine();
@@ -219,9 +222,14 @@ public class Main {
 						break;
 				case "7": as.displayInfoForUser(a);
 						break;
+				case "8": editInfo(a);
+						break;
+				case "9": if (terminateAccountUser(a)) signout = true;
+						  break;
 				case "sign out": signout = true;
 						break;
 				default: System.out.println("Invalid entry.");
+						break;
 			}
 			if (signout) break;
 		}
@@ -263,6 +271,7 @@ public class Main {
 				break;
 			} else if (amount > a.getCheckingsBalance() || amount > a.getSavingsBalance()){
 				System.out.println("Sorry. You do not have enough funds.");
+				break;
 			} else {
 				System.out.println("Invalid Entry. Enter amount you would like to withraw: ");
 				amount = Double.parseDouble(input.nextLine());
@@ -272,7 +281,6 @@ public class Main {
 
 //============ Administrative controls ============//
 	public void administrative(Account acc) throws IOException {
-		String accStatus;
 		logger.info("administrator signin");
 		input = new Scanner(System.in);
 		boolean signout;
@@ -313,6 +321,8 @@ public class Main {
 						+ "Press any key to return to main menu");
 						userSelection = input.nextLine();
 						break;
+				case "9": terminateAccountAdmin();
+						break;
 				case "sign out": signout = true;
 						break;
 				default: System.out.println("Invalid entry.");
@@ -343,7 +353,7 @@ public class Main {
 		if (!accExists) System.out.println("Account does not exist.");
 	}
 	
-	public void terminateAccount() throws IOException {
+	public void terminateAccountAdmin() throws IOException {
 		boolean accExists = false;
 		input = new Scanner(System.in);
 		System.out.println("Which account would you like to terminate/reopen?");
@@ -362,6 +372,39 @@ public class Main {
 			} else continue;
 		  }
 		if (!accExists) System.out.println("Account does not exist.");
+	}
+	
+	public boolean terminateAccountUser(Account acc) throws IOException {
+		String choice;
+		System.out.println("Are you sure you want to terminate your account? \n"
+				+ "Once terminated, you will need to contact the administrator to reopen. \n"
+				+ "Type 'yes' or 'no'");
+			
+		input = new Scanner(System.in);
+		choice = input.nextLine();
+		while (true) {
+			if (choice.equals("yes")) {
+				as.updateAccountStatus(acc.getEmail(), 2, 'c');
+				logger.info("Account has been terminated by user.");
+				System.out.println("Your account has been terminated. \n"
+						+ "Funds will be mailed to you in the form of checks. \n"
+						+ "Contact administrator if you wish to reopen. \n");
+				as.clearCheckings(acc);
+				as.clearSavings(acc);
+				return true;
+				} else if (choice.equals("no")) {
+					System.out.println("Glad you are staying with us!");
+					return false;
+				} else {
+					System.out.println("Invalid entry.");
+					choice = input.nextLine();
+					continue;
+				}
+			}
+		}
+	
+	public void editInfo(Account acc) {
+		
 	}
 }
 

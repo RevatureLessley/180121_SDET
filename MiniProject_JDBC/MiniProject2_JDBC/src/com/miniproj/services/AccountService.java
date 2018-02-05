@@ -112,4 +112,15 @@ public class AccountService {
 		if (x == 'a') dao.updateAccountStatusInfo(e, "a_is_active", val); 
 		else dao.updateAccountStatusInfo(e, "a_is_closed", val); 
 	}
+	public void clearCheckings(Account acc) {
+		gatherAccountInstances(acc);
+		String column = "b_checkings";
+		dao.updateBalanceInfo(email, column, 0);
+	}
+	
+	public void clearSavings(Account acc) {
+		gatherAccountInstances(acc);
+		String column = "b_savings";
+		dao.updateBalanceInfo(email, column, 0);
+	}
 }
