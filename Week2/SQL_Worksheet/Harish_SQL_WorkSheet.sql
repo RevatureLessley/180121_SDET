@@ -304,18 +304,50 @@ CREATE OR REPLACE TRIGGER trig_after_insert
 AFTER INSERT ON EMPLOYEE
 FOR EACH ROW
 DECLARE
-    default_title VARCHAR2(100);
+    my_id NUMBER(9);
 BEGIN 
-    default_title := 'New Hire';
-    INSERT INTO EMPLOYEE(EMPLOYEEID, FIRSTNAME, LASTNAME, TITLE) VALUES(:new.EMPLOYEEID, :new.FIRSTNAME, :new.LASTNAME, default_title);
+    IF :old.TITLE IS NULL THEN
+    DBMS_OUTPUT.PUT_LINE('Title Not Set');
+    END IF;
 END;    
 /
 BEGIN
-    INSERT INTO EMPLOYEE(EMPLOYEEID, FIRSTNAME, LASTNAME) VALUES(11,'BOB','Bobbert');
+    INSERT INTO EMPLOYEE(EMPLOYEEID, FIRSTNAME, LASTNAME) 
+    VALUES(12,'John','Table');
 END;
 /
+
 --Create an after update trigger on the album table that fires after a row is inserted in the table
+CREATE OR REPLACE TRIGGER trig_after_update_album
+AFTER UPDATE ON ALBUM
+FOR EACH ROW
+BEGIN 
+    IF :old.TITLE IS NOT NULL THEN
+    DBMS_OUTPUT.PUT_LINE('Album updated');
+    END IF;
+END;    
+/
+BEGIN
+    UPDATE ALBUM 
+    SET TITLE = 'For Those About To Rock We Salut You'
+    WHERE ALBUMID = 1 AND ARTISTID = 1;  
+END;
+/
+  
 --Create an after delete trigger on the customer table that fires after a row is deleted from the table.
+CREATE OR REPLACE TRIGGER trig_after_delete_customer
+AFTER DELETE ON CUSTOMER
+FOR EACH ROW
+BEGIN 
+    IF :old.CUSTOMERID IS NOT NULL THEN
+    DBMS_OUTPUT.PUT_LINE('Customer Deleted');
+    END IF;
+END;    
+/
+BEGIN
+    DELETE FROM CUSTOMER WHERE CUSTOMERID = 59; 
+END;
+/
 
 --7.0 JOINS
 
