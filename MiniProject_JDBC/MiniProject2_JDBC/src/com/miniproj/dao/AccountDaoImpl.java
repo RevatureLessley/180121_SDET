@@ -192,11 +192,11 @@ public class AccountDaoImpl implements AccountDao {
 						"SET a_is_admin = ? " + 
 						"WHERE a_email = ?"; 
 			else if (col == "a_is_active")
-				sql = "UPDATE balance_info " + 
+				sql = "UPDATE account_info " + 
 						"SET a_is_active = ? " + 
 						"WHERE a_email = ?"; 
 			else
-				sql = "UPDATE balance_info " + 
+				sql = "UPDATE account_info " + 
 						"SET a_is_closed = ? " + 
 						"WHERE a_email = ?"; 
 			ps = conn.prepareStatement(sql);

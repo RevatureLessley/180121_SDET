@@ -196,8 +196,8 @@ public class Main {
 					+ "4) Deposit in savings \n"
 					+ "5) Withdraw from checkings \n"
 					+ "6) Withdraw from savings \n"
-					+ "7) General account info"
-					+ "Type 'sign out' to return to login."
+					+ "7) General account info \n"
+					+ "Type 'sign out' to return to login. \n"
 					+ "===========================================");
 			userSelection = input.nextLine();
 			switch (userSelection) {
@@ -288,8 +288,8 @@ public class Main {
 					+ "6) withdraw savings \n"
 					+ "7) Checkings balance \n"
 					+ "8) Savings balance \n"
-					+ "9) Terminate/reopen account"
-					+ "Type 'sign out' to return to login."
+					+ "9) Terminate/reopen account \n"
+					+ "Type 'sign out' to return to login. \n"
 					+ "===========================================");
 			userSelection = input.nextLine();
 			switch (userSelection) {
@@ -325,7 +325,7 @@ public class Main {
 	public void activateAccount() throws IOException {
 		boolean accExists = false;
 		input = new Scanner(System.in);
-		System.out.println("Which account would you like to activate/deactivate?");
+		System.out.println("Which account would you like to activate/deactivate?. Enter email: ");
 		email = input.nextLine();
 		for (Account a : accounts) {
 			if (email.equals(a.getEmail()) && a.getIsActive() == 0) {
