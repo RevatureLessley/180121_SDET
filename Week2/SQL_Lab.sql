@@ -245,11 +245,11 @@ END;
 /
 --6.1------------------------------------------------------------------------------------------
 CREATE OR REPLACE TRIGGER emp_seq_trigger --for auto incrementing the pk
-BEFORE INSERT ON employee
+AFTER INSERT ON employee
 FOR EACH ROW
 BEGIN --This keyword signifies a block for a transaction
-    IF :new.title IS NULL THEN
-    SELECT 'Janitor' INTO :new.title from dual;
+    IF :old.title IS NULL THEN
+    SELECT 'Janitor' INTO :old.title from dual;
     END IF;
 END;   
 /

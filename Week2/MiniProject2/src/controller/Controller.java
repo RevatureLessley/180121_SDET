@@ -7,13 +7,12 @@ import org.apache.log4j.Logger;
 
 import beans.Pilot;
 import beans.Ship;
+import dao.MechanicMethods;
 import dao.PilotDao;
 import dao.PilotDaoImpl;
 import dao.ShipDao;
 import dao.ShipDaoImpl;
-import functions.AdminFunctions;
-import functions.CreateUser;
-import functions.UserLogIn;
+
 
 /*
  * Key features:
@@ -28,9 +27,7 @@ import functions.UserLogIn;
 public class Controller {
 	
 	final static Logger logger = Logger.getLogger(Controller.class);
-	
-	private static final String USERS = "users.txt";
-	
+		
 	public static void main(String[] args) {
 		logger.debug("Application started");
 //		ShipDao dao = new ShipDaoImpl();
@@ -54,21 +51,20 @@ public class Controller {
 			System.out.println("\n=============================================");
 			System.out.println("Welcome to the StarFleet Management Portal. \nYour base number is 12683 in the Andromeda galaxy");
 			System.out.println("\nAll spaceships must be approved \nby a mechanic before \nbeing allowed to fly\n");
-			System.out.println("0 to add fuel to a ship");
-			System.out.println("1 for mechanic login");
+			System.out.println("1 to login as pilot and fly a ship");
 			System.out.println("2 to buy a new spaceship");
 			System.out.println("3 to display all ship data");
+			System.out.println("4 to charge your electric spaceship");
+			System.out.println("5 to create a pilot");
+			System.out.println("6 for mechanic login");
 			System.out.println("or \'q\'");
 			String s = scan.nextLine();
 			
-			if (s.equals("0")) {
-				logger.debug("Chose login");
-				pilotDao.logInPilot(pilotDao.getAllPilots());
-			}
 			if (s.equals("1")) {
-				logger.debug("Chose admin");
-				AdminFunctions.mechanicLogin(scan);
+				logger.debug("Chose login");
+				pilotDao.logInPilot(pilotDao.getAllPilots(), scan);
 			}
+
 			if (s.equals("2")) {
 				logger.debug("Chose create");
 				Ship ship = new Ship();
@@ -78,18 +74,33 @@ public class Controller {
 				System.out.println("Load it with some fuel (max 10,000): ");
 				Integer i = scan.nextInt();
 				ship.setFuel_level(i);				
-				shipDao.addShip(ship);
+				shipDao.addShip(ship, scan);
 			}
 			if (s.equals("3")) {
 				logger.debug("Chose show");
 				List<Ship> ships = shipDao.getAllShips();
 				System.out.println(ships);
 			}
+			if (s.equals("4")) {
+				logger.debug("Chose show");
+				List<Ship> ships = shipDao.getAllShips();
+				System.out.println(ships);
+				System.out.println("Choose a ship by ID to fuel");
+				String input = scan.nextLine();			
+			}
+			if (s.equals("5")) {
+				logger.debug("Chose create pilot");
+				pilotDao.createPilot(scan);
+			}
+			if (s.equals("6")) {
+				logger.debug("Chose admin");
+				MechanicMethods.mechanicLogin(scan);
+			}
 			if (s.equals("quit") || s.equals("q")) {
 				logger.debug("Application closed");
 				break;
 			}
-			break;
+
 		}
 		scan.close();		
 	}
@@ -98,7 +109,7 @@ public class Controller {
 
 		logger.debug("Accessed mechanicMenu");
 		ShipDao shipDao = new ShipDaoImpl();
-		PilotDao pilotDao = new PilotDaoImpl();
+//		PilotDao pilotDao = new PilotDaoImpl();
 		
 		String s = "";
 		while(true) {
@@ -112,7 +123,12 @@ public class Controller {
 				logger.debug("accessing authenticate");
 				List<Ship> ships = shipDao.getAllShips();
 				for (Ship ship : ships) {
-					System.out.println(ship.getName());
+					if(ship.isApproved() == false) {
+						System.out.println(ship.getName() + " Inspected: No");						
+					}
+					if(ship.isApproved()) {
+						System.out.println(ship.getName() + " Inspected: Yes");						
+					}
 				}
 				System.out.println("Choose a ship to inspect");
 				String input = scan.nextLine();
@@ -123,12 +139,10 @@ public class Controller {
 					}
 				}
 				
-				//AdminFunctions.authenticateUser(scan, USERS, -1);
 			}
 			
 			if (s.equals("1")) {
 				logger.debug("accessing delete");
-				AdminFunctions.deleteUser(scan, USERS, null);
 
 			}
 			

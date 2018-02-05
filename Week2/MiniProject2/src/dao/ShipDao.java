@@ -1,13 +1,14 @@
 package dao;
 
 import java.util.List;
+import java.util.Scanner;
 
 import beans.Ship;
 
 public interface ShipDao {
 	public List<Ship> getAllShips();
 	
-	public boolean addShip(Ship ship);
+	public boolean addShip(Ship ship, Scanner scan);
 	
 	public boolean deleteShipByName(Ship ship);
 		

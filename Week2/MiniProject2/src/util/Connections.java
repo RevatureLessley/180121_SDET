@@ -25,14 +25,12 @@ public class Connections {
 		
 		
 		try {
-			//Class.forName("oracle.jdbc.driver.OracleDriver");
 			Class.forName(props[0]);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 				
 		return DriverManager.getConnection(props[1], props[2],props[3]);
-		//return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "MiniProject2" ,"miniproject2");
 	}
 	
 

@@ -56,15 +56,8 @@ public class PilotDaoImpl implements PilotDao {
 	}
 
 	@Override
-	public void logInPilot(List<Pilot> pilots) {
-		Scanner scan = new Scanner(System.in);
+	public void logInPilot(List<Pilot> pilots, Scanner scan) {
 		System.out.println(pilots);
-		try{
-			Thread.sleep(2000);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
 
 		System.out.println("A pilot must login before being allowed to fly a spaceship.\n Enter your name:\n");
 		String input = scan.nextLine();
@@ -80,7 +73,7 @@ public class PilotDaoImpl implements PilotDao {
 			input = scan.nextLine();
 			if(match.getPassword().equals(input)) {
 				System.out.println("Welcome, " + match.getName());
-				chooseShip(match, new Scanner(System.in));
+				chooseShip(match, scan);
 				
 			}
 			else {
@@ -91,11 +84,10 @@ public class PilotDaoImpl implements PilotDao {
 		else {
 			System.out.println("No pilot found with that name");
 		}
-		scan.close();	
+
 	}
 	
 	public void chooseShip(Pilot pilot, Scanner scan) {
-		System.out.println("These are the ships in " + pilot.getName() + "'s garage");
 		PreparedStatement stmt = null;
 		ResultSet rs = null;	
 		List<Ship> ships = new ArrayList<>();
@@ -120,7 +112,7 @@ public class PilotDaoImpl implements PilotDao {
 				ships.add(ship);
 
 			}
-		        
+			System.out.println("These are the APPROVED ships in " + pilot.getName() + "'s garage");
 	        System.out.println("What ship would like to fly?");
 	        
 	        System.out.println(ships);
@@ -129,7 +121,7 @@ public class PilotDaoImpl implements PilotDao {
 	        for(Ship s : ships) {
 	        	if (s.getName().equals(input)) {
 	        		ShipDao dao = new ShipDaoImpl();
-	        		dao.flyShip(s, (int) Math.random()*1000);
+	        		dao.flyShip(s, (int) (Math.random()*s.getFuel_level()));
 	        		break;
 	        	}
 	        }
@@ -146,12 +138,11 @@ public class PilotDaoImpl implements PilotDao {
 	
 
 	@Override
-	public void assignShipToPilot(Ship ship) {
+	public void assignShipToPilot(Ship ship, Scanner scan) {
 		PilotDao pDao = new PilotDaoImpl();
 		List<Pilot> pilots = pDao.getAllPilots();
 		System.out.println(pilots);
-		System.out.println("Which pilot would you like to assign the ship to?");
-		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter the name of the  pilot you would like to assign the ship to");
 		String choosePilot = scan.nextLine();
 		Boolean foundPilot = false;
 		Pilot pilot = new Pilot();
@@ -161,16 +152,11 @@ public class PilotDaoImpl implements PilotDao {
 				pilot = p;
 			}
 		}
-		scan.close();
 		if (!foundPilot) {
 			System.out.println("No match found");
 
 			return;
-		}
-		
-		
-
-		
+		}	
 		
 		PreparedStatement stmt = null;
 		try {
@@ -179,6 +165,50 @@ public class PilotDaoImpl implements PilotDao {
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, ship.getShip_id());
 			stmt.setInt(2,pilot.getId());
+			stmt.execute();
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			close(stmt);			
+			
+		}
+	}
+
+	@Override
+	public void createPilot(Scanner scan) {
+		Pilot p = new Pilot();
+		System.out.println("Enter your name: ");
+		String input = scan.nextLine();
+		p.setName(input);
+		System.out.println("Enter your password: ");
+		p.setPassword(scan.nextLine());
+		PilotDao pDao = new PilotDaoImpl();
+
+		List<Pilot> pilots = pDao.getAllPilots();
+		List<Integer> ids = new ArrayList<>();
+		for(Pilot pilot : pilots) {
+			ids.add(pilot.getId());
+		}
+		int randomId = -1;
+		while(true) {
+			randomId = (int) (Math.random() * 10000);
+			if(ids.contains(randomId) == false) {
+				break;
+			}
+		}
+		p.setId(randomId);
+		
+		PreparedStatement stmt = null;
+		try {
+			Connection conn = Connections.getConnection();
+			String sql = "INSERT INTO PILOT (PILOT_ID, PILOT_NAME, PILOT_PASSWORD) VALUES ( ? , ?, ? )";
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, p.getId());
+			stmt.setString(2, p.getName());
+			stmt.setString(3, p.getPassword());
+			stmt.executeUpdate();
 			
 		}
 		catch(SQLException e) {
@@ -188,6 +218,7 @@ public class PilotDaoImpl implements PilotDao {
 			close(stmt);			
 			
 		}
+		
 	}
 
 

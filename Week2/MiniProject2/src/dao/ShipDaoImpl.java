@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import beans.Ship;
 import util.Connections;
@@ -134,7 +135,7 @@ public class ShipDaoImpl implements ShipDao {
 
 	
 	@Override
-	public boolean addShip(Ship ship) {
+	public boolean addShip(Ship ship, Scanner scan) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;	
 		ShipDao shipDao = new ShipDaoImpl();
@@ -167,6 +168,10 @@ public class ShipDaoImpl implements ShipDao {
 			
 			stmt.executeUpdate(); //Executing queries, brings back resultsets
 			System.out.println("Your ship " + ship.getName() + " has been added to the garage and has a fuel level of " + ship.getFuel_level());
+			
+			PilotDao pDao = new PilotDaoImpl();
+			pDao.assignShipToPilot(ship, scan);
+			
 			return true;
 		}
 		catch(SQLException e) {
@@ -285,12 +290,7 @@ public class ShipDaoImpl implements ShipDao {
 	        rs = cs.executeQuery();
 	        Float f = cs.getFloat(3);
 	        ship.setFuel_level(f);
-	        try{
-	        	Thread.sleep(3000);
-	        }
-	        catch(Exception e) {
-	        	e.printStackTrace();
-	        }
+
 	        System.out.println("Welcome back! Your ship burned " + volume + " gallons of fuel and now has " + f + " gallons in the tank");
 /*	        cs.registerOutParameter(2, Types.FLOAT);
 

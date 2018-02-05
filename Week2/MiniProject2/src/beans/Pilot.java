@@ -7,7 +7,6 @@ public class Pilot {
 	private String password;
 	
 	
-	
 	public Pilot() {
 		super();
 	}
