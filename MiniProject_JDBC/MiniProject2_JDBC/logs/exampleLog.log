@@ -2,3 +2,16 @@
 2018-02-05 13:33:50 INFO  Main:187 - User has successsfully signed in. 
 
 2018-02-05 13:33:57 INFO  Main:63 - user has quit the program.
+2018-02-05 13:52:38 INFO  Main:54 - New account created.
+2018-02-05 13:53:05 INFO  Main:284 - administrator signin
+2018-02-05 13:53:42 INFO  Main:352 - Account has been activated by admin.
+2018-02-05 13:57:18 INFO  Main:284 - administrator signin
+2018-02-05 14:00:06 INFO  Main:63 - user has quit the program.
+2018-02-05 14:00:34 INFO  Main:284 - administrator signin
+2018-02-05 14:02:10 INFO  Main:187 - User has successsfully signed in. 
+
+2018-02-05 14:05:54 INFO  Main:187 - User has successsfully signed in. 
+
+2018-02-05 14:07:58 INFO  Main:63 - user has quit the program.
+2018-02-05 14:27:03 INFO  Main:284 - administrator signin
+2018-02-05 14:29:15 INFO  Main:63 - user has quit the program.

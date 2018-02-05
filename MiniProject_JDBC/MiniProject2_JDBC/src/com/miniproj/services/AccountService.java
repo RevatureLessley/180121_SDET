@@ -32,7 +32,7 @@ public class AccountService {
 		else isAdminStatus = "Administrator";	
 		
 		if(isActive == 0) isActiveStatus = "Account has not been activated";
-		else isActiveStatus = "Account has been activated";	
+		else isActiveStatus = "Account is activated";	
 		
 		if(isClosed == 0) isClosedStatus = "Not active";
 		else if (isClosed == 1) isClosedStatus = "In use";
@@ -80,32 +80,36 @@ public class AccountService {
 		return dao.getAllAccounts();
 	}
 	
-	public void depositCheckings(Account acc, double amount) {
+	public double depositCheckings(Account acc, double amount) {
 		gatherAccountInstances(acc);
 		double newVal = acc.getCheckingsBalance() + amount;
 		String column = "b_checkings";
 		dao.updateBalanceInfo(email, column, newVal);
+		return newVal;
 	}
 	
-	public void depositSavings(Account acc, double amount) {
+	public double depositSavings(Account acc, double amount) {
 		gatherAccountInstances(acc);
 		double newVal = acc.getSavingsBalance() + amount;
 		String column = "b_savings";
 		dao.updateBalanceInfo(email, column, newVal);
+		return newVal;
 	}
 	
-	public void withdrawCheckings(Account acc, double amount) {
+	public double withdrawCheckings(Account acc, double amount) {
 		gatherAccountInstances(acc);
 		double newVal = acc.getCheckingsBalance() - amount;
 		String column = "b_checkings";
 		dao.updateBalanceInfo(email, column, newVal);
+		return newVal;
 	}
 	
-	public void withdrawSavings(Account acc, double amount) {
+	public double withdrawSavings(Account acc, double amount) {
 		gatherAccountInstances(acc);
 		double newVal = acc.getCheckingsBalance() - amount;
 		String column = "b_checkings";
 		dao.updateBalanceInfo(email, column, newVal);
+		return newVal;
 	}
 	
 	public void updateName(String first, String last, String e) {

@@ -8,8 +8,6 @@ public class Account {
 	private String password;
 	private double checkingsBalance;
 	private double savingsBalance;
-	
-	//Valid values: 0/1
 	private int isAdmin;
 	private int isActive;	
 	private int isClosed; 

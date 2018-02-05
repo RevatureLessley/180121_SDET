@@ -212,13 +212,13 @@ public class Main {
 						+ "Press any key to return to main menu");
 						userSelection = input.nextLine();
 						break;
-				case "3": deposit(a);
+				case "3": a.setCheckingsBalance(deposit(a));
 						break;
-				case "4": deposit(a);
+				case "4": a.setSavingsBalance(deposit(a));
 						break;
-				case "5": withdraw(a);
+				case "5": a.setCheckingsBalance(withdraw(a));
 						break;
-				case "6": withdraw(a);
+				case "6": a.setSavingsBalance(withdraw(a));
 						break;
 				case "7": as.displayInfoForUser(a);
 						break;
@@ -236,42 +236,42 @@ public class Main {
 	}
 	
 //============ deposit method ============//
-	public void deposit(Account a) {
+	public double deposit(Account a) {
 		input = new Scanner(System.in);
 		System.out.println("How much would you like to deposit?");
 		amount = Double.parseDouble(input.nextLine());
 		while (true) {
-			if (userSelection.equals("3") && amount > 0.0) {
-				as.depositCheckings(a, amount);
-				break;
-			} else if (userSelection.equals("4") && amount > 0.0) {
-				as.depositSavings(a, amount);
-				break;
+			if ((userSelection.equals("3") || userSelection.equals("5"))  && amount > 0.0) {
+				System.out.println("Transaction complete!");
+				return as.depositCheckings(a, amount);
+			} else if ((userSelection.equals("4") || userSelection.equals("6")) && amount > 0.0) {
+				System.out.println("Transaction complete!");
+				return as.depositSavings(a, amount);
 			} else {
 				System.out.println("Invalid Entry.");
 				amount = Double.parseDouble(input.nextLine());
 			}
 		}
-		System.out.println("Transaction complete!");
 	}
 	
 //============ withdraw method ============//
-	public void withdraw(Account a) {
+	public double withdraw(Account a) {
 		input = new Scanner(System.in);
 		System.out.println("How much would you like to withdraw?");
 		amount = Double.parseDouble(input.nextLine());
 		while (true) {
 			if (userSelection.equals("5") && amount < a.getCheckingsBalance()) {
-				as.withdrawCheckings(a, amount);
 				System.out.println("Transaction complete!");
-				break;
+				return as.withdrawCheckings(a, amount);
 			} else if (userSelection.equals("6") && amount < a.getSavingsBalance()) {
-				as.withdrawSavings(a, amount);
 				System.out.println("Transaction complete!");
-				break;
-			} else if (amount > a.getCheckingsBalance() || amount > a.getSavingsBalance()){
-				System.out.println("Sorry. You do not have enough funds.");
-				break;
+				return as.withdrawSavings(a, amount);
+			} else if (amount > a.getCheckingsBalance()){
+				System.out.println("Sorry. You do not have enough funds in your checkings.");
+				return a.getCheckingsBalance();
+			} else if (amount > a.getSavingsBalance()) {
+				System.out.println("Sorry. You do not have enough funds in your savings.");
+				return a.getSavingsBalance();
 			} else {
 				System.out.println("Invalid Entry. Enter amount you would like to withraw: ");
 				amount = Double.parseDouble(input.nextLine());
@@ -288,7 +288,7 @@ public class Main {
 			signout = false;
 			System.out.println("=========================================== \n"
 					+ "Hello, Mr. Rosario. How can I help you today? \n"
-					+ "1) View all user accounts"
+					+ "1) View all user accounts \n"
 					+ "2) View user account \n"
 					+ "3) Activate/deactivate account \n"
 					+ "4) Edit account info \n"
@@ -298,7 +298,8 @@ public class Main {
 					+ "8) withdraw savings \n"
 					+ "9) Checkings balance \n"
 					+ "10) Savings balance \n"
-					+ "11) Terminate/reopen account \n"
+					+ "11) View general account info \n"
+					+ "12) Terminate/reopen account \n"
 					+ "Type 'sign out' to return to login. \n"
 					+ "===========================================");
 			userSelection = input.nextLine();
@@ -308,19 +309,19 @@ public class Main {
 				case "2": System.out.println("What is the user's email? \n");
 				          email = input.nextLine();
 						  for (Account a : accounts) if (email.equals(a.getEmail())) as.displayInfoForAdmin(a);
-						  System.out.println("User not found. \n");
+						  else System.out.println("User not found. \n");
 						  break;
 				case "3": activateAccount();
 						  break;
 				case "4": editAccountInfo(acc);
 						  break;
-				case "5": deposit(acc);
+				case "5": acc.setCheckingsBalance(deposit(acc));
 						  break;
-				case "6": deposit(acc);
+				case "6": acc.setSavingsBalance(deposit(acc));
 						  break;
-				case "7": withdraw(acc);
+				case "7": acc.setCheckingsBalance(withdraw(acc));
 						  break;
-				case "8": withdraw(acc);
+				case "8": acc.setSavingsBalance(withdraw(acc));
 						  break;
 				case "9": System.out.println("Your current balance is $" + acc.getCheckingsBalance() + "\n"
 						+ "Press any key to return to main menu");
@@ -330,7 +331,9 @@ public class Main {
 						+ "Press any key to return to main menu");
 						userSelection = input.nextLine();
 						break;
-				case "11": terminateAccountAdmin();
+				case "11": as.displayInfoForAdmin(acc);
+						break;
+				case "12": terminateAccountAdmin();
 						break;
 				case "sign out": signout = true;
 						break;
@@ -349,11 +352,13 @@ public class Main {
 		for (Account a : accounts) {
 			if (email.equals(a.getEmail()) && a.getIsActive() == 0) {
 				as.updateAccountStatus(email, 1, 'a');
+				a.setIsActive(1);
 				logger.info("Account has been activated by admin.");
 				System.out.println("Account has been activated. \n");
 				accExists = true;
 			} else if (email.equals(a.getEmail()) && a.getIsActive() == 1) {
 				as.updateAccountStatus(email, 0, 'a');
+				a.setIsActive(0);
 				logger.info("Account has been deactivated by admin.");
 				System.out.println("Account has been deactivated. \n");
 				accExists = true;
@@ -370,11 +375,13 @@ public class Main {
 		for (Account a : accounts) {
 			if (email.equals(a.getEmail()) && a.getIsActive() == 1) {
 				as.updateAccountStatus(email, 2, 'c');
+				a.setIsClosed(2);
 				logger.info("Account has been terminated by admin.");
 				System.out.println("Account has been terminated. \n");
 				accExists = true;
 			} else if (email.equals(a.getEmail()) && a.getIsActive() == 2) {
 				as.updateAccountStatus(email, 1, 'c');
+				a.setIsClosed(1);
 				logger.info("Account has been reopened by admin.");
 				System.out.println("Account has been reopened. \n");
 				accExists = true;
@@ -399,6 +406,8 @@ public class Main {
 						+ "Contact administrator if you wish to reopen. \n");
 				as.clearCheckings(acc);
 				as.clearSavings(acc);
+				acc.setCheckingsBalance(0);
+				acc.setSavingsBalance(0);
 				return true;
 				} else if (choice.equals("no")) {
 					System.out.println("Glad you are staying with us!");
@@ -428,9 +437,12 @@ public class Main {
 					  System.out.println("Enter your last name: ");
 					  last = input.nextLine();
 					  as.updateName(first,  last, acc.getEmail());
-					  break;
+					  acc.setFirstName(first);
+					  acc.setLastName(last);
+					  return;
 			case "2": System.out.println("What would you like to change your password to? ");
 			  		  password = input.nextLine();
+			  		  acc.setPassword(password);
 			case "3": return;
 			default: System.out.println("Invalid entry.");
 			}
