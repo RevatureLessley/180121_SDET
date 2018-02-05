@@ -1,16 +1,14 @@
 package com.company;
-import java.io.*;
-import java.util.*;
+
+import com.connection.BankConnection;
+import com.connection.User;
+import com.management.BankManagement;
+
 import java.util.logging.Logger;
 
-/*
- * Name : Ernst Nathaniel blanchard
- * Project : Mini Project Bank Account
- *
- */
-public class Main {
+public class Driver {
 
-    private static final Logger LOGGER = Logger.getLogger( Main.class.getName() );
+    private static final Logger LOGGER = Logger.getLogger( Driver.class.getName() );
 
     /* represents the programs current state */
     public enum ProgramState{
@@ -28,6 +26,8 @@ public class Main {
         }else{
             System.out.println(user.toString());
         }
+        //bankConnection.insertUser(new User("jim", 0f, "jim"));
+        bankConnection.updateUserById(new User("jim", 40f, "jim", 60));
 
         while(currentState != ProgramState.USER_LOGOUT){
             currentState = bankManagement.process(currentState);

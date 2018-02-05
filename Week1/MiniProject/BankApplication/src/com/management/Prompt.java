@@ -1,4 +1,4 @@
-package com.company;
+package com.management;
 
 import java.util.List;
 

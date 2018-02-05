@@ -1,4 +1,5 @@
-package com.company;
+package com.connection;
+
 import org.junit.*;
 import java.io.Serializable;
 
@@ -47,6 +48,19 @@ public class User implements Serializable{
         this.id = id;
     }
 
+    public User(String password,  String username, int id){
+        super();
+        this.password = password;
+        this.username = username;
+        this.id = id;
+    }
+
+    public User(String password,  String username){
+        super();
+        this.password = password;
+        this.username = username;
+    }
+
     public User(){
         amount = 0f;
     }
@@ -82,3 +96,4 @@ public class User implements Serializable{
     }
 
 }
+

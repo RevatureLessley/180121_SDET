@@ -1,6 +1,4 @@
-package com.company;
-
-import java.util.List;
+package com.connection;
 
 public interface UserDao {
     public void insertUser(User user);
