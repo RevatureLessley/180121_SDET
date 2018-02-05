@@ -18,9 +18,8 @@ This is a Java mini project of a Bank application with console as front end and 
 ![demo](demo.gif)
 
 ## Entity Relationship Diagram
-<p align="center">
-    <img src=".ERD.jpg">
-</p>
+<img src=".ERD.jpg">
+
 
 
 
