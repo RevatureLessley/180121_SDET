@@ -1,11 +1,23 @@
 package com.revature.util;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class Connections {
+	private static Properties prop = null;
+	private final static String FILE_NAME = "dbprops.properties";
 	public static Connection getConnection() throws SQLException{
+		try{
+			prop = new Properties();
+			prop.load(new FileInputStream(FILE_NAME));
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
 		/*
 		 * This class serves as a helper class to return the database connection
 		 * for our project.
@@ -24,15 +36,23 @@ public class Connections {
 		 * for execution.
 		 */
 		//We forcibly bring in the OracleDriver class from our ojdbc7 jar.
+		String props[] = System.getenv("DBProps").split(";");
+
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//Class.forName(prop.getProperty("class"));
+			Class.forName(props[0]);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		
+		
 		return DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:xe",
-					"animals",
-					"animals"
+				props[1],
+				props[2],
+				props[3]
+					//prop.getProperty("url"),
+					//prop.getProperty("username"),
+					//prop.getProperty("password")
 				);
 	}
 }
