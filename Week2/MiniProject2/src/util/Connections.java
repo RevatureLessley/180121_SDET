@@ -1,15 +1,12 @@
 package util;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 public class Connections {
 	
-	private static Properties prop = null;
+//	private static Properties prop = null;
 //	private final static String FILE_NAME = "dbprops.properties";
 
 	
@@ -35,6 +32,7 @@ public class Connections {
 		}
 				
 		return DriverManager.getConnection(props[1], props[2],props[3]);
+		//return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "MiniProject2" ,"miniproject2");
 	}
 	
 

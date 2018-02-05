@@ -71,6 +71,7 @@ public class ShipDaoImpl implements ShipDao {
 			stmt.setInt(1, ship.getShip_id());
 			
 			stmt.executeUpdate(); //Executing queries, brings back resultsets
+			System.out.println(ship.getName() + " is now approved for flight!");
 			return true;
 		}
 		catch(SQLException e) {
@@ -131,10 +132,27 @@ public class ShipDaoImpl implements ShipDao {
 		}
 	}
 
+	
 	@Override
 	public boolean addShip(Ship ship) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;	
+		ShipDao shipDao = new ShipDaoImpl();
+		List<Ship> ships = shipDao.getAllShips();
+		List<Integer> ids = new ArrayList<>();
+		for (Ship s : ships) {
+			ids.add(s.getShip_id());
+		}
+		int randomId = -1;
+		while(true) {
+			randomId = (int) (Math.random() * 10000);
+			if(ids.contains(randomId) == false) {
+				break;
+			}
+		}
+		ship.setShip_id(randomId);
+		ship.setApproved(false);
+		
 		try{
 
 			Connection conn = Connections.getConnection();
@@ -148,6 +166,7 @@ public class ShipDaoImpl implements ShipDao {
 			stmt.setDouble(4, ship.getFuel_level());
 			
 			stmt.executeUpdate(); //Executing queries, brings back resultsets
+			System.out.println("Your ship " + ship.getName() + " has been added to the garage and has a fuel level of " + ship.getFuel_level());
 			return true;
 		}
 		catch(SQLException e) {
@@ -227,7 +246,6 @@ public class ShipDaoImpl implements ShipDao {
 
 	@Override
 	//Uses fuel
-	//tested and it works
 	public boolean flyShip(Ship ship, int volume) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;	
@@ -241,7 +259,7 @@ public class ShipDaoImpl implements ShipDao {
 	        cs.registerOutParameter(2, Types.FLOAT);
 	        
 	        rs = cs.executeQuery();
-	        
+
 	        Float a = cs.getFloat(2);
 	        
 	        Boolean isApproved = a == 1 ? true : false;
@@ -253,6 +271,7 @@ public class ShipDaoImpl implements ShipDao {
 	        	System.out.println("\nYour ship has been approved by the mechanic and is ready for flight\n");
 	        }
 	        
+
 
 			String sql = "{call useFuel(? , ? ,?)}";
 			
@@ -266,6 +285,13 @@ public class ShipDaoImpl implements ShipDao {
 	        rs = cs.executeQuery();
 	        Float f = cs.getFloat(3);
 	        ship.setFuel_level(f);
+	        try{
+	        	Thread.sleep(3000);
+	        }
+	        catch(Exception e) {
+	        	e.printStackTrace();
+	        }
+	        System.out.println("Welcome back! Your ship burned " + volume + " gallons of fuel and now has " + f + " gallons in the tank");
 /*	        cs.registerOutParameter(2, Types.FLOAT);
 
 	        boolean hadResults = cs.execute();
@@ -338,6 +364,8 @@ public class ShipDaoImpl implements ShipDao {
 		}
 		return ships;
 	}
+
+
 
 /*	@Override
 	public void printAllShips(List<Ship> ships) {

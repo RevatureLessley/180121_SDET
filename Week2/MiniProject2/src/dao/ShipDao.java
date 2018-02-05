@@ -21,6 +21,8 @@ public interface ShipDao {
 	
 	public List<Ship> shipsWithoutPilots();
 	
+//	public int createRandomId(List<Ship> ships);
+	
 //	public void printAllShips(List<Ship> ships);
 	
 }

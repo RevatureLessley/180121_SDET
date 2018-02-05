@@ -115,3 +115,89 @@
 [03 Feb 2018 21:39:16,577] controller.Controller.main() - Application started
 [03 Feb 2018 21:40:17,406] controller.Controller.main() - Application started
 [03 Feb 2018 21:40:32,707] controller.Controller.main() - Application started
+[04 Feb 2018 11:16:47,317] controller.Controller.main() - Application started
+[04 Feb 2018 11:27:25,162] controller.Controller.main() - Application started
+[04 Feb 2018 11:27:46,023] controller.Controller.main() - Application started
+[04 Feb 2018 11:28:02,430] controller.Controller.main() - Application started
+[04 Feb 2018 11:28:29,937] controller.Controller.main() - Application started
+[04 Feb 2018 11:29:56,396] controller.Controller.main() - Application started
+[04 Feb 2018 15:06:42,927] controller.Controller.main() - Application started
+[04 Feb 2018 15:09:12,163] controller.Controller.main() - Application started
+[04 Feb 2018 15:12:21,229] controller.Controller.main() - Application started
+[04 Feb 2018 15:15:10,267] controller.Controller.main() - Application started
+[04 Feb 2018 15:15:28,490] controller.Controller.main() - Application started
+[04 Feb 2018 15:15:33,836] controller.Controller.main() - Application started
+[04 Feb 2018 15:16:59,840] controller.Controller.main() - Application started
+[04 Feb 2018 15:18:52,077] controller.Controller.main() - Application started
+[04 Feb 2018 15:21:24,519] controller.Controller.main() - Application started
+[04 Feb 2018 15:24:02,775] controller.Controller.main() - Application started
+[04 Feb 2018 15:24:26,907] controller.Controller.main() - Application started
+[04 Feb 2018 15:32:15,966] controller.Controller.main() - Application started
+[04 Feb 2018 15:33:09,150] controller.Controller.main() - Application started
+[04 Feb 2018 15:33:52,713] controller.Controller.main() - Application started
+[04 Feb 2018 15:35:38,586] controller.Controller.main() - Application started
+[04 Feb 2018 15:36:31,156] controller.Controller.main() - Application started
+[04 Feb 2018 15:36:53,828] controller.Controller.main() - Application started
+[04 Feb 2018 15:37:11,174] controller.Controller.main() - Application started
+[04 Feb 2018 15:38:08,042] controller.Controller.main() - Application started
+[04 Feb 2018 15:38:44,569] controller.Controller.main() - Application started
+[04 Feb 2018 15:39:03,017] controller.Controller.main() - Application started
+[04 Feb 2018 15:39:22,166] controller.Controller.main() - Application started
+[04 Feb 2018 15:39:37,321] controller.Controller.main() - Application started
+[04 Feb 2018 15:40:07,471] controller.Controller.main() - Application started
+[04 Feb 2018 15:42:23,281] controller.Controller.main() - Application started
+[04 Feb 2018 15:43:28,002] controller.Controller.main() - Application started
+[04 Feb 2018 20:29:14,720] controller.Controller.main() - Application started
+[04 Feb 2018 20:29:17,184] controller.Controller.mainMenu() - Chose admin
+[04 Feb 2018 20:29:19,771] functions.AdminFunctions.mechanicLogin() - mechanic entered username successfully
+[04 Feb 2018 20:29:21,766] functions.AdminFunctions.mechanicLogin() - mechanic entered password successfully
+[04 Feb 2018 20:29:21,766] controller.Controller.mechanicMenu() - Accessed mechanicMenu
+[04 Feb 2018 20:29:24,489] controller.Controller.mechanicMenu() - accessing authenticate
+[04 Feb 2018 20:30:14,746] controller.Controller.main() - Application started
+[04 Feb 2018 20:30:17,269] controller.Controller.mainMenu() - Chose admin
+[04 Feb 2018 20:30:19,162] functions.AdminFunctions.mechanicLogin() - mechanic entered username successfully
+[04 Feb 2018 20:30:20,418] functions.AdminFunctions.mechanicLogin() - mechanic entered password successfully
+[04 Feb 2018 20:30:20,418] controller.Controller.mechanicMenu() - Accessed mechanicMenu
+[04 Feb 2018 20:30:23,980] controller.Controller.mechanicMenu() - accessing authenticate
+[04 Feb 2018 20:31:23,161] controller.Controller.main() - Application started
+[04 Feb 2018 20:31:27,303] controller.Controller.mainMenu() - Chose admin
+[04 Feb 2018 20:31:29,158] functions.AdminFunctions.mechanicLogin() - mechanic entered username successfully
+[04 Feb 2018 20:31:30,361] functions.AdminFunctions.mechanicLogin() - mechanic entered password successfully
+[04 Feb 2018 20:31:30,361] controller.Controller.mechanicMenu() - Accessed mechanicMenu
+[04 Feb 2018 20:31:34,027] controller.Controller.mechanicMenu() - quit mechanic menu
+[04 Feb 2018 20:31:52,166] controller.Controller.main() - Application started
+[04 Feb 2018 20:31:55,227] controller.Controller.mainMenu() - Chose admin
+[04 Feb 2018 20:31:56,559] functions.AdminFunctions.mechanicLogin() - mechanic entered username successfully
+[04 Feb 2018 20:31:57,924] functions.AdminFunctions.mechanicLogin() - mechanic entered password successfully
+[04 Feb 2018 20:31:57,925] controller.Controller.mechanicMenu() - Accessed mechanicMenu
+[04 Feb 2018 20:32:00,740] controller.Controller.mechanicMenu() - quit mechanic menu
+[04 Feb 2018 20:32:02,610] controller.Controller.mainMenu() - Chose admin
+[04 Feb 2018 20:32:04,368] functions.AdminFunctions.mechanicLogin() - mechanic entered username successfully
+[04 Feb 2018 20:32:05,692] functions.AdminFunctions.mechanicLogin() - mechanic entered password successfully
+[04 Feb 2018 20:32:05,692] controller.Controller.mechanicMenu() - Accessed mechanicMenu
+[04 Feb 2018 20:32:08,961] controller.Controller.mechanicMenu() - accessing authenticate
+[04 Feb 2018 20:33:01,855] controller.Controller.main() - Application started
+[04 Feb 2018 20:33:04,553] controller.Controller.mainMenu() - Chose admin
+[04 Feb 2018 20:33:06,123] functions.AdminFunctions.mechanicLogin() - mechanic entered username successfully
+[04 Feb 2018 20:33:07,348] functions.AdminFunctions.mechanicLogin() - mechanic entered password successfully
+[04 Feb 2018 20:33:07,348] controller.Controller.mechanicMenu() - Accessed mechanicMenu
+[04 Feb 2018 20:33:13,465] controller.Controller.mechanicMenu() - accessing authenticate
+[04 Feb 2018 20:33:24,014] controller.Controller.mechanicMenu() - quit mechanic menu
+[04 Feb 2018 20:33:26,876] controller.Controller.mainMenu() - Chose show
+[04 Feb 2018 20:34:10,705] controller.Controller.main() - Application started
+[04 Feb 2018 20:34:22,759] controller.Controller.mainMenu() - Chose show
+[04 Feb 2018 20:35:42,986] controller.Controller.main() - Application started
+[04 Feb 2018 20:35:45,501] controller.Controller.mainMenu() - Chose show
+[04 Feb 2018 20:36:10,631] controller.Controller.main() - Application started
+[04 Feb 2018 20:53:07,193] controller.Controller.main() - Application started
+[04 Feb 2018 20:53:08,951] controller.Controller.mainMenu() - Chose create
+[04 Feb 2018 20:54:12,784] controller.Controller.main() - Application started
+[04 Feb 2018 20:54:15,740] controller.Controller.mainMenu() - Chose create
+[04 Feb 2018 20:55:31,622] controller.Controller.main() - Application started
+[04 Feb 2018 20:55:34,497] controller.Controller.mainMenu() - Chose create
+[04 Feb 2018 20:57:33,927] controller.Controller.main() - Application started
+[04 Feb 2018 20:57:38,098] controller.Controller.mainMenu() - Chose create
+[04 Feb 2018 20:58:53,134] controller.Controller.main() - Application started
+[04 Feb 2018 20:58:54,847] controller.Controller.mainMenu() - Chose create
+[04 Feb 2018 20:59:31,518] controller.Controller.main() - Application started
+[04 Feb 2018 20:59:35,227] controller.Controller.mainMenu() - Chose show

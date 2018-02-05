@@ -6,7 +6,21 @@ public class Pilot {
 	private int id;
 	private String password;
 	
-
+	
+	
+	public Pilot() {
+		super();
+	}
+	public Pilot(int id) {
+		super();
+		this.id = id;
+	}
+	public Pilot(String name, int id, String password) {
+		super();
+		this.name = name;
+		this.id = id;
+		this.password = password;
+	}
 	public String getName() {
 		return name;
 	}
@@ -29,7 +43,7 @@ public class Pilot {
 	
 	@Override
 	public String toString() {
-		return "Pilot [name=" + name + ", id=" + id + ", password=" + password + "]";
+		return name + ": id=" + id + ", password=" + password + "\n";
 	}
 	
 	

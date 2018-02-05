@@ -17,23 +17,23 @@ public class AdminFunctions {
 	 * to admin functions
 	 * @param scan
 	 */
-	public static void adminLogin(Scanner scan) {
+	public static void mechanicLogin(Scanner scan) {
 		//String s;
-		System.out.println("What is the admin username?");
-		if (scan.nextLine().equals("admin")) {
-			logger.debug("admin entered username successfully");
+		System.out.println("What is the mechanic username?");
+		if (scan.nextLine().equals("mechanic")) {
+			logger.debug("mechanic entered username successfully");
 			System.out.println("What is the password?");
-			if(scan.nextLine().equals("password")) {
-				logger.debug("admin entered password successfully");
+			if(scan.nextLine().equals("mechanic")) {
+				logger.debug("mechanic entered password successfully");
 				Controller.mechanicMenu(scan);
 			}
 			else {
-				logger.debug("admin password was unsuccessful");
+				logger.debug("mechanic password was unsuccessful");
 				Controller.mainMenu();
 			}
 		}
 		else {
-			logger.debug("admin username was incorrect");
+			logger.debug("mechanic username was incorrect");
 			Controller.mainMenu();
 		}
 	}

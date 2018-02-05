@@ -17,3 +17,42 @@ explicit
 can make it for any column
 creates an object that uses its own manner of identifying each record uniquely
 more indices
+
+Online Analytic Processing (OLAP)
+Aim to denormalize the DB
+Used not for transcations but for data mining
+Typically stays in 1NF or 2NF
+
+Online transactional processing (OLTP)
+Aims to design a database that can quickly perform need transactions
+and grab neccessary data for application use
+Aim for 3NF
+
+Dimension Tables
+-tables that store all stats of transactions
+
+Fact tables
+Provides aggregated of the dimension tables
+
+Star Schema
+D - Store A sales
+
+D - Store B sales
+
+D - store X sales
+
+Facts table in the middle
+
+Allows for less complex queries
+has more redundant data, more memory required
+
+Datawarehouse
+All data on all transactions for a company
+Datamart would be a more localized subset of that data
+
+Snowflake schema
+Every dimension table has one connection either to Facts table 
+or a dimension table
+Requires more complex queries
+Less data redundancy
+Typically used for datawarehouses
