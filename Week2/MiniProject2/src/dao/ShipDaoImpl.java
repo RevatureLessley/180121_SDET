@@ -13,14 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import beans.Ship;
 import util.Connections;
 
 public class ShipDaoImpl implements ShipDao {
+	
+	final static Logger logger = Logger.getLogger(ShipDaoImpl.class);
 
 	@Override
 	//tested and it works
 	public List<Ship> getAllShips() {
+		logger.debug("Running getAllShips");
 		Statement stmt = null;
 		ResultSet rs = null;
 		List<Ship> ships = new ArrayList<>();
@@ -47,6 +52,7 @@ public class ShipDaoImpl implements ShipDao {
 				}
 				
 			}catch(SQLException e){
+				logger.debug(e.getStackTrace());
 				e.printStackTrace();
 			}finally{
 				close(stmt);
@@ -54,6 +60,7 @@ public class ShipDaoImpl implements ShipDao {
 			}
 		}
 		catch(SQLException e) {
+			logger.debug(e.getStackTrace());
 			e.printStackTrace();
 		}
 		
@@ -62,6 +69,7 @@ public class ShipDaoImpl implements ShipDao {
 
 	@Override
 	public boolean approveShip(Ship ship) {
+		logger.debug("Running approveShip");
 		PreparedStatement stmt = null;
 		ResultSet rs = null;	
 		try{
@@ -76,6 +84,7 @@ public class ShipDaoImpl implements ShipDao {
 			return true;
 		}
 		catch(SQLException e) {
+			logger.debug(e.getStackTrace());
 			e.printStackTrace();
 			return false;
 		}
@@ -87,6 +96,7 @@ public class ShipDaoImpl implements ShipDao {
 	
 	@Override
 	public boolean unapproveShip(Ship ship) {
+		logger.debug("Running unapproveShip");
 		PreparedStatement stmt = null;
 		ResultSet rs = null;	
 		try{
@@ -95,11 +105,13 @@ public class ShipDaoImpl implements ShipDao {
 			String sql = "UPDATE ship SET isApproved = 0 WHERE ship_id = ?";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, ship.getShip_id());
+			System.out.println(ship.getName() + " is not approved anymore");
 			
 			stmt.executeUpdate(); //Executing queries, brings back resultsets
 			return true;
 		}
 		catch(SQLException e) {
+			logger.debug(e.getStackTrace());
 			e.printStackTrace();
 			return false;
 		}
@@ -111,6 +123,7 @@ public class ShipDaoImpl implements ShipDao {
 
 	@Override
 	public boolean deleteShipByName(Ship ship) {
+		logger.debug("Running deleteShipByName");
 		PreparedStatement stmt = null;
 		ResultSet rs = null;	
 		try{
@@ -124,6 +137,7 @@ public class ShipDaoImpl implements ShipDao {
 			return true;
 		}
 		catch(SQLException e) {
+			logger.debug(e.getStackTrace());
 			e.printStackTrace();
 			return false;
 		}
@@ -136,6 +150,7 @@ public class ShipDaoImpl implements ShipDao {
 	
 	@Override
 	public boolean addShip(Ship ship, Scanner scan) {
+		logger.debug("Running addShip");
 		PreparedStatement stmt = null;
 		ResultSet rs = null;	
 		ShipDao shipDao = new ShipDaoImpl();
@@ -175,6 +190,7 @@ public class ShipDaoImpl implements ShipDao {
 			return true;
 		}
 		catch(SQLException e) {
+			logger.debug(e.getStackTrace());
 			e.printStackTrace();
 			return false;
 		}
@@ -188,7 +204,8 @@ public class ShipDaoImpl implements ShipDao {
 	@Override
 	//adds fuel
 	//tested and it works
-	public boolean addFuel(Ship ship, int volume) {
+	public double addFuel(Ship ship, int volume) {
+		logger.debug("Running addFuel");
 		PreparedStatement stmt = null;
 		ResultSet rs = null;	
 		try{
@@ -214,7 +231,6 @@ public class ShipDaoImpl implements ShipDao {
 	        
 	        cs.setInt(1, ship.getShip_id());
 	        cs.setInt(2, volume);
-	        int results = -1;
 	        cs.registerOutParameter(3, Types.FLOAT);
 
 //			cs.setInt(3, results );
@@ -237,11 +253,12 @@ public class ShipDaoImpl implements ShipDao {
 	        }
 	        
 	        System.out.println(result);*/
-			return true;
+			return ship.getFuel_level();
 		}
 		catch(SQLException e) {
+			logger.debug(e.getStackTrace());
 			e.printStackTrace();
-			return false;
+			return ship.getFuel_level();
 		}
 		finally{
 			close(stmt);
@@ -252,6 +269,7 @@ public class ShipDaoImpl implements ShipDao {
 	@Override
 	//Uses fuel
 	public boolean flyShip(Ship ship, int volume) {
+		logger.debug("Running flyShip");
 		PreparedStatement stmt = null;
 		ResultSet rs = null;	
 		try{
@@ -311,6 +329,7 @@ public class ShipDaoImpl implements ShipDao {
 			return true;
 		}
 		catch(SQLException e) {
+			logger.debug(e.getStackTrace());
 			e.printStackTrace();
 			return false;
 		}
@@ -322,6 +341,7 @@ public class ShipDaoImpl implements ShipDao {
 
 	@Override
 	public List<Ship> shipsWithoutPilots() {
+		logger.debug("Running shipsWithoutPilots");
 		Statement stmt = null;
 		ResultSet rs = null;
 		List<Ship> ships = new ArrayList<>();
@@ -353,6 +373,7 @@ public class ShipDaoImpl implements ShipDao {
 				}
 	
 			}catch(SQLException e){
+				logger.debug(e.getStackTrace());
 				e.printStackTrace();
 			}finally{
 				close(stmt);
@@ -360,6 +381,7 @@ public class ShipDaoImpl implements ShipDao {
 			}
 		}
 		catch(SQLException e) {
+			logger.debug(e.getStackTrace());
 			e.printStackTrace();
 		}
 		return ships;

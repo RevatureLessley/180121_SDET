@@ -1,10 +1,17 @@
 package dao;
 
+import static util.CloseStreams.close;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
 import controller.Controller;
+import util.Connections;
 
 public class MechanicMethods {
 	final static Logger logger = Logger.getLogger(MechanicMethods.class);
@@ -29,4 +36,32 @@ public class MechanicMethods {
 			Controller.mainMenu();
 		}
 	}
+	
+	public static void showAllData() {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			Connection conn = Connections.getConnection();
+			String sql = "SELECT * FROM ALLDATA";
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				String approved = rs.getInt("isApproved") == 1 ? "Approved" : "Not approved";
+				System.out.println(rs.getString("PILOT_NAME") + " " + 
+						rs.getString("Ship_NAME") + " " + 
+						approved);
+			}
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			close(stmt);	
+			close(rs);
+		}
+		
+
+	}
+	
 }

@@ -12,7 +12,7 @@ public interface ShipDao {
 	
 	public boolean deleteShipByName(Ship ship);
 		
-	public boolean addFuel(Ship ship, int volume);//adds fuel
+	public double addFuel(Ship ship, int volume);//adds fuel
 	
 	public boolean flyShip(Ship ship, int volume); //uses fuel
 	

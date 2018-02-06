@@ -19,6 +19,6 @@ public interface PilotDao {
 	
 	public void assignShipToPilot(Ship ship, Scanner scan);
 	
-	public void createPilot(Scanner scan);
+	public void createPilot(Pilot p, Scanner scan);
 	
 }

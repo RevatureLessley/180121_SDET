@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,14 +31,6 @@ public class Controller {
 		
 	public static void main(String[] args) {
 		logger.debug("Application started");
-//		ShipDao dao = new ShipDaoImpl();
-//		PilotDao pDao = new PilotDaoImpl();
-//		pDao.chooseShip(new Pilot(1), new Scanner(System.in));
-//		pDao.logInPilot(pDao.getAllPilots());
-//		Ship ship = new Ship(1004, "XK41", false, 104);
-//		dao.flyShip(new Ship(1004), -1);
-//		System.out.println(dao.getAllShips());
-//		System.out.println(dao.shipsWithoutPilots());
 		mainMenu();
 	}
 	
@@ -72,25 +65,71 @@ public class Controller {
 				String input = scan.nextLine();
 				ship.setName(input);
 				System.out.println("Load it with some fuel (max 10,000): ");
-				Integer i = scan.nextInt();
-				ship.setFuel_level(i);				
+				while(true) {
+					if(scan.hasNextInt()) {
+						Integer i = scan.nextInt();
+						ship.setFuel_level(i);	
+						break;
+					}
+					System.out.println("Enter a number ");
+					scan.nextLine();
+					
+				}
+		
 				shipDao.addShip(ship, scan);
 			}
 			if (s.equals("3")) {
 				logger.debug("Chose show");
-				List<Ship> ships = shipDao.getAllShips();
-				System.out.println(ships);
+				MechanicMethods.showAllData();
 			}
 			if (s.equals("4")) {
 				logger.debug("Chose show");
 				List<Ship> ships = shipDao.getAllShips();
 				System.out.println(ships);
-				System.out.println("Choose a ship by ID to fuel");
-				String input = scan.nextLine();			
+				System.out.println("Choose a ship by name to fuel");
+				String input = scan.nextLine();
+				Ship newShip;
+				for (Ship ship : ships) {
+					if (ship.getName().equals(input)) {
+						System.out.println("Enter an amount");
+						if(scan.hasNextInt())
+							shipDao.addFuel(ship,scan.nextInt());
+						else {
+							System.out.println("That wasn't a number");						
+						}
+						break;
+					}
+				}
+
 			}
 			if (s.equals("5")) {
 				logger.debug("Chose create pilot");
-				pilotDao.createPilot(scan);
+				PilotDao pDao = new PilotDaoImpl();
+				List<Pilot> pilots = pDao.getAllPilots();
+				System.out.println("Here are the current pilots\n" + pilots);
+				Pilot p = new Pilot();
+				System.out.println("Enter your name: ");
+				String input = scan.nextLine();
+				if(input.equals("mechanic") || input.equals("Mechanic")) {
+					return;
+				}
+				p.setName(input);
+				System.out.println("Enter your password: ");
+				p.setPassword(scan.nextLine());
+
+				List<Integer> ids = new ArrayList<>();
+				for(Pilot pilot : pilots) {
+					ids.add(pilot.getId());
+				}
+				int randomId = -1;
+				while(true) {
+					randomId = (int) (Math.random() * 10000);
+					if(ids.contains(randomId) == false) {
+						break;
+					}
+				}
+				p.setId(randomId);
+				pilotDao.createPilot(p, scan);
 			}
 			if (s.equals("6")) {
 				logger.debug("Chose admin");
@@ -109,13 +148,12 @@ public class Controller {
 
 		logger.debug("Accessed mechanicMenu");
 		ShipDao shipDao = new ShipDaoImpl();
-//		PilotDao pilotDao = new PilotDaoImpl();
 		
 		String s = "";
 		while(true) {
 			System.out.println("Mechanic main menu:");
 			System.out.println("0 to inspect a spaceship");
-			System.out.println("1 to decommission and recycle a ship");
+			System.out.println("1 to remove a spaceship when it needs repair");
 			System.out.println("2 for main menu");
 			s = scan.nextLine();		
 			
@@ -143,7 +181,23 @@ public class Controller {
 			
 			if (s.equals("1")) {
 				logger.debug("accessing delete");
-
+				List<Ship> ships = shipDao.getAllShips();
+				for (Ship ship : ships) {
+					if(ship.isApproved() == false) {
+						System.out.println(ship.getName() + " Inspected: No");						
+					}
+					if(ship.isApproved()) {
+						System.out.println(ship.getName() + " Inspected: Yes");						
+					}
+				}
+				System.out.println("Choose a ship to remove for inspection");
+				String input = scan.nextLine();
+				for (Ship ship : ships) {
+					if (input.equals(ship.getName())) {
+						shipDao.unapproveShip(ship);
+						break;
+					}
+				}				
 			}
 			
 			if (s.equals("2")) {
@@ -151,6 +205,7 @@ public class Controller {
 				mainMenu();
 				break;
 			}
+			
 		}		
 	}
 	

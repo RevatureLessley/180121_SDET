@@ -11,14 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import beans.Pilot;
 import beans.Ship;
 import util.Connections;
 
 public class PilotDaoImpl implements PilotDao {
 
+	final static Logger logger = Logger.getLogger(PilotDaoImpl.class);
+	
 	@Override
 	public List<Pilot> getAllPilots() {
+		logger.debug("Running getAllPilots");
 		Statement stmt = null;
 		ResultSet rs = null;
 		List<Pilot> pilots = new ArrayList<>();
@@ -42,6 +47,7 @@ public class PilotDaoImpl implements PilotDao {
 				}
 				
 			}catch(SQLException e){
+				logger.debug(e.getStackTrace());
 				e.printStackTrace();
 			}finally{
 				close(stmt);
@@ -49,14 +55,17 @@ public class PilotDaoImpl implements PilotDao {
 			}
 		}
 		catch(SQLException e) {
+			logger.debug(e.getStackTrace());
 			e.printStackTrace();
 		}
 		
+		logger.debug("returned all pilots");
 		return pilots;
 	}
 
 	@Override
 	public void logInPilot(List<Pilot> pilots, Scanner scan) {
+		logger.debug("Running logInPilot");
 		System.out.println(pilots);
 
 		System.out.println("A pilot must login before being allowed to fly a spaceship.\n Enter your name:\n");
@@ -88,6 +97,7 @@ public class PilotDaoImpl implements PilotDao {
 	}
 	
 	public void chooseShip(Pilot pilot, Scanner scan) {
+		logger.debug("Running chooseShip");
 		PreparedStatement stmt = null;
 		ResultSet rs = null;	
 		List<Ship> ships = new ArrayList<>();
@@ -128,6 +138,7 @@ public class PilotDaoImpl implements PilotDao {
 	        
 		}
 		catch(SQLException e) {
+			logger.debug(e.getStackTrace());
 			e.printStackTrace();
 		}
 		finally{
@@ -139,11 +150,14 @@ public class PilotDaoImpl implements PilotDao {
 
 	@Override
 	public void assignShipToPilot(Ship ship, Scanner scan) {
+		logger.debug("Running assignShipToPilot");
 		PilotDao pDao = new PilotDaoImpl();
 		List<Pilot> pilots = pDao.getAllPilots();
 		System.out.println(pilots);
 		System.out.println("Enter the name of the  pilot you would like to assign the ship to");
+		scan.nextLine();
 		String choosePilot = scan.nextLine();
+		
 		Boolean foundPilot = false;
 		Pilot pilot = new Pilot();
 		for (Pilot p : pilots) {
@@ -161,13 +175,14 @@ public class PilotDaoImpl implements PilotDao {
 		PreparedStatement stmt = null;
 		try {
 			Connection conn = Connections.getConnection();
-			String sql = "INSERT INTO PILOTANDSHIP (SHIP_ID, PILOT_ID) VALUES ( ? , ? ))";
+			String sql = "INSERT INTO PILOTANDSHIP (SHIP_ID, PILOT_ID) VALUES ( ? , ? )";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, ship.getShip_id());
 			stmt.setInt(2,pilot.getId());
 			stmt.execute();
 		}
 		catch(SQLException e) {
+			logger.debug(e.getStackTrace());
 			e.printStackTrace();
 		}
 		finally {
@@ -177,41 +192,26 @@ public class PilotDaoImpl implements PilotDao {
 	}
 
 	@Override
-	public void createPilot(Scanner scan) {
-		Pilot p = new Pilot();
-		System.out.println("Enter your name: ");
-		String input = scan.nextLine();
-		p.setName(input);
-		System.out.println("Enter your password: ");
-		p.setPassword(scan.nextLine());
-		PilotDao pDao = new PilotDaoImpl();
-
-		List<Pilot> pilots = pDao.getAllPilots();
-		List<Integer> ids = new ArrayList<>();
-		for(Pilot pilot : pilots) {
-			ids.add(pilot.getId());
-		}
-		int randomId = -1;
-		while(true) {
-			randomId = (int) (Math.random() * 10000);
-			if(ids.contains(randomId) == false) {
-				break;
-			}
-		}
-		p.setId(randomId);
+	public void createPilot(Pilot p, Scanner scan) {
+		logger.debug("Running createPilot");
 		
 		PreparedStatement stmt = null;
 		try {
 			Connection conn = Connections.getConnection();
+			logger.debug("Trying to insert Pilot: " + p.getId() + " " + p.getName() + " " + p.getPassword());
 			String sql = "INSERT INTO PILOT (PILOT_ID, PILOT_NAME, PILOT_PASSWORD) VALUES ( ? , ?, ? )";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, p.getId());
 			stmt.setString(2, p.getName());
 			stmt.setString(3, p.getPassword());
+			logger.debug("Preparing to insert Pilot: " + p.getId() + " " + p.getName() + " " + p.getPassword());			
 			stmt.executeUpdate();
+			logger.debug("Inserted Pilot: " + p.getId() + " " + p.getName() + " " + p.getPassword());
+		
 			
 		}
 		catch(SQLException e) {
+			logger.debug(e.getStackTrace());
 			e.printStackTrace();
 		}
 		finally {
