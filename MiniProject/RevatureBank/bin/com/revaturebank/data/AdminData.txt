@@ -1,0 +1,2 @@
+*****2383,kamel,berrani,3479817712,berranik@gmal.com,1111,kam,ber
+ssn,firstName,lastName,phone,email,adminId,username,password
