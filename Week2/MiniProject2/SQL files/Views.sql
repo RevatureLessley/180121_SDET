@@ -33,7 +33,6 @@ on 1 = pilotandship.pilot_id)
 AND ISAPPROVED = 1;
 
 
-
 UPDATE ship
 SET isapproved = 1
 WHERE ship_id = 1001;

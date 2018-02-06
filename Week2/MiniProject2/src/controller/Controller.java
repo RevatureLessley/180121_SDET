@@ -14,7 +14,6 @@ import dao.PilotDaoImpl;
 import dao.ShipDao;
 import dao.ShipDaoImpl;
 
-
 /*
  * Key features:
  * Users can login with password and change bank balance only after being approved by administrator
@@ -72,8 +71,7 @@ public class Controller {
 						break;
 					}
 					System.out.println("Enter a number ");
-					scan.nextLine();
-					
+					scan.nextLine();				
 				}
 		
 				shipDao.addShip(ship, scan);
@@ -175,8 +173,7 @@ public class Controller {
 						shipDao.approveShip(ship);
 						break;
 					}
-				}
-				
+				}				
 			}
 			
 			if (s.equals("1")) {

@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="SchemaObject" objectID="CB45B282-6B08-A25F-B846-2089A8203EE5" name="MINIPROJECT2" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.SchemaObject" propertyParentId="E127DCCB-1498-ED18-DD90-ABC437462A2D" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Table" objectID="1B44A4EE-F9FD-D274-250B-4B8310A0B54C" name="SHIP" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.Table" propertyParentId="E127DCCB-1498-ED18-DD90-ABC437462A2D" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Table" objectID="396D1B09-3897-71BA-9DF4-F2047968710E" name="PILOT" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.Table" propertyParentId="E127DCCB-1498-ED18-DD90-ABC437462A2D" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Table" objectID="FC63F06E-AF5C-61DF-6C2F-E8AF9DBC5830" name="PILOTANDSHIP" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.Table" propertyParentId="E127DCCB-1498-ED18-DD90-ABC437462A2D" propertySourceId="" propertyTargetId=""/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>

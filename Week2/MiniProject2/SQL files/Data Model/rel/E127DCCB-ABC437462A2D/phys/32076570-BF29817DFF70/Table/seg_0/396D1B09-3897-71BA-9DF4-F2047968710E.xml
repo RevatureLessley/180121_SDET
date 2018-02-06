@@ -1,0 +1,67 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="PILOT" directorySegmentName="seg_0" id="396D1B09-3897-71BA-9DF4-F2047968710E">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:18 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<schemaObject>CB45B282-6B08-A25F-B846-2089A8203EE5</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>612F984B-D061-D450-91F2-55DEBF90D0B6</segment>
+<tableSpace>ACA67547-0793-7402-4FB0-06B05A9338C0</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="PILOT_NAME" id="4F8B1C91-E601-9CFC-4ECD-D75658BA2ED2">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PILOT_PASSWORD" id="8E5FD412-E78E-4CFD-2B37-7FD754EB22AA">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PILOT_ID" id="CE527699-79AF-4203-9141-A487211E0299">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PILOT_ID_PK" id="CA86AC6A-104A-D866-0C90-1CC080716125">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<schemaObject>CB45B282-6B08-A25F-B846-2089A8203EE5</schemaObject>
+<segment>0C0AC9D1-1F32-CBA9-3991-F114AC7E4D25</segment>
+<tableSpace>ACA67547-0793-7402-4FB0-06B05A9338C0</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PILOT_ID_PK" id="D28CC133-8FAD-3733-498A-E8C1B9BC6CDD">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<segment>0C0AC9D1-1F32-CBA9-3991-F114AC7E4D25</segment>
+<tableSpace>ACA67547-0793-7402-4FB0-06B05A9338C0</tableSpace>
+<existingIndex>CA86AC6A-104A-D866-0C90-1CC080716125</existingIndex>
+<indexSegment>0C0AC9D1-1F32-CBA9-3991-F114AC7E4D25</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+<uniqueKeys>
+<UniqueKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UniqueOraclev10g" name="PILOT_PILOT_NAME_UN" id="C1E1FE00-FC25-94C2-B4BA-F5DCEE2C0C83">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<schemaObject>CB45B282-6B08-A25F-B846-2089A8203EE5</schemaObject>
+<segment>0C0AC9D1-1F32-CBA9-3991-F114AC7E4D25</segment>
+<tableSpace>ACA67547-0793-7402-4FB0-06B05A9338C0</tableSpace>
+<indexSegment>0C0AC9D1-1F32-CBA9-3991-F114AC7E4D25</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</UniqueKey>
+</uniqueKeys>
+</TableProxyOraclev11g>

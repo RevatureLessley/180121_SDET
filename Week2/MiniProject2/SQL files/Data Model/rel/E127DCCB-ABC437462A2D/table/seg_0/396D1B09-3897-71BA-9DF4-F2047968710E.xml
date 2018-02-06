@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="396D1B09-3897-71BA-9DF4-F2047968710E" schemaObject="CB45B282-6B08-A25F-B846-2089A8203EE5" name="PILOT">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>MINIPROJECT2</sourceObjSchema>
+<sourceObjName>PILOT</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:18 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PILOT_ID" id="CE527699-79AF-4203-9141-A487211E0299">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>PILOT</sourceObjSchema>
+<sourceObjName>PILOT_ID</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,9,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PILOT_NAME" id="4F8B1C91-E601-9CFC-4ECD-D75658BA2ED2">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>PILOT</sourceObjSchema>
+<sourceObjName>PILOT_NAME</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PILOT_PASSWORD" id="8E5FD412-E78E-4CFD-2B37-7FD754EB22AA">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>PILOT</sourceObjSchema>
+<sourceObjName>PILOT_PASSWORD</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D28CC133-8FAD-3733-498A-E8C1B9BC6CDD" name="PILOT_ID_PK">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>MINIPROJECT2</sourceObjSchema>
+<sourceObjName>PILOT_ID_PK</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CE527699-79AF-4203-9141-A487211E0299"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C1E1FE00-FC25-94C2-B4BA-F5DCEE2C0C83" schemaObject="CB45B282-6B08-A25F-B846-2089A8203EE5" name="PILOT_PILOT_NAME_UN">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>MINIPROJECT2</sourceObjSchema>
+<sourceObjName>SYS_C007171</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4F8B1C91-E601-9CFC-4ECD-D75658BA2ED2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CA86AC6A-104A-D866-0C90-1CC080716125" schemaObject="CB45B282-6B08-A25F-B846-2089A8203EE5" name="PILOT_ID_PK">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>MINIPROJECT2</sourceObjSchema>
+<sourceObjName>PILOT_ID_PK</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CE527699-79AF-4203-9141-A487211E0299"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

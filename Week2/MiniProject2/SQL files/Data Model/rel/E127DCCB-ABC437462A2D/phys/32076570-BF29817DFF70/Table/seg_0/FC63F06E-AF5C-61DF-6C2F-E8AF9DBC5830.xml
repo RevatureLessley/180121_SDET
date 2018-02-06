@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="PILOTANDSHIP" directorySegmentName="seg_0" id="FC63F06E-AF5C-61DF-6C2F-E8AF9DBC5830">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<schemaObject>CB45B282-6B08-A25F-B846-2089A8203EE5</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>612F984B-D061-D450-91F2-55DEBF90D0B6</segment>
+<tableSpace>ACA67547-0793-7402-4FB0-06B05A9338C0</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="SHIP_ID" id="CA633EB8-CDAE-2E79-C821-73C262F11C01">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PILOT_ID" id="F605EB86-7414-41BF-EA54-B419A20B67FC">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PILOTANDSHIP_PK" id="D4797E88-B1A7-9780-FA25-F79D8DFCEF58">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<schemaObject>CB45B282-6B08-A25F-B846-2089A8203EE5</schemaObject>
+<segment>0C0AC9D1-1F32-CBA9-3991-F114AC7E4D25</segment>
+<tableSpace>ACA67547-0793-7402-4FB0-06B05A9338C0</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PILOTANDSHIP_PK" id="08BAF0FB-BBBE-D525-86F5-04F16EC76995">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<segment>0C0AC9D1-1F32-CBA9-3991-F114AC7E4D25</segment>
+<tableSpace>ACA67547-0793-7402-4FB0-06B05A9338C0</tableSpace>
+<existingIndex>D4797E88-B1A7-9780-FA25-F79D8DFCEF58</existingIndex>
+<indexSegment>0C0AC9D1-1F32-CBA9-3991-F114AC7E4D25</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

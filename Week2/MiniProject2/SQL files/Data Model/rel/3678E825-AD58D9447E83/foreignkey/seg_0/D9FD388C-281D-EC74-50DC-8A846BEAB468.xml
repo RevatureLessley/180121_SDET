@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D9FD388C-281D-EC74-50DC-8A846BEAB468" containerWithKeyObject="32B59909-D9F3-26AE-2CE0-CDFB27948EFC" localFKIndex="23D0C280-6878-D435-8AB8-9D6D0EE49800" name="SHIP_ID_FK">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>92F49639-6921-07E8-8A78-CCA1C200FEAD</importedID>
+<referredTableLongName>MINIPROJECT2.SHIP</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>828C3FA7-6428-3ACD-B242-111B3FC2BD45</referredTableID>
+<keyObject>55B73CCE-2B0A-96CD-5191-F94504876615</keyObject>
+<referredKeyID>55B73CCE-2B0A-96CD-5191-F94504876615</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>SHIP_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -628,3 +628,90 @@
 [06 Feb 2018 08:33:48,342] dao.ShipDaoImpl.getAllShips() - Running getAllShips
 [06 Feb 2018 08:33:48,342] util.Connections.getConnection() - Returned DriverManager
 [06 Feb 2018 08:33:48,379] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 09:31:37,037] controller.Controller.main() - Application started
+[06 Feb 2018 09:32:43,918] controller.Controller.mainMenu() - Chose create pilot
+[06 Feb 2018 09:32:43,919] dao.PilotDaoImpl.getAllPilots() - Running getAllPilots
+[06 Feb 2018 09:32:44,058] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 09:32:46,321] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 09:32:47,749] dao.PilotDaoImpl.getAllPilots() - returned all pilots
+[06 Feb 2018 09:32:53,099] dao.PilotDaoImpl.createPilot() - Running createPilot
+[06 Feb 2018 09:32:53,099] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 09:32:53,186] dao.PilotDaoImpl.createPilot() - Trying to insert Pilot: 432 Abba abba
+[06 Feb 2018 09:32:53,519] dao.PilotDaoImpl.createPilot() - Preparing to insert Pilot: 432 Abba abba
+[06 Feb 2018 09:32:53,532] dao.PilotDaoImpl.createPilot() - Inserted Pilot: 432 Abba abba
+[06 Feb 2018 09:33:00,431] controller.Controller.mainMenu() - Chose login
+[06 Feb 2018 09:33:00,431] dao.PilotDaoImpl.getAllPilots() - Running getAllPilots
+[06 Feb 2018 09:33:00,432] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 09:33:00,513] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 09:33:00,720] dao.PilotDaoImpl.getAllPilots() - returned all pilots
+[06 Feb 2018 09:33:00,720] dao.PilotDaoImpl.logInPilot() - Running logInPilot
+[06 Feb 2018 09:33:05,484] dao.PilotDaoImpl.chooseShip() - Running chooseShip
+[06 Feb 2018 09:33:05,485] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 09:33:21,102] controller.Controller.main() - Application started
+[06 Feb 2018 10:14:12,748] controller.Controller.main() - Application started
+[06 Feb 2018 10:14:25,034] controller.Controller.mainMenu() - Chose show
+[06 Feb 2018 10:14:25,148] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:15:48,139] controller.Controller.mainMenu() - Chose create pilot
+[06 Feb 2018 10:15:48,141] dao.PilotDaoImpl.getAllPilots() - Running getAllPilots
+[06 Feb 2018 10:15:48,142] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:15:48,212] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:15:48,513] dao.PilotDaoImpl.getAllPilots() - returned all pilots
+[06 Feb 2018 10:15:55,555] dao.PilotDaoImpl.createPilot() - Running createPilot
+[06 Feb 2018 10:15:55,556] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:15:55,703] dao.PilotDaoImpl.createPilot() - Trying to insert Pilot: 6119 Bobbert bob
+[06 Feb 2018 10:15:55,704] dao.PilotDaoImpl.createPilot() - Preparing to insert Pilot: 6119 Bobbert bob
+[06 Feb 2018 10:15:55,717] dao.PilotDaoImpl.createPilot() - Inserted Pilot: 6119 Bobbert bob
+[06 Feb 2018 10:16:04,962] controller.Controller.mainMenu() - Chose login
+[06 Feb 2018 10:16:04,962] dao.PilotDaoImpl.getAllPilots() - Running getAllPilots
+[06 Feb 2018 10:16:04,962] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:16:05,045] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:16:05,162] dao.PilotDaoImpl.getAllPilots() - returned all pilots
+[06 Feb 2018 10:16:05,162] dao.PilotDaoImpl.logInPilot() - Running logInPilot
+[06 Feb 2018 10:16:09,894] dao.PilotDaoImpl.chooseShip() - Running chooseShip
+[06 Feb 2018 10:16:09,894] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:16:35,515] controller.Controller.main() - Application started
+[06 Feb 2018 10:16:38,002] controller.Controller.mainMenu() - Chose create
+[06 Feb 2018 10:16:45,185] dao.ShipDaoImpl.addShip() - Running addShip
+[06 Feb 2018 10:16:45,185] dao.ShipDaoImpl.getAllShips() - Running getAllShips
+[06 Feb 2018 10:16:45,283] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:16:46,743] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:16:47,567] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:16:47,822] dao.PilotDaoImpl.assignShipToPilot() - Running assignShipToPilot
+[06 Feb 2018 10:16:47,822] dao.PilotDaoImpl.getAllPilots() - Running getAllPilots
+[06 Feb 2018 10:16:47,823] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:16:47,894] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:16:48,007] dao.PilotDaoImpl.getAllPilots() - returned all pilots
+[06 Feb 2018 10:16:55,997] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:17:08,853] controller.Controller.mainMenu() - Chose login
+[06 Feb 2018 10:17:08,854] dao.PilotDaoImpl.getAllPilots() - Running getAllPilots
+[06 Feb 2018 10:17:08,856] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:17:08,945] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:17:09,038] dao.PilotDaoImpl.getAllPilots() - returned all pilots
+[06 Feb 2018 10:17:09,038] dao.PilotDaoImpl.logInPilot() - Running logInPilot
+[06 Feb 2018 10:17:12,884] dao.PilotDaoImpl.chooseShip() - Running chooseShip
+[06 Feb 2018 10:17:12,884] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:17:25,587] controller.Controller.main() - Application started
+[06 Feb 2018 10:17:28,525] controller.Controller.mainMenu() - Chose admin
+[06 Feb 2018 10:17:30,481] dao.MechanicMethods.mechanicLogin() - mechanic entered username successfully
+[06 Feb 2018 10:17:32,111] dao.MechanicMethods.mechanicLogin() - mechanic entered password successfully
+[06 Feb 2018 10:17:32,111] controller.Controller.mechanicMenu() - Accessed mechanicMenu
+[06 Feb 2018 10:17:34,484] controller.Controller.mechanicMenu() - accessing authenticate
+[06 Feb 2018 10:17:34,484] dao.ShipDaoImpl.getAllShips() - Running getAllShips
+[06 Feb 2018 10:17:34,577] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:17:35,729] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:17:41,571] dao.ShipDaoImpl.approveShip() - Running approveShip
+[06 Feb 2018 10:17:41,576] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:17:48,736] controller.Controller.mechanicMenu() - quit mechanic menu
+[06 Feb 2018 10:17:58,576] controller.Controller.mainMenu() - Chose login
+[06 Feb 2018 10:17:58,576] dao.PilotDaoImpl.getAllPilots() - Running getAllPilots
+[06 Feb 2018 10:17:58,576] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:17:58,745] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:17:58,946] dao.PilotDaoImpl.getAllPilots() - returned all pilots
+[06 Feb 2018 10:17:58,946] dao.PilotDaoImpl.logInPilot() - Running logInPilot
+[06 Feb 2018 10:18:05,347] dao.PilotDaoImpl.chooseShip() - Running chooseShip
+[06 Feb 2018 10:18:05,348] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:18:11,998] dao.ShipDaoImpl.flyShip() - Running flyShip
+[06 Feb 2018 10:18:12,001] util.Connections.getConnection() - Returned DriverManager
+[06 Feb 2018 10:18:39,927] controller.Controller.main() - Application started
+[06 Feb 2018 10:18:44,445] controller.Controller.mainMenu() - Chose show
+[06 Feb 2018 10:18:44,554] util.Connections.getConnection() - Returned DriverManager

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="DA03B653-D167-FEBE-C418-53032AD9B804" containerWithKeyObject="32B59909-D9F3-26AE-2CE0-CDFB27948EFC" localFKIndex="C6532284-4C3B-4FBA-9FE5-A956503AC8D3" name="PILOT_ID_FK">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>4D321472-DD6D-E71A-DAD6-92A80652AB19</importedID>
+<referredTableLongName>MINIPROJECT2.PILOT</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>7E65C0A9-2C5A-9F72-FA67-D96B35ACBA66</referredTableID>
+<keyObject>E75E64A7-8145-5CF7-21EC-85C1C9C186EF</keyObject>
+<referredKeyID>E75E64A7-8145-5CF7-21EC-85C1C9C186EF</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>PILOT_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

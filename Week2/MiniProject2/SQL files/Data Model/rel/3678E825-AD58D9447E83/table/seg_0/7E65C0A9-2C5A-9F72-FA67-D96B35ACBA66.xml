@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7E65C0A9-2C5A-9F72-FA67-D96B35ACBA66" schemaObject="91754110-3852-3642-DDA5-753575EA3CF3" name="PILOT">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>C8EF3F0D-7647-3438-0F4F-F3A817CDD546</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PILOT_ID" id="7CE96D0C-49EE-350B-5272-4283EA65BA18">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>3DF9EBAB-3A10-3B11-008E-DA56D61C0BE9</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,9,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PILOT_NAME" id="0F6DD9C3-2D3C-84D1-B14E-D765885C9CE4">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>3F922FF1-3580-88AE-628D-741D67B8D499</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PILOT_PASSWORD" id="57407C16-DF1F-2BEC-B076-970FC13C9212">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>6C780183-5623-CB3D-B998-CB5F0ADA6340</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E75E64A7-8145-5CF7-21EC-85C1C9C186EF" name="PILOT_ID_PK">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>DD1B8B08-52B3-F492-C1BD-FBB04A714669</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7CE96D0C-49EE-350B-5272-4283EA65BA18"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E9AD663C-33AA-15CD-2F46-A590DC7A1AD7" schemaObject="91754110-3852-3642-DDA5-753575EA3CF3" name="PILOT_PILOT_NAME_UN">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>675F64B6-0AFC-9617-0108-920E5C365D21</importedID>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0F6DD9C3-2D3C-84D1-B14E-D765885C9CE4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="012AEF15-9715-0DAE-39F5-FDBF9A60B9AE" schemaObject="91754110-3852-3642-DDA5-753575EA3CF3" name="PILOT_ID_PK">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>FD9AAF1E-F558-B160-18A4-80F8EBE94D2A</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7CE96D0C-49EE-350B-5272-4283EA65BA18"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

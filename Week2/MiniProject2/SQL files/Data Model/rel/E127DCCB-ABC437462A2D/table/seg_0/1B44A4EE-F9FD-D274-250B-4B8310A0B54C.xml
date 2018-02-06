@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1B44A4EE-F9FD-D274-250B-4B8310A0B54C" schemaObject="CB45B282-6B08-A25F-B846-2089A8203EE5" name="SHIP">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>MINIPROJECT2</sourceObjSchema>
+<sourceObjName>SHIP</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="SHIP_ID" id="8D8AE310-7648-F333-ED83-6F9B4AF4B889">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>SHIP</sourceObjSchema>
+<sourceObjName>SHIP_ID</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,9,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SHIP_NAME" id="868BBBC9-8988-5DBD-90DD-BB2FAD6210F7">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>SHIP</sourceObjSchema>
+<sourceObjName>SHIP_NAME</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ISAPPROVED" id="A9D94CCC-7E66-BE9B-BE7E-E2B6A835CC56">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>SHIP</sourceObjSchema>
+<sourceObjName>ISAPPROVED</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>126</dataTypePrecision>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,126,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FUEL_LEVEL" id="9255910C-A79E-CD59-53B3-3C01D292A972">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>SHIP</sourceObjSchema>
+<sourceObjName>FUEL_LEVEL</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="52AB889D-7B67-9298-9373-3A353935A9CA" name="SHIP_ID_PK">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>MINIPROJECT2</sourceObjSchema>
+<sourceObjName>SHIP_ID_PK</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8D8AE310-7648-F333-ED83-6F9B4AF4B889"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="90620402-8101-572E-9EFD-C221DEB9B55A" schemaObject="CB45B282-6B08-A25F-B846-2089A8203EE5" name="SHIP_SHIP_NAME_UN">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>MINIPROJECT2</sourceObjSchema>
+<sourceObjName>SYS_C007178</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="868BBBC9-8988-5DBD-90DD-BB2FAD6210F7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B475A36D-2E9E-F480-80E3-553CB1B53FE5" schemaObject="CB45B282-6B08-A25F-B846-2089A8203EE5" name="SHIP_ID_PK">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>MINIPROJECT2</sourceObjSchema>
+<sourceObjName>SHIP_ID_PK</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8D8AE310-7648-F333-ED83-6F9B4AF4B889"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

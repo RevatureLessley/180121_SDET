@@ -20,7 +20,7 @@ CREATE TABLE PilotAndShip (
     ship_id number(9) not null,
     pilot_id number(9) not null,
     
-    CONSTRAINT pilotAndShip_pk PRIMARY KEY (ship_id),
+--    CONSTRAINT pilotAndShip_pk PRIMARY KEY (ship_id),
     CONSTRAINT ship_id_fk FOREIGN KEY (ship_id)
         REFERENCES ship (ship_id) ON DELETE CASCADE,  
     CONSTRAINT pilot_id_fk FOREIGN KEY (pilot_id)

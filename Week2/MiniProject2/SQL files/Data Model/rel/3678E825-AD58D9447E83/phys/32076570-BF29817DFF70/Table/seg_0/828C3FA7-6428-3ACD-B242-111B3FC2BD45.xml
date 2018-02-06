@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="SHIP" directorySegmentName="seg_0" id="828C3FA7-6428-3ACD-B242-111B3FC2BD45">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:30:22 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<schemaObject>91754110-3852-3642-DDA5-753575EA3CF3</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>8FAAAB47-D693-D165-60ED-3C285D5FA3D5</segment>
+<tableSpace>2B34F5A2-F30B-A4EB-98C8-149A8828C29C</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="FUEL_LEVEL" id="8B22257F-E0B0-9127-1D72-254C9BF9B793">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:30:22 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<defaultValue>0</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="ISAPPROVED" id="93985887-5A32-BC10-3257-8E941CB15926">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:30:22 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<defaultValue>0</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="SHIP_NAME" id="C15C24AC-5898-9AEB-0A43-B639EBB753E5">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:30:22 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SHIP_ID" id="EDEEBA2F-5731-6A24-2AD7-F0F37160176F">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:30:22 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="SHIP_ID_PK" id="A591DF24-8C59-D12D-2BFF-4C84F9B2658C">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:30:22 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<schemaObject>91754110-3852-3642-DDA5-753575EA3CF3</schemaObject>
+<segment>4006E22E-C7AF-D960-0754-A76946367F7C</segment>
+<tableSpace>2B34F5A2-F30B-A4EB-98C8-149A8828C29C</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="SHIP_ID_PK" id="55B73CCE-2B0A-96CD-5191-F94504876615">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:30:23 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<segment>4006E22E-C7AF-D960-0754-A76946367F7C</segment>
+<tableSpace>2B34F5A2-F30B-A4EB-98C8-149A8828C29C</tableSpace>
+<existingIndex>A591DF24-8C59-D12D-2BFF-4C84F9B2658C</existingIndex>
+<indexSegment>4006E22E-C7AF-D960-0754-A76946367F7C</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+<uniqueKeys>
+<UniqueKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UniqueOraclev10g" name="SHIP_SHIP_NAME_UN" id="0F4A2A2E-169C-BCF7-F68C-4F94B2EE433D">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:30:23 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<schemaObject>91754110-3852-3642-DDA5-753575EA3CF3</schemaObject>
+<segment>4006E22E-C7AF-D960-0754-A76946367F7C</segment>
+<tableSpace>2B34F5A2-F30B-A4EB-98C8-149A8828C29C</tableSpace>
+<indexSegment>4006E22E-C7AF-D960-0754-A76946367F7C</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</UniqueKey>
+</uniqueKeys>
+</TableProxyOraclev11g>

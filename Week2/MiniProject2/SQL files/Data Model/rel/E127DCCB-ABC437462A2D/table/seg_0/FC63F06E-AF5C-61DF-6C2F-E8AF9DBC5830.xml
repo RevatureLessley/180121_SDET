@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FC63F06E-AF5C-61DF-6C2F-E8AF9DBC5830" schemaObject="CB45B282-6B08-A25F-B846-2089A8203EE5" name="PILOTANDSHIP">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>MINIPROJECT2</sourceObjSchema>
+<sourceObjName>PILOTANDSHIP</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="SHIP_ID" id="CA633EB8-CDAE-2E79-C821-73C262F11C01">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>PILOTANDSHIP</sourceObjSchema>
+<sourceObjName>SHIP_ID</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,9,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PILOT_ID" id="F605EB86-7414-41BF-EA54-B419A20B67FC">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>PILOTANDSHIP</sourceObjSchema>
+<sourceObjName>PILOT_ID</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,9,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="08BAF0FB-BBBE-D525-86F5-04F16EC76995" name="PILOTANDSHIP_PK">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>MINIPROJECT2</sourceObjSchema>
+<sourceObjName>PILOTANDSHIP_PK</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CA633EB8-CDAE-2E79-C821-73C262F11C01"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D4797E88-B1A7-9780-FA25-F79D8DFCEF58" schemaObject="CB45B282-6B08-A25F-B846-2089A8203EE5" name="PILOTANDSHIP_PK">
+<sourceConnName>MiniProject2</sourceConnName>
+<sourceObjSchema>MINIPROJECT2</sourceObjSchema>
+<sourceObjName>PILOTANDSHIP_PK</sourceObjName>
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:23:19 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CA633EB8-CDAE-2E79-C821-73C262F11C01"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

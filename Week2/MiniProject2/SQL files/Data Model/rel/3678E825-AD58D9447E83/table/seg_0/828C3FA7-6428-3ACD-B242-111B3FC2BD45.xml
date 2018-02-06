@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="828C3FA7-6428-3ACD-B242-111B3FC2BD45" schemaObject="91754110-3852-3642-DDA5-753575EA3CF3" name="SHIP">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>61AA812C-FF88-88EA-AE6E-5F76E1D7D6F9</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="SHIP_ID" id="EDEEBA2F-5731-6A24-2AD7-F0F37160176F">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>3EE2D685-E2AA-C56B-323B-A41599C3D402</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,9,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SHIP_NAME" id="C15C24AC-5898-9AEB-0A43-B639EBB753E5">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>6A907D6F-F59F-4B05-6B38-37DBBEB09E9F</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ISAPPROVED" id="93985887-5A32-BC10-3257-8E941CB15926">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>0F0E8CD0-675C-872A-819A-86C1425D5606</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>126</dataTypePrecision>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,126,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FUEL_LEVEL" id="8B22257F-E0B0-9127-1D72-254C9BF9B793">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>DCEB8B98-A1D0-8E6C-0F2D-685029D70457</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="55B73CCE-2B0A-96CD-5191-F94504876615" name="SHIP_ID_PK">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>E5EEC6EE-8065-F61F-077B-5E5F6A4500CA</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EDEEBA2F-5731-6A24-2AD7-F0F37160176F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0F4A2A2E-169C-BCF7-F68C-4F94B2EE433D" schemaObject="91754110-3852-3642-DDA5-753575EA3CF3" name="SHIP_SHIP_NAME_UN">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>AE82A818-D09E-65A2-3CD0-BE0D85534EC1</importedID>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C15C24AC-5898-9AEB-0A43-B639EBB753E5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A591DF24-8C59-D12D-2BFF-4C84F9B2658C" schemaObject="91754110-3852-3642-DDA5-753575EA3CF3" name="SHIP_ID_PK">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>1D5ABFA4-A077-A647-8BE3-A5EE1EBC3735</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EDEEBA2F-5731-6A24-2AD7-F0F37160176F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

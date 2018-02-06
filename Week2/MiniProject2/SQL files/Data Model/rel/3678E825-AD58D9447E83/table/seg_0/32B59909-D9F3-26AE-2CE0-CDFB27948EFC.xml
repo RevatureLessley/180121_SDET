@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="32B59909-D9F3-26AE-2CE0-CDFB27948EFC" schemaObject="91754110-3852-3642-DDA5-753575EA3CF3" name="PILOTANDSHIP">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>BD9177AF-E166-5254-1133-FF87388DAB9A</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="SHIP_ID" id="D18B7534-9695-1AE8-C787-33E92E5F7E9B">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>2BF08842-EDED-2B7D-5415-4D6CAAD7DEA6</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,9,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D9FD388C-281D-EC74-50DC-8A846BEAB468" referredColumn="EDEEBA2F-5731-6A24-2AD7-F0F37160176F"/>
+</associations>
+</Column>
+<Column name="PILOT_ID" id="833CBC82-6B8B-A647-25D2-173AE008DE90">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<importedID>223079C0-21B9-1F43-9557-57E9DC2F8DCB</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,9,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DA03B653-D167-FEBE-C418-53032AD9B804" referredColumn="7CE96D0C-49EE-350B-5272-4283EA65BA18"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C6532284-4C3B-4FBA-9FE5-A956503AC8D3" name="PILOT_ID_FK">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="833CBC82-6B8B-A647-25D2-173AE008DE90"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="23D0C280-6878-D435-8AB8-9D6D0EE49800" name="SHIP_ID_FK">
+<createdBy>Petar</createdBy>
+<createdTime>2018-02-06 18:31:00 UTC</createdTime>
+<ownerDesignName>Data Model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D18B7534-9695-1AE8-C787-33E92E5F7E9B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
