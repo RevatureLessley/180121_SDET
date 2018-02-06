@@ -123,8 +123,6 @@ public class MenuActions {
 			System.out.println(DataManger.returnTotalUsers());
 			System.out.println("===============Total number of users=================");
 			
-			String test = "Christian";
-			
 			
 			break;
 		default:

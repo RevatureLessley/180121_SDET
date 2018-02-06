@@ -87,6 +87,7 @@ public class DataManagerDaoImpl implements DataMangerDao {
 		finally{userList.add(new User(u,p,false,0));
 		close(ps);}
 		
+		newTran(u, getTransId(),0,"I");
 	}
 
 	@Override
@@ -317,6 +318,24 @@ public class DataManagerDaoImpl implements DataMangerDao {
 		finally{close(ps);}
 		
 	}
+	
+	public void newTran(String u, int i, int a, String t) {
+		PreparedStatement ps = null;
+		try(Connection conn = Bridge.connect()){			
+			String sql = "INSERT INTO TRANSACTION_RECORDS VALUES(?,?,?,?)";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, i);
+			ps.setString(2, u);
+			ps.setInt(3, a);
+			ps.setString(4, t);
+			ps.execute();
+			
+			
+		}catch(SQLException e){e.printStackTrace();}
+		finally{close(ps);}
+		
+	}
+	
 	@Override
 	public void userHistory (String u) {
 
