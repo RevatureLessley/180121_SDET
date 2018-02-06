@@ -1,10 +1,14 @@
 package com.revature.Users;
-
+//This is the only bean I am using for this application. As for this project I have decided that there will only be one admin account.
+//
 public class User {
-	
+	//String for storing a user's username.
 	private String username;
+	//String for storing a user's password.
 	private String password;
+	//Boolean for determining whether or not user has been validated by Admin.
 	private boolean val;
+	//Int for determining user's balance
 	private int bits;
 	
 	//Default constructor
@@ -17,18 +21,19 @@ public class User {
 		this.val = val;
 		this.bits = bits;
 	}
-	//classic pojo getters
+	//classic bean getters
 	public String getUsername() {return username;}
 	public String getPassword() {return password;}
 	public boolean getVal() {return val;}
 	public int getBits() {return bits;}
 	
-	//classic pojo setters
+	//classic bean setters
 	public void setUsername(String username) {this.username = username;}
 	public void setPassword(String password) {this.password = password;}
 	public void setVal(boolean val) {this.val = val;}
 	public void setBits(int bits) {this.bits = bits;}
-
+	
+	//toString is overriden here to facilitate displaying all of the user's information.
 	@Override
 	public String toString() {return username + "," + password + "," + val + "," + bits;}
 
@@ -46,6 +51,4 @@ public class User {
 			return true;
 		}
 	}
-	
-	
 }
