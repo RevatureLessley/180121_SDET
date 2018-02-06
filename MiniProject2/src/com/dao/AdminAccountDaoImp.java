@@ -47,10 +47,9 @@ public class AdminAccountDaoImp implements AdminAccountDao {
 	@Override
 	public void ApproveUserAccount(String username) {
 		PreparedStatement ps = null;
-
+		ResultSet rs = null;
 		try (Connection conn = Connections.getConnection()) {
-			
-			String sql = "UPDATE BankAccount SET AdminApproval = 1 WHERE UserName = ? ";
+					String sql = "UPDATE BankAccount SET AdminApproval = 1 WHERE UserName = ? ";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, username);
 			System.out.println(ps.executeUpdate() + " Account Updated");
@@ -117,4 +116,29 @@ public class AdminAccountDaoImp implements AdminAccountDao {
 		return users;		
 	}
 
+	public void adminApprovalNeeded() {
+		PreparedStatement ps = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try (Connection conn = Connections.getConnection()) {
+			
+			
+			
+				String sql = "SELECT Username FROM BankAccount WHERE AdminApproval = 0";
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery(sql); 
+
+				while (rs.next()) {
+					System.out.println(rs.getString(1));
+				}
+				
+				System.out.println("\n");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(stmt);
+			close(rs);
+		}
+
+	}
 }

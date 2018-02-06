@@ -28,6 +28,11 @@ public class AdminAccountService {
 		}
 	}
 
+	public static void listOfApprovalNeeded() {
+		
+		AdminAccountDao dao = new AdminAccountDaoImp();
+		dao.adminApprovalNeeded();
+	}
 	public static void AproveAccount(String username){
 		AdminAccountDao dao = new AdminAccountDaoImp();
 		dao.ApproveUserAccount(username);

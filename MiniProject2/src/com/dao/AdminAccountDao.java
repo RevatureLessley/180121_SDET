@@ -16,7 +16,7 @@ public interface AdminAccountDao {
 		public void ApproveUserAccount (String username);
 		public List<Transactions> getAllTransactions();
 		public List<BankAccount> getAllAccounts();
-
+		public void adminApprovalNeeded();
 
 
 }

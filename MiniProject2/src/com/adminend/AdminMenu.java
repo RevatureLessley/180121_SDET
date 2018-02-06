@@ -39,6 +39,10 @@ public class AdminMenu {
 			case 1:
 				System.out.println("===================================================");
 				System.out.println("\n-------------- Approve User Account ---------------\n");
+				
+				System.out.println("List of all users that still need approval (by UserNames) \n");
+				AdminAccountService.listOfApprovalNeeded();
+				
 				System.out.print("Enter Account Username: ");
 				Scanner uName = new Scanner(System.in);
 				String userName = uName.next();
@@ -71,6 +75,5 @@ public class AdminMenu {
 				}
 			}
 		}
-
 	}
 }
