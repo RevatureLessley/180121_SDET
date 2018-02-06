@@ -1,0 +1,1 @@
+Please run the file "User_Database.sql" in sql developer in order to to start the intial DDl.
