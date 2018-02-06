@@ -326,3 +326,5 @@
 2018-02-05 22:30:21 INFO  UserView:80 - Get Coupon
 2018-02-05 22:30:35 INFO  User:101 - 10.00  |deposited
 2018-02-05 22:30:41 INFO  Dollars:44 - 50.00 |amount removed
+2018-02-06 10:06:05 INFO  User:113 - mici login streak=6
+2018-02-06 10:06:05 INFO  UserView:80 - Get Coupon
