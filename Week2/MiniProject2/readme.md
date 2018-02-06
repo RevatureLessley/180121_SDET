@@ -9,4 +9,4 @@
 - [x] Fly ships to drain fuel or refuel tank (Withdrawal and deposit)
 - [x] JUnit4 testing and Log4J logging with helpful and informative messages throughout the application
 
-![Data Model Diagram] (MiniProject2 Data Model.png)
+![Data Model Diagram](MiniProject2 Data Model.png)
