@@ -31,7 +31,7 @@ public class AccountService {
 		if(isAdmin == 0) isAdminStatus = "Regular account";
 		else isAdminStatus = "Administrator";	
 		
-		if(isActive == 0) isActiveStatus = "Account has not been activated";
+		if(isActive == 0) isActiveStatus = "Account is not activated";
 		else isActiveStatus = "Account is activated";	
 		
 		if(isClosed == 0) isClosedStatus = "Not active";

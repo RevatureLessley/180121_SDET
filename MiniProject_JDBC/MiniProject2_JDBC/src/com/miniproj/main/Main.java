@@ -179,7 +179,7 @@ public class Main {
 			System.out.println("Sorry. Your account has been terminated. Contact administrator for details.");
 			return;
 		} else if (currentUser.getIsActive() == 1 && currentUser.getIsClosed() == 1) userMenu(currentUser);
-		else System.out.println("Your account has not been activated. You cannot sign in. \n\n");
+		else System.out.println("Your account is not activated. You cannot sign in. \n\n");
 	}
 
 //============ User main menu ============//
@@ -199,7 +199,7 @@ public class Main {
 					+ "6) Withdraw from savings \n"
 					+ "7) General account info \n"
 					+ "8) Edit user info \n"
-					+ "9) close account \n"
+					+ "9) Close account \n"
 					+ "Type 'sign out' to return to login. \n"
 					+ "===========================================");
 			userSelection = input.nextLine();
@@ -233,8 +233,6 @@ public class Main {
 				          userSelection = input.nextLine();
 						  break;
 				case "8": editAccountInfo(a);
-				          System.out.println("Press any key to return to main menu");
-				          userSelection = input.nextLine();
 						  break;
 				case "9": if (terminateAccountUser(a)) signout = true;
 				          System.out.println("Press any key to return to main menu");
@@ -406,15 +404,19 @@ public class Main {
 		System.out.println("Which account would you like to terminate/reopen?");
 		email = input.nextLine();
 		for (Account a : accounts) {
-			if (email.equals(a.getEmail()) && a.getIsActive() == 1) {
+			if (email.equals(a.getEmail()) && a.getIsClosed() == 1) {
 				as.updateAccountStatus(email, 2, 'c');
+				as.updateAccountStatus(email, 0, 'a');
 				a.setIsClosed(2);
+				a.setIsActive(0);
 				logger.info("Account has been terminated by admin.");
 				System.out.println("Account has been terminated. \n");
 				accExists = true;
-			} else if (email.equals(a.getEmail()) && a.getIsActive() == 2) {
+			} else if (email.equals(a.getEmail()) && a.getIsClosed() == 2) {
 				as.updateAccountStatus(email, 1, 'c');
+				as.updateAccountStatus(email, 1, 'a');
 				a.setIsClosed(1);
+				a.setIsActive(1);
 				logger.info("Account has been reopened by admin.");
 				System.out.println("Account has been reopened. \n");
 				accExists = true;
@@ -434,6 +436,7 @@ public class Main {
 		while (true) {
 			if (choice.equals("yes")) {
 				as.updateAccountStatus(acc.getEmail(), 2, 'c');
+				as.updateAccountStatus(acc.getEmail(), 0, 'a');
 				logger.info("Account has been terminated by user.");
 				System.out.println("Your account has been terminated. \n"
 						+ "Funds will be mailed to you in the form of checks. \n"
@@ -442,6 +445,8 @@ public class Main {
 				as.clearSavings(acc);
 				acc.setCheckingsBalance(0);
 				acc.setSavingsBalance(0);
+				acc.setIsClosed(2);
+				acc.setIsActive(0);
 				return true;
 				} else if (choice.equals("no")) {
 					System.out.println("Glad you are staying with us!");
@@ -457,14 +462,15 @@ public class Main {
 	public void editAccountInfo(Account acc) {
 		String first, last;
 		input = new Scanner(System.in);
-		System.out.println("=========================================== \n"
-				+ "What would you like to edit? \n"
-				+ "1) Name \n"
-				+ "2) Change password \n"
-				+ "3) Return to main menu \n"
-				+ "=========================================== \n");
-		userSelection = input.nextLine();
 		while (true) {
+			System.out.println("=========================================== \n"
+					+ "What would you like to edit? \n"
+					+ "1) Name \n"
+					+ "2) Change password \n"
+					+ "3) Return to main menu \n"
+					+ "=========================================== \n");
+			userSelection = input.nextLine();
+		
 			switch (userSelection) {
 			case "1": System.out.println("Enter your first name: ");
 					  first = input.nextLine();
@@ -483,7 +489,7 @@ public class Main {
 			  		  System.out.println("Press any key to return to main menu");
 					  userSelection = input.nextLine();
 			case "3": return;
-			default: System.out.println("Invalid entry.");
+			default:  System.out.println("Invalid entry. Try again: ");
 			}
 		}
 	}
