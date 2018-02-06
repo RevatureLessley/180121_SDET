@@ -27,6 +27,10 @@ public class AdminView {
 	private String viewFormat = "|%-15s|%-10s|%-7s|\n";
 	private String logout = "+++++ADMIN LOGOUT+++++";
 	
+	public AdminView(Admin inAuth) {
+		this.authorizer = inAuth;
+	}
+	
 	public AdminView(Admin inAuth, UsersCollection inUsers) {
 		this.authorizer = inAuth;
 		this.allUsers = inUsers;

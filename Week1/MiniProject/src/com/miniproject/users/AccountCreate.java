@@ -21,6 +21,10 @@ public class AccountCreate {
 	private boolean createAdmin = false;
 	private Map<String, Account> accounts;
 	
+	public AccountCreate() {
+		
+	}
+	
 	public AccountCreate(Map<String, Account> accounts) {
 		this.accounts = accounts;
 	}

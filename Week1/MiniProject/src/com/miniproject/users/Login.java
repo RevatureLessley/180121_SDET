@@ -13,6 +13,10 @@ public class Login {
 	private String password;
 	private boolean admin;
 	
+	public Login() {
+		
+	}
+	
 	public Login(UsersCollection inUc) {
 		uc = inUc;
 	}
@@ -35,7 +39,7 @@ public class Login {
 		}
 		if(u != null) {
 			if(u.getIsAdmin()) {
-				AdminView aV = new AdminView((Admin)u, uc);
+				AdminView aV = new AdminView((Admin)u);
 				aV.adminSees();
 			} else {
 				User loggedUser = (User)u;

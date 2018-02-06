@@ -322,3 +322,7 @@
 2018-02-05 22:25:39 INFO  User:101 - 770.00  |deposited
 2018-02-05 22:25:50 INFO  User:113 - ruth login streak=4
 2018-02-05 22:25:54 INFO  Serializer:29 - Write to: src/users.ser
+2018-02-05 22:30:21 INFO  User:113 - bobby login streak=3
+2018-02-05 22:30:21 INFO  UserView:80 - Get Coupon
+2018-02-05 22:30:35 INFO  User:101 - 10.00  |deposited
+2018-02-05 22:30:41 INFO  Dollars:44 - 50.00 |amount removed
