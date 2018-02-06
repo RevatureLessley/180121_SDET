@@ -3,4 +3,4 @@
 - [x] Create ships with names, IDs, fuel levels and approval status
 - [x] Mechanic account blocks access to ships until approved by mechanic
 - [x] Each ship is assigned to only one pilot
-- [x] Fly ships to drain fuel or refuel tank
+- [x] Fly ships to drain fuel or refuel tank (Withdrawal and deposit)
