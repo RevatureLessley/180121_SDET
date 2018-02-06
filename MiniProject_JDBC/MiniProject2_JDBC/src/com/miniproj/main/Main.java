@@ -478,7 +478,7 @@ public class Main {
 					  return;
 			case "2": System.out.println("What would you like to change your password to? ");
 			  		  password = input.nextLine();
-			  		  as.updatePassword(password, email);
+			  		  as.updatePassword(password, acc.getEmail());
 			  		  acc.setPassword(password);
 			  		  System.out.println("Press any key to return to main menu");
 					  userSelection = input.nextLine();
