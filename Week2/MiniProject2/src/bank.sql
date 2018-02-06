@@ -120,3 +120,5 @@ BEGIN
     commit;
 END;
 /
+
+DELETE LOGIN WHERE USERNAME = 'adsfsggs';
