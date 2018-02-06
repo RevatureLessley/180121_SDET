@@ -113,13 +113,24 @@ SELECT avg(UNITPRICE) FROM INVOICELINE;
 
 
 --Task – Create a function that returns all employees who are born after 1968.
+SELECT * FROM EMPLOYEE 
+WHERE BIRTHDATE > '12-DEC-68';
+
 
 --Task – Create a stored procedure that selects the first and last names of all the employees.
+
+
+
+
+
+
 --Task – Create a stored procedure that updates the personal information of an employee.
 --Task – Create a stored procedure that returns the managers of an employee.
 --Task – Create a stored procedure that returns the name and company of a customer.
+
 --Task – Create a transaction that given a invoiceId will delete that invoice (There may be constraints that rely on this, find out how to resolve them).
 --Task – Create a transaction nested within a stored procedure that inserts a new record in the Customer table
+
 --Task - Create an after insert trigger on the employee table fired after a new record is inserted into the table.
 --Task – Create an after update trigger on the album table that fires after a row is inserted in the table
 --Task – Create an after delete trigger on the customer table that fires after a row is deleted from the table.
@@ -132,8 +143,29 @@ ON invoice.CUSTOMERID = customer.CUSTOMERID;
 
 
 --Task – Create an outer join that joins the customer and invoice table, specifying the CustomerId, firstname, lastname, invoiceId, and total.
+SELECT customer.FIRSTNAME, customer.LASTNAME, invoice.INVOICEID, invoice.TOTAL 
+FROM customer
+FULL OUTER JOIN invoice
+ON invoice.CUSTOMERID = customer.CUSTOMERID;
+
 
 --Task � Create a right join that joins album and artist specifying artist name and title.
+SELECT ARTIST.NAME, ALBUM.title
+FROM ALBUM
+RIGHT JOIN ARTIST
+ON ARTIST.ARTISTID = ALBUM.ARTISTID;
+
+
 --Task – Create a cross join that joins album and artist and sorts by artist name in ascending order.
+SELECT * FROM ALBUM
+CROSS JOIN ARTIST
+ORDER BY ARTIST.NAME;
+
+
 --Task – Perform a self-join on the employee table, joining on the reportsto column.
+
+select * from EMPLOYEE a
+inner join EMPLOYEE b
+on a.REPORTSTO = b.REPORTSTO;
+
 
