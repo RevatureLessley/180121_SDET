@@ -120,3 +120,5 @@
 2018-02-05 23:17:17 INFO  Main:296 - administrator signin
 2018-02-05 23:20:20 INFO  Main:296 - administrator signin
 2018-02-05 23:20:27 INFO  Main:63 - user has quit the program.
+2018-02-06 07:26:18 INFO  AccountDaoImpl:113 - Accounts retrieved from database.
+2018-02-06 07:27:00 INFO  Main:296 - administrator signin
