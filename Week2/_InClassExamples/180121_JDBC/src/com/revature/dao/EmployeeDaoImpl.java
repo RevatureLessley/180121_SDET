@@ -24,20 +24,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	public void insertEmployee(Employee emp) {
 		PreparedStatement ps = null;
 
-		
-		try(Connection conn = Connections.getConnection()){
-			String sql = "";
-			ps = conn.prepareStatement("");
-			
-		}catch(SQLException e){
-			e.printStackTrace();
-		} finally{
-			
-		}
-		
-		
-
-
 		try (Connection conn = Connections.getConnection()) {
 			// First step in using the Statement object, is create a SQL query
 			// to

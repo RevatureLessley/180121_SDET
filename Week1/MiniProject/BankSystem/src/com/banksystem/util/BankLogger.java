@@ -1,9 +1,10 @@
+package com.banksystem.util;
 import org.apache.log4j.Logger;
 
 
 public class BankLogger {
 	
-	private final static Logger logger = Logger.getLogger(BankSystem.class);
+	private final static Logger logger = Logger.getRootLogger();
 
 	/**
 	 * @return the logger

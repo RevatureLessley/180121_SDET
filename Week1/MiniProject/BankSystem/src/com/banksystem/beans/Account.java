@@ -1,100 +1,130 @@
 package com.banksystem.beans;
-import java.io.Serializable;
 
 
-public class Account implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Account {
+
+	private int userid;
 	private String username;
 	private String password;
-	private boolean isAdmin;
-	private boolean isApproved;
+	private int role;
+	private int status;
 	private double balance;
-	
-	
-	
+
 	public Account() {
 		super();
 	}
-	public Account(String username, String password, boolean isAdmin, boolean isApproved) {
+
+	public Account(int userid, String username, String password, int role,
+			int status, double balance) {
+		super();
+		this.userid = userid;
 		this.username = username;
 		this.password = password;
-		this.isAdmin = isAdmin;
-		this.isApproved = isApproved;
+		this.role = role;
+		this.status = status;
+		this.balance = balance;
 	}
+
+	/**
+	 * @return the userid
+	 */
+	public int getUserid() {
+		return userid;
+	}
+
+	/**
+	 * @param userid
+	 *            the userid to set
+	 */
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
 	/**
 	 * @return the username
 	 */
 	public String getUsername() {
 		return username;
 	}
+
 	/**
-	 * @param username the username to set
+	 * @param username
+	 *            the username to set
 	 */
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	/**
 	 * @return the password
 	 */
 	public String getPassword() {
 		return password;
 	}
+
 	/**
-	 * @param password the password to set
+	 * @param password
+	 *            the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	/**
-	 * @return the isAdmin
+	 * @return the role
 	 */
-	public boolean isAdmin() {
-		return isAdmin;
+	public int getRole() {
+		return role;
 	}
+
 	/**
-	 * @param isAdmin the isAdmin to set
+	 * @param role
+	 *            the role to set
 	 */
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
+	public void setRole(int role) {
+		this.role = role;
 	}
+
 	/**
-	 * @return the isApproved
+	 * @return the status
 	 */
-	public boolean isApproved() {
-		return isApproved;
+	public int getStatus() {
+		return status;
 	}
+
 	/**
-	 * @param isApproved the isApproved to set
+	 * @param status
+	 *            the status to set
 	 */
-	public void setApproved(boolean isApproved) {
-		this.isApproved = isApproved;
+	public void setStatus(int status) {
+		this.status = status;
 	}
+
 	/**
 	 * @return the balance
 	 */
 	public double getBalance() {
 		return balance;
 	}
+
 	/**
-	 * @param balance the balance to set
+	 * @param balance
+	 *            the balance to set
 	 */
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Account [username=" + username + ", password=" + password
-				+ ", isAdmin=" + isAdmin + ", isApproved=" + isApproved
-				+ ", balance=" + balance + "]";
+		return "Account [userid=" + userid + ", username=" + username
+				+ ", password=" + password + ", role=" + role + ", status="
+				+ status + ", balance=" + balance + "]";
 	}
-	
+
 	
 	
 }
