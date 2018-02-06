@@ -175,7 +175,7 @@ BEGIN
     LOOP
         FETCH my_cursor INTO emp_id, emp_name, emp_sal, emp_title;
         EXIT WHEN my_cursor%NOTFOUND; --%NOTFOUND does not exist until there are no records left.
-        DBMS_OUTPUT.PUT_LINE(emp_id || ' ' || emp_name || ' ' || emp_sal || ' ' || emp_title);
+        DBMS_OUTPUT.PUT_LINE(emp_id || ' | ' || emp_name || ' | ' || emp_sal || ' | ' || emp_title);
     END LOOP;
 END;
 
@@ -218,6 +218,31 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Max employee id: ' || max_id);
 END;
 
+CREATE OR REPLACE FUNCTION withparams(number_ids IN number)
+RETURN SYS_REFCURSOR
+IS
+    src SYS_REFCURSOR;
+BEGIN
+    OPEN src FOR
+    SELECT * FROM employees WHERE rownum != number_ids;
+    RETURN src;
+END;
+/
+
+DECLARE
+    my_cursor SYS_REFCURSOR;
+    emp_id employees.e_id%TYPE; --Make the datatype match THAT of the employees.column's datatype.
+    emp_name employees.e_name%TYPE;
+    emp_sal employees.e_salary%TYPE;
+    emp_title employees.e_title%TYPE;
+BEGIN
+    my_cursor := withparams(5);
+    LOOP
+        FETCH my_cursor INTO emp_id, emp_name, emp_sal, emp_title;
+        DBMS_OUTPUT.PUT_LINE(emp_id || ' | ' || emp_name || ' | ' || emp_sal || ' | ' || emp_title);
+        EXIT WHEN my_cursor%NOTFOUND;
+    END LOOP;
+END;
 
 --EXCEPTION HANDLING
 CREATE OR REPLACE PROCEDURE exceptionExample
@@ -304,4 +329,16 @@ INSERT INTO indexTAble VALUES(11);
 INSERT INTO indexTAble VALUES(12);
 
 SELECT * from indexTABLE where nums = 11;
+*/
+
+/* UNDERSTANDING VIEWS BETTER
+DROP VIEW testing;
+CREATE VIEW testing AS
+SELECT e_id, e_title FROM employees;
+
+SELECT * FROM testing;
+INSERT INTO testing VALUES(11, 'SALES');
+UPDATE testing SET e_title = 'DEVELOPER' WHERE e_id = 4;
+DELETE FROM testing WHERE e_id = 11;
+SELECT * FROM employees;
 */
