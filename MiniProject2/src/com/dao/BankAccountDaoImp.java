@@ -133,7 +133,6 @@ public int getUserID(BankAccount user) throws SQLException {
 			user.Withdraw(withdrawAmt);
 			String sql = "UPDATE BankAccount SET Balance = ? WHERE UserName = ? ";
 			ps = conn.prepareStatement(sql);
-			System.out.println(user);
 			ps.setInt(1, user.getBalance());
 			ps.setString(2, user.getUserName());
 
@@ -169,7 +168,6 @@ public int getUserID(BankAccount user) throws SQLException {
 			user.Deposit(depositAmt);
 			String sql = "UPDATE BankAccount SET Balance = ? WHERE UserName = ? ";
 			ps = conn.prepareStatement(sql);
-			System.out.println(user);
 			ps.setInt(1, user.getBalance());
 			ps.setString(2, user.getUserName());
 			System.out.println(ps.executeUpdate() + " YOUR TRANSACTION IS COMPLETE!");
