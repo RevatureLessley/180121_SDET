@@ -7,3 +7,4 @@
 - [x] Mechanic account blocks access to ships until approved by mechanic
 - [x] Each ship is assigned to only one pilot
 - [x] Fly ships to drain fuel or refuel tank (Withdrawal and deposit)
+- [x] JUnit4 testing and Log4J logging
