@@ -106,7 +106,7 @@ public class AccountService {
 	
 	public double withdrawSavings(Account acc, double amount) {
 		gatherAccountInstances(acc);
-		double newVal = acc.getCheckingsBalance() - amount;
+		double newVal = acc.getSavingsBalance() - amount;
 		String column = "b_savings";
 		dao.updateBalanceInfo(email, column, newVal);
 		return newVal;
