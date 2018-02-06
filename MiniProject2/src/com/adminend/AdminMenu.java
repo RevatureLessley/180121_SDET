@@ -52,19 +52,21 @@ public class AdminMenu {
 				System.out.println("================================================================================");
 				AdminAccountService.displayAllTransactions();
 				System.out.println("\n================================================================================ \n");
+				break;
 				
 			case 3: 
 				System.out.println("================================================================================");
 				AdminAccountService.displayAllAccounts();
 				
 				System.out.println("\n================================================================================ \n");
-
+				break;
 				
 			case 4:
 				if (input != null) {
 					MainMenu menu = new MainMenu();
 					menu.start();
 					input.close();
+					break;
 
 				}
 			}
