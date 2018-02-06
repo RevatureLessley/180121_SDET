@@ -12,4 +12,6 @@ public interface UserDao {
 	public void approveUser(String inUsername);
 	public void uBanUser(String inUsername, int inOption);
 	public int loginStreak(String inUsername);
+	public double getCurrency(String inUsername);
+	public void setCurrency(String inUsername, double money);
 }

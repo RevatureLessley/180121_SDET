@@ -57,6 +57,7 @@ public class UserView {
 		String prompt = "How much would you like to deposit?: ";
 		float amount = InputReader.readFloat(prompt);
 		loggedUser.depositCurrency(amount);
+		UserService.setCurrency(this.loggedUser.getUsername(), this.loggedUser.getCurrency().getCurrency());
 		currentBalance();
 	}
 	
@@ -65,6 +66,7 @@ public class UserView {
 		String prompt = "How much would you like to withdraw?: ";
 		float amount = InputReader.readFloat(prompt);
 		loggedUser.withdrawCurrency(amount);
+		UserService.setCurrency(this.loggedUser.getUsername(), this.loggedUser.getCurrency().getCurrency());
 		currentBalance();
 	}
 	

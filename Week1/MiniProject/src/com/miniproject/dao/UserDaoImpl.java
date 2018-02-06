@@ -168,4 +168,46 @@ public class UserDaoImpl implements UserDao {
 		return loginStreak;
 	}
 
+	@Override
+	public double getCurrency(String inUsername) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		double d = -1;
+		
+		try(Connection conn = Connections.getConnection()){
+			String sql = "SELECT currency FROM users WHERE username = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, inUsername);
+			
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				d = rs.getDouble(1);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return d;
+	}
+
+	@Override
+	public void setCurrency(String inUsername, double money) {
+		PreparedStatement ps = null;
+		
+		try(Connection conn = Connections.getConnection()){
+			String sql = "UPDATE users SET currency = ? WHERE username = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setDouble(1, money);
+			ps.setString(2, inUsername);
+			ps.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+	}
+
 }

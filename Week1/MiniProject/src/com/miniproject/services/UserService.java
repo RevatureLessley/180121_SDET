@@ -40,4 +40,14 @@ public class UserService {
 		UserDao dao = new UserDaoImpl();
 		return dao.loginStreak(in_username);
 	}
+	
+	public static double getCurrency(String in_username) {
+		UserDao dao = new UserDaoImpl();
+		return dao.getCurrency(in_username);
+	}
+	
+	public static void setCurrency(String in_username, double in_money) {
+		UserDao dao = new UserDaoImpl();
+		dao.setCurrency(in_username, in_money);
+	}
 }
