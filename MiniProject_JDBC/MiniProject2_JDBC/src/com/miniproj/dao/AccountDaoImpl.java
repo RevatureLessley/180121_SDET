@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.miniproj.beans.Account;
 import com.miniproj.util.Connections;
 
@@ -24,7 +26,8 @@ public class AccountDaoImpl implements AccountDao {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	String sql;
-
+	final static Logger logger = Logger.getLogger(AccountDaoImpl.class);
+	
 //======================= INSERTION METHODS =================================//
 	@Override
 	public void insertIntoUserInfo(String email, String fname, String lname) {
@@ -40,6 +43,7 @@ public class AccountDaoImpl implements AccountDao {
 			e.printStackTrace();
 		} finally {
 			close(ps);
+			logger.info("New account entered into database.");
 		}
 	}
 
@@ -106,6 +110,7 @@ public class AccountDaoImpl implements AccountDao {
 			close(ps);
 			close(rs);
 		}
+		logger.info("Accounts retrieved from database.");
 		return accounts;
 	}
 
@@ -241,9 +246,4 @@ public class AccountDaoImpl implements AccountDao {
 			close(rs);
 		}
 	}
-	
-//	@Override
-//	public void deleteAccountByEmail(String email) {
-//		return;
-//	}
 }

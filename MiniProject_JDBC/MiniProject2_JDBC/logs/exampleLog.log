@@ -112,3 +112,11 @@
 2018-02-05 21:39:35 INFO  Main:296 - administrator signin
 2018-02-05 21:40:01 INFO  Main:420 - Account has been reopened by admin.
 2018-02-05 21:40:44 INFO  Main:63 - user has quit the program.
+2018-02-05 21:49:51 INFO  AccountDaoImpl:113 - Accounts retrieved from database.
+2018-02-05 21:50:05 INFO  Main:187 - User has successsfully signed in. 
+
+2018-02-05 21:50:16 INFO  Main:63 - user has quit the program.
+2018-02-05 23:16:59 INFO  AccountDaoImpl:113 - Accounts retrieved from database.
+2018-02-05 23:17:17 INFO  Main:296 - administrator signin
+2018-02-05 23:20:20 INFO  Main:296 - administrator signin
+2018-02-05 23:20:27 INFO  Main:63 - user has quit the program.

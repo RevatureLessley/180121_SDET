@@ -1,5 +1,5 @@
---DROP TABLE account_info;
 --DROP TABLE user_info CASCADE CONSTRAINTS;
+--DROP TABLE account_info;
 --DROP TABLE balance_info;
 
 CREATE TABLE user_info( --Parent table.
@@ -37,4 +37,6 @@ VALUES ('RRose@zmail.com', 100, 100);
 
 COMMIT;
 
-
+--SELECT * FROM user_info;
+--SELECT * FROM account_info;
+--SELECT * FROM balance_info;
