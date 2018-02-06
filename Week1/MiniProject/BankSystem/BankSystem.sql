@@ -32,27 +32,26 @@ INSERT INTO user_role VALUES(3, 'Banker');
 
 INSERT INTO account_status VALUES (1, 'Active');
 INSERT INTO account_status VALUES (2, 'Pending Appoval');
-INSERT INTO account_status VALUES (3, 'Frozen');
 
 INSERT INTO accounts VALUES (1, 'admin', '12345', 1, 1, 0.0);
 INSERT INTO accounts VALUES (2, 'jiaqi', '11111', 2, 1, 200.0);
 INSERT INTO accounts VALUES (3, 'wayne', '00000', 2, 2, 0.0);
 
-CREATE OR REPLACE VIEW All_Accounts AS
+CREATE OR REPLACE VIEW All_Accounts_View AS
 SELECT x.USERID ,x.USERNAME ,x.USER_PASSWORD ,y.role_name ,z.status ,x.BALANCE FROM accounts x 
 inner join USER_ROLE y on x.USER_ROLE_ID = y.ROLE_ID
 inner join account_status z on x.ACC_STATUS = z.STATUS_INDEX
 ORDER BY x.USERID;
 
-SELECT * FROM All_Accounts;
 
 commit;
 
 
 
-
-
-SELECT * FROM accounts;
+--
+--SELECT * FROM All_Accounts_View;
+--
+--SELECT * FROM accounts;
 
 
 --UPDATE accounts SET balance = 500 Where userid = 3;
