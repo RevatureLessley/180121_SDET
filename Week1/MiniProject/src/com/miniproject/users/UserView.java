@@ -79,10 +79,11 @@ public class UserView {
 		if(this.loggedUser.getDaysLoggedIn() != 0 && this.loggedUser.getDaysLoggedIn() % LOGINCOMBONUM == 0) {
 			logger.info("Get Coupon"); //BUG can get mulitple coupons in the same day
 			if(this.loggedUser.getBeverageId() == 0) {
-				System.out.println("You get one coupon for one Starbucks coffee");
+				System.out.println("You get one coupon for one Starbucks coffee for use today");
 			} else {
 				BeverageBrand bb = BeverageBrandService.getBevBrand(this.loggedUser.getBeverageId());
-				System.out.println("You get one coupon for one " + bb.getBrandName() + " " + bb.getBevType() + " drink!");
+				System.out.println("You get one coupon for one " + bb.getBrandName() + " " + bb.getBevType() + " drink!\n"
+						+ "For use today!");
 			}
 		}
 	}
