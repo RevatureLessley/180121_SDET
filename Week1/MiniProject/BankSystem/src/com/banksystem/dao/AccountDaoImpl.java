@@ -34,7 +34,7 @@ public class AccountDaoImpl implements AccountDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Failure");
+			BankLogger.errorMsg("Get All Accounts Failed.");
 		} finally {
 			close(stmt);
 			close(rs);
@@ -60,7 +60,7 @@ public class AccountDaoImpl implements AccountDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Failure");
+			BankLogger.errorMsg("Get All Account View Failed.");
 		} finally {
 			close(stmt);
 			close(rs);
@@ -83,7 +83,7 @@ public class AccountDaoImpl implements AccountDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Failure");
+			BankLogger.errorMsg("Get Max UserId Failed.");
 		} finally {
 			close(stmt);
 			close(rs);
@@ -113,6 +113,7 @@ public class AccountDaoImpl implements AccountDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			BankLogger.errorMsg("Add Account Failed.");
 		} finally {
 			close(ps);
 		}
@@ -136,7 +137,7 @@ public class AccountDaoImpl implements AccountDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Failure");
+			BankLogger.errorMsg("Get Pending Accounts Failed.");
 		} finally {
 			close(stmt);
 			close(rs);
@@ -156,7 +157,7 @@ public class AccountDaoImpl implements AccountDao {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Failure");
+			BankLogger.errorMsg("Approve Account Failed.");
 		} finally {
 			close(stmt);
 		}
@@ -180,7 +181,7 @@ public class AccountDaoImpl implements AccountDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Failure");
+			BankLogger.errorMsg("Get Account Failed.");
 		} finally {
 			close(stmt);
 			close(rs);
@@ -199,7 +200,7 @@ public class AccountDaoImpl implements AccountDao {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Failure");
+			BankLogger.errorMsg("Update Balance Failed.");
 		} finally {
 			close(stmt);
 		}
@@ -220,7 +221,7 @@ public class AccountDaoImpl implements AccountDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Failure");
+			BankLogger.errorMsg("Get Balance Failed.");
 		} finally {
 			close(stmt);
 			close(rs);
@@ -228,6 +229,5 @@ public class AccountDaoImpl implements AccountDao {
 
 		return bal;
 	}
-	
 	
 }

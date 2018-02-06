@@ -56,3 +56,13 @@
 2018-02-06 09:24:13 INFO  root:25 - 1 RECORD(S) UPDATED.
 2018-02-06 09:29:14 INFO  root:25 - 1 RECORD(S) UPDATED.
 2018-02-06 09:29:14 INFO  root:25 - $600.25 is deposited into account 'jiaqi'.
+2018-02-06 09:32:50 INFO  root:25 - 1 RECORD(S) UPDATED.
+2018-02-06 09:32:50 INFO  root:25 - $1000.0 is deposited into account 'jiaqi'.
+2018-02-06 09:33:01 INFO  root:25 - 1 RECORD(S) UPDATED.
+2018-02-06 09:33:01 INFO  root:25 - $2000.0 is withdrew from account 'jiaqi'.
+2018-02-06 09:34:05 INFO  root:25 - 1 RECORD(S) INSERTED!
+2018-02-06 09:34:05 INFO  root:25 - Account 'Bob' registered.
+2018-02-06 09:35:16 INFO  root:25 - 1 RECORD(S) UPDATED.
+2018-02-06 09:35:16 INFO  root:25 - Account 'Bob' is Approved.
+2018-02-06 09:57:12 INFO  root:25 - 1 RECORD(S) UPDATED.
+2018-02-06 09:57:12 INFO  root:25 - $300.0 is deposited into account 'jiaqi'.

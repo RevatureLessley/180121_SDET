@@ -35,7 +35,7 @@ public class AccountServices {
 		String username;
 		String password;
 
-		accounts = getAllAccounts();
+		//accounts = getAllAccounts();
 
 		// User Input
 		sc = new Scanner(System.in);
@@ -55,7 +55,7 @@ public class AccountServices {
 
 	public static void approveAccount() {
 		System.out.println("Accounts pending for approval:");
-		accounts = AccountServices.getPendingApproveAccount();
+		accounts = getPendingApproveAccount();
 
 		printAccounts(accounts);
 
@@ -144,8 +144,8 @@ public class AccountServices {
 		System.out.println("Enter the amount:");
 		try {
 			amount = Double.parseDouble(sc.nextLine());
-			if (amount < dao.getAccountById(a.getUserid()).getBalance()) {
-				dao.updateBalance(a.getUserid(), dao.getAccountById(a.getUserid()).getBalance() - amount);
+			if (amount < getAccountById(a.getUserid()).getBalance()) {
+				dao.updateBalance(a.getUserid(), getAccountById(a.getUserid()).getBalance() - amount);
 				System.out.println();
 				BankLogger.infoMsg("$" + amount + " is withdrew from account '"
 						+ a.getUsername()+ "'.");
@@ -166,7 +166,7 @@ public class AccountServices {
 		System.out.println("Enter the amount:");
 		try {
 			amount = Double.parseDouble(sc.nextLine());
-			dao.updateBalance(a.getUserid(), dao.getAccountById(a.getUserid()).getBalance() + amount);
+			dao.updateBalance(a.getUserid(), getAccountById(a.getUserid()).getBalance() + amount);
 			System.out.println();
 			BankLogger.infoMsg("$" + amount + " is deposited into account '"
 					+ a.getUsername()+ "'.");
