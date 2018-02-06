@@ -3,7 +3,11 @@ package com.adminend;
 
 /**
  * 
- * Class cotains all  Admin info and setters/ getters for the Admin infos
+ * Class contains all  Admin info and setters/ getters for the Admin infos,
+ * there is onoly one admin and he is already in the datatbase, in order to access
+ * the admin account you just need to type in the following password
+ * Admin Password is ADMIN12345 
+ * 
  *
  */
  

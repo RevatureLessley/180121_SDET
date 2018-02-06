@@ -3,6 +3,8 @@ package com.userend;
 /**
  * 
  * Class contains all user info and setters and getters for the user infos
+ * when a user gets created, a record in the Bank account table in the DB is
+ * also created with all the user fields
  *
  */
 public class BankAccount {

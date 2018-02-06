@@ -55,10 +55,12 @@ public class MainMenu {
 			case 2:
 				System.out.println("===================================================");
 				System.out.println("\n----------------- Admin Login ------------------\n");
-				ObjectInputStream ois = null;
-				System.out.print("Password: ");
+				System.out.println("[--- Hint: it is ADMIN12345 ---] \n");
+				System.out.print("Enter ADMIN's Password: ");
+				
 				Scanner pWordA = new Scanner(System.in);
 				String passwordA = pWordA.next();
+
 				System.out.print("\n");
 
 				AdminAccountService.Login(passwordA);
