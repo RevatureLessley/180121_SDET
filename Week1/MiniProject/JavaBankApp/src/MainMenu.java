@@ -36,6 +36,7 @@ public class MainMenu {
 
 	}
 	private void getMainMenu() {
+		System.out.println("----------------------------------");
 		System.out.println("Hello, how can we help you?");
 		System.out.println("1) Admin Login");
 		System.out.println("2) Create a new Account");
@@ -43,7 +44,7 @@ public class MainMenu {
 		System.out.println("4) Make a Withdrawal");
 		System.out.println("5) List Account Balance");
 		System.out.println("0) Exit");
-
+		System.out.println("----------------------------------");
 	}
 
 	private int getInput() {
@@ -105,13 +106,20 @@ public class MainMenu {
 
 	private void AdminLogin() {
 		
-	    Scanner keyboard = new Scanner (System.in);
+	    Scanner keyb = new Scanner (System.in);
+	    System.out.println("----------------------------------");
 	    System.out.print("What is your Username?");
-	    String user = keyboard.nextLine();
+	    String username = keyb.nextLine();
 	    System.out.print("What is your password?");
-	    String pass = keyboard.nextLine();
+	    String password = keyb.nextLine();
 
-	    System.out.print("Welcome to Admin how can we help you");
+	    System.out.println("");
+		System.out.println("Firstname: Mat");
+		System.out.println("Lastname : Lane");
+		System.out.println("SSN      : 900-90-8098");
+		System.out.println("AccountBalance: $1000");
+	
+	  
 	}
 
 	private void CreateNewAccount() {
@@ -179,22 +187,20 @@ public class MainMenu {
 		else {
 			account = new savings(DirectDeposit);
 		}
-		User user = new User(firstname, lastname, SSN, DOB, Email, account);
-	
 	}
 
 
 	private void MakeaDeposit() {
-		Scanner keyboard = new Scanner (System.in);
+		Scanner key = new Scanner (System.in);
 		    
 		System.out.print("What is your Username?");
-		String user = keyboard.nextLine();
+		String user = key.nextLine();
 		System.out.print("What is your password?");
-		String pass = keyboard.nextLine();
-		System.out.print("Welcome, how can we help you");
+		String pass = key.nextLine();
+		System.out.print("Welcome, how can we help you   ");
 		
 		System.out.print("How much do you want to deposit?     ");
-		String deposit = keyboard.nextLine();
+		String deposit = key.nextLine();
 		
 		System.out.print("You now have deposited $" + deposit + " into your account ");
 		System.exit(0);
@@ -237,9 +243,13 @@ public class MainMenu {
 		}
 	}
 
-	private int selectAccount() {
-		return 0;
-	
+	private void selectAccount() {
+		System.out.println("----------------------------------");
+		System.out.println("Firstname: Mat");
+		System.out.println("Lastname : Lane");
+		System.out.println("SSN      : 900-90-8098");
+		System.out.println("AccountBalance: $1000");
+		System.out.println("----------------------------------");
 	}
 
 

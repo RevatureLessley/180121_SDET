@@ -29,7 +29,7 @@ int addAccount(String firstname, String lastname, String SSN, String DOB, Accoun
 	try {
 		connection.setAutoCommit(false);
 		//add user
-		String addUserSql = "insert into users (firstname, lastname, SSN) values(1, 2, 3)";
+		String addUserSql = "insert into users (firstname, lastname, SSN, DOB) values(?, ?, ?, ?)";
 		PreparedStatement addUser = connection.prepareStatement(addUserSql, Statement.RETURN_GENERATED_KEYS);
 		addUser.setString(1, firstname);
 		addUser.setString(2, lastname);
