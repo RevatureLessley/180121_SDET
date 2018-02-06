@@ -40,10 +40,31 @@ ADD CONSTRAINT bev_id_fk FOREIGN KEY(beverage_id)
 REFERENCES beverage_brands (brand_id) ON DELETE CASCADE;
 
 -- POPULATE TABLES
+INSERT INTO users (username, p_word, currency, last_login, login_streak, beverage_id)
+VALUES ('kirk', 'password', 300, CURRENT_DATE - 1, 5, 108);
+INSERT INTO users (username, p_word, currency, last_login, login_streak, beverage_id)
+VALUES ('dana', 'password', 3000, NULL, 0, 99);
+INSERT INTO users (username, p_word, currency, last_login, login_streak, beverage_id)
+VALUES ('amanda', 'password', 1000, CURRENT_DATE - 1, 5, 110);
+INSERT INTO users (username, p_word, currency, last_login, login_streak, beverage_id)
+VALUES ('chloe', 'password', 5000, CURRENT_DATE - 1, 5, 103);
+INSERT INTO users (username, p_word, currency, last_login, login_streak, beverage_id)
+VALUES ('joshua', 'password', 10000, NULL, 0, 105);
+INSERT INTO users (username, p_word, currency, last_login, login_streak, beverage_id)
+VALUES ('ethan', 'password', 50, NULL, 0, 102);
+
 INSERT INTO beverage_brands (brand_name, bev_type) VALUES('Gold Peak', 'tea');
 INSERT INTO beverage_brands (brand_name, bev_type) VALUES('Tazo', 'tea');
 INSERT INTO beverage_brands (brand_name, bev_type) VALUES('Starbucks', 'iced coffee');
 INSERT INTO beverage_brands (brand_name, bev_type) VALUES('Honest Tea', 'iced tea');
+INSERT INTO beverage_brands (brand_name, bev_type) VALUES('Arizona', 'iced tea');
+INSERT INTO beverage_brands (brand_name, bev_type) VALUES('Snapple', 'iced tea');
+INSERT INTO beverage_brands (brand_name, bev_type) VALUES('The Republice of Tea', 'iced tea');
+INSERT INTO beverage_brands (brand_name, bev_type) VALUES('Harney & Sons', 'iced tea');
+INSERT INTO beverage_brands (brand_name, bev_type) VALUES('Real Beanz', 'iced coffee');
+INSERT INTO beverage_brands (brand_name, bev_type) VALUES('Grumpy Cat', 'iced coffee');
+INSERT INTO beverage_brands (brand_name, bev_type) VALUES('Dunkin Donuts', 'iced coffee');
+INSERT INTO beverage_brands (brand_name, bev_type) VALUES('Hi Ball Energy', 'iced coffee');
 
 -- SEQUENCES
 DROP SEQUENCE admins_seq;
