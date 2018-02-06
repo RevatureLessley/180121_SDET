@@ -274,16 +274,16 @@ public class Main {
 		System.out.println("How much would you like to withdraw?");
 		amount = Double.parseDouble(input.nextLine());
 		while (true) {
-			if (userSelection.equals("5") && amount < a.getCheckingsBalance()) {
+			if ((userSelection.equals("5") || userSelection.equals("7")) && amount < a.getCheckingsBalance()) {
 				System.out.println("Transaction complete!");
 				return as.withdrawCheckings(a, amount);
-			} else if (userSelection.equals("6") && amount < a.getSavingsBalance()) {
+			} else if ((userSelection.equals("6") || userSelection.equals("8")) && amount < a.getSavingsBalance()) {
 				System.out.println("Transaction complete!");
 				return as.withdrawSavings(a, amount);
-			} else if (amount > a.getCheckingsBalance()){
+			} else if (amount > a.getCheckingsBalance() && (userSelection.equals("5") || userSelection.equals("7"))){
 				System.out.println("Sorry. You do not have enough funds in your checkings.");
 				return a.getCheckingsBalance();
-			} else if (amount > a.getSavingsBalance()) {
+			} else if (amount > a.getSavingsBalance() && (userSelection.equals("6") || userSelection.equals("8"))) {
 				System.out.println("Sorry. You do not have enough funds in your savings.");
 				return a.getSavingsBalance();
 			} else {
