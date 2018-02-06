@@ -177,7 +177,7 @@ public class AccountDaoImpl implements AccountDao {
 	@Override
 	public void updatePassword(String email, String pass) {
 		try (Connection conn = Connections.getConnection()) {
-				sql = "UPDATE balance_info " + 
+				sql = "UPDATE account_info " + 
 						"SET a_password = ? " + 
 						"WHERE a_email = ?"; 
 			ps = conn.prepareStatement(sql);
