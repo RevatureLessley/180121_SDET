@@ -40,7 +40,6 @@ public class BankManagement {
                 Scanner scanner = new Scanner(System.in);
                 System.out.print("enter your username: ");
                 userInput = scanner.next();
-                System.out.println(userInput);
                 if(!userInput.toLowerCase().contains("exit")){
                     usernameAndPassword.add(userInput);
                     System.out.print("enter your password: ");
@@ -88,22 +87,28 @@ public class BankManagement {
             }catch(Exception ex){
                 // ex.printStackTrace();
                 System.out.println("Not a valid input.");
+                return null;
             }
 
             return userInput;
         };
 
         userPromptRouter = (Integer response, Driver.ProgramState state) ->{
-            if(response == 0){
-                return Driver.ProgramState.USER_CREATE;
-            }else if(response == 1){
-                return Driver.ProgramState.USER_LOGIN;
-            } else if(response == 2){
-                return Driver.ProgramState.USER_LOGOUT;
-            }else{
-                System.out.println("Not a valid input.");
+            try {
+                if (response == 0) {
+                    return Driver.ProgramState.USER_CREATE;
+                } else if (response == 1) {
+                    return Driver.ProgramState.USER_LOGIN;
+                } else if (response == 2) {
+                    return Driver.ProgramState.USER_LOGOUT;
+                } else {
+                    System.out.println("Please re-enter a selection.");
+                    return Driver.ProgramState.USER_PROMPT;
+                }
+            }catch (NullPointerException ex){
+                System.out.println("Please re-enter a selection.");
+                return Driver.ProgramState.USER_PROMPT;
             }
-            return state;
         };
 
     }
@@ -121,35 +126,44 @@ public class BankManagement {
                         "2 -                     WITHDRAW AMOUNT",
                         "3 -                        EXIT PROGRAM",
                         "---------------------------------------"));
-
-                if(userProfileInput == 0){
+                try {
+                    if (userProfileInput == 0) {
                         System.out.println("Current Amount :" + user.getAmount());
-                }else if(userProfileInput == 1){
+                    } else if (userProfileInput == 1) {
                         int depositAmount = simpleSelectionPrompt.display(
                                 Arrays.asList("Current Amount :" + user.getAmount()));
-                        if(depositAmount > 0){
+                        if (depositAmount > 0) {
                             user.setAmount(user.getAmount() + depositAmount);
-                        }else{
+                        } else {
                             System.out.println("you cannot deposit a negative amount");
                         }
 
                         System.out.println("New Amount :" + user.getAmount());
-                }else if(userProfileInput == 2){
-                    int withdrawAmount = simpleSelectionPrompt.display(
-                            Arrays.asList("Current Amount :" + user.getAmount()));
+                    } else if (userProfileInput == 2) {
+                        int withdrawAmount = simpleSelectionPrompt.display(
+                                Arrays.asList("Current Amount :" + user.getAmount()));
 
-                    if(withdrawAmount < user.getAmount()){
-                        user.setAmount(user.getAmount() - withdrawAmount);
-                    }else{
-                        System.out.println("your withdrawal amount can not be greater than the amount in your bank account.");
+                        if (withdrawAmount < user.getAmount()) {
+                            user.setAmount(user.getAmount() - withdrawAmount);
+                        } else {
+                            System.out.println("your withdrawal amount can not be greater than the amount in your bank account.");
+                        }
+
+                        System.out.println("New Amount :" + user.getAmount());
+                    } else if (userProfileInput == 3) {
+                        System.out.println("saving all transactions");
+                        System.out.println("processing..............");
+                        bankConnection.updateUserById(user);
+                        return Driver.ProgramState.USER_LOGOUT;
+                    } else {
+                        System.out.println("please enter a valid number.");
                     }
-
-                    System.out.println("New Amount :" + user.getAmount());
-                }else if(userProfileInput == 3){
-                    System.out.println("saving all transactions");
-                    System.out.println("processing..............");
-                    bankConnection.insertUser(user);
-                    return Driver.ProgramState.USER_LOGOUT;
+                }catch (NullPointerException ex){
+                    System.out.println("please enter a valid number.");
+                    return Driver.ProgramState.USER_PROFILE;
+                }catch (Exception ex){
+                    System.out.println("please enter a valid number.");
+                    return Driver.ProgramState.USER_PROFILE;
                 }
                 return Driver.ProgramState.USER_PROFILE;
             case USER_CREATE:
@@ -220,7 +234,20 @@ public class BankManagement {
                                 "1 -               LOGIN TO YOUR ACCOUNT",
                                 "2 -                EXIT THE APPLICATION",
                                 "---------------------------------------")),
-                        currentState);
+                                currentState);
+
+                /*
+                int userResponse = simpleSelectionPrompt.display(Arrays.asList(
+                        "---------------------------------------",
+                        "            WELCOME SCREEN             ",
+                        "---------------------------------------",
+                        "0 -                   CREATE AN ACCOUNT",
+                        "1 -               LOGIN TO YOUR ACCOUNT",
+                        "2 -                EXIT THE APPLICATION",
+                        "---------------------------------------"));
+                return userPromptRouter.processResponse(userResponse, currentState);
+                */
+
             default:{
 
             }

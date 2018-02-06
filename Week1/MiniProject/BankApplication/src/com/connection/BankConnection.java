@@ -32,21 +32,33 @@ public class BankConnection implements UserDao {
         ResultSet rs = null;
 
         try (Connection conn = SQLConnection.getConnection()) {
+            /*
             String sql = "SELECT * FROM client WHERE client_name ='" +
                     username + "' AND client_password ='" + password + "'";
+                    */
+            String sql = "SELECT * From amount JOIN client ON client_amount_id = amount.amount_id " +
+                    "AND client_name='" + username + "' AND client_password='"  + password + "'";
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
 
             // result sets
             if(rs.next()) {
                 User user;
+                /*
                 user = new User(
                         rs.getString("client_password"),
+                        rs.getString("client_name"),
+                        rs.getInt("client_id"));
+                        */
+                user = new User(
+                        rs.getString("client_password"),
+                        rs.getFloat("amount"),
                         rs.getString("client_name"),
                         rs.getInt("client_id"));
 
                 if(user.getAmount() == null){
                     user.setAmount(0f);
+                    System.out.println("null");
                 }
                 return  user;
             }
@@ -84,4 +96,3 @@ public class BankConnection implements UserDao {
         return 0;
     }
 }
-
