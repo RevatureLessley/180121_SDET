@@ -326,6 +326,8 @@ public class Main {
 				          email = input.nextLine();
 						  for (Account a : accounts) if (email.equals(a.getEmail())) as.displayInfoForAdmin(a);
 						  else System.out.println("User not found. \n");
+						  System.out.println("Press any key to return to main menu");
+						  userSelection = input.nextLine();
 						  break;
 				case "3": activateAccount();
 						  System.out.println("Press any key to return to main menu");
@@ -397,6 +399,7 @@ public class Main {
 		if (!accExists) System.out.println("Account does not exist.");
 	}
 	
+	//============ Terminate account admin ============//
 	public void terminateAccountAdmin() throws IOException {
 		boolean accExists = false;
 		input = new Scanner(System.in);
@@ -420,6 +423,7 @@ public class Main {
 		if (!accExists) System.out.println("Account does not exist.");
 	}
 	
+//============ Terminate account user ============//
 	public boolean terminateAccountUser(Account acc) throws IOException {
 		input = new Scanner(System.in);
 		String choice;
@@ -474,6 +478,7 @@ public class Main {
 					  return;
 			case "2": System.out.println("What would you like to change your password to? ");
 			  		  password = input.nextLine();
+			  		  as.updatePassword(password, email);
 			  		  acc.setPassword(password);
 			  		  System.out.println("Press any key to return to main menu");
 					  userSelection = input.nextLine();
