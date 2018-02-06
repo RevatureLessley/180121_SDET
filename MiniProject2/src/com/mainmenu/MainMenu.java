@@ -15,7 +15,7 @@ import com.userend.UserMenu;
 import org.apache.log4j.Logger;
 
 
-public class MainMenu implements Serializable {
+public class MainMenu {
 
 	final static Logger logger = Logger.getLogger(MainMenu.class);
 
@@ -98,7 +98,7 @@ public class MainMenu implements Serializable {
 			case 4:
 				if (input != null)
 					input.close();
-
+				System.out.println("Goodbye");
 				System.exit(0);
 			}
 		}

@@ -12,6 +12,7 @@ public class BankAccount {
 	private String UserName;
 	private String Password;
 	private Integer Balance = 0;
+	private Integer Account_ID = 0;
 	private Integer AdminApproval = 0;
 
 	public BankAccount(String fname, String lname, String username, String pw, Integer balance, Integer adminApproval) {
@@ -25,6 +26,15 @@ public class BankAccount {
 		AdminApproval = adminApproval;
 	}
 	
+	public BankAccount(Integer account_id, String fname, String lname, String username, Integer balance) {
+
+		super();
+		Account_ID = account_id;
+		FirstName = fname;
+		LastName = lname;
+		UserName = username;
+		Balance = balance;
+	}
 
 	public BankAccount() {
 		
@@ -90,6 +100,18 @@ public class BankAccount {
 
 	public void setAdminApproval(Integer adminApproval) {
 		AdminApproval = adminApproval;
+	}
+
+	public Integer getAccount_ID() {
+		return Account_ID;
+	}
+
+	public void setAccount_ID(Integer account_ID) {
+		Account_ID = account_ID;
+	}
+
+	public void setBalance(Integer balance) {
+		Balance = balance;
 	}
 
 	

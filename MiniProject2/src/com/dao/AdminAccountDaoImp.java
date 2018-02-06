@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.adminend.AdminAccount;
 import com.adminend.Transactions;
+import com.userend.BankAccount;
 import com.util.Connections;
 
 public class AdminAccountDaoImp implements AdminAccountDao {
@@ -86,6 +87,34 @@ public class AdminAccountDaoImp implements AdminAccountDao {
 		}
 
 		return trans;
+	}
+
+
+
+	@Override
+	public List<BankAccount> getAllAccounts() {
+		Statement stmt = null;
+		ResultSet rs = null;
+		List<BankAccount> users = new ArrayList<>();
+		
+		try (Connection conn = Connections.getConnection()) {
+
+			String sql = "SELECT * FROM BankAccount";
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql); 
+
+			while (rs.next()) {
+				users.add(new BankAccount(rs.getInt(1), rs.getString(2), rs.getString(3),  rs.getString(4), rs.getInt(6)));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(stmt);
+			close(rs);
+		}
+
+		return users;		
 	}
 
 }
