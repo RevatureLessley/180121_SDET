@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstor>	
+	<book>
+		<category>"fiction"</category>
+		<title>"HelloWord"</title>
+		<year>1999</year>
+		<author>"harish"</author>
+		<price>112</price>
+	</book>
+	<book>
+		<category>"Nonfiction"</category>
+		<title>"Word"</title>
+		<year>1995</year>
+		<author>"Petar"</author>
+		<price>10</price>
+	</book>
+	<book>
+		<category>"fiction"</category>
+		<title>"World"</title>
+		<year>1994</year>
+		<author>"kumar"</author>
+		<price>12</price>
+	</book>
+</bookstor>
