@@ -355,6 +355,7 @@ UPDATE testing SET e_title = 'DEVELOPER' WHERE e_id = 4;
 DELETE FROM testing WHERE e_id = 11;
 SELECT * FROM employees;
 */
+/*
 INSERT INTO indexTable (select * from indexTable);
 INSERT INTO indexTable (select * from indexTable);
 INSERT INTO indexTable (select * from indexTable);
@@ -388,4 +389,22 @@ truncate table indexTable;
 
 
 select count(distinct(nums)) from indexTable;
+*/
+BEGIN
+  DBMS_SCHEDULER.CREATE_JOB (
+   job_name           =>  'update_sales',
+   job_type           =>  'STORED_PROCEDURE',
+   job_action         =>  'Animals.hello_world_procedure',
+   start_date         =>  '28-APR-08 07.00.00 PM Australia/Sydney',
+   repeat_interval    =>  'FREQ=DAILY;INTERVAL=2', /* every other day */
+   end_date           =>  '20-NOV-08 07.00.00 PM Australia/Sydney',
+   auto_drop          =>   FALSE,
+   --job_class          =>  'batch_update_jobs',
+   comments           =>  'My new job');
+END;
+/
 
+BEGIN
+  DBMS_SCHEDULER.DROP_JOB ('update_sales');
+END;
+/

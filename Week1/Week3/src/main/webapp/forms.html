@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FORMS</title>
+<!--  INTERNAL CSS SCRIPT -->
+<style>
+	/*
+		CSS has something called CSS Selectors.
+		It is a way to reference specific or broad entitites
+	*/
+	
+	body {
+		background-color: #FFc0cb;
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="resource/css/main.css">
+</head>
+<body>
+	<h3 class="redify">FORMS</h3>
+	<img src="http://i0.kym-cdn.com/photos/images/original/001/297/956/90e.jpg">
+		<ol>
+			<li>test</li>
+		</ol>
+		<ul>
+			<li>test</li>
+		</ul>
+	<p>Forms are what make web application tick.  It takes user input and allows you to react to it.</p>
+	<form>
+		<h4>RADIO BUTTONS</h4>
+		<input type="radio" name="Radio1" value="Radio1">Radio1
+		<input type="radio" name="Radio1" value="Radio2">Radio2
+		<input type="radio" name="Radio1" value="Radio3">Radio3
+		<br>
+		<blockquote>Can you explain syntactically, what is going on here? <i>- Jawaun</i></blockquote>
+		<p class="redify">With radio button types, you can have multiple radio buttons that may be toggled.  However,
+		in order to enforce that only one of a specific group can be toggled, you need to ensure they
+		each have the same name.  Since the rule goes: Only one radio button of the same group can be
+		selected at a time.  The value attribute is used to store which one is toggled.</p>
+		
+		<h4>Text fields</h4>
+		<ul style="list-style-type:none">
+			<li><input type="text">First Name</li>
+			<li><input type="text" maxLength="1">Middle Initial</li>
+			<li><input type="text">Last Name</li>
+			<li><input type="password">Password</li>
+			<li><input type="password">Password confirm</li>
+			<li><input type="email">Email</li>
+			<li><input type="tel">Contact number</li>
+		</ul>
+		<hr>
+		<h4>Checklist</h4>
+		<p>Dogs?</p>
+			<ul style="list-style-type:none">
+				<li><input type="checkbox">Yes</li>
+				<li><input type="checkbox">No</li>
+				<li><input type="checkbox">Last box</li>
+			</ul>
+		<hr>
+			<h4>Weblist</h4>
+			<h5>Favorite kind of Bird</h5> 
+			<select>
+				<option>---</option>
+				<optgroup label="BURBS">
+					<option style="color:pink">Flamingo</option>
+					<option>Pigeon</option>
+					<option>Parakeet</option>
+					<option>Robin</option>
+					<option>Crow</option>
+				</optgroup>
+				<optgroup label="NOT BURBS">
+					<option>Not Flamingo</option>
+					<option>! Pigeon</option>
+					<option>Elks</option>
+					<option>Robin</option>
+					<option>Crow</option>
+				</optgroup>
+			</select>
+		<hr>
+		<h4>SUBMIT</h4>
+		<input type="submit">
+		<input type="reset">
+		
+
+		
+	</form>
+</body>
+</html>

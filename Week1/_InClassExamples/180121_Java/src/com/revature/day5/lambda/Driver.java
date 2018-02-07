@@ -45,12 +45,31 @@ public class Driver {
 		
 		};
 		
+		Runnable aProgram = () -> {
+			System.out.println("=====");
+			for(int i = 0; i < 50; i++) {
+				System.out.println(i*2 + "thread");
+			}
+			System.out.println("=====");
+		};
+		
+		Thread t = new Thread(aProgram);
+		t.start();
+		
+		
 		message.printMessage("Stuff");
 		
 		List<Integer> ints = Arrays.asList(7,2,55,1,0,9,22,17,12);
 		
 		for(Integer i : ints){
 			System.out.println(i);
+		}
+		
+		try {
+			t.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		/*
@@ -61,7 +80,7 @@ public class Driver {
 		 * Class::method
 		 * Class::new <- This will instantiate an object every time
 		 */
-		System.out.println("==========");
+		System.out.println("=====happy=====");
 		ints.forEach(System.out::println);
 
 		/*

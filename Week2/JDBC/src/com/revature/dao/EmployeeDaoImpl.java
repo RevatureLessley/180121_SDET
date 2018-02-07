@@ -22,7 +22,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		try(Connection conn = Connections.getConnection()) {
 			String sql = "INSERT INTO employees VALUES(?,?,?,?)";
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, emp.getEmpId());
 			ps.setString(2, emp.getEmpName());
 			ps.setInt(3, emp.getEmpSalary());
 			ps.setString(4, emp.getTitle());

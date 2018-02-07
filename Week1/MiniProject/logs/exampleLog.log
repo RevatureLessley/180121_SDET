@@ -332,3 +332,10 @@
 2018-02-06 10:12:13 INFO  UserView:80 - Get Coupon
 2018-02-06 10:38:36 INFO  Dollars:44 - 20.00 |amount removed
 2018-02-06 10:38:52 INFO  User:101 - 20.00  |deposited
+2018-02-06 10:59:09 INFO  User:113 - robert login streak=0
+2018-02-06 10:59:23 INFO  User:101 - 100.00  |deposited
+2018-02-06 10:59:31 INFO  Dollars:44 - 45.00 |amount removed
+2018-02-06 10:59:48 INFO  User:113 - robert login streak=0
+2018-02-06 11:00:30 INFO  User:113 - kirk login streak=6
+2018-02-06 11:00:30 INFO  UserView:80 - Get Coupon
+2018-02-06 11:00:53 INFO  User:101 - 5.00  |deposited
