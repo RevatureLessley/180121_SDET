@@ -9,7 +9,7 @@ import com.revature.dao.EmployeeDaoImpl;
 public class EmployeeService {
 	
 	public static void displayAllEmployees(){
-		EmployeeDao dao = new EmployeeDaoImpl();
+		EmployeeDaoImpl dao = new EmployeeDaoImpl();
 		List<Employee> emps = dao.getAllEmployee();
 		
 		System.out.println("====LIST OF EMPLOYEES====");
@@ -27,7 +27,7 @@ public class EmployeeService {
 	 * @param empTitle
 	 */
 	public static void addEmployee(String empName, int empSalary, String empTitle){
-		EmployeeDao dao = new EmployeeDaoImpl();
+		EmployeeDaoImpl dao = new EmployeeDaoImpl();
 		dao.insertEmployee(new Employee(empName, empSalary, empTitle));
 	}
 }
