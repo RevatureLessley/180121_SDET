@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<bookstore>
+		<book category = "horror">
+			<Title lang = "en">Horror Story"</Title>
+			<Year>"1999"</Year>
+			<author>"Me"</author>
+			<price>"1.99"</price>
+		</book>
+	</bookstore>
