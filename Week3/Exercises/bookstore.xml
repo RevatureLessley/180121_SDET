@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+	<book category="ficition">
+		<title lang="English">Well Formed</title>
+		<year>2002</year>
+		<author>Bobbert</author>
+		<price>$11</price>
+	</book>
+	<book category="non-ficition">
+		<title lang="Japanese">Haikus</title>
+		<year>1987</year>
+		<author>Takashi</author>
+		<price>8yen</price>
+	</book>
+	<book category="ficition">
+		<title lang="English">Pink Book</title>
+		<year>2018</year>
+		<author>Myra</author>
+		<price>$34</price>
+	</book>
+</bookstore>
