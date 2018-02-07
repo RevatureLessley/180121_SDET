@@ -75,6 +75,8 @@ WHERE HIREDATE BETWEEN '01-JUN-03' AND '01-MAR-04';
 
 --Task – Delete a record in Customer table where the name is Robert Walter (There may be constraints that rely on this, find out how to resolve them).
 
+ALTER TABLE INVOICELINE DROP CONSTRAINT FK_INVOICELINEINVOICEID;
+ALTER TABLE INVOICELINE DROP CONSTRAINT FK_INVOICELINETRACKID;
 
 DELETE FROM INVOICE
 WHERE CUSTOMERID = 32;
@@ -82,15 +84,6 @@ WHERE CUSTOMERID = 32;
 DELETE FROM CUSTOMER
 WHERE FIRSTNAME = 'Robert' AND LASTNAME = 'Walter'; 
 
-
-
-SELECT * FROM CUSTOMER;
-SELECT * FROM INVOICE;
-
-SELECT * FROM INVOICE
-WHERE CUSTOMERID = 32;
-
-SELECT * FROM INVOICELINE;
 
 --Task – Create a function that returns the current time.
 SELECT CURRENT_TIMESTAMP FROM DUAL;
@@ -132,8 +125,21 @@ WHERE BIRTHDATE > '12-DEC-68';
 --Task – Create a transaction nested within a stored procedure that inserts a new record in the Customer table
 
 --Task - Create an after insert trigger on the employee table fired after a new record is inserted into the table.
+CREATE OR REPLACE TRIGGER emp_fired
+AFTER INSERT ON employees
+FOR EACH ROW
+BEGIN --This keyword signifies a block for a transaction
+    IF :new.e_id IS NULL THEN
+    SELECT emp_seq.nextval INTO :new.e_id from dual;
+    END IF;
+END;    
+/
+
+SELECT * FROM fired;
+
 --Task – Create an after update trigger on the album table that fires after a row is inserted in the table
 --Task – Create an after delete trigger on the customer table that fires after a row is deleted from the table.
+
 
 --Task – Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId
 SELECT customer.FIRSTNAME, customer.LASTNAME, invoice.INVOICEID 
