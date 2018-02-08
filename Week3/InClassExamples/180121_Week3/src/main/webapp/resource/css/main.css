@@ -1,0 +1,35 @@
+/*
+	EXTERNAL STYLESHEET
+*/
+
+/*
+	Class selectors begin with a '.'
+	ID selectors begin with a '#'
+	BY CONVENTION:
+		-ID needs to be a unique value of an HTML page.
+		-Class can be used for multiple elements.
+*/
+
+.redify {
+	background-color:red;
+	color: cyan;
+}
+ol li .redify{
+	background-color:blue;
+	color: yellow;
+}
+
+ul + li {
+	background-color:Yellow;
+	color:blue;
+}
+
+#myId {
+	background-color: black;
+	color: #DDDDDD;
+}
+
+body {
+	background-color: #333333;
+	color: #dddddd;
+}
