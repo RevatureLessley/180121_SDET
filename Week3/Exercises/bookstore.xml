@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+	<book catergory="fun">
+		<title>Book 1</title>
+		<year>1999</year>
+		<author>God</author>
+		<price>100<price>
+	</book>
+	<book catergory="lame">
+		<title>Book 2</title>
+		<year>2001</year>
+		<author>Jesus</author>
+		<price>400<price>
+	</book>
+	<book catergory ="lamest">
+		<title>Book 3</title>
+		<year>2008</year>
+		<author>Holy Spitit</author>
+		<price>600<price>
+	</book>
+</bookstore>
