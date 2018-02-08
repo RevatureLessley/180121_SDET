@@ -2,6 +2,7 @@ package com.revature.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -33,6 +34,7 @@ public class FormsServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		out.println("<h1>GET</h1>");
+		doWork(request, response);
 	}
 
 
@@ -41,6 +43,29 @@ public class FormsServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		out.println("<h1>POST</h1>");
+		doWork(request, response);
+		
+	}
+	
+	protected void doWork(HttpServletRequest request, HttpServletResponse response)
+		throws IOException, ServletException{
+		
+		PrintWriter out = response.getWriter();
+		out.println(
+					"<table border=1px>"	+
+							"<tr><th>ParamName</th><th>ParamValue</th></tr>"
+				);
+		
+		Enumeration e = request.getParameterNames();
+		while(e.hasMoreElements()){
+			String paramName = (String)e.nextElement();
+			String paramValue = request.getParameter(paramName);
+			
+			out.println("<tr><td>" + paramName + "</td><td>" + paramValue + "</td></tr>");
+		}
+		
+		out.println("</table>");
+		
 	}
 
 }
