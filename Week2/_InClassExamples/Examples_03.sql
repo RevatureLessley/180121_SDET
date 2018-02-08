@@ -119,7 +119,7 @@ IS
 BEGIN
     select e_name INTO emp_name from employees where e_id = emp_id;
 END;
-
+/
 
 --Calling this procedure in SQL
 DECLARE --NOTE, you must provide datatype sizes in the declaration block.
@@ -130,13 +130,14 @@ BEGIN
     get_name(input, results);
     DBMS_OUTPUT.PUT_LINE(results);
 END;
+/
 
 CREATE OR REPLACE PROCEDURE get_title(proc_var IN OUT varchar)
 IS
 BEGIN
     select e_title INTO proc_var from employees where e_name = proc_var;
 END;
-
+/
 DECLARE
     input varchar2(200);
 BEGIN
@@ -144,7 +145,7 @@ BEGIN
     get_title(input);
     DBMS_OUTPUT.PUT_LINE(input);
 END;
-
+/
 
 /*
     CURSORS!
@@ -164,7 +165,7 @@ BEGIN
     OPEN cursorParam FOR --Cursor is like a stream, you OPEN it FOR some QUERY.
     SELECT * FROM employees;
 END;
-
+/
 DECLARE
     my_cursor SYS_REFCURSOR;
     emp_id employees.e_id%TYPE; --Make the datatype match THAT of the employees.column's datatype.
@@ -180,7 +181,7 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE(emp_id || ' ' || emp_name || ' ' || emp_sal || ' ' || emp_title);
     END LOOP;
 END;
-
+/
 /*
     These were examples of EXPLICIT CURSORS where we manually defined a cursor and fetched and iterated 
     through it. 
@@ -212,14 +213,14 @@ BEGIN
     SELECT max(e_id) into max_id FROM employees;
     RETURN max_id;
 END;
-
+/
 DECLARE
     max_id number;
 BEGIN
     max_id := get_max_id();
     DBMS_OUTPUT.PUT_LINE('Max employee id: ' || max_id);
 END;
-
+/
 
 --EXCEPTION HANDLING
 CREATE OR REPLACE PROCEDURE exceptionExample
@@ -247,7 +248,60 @@ BEGIN
             dbms_output.put_line('DIVISION BY ZERO ERROR');
     
 END;
+/
 
 BEGIN
     EXCEPTIONEXAMPLE();
 END;
+/
+
+
+CREATE TABLE indexTable (
+    nums number(6)
+)
+/
+
+INSERT INTO indexTable VALUES(1);
+INSERT INTO indexTable VALUES(2);
+INSERT INTO indexTable VALUES(3);
+INSERT INTO indexTable VALUES(5);
+INSERT INTO indexTable VALUES(4);
+INSERT INTO indexTable VALUES(6);
+INSERT INTO indexTable VALUES(7);
+INSERT INTO indexTable VALUES(8);
+INSERT INTO indexTable VALUES(9);
+
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+INSERT INTO indexTable (select * from indexTable);
+delete from indexTable where rownum < 350000;
+INSERT INTO indexTable VALUES(12);
+select count(*) from indexTable;
+select * from indexTable where nums = 12;
+
+drop index numsIndex;
+
+CREATE INDEX numsindex on indexTable(nums);
+
+truncate table indexTable;
+
+
+select count(distinct(nums)) from indexTable;
+

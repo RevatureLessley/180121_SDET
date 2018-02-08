@@ -66,3 +66,28 @@
 2018-02-06 09:35:16 INFO  root:25 - Account 'Bob' is Approved.
 2018-02-06 09:57:12 INFO  root:25 - 1 RECORD(S) UPDATED.
 2018-02-06 09:57:12 INFO  root:25 - $300.0 is deposited into account 'jiaqi'.
+2018-02-06 10:06:57 INFO  root:25 - 1 RECORD(S) INSERTED!
+2018-02-06 10:06:57 INFO  root:25 - Account 'newuser' registered.
+2018-02-06 10:50:04 INFO  root:25 - 1 RECORD(S) INSERTED!
+2018-02-06 10:50:04 INFO  root:25 - Account 'boo' registered.
+2018-02-06 10:51:25 INFO  root:25 - 1 RECORD(S) INSERTED!
+2018-02-06 10:51:25 INFO  root:25 - Account 'Dylan' registered.
+2018-02-06 10:52:48 INFO  root:25 - 1 RECORD(S) INSERTED!
+2018-02-06 10:52:48 INFO  root:25 - Account 'user' registered.
+2018-02-06 10:55:11 INFO  root:25 - 1 RECORD(S) UPDATED.
+2018-02-06 10:55:11 INFO  root:25 - Account 'newuser' is Approved.
+2018-02-06 11:12:22 INFO  root:25 - 1 RECORD(S) INSERTED!
+2018-02-06 11:12:22 INFO  root:25 - Account 'david' registered.
+2018-02-06 11:13:37 INFO  root:25 - 1 RECORD(S) UPDATED.
+2018-02-06 11:13:37 INFO  root:25 - Account 'david' is Approved.
+2018-02-06 11:14:09 INFO  root:25 - 1 RECORD(S) UPDATED.
+2018-02-06 11:14:09 INFO  root:25 - $500.0 is deposited into account 'david'.
+2018-02-06 11:14:41 INFO  root:25 - 1 RECORD(S) UPDATED.
+2018-02-06 11:14:41 INFO  root:25 - $200.0 is withdrew from account 'david'.
+2018-02-07 09:45:34 ERROR root:33 - Get All Accounts Failed.
+2018-02-07 10:02:55 ERROR root:33 - Get Max UserId Failed.
+2018-02-07 10:02:55 ERROR root:33 - Add Account Failed.
+2018-02-07 10:02:55 INFO  root:25 - Account 'aaa' registered.
+2018-02-07 10:03:26 ERROR root:33 - Get Max UserId Failed.
+2018-02-07 10:03:26 ERROR root:33 - Add Account Failed.
+2018-02-07 10:03:26 INFO  root:25 - Account 'aaa' registered.

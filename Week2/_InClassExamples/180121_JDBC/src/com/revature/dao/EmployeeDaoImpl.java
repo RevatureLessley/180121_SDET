@@ -18,9 +18,9 @@ import java.util.concurrent.Callable;
 import com.revature.beans.Employee;
 import com.revature.util.Connections;
 
-public class EmployeeDaoImpl implements EmployeeDao {
+public class EmployeeDaoImpl {
 
-	@Override
+	
 	public void insertEmployee(Employee emp) {
 		PreparedStatement ps = null;
 
@@ -46,12 +46,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	}
 
-	@Override
+	
 	public Employee selectEmployeeById(String id) {
 		return null;
 	}
 
-	@Override
+	
 	public List<Employee> getAllEmployee() {
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -85,13 +85,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return emps;
 	}
 
-	@Override
+	
 	public int deleteEmployeeById() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
+	
 	public int updateEmployeeById(Employee emp) {
 		// TODO Auto-generated method stub
 		return 0;
