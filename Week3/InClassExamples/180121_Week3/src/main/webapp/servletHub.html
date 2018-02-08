@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Servlet Hub!</title>
+
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Bring Bootstrap 3 libraries -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Bring in supplemental javascript for bootstrap -->
+
+<link rel="stylesheet" type="text/css" href="resource/css/main.css">
+
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Ryan's Example</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="https://www.w3schools.com/html/">W3Schools</a></li>
+				<li><a href="styles.html" style="color: cyan">STYLES</a></li>
+				<li><a href="forms.html" style="color: cyan">FORMS</a></li>
+				<li><a
+					href="https://www.w3schools.com/cssref/css_selectors.asp">CSS
+						SELECTORS</a></li>
+				<li class="active"><a href="servletHub.html">SERVLET HUB</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container" style="margin-top: 50px">
+		<div class="well">
+			<h3>Hello World Servlet</h3>
+			<form action="hello">
+				<input type="submit" value="Hello!">
+			</form>
+		</div>
+
+		<div class="well">
+			<h3>GET BY DEFAULT</h3>
+			<form action="FormsServlet">
+				<h4>RADIO BUTTONS</h4>
+				<ul style="list-style-type: none">
+					<li><input type="radio" name="Radio1" value="Radio1">Radio1</li>
+					<li><input type="radio" name="Radio1" value="Radio2" checked>Radio2</li>
+					<li><input type="radio" name="Radio1" value="Radio3">Radio3</li>
+				</ul>
+				<br>
+				<p>
+					&quot;Can you explain syntactically, what is going on here?&quot; <i>-
+						Jawaun</i>
+				</p>
+				<p class="redify">With radio button types, you can have multiple
+					radio buttons that may be toggled. However, in order to enforce
+					that only one of a specific group can be toggeled, you need to
+					ensure they each have the same name. Since the rule goes: Only one
+					radio button of the same named group may be toggled at a time. The
+					value attribute is used to store which one is toggled.
+				<hr>
+				<h4>Text fields</h4>
+				<ul style="list-style-type: none">
+					<li><input type="text" name="fname">First Name</li>
+					<li><input type="text" maxlength="1" name="mname">Middle Initial</li>
+					<li><input type="text" name="lname">Last Name</li>
+					<li><input type="password" name="pass1">Password</li>
+					<li><input type="password" name="pass2">Password Confirm</li>
+					<li><input type="email" name="email">Email</li>
+					<li><input type="text" name="num">Contact number</li>
+				</ul>
+				<hr>
+				<h4>Checklist!</h4>
+				<p>Dogs?</p>
+				<ul style="list-style-type: none">
+					<li><input type="checkbox" name="dogs" value="box1">Yes</li>
+					<li><input type="checkbox" name="dogs" value="box2">No</li>
+					<li><input type="checkbox" name="dogs" value="box3">Last
+						Name</li>
+				</ul>
+				<hr>
+				<h4>Weblist</h4>
+				<h5>Favorite Kind of Bird</h5>
+				<select name="birbs">
+					<optgroup label="BIRBS">
+
+						<option>---</option>
+						<option style="color: pink">Flamingo</option>
+						<!-- INLINE CSS -->
+						<option>Pigeon</option>
+						<option>Parakeet</option>
+						<option>Robin</option>
+						<option>Sparrow</option>
+						<option>Raven</option>
+						<option>Puffin</option>
+					</optgroup>
+					<optgroup label="NOT BIRBS">
+						<option>Not Flamingos</option>
+						<option>Not Pigeon</option>
+						<option>Elks</option>
+						<option>Carburetors</option>
+					</optgroup>
+				</select>
+				<hr>
+				<h4>SUBMIT</h4>
+				<input type="reset"> <input type="submit">
+			</form>
+		</div>
+		<div class ="well">
+			<h3>EXPLICTELY POST</h3>
+			<form method="POST" action="FormsServlet">
+				<h4>RADIO BUTTONS</h4>
+				<ul style="list-style-type: none">
+					<li><input type="radio" name="Radio1" value="Radio1">Radio1</li>
+					<li><input type="radio" name="Radio1" value="Radio2" checked>Radio2</li>
+					<li><input type="radio" name="Radio1" value="Radio3">Radio3</li>
+				</ul>
+				<br>
+				<p>
+					&quot;Can you explain syntactically, what is going on here?&quot; <i>-
+						Jawaun</i>
+				</p>
+				<p class="redify">With radio button types, you can have multiple
+					radio buttons that may be toggled. However, in order to enforce
+					that only one of a specific group can be toggeled, you need to
+					ensure they each have the same name. Since the rule goes: Only one
+					radio button of the same named group may be toggled at a time. The
+					value attribute is used to store which one is toggled.
+				<hr>
+				<h4>Text fields</h4>
+				<ul style="list-style-type: none">
+					<li><input type="text" name="fname">First Name</li>
+					<li><input type="text" maxlength="1" name="mname">Middle Initial</li>
+					<li><input type="text" name="lname">Last Name</li>
+					<li><input type="password" name="pass1">Password</li>
+					<li><input type="password" name="pass2">Password Confirm</li>
+					<li><input type="email" name="email">Email</li>
+					<li><input type="text" name="num">Contact number</li>
+				</ul>
+				<hr>
+				<h4>Checklist!</h4>
+				<p>Dogs?</p>
+				<ul style="list-style-type: none">
+					<li><input type="checkbox" name="dogs" value="box1">Yes</li>
+					<li><input type="checkbox" name="dogs" value="box2">No</li>
+					<li><input type="checkbox" name="dogs" value="box3">Last
+						Name</li>
+				</ul>
+				<hr>
+				<h4>Weblist</h4>
+				<h5>Favorite Kind of Bird</h5>
+				<select name="birbs">
+					<optgroup label="BIRBS">
+
+						<option>---</option>
+						<option style="color: pink">Flamingo</option>
+						<!-- INLINE CSS -->
+						<option>Pigeon</option>
+						<option>Parakeet</option>
+						<option>Robin</option>
+						<option>Sparrow</option>
+						<option>Raven</option>
+						<option>Puffin</option>
+					</optgroup>
+					<optgroup label="NOT BIRBS">
+						<option>Not Flamingos</option>
+						<option>Not Pigeon</option>
+						<option>Elks</option>
+						<option>Carburetors</option>
+					</optgroup>
+				</select>
+				<hr>
+				<h4>SUBMIT</h4>
+				<input type="reset"> <input type="submit">
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>
