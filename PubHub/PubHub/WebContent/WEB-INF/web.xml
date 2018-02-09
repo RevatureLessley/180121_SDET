@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>PubHub</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+<!--<servlet>
+ <servlet-name>PublishBookServlet</servlet-name>
+    <servlet-class>examples.pubhub.servlets.PublishBookServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PublishBookServlet</servlet-name>
+    <url-pattern>/PublishBook</url-pattern>
+  </servlet-mapping>    -->    
+  
+  
+  <servlet>
+  	<servlet-name>AddTagServlet</servlet-name>
+  	<servlet-class>examples.pubhub.servlets.AddTagServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddTagServlet</servlet-name>
+  	<url-pattern>/AddTag</url-pattern>  
+  </servlet-mapping> 
+  
+  <error-page>
+    <error-code>404</error-code>
+    <location>/notFoundError.jsp</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/error.jsp</location>
+  </error-page>
+  
+  <context-param>
+  	<param-name>isLog4jContextSelectorNamed</param-name>
+  	<param-value>true</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>log4jContextName</param-name>
+    <param-value>appWithJndiSelector</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>log4jConfiguration</param-name>
+  	<param-value>log4j2.properties</param-value>
+  </context-param>
+      <context-param>
+        <param-name>Log4jContextSelector</param-name>
+        <param-value>org.apache.logging.log4j.core.selector.JndiContextSelector</param-value>
+    </context-param>
+
+  
+</web-app>
