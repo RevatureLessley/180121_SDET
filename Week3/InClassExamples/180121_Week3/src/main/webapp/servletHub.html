@@ -7,6 +7,13 @@
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- Bring Bootstrap 3 libraries -->
+
+<script
+			  src="http://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+
+
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Bring in supplemental javascript for bootstrap -->
@@ -23,12 +30,16 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="index.html">HOME</a></li>
-				<li><a href="https://www.w3schools.com/html/">W3Schools</a></li>
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">USEFUL LINKS <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="https://www.w3schools.com/html/">W3SCHOOLS</a></li>
+						<li><a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS Selectors</a></li>
+						<li><a href="https://www.w3schools.com/bootstrap/default.asp">BOOTSTRAP</a></li>
+					</ul></li>
 				<li><a href="styles.html" style="color: cyan">STYLES</a></li>
 				<li><a href="forms.html" style="color: cyan">FORMS</a></li>
-				<li><a
-					href="https://www.w3schools.com/cssref/css_selectors.asp">CSS
-						SELECTORS</a></li>
 				<li class="active"><a href="servletHub.html">SERVLET HUB</a></li>
 			</ul>
 		</div>
@@ -65,10 +76,12 @@
 				<h4>Text fields</h4>
 				<ul style="list-style-type: none">
 					<li><input type="text" name="fname">First Name</li>
-					<li><input type="text" maxlength="1" name="mname">Middle Initial</li>
+					<li><input type="text" maxlength="1" name="mname">Middle
+						Initial</li>
 					<li><input type="text" name="lname">Last Name</li>
 					<li><input type="password" name="pass1">Password</li>
-					<li><input type="password" name="pass2">Password Confirm</li>
+					<li><input type="password" name="pass2">Password
+						Confirm</li>
 					<li><input type="email" name="email">Email</li>
 					<li><input type="text" name="num">Contact number</li>
 				</ul>
@@ -76,9 +89,9 @@
 				<h4>Checklist!</h4>
 				<p>Dogs?</p>
 				<ul style="list-style-type: none">
-					<li><input type="checkbox" name="dogs" value="box1">Yes</li>
-					<li><input type="checkbox" name="dogs" value="box2">No</li>
-					<li><input type="checkbox" name="dogs" value="box3">Last
+					<li><input type="checkbox" name="dogs" value="Yes">Yes</li>
+					<li><input type="checkbox" name="dogs" value="No">No</li>
+					<li><input type="checkbox" name="dogs" value="Last Name">Last
 						Name</li>
 				</ul>
 				<hr>
@@ -109,7 +122,7 @@
 				<input type="reset"> <input type="submit">
 			</form>
 		</div>
-		<div class ="well">
+		<div class="well">
 			<h3>EXPLICTELY POST</h3>
 			<form method="POST" action="FormsServlet">
 				<h4>RADIO BUTTONS</h4>
@@ -133,10 +146,12 @@
 				<h4>Text fields</h4>
 				<ul style="list-style-type: none">
 					<li><input type="text" name="fname">First Name</li>
-					<li><input type="text" maxlength="1" name="mname">Middle Initial</li>
+					<li><input type="text" maxlength="1" name="mname">Middle
+						Initial</li>
 					<li><input type="text" name="lname">Last Name</li>
 					<li><input type="password" name="pass1">Password</li>
-					<li><input type="password" name="pass2">Password Confirm</li>
+					<li><input type="password" name="pass2">Password
+						Confirm</li>
 					<li><input type="email" name="email">Email</li>
 					<li><input type="text" name="num">Contact number</li>
 				</ul>
@@ -144,9 +159,9 @@
 				<h4>Checklist!</h4>
 				<p>Dogs?</p>
 				<ul style="list-style-type: none">
-					<li><input type="checkbox" name="dogs" value="box1">Yes</li>
-					<li><input type="checkbox" name="dogs" value="box2">No</li>
-					<li><input type="checkbox" name="dogs" value="box3">Last
+					<li><input type="checkbox" name="dogs" value="Yes">Yes</li>
+					<li><input type="checkbox" name="dogs" value="No">No</li>
+					<li><input type="checkbox" name="dogs" value="Last Name">Last
 						Name</li>
 				</ul>
 				<hr>
@@ -177,7 +192,51 @@
 				<input type="reset"> <input type="submit">
 			</form>
 		</div>
+
+		<div class="well">
+			<form action="Headers">
+				<input type="submit" value="Get Request Headers">
+			</form>
+		</div>
+		
+		<div class="well">
+			<form action=CreateCookie>
+				KEY NAME <input type="password" name="cookiename" required><br>
+				PASSWORD <input type="password" name="password" required><br>
+				<input type="submit" value="CREATE COOKIE">
+			</form>
+			<br>
+			<form action=RetrieveCookie>
+				<input type="submit" value="FETCH COOKIE">
+			</form>
+			<form action=DeleteCookie>
+				<input type="submit" value="DELETE COOKIE">
+			</form>
+		</div>
+		
+		<div class = "well">
+			<h3>Sessions</h3>
+			<form action="CreateSession">
+				<ul>
+					<li><input type="text" name="username">USERNAME</li>
+					<li><input type="password" name="password">PASSWORD</li>
+					<li><input type="submit" value="CREATE SESSION"></li>
+				</ul>
+			</form>
+			<form action="TrackSession">
+				<input type="submit" value="TRACK SESSION">
+			</form>
+			<form action="DeleteSession">
+				<input type="submit" value="DELETE SESSION">
+			</form>
+					
+		</div>
+		
+		
+		
 	</div>
+	
+	
 
 </body>
 </html>

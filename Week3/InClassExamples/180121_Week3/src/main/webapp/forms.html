@@ -3,12 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <title>FORMS!</title>
+
+
+<script
+			  src="http://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- Bring Bootstrap 3 libraries -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Bring in supplemental javascript for bootstrap -->
+
 
 <!-- INTERNAL CSS SCRIPT -->
 <style>
@@ -29,18 +37,24 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.html">Ryan's Example</a>
+				<a class="navbar-brand" href="#">Ryan's Example</a>
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="index.html">HOME</a></li>
-				<li><a href="https://www.w3schools.com/html/">W3Schools</a></li>
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">USEFUL LINKS <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="https://www.w3schools.com/html/">W3SCHOOLS</a></li>
+						<li><a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS Selectors</a></li>
+						<li><a href="https://www.w3schools.com/bootstrap/default.asp">BOOTSTRAP</a></li>
+					</ul></li>
 				<li><a href="styles.html" style="color: cyan">STYLES</a></li>
 				<li class="active"><a href="forms.html" style="color: cyan">FORMS</a></li>
-				<li><a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS SELECTORS</a></li>
+				<li><a href="servletHub.html">SERVLET HUB</a></li>
 			</ul>
 		</div>
-	</nav>
-	<h3 class="redify" style="margin-top:50px">FORMS</h3>
+	</nav>	<h3 class="redify" style="margin-top:50px">FORMS</h3>
 	<img src="https://cdn.dopl3r.com/memes_files/when-u-see-everybody-have-friends-and-social-life-but-u-have-dank-memes-so-at-least-you-can-laugh-while-crying-mB5c7.jpg">
 	<ol>
 		<li>TEST</li>
@@ -60,14 +74,14 @@
 	<form action=FormsServlet>
 		<h4>RADIO BUTTONS</h4>
 		<ul style="list-style-type:none">
-			<li><input type="radio" name="Radio1" value="Radio1">Radio1</li>
-			<li><input type="radio" name="Radio1" value="Radio2" checked>Radio2</li>
-			<li><input type="radio" name="Radio1" value="Radio3">Radio3</li>
+			<li><input type="checkbox" name="dogs" value="Yes">Yes</li>
+			<li><input type="checkbox" name="dogs" value="No">No</li>
+			<li><input type="checkbox" name="dogs" value="Last Name">Last Name</li>
 		</ul>
 		<br>
 		<p>&quot;Can you explain syntactically, what is going on here?&quot; <i>- Jawaun</i></p>
 		<p class="redify">With radio button types, you can have multiple radio buttons that may be toggled.
-		However, in order to enforce that only one of a specific group can be toggeled, you need
+		However, in order to enforce that only one of a specific group can be toggled, you need
 		to ensure they each have the same name. Since the rule goes: Only one radio button of the 
 		same named group may be toggled at a time. The value attribute is used to store which one
 		is toggled.
@@ -86,9 +100,9 @@
 		<h4>Checklist!</h4>
 		<p>Dogs?</p>
 		<ul style="list-style-type:none">
-			<li><input type="checkbox" name="dogs" value="box1">Yes</li>
-			<li><input type="checkbox" name="dogs" value="box2">No</li>
-			<li><input type="checkbox" name="dogs" value="box3">Last Name</li>
+			<li><input type="checkbox" name="dogs" value="Yes">Yes</li>
+			<li><input type="checkbox" name="dogs" value="No">No</li>
+			<li><input type="checkbox" name="dogs" value="Last Name">Last Name</li>
 		</ul>
 		<hr>
 		<h4>Weblist</h4>
