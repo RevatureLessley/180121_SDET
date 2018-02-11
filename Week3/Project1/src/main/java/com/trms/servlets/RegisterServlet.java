@@ -9,12 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.trms.services.UserRegisterService;
 
 /**
  * Servlet implementation class RegisterServlet
  */
 public class RegisterServlet extends HttpServlet {
+	final static Logger logger = Logger.getLogger(RegisterServlet.class);
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -29,6 +32,7 @@ public class RegisterServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
+		logger.info("doGet(): " + success);
 		if(success) {
 			out.println("Registartion complete! Redirecting!");
 		} else {
