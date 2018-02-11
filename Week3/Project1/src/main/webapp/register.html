@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+	
+<link rel="stylesheet" type="text/css" href="resources/css/main.css">
+
+<title>REGISTER</title>
+</head>
+<body>
+	<div class='container'>
+		<h2>REGISTER</h2>
+		<div class='well'>
+			<form class="form-horizontal" method='POST' action="Register.do">
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="empid">EMPLOYEE
+						ID:</label>
+					<div class="col-sm-10">
+						<input type="number" class="form-control" name="empid"
+							placeholder="Enter Employee ID" required>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="email">EMAIL:</label>
+					<div class="col-sm-10">
+						<input type="email" class="form-control" name="email"
+							placeholder="Enter Email" required>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="username">USERNAME:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="username"
+							placeholder="Enter Username" required>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="password">Password:</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" name="password"
+							placeholder="Enter Password" required>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-default">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

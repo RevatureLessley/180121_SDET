@@ -27,18 +27,26 @@
 
 
 	<div class='container'>
-		<h1 class='text-center'>WELCOME TO TRMS!</h1>
-		<form method="POST" action="Login.do">
-			<div class="form-group">
-				<label for="username">USERNAME:</label> <input type="text"
-					class="form-control" name="username">
+		<div class='well'>
+			<h1 class='text-center'>WELCOME TO TRMS!</h1>
+			<form method="POST" action="Login.do">
+				<div class="form-group">
+					<label for="username">USERNAME:</label> <input type="text"
+						class="form-control" name="username">
+				</div>
+				<div class="form-group">
+					<label for="password">PASSWORD:</label> <input type="password"
+						class="form-control" name="password">
+				</div>
+				<button type="submit" class="btn btn-default">SUBMIT</button>
+			</form>
+			<hr>
+			<div>
+				<a href="register.html">REGISTER</a>
 			</div>
-			<div class="form-group">
-				<label for="password">PASSWORD:</label> <input type="password"
-					class="form-control" name="password">
-			</div>
-			<button type="submit" class="btn btn-default">Submit</button>
-		</form>
+		</div>
+
+
 	</div>
 </body>
 </html>
