@@ -22,7 +22,7 @@
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>com.revature.servlets.LoginServlet</servlet-class>
 		<init-param>
-			<param-name>loginVar</param-name>
+			<param-name>LoginVar</param-name>
 			<param-value>loginBobbert</param-value>
 		</init-param>
 	</servlet>

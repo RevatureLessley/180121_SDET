@@ -16,6 +16,7 @@ public class FrontController extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
+		super.init();
 		System.out.println("FRONT CONTROLLER LOADED");
 		
 		
@@ -48,7 +49,7 @@ public class FrontController extends HttpServlet {
 
 		System.out.println("=====" + this.getServletName() + "=====");
 		System.out.println("ConfigVariable: " + this.getInitParameter("ConfigVar"));
-		System.out.println("ConfigVariableForLogin: " + this.getInitParameter("loginVar"));
+		System.out.println("ConfigVariableForLogin: " + this.getInitParameter("LoginVar"));
 		System.out.println("ContextVariable: " + this.getServletContext().getInitParameter("ContextBob"));
 
 		
@@ -65,7 +66,7 @@ public class FrontController extends HttpServlet {
 			rd.forward(request, response);
 			break;
 		default:
-			response.sendError(404);
+			//response.sendError(404);
 		}
 		
 

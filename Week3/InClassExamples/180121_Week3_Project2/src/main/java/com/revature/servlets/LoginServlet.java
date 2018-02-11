@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		System.out.println("=====" + config.getServletName() + "=====");
-		System.out.println("ConfigVariable: " + config.getInitParameter("loginVar"));
+		System.out.println("ConfigVariable: " + config.getInitParameter("LoginVar"));
 		System.out.println("ContextVariable: " + config.getServletContext().getInitParameter("ContextBob"));
 	}
 	
@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("=====" + this.getServletName() + "AFTER INIT=====");
-		System.out.println("ConfigVariable: " + this.getInitParameter("loginVar"));
+		System.out.println("ConfigVariable: " + this.getInitParameter("LoginVar"));
 		System.out.println("ContextVariable: " + this.getServletContext().getInitParameter("ContextBob"));
 
 		
