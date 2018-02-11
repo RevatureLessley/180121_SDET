@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SERVLET</title>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Bring Bootstrap 3 libraries -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="resource/css/main.css">
+</head>
+</head>
+<body>
+
+	 <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Week 3 SDET</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="https://www.w3schools.com/" class="white-text">w3schools</a></li>
+		<li><a href="styles.html" class="white-text">STYLES</a></li>
+		<li><a href="forms.html" class="white-text">FORMS</a></li>
+    </ul>
+  </div>
+</nav> 
+
+	<div class="container" >
+		<div class="well" style="margin-top:100px">
+			<h3>Hello World Servlet</h3>
+			<form action="hello">
+				<input type="submit" value="Hello!">
+			</form>
+		</div>
+	</div>
+
+	<div class='well'>
+		<form method='POST' action="FormsServlet">
+			<h4>RADIO BUTTONS</h4>
+		<input type="radio" name="Radio1" value="Radio1">Radio1
+		<input type="radio" name="Radio1" value="Radio2">Radio2
+		<input type="radio" name="Radio1" value="Radio3">Radio3
+		<br>
+		<blockquote>Can you explain syntactically, what is going on here? <i>- Jawaun</i></blockquote>
+		<p class="redify">With radio button types, you can have multiple radio buttons that may be toggled.  However,
+		in order to enforce that only one of a specific group can be toggled, you need to ensure they
+		each have the same name.  Since the rule goes: Only one radio button of the same group can be
+		selected at a time.  The value attribute is used to store which one is toggled.</p>
+		
+		<h4>Text fields</h4>
+		<ul style="list-style-type:none">
+			<li><input type="text" name="fname">First Name</li>
+			<li><input type="text" maxLength="1" name="mname">Middle Initial</li>
+			<li><input type="text" name="lname">Last Name</li>
+			<li><input type="password" name="pass1">Password</li>
+			<li><input type="password" name='pass2'>Password confirm</li>
+			<li><input type="email" name="email">Email</li>
+			<li><input type="tel" name="tel">Contact number</li>
+		</ul>
+		<hr>
+		<h4>Checklist</h4>
+		<p>Dogs?</p>
+			<ul style="list-style-type:none">
+				<li><input name="dogs" type="checkbox" value="Yes">Yes v</li>
+				<li><input name="dogs" type="checkbox" value="No">No</li>
+				<li><input name="dogs" type="checkbox" value="Last box">Last box</li>
+			</ul>
+		<hr>
+			<h4>Weblist</h4>
+			<h5>Favorite kind of Bird</h5> 
+			<select name="birds">
+				<option>---</option>
+				<optgroup label="BURBS">
+					<option style="color:pink">Flamingo</option>
+					<option>Pigeon</option>
+					<option>Parakeet</option>
+					<option>Robin</option>
+					<option>Crow</option>
+				</optgroup>
+				<optgroup label="NOT BURBS">
+					<option>Not Flamingo</option>
+					<option>! Pigeon</option>
+					<option>Elks</option>
+					<option>Robin</option>
+					<option>Crow</option>
+				</optgroup>
+			</select>
+		<hr>
+		<h4>SUBMIT</h4>
+		<input type="submit">
+		<input type="reset">
+		</form>
+	</div>
+	
+	<div class="well">
+		<form action="Headers">
+			<input value="Get Request Headers" type='submit'>
+		</form>
+	</div>
+	
+	<div class="well">
+		<form action='CreateCookieServlet'>
+			PASSWORD <input type='password' name='password' required><br>
+			<input type='submit' value="CREATE COOKIE">
+		</form>
+		<form action='RetrieveCookie'>
+			<input type='submit' value="GET COOKIE">
+		</form>
+		<form action='DeleteCookie'>
+			<input type='submit' value="DELETE COOKIE">
+		</form>
+	</div>
+	
+	<div class="well">
+		<h3>Sessions</h3>
+		<form action="CreateSession">
+			<ul>
+				<li><input type='text' name='username'>USERNAME</li>
+				<li><input type='password' name='password'>PASSWORD</li>
+				<li><input type='submit' value='Create Session'></li>
+			</ul>
+		</form>
+		<form action="TrackSession">
+			<input type='submit' value='Track Session'>
+		</form>
+		<form action="DeleteSession">
+			<input type='submit' value='Delete Session'>
+		</form>
+	</div>
+</body>
+</html>
