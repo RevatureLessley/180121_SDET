@@ -8,27 +8,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 /**
  * Servlet implementation class FrontController
  */
 public class FrontController extends HttpServlet {
+	final static Logger logger = Logger.getLogger(FrontController.class);
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void init() throws ServletException {
-		System.out.println("FRONT CONTOLLER|INIT(): LOADED"); //change this to a logger statement
+		logger.info("FRONT CONTOLLER|INIT(): LOADED");
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = request.getRequestURI();
-		System.out.println(url);
 		RequestDispatcher rd;
 		
 		String[] tokens = url.split("/");
 		String action = (tokens[tokens.length - 1]);
 		action = action.substring(0, action.length() - 3).toLowerCase();
 		
-		System.out.println(action); //logging
+		logger.info("doGet(): " + action);
 		
 		switch(action) {
 		case "login":
