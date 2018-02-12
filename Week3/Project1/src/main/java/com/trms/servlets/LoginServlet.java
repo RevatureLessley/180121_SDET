@@ -31,6 +31,7 @@ public class LoginServlet extends HttpServlet {
 			out.println("<h3>Logged In</h3>");
 			Employee e = EmployeeService.getUserEmpId(id);
 			response.sendRedirect("user/userhome.html");
+			// TODO figure out where to send the Employee object to use the information in it
 		} else {
 			out.println("<head> <meta http-equiv='Refresh' content='2;url=index.html'>"
 					+ "</head>");
@@ -39,11 +40,7 @@ public class LoginServlet extends HttpServlet {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

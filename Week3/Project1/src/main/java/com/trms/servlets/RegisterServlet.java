@@ -3,7 +3,6 @@ package com.trms.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,10 +19,6 @@ public class RegisterServlet extends HttpServlet {
 	final static Logger logger = Logger.getLogger(RegisterServlet.class);
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		boolean success = UsersEmpService.insertUser(Integer.parseInt(request.getParameter("empid")), request.getParameter("email"),
@@ -41,6 +36,7 @@ public class RegisterServlet extends HttpServlet {
 			//response.sendRedirect("index.html");
 		} else {
 			out.println("Registration fail! Redirecting try again!");
+			// TODO redirect to same screen and keep the users input
 			//response.sendRedirect("RegisterServlet");
 			/*
 			RequestDispatcher rd = request.getRequestDispatcher("RegisterServlet");
@@ -55,7 +51,6 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
