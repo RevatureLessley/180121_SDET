@@ -65,7 +65,8 @@
 					</select>
 				</div>
 
-				<!--  HOw to allow for decimal numbers -->
+
+				<!-- TODO HOw to allow for decimal numbers -->
 				<div class='form-group row'>
 					<div class='col-md-6'>
 						<label for="cost" class="col-2 col-form-label">COST</label>
@@ -74,23 +75,50 @@
 								name="cost">
 						</div>
 					</div>
-					
+
 					<div class='col-md-6'>
-						<label for="projectedreimburse" class="col-2 col-form-label">PROJECTED REIMBURSE</label>
+						<label for="projectedreimburse" class="col-2 col-form-label">PROJECTED
+							REIMBURSE</label>
 						<div class="col-10">
-							<input class="form-control" type="number" 
+							<input class="form-control" type="number"
 								name="projectedreimburse" placeholder="0.00" disabled>
 						</div>
 					</div>
 				</div>
 
-				<div class='form-group'>
-					<strong>FORMAT TYPE:</strong> <label class="radio-inline"><input
-						type="radio" name="optradio" checked required>EXAMINATION</label>
-					<label class="radio-inline"><input type="radio"
-						name="optradio">PRESENTATION</label>
+				<div class='form-group row'>
+					<div class='col-md-6'>
+						<strong>FORMAT TYPE:</strong> <label class="radio-inline"><input
+							type="radio" name="optradio" checked required>EXAMINATION</label>
+						<label class="radio-inline"><input type="radio"
+							name="optradio">PRESENTATION</label>
+					</div>
+
+					<div class='col-md-6'>
+						<label for="passinggrade" class="col-2 col-form-label">PASSING
+							GRADE</label>
+						<div class="col-10">
+							<input class="form-control" type="number" name="passinggrade"
+								placeholder="0" disabled>
+						</div>
+					</div>
 				</div>
 
+				<div class='form-group row'>
+					<div class='col-md-6'>
+						<label for="workmissed" class="col-2 col-form-label">WORK
+							MISSED</label>
+						<div class="col-10">
+							<input class="form-control" type="number" name="workmissed"
+								placeholder="Days of work to be missed">
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<label for="workjustification">WORK JUSTIFICATION:</label> <input type="text"
+							class="form-control" name="workjustification" placeholder='Justification for time off from work/or taking event'>
+					</div>
+				</div>
 
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form>
