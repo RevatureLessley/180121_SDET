@@ -11,16 +11,6 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>ConTest</display-name>
-    <servlet-name>ConTest</servlet-name>
-    <servlet-class>com.trms.contest.ConTest</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ConTest</servlet-name>
-    <url-pattern>/ConTest</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>com.trms.servlets.LoginServlet</servlet-class>
@@ -34,6 +24,7 @@
     <display-name>FrontController</display-name>
     <servlet-name>FrontController</servlet-name>
     <servlet-class>com.trms.servlets.FrontController</servlet-class>
+    <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>FrontController</servlet-name>
@@ -49,4 +40,23 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserReimburseServlet</display-name>
+    <servlet-name>UserReimburseServlet</servlet-name>
+    <servlet-class>com.trms.servlets.UserReimburseServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserReimburseServlet</servlet-name>
+    <url-pattern>/UserReimburseServlet</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <display-name>UserFilter</display-name>
+    <filter-name>UserFilter</filter-name>
+    <filter-class>com.trms.filters.UserFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>UserFilter</filter-name>
+    <url-pattern>/user/*</url-pattern>
+  </filter-mapping>
 </web-app>
