@@ -32,17 +32,17 @@
 		<div class='well'>
 			<form action="/action_page.php">
 				<div class="form-group">
-					<label for="firstname">FIRST NAME:</label> <input type="text"
+					<label for="firstname">FIRST NAME</label> <input type="text"
 						class="form-control" name="firstname">
 				</div>
 				<div class="form-group">
-					<label for="lastname">LAST NAME:</label> <input type="text"
+					<label for="lastname">LAST NAME</label> <input type="text"
 						class="form-control" name="lastname">
 				</div>
 
-				<!-- add more spaces for prefilled emp info -->
+				<!-- add more spaces for prefilled emp (addr & id) info -->
 				<div class="form-group">
-					<label for="learningcenter">LEARNING CENTER:</label> <select
+					<label for="learningcenter">LEARNING CENTER</label> <select
 						class="form-control" name="learningcenter">
 						<option>A</option>
 						<option>B</option>
@@ -54,7 +54,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="eventtype">EVENT TYPE:</label> <select
+					<label for="eventtype">EVENT TYPE</label> <select
 						class="form-control" name="eventtype">
 						<option>1</option>
 						<option>2</option>
@@ -65,7 +65,23 @@
 					</select>
 				</div>
 
+				<div class='form-group row'>
+					<div class="col-md-6">
+						<label for="date" class="col-2 col-form-label">DATE</label>
+						<div class="col-10">
+							<input class="form-control" type="date" value="2011-08-19"
+								name="date">
+						</div>
+					</div>
 
+					<div class="col-md-6">
+						<label for="time" class="col-2 col-form-label">TIME</label>
+						<div class="col-10">
+							<input class="form-control" type="time" value="13:45:00"
+								name="time">
+						</div>
+					</div>
+				</div>
 				<!-- TODO HOw to allow for decimal numbers -->
 				<div class='form-group row'>
 					<div class='col-md-6'>
@@ -88,10 +104,14 @@
 
 				<div class='form-group row'>
 					<div class='col-md-6'>
-						<strong>FORMAT TYPE:</strong> <label class="radio-inline"><input
-							type="radio" name="optradio" checked required>EXAMINATION</label>
-						<label class="radio-inline"><input type="radio"
-							name="optradio">PRESENTATION</label>
+						<label for="eventtype" class="col-2 col-form-label">EVENT
+							TYPE</label>
+						<div class='col-10'>
+							<label class="radio-inline"><input type="radio"
+								name="eventtype" checked required>EXAMINATION</label> <label
+								class="radio-inline"><input type="radio"
+								name="eventtype">PRESENTATION</label>
+						</div>
 					</div>
 
 					<div class='col-md-6'>
@@ -99,7 +119,7 @@
 							GRADE</label>
 						<div class="col-10">
 							<input class="form-control" type="number" name="passinggrade"
-								placeholder="0" disabled>
+								placeholder="0">
 						</div>
 					</div>
 				</div>
@@ -115,9 +135,15 @@
 					</div>
 
 					<div class="col-md-6">
-						<label for="workjustification">WORK JUSTIFICATION:</label> <input type="text"
-							class="form-control" name="workjustification" placeholder='Justification for time off from work/or taking event'>
+						<label for="workjustification">WORK JUSTIFICATION:</label> <input
+							type="text" class="form-control" name="workjustification"
+							placeholder='Justification for time off from work/or taking event'>
 					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="exampleFormControlFile1">Example file input</label> <input
+						type="file" class="form-control-file" id="exampleFormControlFile1">
 				</div>
 
 				<button type="submit" class="btn btn-default">Submit</button>
