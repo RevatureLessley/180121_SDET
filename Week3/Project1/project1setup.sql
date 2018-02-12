@@ -135,10 +135,46 @@ CREATE TABLE reimburseaddedinfo (
 );
 
 -- SEQUENCES
+DROP SEQUENCE useremp_seq;
+CREATE SEQUENCE useremp_seq
+    START WITH 100
+    INCREMENT BY 1;
+    
+DROP SEQUENCE reimb_seq;
+CREATE SEQUENCE reimb_seq
+    START WITH 1
+    INCREMENT BY 1;
+    
+DROP SEQUENCE reimbinfo_seq;
+CREATE SEQUENCE reimbinfo_seq
+    START WITH 1
+    INCREMENT BY 1;
+    
+DROP SEQUENCE reimbattach_seq;
+CREATE SEQUENCE reimbattach_seq
+    START WITH 1
+    INCREMENT BY 1;
 
 -- TRIGGERS
+CREATE OR REPLACE TRIGGER useremp_intrig
+BEFORE INSERT ON usersemp
+FOR EACH ROW
+BEGIN
+    IF :new.user_id IS NULL THEN
+    SELECT useremp_seq.NEXTVAL INTO :new.user_id FROM dual;
+    END IF;
+END;
+/
 
 -- STORED PROCEDURES
+CREATE OR REPLACE PROCEDURE usersemp_insert(empid IN NUMBER, usernamein IN VARCHAR2, passin IN VARCHAR2, email IN VARCHAR2)
+IS
+BEGIN
+    INSERT INTO USERSEMP VALUES(NULL, empid, usernamein, passin, email);
+    COMMIT;
+END;
+/
+
 
 -- POPULATE TABLES
 INSERT INTO empdepartments VALUES(0, 'EXECUTIVES');

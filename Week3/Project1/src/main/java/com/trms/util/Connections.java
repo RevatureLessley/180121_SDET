@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Connections {
 	public static Connection getConnection() throws SQLException {
-		String[] props = System.getenv("MPDBPROPS").split(";");
+		String[] props = System.getenv("PODBPROPS").split(";");
 		try {
 			Class.forName(props[0]);
 		} catch(ClassNotFoundException e) {
