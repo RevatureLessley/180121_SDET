@@ -235,3 +235,10 @@ INSERT INTO employees VALUES(4, 'Namjoon', 'Kim', 1, 0, 2, 1000, '3-93 Sacho Par
 INSERT INTO employees VALUES(5, 'Dae-sung', 'Kang', 4, 7, 50, 1000, '23-75 Eastchester Ave', 'Incheon', 'NY', 10742);
 INSERT INTO employees VALUES(6, 'Yoon-gi', 'Min', 5, 7, 700, 1000, '27 Charlotte Road', 'Daegu', 'NY', 30582);
 INSERT INTO employees VALUES(7, 'Tae-hyung', 'Kim', 6, 7, 702, 1000, '78 Charlotte Road', 'Daegu', 'NY', 30582);
+
+INSERT INTO eventtypes VALUES(1, 'UNIVERSITY COURSES', 0.80);
+INSERT INTO eventtypes VALUES(2, 'SEMINARS', 0.60);
+INSERT INTO eventtypes VALUES(3, 'CERTIFICATION PREPARATION CLASSES', 0.75);
+INSERT INTO eventtypes VALUES(4, 'CERTIFICATION', 1.00);
+INSERT INTO eventtypes VALUES(5, 'TECHNICAL TRAINING', 0.90);
+INSERT INTO eventtypes VALUES(6, 'OTHER', 0.30);

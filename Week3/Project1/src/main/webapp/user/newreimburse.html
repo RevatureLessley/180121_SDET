@@ -21,7 +21,7 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="resources/css/main.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/main.css">
 
 <title>NEW REIMBURSEMENT</title>
 </head>
@@ -32,13 +32,66 @@
 		<div class='well'>
 			<form action="/action_page.php">
 				<div class="form-group">
-					<label for="firstname">First Name:</label> <input type="text"
+					<label for="firstname">FIRST NAME:</label> <input type="text"
 						class="form-control" name="firstname">
 				</div>
 				<div class="form-group">
-					<label for="lastname">Last Name:</label> <input type="text"
+					<label for="lastname">LAST NAME:</label> <input type="text"
 						class="form-control" name="lastname">
 				</div>
+
+				<!-- add more spaces for prefilled emp info -->
+				<div class="form-group">
+					<label for="learningcenter">LEARNING CENTER:</label> <select
+						class="form-control" name="learningcenter">
+						<option>A</option>
+						<option>B</option>
+						<option>C</option>
+						<option>D</option>
+						<option>E</option>
+						<option>F</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="eventtype">EVENT TYPE:</label> <select
+						class="form-control" name="eventtype">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>6</option>
+					</select>
+				</div>
+
+				<!--  HOw to allow for decimal numbers -->
+				<div class='form-group row'>
+					<div class='col-md-6'>
+						<label for="cost" class="col-2 col-form-label">COST</label>
+						<div class="col-10">
+							<input class="form-control" type="number" placeholder="0.00"
+								name="cost">
+						</div>
+					</div>
+					
+					<div class='col-md-6'>
+						<label for="projectedreimburse" class="col-2 col-form-label">PROJECTED REIMBURSE</label>
+						<div class="col-10">
+							<input class="form-control" type="number" 
+								name="projectedreimburse" placeholder="0.00" disabled>
+						</div>
+					</div>
+				</div>
+
+				<div class='form-group'>
+					<strong>FORMAT TYPE:</strong> <label class="radio-inline"><input
+						type="radio" name="optradio" checked required>EXAMINATION</label>
+					<label class="radio-inline"><input type="radio"
+						name="optradio">PRESENTATION</label>
+				</div>
+
+
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form>
 		</div>
