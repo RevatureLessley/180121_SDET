@@ -1,0 +1,44 @@
+Start [page]
+-<link> Login
+-<link>Register
+-<link>Reimbursement Info
+
+Login [page]
+-<form>Username
+-<form>Password
+-<form>ConfirmPassword
+-<form(check box)> Account Type
+-<form(button)>Submit button->LoggedInPage*
+
+Register [page] |USER|
+-<form>IDNumber
+-<form>First Name
+-<form>Last Name
+-<form>Email
+-<form>Password
+-<form>ConfirmPassword
+-<form(button)>Submit Button->ResultsRegister
+
+Register [page] |BENCO|
+-<form>IDNumber
+-<form>Role
+-<form>First Name
+-<form>Last Name
+-<form>Email
+-<form>Password
+-<form>ConfirmPassword
+-<form(button)>Submit Button->ResultsRegister
+
+ResultsRegister [page]
+-<link> Home
+-<link> Login
+
+LoggedInUser
+-<link>Submit New Reimbursement
+-<link>Check Status of Reimbursement
+-<form(button)>Log out
+
+LoggedInBenco
+-<link>Approval of Reimbursement
+-<form(button)>Log out
+
