@@ -175,6 +175,20 @@ BEGIN
 END;
 /
 
+CREATE OR REPLACE PROCEDURE get_emp(empid IN NUMBER, emp_cursor OUT SYS_REFCURSOR)
+IS
+BEGIN
+    OPEN emp_curosr FOR
+    SELECT a.emp_fname, a.emp_lname, a.emp_reportsto, b.depart_name, c.title, a.emp_availreim, 
+    a.emp_addr, a.emp_city, a.emp_state, a.emp_zip
+    FROM employees a, empdepartments b, employeetitles c
+    WHERE emp_id = empid AND a.emp_department = b.depart_id AND a.emp_title_id = c.title_id;
+END;
+/
+
+SELECT a.emp_fname, a.emp_lname, a.emp_reportsto, b.depart_name, c.title
+FROM employees a, empdepartments b, employeetitles c
+WHERE emp_id = 2 AND a.emp_department = b.depart_id AND a.emp_title_id = c.title_id;
 
 -- POPULATE TABLES
 INSERT INTO empdepartments VALUES(0, 'EXECUTIVES');

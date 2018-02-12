@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.trms.beans.Employee;
+import com.trms.services.EmployeeService;
+import com.trms.services.UsersEmpService;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -18,9 +22,21 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id = UsersEmpService.getUserEmpId(request.getParameter("username"), request.getParameter("password"));
+		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		out.println("<h3>Logged In</h3>");
+		
+		if(id != -1) {
+			out.println("<h3>Logged In</h3>");
+			Employee e = EmployeeService.getUserEmpId(id);
+			response.sendRedirect("user/userhome.html");
+		} else {
+			out.println("<head> <meta http-equiv='Refresh' content='2;url=index.html'>"
+					+ "</head>");
+			out.println("<h3>Incorrect Login. Try Again.</h3>");
+		}
+		
 	}
 
 	/**

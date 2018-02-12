@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.trms.services.UserRegisterService;
+import com.trms.services.UsersEmpService;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -26,7 +26,7 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		boolean success = UserRegisterService.insertUser(Integer.parseInt(request.getParameter("empid")), request.getParameter("email"),
+		boolean success = UsersEmpService.insertUser(Integer.parseInt(request.getParameter("empid")), request.getParameter("email"),
 				request.getParameter("username"), request.getParameter("password"));
 		
 		response.setContentType("text/html");
@@ -34,7 +34,11 @@ public class RegisterServlet extends HttpServlet {
 		
 		logger.info("doGet(): " + success);
 		if(success) {
+			//response.setHeader("Refresh", "5;url=/index.html");
+			out.println("<head> <meta http-equiv='Refresh' content='3;url=index.html'>"
+					+ "</head>");
 			out.println("Registartion complete! Redirecting!");
+			//response.sendRedirect("index.html");
 		} else {
 			out.println("Registration fail! Redirecting try again!");
 			//response.sendRedirect("RegisterServlet");
