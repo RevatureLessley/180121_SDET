@@ -18,7 +18,7 @@ import beans.Ship;
 import util.Connections;
 
 public class PilotDaoImpl implements PilotDao {
-
+	
 	final static Logger logger = Logger.getLogger(PilotDaoImpl.class);
 	
 	@Override

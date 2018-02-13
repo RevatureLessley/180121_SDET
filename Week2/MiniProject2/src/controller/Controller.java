@@ -30,9 +30,15 @@ public class Controller {
 		
 	public static void main(String[] args) {
 		logger.debug("Application started");
-		mainMenu();
+//		mainMenu();
+        List<String> list = new ArrayList<>();     
+        StringBuilder sb = new StringBuilder("mrx");    
+        String s = sb.toString();   
+        list.add(s);       
+        System.out.println(s.getClass());     
+        System.out.println(list.getClass());    
+
 	}
-	
 	
 	public static void mainMenu() {
 		Scanner scan = new Scanner(System.in);

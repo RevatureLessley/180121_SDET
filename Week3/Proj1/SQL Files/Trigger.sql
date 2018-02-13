@@ -1,0 +1,10 @@
+CREATE OR REPLACE TRIGGER createRecordToYear
+AFTER INSERT ON EMPLOYEE
+FOR EACH ROW
+DECLARE
+    toyearusr EMPLOYEE.USERNAME%TYPE;
+BEGIN
+    toyearusr := :NEW.username;
+    INSERT INTO TOYEAR (username)
+    VALUES (toyearusr);
+END;

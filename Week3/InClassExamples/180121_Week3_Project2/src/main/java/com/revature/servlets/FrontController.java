@@ -17,8 +17,7 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		System.out.println("FRONT CONTROLLER LOADED");
-		
-		
+			
 		System.out.println("=====" + this.getServletName() + "=====");
 		System.out.println("ConfigVariable: " + this.getInitParameter("configVar"));
 		System.out.println("ConfigVariableForLogin: " + this.getInitParameter("loginVar"));

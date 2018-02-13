@@ -8,7 +8,7 @@ import beans.Ship;
 
 public interface PilotDao {
 	public List<Pilot> getAllPilots();
-	
+		
 	public void logInPilot(List<Pilot> pilots, Scanner scan);
 	
 	public void chooseShip(Pilot pilot, Scanner scan);

@@ -31,6 +31,7 @@ public class CreateSession extends HttpServlet {
 		if(session.isNew()){
 			session.setAttribute("username", request.getParameter("username"));
 			session.setAttribute("password", request.getParameter("password"));
+			session.setAttribute("logged in", new Boolean(true));
 			//session.setMaxInactiveInterval(5);
 			
 			out.println("<h3>SESSION CREATED FOR " + 

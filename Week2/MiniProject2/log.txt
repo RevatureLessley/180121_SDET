@@ -715,3 +715,6 @@
 [06 Feb 2018 10:18:39,927] controller.Controller.main() - Application started
 [06 Feb 2018 10:18:44,445] controller.Controller.mainMenu() - Chose show
 [06 Feb 2018 10:18:44,554] util.Connections.getConnection() - Returned DriverManager
+[11 Feb 2018 11:22:30,652] controller.Controller.main() - Application started
+[11 Feb 2018 11:22:47,975] controller.Controller.main() - Application started
+[11 Feb 2018 11:23:06,351] controller.Controller.main() - Application started

@@ -37,7 +37,9 @@ public class TrackSession extends HttpServlet {
 			HtmlTemplates.goBackButton(out);
 			
 			//session.invalidate(); //Deletes created session
-		}else{
+		}
+		
+		else{
 			out.print("<h3>WELCOME BACK, " + session.getAttribute("username") + "!</h3>");
 		
 			out.println(
