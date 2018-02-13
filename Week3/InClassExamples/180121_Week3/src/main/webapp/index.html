@@ -13,14 +13,23 @@
 <!-- Every page CAN have a title. Title displays up top on browser -->
 <title>Week 3 SDET</title>
 
+
+
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- Bring Bootstrap 3 libraries -->
+
+<script
+			  src="http://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Bring in supplemental javascript for bootstrap -->
 
 <link rel="stylesheet" type="text/css" href="resource/css/main.css">
+
 
 </head>
 <!-- The body of a html page is what actually gets displayed to the user. -->
@@ -32,10 +41,17 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="index.html">HOME</a></li>
-				<li><a href="https://www.w3schools.com/html/">W3Schools</a></li>
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">USEFUL LINKS <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="https://www.w3schools.com/html/">W3SCHOOLS</a></li>
+						<li><a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS Selectors</a></li>
+						<li><a href="https://www.w3schools.com/bootstrap/default.asp">BOOTSTRAP</a></li>
+					</ul></li>
 				<li><a href="styles.html" style="color: cyan">STYLES</a></li>
 				<li><a href="forms.html" style="color: cyan">FORMS</a></li>
-				<li><a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS SELECTORS</a></li>
+				<li><a href="servletHub.html">SERVLET HUB</a></li>
 			</ul>
 		</div>
 	</nav>

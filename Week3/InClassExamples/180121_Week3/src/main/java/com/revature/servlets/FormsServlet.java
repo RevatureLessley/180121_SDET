@@ -2,6 +2,7 @@ package com.revature.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Enumeration;
 
 import javax.servlet.ServletConfig;
@@ -9,6 +10,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.revature.util.HtmlTemplates;
 
 /**
  * Servlet implementation class FormsServlet
@@ -59,12 +62,23 @@ public class FormsServlet extends HttpServlet {
 		Enumeration e = request.getParameterNames();
 		while(e.hasMoreElements()){
 			String paramName = (String)e.nextElement();
-			String paramValue = request.getParameter(paramName);
+			String paramValue = "";
+			if(request.getParameterValues(paramName).length==1){
+				paramValue = request.getParameter(paramName);
+			}else{
+				String vals[] = request.getParameterValues(paramName);
+				for(String s : vals){
+					paramValue += (s + " ");
+				}
+			}
 			
 			out.println("<tr><td>" + paramName + "</td><td>" + paramValue + "</td></tr>");
+			System.out.println(request.getParameterValues(paramName).length);
 		}
 		
 		out.println("</table>");
+		
+		HtmlTemplates.goBackButton(out);
 		
 	}
 
