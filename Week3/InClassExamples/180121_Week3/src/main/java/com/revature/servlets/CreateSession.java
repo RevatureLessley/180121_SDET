@@ -28,6 +28,7 @@ public class CreateSession extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
+		
 		if(session.isNew()){
 			session.setAttribute("username", request.getParameter("username"));
 			session.setAttribute("password", request.getParameter("password"));
