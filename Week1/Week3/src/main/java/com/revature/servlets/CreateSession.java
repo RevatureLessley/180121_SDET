@@ -23,8 +23,8 @@ public class CreateSession extends HttpServlet {
 		//HOWEVER, if it is the first time this computer accessed the site, it will create a new session for this computer
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		
-		if(session.isNew()) {
+	
+		if(session.isNew()){
 			session.setAttribute("username", request.getParameter("username"));
 			session.setAttribute("password", request.getParameter("password"));
 			session.setMaxInactiveInterval(5);
