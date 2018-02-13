@@ -3,6 +3,7 @@ package com.trms.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,13 +36,10 @@ public class RegisterServlet extends HttpServlet {
 			out.println("Registartion complete! Redirecting!");
 			//response.sendRedirect("index.html");
 		} else {
+			out.println("<head> <meta http-equiv='Refresh' content='3;url=register.html'>"
+					+ "</head>"); //currently redirects but obviously don't keep input
 			out.println("Registration fail! Redirecting try again!");
 			// TODO redirect to same screen and keep the users input
-			//response.sendRedirect("RegisterServlet");
-			/*
-			RequestDispatcher rd = request.getRequestDispatcher("RegisterServlet");
-			rd.forward(request, response);
-			*/
 		}
 	}
 

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+<script src="resources/javascript/main.js"></script>
+<title>My JS Example</title>
+</head>
+<body>
+	<div class='container'>
+		<div class='well'>
+			<h3>Welcome to JS Land!</h3>
+		</div>
+
+		<div class='well'>
+			<h3>Hello world with script tags.</h3>
+			<p id="hello"></p>
+			<script>
+				document.getElementById("hello").innerHTML = "HelloWorld!";
+			</script>
+			<hr>
+
+			<p id="otherElement"></p>
+		</div>
+		<div class='well'>
+			<h3>Let's alter things using external scripts</h3>
+			<p>Use console.log() to print to the console</p>
+			<button value='Log-It' onclick="logit()">Log It</button>
+			<p id='logPara'></p>
+			<p>You can also write directly to the document itself.</p>
+			<button onclick="document.write('<h1>woops...</h1>')">Woops</button>
+			<p id=notwoops>
+				<script>
+					document.write("<h1>Not woops</h1>");
+				</script>
+			</p>
+			<button onclick="window.alert('DO NOT DEBUG WITH ALERT')">ALERT</button>
+			<button onclick="console.log(prompt('Type something!'))">P</button>
+		</div>
+
+		<div class='well'>
+			<h1>Dynamic Tables</h1>
+			<ul style='list-style:none'>
+				<li><b>EMPLOYEE NAME</b></li>
+				<li><input type='text' id='empName'></li>
+				<li><b>FAVORITE MOUSE</b></li>
+				<li><input type='text' id='favMouse'></li>
+				<li><button onclick="addEmp()">SUBMIT</button></li>
+			</ul><br>
+			<table border=2px id='theTable'>
+				<tr>
+					<th>E_ID</th>
+					<th>EmployeeName</th>
+					<th>Favorite Mouse</th>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
