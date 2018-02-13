@@ -26,16 +26,18 @@ function checkValues() {
 	console.log("num1: " + num1 + " num2: " + num2);
 	
 	if(num1 == "" || num2 == ""){
+		console.log("1st if");
 		return false;
 	} else if(num1 < 0 || num1 > 100 || num2 < 0 || num2 > 100) {
+		console.log("2nd if");
 		return false;
 	} else {
 		if(num2 < num1) {
 			var tmp = num1;
 			num1 = num2;
 			num2 = num1;
-			return true;
 		}
+		return true;
 	}
 	
 }
@@ -43,25 +45,24 @@ function checkValues() {
 function generate() {
 	fizzbuzz();
 	
-	document.getElementById("resulttable").innerHTML = "";
-	
-	var th1 = document.createElement("th");
-	var th2 = document.createElement("th");
-	
-	th1.appendChild(document.createTextNode("NUMBER"));
-	th2.appendChild(document.createTextNode("RESULT"));
-	
-	var row = document.createElement("tr");
-	row.appendChild(th1);
-	row.appendChild(th2);
-	
-	document.getElementById("resulttable").appendChild(row);
-	
 	if(checkValues()){
+		document.getElementById("resulttable").innerHTML = "";
 		
+		var th1 = document.createElement("th");
+		var th2 = document.createElement("th");
+		
+		th1.appendChild(document.createTextNode("NUMBER"));
+		th2.appendChild(document.createTextNode("RESULT"));
+		
+		var row = document.createElement("tr");
+		row.appendChild(th1);
+		row.appendChild(th2);
+		
+		document.getElementById("resulttable").appendChild(row);
 	} else {
 		var h2 = document.createElement("h2");
-		h2.appendChild("Please input valid numbers")
+		h2.appendChild(document.createTextNode("Please input valid numbers"));
+		document.getElementById("resultdiv").appendChild(h2);
 	}
 }
 
