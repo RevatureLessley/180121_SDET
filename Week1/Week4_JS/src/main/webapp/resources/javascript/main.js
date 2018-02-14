@@ -48,7 +48,7 @@ function addEmp(){
 	 * Create the full row with each of the columns <td>'s
 	 */
 	
-	row.setAttribute("id", empCounter);
+	row.setAttribute("id", empCounter); //add an id to your dynamic row
 	
 	document.getElementById("theTable").appendChild(row);
 	

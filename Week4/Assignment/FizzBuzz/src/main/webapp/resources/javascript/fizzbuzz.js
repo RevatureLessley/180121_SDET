@@ -4,15 +4,16 @@
 
 
 
-function fizzbuzz(){
-	var x = document.getElementById("number1");
-	x = x.value;
+function fizzbuzz(x){
 	value = "";
 	if(x % 3 == 0){
 		value += "fizz";
 	}
 	if(x % 5 == 0){
 		value += "buzz";
+	}
+	if(value == ""){
+		value = x;
 	}
 	
 	console.log(value);
@@ -59,7 +60,22 @@ function generate() {
 		row.appendChild(th2);
 		
 		document.getElementById("resulttable").appendChild(row);
+		for(i = num1; i <= num2; i++) {
+			var td1 = document.createElement("td");
+			var td2 = document.createElement("td");
+			
+			td1.appendChild(document.createTextNode(i));
+			td2.appendChild(document.createTextNode(fizzbuzz(i)));
+			
+			var row = document.createElement("tr");
+			row.appendChild(td1);
+			row.appendChild(td2);
+			
+			document.getElementById("resulttable").appendChild(row);
+		}
+		
 	} else {
+		document.getElementById("resulttable").innerHTML = "";
 		var h2 = document.createElement("h2");
 		h2.appendChild(document.createTextNode("Please input valid numbers"));
 		document.getElementById("resultdiv").appendChild(h2);
