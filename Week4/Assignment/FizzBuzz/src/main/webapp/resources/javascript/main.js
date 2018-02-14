@@ -14,14 +14,14 @@ function genFizzBuzz(){
 		return true;
 	}
 	
-	var row = document.createElement('tr');
-	var td1 = document.createElement('td');
-	var td2 = document.createElement('td');
-	var num;
-	var fb;
-
+	//table = document.getElementById("theTable");
 	for (var i=start; i <= end; i++)
 	{
+		var row = document.createElement('tr');
+		var td1 = document.createElement('td');
+		var td2 = document.createElement('td');
+		var num;
+		var fb;
 		
 	    if (i % 15 == 0){
 	    	num = document.createTextNode(i);
