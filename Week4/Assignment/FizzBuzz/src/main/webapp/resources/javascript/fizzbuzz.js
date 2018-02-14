@@ -36,7 +36,7 @@ function checkValues() {
 		if(num2 < num1) {
 			var tmp = num1;
 			num1 = num2;
-			num2 = num1;
+			num2 = tmp;
 		}
 		return true;
 	}
