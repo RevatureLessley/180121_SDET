@@ -15,6 +15,26 @@ public class Reimbursement {
 	private String typeOfEvent;
 	private String work_related_justification;
 	
+	public Reimbursement(int rei_id, int emp_id, String fname, String lname, String dateOf, String time,
+			String location, String desc, int cost, String gradingFormat, String typeOfEvent,
+			String work_related_justification) {
+		super();
+		this.rei_id = rei_id;
+		this.emp_id = emp_id;
+		this.fname = fname;
+		this.lname = lname;
+		this.dateOf = dateOf;
+		this.time = time;
+		this.location = location;
+		this.desc = desc;
+		this.cost = cost;
+		this.gradingFormat = gradingFormat;
+		this.typeOfEvent = typeOfEvent;
+		this.work_related_justification = work_related_justification;
+	}
+
+	
+	
 	public void setRei_id(int rei_id) {this.rei_id = rei_id;}
 	public void setEmp_id(int emp_id) {this.emp_id = emp_id;}
 	public void setFname(String fname) {this.fname = fname;}

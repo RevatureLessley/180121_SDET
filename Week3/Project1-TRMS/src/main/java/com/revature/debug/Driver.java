@@ -1,14 +1,16 @@
 package com.revature.debug;
 
 import com.revature.beans.Employee;
-import com.revature.dao.EmployeeDaoImpl;;
+import com.revature.dao.EmployeeDaoImpl;
+import com.revature.beans.Reimbursement;
+import com.revature.dao.ReimbursementDaoImpl;
 
 public class Driver {
 
 	public static void main(String[] args) {
 		
 		EmployeeDaoImpl empDao = new EmployeeDaoImpl();
-	
+
 	/*Debugging checkUniqueUsername*/
 	/*	Employee test = new Employee(0, "test", "test", "test", "test", "test@testmail.com", "test",
 				"test","test","te", 0, "test", "test", "test");
@@ -63,6 +65,41 @@ public class Driver {
 	System.out.println(empDao.getEmployee("clara1953"));   // Should return Clara Martinez
 */	
 		
+// =======================================================================================================================================//	
+		
+	ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
+		
+	/*Debugging checkEmpty() and totalReimbursements() */
+/*	System.out.println(reimDao.checkEmpty());
+	System.out.println(reimDao.totalReimbursements());
+*/
+	/*Debugging  addReimbursements and deleteReimbursements*/
+	/*	Reimbursement r = new Reimbursement(0, 0, "FirstName", "LastName", "DateOfEvent", "11:22PM",
+				"LocationOfEvent", "DescriptionOfEvent", 0, "Grading Format", "TypeOfEvent",
+				"WorkRelatedjustification");
+		
+		reimDao.addReimbursement(r);
+		System.out.println(reimDao.checkEmpty());
+		reimDao.deleteReimbursement(1);
+		System.out.println(reimDao.checkEmpty());
+	*/
+		
+		
+	/*Debugging getAllReimbursements()*/
+/*	Reimbursement r = new Reimbursement(0, 0, "FirstName", "LastName", "DateOfEvent", "11:22PM",
+			"LocationOfEvent", "DescriptionOfEvent", 0, "Grading Format", "TypeOfEvent",
+			"WorkRelatedjustification");
+	
+	reimDao.addReimbursement(r);
+	System.out.println(reimDao.getAllReimbursement());
+	reimDao.deleteReimbursement(1);
+	System.out.println(reimDao.getAllReimbursement());
+*/
+	//System.out.println(reimDao.getAllAprovedReimbursement());
+	
+	
+	
+	
 	}
 
 }

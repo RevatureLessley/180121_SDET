@@ -21,13 +21,15 @@ import java.sql.Statement;
  */
 public class EmployeeDaoImpl implements EmployeeDao{
 	
-	/*Utility function used to check if there are currently any employees in the database, if so the total number is returned.*/
+	@Override
+	/**Utility function used to check if there are currently any employees in the database, if so the total number is returned.**/
 	public boolean checkEmpty() {
 		if(totalEmployees() == 0) {return true;}
 		else {return false;}
 	}
 	
-	/*Utility function used to return the total number of employees present in the database.*/
+	@Override
+	/**Utility function used to return the total number of employees present in the database.**/
 	public int totalEmployees() {
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -44,9 +46,10 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return count;
 	}
 	
-	/*This function performs a check to ensure that all employees use distinctive usernames. This
+	@Override
+	/**This function performs a check to ensure that all employees use distinctive usernames. This
 	 * function will compare a given Employee Objects username with all the usernames in the database
-	 * and return true if the username has not been used yet, or return false if it has*/
+	 * and return true if the username has not been used yet, or return false if it has**/
 	public boolean checkUniqueUsername(Employee employee) {
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -66,8 +69,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return true;
 	}
 	
-	/*This method is used for adding new users into the TRMS database. it will take an employee object, which contains all of an
-	 * employees information, and add it into the database.*/
+	@Override
+	/**This method is used for adding new users into the TRMS database. it will take an employee object, which contains all of an
+	 * employees information, and add it into the database.**/
 	public void addEmployee(Employee employee) {
 		PreparedStatement ps = null;
 		
@@ -93,9 +97,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		finally{close(ps);}
 	}
 	
-	/*This method will be used to delete a record from the Employee table in the databse. This method will use an employees
-	 * username to remove the record for the user.*/
 	@Override
+	/**This method will be used to delete a record from the Employee table in the databse. This method will use an employees
+	 * username to remove the record for the user.**/
 	public void deleteEmployee(Employee employee) {
 		PreparedStatement ps = null;
 		
@@ -108,8 +112,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		finally{close(ps);}
 	}
 	
-	/*This is a utility function used for returning an employee object using a username as the identifier.*/
 	@Override
+	/**This is a utility function used for returning an employee object using a username as the identifier.**/
 	public Employee getEmployee(String username) {
 		List<Employee> employeeList = getAllEmployees();
 		ListIterator<Employee> li = employeeList.listIterator(0);
@@ -120,9 +124,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return null;
 	}
 
-	
-	/*This is a utility function used for returning an employee object using a username as the identifier.*/
 	@Override
+	/**This is a utility function used for returning an employee object using a username as the identifier.**/
 	public Employee getEmployee(int empId) {
 		List<Employee> employeeList = getAllEmployees();
 		ListIterator<Employee> li = employeeList.listIterator(0);
@@ -133,7 +136,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return null;
 	}
 	
-	/*This method is used to check a users username and password with what is listed in the Employees table in the database.
+	@Override
+	/**This method is used to check a users username and password with what is listed in the Employees table in the database.
 	 * This method will return an int; this int will correspond to a code that will indicate the status of the attempted login
 	 * Below is the break down for this code:
 	 * 0 ==== There are currently no users in TRMS
@@ -142,7 +146,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	 * 3 ==== User is of the regular employee and should taken to a regualr employee page for that user.
 	 * 4 ==== User is a Supervisor employee and should be taken to a supervisor login page fir that user.
 	 * 5 ==== User is a department head employee and should be taken to a head employee login page for that user.
-	 * 6 ==== User is a benefits coordinator employee and should be taken to a benefits coordinate login page for that user.*/
+	 * 6 ==== User is a benefits coordinator employee and should be taken to a benefits coordinate login page for that user.**/
 	public int checkCredentials(String u, String p) {
 		if(totalEmployees() == 0){return 0;} //No users for TRMS created yet.
 		
@@ -166,8 +170,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return 1; // Username was NOT found in TRMS
 	}
 	
-	/*This method goes through the database and creates an arraylist of employees and returns the list. This is used to search through
-	 * the table of employees in a list form to make it easier thanks to list methods.*/
+	@Override
+	/**This method goes through the database and creates an arraylist of employees and returns the list. This is used to search through
+	 * the table of employees in a list form to make it easier thanks to list methods.**/
 	public List<Employee> getAllEmployees() {
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -205,8 +210,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return employeeList;
 	}
 
-	/*This method goes through the database and creates an arraylist of employees who are supervisors and returns the list. This is used to search through
-	 * the table of employees in a list form to make it easier thanks to list methods.*/
+	@Override
+	/**This method goes through the database and creates an arraylist of employees who are supervisors and returns the list. This is used to search through
+	 * the table of employees in a list form to make it easier thanks to list methods.**/
 	public List<Employee> getAllSupervisors() {
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -244,8 +250,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return supervisorList;
 	}
 
-	/*This method goes through the database and creates an arraylist of employees who are heads of departments and returns the list. This is used to search through
-	 * the table of employees in a list form to make it easier thanks to list methods.*/
+	@Override
+	/**This method goes through the database and creates an arraylist of employees who are heads of departments and returns the list. This is used to search through
+	 * the table of employees in a list form to make it easier thanks to list methods.**/
 	public List<Employee> getAllDepartmentHeads() {
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -283,8 +290,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return headList;
 	}
 
-	/*This method goes through the database and creates an arraylist of employees who are benefits Coordinators and returns the list. This is used to search through
-	 * the table of employees in a list form to make it easier thanks to list methods.*/
+	@Override
+	/**This method goes through the database and creates an arraylist of employees who are benefits Coordinators and returns the list. This is used to search through
+	 * the table of employees in a list form to make it easier thanks to list methods.**/
 	public List<Employee> getAllBenefitsCoordinators() {
 		Statement stmt = null;
 		ResultSet rs = null;
