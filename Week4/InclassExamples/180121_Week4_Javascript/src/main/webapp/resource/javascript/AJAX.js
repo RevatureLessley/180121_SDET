@@ -1,5 +1,7 @@
 function sendAJAX(){
-	var xhr = new XMLHttpRequest();
+	var xhr = new XMLHttpRequest(); //State = 0
+	console.log(xhr.readyState);
+	xhr.open("GET","GetEmployees"); //State == 1
 	/*
 	 * There exists 5 states of an XMLHttpRequest object.
 	 * 0 - Request is not configured
@@ -46,7 +48,7 @@ function sendAJAX(){
 				resultTable.appendChild(row);
 			}
 		}else if(xhr.readyState == 4 && xhr.status!=200){
-			console.log(xhr.status);
+			console.log("ERROR, STATUS: " + xhr.status);
 			document.getElementById("AJAXError").innerHTML=xhr.status;
 		}
 		/*
@@ -59,6 +61,39 @@ function sendAJAX(){
 		 */
 
 	}
-	xhr.open("GET","GetEmployees");
-	xhr.send();
+	
+	xhr.send(); //State == 2
+}
+
+function postAjax(){
+	var xhr = new XMLHttpRequest(); //State = 0
+	xhr.open("POST","RegisterEmployee"); //State == 1
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			var d = document.createElement("div");
+			var p = document.createElement("p");
+			var t = document.createTextNode("SUCCESS");
+			p.appendChild(t);
+			d.appendChild(p);
+			document.getElementById("register").appendChild(d);
+
+		}else if(xhr.readyState == 4 && xhr.status!=200){
+			var d = document.createElement("div");
+			var p = document.createElement("p");
+			var t = document.createTextNode("FAIL");
+			p.appendChild(t);
+			d.appendChild(p);
+			document.getElementById("register").appendChild(d);
+		}
+
+	}
+	
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	
+	var name = document.forms["register"]["name"].value;
+	var salary = document.forms["register"]["salary"].value;
+	var title = document.forms["register"]["title"].value;
+	
+	xhr.send("name=" + name + "&salary=" + salary + "&title=" + title);
 }

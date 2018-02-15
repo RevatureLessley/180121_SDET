@@ -20,6 +20,8 @@ public class GetEmployees extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//State == 3
+		
 		/*
 		 * In the case of a default AJAX request, we will return back to it,
 		 * an xml file, so we need to set the response type to reflect that.
@@ -40,9 +42,9 @@ public class GetEmployees extends HttpServlet {
 			}
 			myXml += "</root>";
 			
-			out.print(myXml);
+			out.print(myXml); //State == 4
 		}else{
-			out.print("<root></root>");
+			out.print("<root></root>"); //State == 4
 		}
 	}
 

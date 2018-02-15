@@ -12,4 +12,17 @@ public class EmployeeService {
 		return dao.getAllEmployee();
 
 	}
+	public static boolean nameTaken(String name){
+		return false;
+	}
+	
+	public static boolean insertEmployee(String name, Integer salary, String title){
+		EmployeeDaoImpl dao = new EmployeeDaoImpl();
+		Employee emp = new Employee(name,salary,title);
+		
+		if(dao.insertEmployee(emp) != 0){
+			return true;
+		}
+		return false;
+	}
 }
