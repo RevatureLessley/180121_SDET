@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+<script src="resource/javascript/main.js"></script>
+<script src="resource/javascript/AJAX.js"></script>
+
+<meta charset="ISO-8859-1">
+<title>My JavaScript Example!</title>
+
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="well">
+			<h3>Welcome to JavaScript Land!</h3>
+		</div>
+
+		<div class="well">
+
+			<h3>Hello world with script tags.</h3>
+			<p id="hello"></p>
+
+			<script>
+				/*
+					anything within the script tags, is considered a block of javascript.
+				 */
+				document.getElementById("hello").innerHTML = "Hello World!";
+				document.getElementById("hello").innerHTML += "<b>GOODBYE WORLD</b>";
+			</script>
+			<hr>
+			<p id="otherElement"></p>
+		</div>
+		<div class="well">
+			<h3>Let's alter things with external scripts</h3>
+			<p>Use console.log() to print to the console</p>
+			<button onclick="logit()">Log-It!</button>
+			<p id="logPara"></p>
+			<p>You can also write directly to the document itself.</p>
+			<button onclick="document.write('<h1>woops....</h1>')">Woops</button>
+			<p id=notwoops>
+				<script>
+					document.write("<h1>Not woops!</h1>")
+				</script>
+			</p>
+			<button
+				onclick="window.alert('DO NOT EVER DEBUG USING WINDOW ALERT!')">ALERT</button>
+			<button onclick="console.log(prompt('Type something!'))">PROMPT</button>
+			<!-- 
+				You can interact with the user directly utilizing these few methods:
+				-console.log() for debugging purposes
+				-window.alert() to INTERRUPT user flow with a message.
+				-document.write() to write content directly to the html page.
+					-Will overwrite the page entirely if executed after page finished loading
+				-you can use prompt() to take user input directly.
+			 -->
+		</div>
+
+		<div class="well">
+			<h1>Dynamic Tables</h1>
+			<ul style="list-style-type: none">
+				<li><b>EMPLOYEE NAME</b></li>
+				<li><input type="text" id="empName"></li>
+				<li><b>FAVORITE MOUSE</b></li>
+				<li><input type="text" id="favMouse"></li>
+				<li><button onclick="addEmp()">SUBMIT</button></li>
+			</ul>
+			<br>
+			<table border=2px id=theTable>
+				<tr>
+					<th>E_ID</th>
+					<th>Employee Name</th>
+					<th>Favorite Mouse</th>
+				</tr>
+			</table>
+		</div>
+		<div class="well" onmouseover="changeWell()">
+			<h1 id="magicWell">Check me out!</h1>
+		</div>
+		<div class="well">
+			<h3>Please Register To Use This Site</h3>
+			<form action="http://www.google.com" id="register"
+				onsubmit="return validateRegistration()">
+				<div class="form-group" id=username>
+					<label for="username">Username:</label> <input type="text"
+						class="form-control" name="username" required>
+				</div>
+				<div class="form-group" id="pwd">
+					<label for="pwd1">Password:</label> <input type="password"
+						class="form-control" name="pwd1" required>
+				</div>
+				<div class="form-group">
+					<label for="pwd2">Confirm Password:</label> <input type="password"
+						class="form-control" name="pwd2" required>
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+		<div class="well">
+			<h1>Bubbling and capturing</h1>
+			<div style="padding: 50px; background-color: blue" id="d1">
+				<div style="padding: 50px; background-color: red" id="d2">
+					<div style="padding: 50px; background-color: green" id="d3">
+						<p>
+							<b>Click me</b>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="well">
+			<h3>Employees!!</h3>
+			<button onclick="sendAJAX()">Get Employees</button>
+			<table border=2px id=results>
+				<tr>
+					<th>Emp_ID</th>
+					<th>Emp_Name</th>
+					<th>Emp_Salary</th>
+					<th>Emp_Title</th>
+				</tr>
+			</table>
+			<p id=AJAXError>
+		</div>
+	</div>
+</body>
+</html>
