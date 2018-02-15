@@ -1,0 +1,299 @@
+newtab?rlz=1C1MSNA_enUS762US762&ie=UTF-8:7 SW registered
+chrome-search://thumb/http://localhost:8085/180121_Week3/:1 GET chrome-search://thumb/http://localhost:8085/180121_Week3/ net::ERR_FAILED
+Image (async)
+renderTile @ single.js:470
+addTile @ single.js:342
+handleCommand @ single.js:199
+handlePostMessage @ single.js:182
+postMessage (async)
+ntp_Nq.Qa @ rs=ACT90oGShw5jgpaxsVZJEx7760nCvMAbhA:570
+(anonymous) @ rs=ACT90oGShw5jgpaxsVZJEx7760nCvMAbhA:573
+chrome-search://thumb/http://localhost:8085/180121_Week3_Project2/user/ajskf:1 GET chrome-search://thumb/http://localhost:8085/180121_Week3_Project2/user/ajskf net::ERR_FAILED
+Image (async)
+renderTile @ single.js:470
+addTile @ single.js:342
+handleCommand @ single.js:199
+handlePostMessage @ single.js:182
+postMessage (async)
+ntp_Nq.Qa @ rs=ACT90oGShw5jgpaxsVZJEx7760nCvMAbhA:570
+(anonymous) @ rs=ACT90oGShw5jgpaxsVZJEx7760nCvMAbhA:573
+chrome-search://thumb/http://lms.revature.com/:1 GET chrome-search://thumb/http://lms.revature.com/ net::ERR_FAILED
+Image (async)
+renderTile @ single.js:470
+addTile @ single.js:342
+handleCommand @ single.js:199
+handlePostMessage @ single.js:182
+postMessage (async)
+ntp_Nq.Qa @ rs=ACT90oGShw5jgpaxsVZJEx7760nCvMAbhA:570
+(anonymous) @ rs=ACT90oGShw5jgpaxsVZJEx7760nCvMAbhA:573
+chrome-search://thumb/http://localhost:8085/180121_Week3:1 GET chrome-search://thumb/http://localhost:8085/180121_Week3 net::ERR_FAILED
+Image (async)
+renderTile @ single.js:470
+addTile @ single.js:342
+handleCommand @ single.js:199
+handlePostMessage @ single.js:182
+postMessage (async)
+ntp_Nq.Qa @ rs=ACT90oGShw5jgpaxsVZJEx7760nCvMAbhA:570
+(anonymous) @ rs=ACT90oGShw5jgpaxsVZJEx7760nCvMAbhA:573
+function person(name, age){
+	this.name = name;
+	this.age = age;
+	this.setName = function(name){
+		this.name = name;
+    }
+	this.setAge = function(age){
+		this.age = age;
+    }
+}
+undefined
+var ryan = new person("ryan", 73);
+undefined
+ryan.name
+"ryan"
+ryan.age
+73
+ryan.setAge(74);
+undefined
+ryan.age
+74
+ryan.setAge
+ƒ (age){
+		this.age = age;
+    }
+ryan.setAge()
+undefined
+ryan.age
+undefined
+function person(name, age){
+	this.name = name;
+	this.age = age;
+	return {
+		getName:function(){
+			return this.name;
+        }
+		getAge:function(){
+			return this.age;
+    	}
+		setName:function(name){
+			this.name = name;
+        }
+		setAge:function(age){
+			this.age = age;
+    	}
+    }
+}
+VM2026:8 Uncaught SyntaxError: Unexpected identifier
+function person(name, age){
+	this.name = name;
+	this.age = age;
+	return {
+		getName:function(){
+			return name;
+        }
+		getAge:function(){
+			return age;
+    	}
+		setName:function(name){
+			this.name = name;
+        }
+		setAge:function(age){
+			this.age = age;
+    	}
+    }
+}
+VM2046:8 Uncaught SyntaxError: Unexpected identifier
+function person(name, age){
+	this.name = name;
+	this.age = age;
+	return {
+		getName:function(){
+			return this.name;
+        }
+		getAge:function(){
+			return this.age;
+    	}
+    }
+}
+VM2068:8 Uncaught SyntaxError: Unexpected identifier
+function person(name, age){
+	this.name = name;
+	this.age = age;
+	return {
+		getName:function(){
+			return this.name;
+        },
+		getAge:function(){
+			return this.age;
+    	},
+		setName:function(name){
+			this.name = name;
+        },
+		setAge:function(age){
+			this.age = age;
+    	}
+    }
+}
+undefined
+var ryan = new person("ryan", 73);
+undefined
+ryan.name
+undefined
+ryan.age
+undefined
+ryan.getAge
+ƒ (){
+			return this.age;
+    	}
+ryan.getAge()
+undefined
+ryan.getName();
+undefined
+function person(name, age){
+	this.name = name;
+	this.age = age;
+	return {
+		getName:function(){
+			return name;
+        },
+		getAge:function(){
+			return age;
+    	},
+		setName:function(nameInput){
+			name = nameInput;
+        },
+		setAge:function(ageInput){
+			age = ageInput;
+    	}
+    }
+}
+undefined
+var ryan = new person("ryan", 73);
+undefined
+ryan.getAge()
+73
+ryan.getName()
+"ryan"
+ryan.name
+undefined
+function makeAdder(x){
+	return function(y){
+		return x + y;
+    }
+}
+undefined
+var add5 = new makeAdder(5);
+undefined
+var add7 = new makeAdder(7);
+undefined
+add5(12);
+17
+add7(12);
+19
+var counter = function(){
+	var privateCounter = 0;
+	function changeVal(x){
+		privateCounter += x;
+    }
+	return {
+		increment: function(){
+			changeVal(1);
+        },
+		decrement: function(){
+			changeVal(-1);
+        },
+		value: function(){
+			return privateCounter;
+        }
+    }	
+
+
+}
+undefined
+counter.increment
+undefined
+counter = counter();
+{increment: ƒ, decrement: ƒ, value: ƒ}
+counter.increment
+ƒ (){
+			changeVal(1);
+        }
+counter.increment()
+undefined
+counter.value
+ƒ (){
+			return privateCounter;
+        }
+counter.value()
+1
+delete counter
+false
+var otherCounter = (function(){
+	var privateCounter = 0;
+	function changeVal(x){
+		privateCounter += x;
+    }
+	return {
+		increment: function(){
+			changeVal(1);
+        },
+		decrement: function(){
+			changeVal(-1);
+        },
+		value: function(){
+			return privateCounter;
+        }
+    }	
+
+
+})();
+undefined
+otherCounter.increment()
+undefined
+otherCounter.value()
+1
+var nest = function(){
+	console.log("func 1");
+	return function(){
+		console.log("func 2");
+		return function(){
+			console.log("func 3");
+			return function(){
+				console.log("func 4");
+            }
+        }
+    }
+}
+undefined
+nest()
+VM3397:2 func 1
+ƒ (){
+		console.log("func 2");
+		return function(){
+			console.log("func 3");
+			return function(){
+				console.log("func 4");
+            }
+        }
+    }
+nest()()
+VM3397:2 func 1
+VM3397:4 func 2
+ƒ (){
+			console.log("func 3");
+			return function(){
+				console.log("func 4");
+            }
+        }
+nest()()()
+VM3397:2 func 1
+VM3397:4 func 2
+VM3397:6 func 3
+ƒ (){
+				console.log("func 4");
+            }
+nest()()()()
+VM3397:2 func 1
+VM3397:4 func 2
+VM3397:6 func 3
+VM3397:8 func 4
+undefined

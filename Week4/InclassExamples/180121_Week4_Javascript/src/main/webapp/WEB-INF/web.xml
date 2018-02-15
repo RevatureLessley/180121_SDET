@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>GetEmployees</display-name>
+    <servlet-name>GetEmployees</servlet-name>
+    <servlet-class>com.revature.servlets.GetEmployees</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetEmployees</servlet-name>
+    <url-pattern>/GetEmployees</url-pattern>
+  </servlet-mapping>
 </web-app>
