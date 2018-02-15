@@ -1,17 +1,23 @@
 var empCounter = 0;
 
+function checkInput(lowNum, highNum){
+	if(oneNum == "" || twoNum == ""){
+		window.alert("Enter two nums between 0 and 100");
+		return false;
+	}
+	
+	if(oneNum > 100 || oneNum < 0 || twoNum > 100 || twoNum < 0){
+		window.alert("Input must be between 0 and 100");
+		return false;
+	}
+}
+
 function passValue(){
 	
 	var oneNum = document.getElementById("oneNum").value;
 	var twoNum = document.getElementById("twoNum").value;
 	
-	if(oneNum == "" || twoNum == ""){
-		window.alert("Enter two nums between 0 and 100");
-		return;
-	}
-	
-	if(oneNum > 100 || oneNum < 0 || twoNum > 100 || twoNum < 0){
-		window.alert("Input must be between 0 and 100");
+	if (checkInput == false){
 		return;
 	}
 	
@@ -48,12 +54,12 @@ function passValue(){
 		else{
 			passTo = i;
 		}			
-		addEmp(i, passTo);
+		makeRow(i, passTo);
 	}
 
 }
 
-function addEmp(lowNum, highNum){
+function makeRow(lowNum, highNum){
 	
 	var row = document.createElement('tr'); //<tr></tr>
 	
