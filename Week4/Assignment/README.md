@@ -1,1 +1,1 @@
-![Gif of program] (FizzBuzz2.gif)
+![Gif of program](FizzBuzz2.gif)
