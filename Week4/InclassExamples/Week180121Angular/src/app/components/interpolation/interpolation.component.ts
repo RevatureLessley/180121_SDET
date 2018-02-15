@@ -41,9 +41,31 @@ export class InterpolationComponent{
         author: 'Ryan Lessley',
         age: 78
     };
-    public typescriptStyle = "color:blue";
+
     styleObject = {
         color: 'blue',
         fontFamily: 'Comic Sans MS'
+    }
+    public visible = true;
+
+    public changeStyle(){
+        if(this.styleObject.color=='blue'){
+            this.styleObject.color='green';
+        }
+        else if(this.styleObject.color=='green'){
+            this.styleObject.color='yellow';
+        }
+        else if(this.styleObject.color=='yellow'){
+            this.styleObject.color='red';
+        }
+        else if(this.styleObject.color=='red'){
+            this.styleObject.color='blue';
+        }
+    }
+    
+public input = "Check this out!";
+
+    public toggleVisibility(){
+        this.visible = !this.visible;
     }
 }

@@ -26,6 +26,20 @@
             Property binding is used to take values from the backend and apply them
             as properties for the elements.
         </p>
-        <div [style]=styleObject>I am stylized</div>
+        <p>
+            EVENT BINDING<br>
+            Event binding is a form of one-way data binding that goes from the frontend
+            to the components. We take action from the html and have it call a function
+            in the component.
+            In order to bind to an event, we use parenthesis'.
+        </p>
+        <div [ngStyle]=styleObject (click)="changeStyle()">I am stylized</div>
+        <div (click)="toggleVisibility()">Visible = {{visible}}</div>
+        <div [hidden]="visible">I AM VISIBLE</div>
+
+        <div>
+            <input [(ngModel)]="input" type="text"><br>
+            <p>{{input}}</p>
+        </div>
         
 </div>
