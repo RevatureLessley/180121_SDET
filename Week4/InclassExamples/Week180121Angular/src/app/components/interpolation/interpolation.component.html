@@ -1,0 +1,31 @@
+<div class="well">
+    <h3>String Interpolation</h3>
+    <p>Angular uses a concept called data binding. This boils down to how we can connect out front end (View) to our backends.
+        (Components) Any data in our components needs to have a way to be transferred to the view. One way to do this, is
+        to use String Interpolation</p>
+        <div>The value of some componentVariable is: <b style="color:red">{{componentVariable}}</b></div>
+    
+        <p>The above example demonstrated pulling information from from the component
+            directly. We took the data and displayed it on the html. Using the double
+            brackets as provided by angular we can display it to the view. The transfer
+            of data from the component to the HTML is called model.
+        </p>
+        <p>We can use interpolation like a form of expression language.
+            You can evaluate entities within it.<br>
+            2 + 2 = {{2 + 2}}...
+        </p>
+        <p>The author of this site is: {{componentObject.author}}</p>
+        <p>This was an example of one-way data binding. It is only capable of
+            bringing data from the component to the view. Not vice versa.
+        </p>
+        <p>Another data-binding option we have is called 'property binding'</p>
+        <p>Property binding is technique where we can make the value of some
+            element property equal to a result as defined in the typescript file.
+            String interpolation is useful for evaluating data from the backend and 
+            displaying it on the front end.
+            Property binding is used to take values from the backend and apply them
+            as properties for the elements.
+        </p>
+        <div [style]=styleObject>I am stylized</div>
+        
+</div>
