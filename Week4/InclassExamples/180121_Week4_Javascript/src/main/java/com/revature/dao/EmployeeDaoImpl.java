@@ -21,7 +21,7 @@ import com.revature.util.Connections;
 public class EmployeeDaoImpl {
 
 	
-	public void insertEmployee(Employee emp) {
+	public Integer insertEmployee(Employee emp) {
 		PreparedStatement ps = null;
 
 		try (Connection conn = Connections.getConnection()) {
@@ -36,13 +36,14 @@ public class EmployeeDaoImpl {
 			ps.setInt(2, emp.getEmpSalary());
 			ps.setString(3, emp.getTitle());
 
-			System.out.println(ps.executeUpdate() + " RECORD(S) INSERTED!");
+			return ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(ps);
 		}
+		return 0;
 	}
 
 	
