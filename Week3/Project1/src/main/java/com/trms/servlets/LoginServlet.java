@@ -12,8 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import com.trms.beans.Employee;
-import com.trms.services.EmployeeService;
 import com.trms.services.UsersEmpService;
 
 /**
@@ -28,10 +26,8 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
-		if(session.getAttribute("empid") == null) {
+		if(session.isNew()) {
 			int id = UsersEmpService.getUserEmpId(request.getParameter("username"), request.getParameter("password"));
-			
-			
 			
 			if(id != -1) {
 				out.println("<h3>Logged In</h3>");
@@ -45,6 +41,7 @@ public class LoginServlet extends HttpServlet {
 				
 				// TODO figure out where to send the Employee object to use the information in it
 			} else {
+				session.invalidate();
 				out.println("<head> <meta http-equiv='Refresh' content='2;url=index.html'>"
 						+ "</head>");
 				out.println("<h3>Incorrect Login. Try Again.</h3>");
