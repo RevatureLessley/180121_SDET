@@ -2,16 +2,11 @@ var empCounter = 0;
 
 function passValue(){
 	
-	removeBody("theBody");
-	
-	var body = document.createElement('tbody');
-	document.getElementById("theTable").appendChild(body);
-	body.id = "theBody";
-	
 	var oneNum = document.getElementById("oneNum").value;
 	var twoNum = document.getElementById("twoNum").value;
 	
-	if(oneNum == "" || twoNum ==""){
+	if(oneNum == "" || twoNum == ""){
+		window.alert("Enter two nums between 0 and 100");
 		return;
 	}
 	
@@ -20,8 +15,9 @@ function passValue(){
 		return;
 	}
 	
-//	console.log("oneNum: " + oneNum );
-//	console.log("twoNum: " + twoNum );
+	removeBody("theBody");
+	
+	addBody();
 	
 	if(oneNum - twoNum > 0){
 		var highNum = oneNum;
@@ -37,10 +33,10 @@ function passValue(){
 	i = lowNum;
 	console.log("i: " + i);
 	console.log(highNum - i > 0);
+	console.log(i < highNum);
 	for(i = lowNum; highNum - i + 1 > 0; i++){
-		console.log("Entered for statement: " + i);
 		var passTo;
-		if(i%3 == 0 || i%5 == 0){
+		if(i != 0 && (i%3 == 0 || i%5 == 0)){
 			passTo = "";
 			if(i%3 == 0){
 				passTo += "fizz";
@@ -48,12 +44,10 @@ function passValue(){
 			if(i%5 == 0){
 				passTo += "buzz";				
 			}
-
 		}
 		else{
 			passTo = i;
-		}
-				
+		}			
 		addEmp(i, passTo);
 	}
 
@@ -91,6 +85,5 @@ function addBody(){
 	var body = document.createElement('tbody');
 	document.getElementById("theTable").appendChild(body);
 	body.id = "theBody";
-	return body;
 }
 
