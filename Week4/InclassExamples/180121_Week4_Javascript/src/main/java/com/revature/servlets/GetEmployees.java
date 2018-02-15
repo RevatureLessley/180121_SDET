@@ -19,7 +19,7 @@ public class GetEmployees extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException { // State == 3
 		/*
 		 * In the case of a default AJAX request, we will return back to it,
 		 * an xml file, so we need to set the response type to reflect that.

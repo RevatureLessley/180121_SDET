@@ -1,5 +1,5 @@
 function sendAJAX(){
-	var xhr = new XMLHttpRequest();
+	var xhr = new XMLHttpRequest();// state == 0
 	/*
 	 * There exists 5 states of an XMLHttpRequest object.
 	 * 0 - Request is not configured
@@ -59,6 +59,6 @@ function sendAJAX(){
 		 */
 
 	}
-	xhr.open("GET","GetEmployees");
-	xhr.send();
+	xhr.open("GET","GetEmployees"); // state == 1
+	xhr.send(); // state == 2
 }
