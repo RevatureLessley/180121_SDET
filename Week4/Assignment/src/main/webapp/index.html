@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="resources/javascript/main.js"></script>
+
+<meta charset="UTF-8">
+<title>Fizz Buzz</title>
+
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="well">
+			<h3>Fizz Buzz Generator</h3>
+			<table>
+				<tr>
+					<td>Enter a number(0-100):</td>
+					<td><input type="text" id="num1" onblur=validateOnblur(this)></td>
+					<td class="hidden"><span class=" text-danger">Please
+							Enter a number between 1~100</span></td>
+				</tr>
+				<tr>
+					<td>Enter another number(0-100):</td>
+					<td><input type="text" id="num2" onblur=validateOnblur(this)></td>
+					<td class="hidden"><span class=" text-danger">Please
+							Enter a number between 1~100</span></td>
+				</tr>
+				<tr>
+					<td><button onclick=validate()>Generate!</button>
+				</tr>
+			</table>
+		</div>
+
+		<div class="well">
+			<h3>Output:</h3>
+			<div id="result">No output available</div>
+		</div>
+	</div>
+</body>
+</html>
