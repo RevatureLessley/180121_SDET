@@ -20,7 +20,6 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 
-<script src="resource/javascript/main.js"></script>
 <script src="resource/javascript/AJAX.js"></script>
 
 <meta charset="ISO-8859-1">
@@ -31,32 +30,27 @@
 	<div class="container-fluid">
 		<div class="well">
 			<h3>Welcome to AJAX Land!</h3>
-			<h4 a href="index.html">Perhaps you wanted the JavaScript page?</h4>
-		</div>
-
-		<div class="well" onmouseover="changeWell()">
-			<h1 id="magicWell">Check me out!</h1>
+			<h4><a href="ajax.html">Perhaps you wanted the AJAX page?</a></h4>
 		</div>
 		<div class="well">
 			<h3>Please Register To Use This Site</h3>
-			<form action="http://www.google.com" id="register"
-				onsubmit="return validateRegistration()">
-				<div class="form-group" id=username>
-					<label for="username">Username:</label> <input type="text"
-						class="form-control" name="username" required>
+			<form action="#" id="register">
+				<div class="form-group" id=name>
+					<label for="username">Name:</label> <input type="text"
+						class="form-control" name="name" required>
 				</div>
-				<div class="form-group" id="pwd">
-					<label for="pwd1">Password:</label> <input type="password"
-						class="form-control" name="pwd1" required>
+				<div class="form-group" id="salary">
+					<label for="pwd1">Salary:</label> <input type="number"
+						class="form-control" name="salary" required>
 				</div>
-				<div class="form-group">
-					<label for="pwd2">Confirm Password:</label> <input type="password"
-						class="form-control" name="pwd2" required>
+				<div class="form-group" id="title">
+					<label for="pwd2">Title:</label> <input type="text"
+						class="form-control" name="title" required>
 				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
+				<button type="button" class="btn btn-default" onclick="postAjax()">Submit</button>
+				
 			</form>
 		</div>
-
 		<div class="well">
 			<h3>Employees!!</h3>
 			<button onclick="sendAJAX()">Get Employees</button>
@@ -70,7 +64,6 @@
 			</table>
 			<p id=AJAXError></p>
 		</div>
-
 	</div>
 </body>
 </html>
