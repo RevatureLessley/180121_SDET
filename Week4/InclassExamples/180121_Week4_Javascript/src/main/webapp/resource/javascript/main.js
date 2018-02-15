@@ -89,7 +89,7 @@ function addEmp(){
 	//<td>input2</td>
 	td4.appendChild(delBut);
 	//<td><button onclick="removeRow(Counter) style="color:red">X</button></td>
-
+	
 	
 	//Finally create the row
 	var row = document.createElement('tr'); //<tr></tr>
