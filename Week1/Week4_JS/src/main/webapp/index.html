@@ -58,13 +58,14 @@
 
 		<div class='well'>
 			<h1>Dynamic Tables</h1>
-			<ul style='list-style:none'>
+			<ul style='list-style: none'>
 				<li><b>EMPLOYEE NAME</b></li>
 				<li><input type='text' id='empName'></li>
 				<li><b>FAVORITE MOUSE</b></li>
 				<li><input type='text' id='favMouse'></li>
 				<li><button onclick="addEmp()">SUBMIT</button></li>
-			</ul><br>
+			</ul>
+			<br>
 			<table border=2px id='theTable'>
 				<tr>
 					<th>E_ID</th>
@@ -72,6 +73,35 @@
 					<th>Favorite Mouse</th>
 				</tr>
 			</table>
+		</div>
+
+		<div class='well'>
+			<h1 id='magicWell' onmouseover='changeWell()'>Check me out!</h1>
+		</div>
+
+		<div class='well'>
+			<h3>Please Register to Use This Site</h3>
+			<form action="https://www.google.com/" id='register' onsubmit='return validateRegistration()'>
+				<div class="form-group" id="username">
+					<label for="username">Username:</label> <input type="text"
+						class="form-control" name="username" required>
+				</div>
+				<div class="form-group" id="pwd1" >
+					<label for="pwd1">Password:</label> <input type="password"
+						class="form-control" name="pwd1" required>
+				</div>
+				<div class="form-group">
+					<label for="pwd2">Confirm Password:</label> <input type="password"
+						class="form-control" id="pwd2" name="pwd2" required>
+				</div>
+		
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+		
+		<div class='well'>
+			<h1>Bubbling and capturing</h1>
+			
 		</div>
 	</div>
 </body>

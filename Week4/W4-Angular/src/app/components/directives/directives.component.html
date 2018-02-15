@@ -1,0 +1,30 @@
+<div class='well'>
+    <h1>DIRECTIVES</h1>
+    <p>Directives are ways that we can invoke Angular functionality within an html file.  They act as syntax that can be used in  html format without breaking the front end.</p>
+
+    <h3>*ngIf</h3>
+    <div class='well' style='background-color:beige'>
+        <p>What does the asterisk(*) mean in front of the ngIf?</p>
+        <input type='button' (click)=toggleAnswer() [value]="buttonValue">
+        <p *ngIf="visible;else someTemplate">
+            Any directive that has an asterisk(*) means that it is a structural directive.  This means the directive is capable of changing the actual structure of the HTML itself.  IE, it can add/remove elements on the page.
+        </p>
+        <ng-template #someTemplate>
+            <p style='color:red'>GOTTA SHOW THAT ANSWER!</p>
+        </ng-template>
+    </div>
+
+    <div class='well' style='background-color: azure'>
+        <h3>*ngFor</h3>
+        <table border=2px>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+            </tr>
+            <tr *ngFor="let x of emps">
+                <td>{{x.id}}</td>
+                <td>{{x.name}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

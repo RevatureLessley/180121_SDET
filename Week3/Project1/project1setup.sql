@@ -98,7 +98,7 @@ CREATE TABLE reimbursements(
     reimburse_datetime DATE,
     reimburse_timestamp TIMESTAMP(5) DEFAULT SYSTIMESTAMP,
     reimburse_workjustify VARCHAR2(300), --not sure if this should be free form typed or something from a list
-    reimburse_approvelvl NUMBER(1),
+    reimburse_approvelvl NUMBER(1), --the id of the emp that needs to approve next (for direct-super uses reportsto col)
     reimburse_inforeq NUMBER(1) DEFAULT -1, --number similar to applvl level the number dictates who needs to provide additional info
     reimburse_urgent NUMBER(1),
     reimburse_approved NUMBER(1) DEFAULT 0,

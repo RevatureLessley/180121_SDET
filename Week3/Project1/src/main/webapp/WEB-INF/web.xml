@@ -69,4 +69,14 @@
     <filter-name>UsersFilters</filter-name>
     <url-pattern>/user/*</url-pattern>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ApproveReimburse</display-name>
+    <servlet-name>ApproveReimburse</servlet-name>
+    <servlet-class>com.trms.servlets.ApproveReimburse</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ApproveReimburse</servlet-name>
+    <url-pattern>/ApproveReimburse</url-pattern>
+  </servlet-mapping>
 </web-app>
