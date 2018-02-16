@@ -1,11 +1,7 @@
 function sendAJAX(){
-<<<<<<< HEAD
-	var xhr = new XMLHttpRequest();// state == 0
-=======
 	var xhr = new XMLHttpRequest(); //State = 0
 	console.log(xhr.readyState);
 	xhr.open("GET","GetEmployees"); //State == 1
->>>>>>> a1176a1f6a485bcbc06483a87b462e498942fa4c
 	/*
 	 * There exists 5 states of an XMLHttpRequest object.
 	 * 0 - Request is not configured
@@ -65,10 +61,6 @@ function sendAJAX(){
 		 */
 
 	}
-<<<<<<< HEAD
-	xhr.open("GET","GetEmployees"); // state == 1
-	xhr.send(); // state == 2
-=======
 	
 	xhr.send(); //State == 2
 }
@@ -104,5 +96,4 @@ function postAjax(){
 	var title = document.forms["register"]["title"].value;
 	
 	xhr.send("name=" + name + "&salary=" + salary + "&title=" + title);
->>>>>>> a1176a1f6a485bcbc06483a87b462e498942fa4c
 }
