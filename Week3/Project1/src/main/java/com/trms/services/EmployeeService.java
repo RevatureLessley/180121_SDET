@@ -11,4 +11,10 @@ public class EmployeeService {
 		
 		return dao.getEmployee(empId);
 	}
+	
+	public static int getSubordinates(int empId) {
+		EmployeeDao dao = new EmployeeDaoImpl();
+		
+		return dao.getSubordinates(empId);
+	}
 }
