@@ -60,7 +60,7 @@ CREATE TABLE usersemp(
 
 CREATE TABLE eventtypes(
     event_id NUMBER(9),
-    event_name VARCHAR2(30) NOT NULL,
+    event_name VARCHAR2(50) NOT NULL,
     event_coverage NUMBER(3,2) NOT NULL,
     CONSTRAINT event_id_pk PRIMARY KEY (event_id)
 );
@@ -101,7 +101,7 @@ CREATE TABLE reimbursements(
     reimburse_approvelvl NUMBER(1), --the id of the emp that needs to approve next (for direct-super uses reportsto col)
     reimburse_inforeq NUMBER(1) DEFAULT -1, --number similar to applvl level the number dictates who needs to provide additional info
     reimburse_urgent NUMBER(1),
-    reimburse_approved NUMBER(1) DEFAULT 0,
+    reimburse_approved NUMBER(1) DEFAULT 2, --2:pending, 1:approved, 0:denied
     CONSTRAINT reimburse_pk PRIMARY KEY (reimburse_id),
     CONSTRAINT reimb_emp_fk FOREIGN KEY (reimburse_emp_id)
     REFERENCES employees (emp_id) ON DELETE CASCADE,

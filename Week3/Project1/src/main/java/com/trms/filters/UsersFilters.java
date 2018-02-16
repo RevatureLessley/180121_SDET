@@ -12,10 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 /**
  * Servlet Filter implementation class UsersFilters
  */
 public class UsersFilters implements Filter {
+	private final static Logger logger = Logger.getLogger(UsersFilters.class);
 
 	public void destroy() {
 		System.out.println("Filter Destroyed");
@@ -25,18 +28,19 @@ public class UsersFilters implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-		System.out.println("filter entered");
 		HttpServletRequest request = (HttpServletRequest)req;
 		HttpServletResponse response = (HttpServletResponse)res;
 
 		HttpSession session = request.getSession(false);
 		if(session == null) {
 			//make a logger thing
-			System.out.println("Session doesn't exist");
+			logger.info("doFilter() : Session Doesn't Exist");
 			response.sendRedirect("../index.html");
 		} else {
-			System.out.println("pass along");
-			// pass the request along the filter chain
+			logger.info("doFilter() : User Logged In");
+			response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+	        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+	        response.setDateHeader("Expires", 0);
 			chain.doFilter(request, response);
 		}
 	

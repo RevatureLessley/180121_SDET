@@ -32,6 +32,7 @@ public class LoginServlet extends HttpServlet {
 			if(id != -1) {
 				out.println("<h3>Logged In</h3>");
 				session.setAttribute("empid", id);
+				
 				logger.info("doGet() : Session for Emp Id #: " + session.getAttribute("empid") + " created."); 
 				//Employee e = EmployeeService.getUserEmpId(id);
 				//response.sendRedirect("user/userhome.html");

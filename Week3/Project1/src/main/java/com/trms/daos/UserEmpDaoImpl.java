@@ -16,6 +16,7 @@ public class UserEmpDaoImpl implements UserEmpDao {
 	final static Logger logger = Logger.getLogger(UserEmpDaoImpl.class);
 	
 	public boolean insertUser(int empid, String email, String username, String password) {
+		logger.info("insertUser() : ENTERED");
 		CallableStatement cs = null;
 		boolean success = false;
 		
