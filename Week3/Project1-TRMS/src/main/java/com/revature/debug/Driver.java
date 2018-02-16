@@ -23,8 +23,7 @@ public class Driver {
  	*/
 		
 	/*Debugging addEmployee*/
-	/*	Employee test = new Employee(0, "test", "test", "test", "test", "test@testmail.com", "test",
-				"test","test","te", 0, "test", "test", "test");
+	/*	Employee test = new Employee(0, "test", "test", "test", "test", "test@testmail.com","test" , "test",0, 1000);
 	  	empDao.addEmployee(test);
 		int count = empDao.totalEmployees();
 		System.out.println("Total employees? = " + count);
@@ -32,11 +31,12 @@ public class Driver {
 	*/
 	
 	/*Debugging deleteEmployee*/
-	/*	empDao.deleteEmployee(test);
+	/*	Employee test = new Employee(0, "test", "test", "test", "test", "test@testmail.com","test" , "test",0, 1000);
+		empDao.deleteEmployee(test);
 		int count = empDao.totalEmployees();
 		System.out.println("Total employees? = " + count);
 		System.out.println("===========================================");
-	*/	
+	*/
 	
 	/*Debugging getAllEmployees()*/
 	//System.out.println(empDao.getAllEmployees());

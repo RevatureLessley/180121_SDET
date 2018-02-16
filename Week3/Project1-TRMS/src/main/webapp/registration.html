@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>TRMS Registration Page</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<script src="resource/javascript/AJAX.js"></script>
+
+</head>
+<body>
+
+	<div class="container-fluid" style="margin-top: 50px"">
+
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">TRMS</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.html">Home</a></li>
+					<li><a href="#">Info</a></li>
+					<li><a href="ReimCo.html">Reimbursement Coverage</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="registration.html"><span
+							class="glyphicon glyphicon-user"></span> Register</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+							Login</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="well">
+			<h1>Welcome To The Registration Page!</h1>
+		</div>
+
+
+		<form action="#" class="form-horizontal" id="register">
+			<fieldset>
+				<div id="legend">
+					<legend class="">Register</legend>
+				</div>
+
+				<div class="control-group">
+					<!-- First Name -->
+					<label class="control-label" for="fname">First Name</label>
+					<div class="controls">
+						<input type="text" id="fname" name="fname" placeholder=""
+							class="input-xlarge">
+						<p class="help-block">Names are limited to 60 characters</p>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<!-- Last Name -->
+					<label class="control-label" for="lname">Last Name</label>
+					<div class="controls">
+						<input type="text" id="lname" name="lname" placeholder=""
+							class="input-xlarge">
+						<p class="help-block">Names are limited to 60 characters</p>
+					</div>
+				</div>
+
+				<h5>Please provide your Role</h5>
+				<div id="role">
+				<label class="radio-inline"><input type="radio" name="role">employee</label> 
+				<label class="radio-inline"><input type="radio" name="role">supervisor</label> 
+				<label class="radio-inline"><input type="radio" name="role">department head</label>
+				<label class="radio-inline"><input type="radio"name="role">benefits coordinator</label>
+				</div>
+
+
+				<h5>What department do you work for?</h5>
+				<div id="departments">
+				<select name="departments">
+					<option>---</option>
+					<option>production</option>
+					<option>marketing</option>
+					<option>technical</option>
+					<option>art</option>
+					<option>game design</option>
+					<option>business</option>
+					<option>quality assurance</option>
+					<option>benefits</option>
+				</select>
+				</div>
+				<br>
+				<div id="empid">
+				<h5>What is your Employee ID?</h5>
+					<input type="number" name="empid">
+				</div>
+				
+				<div id="supid">
+					<h5>What is the ID of your Supervisor?</h5>
+					<input type="number" name="supid">
+				</div>
+				
+				<div class="control-group">
+					<!-- Username -->
+					<label class="control-label" for="username">Username</label>
+					<div class="controls">
+						<input type="text" id="username" name="username" placeholder=""
+							class="input-xlarge">
+						<p class="help-block">Username can contain any letters or
+							numbers, without spaces</p>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<!-- E-mail -->
+					<label class="control-label" for="email">E-mail</label>
+					<div class="controls">
+						<input type="text" id="email" name="email" placeholder=""
+							class="input-xlarge">
+						<p class="help-block">Please provide your E-mail</p>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<!-- Password-->
+					<label class="control-label" for="password">Password</label>
+					<div class="controls">
+						<input type="password" id="password" name="password"
+							placeholder="" class="input-xlarge">
+						<p class="help-block">Password should be at least 4 characters</p>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<!-- Password -->
+					<label class="control-label" for="password_confirm">Password
+						(Confirm)</label>
+					<div class="controls">
+						<input type="password" id="password_confirm"
+							name="password_confirm" placeholder="" class="input-xlarge">
+						<p class="help-block">Please confirm password</p>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<!-- Button -->
+					<div class="controls">
+						<button type="button" class="btn btn-default" onclick="postAjax()">Register</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+
+
+	</div>
+</body>
+</html>

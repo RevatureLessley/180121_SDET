@@ -9,6 +9,8 @@ public interface EmployeeDao {
 	public boolean checkEmpty ();
 	public int totalEmployees();
 	public boolean checkUniqueUsername(Employee employee);
+	public boolean checkUniqueUsername(String name);
+	public boolean checkUniqueId(Employee employee);
 	
 	public void addEmployee(Employee employee);
 	public void deleteEmployee(Employee employee);

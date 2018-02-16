@@ -11,7 +11,7 @@ import com.revature.beans.Employee;
 
 import com.revature.util.Bridge;
 
-import static com.revature.communication.CloseStreams.close;
+
 import static com.revature.util.CloseStreams.close;
 
 import java.sql.Connection;
@@ -186,16 +186,16 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 					+ "WHERE USERNAME = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, "YEP");
-			ps.setString(2, user);
+		//	ps.setString(2, user);
 			ps.execute(); 
 		}catch(SQLException e){e.printStackTrace();}
 		finally{close(ps);}
 		
 		
-		PreparedStatement ps = null;
-		int newId = totalReimbursements() + 1 ;
+		//PreparedStatement ps = null;
+		//int newId = totalReimbursements() + 1 ;
 		
-		try(Connection conn = Bridge.connect()){
+		/*try(Connection conn = Bridge.connect()){
 			String sql = "INSERT INTO REIMBURSEMENTS VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1,newId); //rei_id
@@ -213,7 +213,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			ps.setString(13,null); // for attachments
 			ps.executeUpdate();
 		}catch(SQLException e){e.printStackTrace();}
-		finally{close(ps);}
+		finally{close(ps);}*/
 		
 	}
 

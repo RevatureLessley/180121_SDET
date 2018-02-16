@@ -8,10 +8,12 @@ import com.revature.beans.AprovedReimbursement;
 
 public interface ReimbursementDao {
 
-	public boolean checkEmpty();
+	public boolean checkEmptyReg();
+	public boolean checkEmptyApr();
 	public boolean checkEmptyRej();
 	
-	public int totalReimbursements();
+	public int totalReimbursementsReg();
+	public int totalReimbursementsApr();
 	public int totalReimbursementsRej();
 	
 	public void addReimbursement(Reimbursement reim);

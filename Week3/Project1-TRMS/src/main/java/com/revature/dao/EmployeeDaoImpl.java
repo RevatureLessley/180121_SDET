@@ -70,13 +70,59 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 	
 	@Override
+	/**This function performs a check to ensure that all employees use distinctive usernames. This
+	 * function will compare a given Employee Objects username with all the usernames in the database
+	 * and return true if the username has not been used yet, or return false if it has**/
+	public boolean checkUniqueUsername(String username) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		try(Connection conn = Bridge.connect()){
+			
+			String sql = "SELECT USERNAME FROM EMPLOYEES";
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql); 
+			
+			while(rs.next()){
+				if(username.equals( rs.getString(1))) {return false;}
+			}
+		}
+		catch(SQLException e){e.printStackTrace();}
+		finally{close(stmt);close(rs);}
+		return true;
+	}
+	
+	@Override
+	/**This function performs a check to ensure that all employees use distinctive ids. This
+	 * function will compare a given Employee Objects emp_id with all the emp_id in the database
+	 * and return true if the emp_id has not been used yet, or return false if it has**/
+	public boolean checkUniqueId(Employee employee) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		try(Connection conn = Bridge.connect()){
+			
+			String sql = "SELECT EMP_ID FROM EMPLOYEES";
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql); 
+			
+			while(rs.next()){
+				if(employee.getEmp_id() == rs.getInt(1)) {return false;}
+			}
+		}
+		catch(SQLException e){e.printStackTrace();}
+		finally{close(stmt);close(rs);}
+		return true;
+	}
+	
+	@Override
 	/**This method is used for adding new users into the TRMS database. it will take an employee object, which contains all of an
 	 * employees information, and add it into the database.**/
 	public void addEmployee(Employee employee) {
 		PreparedStatement ps = null;
 		
 		try(Connection conn = Bridge.connect()){
-			String sql = "INSERT INTO EMPLOYEES VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO EMPLOYEES VALUES(?,?,?,?,?,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1,employee.getEmp_id()); //emp_id
 			ps.setString(2, employee.getFname()); //First name
@@ -84,14 +130,10 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			ps.setString(4, employee.getUsername()); // Username
 			ps.setString(5,employee.getPassword()); //Password
 			ps.setString(6,employee.getEmail()); //Email Adress
-			ps.setString(7,employee.getDob()); //Date Of Birth
-			ps.setString(8,employee.getAddress()); //Address
-			ps.setString(9,employee.getCity()); //City
-			ps.setString(10,employee.getState()); //State
-			ps.setInt(11,employee.getZipcode()); //Zipcode
-			ps.setString(12,employee.getRole()); // Employee role
-			ps.setString(13,employee.getDepartment()); //Department employee is part of 
-			ps.setString(14,employee.getSupervisor()); //Direct supervisor of this employee
+			ps.setString(7,employee.getRole()); // Employee role
+			ps.setString(8,employee.getDepartment()); //Department employee is part of 
+			ps.setInt(9,employee.getSup_id()); //Direct supervisor of this employee
+			ps.setInt(10,employee.getAmount()); //Reimbursement amount of this employee
 			ps.executeUpdate();
 		}catch(SQLException e){e.printStackTrace();}
 		finally{close(ps);}
@@ -195,12 +237,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 						rs.getString(6),
 						rs.getString(7),
 						rs.getString(8),
-						rs.getString(9),
-						rs.getString(10),
-						rs.getInt(11),
-						rs.getString(12),
-						rs.getString(13),
-						rs.getString(14)
+						rs.getInt(9),
+						rs.getInt(10)
 						));
 				}
 			}
@@ -235,12 +273,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 						rs.getString(6),
 						rs.getString(7),
 						rs.getString(8),
-						rs.getString(9),
-						rs.getString(10),
-						rs.getInt(11),
-						rs.getString(12),
-						rs.getString(13),
-						rs.getString(14)
+						rs.getInt(9),
+						rs.getInt(10)
 						));
 				}
 			}
@@ -275,12 +309,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 						rs.getString(6),
 						rs.getString(7),
 						rs.getString(8),
-						rs.getString(9),
-						rs.getString(10),
-						rs.getInt(11),
-						rs.getString(12),
-						rs.getString(13),
-						rs.getString(14)
+						rs.getInt(9),
+						rs.getInt(10)
 						));
 				}
 			}
@@ -315,12 +345,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 						rs.getString(6),
 						rs.getString(7),
 						rs.getString(8),
-						rs.getString(9),
-						rs.getString(10),
-						rs.getInt(11),
-						rs.getString(12),
-						rs.getString(13),
-						rs.getString(14)
+						rs.getInt(9),
+						rs.getInt(10)
 						));
 				}
 			}
@@ -329,9 +355,4 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		
 		return headList;
 	}
-
-
 }
-
-
-

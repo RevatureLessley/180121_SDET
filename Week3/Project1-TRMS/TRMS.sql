@@ -1,7 +1,5 @@
 --Intial DDL
-
 DROP TABLE employees;
-
 DROP TABLE departments;
 DROP TABLE coverage;
 DROP TABLE reimbursements;
@@ -17,7 +15,7 @@ CREATE TABLE employees(
     email VARCHAR2(100) UNIQUE,
     role VARCHAR2(32),
     department VARCHAR2(32),
-    supervisor VARCHAR(100),
+    sup_id NUMBER(6),
     amount NUMBER(6)
     );
 
@@ -65,36 +63,36 @@ CREATE TABLE rejected(
 --Initial DML
 
 
-INSERT INTO employees (emp_id, fname, lname,username,password, email, dob, address,city,state, zipcode, role,department)
-VALUES (1,'phoenix','nakamura','chh','Blazing123', 'chh@outlook.com','DEC-21-1980','91-43 124th street','sparta', 'NY',14518,'head','production');
+INSERT INTO employees (emp_id, fname, lname,username,password, email, role, department, sup_id, amount)
+VALUES (1,'phoenix','nakamura','chh','Blazing123', 'chh@outlook.com','head','production',0,1000);
 
-INSERT INTO employees (emp_id, fname, lname,username,password, email, dob, address,city,state, zipcode, role,department)
-VALUES (2,'martha','clairevoynce','123martha','Martha123','marthalovesgod@dogmail.com','MAR-03-1985','23-45 22nd street','baking', 'NY',56418,'head','marketing');
+INSERT INTO employees (emp_id, fname, lname,username,password, email, role, department, sup_id, amount)
+VALUES (2,'martha','clairevoynce','123martha','Martha123','marthalovesgod@dogmail.com','head','marketing',0,1000);
 
-INSERT INTO employees (emp_id, fname, lname,username,password, email, dob, address,city,state, zipcode, role,department)
-VALUES (3,'armin','bradshow','CoolSalute334','BlondeH4','ihatetitans@dogmail.com','JAN-14-1994','76-21 42nd street','Wall', 'NY',14567,'head','techincal');
+INSERT INTO employees (emp_id, fname, lname,username,password, email, role, department, sup_id, amount)
+VALUES (3,'armin','bradshow','CoolSalute334','BlondeH4','ihatetitans@dogmail.com','head','techincal',0,1000);
 
-INSERT INTO employees (emp_id, fname, lname,username,password, email, dob, address,city,state, zipcode, role,department)
-VALUES (4,'jennifer','poras','okami','ilovealex','porasokami@dogmail.com','AUG-16-1992','23-48 22nd street','baking', 'NY',56418,'head','art');
+INSERT INTO employees (emp_id, fname, lname,username,password, email, role, department, sup_id, amount)
+VALUES (4,'jennifer','poras','okami','ilovealex','porasokami@dogmail.com','head','art',0,1000);
 
-INSERT INTO employees (emp_id, fname, lname,username,password, email, dob, address,city,state, zipcode, role,department)
-VALUES (5,'lucas','jaeger','liger333','BrastleTiger423','hero@dogmail.com','JUN-30-1988','91-45 115th street','queens', 'NY',11419,'head','game design');
+INSERT INTO employees (emp_id, fname, lname,username,password, email, role, department, sup_id, amount)
+VALUES (5,'lucas','jaeger','liger333','BrastleTiger423','hero@dogmail.com','head','game design',0,1000);
 
-INSERT INTO employees (emp_id, fname, lname,username,password, email, dob, address,city,state, zipcode, role,department)
-VALUES (6,'camilo','arrauth','kcam','YankeesRock','deathcam320@dogmail.com','MAR-21-1991','91-30 93rd street','queens', 'NY',11416,'head','business');
+INSERT INTO employees (emp_id, fname, lname,username,password, email, role, department, sup_id, amount)
+VALUES (6,'camilo','arrauth','kcam','YankeesRock','deathcam320@dogmail.com','head','business',0,1000);
 
-INSERT INTO employees (emp_id, fname, lname,username,password, email, dob, address,city,state, zipcode, role,department)
-VALUES (7,'arin','hanson','lovemegaman','JumpAndShoot','egoraptor@catmail.com','JAN-06-1987','45 1st street','somewhere', 'NY',10023,'head','quality assurance');
+INSERT INTO employees (emp_id, fname, lname,username,password, email, role, department, sup_id, amount)
+VALUES (7,'arin','hanson','lovemegaman','JumpAndShoot','egoraptor@catmail.com','head','quality assurance',0,1000);
 
 
-INSERT INTO employees (emp_id, fname, lname,username,password, email, dob, address,city,state, zipcode, role,department,supervisor)
-VALUES (8,'christian','diaz','cdiaz8369','Araceli8','cdiaz@dogmail.com','DEC-19-1990','91-52 112th street','queens', 'NY',11418,'employee','game design','jasmin');
+INSERT INTO employees (emp_id, fname, lname,username,password, email, role, department, sup_id, amount)
+VALUES (8,'christian','diaz','cdiaz8369','Araceli8','cdiaz@dogmail.com','employee','game design',9,1000);
 
-INSERT INTO employees (emp_id, fname, lname,username,password, email, dob, address,city,state, zipcode, role,department,supervisor)
-VALUES (9,'jasmin','tepale','funsizejas','live4free','jtepale@dogmail.com','APR-28-1991','91-52 112th street','queens', 'NY',11418,'supervisor','game design','lucas');
+INSERT INTO employees (emp_id, fname, lname,username,password, email, role, department, sup_id, amount)
+VALUES (9,'jasmin','tepale','funsizejas','live4free','jtepale@dogmail.com','supervisor','game design',5,1000);
 
-INSERT INTO employees (emp_id, fname, lname,username,password, email, dob, address,city,state, zipcode, role,department,supervisor)
-VALUES (10,'clara','martinez','clara1953','Aquamarina1','clara1953@dogmail','OCT-20-1953','91-54 112th street','queens', 'NY',11418,'benco','benefits','null');
+INSERT INTO employees (emp_id, fname, lname,username,password, email, role, department, sup_id, amount)
+VALUES (10,'clara','martinez','clara1953','Aquamarina1','clara1953@dogmail','benco','benefits',0,1000);
 /
 
 
@@ -120,7 +118,7 @@ INSERT INTO departments (dep_id, name,location,head)
 VALUES(7,'quality assurance','C203','arin');
 
 INSERT INTO departments (dep_id, name,location,head)
-VALUES(8,'beneits coordinator','C204','clara');
+VALUES(8,'beneits','C204','clara');
 /
 
 

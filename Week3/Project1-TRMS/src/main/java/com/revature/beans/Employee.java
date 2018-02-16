@@ -8,17 +8,14 @@ public class Employee {
 	private String username;
 	private String password;
 	private String email;
-	private String dob;
-	private String address;
-	private String city;
-	private String state;
-	private int zipcode;
 	private String role;
 	private String department;
-	private String supervisor;
+	private int sup_id;
+	private int amount;
 	
-	public Employee(int emp_id, String fname, String lname, String username, String password, String email, String dob,
-			String address,String city, String state, int zipcode, String role, String department, String supervisor) {
+	/**Constructor for the Employee class. Requires all possible arguments in order to create an employee object. **/
+	public Employee(int emp_id, String fname, String lname, String username, String password, String email, String role,
+			String department, int sup_id, int amount) {
 		super();
 		this.emp_id = emp_id;
 		this.fname = fname;
@@ -26,53 +23,54 @@ public class Employee {
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.dob = dob;
-		this.address = address;
-		this.city = city;
-		this.state = state;
-		this.zipcode = zipcode;
 		this.role = role;
 		this.department = department;
-		this.supervisor = supervisor;
+		this.sup_id = sup_id;
+		this.amount = amount;
 	}
 	
+	//Setters for the employee class
+	/**Sets the emp_id variable of the Employee Object**/
 	public void setEmp_id(int emp_id) {this.emp_id = emp_id;}
+	/**Sets the fname variable of the Employee Object**/
 	public void setFname(String fname) {this.fname = fname;}
+	/**Sets the lname variable of the Employee Object**/
 	public void setLname(String lname) {this.lname = lname;}
+	/**Sets the username variable of the Employee Object**/
 	public void setUsername(String username) {this.username = username;}
+	/**Sets the password variable of the Employee Object**/
 	public void setPassword(String password) {this.password = password;}
+	/**Sets the email variable of the Employee Object**/
 	public void setEmail(String email) {this.email = email;}
-	public void setDob(String dob) {this.dob = dob;}
-	public void setAddress(String address) {this.address = address;}
-	public void setCity(String city) {this.city = city;}
-	public void setState(String state) {this.state = state;}
-	public void setZipcode(int zipcode) {this.zipcode = zipcode;}
-	public void setHead(String role) {this.role = role;}
+	/**Sets the role variable of the Employee Object**/
+	public void setRole(String role) {this.role = role;}
+	/**Sets the department variable of the Employee Object**/
 	public void setDepartment(String department) {this.department = department;}
-	public void setSupervisor(String supervisor) {this.supervisor = supervisor;}
+	/**Sets the sup_id variable of the Employee Object**/
+	public void setSup_id(int sup_id) {this.sup_id = sup_id;}
+	/**Sets the amount variable of the Employee Object**/
+	public void setAmount(int amount) {this.amount = amount;}
 	
+	//Getters for the Employee class
+	/**Returns the emp_id value of the Employee Object**/
 	public int getEmp_id() {return emp_id;}
+	/**Returns the fname value of the Employee Object**/
 	public String getFname() {return fname;}
+	/**Returns the lname value of the Employee Object**/
 	public String getLname() {return lname;}
+	/**Returns the username value of the Employee Object**/
 	public String getUsername() {return username;}
+	/**Returns the password value of the Employee Object**/
 	public String getPassword() {return password;}
+	/**Returns the email value of the Employee Object**/
 	public String getEmail() {return email;}
-	public String getDob() {return dob;}
-	public String getAddress() {return address;}
-	public String getCity() {return city;}
-	public String getState() {return state;}
-	public int getZipcode() {return zipcode;}
+	/**Returns the role value of the Employee Object**/
 	public String getRole() {return role;}
+	/**Returns the department value of the Employee Object**/
 	public String getDepartment() {return department;}
-	public String getSupervisor() {return supervisor;}
-	
-	@Override
-	public String toString() {
-		return "Employee [empId=" + emp_id + ",first name=" +  fname + ",last name=" + 
-				lname + ",username=" + username + ",password="
-				+ password + ",email=" + email + ",date of birth=" + 
-				dob + ",address=" + address + ",zipcode=" + zipcode + ",role="+ 
-				role + ",department=" + department + ",supervisor=" + supervisor+ "]";
-	}
+	/**Returns the sup_id value of the Employee Object**/
+	public int getSup_id() {return sup_id;}
+	/**Returns the amount value of the Employee Object**/
+	public int getAmount() {return amount;}
 	
 }
