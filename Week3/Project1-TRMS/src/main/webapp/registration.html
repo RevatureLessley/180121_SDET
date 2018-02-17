@@ -16,11 +16,10 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
-	<script src="resource/javascript/AJAX.js"></script>
+<script src="resource/javascript/AJAX.js"></script>
 
 </head>
 <body>
-
 	<div class="container-fluid" style="margin-top: 50px"">
 
 		<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -41,12 +40,11 @@
 				</ul>
 			</div>
 		</nav>
+		
 		<div class="well">
 			<h1>Welcome To The Registration Page!</h1>
 		</div>
-
-
-		<form action="#" class="form-horizontal" id="register">
+		<form action="#" class="form-horizontal" id="register" method="post">
 			<fieldset>
 				<div id="legend">
 					<legend class="">Register</legend>
@@ -74,10 +72,10 @@
 
 				<h5>Please provide your Role</h5>
 				<div id="role">
-				<label class="radio-inline"><input type="radio" name="role">employee</label> 
-				<label class="radio-inline"><input type="radio" name="role">supervisor</label> 
-				<label class="radio-inline"><input type="radio" name="role">department head</label>
-				<label class="radio-inline"><input type="radio"name="role">benefits coordinator</label>
+				<label class="radio-inline"><input type="radio" name="role" value="employee">employee</label> 
+				<label class="radio-inline"><input type="radio" name="role" value="supervisor">supervisor</label> 
+				<label class="radio-inline"><input type="radio" name="role" value="department head">department head</label>
+				<label class="radio-inline"><input type="radio"name="role" value="benefits coordinator">benefits coordinator</label>
 				</div>
 
 

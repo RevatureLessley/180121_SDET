@@ -12,13 +12,17 @@ import com.revature.service.DataService;
 
 /**
  * Servlet implementation class RegisterEmp
+ * This servlet is used to be the middle man between the Registration page and the class DataService.
  */
 public class RegisterEmp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text");
-		PrintWriter out = response.getWriter();
+	/**doGet() will call doPost() as it will be more secure for handling such sensitive information.**/
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { doPost(request, response);}
+
+	/**doPost() will take in all the values from the form that is in the request, and pass them to DataService's method
+	 * insertEmployee() as arguments. The amount will be preset to 1000 as it is a new registration.**/
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int emp_id = Integer.parseInt(request.getParameter("empid"));
 		String fname = request.getParameter("fname");
@@ -27,25 +31,11 @@ public class RegisterEmp extends HttpServlet {
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 		String role = request.getParameter("role");
-		String department = request.getParameter("department");;
+		String department = request.getParameter("departments");
 		int sup_id = Integer.parseInt(request.getParameter("supid"));
 		int amount = 1000;
 		
-		//if(!DataService.dupName(username)){
-			DataService.insertEmployee(emp_id, fname, lname, username, password, email, role, department, sup_id, amount);
-				out.print("Employee Inserted!");
-				//}else{//
-		//		out.print("Employee Insertion Failed.");
-	//		}
-			
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		DataService.insertEmployee(emp_id, fname, lname, username, password, email, role, department, sup_id, amount);
 	}
 
 }

@@ -82,7 +82,8 @@ function sendAJAX(){
 
 
 
-
+/**postAjax() will be called on submission of a new registration form. All of the values will be parsed and sent to the RegisterEmp servlet for
+ * further processing.**/
 function postAjax(){
 	var xhr = new XMLHttpRequest(); //State = 0
 	xhr.open("POST","RegisterEmp"); //State == 1
@@ -119,8 +120,7 @@ function postAjax(){
 	var departments = document.forms["register"]["departments"].value;
 	var supid = document.forms["register"]["supid"].value;
 	
-	
-	xhr.send("empid=" + empid + "&fname=" + fname + "&lname=" + lname + "&username=" + username + 
-			+ "&password=" + password + "&email=" + email + "&role=" + role + "&departmements=" + 
+	xhr.send("empid=" + empid + "&fname=" + fname + "&lname=" + lname + "&username=" + username
+			+ "&password=" + password + "&email=" + email + "&role=" + role + "&departments=" + 
 			departments + "&supid=" + supid);
 }
