@@ -37,4 +37,14 @@ public class DataService {
 		EmployeeDaoImpl empDao = new EmployeeDaoImpl();
 		return empDao.checkUniqueUsername(name);
 	}
+	
+	public static int valLogin(String username, String password) {
+		EmployeeDaoImpl empDao = new EmployeeDaoImpl();
+		return empDao.checkCredentials(username, password);
+	}
+
+	public static Employee returnEmployee (String username) {
+		EmployeeDaoImpl empDao = new EmployeeDaoImpl();
+		return empDao.getEmployee(username);
+	}
 }

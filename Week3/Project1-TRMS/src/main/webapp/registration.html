@@ -35,7 +35,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="registration.html"><span
 							class="glyphicon glyphicon-user"></span> Register</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+				<li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span>
 							Login</a></li>
 				</ul>
 			</div>
@@ -44,7 +44,10 @@
 		<div class="well">
 			<h1>Welcome To The Registration Page!</h1>
 		</div>
-		<form action="#" class="form-horizontal" id="register" method="post">
+		
+		
+		<div id="wholeform">
+			<form action="#" class="form-horizontal" id="register" method="post">
 			<fieldset>
 				<div id="legend">
 					<legend class="">Register</legend>
@@ -149,12 +152,12 @@
 				<div class="control-group">
 					<!-- Button -->
 					<div class="controls">
-						<button type="button" class="btn btn-default" onclick="postAjax()">Register</button>
+						<button type="button" class="btn btn-default" onclick="registerAjax()">Register</button>
 					</div>
 				</div>
 			</fieldset>
-		</form>
-
+			</form>
+		</div>
 
 	</div>
 </body>

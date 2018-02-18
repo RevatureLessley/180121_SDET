@@ -13,10 +13,20 @@
     <description></description>
     <display-name>RegisterEmp</display-name>
     <servlet-name>RegisterEmp</servlet-name>
-    <servlet-class>com.revature.serlvets.RegisterEmp</servlet-class>
+    <servlet-class>com.revature.servlets.RegisterEmp</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RegisterEmp</servlet-name>
     <url-pattern>/RegisterEmp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.revature.servlets.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login1</url-pattern>
   </servlet-mapping>
 </web-app>
