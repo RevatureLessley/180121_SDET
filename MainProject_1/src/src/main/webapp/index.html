@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#"></a>
+			</div>
+			<ul class="nav navbar-nav">
+			<!--  	<li class="active"><a href="#">Login</a></li> -->
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="register.html"><span class="glyphicon glyphicon-user"></span>
+						Register</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+						Login</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container-fluid" style="margin-top: 50px">
+		<div class="well">
+			<h1>Tuition Reimbursement System</h1>
+		</div>
+		<div class="well">
+			<h3>Login</h3>
+			<form method="POST" action="Login.do">
+				<div class="form-group">
+					<label for="username">USERNAME:</label> <input type="text"
+						class="form-control" name="username">
+				</div>
+				<div class="form-group">
+					<label for="password">PASSWORD:</label> <input type="password"
+						class="form-control" name="password">
+				</div> <br>
+				<h4>Login As </h4>
+				<ul style="list-style-type: none"><br>
+					<li><input type="radio" name="Radio1" value="Associate" checked>Associate</li>
+					<li><input type="radio" name="Radio1" value="Administrator">Administrator</li>
+					<li><input type="radio" name="Radio1" value="BenCo">BenCo</li>
+				</ul><br>
+				<button type="submit" class="btn btn-default">Login</button>
+				
+			</form>
+		</div>
+		<div class=well>
+			<h3>Register</h3>
+			
+			<form action="register.html">
+			<button type="submit" class="btn btn-default">Sign Up</button>
+			</form>
+			
+		</div>
+	</div>
+</body>
+</html>
