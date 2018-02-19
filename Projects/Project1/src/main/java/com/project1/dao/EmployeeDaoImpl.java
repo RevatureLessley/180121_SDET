@@ -92,10 +92,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				System.out.println();
-				System.out.println();
-				System.out.println();
-				System.out.println();
+				System.out.println(rs.getString(1));
+				System.out.println(rs.getString(2));
+//				System.out.println();
+//				System.out.println();
 			}
 
 		} catch (SQLException e) {

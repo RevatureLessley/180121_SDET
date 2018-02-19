@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public class Connections {
 	private static Properties prop = null;
-	private final static String FILE_NAME = "dbprops.properties";
+	private final static String FILE_NAME = "C:\\Users\\rrosa\\Desktop\\Workspaces\\ProjectsWorkspace\\Project1\\dbprops.properties";
 	public static Connection getConnection() throws SQLException{
 		try{
 			prop = new Properties();
