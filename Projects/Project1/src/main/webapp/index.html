@@ -20,10 +20,9 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 	
-	
-	
 <!--  notes for project:
 		1) Use a front controller (filter) for the authentication page. -->
+<script src="javascript/Ajax.js"></script>
 </head>
 <title>RRose Inc</title>
 <body>
@@ -56,9 +55,23 @@
 					<label for="pwd2">Title:</label> <input type="text"
 						class="form-control" name="title" required>
 				</div>
-				<button type="button" class="btn btn-default" onclick="postAjax()">Submit</button>
-				
+				<button type="button" class="btn btn-default" onclick="postAjax()">Submit</button>	
 			</form>
+		</div>
+		<div class="well">
+			<h3>Employees!!</h3>
+			<button onclick="sendAJAX()">Get Employees</button>
+			<table border=2px id=results>
+				<tr>
+					<th>email</th>
+					<th>first</th>
+					<th>last</th>
+					<th>address</th>
+					<th>jobtitle</th>
+					<th>date</th>
+				</tr>
+			</table>
+			<p id=AJAXError></p>
 		</div>
 	</div>
 </body>

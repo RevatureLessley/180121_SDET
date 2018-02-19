@@ -9,9 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-//import org.apache.log4j.Logger;
-
-import com.project1.users.Employee;
+import com.project1.beans.Employee;
 import com.project1.util.Connections;
 
 public class EmployeeDaoImpl implements EmployeeDao {
@@ -84,7 +82,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 //======================= RETRIEVAL METHODS =================================//
 	
 	@Override
-	public void /*List<Employee>*/ getAllAccounts() {
+	public List<Employee> getAllEmployees() {
 		employees = new ArrayList<>();
 		try (Connection conn = Connections.getConnection()) {
 			sql = "SELECT * FROM personal_info";
@@ -92,10 +90,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				System.out.println(rs.getString(1));
-				System.out.println(rs.getString(2));
-//				System.out.println();
-//				System.out.println();
+				employees.add(new Employee(rs.getString(1), rs.getString(2), rs.getString(3), 
+						rs.getString(4), rs.getString(5), rs.getString(6)));
+
 			}
 
 		} catch (SQLException e) {
@@ -104,6 +101,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			close(ps);
 			close(rs);
 		}
+		return employees;
 	}
 	
 /*

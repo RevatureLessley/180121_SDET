@@ -1,7 +1,8 @@
 package com.project1.dao;
 
 import java.util.List;
-import com.project1.users.Employee;
+
+import com.project1.beans.Employee;
 
 public interface EmployeeDao {
 //	public void insertIntoUserInfo(String name, String fname, String lname);
@@ -13,6 +14,6 @@ public interface EmployeeDao {
 //	public void updateBalanceInfo(String email, String col, double newVal);
 //	public void updateAccountStatusInfo(String email, String col, int newVal);
 //	public Account selectAccountByEmail(String email);	//retrieves entire account using email (PK)
-	public void /*List<Employee>*/ getAllAccounts();	//admin only (Use Join statement)
+	public List<Employee> getAllEmployees();	//admin only (Use Join statement)
 	//public void deleteAccountByEmail(String email);	//admin only
 }

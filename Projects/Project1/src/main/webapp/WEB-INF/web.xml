@@ -29,4 +29,14 @@
     <servlet-name>SecondServ</servlet-name>
     <url-pattern>/SecondServ</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetEmployees</display-name>
+    <servlet-name>GetEmployees</servlet-name>
+    <servlet-class>com.project1.servlets.GetEmployees</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetEmployees</servlet-name>
+    <url-pattern>/GetEmployees</url-pattern>
+  </servlet-mapping>
 </web-app>

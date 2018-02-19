@@ -11,25 +11,28 @@ function sendAJAX(){
 			 */
 			var xmlText = xhr.responseXML;
 			var response = xmlText.getElementsByTagName("employee");
-			//response is a collection of all employee tags.
 			var resultTable = document.getElementById("results");
-			//variable referencing our end table.
 			for(e in response){
 				var row = document.createElement("tr");
 				var td1 = document.createElement("td");
 				var td2 = document.createElement("td");
 				var td3 = document.createElement("td");
 				var td4 = document.createElement("td");
+				var td5 = document.createElement("td");
+				var td6 = document.createElement("td");
 				
 				td1.innerHTML = response[e].childNodes[0].innerHTML;
 				td2.innerHTML = response[e].childNodes[1].innerHTML;
 				td3.innerHTML = response[e].childNodes[2].innerHTML;
 				td4.innerHTML = response[e].childNodes[3].innerHTML;
-				
+				td5.innerHTML = response[e].childNodes[4].innerHTML;
+				td6.innerHTML = response[e].childNodes[5].innerHTML;
 				row.appendChild(td1);
 				row.appendChild(td2);
 				row.appendChild(td3);
 				row.appendChild(td4);
+				row.appendChild(td5);
+				row.appendChild(td6);
 				
 				resultTable.appendChild(row);
 			}
