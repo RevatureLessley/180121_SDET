@@ -3,6 +3,7 @@ package com.trms.beans;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 public class Reimbursement {
@@ -17,6 +18,9 @@ public class Reimbursement {
 	private float passGrade;
 	private int workDaysMissed;
 	private LocalDateTime dateTime;
+	private Date date;
+	private String dateStr;
+	private String timeStr;
 	private LocalDateTime timestamp;
 	private String workJustification;
 	private int nextApprovalId;
@@ -158,6 +162,36 @@ public class Reimbursement {
 
 	public void setDateTime(LocalDateTime dateTime) {
 		this.dateTime = dateTime;
+	}
+
+
+	public Date getDate() {
+		return date;
+	}
+
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+
+	public String getDateStr() {
+		return dateStr;
+	}
+
+
+	public void setDateStr(String dateStr) {
+		this.dateStr = dateStr;
+	}
+
+
+	public String getTimeStr() {
+		return timeStr;
+	}
+
+
+	public void setTimeStr(String timeStr) {
+		this.timeStr = timeStr;
 	}
 
 

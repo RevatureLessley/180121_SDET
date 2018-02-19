@@ -48,13 +48,56 @@ public class NewReimburseServlet extends HttpServlet {
 					FileItem item = (FileItem)iterator.next();
 					if(!item.isFormField()) { // If item is a file field
 						String fileName = item.getName();
-						File uploadedFile = new File(fileName);
-						item.write(uploadedFile);
-						r.addFile(uploadedFile);
-						logger.info("doGet() : filename="+fileName);
+						if(fileName != "") {
+							File uploadedFile = new File(fileName);
+							item.write(uploadedFile);
+							r.addFile(uploadedFile);
+							logger.info("doGet() : filename="+fileName);
+						}	
 					} else { // When item is a simple form field
 						String name = item.getFieldName();
 						String value = item.getString();
+						switch (name) {
+						case "learningcenter":
+							r.setCenterId(Integer.parseInt(value));
+							break;
+						case "eventtype":
+							r.setEventId(Integer.parseInt(value));
+							break;
+						case "formattype":
+							r.setFormatId(Integer.parseInt(value));
+							break;
+						case "date":
+							r.setDateStr(value);
+							break;
+						case "time":
+							r.setTimeStr(value);
+							break;
+						case "cost":
+							r.setCost(Float.parseFloat(value));
+							break;
+						case "projectedreimburse":
+							r.setProjectedReimb(Float.parseFloat(value));
+							break;
+						case "passinggrade":
+							r.setPassGrade(Float.parseFloat(value));
+							break;
+						case "workmisseed":
+							r.setWorkDaysMissed(Integer.parseInt(value));
+							break;
+						case "workjustification":
+							r.setWorkJustification(value);
+							break;
+						case "desc":
+							r.setDescription(value);
+							break;
+						case "reportsto":
+							r.setNextApprovalId(Integer.parseInt(value));
+							break;
+						default:
+							logger.warn("doGet() : fieldName doesn't exist");
+							break;
+						}
 						logger.info("doGet() : name=" + name + " value=" + value);
 					}
 				}

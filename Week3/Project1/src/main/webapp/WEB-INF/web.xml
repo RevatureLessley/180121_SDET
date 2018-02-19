@@ -89,4 +89,14 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmployeeInfoServlet</display-name>
+    <servlet-name>EmployeeInfoServlet</servlet-name>
+    <servlet-class>com.trms.servlets.EmployeeInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeInfoServlet</servlet-name>
+    <url-pattern>/EmployeeInfoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

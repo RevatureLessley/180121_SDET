@@ -25,10 +25,20 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		PreparedStatement ps = null;
 		
 		try(Connection conn = Connections.getConnection()) {
-			String sql = "INSERT INTO reimbursements (reimburse_emp_id) VALUES (?)";
+			String sql = "INSERT INTO reimbursements (reimburse_emp_id, reimburse_cost, reimburse_projreimb, reimburse_desc, reimburse_passgrade, "
+					+ "reimburse_workmissed, reimburse_datetime, reimburse_workjustify, reimburse_approvelvl, reimburse_urgent) VALUES (?,?,?,?,?,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, r.getEmpId());
-			ps.executeUpdate();
+			ps.setFloat(2, r.getCost());
+			ps.setFloat(3, r.getProjectedReimb());
+			ps.setString(4, r.getDescription());
+			ps.setFloat(5, r.getPassGrade());
+			ps.setInt(6, r.getWorkDaysMissed());
+			ps.setDate(7, r.getDate());
+			ps.setString(8, r.getWorkJustification());
+			ps.setInt(9, r.getNextApprovalId());
+			ps.setInt(10, r.getUrgent());
+			ps.executeUpdate();	
 			
 			List<File> l = r.getAttachments();
 			if(!l.isEmpty()) {
@@ -54,11 +64,12 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		FileInputStream in = null;
 		
 		try(Connection conn = Connections.getConnection()) {
-			String sql = "INSERT into reimburseattachments (at_reimburse_id, reimburse_attach) VALUES (?, ?)";
+			String sql = "INSERT into reimburseattachments (at_reimburse_id, reimburse_attach, attach_name) VALUES (?, ?)";
 			ps = conn.prepareStatement(sql);
 			in = new FileInputStream(f);
 			ps.setInt(1, r_id);
 			ps.setBinaryStream(2, in, (int)f.length());
+			ps.setString(3, f.getName());
 			logger.info("insertAttachment() : before executeUpdate");
 			ps.executeUpdate();
 		} catch(SQLException e) {
