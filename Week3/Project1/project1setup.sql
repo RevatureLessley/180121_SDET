@@ -67,16 +67,16 @@ CREATE TABLE eventtypes(
 
 CREATE TABLE gradingformats(
     format_id NUMBER(9),
-    format_type VARCHAR2(20) NOT NULL,
+    format_type VARCHAR2(50) NOT NULL,
     format_req VARCHAR2(250) NOT NULL,
     CONSTRAINT grade_format_pk PRIMARY KEY(format_id)
 );
 
 CREATE TABLE learningcenters (
     center_id NUMBER(9),
-    center_name VARCHAR(20) NOT NULL,
+    center_name VARCHAR(50) NOT NULL,
     center_addr VARCHAR2(30) NOT NULL,
-    center_city VARCHAR2(15) NOT NULL,
+    center_city VARCHAR2(20) NOT NULL,
     center_state VARCHAR2(2) NOT NULL,
     center_zip NUMBER(5) NOT NULL,
     center_country VARCHAR2(20) NOT NULL,
@@ -94,11 +94,12 @@ CREATE TABLE reimbursements(
     reimburse_desc VARCHAR2(300),
     reimburse_grade NUMBER(3),
     reimburse_passgrade NUMBER(3) DEFAULT 75,
-    reimburse_workmissed INTERVAL DAY(3) TO SECOND,
+    reimburse_workmissed NUMBER(4),
     reimburse_datetime DATE,
     reimburse_timestamp TIMESTAMP(5) DEFAULT SYSTIMESTAMP,
     reimburse_workjustify VARCHAR2(300),
-    reimburse_approvelvl NUMBER(1), --the id of the emp that needs to approve next (for direct-super uses reportsto col)
+    reimburse_approvelvl NUMBER(1), --level of approval process
+    reimburse_approveid NUMBER(9),
     reimburse_inforeq NUMBER(1) DEFAULT -1, --number similar to applvl level the number dictates who needs to provide additional info
     reimburse_urgent NUMBER(1),
     reimburse_approved NUMBER(1) DEFAULT 2, --2:pending, 1:approved, 0:denied
@@ -263,4 +264,13 @@ INSERT INTO eventtypes VALUES(4, 'CERTIFICATION', 1.00);
 INSERT INTO eventtypes VALUES(5, 'TECHNICAL TRAINING', 0.90);
 INSERT INTO eventtypes VALUES(6, 'OTHER', 0.30);
 
-SELECT count(emp_reportsto) FROM employees WHERE emp_reportsto = 1;
+INSERT INTO learningcenters VALUES(1, 'SUNY BINGHAMTON', '4400 Vestal Parkway East', 'Binghamton', 'NY', 13902, 'USA');
+INSERT INTO learningcenters VALUES(2, 'REVATURE', '11730 Plaza America Dr #205', 'Reston', 'VA', 20190, 'USA');
+INSERT INTO learningcenters VALUES(3, 'NEW HORIZONS', '462 Seventh Ave, 6th Floor', 'New York', 'NY', 10018, 'USA');
+INSERT INTO learningcenters VALUES(4, 'WESTERN GOVERNORS UNIVERSITY', '4001 S 700 E #700', 'Salt Lake City', 'UT', 84107, 'USA');
+INSERT INTO learningcenters VALUES(5, 'ORACLE UNIVERSITY', '-', '-', '-', -1, '-');
+
+SELECT reimburse_id FROM 
+(SELECT * FROM reimbursements 
+ORDER BY reimburse_timestamp DESC) 
+WHERE reimburse_emp_id = 2 AND ROWNUM = 1 ;

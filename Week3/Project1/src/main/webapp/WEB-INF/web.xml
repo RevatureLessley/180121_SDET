@@ -99,4 +99,14 @@
     <servlet-name>EmployeeInfoServlet</servlet-name>
     <url-pattern>/EmployeeInfoServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EventTypesServlet</display-name>
+    <servlet-name>EventTypesServlet</servlet-name>
+    <servlet-class>com.trms.servlets.EventTypesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EventTypesServlet</servlet-name>
+    <url-pattern>/EventTypesServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

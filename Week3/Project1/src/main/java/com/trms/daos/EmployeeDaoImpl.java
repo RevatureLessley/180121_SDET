@@ -94,4 +94,29 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return subNum;
 	}
 
+	@Override
+	public int getReportsTo(int empId) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int rt = -1;
+
+		try (Connection conn = Connections.getConnection()) {
+			String sql = "SELECT emp_reportsto FROM employees WHERE emp_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, empId);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				rt = rs.getInt(1);
+			}
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		
+		return rt;
+	}
+
 }

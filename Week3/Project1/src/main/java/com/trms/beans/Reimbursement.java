@@ -24,6 +24,7 @@ public class Reimbursement {
 	private LocalDateTime timestamp;
 	private String workJustification;
 	private int nextApprovalId;
+	private int apprLvl;
 	private int nextInfoReq;
 	private int urgent;
 	private int approved;
@@ -31,6 +32,13 @@ public class Reimbursement {
 	
 	public Reimbursement() {
 		attachments = new ArrayList<File>();
+		this.cost = 0f;
+		this.projectedReimb = 0f;
+		this.grade = 0f;
+		this.passGrade = 75f;
+		this.workDaysMissed = 0;
+		this.urgent = 0;
+		this.apprLvl = 2;
 	}
 	
 	
@@ -222,6 +230,16 @@ public class Reimbursement {
 
 	public void setNextApprovalId(int nextApprovalId) {
 		this.nextApprovalId = nextApprovalId;
+	}
+
+
+	public int getApprLvl() {
+		return apprLvl;
+	}
+
+
+	public void setApprLvl(int apprLvl) {
+		this.apprLvl = apprLvl;
 	}
 
 

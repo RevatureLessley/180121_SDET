@@ -15,6 +15,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.trms.beans.Reimbursement;
+import com.trms.services.EmployeeService;
 import com.trms.util.Connections;
 
 public class ReimbursementDaoImpl implements ReimbursementDao {
@@ -23,10 +24,12 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	@Override
 	public int insertReimbursement(Reimbursement r) {
 		PreparedStatement ps = null;
+		r.setNextApprovalId(EmployeeService.getReportsTo(r.getEmpId()));
 		
 		try(Connection conn = Connections.getConnection()) {
 			String sql = "INSERT INTO reimbursements (reimburse_emp_id, reimburse_cost, reimburse_projreimb, reimburse_desc, reimburse_passgrade, "
-					+ "reimburse_workmissed, reimburse_datetime, reimburse_workjustify, reimburse_approvelvl, reimburse_urgent) VALUES (?,?,?,?,?,?,?,?,?,?)";
+					+ "reimburse_workmissed, reimburse_datetime, reimburse_workjustify, reimburse_approvelvl, reimburse_urgent, reimburse_approveid,"
+					+ "reimburse_event_id, reimburse_center_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, r.getEmpId());
 			ps.setFloat(2, r.getCost());
@@ -36,8 +39,11 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			ps.setInt(6, r.getWorkDaysMissed());
 			ps.setDate(7, r.getDate());
 			ps.setString(8, r.getWorkJustification());
-			ps.setInt(9, r.getNextApprovalId());
+			ps.setInt(9, r.getApprLvl());
 			ps.setInt(10, r.getUrgent());
+			ps.setInt(11, r.getNextApprovalId());
+			ps.setInt(12, r.getEventId());
+			ps.setInt(13, r.getCenterId());
 			ps.executeUpdate();	
 			
 			List<File> l = r.getAttachments();
@@ -64,7 +70,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		FileInputStream in = null;
 		
 		try(Connection conn = Connections.getConnection()) {
-			String sql = "INSERT into reimburseattachments (at_reimburse_id, reimburse_attach, attach_name) VALUES (?, ?)";
+			String sql = "INSERT into reimburseattachments (at_reimburse_id, reimburse_attach, attach_name) VALUES (?, ?, ?)";
 			ps = conn.prepareStatement(sql);
 			in = new FileInputStream(f);
 			ps.setInt(1, r_id);
@@ -90,7 +96,8 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		int reimburseId = -1;
 		
 		try(Connection conn = Connections.getConnection()) {
-			String query = "SELECT reimburse_id FROM reimbursements WHERE reimburse_emp_id = ?";
+			String query = "SELECT reimburse_id FROM (SELECT * FROM reimbursements " + 
+					"ORDER BY reimburse_timestamp DESC) WHERE reimburse_emp_id = ? AND ROWNUM = 1";
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, empId);
 			rs = ps.executeQuery();

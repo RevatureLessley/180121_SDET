@@ -15,10 +15,15 @@ public class ReimbursementService {
 	public static int insertReimbursement(Reimbursement r) {
 		ReimbursementDao dao = new ReimbursementDaoImpl();
 		
-		String result = LocalTime.parse(r.getTimeStr(), DateTimeFormatter.ofPattern("HH:mm:ss")).format(DateTimeFormatter.ofPattern("hh:mm a"));
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
+		String[] s = r.getTimeStr().split(":");
+		String t = r.getTimeStr();
+		if(s.length == 3) {
+			t = String.join(":", s[0], s[1]);
+		}
+		String result = LocalTime.parse(t, DateTimeFormatter.ofPattern("HH:mm")).format(DateTimeFormatter.ofPattern("hh:mm a"));
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a");
 		LocalDateTime ldt = LocalDateTime.parse((r.getDateStr() + " " + result), dtf);
-		ZonedDateTime zdt = ldt.atZone(ZoneId.of("UTC"));
+		ZonedDateTime zdt = ldt.atZone(ZoneId.of("Etc/GMT+5"));
 		Date d = new Date(zdt.toInstant().toEpochMilli());
 		r.setDateTime(ldt);
 		r.setDate(d);

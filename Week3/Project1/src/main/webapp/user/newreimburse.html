@@ -47,8 +47,6 @@
 					</div>
 				</div>
 				
-					<input type="number" name="reportsto" id="reportsto" disabled style="display:none">
-				
 				<div class="form-group row">
 					<div class="col-md-4">
 						<label for="addr">ADDRESS</label>
@@ -71,7 +69,7 @@
 				<!-- add more spaces for prefilled emp (addr & id) info -->
 				<div class="form-group">
 					<label for="learningcenter">LEARNING CENTER</label> <select
-						class="form-control" name="learningcenter">
+						class="form-control" name="learningcenter" required>
 						<option value='322'>A</option>
 						<option>B</option>
 						<option>C</option>
@@ -83,13 +81,7 @@
 
 				<div class="form-group">
 					<label for="eventtype">EVENT TYPE</label> <select
-						class="form-control" name="eventtype">
-						<option value='232'>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
+						class="form-control" name="eventtype" id="eventtype" required>
 					</select>
 				</div>
 
@@ -98,7 +90,7 @@
 						<label for="date" class="col-2 col-form-label">DATE</label>
 						<div class="col-10">
 							<input class="form-control" type="date" value="2011-08-19"
-								name="date">
+								name="date" required>
 						</div>
 					</div>
 
@@ -106,7 +98,7 @@
 						<label for="time" class="col-2 col-form-label">TIME</label>
 						<div class="col-10">
 							<input class="form-control" type="time" value="13:45:00"
-								name="time">
+								name="time" required>
 						</div>
 					</div>
 				</div>
@@ -116,7 +108,7 @@
 						<label for="cost" class="col-2 col-form-label">COST</label>
 						<div class="col-10">
 							<input class="form-control" type="number" min="0" step="0.01" placeholder="0.00"
-								name="cost">
+								name="cost" required>
 						</div>
 					</div>
 
@@ -147,7 +139,7 @@
 							GRADE</label>
 						<div class="col-10">
 							<input class="form-control" type="number" name="passinggrade"
-								placeholder="0" step="0.01">
+								placeholder="0" step="0.01" value='75'>
 						</div>
 					</div>
 				</div>
@@ -161,7 +153,6 @@
 								placeholder="Days of work to be missed">
 						</div>
 					</div>
-
 					<div class="col-md-6">
 						<label for="workjustification">WORK JUSTIFICATION:</label> <input
 							type="text" class="form-control" name="workjustification"
@@ -169,11 +160,12 @@
 					</div>
 				</div>
 				
+				
 				<div class="form-group">
 					<label for="desc">DESCRIPTION</label>
-					<input class="form-control" type="text" name="desc" placeholder="Description">
+					<input class="form-control" type="text" name="desc" placeholder="Description" value=''>
 				</div>
-
+ 
 				<div class="form-group">
 					<label for="inputFile">ATTACHMENTS</label> <input
 						type="file" class="form-control-file" id="inputFile"

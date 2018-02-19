@@ -17,4 +17,10 @@ public class EmployeeService {
 		
 		return dao.getSubordinates(empId);
 	}
+	
+	public static int getReportsTo(int empId) {
+		EmployeeDao dao = new EmployeeDaoImpl();
+	
+		return dao.getReportsTo(empId);
+	}
 }

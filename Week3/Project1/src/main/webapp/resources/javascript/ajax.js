@@ -4,6 +4,7 @@
 */
 window.onload = function() {
 	getEmp();
+	getEventTypes();
 }
 
 function getEmp() {
@@ -20,7 +21,29 @@ function getEmp() {
 			document.getElementById("city").value = jsonObj.city;
 			document.getElementById("state").value = jsonObj.state;
 			document.getElementById("zip").value = jsonObj.zip;
-			document.getElementById("reportsto").value = jsonObj.reportsto;
+		}
+	}
+	
+	xhr.send();
+}
+
+function getEventTypes() {
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "../EventTypesServlet");
+	
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4 && xhr.status == 200) {
+			var jsonObj = JSON.parse(xhr.responseText);
+			
+			var selector = document.getElementById("eventtype");
+			
+			for(var i = 0; i < jsonObj.length; i++) {
+				var option = document.createElement("option");
+				option.value = jsonObj[i].eventid;
+				option.innerHTML = jsonObj[i].eventname;
+				
+				selector.appendChild(option);
+			}
 		}
 	}
 	

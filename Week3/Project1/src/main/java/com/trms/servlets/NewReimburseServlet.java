@@ -41,6 +41,7 @@ public class NewReimburseServlet extends HttpServlet {
 			logger.info("multipart request");
 			FileItemFactory factory = new DiskFileItemFactory();
 			ServletFileUpload upload = new ServletFileUpload(factory);
+			String name = "";
 			try {
 				List<FileItem> items = upload.parseRequest(request);
 				Iterator<FileItem> iterator = items.iterator();
@@ -55,8 +56,9 @@ public class NewReimburseServlet extends HttpServlet {
 							logger.info("doGet() : filename="+fileName);
 						}	
 					} else { // When item is a simple form field
-						String name = item.getFieldName();
+						name = item.getFieldName();
 						String value = item.getString();
+						logger.info("doGet() : name=" + name + " value=" + value);
 						switch (name) {
 						case "learningcenter":
 							r.setCenterId(Integer.parseInt(value));
@@ -70,20 +72,28 @@ public class NewReimburseServlet extends HttpServlet {
 						case "date":
 							r.setDateStr(value);
 							break;
-						case "time": // TODO an error being thrown here so can't submit to database
-							//r.setTimeStr(value);
+						case "time":
+							r.setTimeStr(value);
 							break;
 						case "cost":
-							r.setCost(Float.parseFloat(value));
+							if(!value.isEmpty()) {
+								r.setCost(Float.parseFloat(value));
+							}
 							break;
 						case "projectedreimburse":
-							r.setProjectedReimb(Float.parseFloat(value));
+							if(!value.isEmpty()) {
+								r.setProjectedReimb(Float.parseFloat(value));
+							}
 							break;
 						case "passinggrade":
-							r.setPassGrade(Float.parseFloat(value));
+							if(!value.isEmpty()) {
+								r.setPassGrade(Float.parseFloat(value));
+							}
 							break;
-						case "workmisseed":
-							r.setWorkDaysMissed(Integer.parseInt(value));
+						case "workmissed":
+							if(!value.isEmpty()) {
+								r.setWorkDaysMissed(Integer.parseInt(value));
+							}
 							break;
 						case "workjustification":
 							r.setWorkJustification(value);
@@ -91,14 +101,10 @@ public class NewReimburseServlet extends HttpServlet {
 						case "desc":
 							r.setDescription(value);
 							break;
-						case "reportsto":
-							r.setNextApprovalId(Integer.parseInt(value));
-							break;
 						default:
 							logger.warn("doGet() : fieldName " + name + " doesn't exist");
 							break;
 						}
-						logger.info("doGet() : name=" + name + " value=" + value);
 					}
 				}
 				
@@ -106,7 +112,8 @@ public class NewReimburseServlet extends HttpServlet {
 			} catch(FileUploadException e) {
 				logger.error(e.getMessage());
 			} catch(Exception e) {
-				logger.error(e.getMessage());
+				logger.error("on last field " + name);
+				e.printStackTrace(out);
 			}
 		} else {
 			logger.info("not multipart request");
