@@ -6,6 +6,7 @@ window.onload = function() {
 	getEmp();
 	getEventTypes();
 	getLearnCenters();
+	getGradeFormats();
 }
 
 function getEmp() {
@@ -68,6 +69,23 @@ function getLearnCenters() {
 				
 				selector.appendChild(option);
 			}
+		}
+	}
+	
+	xhr.send();
+}
+
+function getGradeFormats() {
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "../GradeFormatServlet");
+	
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4 && xhr.status == 200) {
+			var jsonObj = JSON.parse(xhr.responseText);
+			
+			var div = document.getElementById("formattype");
+			
+			
 		}
 	}
 	

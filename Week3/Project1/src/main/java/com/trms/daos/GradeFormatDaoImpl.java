@@ -9,27 +9,26 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.trms.beans.LearningCenter;
+import com.trms.beans.GradeFormat;
 import com.trms.util.Connections;
 import static com.trms.util.CloseStreams.close;
 
-public class LearningCenterDaoImpl implements LearningCenterDao {
-	private final static Logger logger = Logger.getLogger(LearningCenterDaoImpl.class);
-
+public class GradeFormatDaoImpl implements GradeFormatDao {
+	private final static Logger logger = Logger.getLogger(GradeFormatDaoImpl.class);
+	
 	@Override
-	public List<LearningCenter> getLearningCenters() {
+	public List<GradeFormat> getGradeFormats() {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<LearningCenter> llc = new ArrayList<>();
+		List<GradeFormat> lgf = new ArrayList<>();
 		
 		try(Connection conn = Connections.getConnection()) {
-			String sql = "SELECT * FROM learningcenters";
+			String sql = "SELECT * FROM gradingformats";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				llc.add(new LearningCenter(rs.getInt(1), rs.getString(2), rs.getString(3), 
-						rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7)));
+				lgf.add(new GradeFormat(rs.getInt(1), rs.getString(2), rs.getString(3)));
 			}
 		} catch(SQLException e) {
 			logger.error(e.getMessage());
@@ -37,8 +36,7 @@ public class LearningCenterDaoImpl implements LearningCenterDao {
 			close(ps);
 			close(rs);
 		}
-		
-		return llc;
+		return lgf;
 	}
 
 }

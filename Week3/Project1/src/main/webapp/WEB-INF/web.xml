@@ -119,4 +119,14 @@
     <servlet-name>LearningCentersServlet</servlet-name>
     <url-pattern>/LearningCentersServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GradeFormatServlet</display-name>
+    <servlet-name>GradeFormatServlet</servlet-name>
+    <servlet-class>com.trms.servlets.GradeFormatServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GradeFormatServlet</servlet-name>
+    <url-pattern>/GradeFormatServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
