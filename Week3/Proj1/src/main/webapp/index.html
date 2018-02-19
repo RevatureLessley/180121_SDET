@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<!-- Every page is made up of the header and the body. Header stores meta data for browsers
+	to determine what properties are used by the page. -->
+<head>
+<meta charset="UTF-8">
+
+<title>Tuition Reimbursement Home</title>
+
+
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Bring Bootstrap 3 libraries -->
+
+<script
+			  src="http://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Bring in supplemental javascript for bootstrap -->
+
+<link rel="stylesheet" type="text/css" href="resource/css/main.css">
+
+<script src="resource/GetRequest.js"></script>
+
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">Reimbursement</a>
+			</div>
+		</div>
+	</nav>
+	
+	
+	
+	<div class=container-fluid style="margin-top:50px">
+	
+	<div class = "well">
+			<h3>Login or create employee account</h3>
+			<form action="LoggedIn" method="POST">
+					<input type="text" name="username">USERNAME
+					<input type="password" name="password">PASSWORD
+					<select name="createOrLogin">
+						<option value="login">Log In</option>
+						<option value="create">Create an account</option>			
+					</select>
+					<select name="type">
+						<option value="0">Employee</option>
+						<option value="1">Supervisor</option>
+						<option value="2">Dept Head</option>
+						<option value="3">Ben Co</option>
+					</select>
+					<input type="submit" value="GO">
+			</form>				
+	</div>	
+
+
+	</div>
+</body>
+</html>
