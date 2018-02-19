@@ -117,6 +117,7 @@ CREATE TABLE reimburseattachments(
     attach_id NUMBER(9),
     at_reimburse_id NUMBER(9),
     reimburse_attach BLOB,
+    attach_name VARCHAR(45),
     CONSTRAINT attachments_pk PRIMARY KEY(attach_id),
     CONSTRAINT attach_reimburse_fk FOREIGN KEY(at_reimburse_id)
     REFERENCES reimbursements(reimburse_id) ON DELETE CASCADE
@@ -172,6 +173,16 @@ FOR EACH ROW
 BEGIN
     IF :new.reimburse_id IS NULL THEN
     SELECT reimb_seq.NEXTVAL INTO :new.reimburse_id FROM dual;
+    END IF;
+END;
+/
+
+CREATE OR REPLACE TRIGGER rattach_insert_trig
+BEFORE INSERT ON reimburseattachments
+FOR EACH ROW
+BEGIN
+    IF :new.attach_id IS NULL THEN
+    SELECT reimbattach_seq.NEXTVAL INTO :new.attach_id FROM dual;
     END IF;
 END;
 /

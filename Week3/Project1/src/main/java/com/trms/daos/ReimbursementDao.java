@@ -8,4 +8,5 @@ import com.trms.beans.Reimbursement;
 public interface ReimbursementDao {
 	public int insertReimbursement(Reimbursement r);
 	public int insertAttachment(File f, int r_id);
+	public int getReimburseByEmpId(int empId);
 }

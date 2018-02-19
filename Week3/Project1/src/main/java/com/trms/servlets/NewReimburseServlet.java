@@ -20,6 +20,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.log4j.Logger;
 
 import com.trms.beans.Reimbursement;
+import com.trms.services.ReimbursementService;
 
 /**
  * Servlet implementation class NewReimburseServlet
@@ -57,6 +58,8 @@ public class NewReimburseServlet extends HttpServlet {
 						logger.info("doGet() : name=" + name + " value=" + value);
 					}
 				}
+				
+				ReimbursementService.insertReimbursement(r);
 			} catch(FileUploadException e) {
 				logger.error(e.getMessage());
 			} catch(Exception e) {
