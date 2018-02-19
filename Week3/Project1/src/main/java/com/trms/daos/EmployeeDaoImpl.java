@@ -77,7 +77,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		int subNum = -1;
 
 		try (Connection conn = Connections.getConnection()) {
-			String sql = "SELECT count(emp_reportsto) FROM employees WHERE emp_id = ?"; // TODO modify to db query
+			String sql = "SELECT count(emp_reportsto) FROM employees WHERE emp_reportsto = ?"; // TODO modify to db query
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, empId);
 			rs = ps.executeQuery();

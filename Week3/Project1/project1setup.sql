@@ -97,7 +97,7 @@ CREATE TABLE reimbursements(
     reimburse_workmissed INTERVAL DAY(3) TO SECOND,
     reimburse_datetime DATE,
     reimburse_timestamp TIMESTAMP(5) DEFAULT SYSTIMESTAMP,
-    reimburse_workjustify VARCHAR2(300), --not sure if this should be free form typed or something from a list
+    reimburse_workjustify VARCHAR2(300),
     reimburse_approvelvl NUMBER(1), --the id of the emp that needs to approve next (for direct-super uses reportsto col)
     reimburse_inforeq NUMBER(1) DEFAULT -1, --number similar to applvl level the number dictates who needs to provide additional info
     reimburse_urgent NUMBER(1),
@@ -166,6 +166,15 @@ BEGIN
 END;
 /
 
+CREATE OR REPLACE TRIGGER reimburse_insert_trig
+BEFORE INSERT ON reimbursements
+FOR EACH ROW
+BEGIN
+    IF :new.reimburse_id IS NULL THEN
+    SELECT reimb_seq.NEXTVAL INTO :new.reimburse_id FROM dual;
+    END IF;
+END;
+/
 -- STORED PROCEDURES
 CREATE OR REPLACE PROCEDURE usersemp_insert(empid IN NUMBER, usernamein IN VARCHAR2, passin IN VARCHAR2, email IN VARCHAR2)
 IS
@@ -243,4 +252,4 @@ INSERT INTO eventtypes VALUES(4, 'CERTIFICATION', 1.00);
 INSERT INTO eventtypes VALUES(5, 'TECHNICAL TRAINING', 0.90);
 INSERT INTO eventtypes VALUES(6, 'OTHER', 0.30);
 
-SELECT count(emp_reportsto) FROM employees WHERE emp_id = 1;
+SELECT count(emp_reportsto) FROM employees WHERE emp_reportsto = 1;

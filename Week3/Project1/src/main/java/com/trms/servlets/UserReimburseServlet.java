@@ -34,8 +34,10 @@ public class UserReimburseServlet extends HttpServlet {
 		logger.info("doGet() : " + e.getTitle());
 		logger.info("doGet() number Subord : " + numSub);
 		if(e.getTitle().equals("DEPARTMENT HEAD") || e.getTitle().equals("BENEFITS COORDINATOR") || numSub > 0) {
+			session.setAttribute("approver", true);
 			response.sendRedirect("user/userhomeappr.html");
 		} else {
+			session.setAttribute("approver", false);
 			response.sendRedirect("user/userhome.html");
 		}
 		

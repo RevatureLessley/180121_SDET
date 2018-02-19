@@ -30,14 +30,16 @@
 	<div class='container'>
 		<h1 class='text-center'>New Reimbursement</h1>
 		<div class='well'>
-			<form action="#">
-				<div class="form-group">
-					<label for="firstname">FIRST NAME</label> <input type="text"
-						class="form-control" name="firstname">
-				</div>
-				<div class="form-group">
-					<label for="lastname">LAST NAME</label> <input type="text"
-						class="form-control" name="lastname">
+			<form method="POST" action="NewReimburse.do" enctype='multipart/form-data'>
+				<div class="form-group row">
+					<div class='col-md-6'>
+						<label for="firstname">FIRST NAME</label> <input type="text"
+							class="form-control" name="firstname">
+					</div>
+					<div class='col-md-6'>
+						<label for="lastname">LAST NAME</label> <input type="text"
+							class="form-control" name="lastname">
+					</div>
 				</div>
 
 				<!-- add more spaces for prefilled emp (addr & id) info -->
@@ -142,8 +144,10 @@
 				</div>
 
 				<div class="form-group">
-					<label for="exampleFormControlFile1">Example file input</label> <input
-						type="file" class="form-control-file" id="exampleFormControlFile1">
+					<label for="inputFile">Example file input</label> <input
+						type="file" class="form-control-file" id="inputFile"
+						name='inputFiles'
+						accept=".png, .pdf, .jpeg, .jpg, .txt, .doc, .docx, .msg" multiple>
 				</div>
 
 				<button type="submit" class="btn btn-default">Submit</button>
