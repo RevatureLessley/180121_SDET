@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+<script src="resource/javascript/AJAX.js"></script>
+
+<meta charset="ISO-8859-1">
+<title>My JavaScript Example!</title>
+
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="well">
+			<h3>Welcome to AJAX Land!</h3>
+			<h4><a href="ajax.html">Perhaps you wanted the AJAX page?</a></h4>
+		</div>
+		<div class="well">
+			<h3>Please Register To Use This Site</h3>
+			<form action="#" id="register">
+				<div class="form-group" id=name>
+					<label for="username">Name:</label> <input type="text"
+						class="form-control" name="name" required>
+				</div>
+				<div class="form-group" id="salary">
+					<label for="pwd1">Salary:</label> <input type="number"
+						class="form-control" name="salary" required>
+				</div>
+				<div class="form-group" id="title">
+					<label for="pwd2">Title:</label> <input type="text"
+						class="form-control" name="title" required>
+				</div>
+				<button type="button" class="btn btn-default" onclick="postAjax()">Submit</button>
+				
+			</form>
+		</div>
+		<div class="well">
+			<h3>Employees!!</h3>
+			<button onclick="sendAJAX()">Get Employees</button>
+			<table border=2px id=results>
+				<tr>
+					<th>Emp_ID</th>
+					<th>Emp_Name</th>
+					<th>Emp_Salary</th>
+					<th>Emp_Title</th>
+				</tr>
+			</table>
+			<p id=AJAXError></p>
+		</div>
+	</div>
+</body>
+</html>
