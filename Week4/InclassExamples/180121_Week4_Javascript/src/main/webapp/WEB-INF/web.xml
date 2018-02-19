@@ -19,4 +19,14 @@
     <servlet-name>GetEmployees</servlet-name>
     <url-pattern>/GetEmployees</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RegisterEmployee</display-name>
+    <servlet-name>RegisterEmployee</servlet-name>
+    <servlet-class>com.revature.servlets.RegisterEmployee</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterEmployee</servlet-name>
+    <url-pattern>/RegisterEmployee</url-pattern>
+  </servlet-mapping>
 </web-app>
