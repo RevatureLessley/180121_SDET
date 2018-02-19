@@ -70,8 +70,8 @@ public class NewReimburseServlet extends HttpServlet {
 						case "date":
 							r.setDateStr(value);
 							break;
-						case "time":
-							r.setTimeStr(value);
+						case "time": // TODO an error being thrown here so can't submit to database
+							//r.setTimeStr(value);
 							break;
 						case "cost":
 							r.setCost(Float.parseFloat(value));
@@ -95,7 +95,7 @@ public class NewReimburseServlet extends HttpServlet {
 							r.setNextApprovalId(Integer.parseInt(value));
 							break;
 						default:
-							logger.warn("doGet() : fieldName doesn't exist");
+							logger.warn("doGet() : fieldName " + name + " doesn't exist");
 							break;
 						}
 						logger.info("doGet() : name=" + name + " value=" + value);
