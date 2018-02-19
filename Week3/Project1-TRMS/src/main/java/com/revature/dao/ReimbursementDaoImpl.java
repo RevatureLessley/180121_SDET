@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.ListIterator;
 
 import com.revature.beans.Reimbursement;
-import com.revature.beans.RejectedReimbursement;
-import com.revature.beans.AprovedReimbursement;
 import com.revature.beans.Employee;
 
 import com.revature.util.Bridge;
@@ -28,28 +26,16 @@ import java.sql.Statement;
 
 public class ReimbursementDaoImpl implements ReimbursementDao {
 	
-	@Override
+	
 	/**Utility function used to check if there are currently any reimbursements in the database, if so the total number is returned.**/
-	public boolean checkEmptyReg() {
-		if(totalReimbursementsReg() == 0) {return true;}
-		else {return false;}
-	}
-	@Override
-	/**Utility function used to check if there are currently any approved reimbursements in the database, if so the total number is returned.**/
-	public boolean checkEmptyApr() {
-		if(totalReimbursementsApr() == 0) {return true;}
-		else {return false;}
-	}
-	@Override
-	/**Utility function used to check if there are currently any rejected reimbursements in the database, if so the total number is returned.**/
-	public boolean checkEmptyRej() {
-		if(totalReimbursementsRej() == 0) {return true;}
+	public boolean checkEmpty() {
+		if(totalReimbursements() == 0) {return true;}
 		else {return false;}
 	}
 	
-	@Override
+
 	/**Utility function used to return the total number of Reimbursements present in the database.**/
-	public int totalReimbursementsReg() {
+	public int totalReimbursements() {
 		Statement stmt = null;
 		ResultSet rs = null;
 		int count = 0;
@@ -64,55 +50,17 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		finally{close(stmt);close(rs);}
 		return count;
 	}	
-	@Override
-	/**Utility function used to return the total number of Approved Reimbursements present in the database.**/
-	public int totalReimbursementsApr() {
-		Statement stmt = null;
-		ResultSet rs = null;
-		int count = 0;
-		try(Connection conn = Bridge.connect()){
-			
-			String sql = "SELECT COUNT(*) FROM APPROVAL_STATE";
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			while(rs.next()) {count = rs.getInt(1);}
-			}
-		catch(SQLException e){e.printStackTrace();}
-		finally{close(stmt);close(rs);}
-		return count;
-	}
-	@Override
-	/**Utility function used to return the total number of Rejected Reimbursements present in the database.**/
-	public int totalReimbursementsRej() {
-		Statement stmt = null;
-		ResultSet rs = null;
-		int count = 0;
-		try(Connection conn = Bridge.connect()){
-			
-			String sql = "SELECT COUNT(*) FROM REJECTED";
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			while(rs.next()) {count = rs.getInt(1);}
-			}
-		catch(SQLException e){e.printStackTrace();}
-		finally{close(stmt);close(rs);}
-		return count;
-	}
-	
-	
-	
 	
 	/**This function is used to add reimbursements in the database using a Reimbursement object.**/
-	@Override
+	
 	public void addReimbursement(Reimbursement reim) {
 		
 		PreparedStatement ps = null;
-		int newId = totalReimbursementsReg() + 1 ;
 		
 		try(Connection conn = Bridge.connect()){
-			String sql = "INSERT INTO REIMBURSEMENTS VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO REIMBURSEMENTS VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1,newId); //rei_id
+			ps.setInt(1,reim.getRei_id()); //rei_id
 			ps.setInt(2,reim.getEmp_id()); //emp_id
 			ps.setString(3,reim.getFname()); // First Name
 			ps.setString(4, reim.getLname()); // Last Name
@@ -124,7 +72,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			ps.setString(10,reim.getGradingFormat()); // Grading Format
 			ps.setString(11,reim.getTypeOfEvent()); // Type of Event
 			ps.setString(12,reim.getWork_related_justification()); // Work related Justification
-			ps.setString(13,null); // for attachments
+			ps.setInt(13, reim.getAprroval_state());
+			ps.setString(14,null); // for attachments
+			ps.setString(15, ""); // empty note
 			ps.executeUpdate();
 		}catch(SQLException e){e.printStackTrace();}
 		finally{close(ps);}
@@ -132,7 +82,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	}
 	
 	/**This function deletes from reimbursements using the reimbursemnt's id number**/
-	@Override
+	
 	public void deleteReimbursement(int id) {
 		PreparedStatement ps = null;
 		
@@ -147,7 +97,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	}
 
 	/**This function deletes from reimbursements using the reimbursemnt's id number but using a reimbursement object as the argument**/
-	@Override
+	
 	public void deleteReimbursement(Reimbursement reim) {
 		PreparedStatement ps = null;
 		
@@ -161,7 +111,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 	}
 	
-	@Override
+	
 	public void aproveReimbursement(int id, int role) {
 		switch(role) {
 		
@@ -217,19 +167,19 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 	}
 
-	@Override
+	
 	public void rejectReimbursement(int id) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public Reimbursement getReimbursement(String username) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public Reimbursement getReimbursement(int id) {
 		// TODO Auto-generated method stub
 		return null;
@@ -237,11 +187,11 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 
 	/** This function will go into the database and return a List object that contains a list of Reimbursement objects that correspond to all the elements in the 
 	 * Reimbursements table of the database.**/
-	@Override
+	
 	public List<Reimbursement> getAllReimbursement() {
 		Statement stmt = null;
 		ResultSet rs = null;
-		List<Reimbursement> reimbursementList = new ArrayList<>();
+		List<Reimbursement> reimbursementList = new ArrayList<Reimbursement>();
 		
 		try(Connection conn = Bridge.connect()){
 			
@@ -252,18 +202,21 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			while(rs.next()){
 				
 				reimbursementList.add(new Reimbursement (
-						rs.getInt(1),
-						rs.getInt(2),
-						rs.getString(3),
-						rs.getString(4),
-						rs.getString(5),
-						rs.getString(6),
-						rs.getString(7),
-						rs.getString(8),
-						rs.getInt(9),
-						rs.getString(10),
-						rs.getString(11),
-						rs.getString(12)
+						rs.getInt(1), // rei_id
+						rs.getInt(2), //emp_id
+						rs.getString(3), // First name
+						rs.getString(4), // Last name
+						rs.getString(5), // Date Of Event 
+						rs.getString(6), // Time Of event
+						rs.getString(7), // Location of event
+						rs.getString(8), // Description of event
+						rs.getInt(9), 	 // Cost of event
+						rs.getString(10), // Grading Format
+						rs.getString(11), // type of event
+						rs.getString(12),  // Work related Justification
+						rs.getInt(13),
+						rs.getString(14),
+						rs.getString(15)
 						));
 				}
 			}
@@ -272,65 +225,46 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 		return reimbursementList;
 	}
-
-	/** This function will go into the database and return a List object that contains a list of aproved Reimbursement objects that correspond to all the elements in the 
-	 * Reimbursements table of the database.**/
-	@Override
-	public List<AprovedReimbursement> getAllAprovedReimbursement() {
-		Statement stmt = null;
+	
+	
+	public List<Reimbursement> getAllReimbursementUser(int emp_id) {
+		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<AprovedReimbursement> reimbursementList = new ArrayList<>();
+		List<Reimbursement> reimbursementList = new ArrayList<Reimbursement>();
 		
 		try(Connection conn = Bridge.connect()){
 			
-			String sql = "SELECT * FROM approval_state";
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql); 
+			String sql = "SELECT REI_ID, EMP_ID, FNAME, LNAME, DATEOF, TIME, LOCATION, DESCRIPTION, COST, GRADING_FORMAT, TYPE_OF_EVENT ,WORK_RELATED_JUSTIFICATION, APRROVAL_STATE,NOTE FROM REIMBURSEMENTS WHERE EMP_ID = ? ";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, emp_id);
+			rs = ps.executeQuery(); 
 			
 			while(rs.next()){
 				
-				reimbursementList.add(new AprovedReimbursement (
-						rs.getInt(1),
-						rs.getInt(2),
-						rs.getInt(3),
-						rs.getInt(4),
-						rs.getInt(5)
+				reimbursementList.add(new Reimbursement (
+						rs.getInt(1), // rei_id
+						rs.getInt(2), //emp_id
+						rs.getString(3), // First name
+						rs.getString(4), // Last name
+						rs.getString(5), // Date Of Event 
+						rs.getString(6), // Time Of event
+						rs.getString(7), // Location of event
+						rs.getString(8), // Description of event
+						rs.getInt(9), 	 // Cost of event
+						rs.getString(10), // Grading Format
+						rs.getString(11), // type of event
+						rs.getString(12),  // Work related Justification
+						rs.getInt(13), // Approval status
+						rs.getString(14) // note
 						));
+				
+				
+				
 				}
 			}
 		catch(SQLException e){e.printStackTrace();}
-		finally{close(stmt);close(rs);}
+		finally{close(ps);close(rs);}
 		
 		return reimbursementList;
 	}
-
-	/** This function will go into the database and return a List object that contains a list of rejected Reimbursement objects that correspond to all the elements in the 
-	 * Reimbursements table of the database.**/
-	@Override
-	public List<RejectedReimbursement> getAllRejectedReimbursement() {
-		Statement stmt = null;
-		ResultSet rs = null;
-		List<RejectedReimbursement> reimbursementList = new ArrayList<>();
-		
-		try(Connection conn = Bridge.connect()){
-			
-			String sql = "SELECT * FROM rejected";
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql); 
-			
-			while(rs.next()){
-				
-				reimbursementList.add(new RejectedReimbursement (
-						rs.getInt(1),
-						rs.getInt(2),
-						rs.getString(3)
-						));
-				}
-			}
-		catch(SQLException e){e.printStackTrace();}
-		finally{close(stmt);close(rs);}
-		
-		return reimbursementList;
-
-}
 }

@@ -29,4 +29,24 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login1</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>NewReimbursement</display-name>
+    <servlet-name>NewReimbursement</servlet-name>
+    <servlet-class>com.revature.servlets.NewReimbursement</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewReimbursement</servlet-name>
+    <url-pattern>/NewReimbursement</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetReimbursements</display-name>
+    <servlet-name>GetReimbursements</servlet-name>
+    <servlet-class>com.revature.servlets.GetReimbursements</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetReimbursements</servlet-name>
+    <url-pattern>/getreimburse</url-pattern>
+  </servlet-mapping>
 </web-app>

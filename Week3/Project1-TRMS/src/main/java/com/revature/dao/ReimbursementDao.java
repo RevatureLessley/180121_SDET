@@ -3,19 +3,14 @@ package com.revature.dao;
 import java.util.List;
 
 import com.revature.beans.Reimbursement;
-import com.revature.beans.RejectedReimbursement;
-import com.revature.beans.AprovedReimbursement;
+
 
 public interface ReimbursementDao {
 
-	public boolean checkEmptyReg();
-	public boolean checkEmptyApr();
-	public boolean checkEmptyRej();
+	public boolean checkEmpty();
 	
-	public int totalReimbursementsReg();
-	public int totalReimbursementsApr();
-	public int totalReimbursementsRej();
-	
+	public int totalReimbursements();
+
 	public void addReimbursement(Reimbursement reim);
 	public void deleteReimbursement(int id);
 	public void deleteReimbursement(Reimbursement reim);
@@ -26,9 +21,8 @@ public interface ReimbursementDao {
 	public Reimbursement getReimbursement(int id);
 	
 	public List<Reimbursement> getAllReimbursement (); 
-	public List<AprovedReimbursement> getAllAprovedReimbursement ();
-	public List<RejectedReimbursement> getAllRejectedReimbursement ();
+	public List<Reimbursement> getAllReimbursementUser(int emp_id);
 
-	
+
 	
 }

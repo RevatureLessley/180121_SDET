@@ -1,88 +1,6 @@
-function sendAJAX(){
-	var xhr = new XMLHttpRequest(); //State = 0
-	console.log(xhr.readyState);
-	xhr.open("GET","GetEmployees"); //State == 1
-	/*
-	 * There exists 5 states of an XMLHttpRequest object.
-	 * 0 - Request is not configured
-	 * 		-We created our XMLHttpRequest object, but we have not configured it.
-	 * 1 - Request has been configured
-	 * 		-We have called the open(), but we have not called the send().
-	 * 2 - Request has been sent
-	 * 		-We have called send();
-	 * 3 - Request is being processed
-	 * 		-Communication with the server has been established.
-	 * 		-Yet we have not received the full response yet.
-	 * 4 - Request has been sent, and a proper response has been received back from server.
-	 * 		-Request/Response lifecycle is complete.
-	 */
-	xhr.onreadystatechange = function(){
-		console.log("READY STATE CHANGE: " + xhr.readyState);
-		if(xhr.readyState == 4 && xhr.status == 200){
-			/*
-			 * In the event of a successful request/response, as indicated by state = 4, and
-			 * status = 200, we will then take the data as XML.
-			 */
-			var xmlText = xhr.responseXML;
-			var response = xmlText.getElementsByTagName("employee");
-			//response is a collection of all employee tags.
-			var resultTable = document.getElementById("results");
-			//variable referencing our end table.
-			for(e in response){
-				var row = document.createElement("tr");
-				var td1 = document.createElement("td");
-				var td2 = document.createElement("td");
-				var td3 = document.createElement("td");
-				var td4 = document.createElement("td");
-				
-				td1.innerHTML = response[e].childNodes[0].innerHTML;
-				td2.innerHTML = response[e].childNodes[1].innerHTML;
-				td3.innerHTML = response[e].childNodes[2].innerHTML;
-				td4.innerHTML = response[e].childNodes[3].innerHTML;
-				
-				row.appendChild(td1);
-				row.appendChild(td2);
-				row.appendChild(td3);
-				row.appendChild(td4);
-				
-				resultTable.appendChild(row);
-			}
-		}else if(xhr.readyState == 4 && xhr.status!=200){
-			console.log("ERROR, STATUS: " + xhr.status);
-			document.getElementById("AJAXError").innerHTML=xhr.status;
-		}
-		/*
-		 * The open method is used to configure the actual XMLHttpRequest object.
-		 * We configure what kind of HTTP method we are using, and where it is going.
-		 * The parameters look like:
-		 * 	open(HTTPMETHOD, ENDPOINT, UseAsynchronous)
-		 * 			-note, UseAsynchronous is optional and will default to true.
-		 * 
-		 */
-
-	}
-	
-	xhr.send(); //State == 2
-}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**postAjax() will be called on submission of a new registration form. All of the values will be parsed and sent to the RegisterEmp servlet for
+/**registerAjax() will be called on submission of a new registration form. All of the values will be parsed and sent to the RegisterEmp servlet for
  * further processing.**/
 function registerAjax(){
 	var xhr = new XMLHttpRequest(); //Creating new XMLHttpRequest object.
@@ -128,8 +46,41 @@ function registerAjax(){
 			departments + "&supid=" + supid);
 }
 
+/**reimburseAjax() will be called on submission of a new reimbursement form. All of the values will be parsed and sent to the NewReimbursement servlet for
+ * further processing.**/
+function reimburseAjax(){
+	
+	var xhr = new XMLHttpRequest(); //Creating new XMLHttpRequest object.
+	xhr.open("POST","../NewReimbursement"); //Configuring new XMLHttpRequest object to send a post to the servlet "NewReimbursement"
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){ // If successful,
+			var d = document.createElement("div"); // Create div element
+			d.setAttribute("class","well"); // Give this div the the attribute class="well"
+			var p = document.createElement("h3"); // Create a h3 element
+			var t = document.createTextNode("SUCCESS! Your reimbursement has been sumbitted! Please use the navigation bar above to return to the home page!");
+			p.appendChild(t); // Append the above message in the h3 that was created.
+			d.appendChild(p); // Append the h3 element in the created div
+			var w = document.getElementById("wholeform1"); // Get the element ided by "wholeform1"
+			var b = document.getElementById("reimburse"); // Get the element ided by "reimburse"
+			w.replaceChild(d,b); // Override the element ided by "register" with the new elements created.
 
-function loginAjax(){
+		}else if(xhr.readyState == 4 && xhr.status!=200){
+			
+		}
+	}
 	
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");// Not entirely sure what this does
 	
+	var typeofevent = document.forms["reimburse"]["typeofevent"].value; // Obtain the value of typeofevent from the form
+	var desc = document.forms["reimburse"]["desc"].value; // Obtain the value of desc from the form
+	var work = document.forms["reimburse"]["work"].value; // Obtain the value of work from the form
+	var location = document.forms["reimburse"]["location"].value; // Obtain the value of location from the form
+	var dateof = document.forms["reimburse"]["dateof"].value; // Obtain the value of dateof from the form
+	var timeof = document.forms["reimburse"]["timeof"].value; // Obtain the value of timeof from the form
+	var cost = document.forms["reimburse"]["cost"].value; // Obtain the value of typeofevent from the form
+
+	//Send the httprequest object using the information obtained from the form.
+	xhr.send("typeofevent=" + typeofevent + "&desc=" + desc + "&work=" + work + "&location=" + location
+			+ "&dateof=" + dateof + "&timeof=" + timeof + "&cost=" + cost);
 }

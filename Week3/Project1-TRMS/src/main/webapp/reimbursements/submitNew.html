@@ -16,11 +16,11 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script src="resource/javascript/AJAX.js"></script>
+<script src="../resource/javascript/AJAX.js"></script>
 
 </head>
 <body>
-	<div class="container-fluid" style="margin-top: 50px"">
+	<div class="container-fluid" style="margin-top: 50px">
 
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
@@ -28,7 +28,7 @@
 					<a class="navbar-brand" href="#">TRMS</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="index.html">Home</a></li>
+					<li class="active"><a href="../index.html">Home</a></li>
 					<li><a href="#">Info</a></li>
 					<li><a href="ReimCo.html">Reimbursement Coverage</a></li>
 				</ul>
@@ -54,8 +54,8 @@
 					</div>
 
 					<h5>Type Of Event?</h5>
-					<div id="typeof">
-						<select name="typeof">
+					<div id="typeofevent">
+						<select name="typeofevent">
 							<option>---</option>
 							<option>University Course</option>
 							<option>Seminar</option>
@@ -68,7 +68,7 @@
 
 					<div class="control-group">
 						<!-- Description -->
-						<label class="control-label" for="username">Description Of
+						<label class="control-label" for="desc">Description Of
 							Event?</label>
 						<div class="controls">
 							<textarea class="form-control" rows="5" id="desc" name="desc"
@@ -81,7 +81,7 @@
 
 					<div class="control-group">
 						<!-- Work Related Jutstification-->
-						<label class="control-label" for="username">How Will This
+						<label class="control-label" for="work">How Will This
 							Relate to your Current Employment?</label>
 						<div class="controls">
 							<textarea class="form-control" rows="5" id="work" name="work"
@@ -94,7 +94,7 @@
 
 					<div class="control-group">
 						<!-- Location -->
-						<label class="control-label" for="username">Location Of
+						<label class="control-label" for="location">Location Of
 							Event?</label>
 						<div class="controls">
 							<textarea class="form-control" rows="5" id="location"
@@ -106,7 +106,7 @@
 
 					<div class="control-group">
 						<!-- Date Of Event -->
-						<label class="control-label" for="fname">Date Of Event?</label>
+						<label class="control-label" for="dateof">Date Of Event?</label>
 						<div class="controls">
 							<input type="date" name="dateof" id="dateof" class="input-xlarge">
 							<p class="help-block">Please select the date the Event will
@@ -145,7 +145,7 @@
 						<!-- Button -->
 						<div class="controls">
 							<button type="button" class="btn btn-default"
-								onclick="registerAhjax()">Submit Reimbursement</button>
+								onclick="reimburseAjax()">Submit Reimbursement</button>
 						</div>
 						<br>
 					</div>
