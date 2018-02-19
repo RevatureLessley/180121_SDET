@@ -264,6 +264,9 @@ INSERT INTO eventtypes VALUES(4, 'CERTIFICATION', 1.00);
 INSERT INTO eventtypes VALUES(5, 'TECHNICAL TRAINING', 0.90);
 INSERT INTO eventtypes VALUES(6, 'OTHER', 0.30);
 
+INSERT INTO gradingformats VALUES(1, 'EXAMINATION', 'Taking a supervised test and getting a passing grade');
+INSERT INTO gradingformats VALUES(2, 'PRESENTATION', 'Presenting what you''learned to professionals in the subject');
+
 INSERT INTO learningcenters VALUES(1, 'SUNY BINGHAMTON', '4400 Vestal Parkway East', 'Binghamton', 'NY', 13902, 'USA');
 INSERT INTO learningcenters VALUES(2, 'REVATURE', '11730 Plaza America Dr #205', 'Reston', 'VA', 20190, 'USA');
 INSERT INTO learningcenters VALUES(3, 'NEW HORIZONS', '462 Seventh Ave, 6th Floor', 'New York', 'NY', 10018, 'USA');

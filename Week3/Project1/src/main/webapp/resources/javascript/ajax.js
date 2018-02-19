@@ -5,6 +5,7 @@
 window.onload = function() {
 	getEmp();
 	getEventTypes();
+	getLearnCenters();
 }
 
 function getEmp() {
@@ -41,6 +42,29 @@ function getEventTypes() {
 				var option = document.createElement("option");
 				option.value = jsonObj[i].eventid;
 				option.innerHTML = jsonObj[i].eventname;
+				
+				selector.appendChild(option);
+			}
+		}
+	}
+	
+	xhr.send();
+}
+
+function getLearnCenters() {
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "../LearningCentersServlet");
+	
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4 && xhr.status == 200) {
+			var jsonObj = JSON.parse(xhr.responseText);
+			
+			var selector = document.getElementById("learncenter");
+			
+			for(var i = 0; i < jsonObj.length; i++) {
+				var option = document.createElement("option");
+				option.value = jsonObj[i].centerid;
+				option.innerHTML = jsonObj[i].centername;
 				
 				selector.appendChild(option);
 			}

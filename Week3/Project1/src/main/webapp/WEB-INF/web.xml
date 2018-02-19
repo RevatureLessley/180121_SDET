@@ -109,4 +109,14 @@
     <servlet-name>EventTypesServlet</servlet-name>
     <url-pattern>/EventTypesServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LearningCentersServlet</display-name>
+    <servlet-name>LearningCentersServlet</servlet-name>
+    <servlet-class>com.trms.servlets.LearningCentersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LearningCentersServlet</servlet-name>
+    <url-pattern>/LearningCentersServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
