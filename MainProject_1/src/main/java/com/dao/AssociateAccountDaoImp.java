@@ -39,6 +39,7 @@ public class AssociateAccountDaoImp implements AssociateAccountDao {
 	
 	}
 	
+	// add supervisorRef to this get method (and Department ID eventually)
 	
 		public AssociateAccount getUN_PW(AssociateAccount user) throws SQLException {
 			
@@ -46,7 +47,7 @@ public class AssociateAccountDaoImp implements AssociateAccountDao {
 			ResultSet rs = null;
 			Connection conn = Connections.getConnection(); 
 				
-				String sql = "SELECT UserName, PW, AssociateId, Balance_Available FROM Associates WHERE UserName = ? AND PW = ?";
+				String sql = "SELECT UserName, PW, AssociateId, Balance_Available, SupervisorRef FROM Associates WHERE UserName = ? AND PW = ?";
 				
 				ps = conn.prepareStatement(sql);
 				ps.setString(1, user.getUserName());
@@ -54,7 +55,7 @@ public class AssociateAccountDaoImp implements AssociateAccountDao {
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
-				AssociateAccount Acc = new AssociateAccount(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4));
+				AssociateAccount Acc = new AssociateAccount(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
 				
 				close(ps);
 				close(rs);

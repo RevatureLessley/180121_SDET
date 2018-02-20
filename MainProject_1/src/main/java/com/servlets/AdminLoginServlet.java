@@ -11,15 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.services.LoginAssociate;
-import com.userend.AssociateAccount;
+import com.adminend.SupervisorAccount;
+import com.services.LoginAdmin;
 import com.util.HtmlTemplates;
 
 /**
  * Servlet implementation class LoginServlet
  */
-public class LoginServlet extends HttpServlet {
+public class AdminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
@@ -27,26 +28,27 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String LoginChoice = request.getParameter("AdminType");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		AssociateAccount user;
+		
+		System.out.println(LoginChoice);
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
-		HttpSession session = request.getSession();
-		/*if(!session.isNew()){
-			out.println("<h1>Stop being weird.</h1>");
-		} else*/
+		if(LoginChoice.equals("Supervisor")) {
+			SupervisorAccount visor;
+			HttpSession session = request.getSession();
 			try {
-				if(LoginAssociate.validate(username, password) != null){
-					user = LoginAssociate.validate(username, password);
-					session.setAttribute("username", user.getUserName());
-					session.setAttribute("Password", user.getPassword());
-					session.setAttribute("AccountID", user.getAssociateID());
-					session.setAttribute("Balance_Available", user.getBalance_Available());
+				if(LoginAdmin.validateSuper(username, password) != null){
+					visor = LoginAdmin.validateSuper(username, password);
+					session.setAttribute("username", visor.getUserName());
+					session.setAttribute("Password", visor.getPassword());
+					session.setAttribute("AccountID", visor.getSupervisorID());
+					session.setAttribute("ReferenceID", visor.getReferenceID());
 					
-					RequestDispatcher rd = request.getRequestDispatcher("user/userhome.html");
+					RequestDispatcher rd = request.getRequestDispatcher("admins/supervisorHome.html");
 					rd.forward(request, response);
 				}else{
 					session.invalidate();
@@ -59,6 +61,16 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+		}
+		
+		
+		
+		//HttpSession session = request.getSession();
+		/*if(!session.isNew()){
+			out.println("<h1>Stop being weird.</h1>");
+		} else*/
+			
 		
 	}
 

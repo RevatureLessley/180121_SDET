@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\components",
+    "\\src\\app\\components\\directives",
+    "\\src\\app\\components\\pokeapi",
+    "\\src\\app\\components\\test",
+    "\\src\\assets",
+    "\\src\\environments"
+  ],
+  "SelectedNode": "\\src\\app\\components\\test\\test.component.ts",
+  "PreviewInSolutionExplorer": false
+}

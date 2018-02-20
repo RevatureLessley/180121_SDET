@@ -45,11 +45,13 @@ public class SendRequestServlet extends HttpServlet {
 		String EventType = request.getParameter("EventType");
 		String WRJcomment = request.getParameter("WRJcomment");
 		String TimeMissed = request.getParameter("TimeMissed");
+		Integer supervisorRef = (Integer) session.getAttribute("SupervisorRef");
 		
+		System.out.print(supervisorRef);
 		
 		//Integer SV_Ref = Integer.parseInt(SupervisorRef);
 		
-		RequestTR tr = new RequestTR(EmployeeID, LastName, FirstName, ContactNumber, Email, Price, Balance_Available,
+		RequestTR tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, Price, Balance_Available,
 										EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
 		
 		

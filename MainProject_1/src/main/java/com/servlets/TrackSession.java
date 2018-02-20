@@ -46,6 +46,7 @@ public class TrackSession extends HttpServlet {
 			out.println("<tr><th>USERNAME</th><td>" + session.getAttribute("username") + "</td></tr>");
 			out.println("<tr><th>PASSWORD</th><td>" + session.getAttribute("Password") + "</td></tr>");	
 			out.println("<tr><th>AccountID</th><td>" + session.getAttribute("AccountID") + "</td></tr>");
+			out.println("<tr><th>SuperVisor Reference</th><td>" + session.getAttribute("SupervisorRef") + "</td></tr>");
 			out.println("<tr><th>Balance_Available</th><td>" + session.getAttribute("Balance_Available") + "</td></tr>");
 			out.println("<tr><th>CREATION TIME</th><td>" + session.getCreationTime() + "</td></tr>");
 			out.println("<tr><th>LAST ACCESS</th><td>" + session.getLastAccessedTime() + "</td></tr>");

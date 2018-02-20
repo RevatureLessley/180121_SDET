@@ -4,6 +4,8 @@ public class RequestTR {
 
 	private Integer RequestId;
 	private Integer EmployeeId;
+	private Integer SupervisorRef;
+	private Integer DeptID;
 	private String LastName;
 	private String FirstName;
 	private String Phone;
@@ -20,14 +22,17 @@ public class RequestTR {
 	private Integer BenCo_Approval;
 	
 	
-	public RequestTR(Integer requestId, Integer employeeId, String lastName, String firstName, String phone,
-			String email, Integer amount_Requested, Integer balance_Available, Integer pending_Reimbursment,
-			String event_Type, String event_Justification, String grading_Format, Integer passing_Grade_Provided,
-			Integer supervisor_Approval, Integer department_Head_Approval, Integer benCo_Approval) {
+	public RequestTR(Integer requestId, Integer employeeId, Integer supervisorRef, Integer deptID, String lastName,
+			String firstName, String phone, String email, Integer amount_Requested, Integer balance_Available,
+			Integer pending_Reimbursment, String event_Type, String event_Justification, String grading_Format,
+			Integer passing_Grade_Provided, Integer supervisor_Approval, Integer department_Head_Approval,
+			Integer benCo_Approval) {
 		
 		super();
 		RequestId = requestId;
 		EmployeeId = employeeId;
+		SupervisorRef = supervisorRef;
+		DeptID = deptID;
 		LastName = lastName;
 		FirstName = firstName;
 		Phone = phone;
@@ -42,15 +47,18 @@ public class RequestTR {
 		Supervisor_Approval = supervisor_Approval;
 		Department_Head_Approval = department_Head_Approval;
 		BenCo_Approval = benCo_Approval;
+		
 	}
-	
-	public RequestTR(Integer employeeId, String lastName, String firstName, String phone,
+
+
+	public RequestTR(Integer employeeId, Integer supervisorRef, String lastName, String firstName, String phone,
 			String email, Integer amount_Requested, Integer balance_Available,
 			String event_Type, String event_Justification, String grading_Format, Integer passing_Grade_Provided,
 			Integer supervisor_Approval, Integer department_Head_Approval, Integer benCo_Approval) {
 		
 		super();
 		EmployeeId = employeeId;
+		SupervisorRef = supervisorRef;
 		LastName = lastName;
 		FirstName = firstName;
 		Phone = phone;
@@ -64,6 +72,26 @@ public class RequestTR {
 		Supervisor_Approval = supervisor_Approval;
 		Department_Head_Approval = department_Head_Approval;
 		BenCo_Approval = benCo_Approval;
+	}
+	
+	
+	public RequestTR(Integer requestId, Integer employeeId, String lastName, String firstName, String phone,
+			String email, Integer amount_Requested, Integer balance_Available,
+			String event_Type, String event_Justification, String grading_Format) {
+		
+		super();
+		RequestId = requestId;
+		EmployeeId = employeeId;
+		LastName = lastName;
+		FirstName = firstName;
+		Phone = phone;
+		Email = email;
+		Amount_Requested = amount_Requested;
+		Balance_Available = balance_Available;
+		Event_Type = event_Type;
+		Event_Justification = event_Justification;
+		Grading_Format = grading_Format;
+		 
 	}
 
 	public Integer getRequestId() {
@@ -194,6 +222,23 @@ public class RequestTR {
 		BenCo_Approval = benCo_Approval;
 	}
 	
-	
+	public Integer getSupervisorRef() {
+		return SupervisorRef;
+	}
+
+
+	public void setSupervisorRef(Integer supervisorRef) {
+		SupervisorRef = supervisorRef;
+	}
+
+
+	public Integer getDeptID() {
+		return DeptID;
+	}
+
+
+	public void setDeptID(Integer deptID) {
+		DeptID = deptID;
+	}
 	
 }

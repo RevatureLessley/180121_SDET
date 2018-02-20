@@ -47,12 +47,14 @@ public class AssociateAccount {
 
 
 
-	public AssociateAccount(String username, String password, Integer associate_id, Integer balance) {
+	public AssociateAccount(String username, String password, Integer associate_id, Integer balance, Integer supervisor) {
 		
 		UserName = username;
 		Password = password;
 		AssociateID = associate_id;
-		Balance_Available = balance;	
+		Balance_Available = balance;
+		SupervisorRef = supervisor;
+
 		}
 	
 	

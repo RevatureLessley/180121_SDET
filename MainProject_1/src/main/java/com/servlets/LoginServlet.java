@@ -44,6 +44,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 					session.setAttribute("username", user.getUserName());
 					session.setAttribute("Password", user.getPassword());
 					session.setAttribute("AccountID", user.getAssociateID());
+					session.setAttribute("SupervisorRef", user.getSupervisorRef());
 					session.setAttribute("Balance_Available", user.getBalance_Available());
 					
 					RequestDispatcher rd = request.getRequestDispatcher("user/userhome.html");

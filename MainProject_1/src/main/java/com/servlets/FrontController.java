@@ -39,8 +39,18 @@ public class FrontController extends HttpServlet {
 			rd.forward(request, response);
 			break;
 			
+		case "adminlogin":
+			rd = request.getRequestDispatcher("AdminLoginServlet");
+			rd.forward(request, response);
+			break;
+			
 		case "request":
 			rd = request.getRequestDispatcher("SendRequestServlet");
+			rd.forward(request, response);
+			break;
+			
+		case "superupdaterequest":
+			rd = request.getRequestDispatcher("SupervisorRequestUpdate");
 			rd.forward(request, response);
 			break;
 			
