@@ -1,0 +1,21 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+	<book category="ficition">
+		<title lang="English">Im the Best</title>
+		<year>2016</year>
+		<author>Steven</author>
+		<price>$20</price>
+	</book>
+	<book category="non-ficition">
+		<title lang="Spanish">klk</title>
+		<year>2000</year>
+		<author>Juan Pablo</author>
+		<price>$30</price>
+	</book>
+	<book category="ficition">
+		<title lang="English">Last Days</title>
+		<year>2006</year>
+		<author>Adele</author>
+		<price>$25</price>
+	</book>
+</bookstore>

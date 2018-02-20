@@ -21,6 +21,7 @@
 	crossorigin="anonymous"></script>
 
 <script src="resource/javascript/main.js"></script>
+<script src="resource/javascript/AJAX.js"></script>
 
 <meta charset="ISO-8859-1">
 <title>My JavaScript Example!</title>
@@ -30,6 +31,7 @@
 	<div class="container-fluid">
 		<div class="well">
 			<h3>Welcome to JavaScript Land!</h3>
+			<h4><a href="ajax.html">Perhaps you wanted the AJAX page?</a></h4>
 		</div>
 
 		<div class="well">
@@ -89,6 +91,53 @@
 					<th>Favorite Mouse</th>
 				</tr>
 			</table>
+		</div>
+		<div class="well" onmouseover="changeWell()">
+			<h1 id="magicWell">Check me out!</h1>
+		</div>
+		<div class="well">
+			<h3>Please Register To Use This Site</h3>
+			<form action="http://www.google.com" id="register"
+				onsubmit="return validateRegistration()">
+				<div class="form-group" id=username>
+					<label for="username">Username:</label> <input type="text"
+						class="form-control" name="username" required>
+				</div>
+				<div class="form-group" id="pwd">
+					<label for="pwd1">Password:</label> <input type="password"
+						class="form-control" name="pwd1" required>
+				</div>
+				<div class="form-group">
+					<label for="pwd2">Confirm Password:</label> <input type="password"
+						class="form-control" name="pwd2" required>
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+		<div class="well">
+			<h1>Bubbling and capturing</h1>
+			<div style="padding: 50px; background-color: blue" id="d1">
+				<div style="padding: 50px; background-color: red" id="d2">
+					<div style="padding: 50px; background-color: green" id="d3">
+						<p>
+							<b>Click me</b>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="well">
+			<h3>Employees!!</h3>
+			<button onclick="sendAJAX()">Get Employees</button>
+			<table border=2px id=results>
+				<tr>
+					<th>Emp_ID</th>
+					<th>Emp_Name</th>
+					<th>Emp_Salary</th>
+					<th>Emp_Title</th>
+				</tr>
+			</table>
+			<p id=AJAXError></p>
 		</div>
 	</div>
 </body>

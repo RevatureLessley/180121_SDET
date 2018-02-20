@@ -1,0 +1,18 @@
+<div class="well">
+    <h3>String Interpolation</h3>
+    <p>Angular uses a concept called data binding.
+        This boils down to how we can connect to our front end to our backends.(components)
+        Any datta in our components needs to have a way to be transfered to the view.
+        One way to do this, is to use String Interpolation</p>
+        <div>The value of some componentVariable is:<b style="color:red">{{componentVariable}} </b></div>
+        <div [ngStyle]=styleObject (click) = "changeStyle()">
+            I am stylized
+        </div>
+        <div (click)="toggleVisibility()">Visible = {{visible}}</div>
+        <div [hidden]="visible">I am visible</div>
+        <div>
+            <input [(ngModel)] = "input" type ="text"><br>
+            <p>{{input}}</p>
+        </div>
+            
+</div>
