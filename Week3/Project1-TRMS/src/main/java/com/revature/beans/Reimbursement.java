@@ -38,6 +38,22 @@ public class Reimbursement {
 		this.attachment = attachment;
 		this.note = note;
 	}
+	
+	public Reimbursement(int rei_id, int empid, String fname, String lname, String dateof, String timeof, String location,
+	String desc, int cost, String gradingFormat, String typeofevent, String work) {
+		this.rei_id = rei_id;
+		this.emp_id = empid;
+		this.fname = fname;
+		this.lname = lname;
+		this.dateOf = dateof;
+		this.time = timeof;
+		this.location = location;
+		this.desc = desc;
+		this.cost = cost;
+		this.gradingFormat = gradingFormat;
+		this.typeOfEvent = typeofevent;
+		this.work_related_justification = work;
+	}
 
 	
 	public Reimbursement(int rei_id, int emp_id, String fname, String lname, String dateOf, String time,

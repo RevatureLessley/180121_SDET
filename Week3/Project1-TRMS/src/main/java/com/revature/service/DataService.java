@@ -76,6 +76,15 @@ public class DataService {
 		reimDao.addReimbursement(reim);
 	}
 	
+	public static int editReimbursement(int rei_id, int empid, String fname, String lname, String dateof, String timeof, String location,
+			String desc, int cost, String gradingFormat, String typeofevent, String work) {
+	
+		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
+		Reimbursement reim = new Reimbursement(rei_id, empid, fname, lname, dateof, timeof, location,
+				desc, cost, gradingFormat, typeofevent, work);
+		return reimDao.editReimbursement(reim);
+	
+	}
 	
 	public static List<Reimbursement> userReimbursements(int emp_id){
 		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();

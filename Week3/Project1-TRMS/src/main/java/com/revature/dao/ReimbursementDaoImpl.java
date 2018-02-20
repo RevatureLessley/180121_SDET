@@ -51,6 +51,33 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		return count;
 	}	
 	
+	@Override
+	public boolean checkReimbursement(int reid) {
+
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int count = 0;
+		try(Connection conn = Bridge.connect()){
+			
+			String sql = "SELECT COUNT(*) FROM reimbursements WHERE REI_ID = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, reid);
+			rs = ps.executeQuery();
+			while(rs.next()) {count = rs.getInt(1);}
+			}
+		catch(SQLException e){e.printStackTrace();}
+		finally{close(ps);close(rs);}
+		
+		if(count == 0) {
+			return false;
+		}else {
+			return true;
+		}
+		
+	}
+	
+	
+	
 	/**This function is used to add reimbursements in the database using a Reimbursement object.**/
 	
 	public void addReimbursement(Reimbursement reim) {
@@ -80,6 +107,36 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		finally{close(ps);}
 	
 	}
+	
+	@Override
+	public int editReimbursement(Reimbursement reim) {
+		
+		
+		if(!checkReimbursement(reim.getRei_id())) {return 0;}
+		
+		PreparedStatement ps = null;
+	
+		try(Connection conn = Bridge.connect()){
+			String sql = "UPDATE REIMBURSEMENTS SET DATEOF = ? , TIME = ?, LOCATION = ?, DESCRIPTION = ? , COST = ?, GRADING_FORMAT = ?, TYPE_OF_EVENT = ?, WORK_RELATED_JUSTIFICATION = ? WHERE REI_ID = ?";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1,reim.getDateOf()); //Date Of
+			ps.setString(2,reim.getTime()); // Time of
+			ps.setString(3,reim.getLocation()); // Location
+			ps.setString(4, reim.getDesc()); // Description
+			ps.setInt(5,reim.getCost()); // Cost
+			ps.setString(6,reim.getGradingFormat()); // Grading Format
+			ps.setString(7,reim.getTypeOfEvent()); // Type Of Event
+			ps.setString(8,reim.getWork_related_justification()); // Work Related Justification
+			ps.setInt(9,reim.getRei_id()); // reim_id
+			ps.execute();
+		
+		}catch(SQLException e){e.printStackTrace();}
+		finally{close(ps); }
+		
+		return 1;
+	}
+	
 	
 	/**This function deletes from reimbursements using the reimbursemnt's id number**/
 	
@@ -267,4 +324,10 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 		return reimbursementList;
 	}
+
+
+
+
+
+
 }

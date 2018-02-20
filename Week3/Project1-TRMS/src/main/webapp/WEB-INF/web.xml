@@ -49,4 +49,14 @@
     <servlet-name>GetReimbursements</servlet-name>
     <url-pattern>/getreimburse</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditReimbursement</display-name>
+    <servlet-name>EditReimbursement</servlet-name>
+    <servlet-class>com.revature.servlets.EditReimbursement</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditReimbursement</servlet-name>
+    <url-pattern>/editrei</url-pattern>
+  </servlet-mapping>
 </web-app>

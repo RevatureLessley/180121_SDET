@@ -6,14 +6,14 @@ function allReimAJAX(){
 		if(xhr.readyState == 4 && xhr.status == 200){
 		
 			var xmlText = xhr.responseXML;
-			var response = xmlText.getElementsByTagName("employee");
-			//response is a collection of all employee tags.
+			var response = xmlText.getElementsByTagName("reimbursement");
+			//response is a collection of all reimbursement tags.
 			var resultTable = document.getElementById("reimtable");
 			//variable referencing our end table.
 			
 			
 			var table = document.createElement("table");
-			 table.setAttribute("border","2px");
+			 table.setAttribute("border","4px");
 			 table.setAttribute("id","reimbursementtable");
 			var row1st = document.createElement("tr");
 			
@@ -89,7 +89,7 @@ function allReimAJAX(){
 				var td9 = document.createElement("td");
 				var td10 = document.createElement("td");
 				var td11 = document.createElement("td");
-				
+			
 				td1.innerHTML = response[e].childNodes[0].innerHTML;
 				td2.innerHTML = response[e].childNodes[1].innerHTML;
 				td3.innerHTML = response[e].childNodes[2].innerHTML;
@@ -111,7 +111,7 @@ function allReimAJAX(){
 				row.appendChild(td7);
 				row.appendChild(td8);
 				row.appendChild(td9);
-				row.appendChild(td0);
+				row.appendChild(td10);
 				row.appendChild(td11);
 				
 				table.appendChild(row);
