@@ -24,7 +24,7 @@
 <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
 <script src="../resources/javascript/ajax_preimb.js"></script>
 
-<title>USER HOME</title>
+<title>TRMS</title>
 </head>
 <body>
 	<div class='container'>
@@ -35,23 +35,16 @@
 				</div>
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Page 1</a></li>
-					<li><a href="#">Page 2</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right" id='user-options'>
-				
-				<<li><a href="approver/allreimburse.html"><span class="glyphicon glyphicon-ok"></span> Approve</a></li>
-				<li><a href="Logout.do"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+					<li><a href="Logout.do"><span
+							class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 				</ul>
 			</div>
 		</nav>
-		<div style='display: none'>Approve Reimbursement
-			Requests</div>
-		<h2 class='text-center'>REIMBURSEMENTS</h2>
+
 		<div class='well'>
-			<h3>Display all reimbursements...</h3>
-			<hr>
-			<!-- onload='retrieveReimbursements()' -->
 			<table class='table-bordered' id="reimbursements">
 				<tr>
 					<th>Reimburse Id</th>
@@ -65,11 +58,8 @@
 					<th>Status</th>
 				</tr>
 			</table>
-			<hr>
-			<div class='pull-right'>
-				<a href="newreimburse.html">New Reimbursement</a>
-			</div>
 		</div>
 	</div>
+
 </body>
 </html>

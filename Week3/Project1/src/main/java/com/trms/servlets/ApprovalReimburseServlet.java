@@ -22,8 +22,8 @@ import com.trms.services.ReimbursementService;
 /**
  * Servlet implementation class PersonalReimburseServlet
  */
-public class PersonalReimburseServlet extends HttpServlet {
-	private static final Logger logger = Logger.getLogger(PersonalReimburseServlet.class);
+public class ApprovalReimburseServlet extends HttpServlet {
+	private static final Logger logger = Logger.getLogger(ApprovalReimburseServlet.class);
 	private static final long serialVersionUID = 1L;
 
 	// TODO add JUnit testing
@@ -32,6 +32,7 @@ public class PersonalReimburseServlet extends HttpServlet {
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		
+		// TODO change what the call to the database is the query
 		List<Reimbursement> lr = ReimbursementService.getPersonalReimb((int)session.getAttribute("empid"));
 		
 		JSONArray jarr = new JSONArray();

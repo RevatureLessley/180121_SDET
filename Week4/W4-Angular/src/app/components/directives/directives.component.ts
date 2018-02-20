@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { EmpService } from '../../services/emp.service';
 
 @Component({
     selector: 'directives-component',
     templateUrl: './directives.component.html'
 })
 
-export class DirectivesComponent {
+export class DirectivesComponent implements OnInit {
+    constructor(private empService: EmpService) {
+
+    }
     public buttonValue = 'SHOW ANSWER';
     public visible = false;
 
@@ -13,7 +17,13 @@ export class DirectivesComponent {
         id: 1,
         name: 'Bobbert'
     };
- 
+
+    emps = [];
+
+    ngOnInit() {
+        this.emps = this.empService.getEmps();
+    }
+    /*
     emps = [{
         id: 1,
         name: 'Bobbert'
@@ -33,7 +43,7 @@ export class DirectivesComponent {
            {
         id: 5,
         name: 'Lobert'
-    }];
+    }];*/
 
     public toggleAnswer() {
         if ((this.visible = !this.visible)) {

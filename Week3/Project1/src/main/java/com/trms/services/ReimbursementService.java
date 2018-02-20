@@ -9,12 +9,17 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.trms.beans.Reimbursement;
 import com.trms.daos.ReimbursementDao;
 import com.trms.daos.ReimbursementDaoImpl;
 
 public class ReimbursementService {
+	//private final static Logger logger = Logger.getLogger(ReimbursementService.class);
+	
 	public static int insertReimbursement(Reimbursement r) {
+		
 		ReimbursementDao dao = new ReimbursementDaoImpl();
 		
 		String[] s = r.getTimeStr().split(":");
@@ -39,9 +44,11 @@ public class ReimbursementService {
 		List<Reimbursement> lr = dao.getPersonalReimb(empId);
 		
 		for(Reimbursement r : lr) {
+			//logger.info("getPersonalReimb() : approvedNum=" + r.getApproved());
 			switch (r.getApproved()) {
 			case 2:
 				r.setApproveStr("PENDING");
+				//logger.info("getPersonalReimb() : set Pending string");
 				break;
 			case 1:
 				r.setApproveStr("APPROVED");
@@ -54,7 +61,7 @@ public class ReimbursementService {
 			}
 		}
 		
-		return dao.getPersonalReimb(empId);
+		return lr;
 	}
 }
 
