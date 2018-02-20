@@ -11,32 +11,32 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>FirstServ</display-name>
-    <servlet-name>FirstServ</servlet-name>
-    <servlet-class>FirstServ</servlet-class>
+    <display-name>RegisterEmployee</display-name>
+    <servlet-name>RegisterEmployee</servlet-name>
+    <servlet-class>com.project1.servlets.RegisterEmployee</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>FirstServ</servlet-name>
-    <url-pattern>/FirstServ</url-pattern>
+    <servlet-name>RegisterEmployee</servlet-name>
+    <url-pattern>/RegisterEmployee</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>SecondServ</display-name>
-    <servlet-name>SecondServ</servlet-name>
-    <servlet-class>SecondServ</servlet-class>
+    <display-name>GetPersonalInfo</display-name>
+    <servlet-name>GetPersonalInfo</servlet-name>
+    <servlet-class>com.project1.servlets.GetPersonalInfo</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SecondServ</servlet-name>
-    <url-pattern>/SecondServ</url-pattern>
+    <servlet-name>GetPersonalInfo</servlet-name>
+    <url-pattern>/GetPersonalInfo</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>GetEmployees</display-name>
-    <servlet-name>GetEmployees</servlet-name>
-    <servlet-class>com.project1.servlets.GetEmployees</servlet-class>
+    <display-name>PostPersonalInfo</display-name>
+    <servlet-name>PostPersonalInfo</servlet-name>
+    <servlet-class>com.project1.servlets.PostPersonalInfo</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GetEmployees</servlet-name>
-    <url-pattern>/GetEmployees</url-pattern>
+    <servlet-name>PostPersonalInfo</servlet-name>
+    <url-pattern>/PostPersonalInfo</url-pattern>
   </servlet-mapping>
 </web-app>

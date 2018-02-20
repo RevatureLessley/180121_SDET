@@ -3,6 +3,7 @@ package com.project1.dao;
 import static com.project1.util.CloseStreams.close;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,20 +20,21 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	String sql;
+	Date date;
 	//final static Logger logger = Logger.getLogger(AccountDaoImpl.class);
 	
 //======================= INSERTION METHODS =================================//
 	@Override
-	public void insertInto(String email, String firstName, String lastName, String address, String jobTitle, String date ) {
+	public void insertIntoPersonal(String email, String firstName, String lastName, String address, String jobTitle, String date ) {
 		try (Connection conn = Connections.getConnection()) {
 			sql = "INSERT INTO personal_info VALUES (?,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, email);
 			ps.setString(2, firstName);
 			ps.setString(3, lastName);
-			ps.setString(1, address);
-			ps.setString(2, jobTitle);
-			ps.setString(3, date);
+			ps.setString(4, address);
+			ps.setString(5, jobTitle);
+			ps.setString(6, date);
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
