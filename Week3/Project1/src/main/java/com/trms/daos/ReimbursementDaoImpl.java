@@ -29,7 +29,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		try(Connection conn = Connections.getConnection()) {
 			String sql = "INSERT INTO reimbursements (reimburse_emp_id, reimburse_cost, reimburse_projreimb, reimburse_desc, reimburse_passgrade, "
 					+ "reimburse_workmissed, reimburse_datetime, reimburse_workjustify, reimburse_approvelvl, reimburse_urgent, reimburse_approveid,"
-					+ "reimburse_event_id, reimburse_center_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "reimburse_event_id, reimburse_center_id, reimburse_format_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, r.getEmpId());
 			ps.setFloat(2, r.getCost());
@@ -44,6 +44,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			ps.setInt(11, r.getNextApprovalId());
 			ps.setInt(12, r.getEventId());
 			ps.setInt(13, r.getCenterId());
+			ps.setInt(14, r.getFormatId());
 			ps.executeUpdate();	
 			
 			List<File> l = r.getAttachments();

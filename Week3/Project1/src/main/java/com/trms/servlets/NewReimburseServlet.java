@@ -119,11 +119,14 @@ public class NewReimburseServlet extends HttpServlet {
 			logger.info("not multipart request");
 		}
 		
+		
 		if((Boolean)session.getAttribute("approver")) {
 			out.println("<head> <meta http-equiv='Refresh' content='2;url=userhomeappr.html'>" + "</head>");
 		} else {
 			out.println("<head> <meta http-equiv='Refresh' content='2;url=userhome.html'>" + "</head>");
 		}
+		
+		out.println("<h3>submitting request</h3>");
 	}
 
 	/**
