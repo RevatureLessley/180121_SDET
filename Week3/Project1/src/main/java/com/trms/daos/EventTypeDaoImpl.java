@@ -1,4 +1,4 @@
-package com.trms.beans;
+package com.trms.daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.trms.daos.EventTypeDao;
+import com.trms.beans.EventType;
 import com.trms.util.Connections;
 
 public class EventTypeDaoImpl implements EventTypeDao {

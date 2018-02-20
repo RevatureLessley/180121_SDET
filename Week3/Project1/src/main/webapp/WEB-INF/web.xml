@@ -129,4 +129,14 @@
     <servlet-name>GradeFormatServlet</servlet-name>
     <url-pattern>/GradeFormatServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PersonalReimburseServlet</display-name>
+    <servlet-name>PersonalReimburseServlet</servlet-name>
+    <servlet-class>com.trms.servlets.PersonalReimburseServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PersonalReimburseServlet</servlet-name>
+    <url-pattern>/PersonalReimburseServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -7,10 +7,14 @@ import java.sql.Date;
 import java.util.List;
 
 public class Reimbursement {
+	private int reimburseId;
 	private int empId;
 	private int eventId;
+	private String eventStr;
 	private int formatId;
+	private String formatStr;
 	private int centerId;
+	private String centerStr;
 	private float cost;
 	private float projectedReimb;
 	private String description;
@@ -28,7 +32,9 @@ public class Reimbursement {
 	private int nextInfoReq;
 	private int urgent;
 	private int approved;
+	private String approveStr;
 	private List<File> attachments;
+	private boolean files;
 	
 	public Reimbursement() {
 		attachments = new ArrayList<File>();
@@ -42,6 +48,33 @@ public class Reimbursement {
 	}
 	
 	
+	public Reimbursement(int reimburseId, String eventStr, String formatStr, String centerStr, float cost,
+			float projectedReimb, Date date, int approved) {
+		this.reimburseId = reimburseId;
+		this.eventStr = eventStr;
+		this.formatStr = formatStr;
+		this.centerStr = centerStr;
+		this.cost = cost;
+		this.projectedReimb = projectedReimb;
+		this.date = date;
+		this.approved = approved;
+	}
+
+
+	public Reimbursement(int reimburseId, String eventStr, String formatStr, String centerStr, float cost,
+			float projectedReimb, Date date, int approved, List<File> attachments) {
+		this.reimburseId = reimburseId;
+		this.eventStr = eventStr;
+		this.formatStr = formatStr;
+		this.centerStr = centerStr;
+		this.cost = cost;
+		this.projectedReimb = projectedReimb;
+		this.date = date;
+		this.approved = approved;
+		this.attachments = attachments;
+	}
+
+
 	public Reimbursement(int empId, int eventId, int formatId, int centerId, float cost, float projectedReimb,
 			String description, float grade, float passGrade, int workDaysMissed, LocalDateTime dateTime,
 			LocalDateTime timestamp, String workJustification, int nextApprovalId) {
@@ -63,6 +96,16 @@ public class Reimbursement {
 	
 	
 	
+	public int getReimburseId() {
+		return reimburseId;
+	}
+
+
+	public void setReimburseId(int reimburseId) {
+		this.reimburseId = reimburseId;
+	}
+
+
 	public int getEmpId() {
 		return empId;
 	}
@@ -95,6 +138,36 @@ public class Reimbursement {
 
 	public int getCenterId() {
 		return centerId;
+	}
+
+
+	public String getEventStr() {
+		return eventStr;
+	}
+
+
+	public void setEventStr(String eventStr) {
+		this.eventStr = eventStr;
+	}
+
+
+	public String getFormatStr() {
+		return formatStr;
+	}
+
+
+	public void setFormatStr(String formatStr) {
+		this.formatStr = formatStr;
+	}
+
+
+	public String getCenterStr() {
+		return centerStr;
+	}
+
+
+	public void setCenterStr(String centerStr) {
+		this.centerStr = centerStr;
 	}
 
 
@@ -243,6 +316,16 @@ public class Reimbursement {
 	}
 
 
+	public String getApproveStr() {
+		return approveStr;
+	}
+
+
+	public void setApproveStr(String approveStr) {
+		this.approveStr = approveStr;
+	}
+
+
 	public int getNextInfoReq() {
 		return nextInfoReq;
 	}
@@ -284,6 +367,14 @@ public class Reimbursement {
 
 	public void addFile(File f) {
 		attachments.add(f);
+	}
+
+	public boolean isFiles() {
+		return files;
+	}
+
+	public void setFiles(boolean files) {
+		this.files = files;
 	}
 	
 }

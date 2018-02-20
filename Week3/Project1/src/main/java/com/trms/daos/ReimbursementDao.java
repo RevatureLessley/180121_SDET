@@ -9,4 +9,6 @@ public interface ReimbursementDao {
 	public int insertReimbursement(Reimbursement r);
 	public int insertAttachment(File f, int r_id);
 	public int getReimburseByEmpId(int empId);
+	public List<Reimbursement> getPersonalReimb(int empId);
+	public int getNumberAttachments(int rId);
 }

@@ -1,11 +1,13 @@
 package com.trms.services;
 
+
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import com.trms.beans.Reimbursement;
 import com.trms.daos.ReimbursementDao;
@@ -31,4 +33,28 @@ public class ReimbursementService {
 		r.setUrgent(0);
 		return dao.insertReimbursement(r);
 	}
+	
+	public static List<Reimbursement> getPersonalReimb(int empId) {
+		ReimbursementDao dao = new ReimbursementDaoImpl();
+		List<Reimbursement> lr = dao.getPersonalReimb(empId);
+		
+		for(Reimbursement r : lr) {
+			switch (r.getApproved()) {
+			case 2:
+				r.setApproveStr("PENDING");
+				break;
+			case 1:
+				r.setApproveStr("APPROVED");
+				break;
+			case 0:
+				r.setApproveStr("REJECTED");
+				break;
+			default:
+				r.setApproveStr("UNKNOWN");
+			}
+		}
+		
+		return dao.getPersonalReimb(empId);
+	}
 }
+
