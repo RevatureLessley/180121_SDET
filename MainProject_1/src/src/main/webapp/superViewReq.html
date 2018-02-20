@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Home Page</title>
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+<script src="resources/JavaScript/RequestAjax.js" ></script>
+
+</head>
+<body onload="sendAJAX()">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand">Tuition Reimbursement System</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="apply.html">Pending Requests</a></li>
+				<li><a href="#">Check Status</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="register.html"><span
+						class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="index.html"><span
+						class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
+		</div>
+	</nav>
+	
+	<div class="container-fluid" style="margin-top: 100px">
+		<div class="well">
+			
+			<h1>View All Pending Requests</h1>
+						
+			<button onclick="sendAJAX()">View</button><br><br>
+			<table border=2px id=results>
+				<tr>
+					<th>Request ID</th>
+					<th>Employee ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Phone Number</th>
+					<th>Event Type</th>
+					<th>Event Costs</th>
+					<th>Grading Format</th>
+					<th>Event Work Related Justification</th>
+					<th>Employee TR Balance Available</th>
+					
+				</tr>
+				
+			</table>
+			
+			<p id=AJAXError></p>
+			
+			</div>
+			
+			<div class="col-sm-5">
+			<div class=well>
+			<h3>Enter a Request ID below to Approve/Deny it</h3>
+			
+			<form method="POST" action="SuperUpdateRequest.do">
+			
+			<div class="form-group">
+					<label for="req_ID">REQUEST ID: </label> <input type="number"
+						class="form-control" name="req_ID">
+				</div><br>
+				
+			<div class="row">
+			<label for="UpdateAction" style= "margin-left:13px"> Choose to Approve/Decline or Ask For More Documents:</label> 
+			<select class="form-control" name="UpdateAction" style= "width:95%; margin-left:13px">
+				<option>Approve</option>
+				<option>Decline</option>
+				<option>Documentation</option>
+			</select>
+			</div>
+			<br><br>
+		
+			<div class="form-group">
+					<label for="Docs">If you Choose more Documentation, Specify which are required: </label> 
+					<input type="Text" class="form-control" name="Docs">
+				</div><br>
+		
+			<button type="submit" class="btn btn-default">VIEW REQUEST</button>
+			</form>
+			
+		</div>
+			</div>
+		</div>
+		
+</body>
+</html>
