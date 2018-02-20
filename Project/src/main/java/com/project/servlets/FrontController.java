@@ -1,12 +1,14 @@
-package com.revature.servlets;
+package com.project.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class FrontController
@@ -18,12 +20,6 @@ public class FrontController extends HttpServlet {
 	public void init() throws ServletException {
 		System.out.println("FRONT CONTROLLER LOADED");
 		
-		
-		System.out.println("=====" + this.getServletName() + "=====");
-		System.out.println("ConfigVariable: " + this.getInitParameter("configVar"));
-		System.out.println("ConfigVariableForLogin: " + this.getInitParameter("loginVar"));
-		System.out.println("ContextVariable: " + this.getServletContext().getInitParameter("ContextBob"));
-
 	}
 	
 	@Override
@@ -31,38 +27,45 @@ public class FrontController extends HttpServlet {
 		System.out.println("FRONT CONTROLLER DESTROYED");
 	}
 	
-	
-	/*
-	 * Front controller:
-	 * -Is a design pattern.
-	 * -The front controller design pattern is built to designate a single servlet
-	 * for handling all requests and dispatching to proper servlets for handling.
-	 * The goal is ensure that one servlets acts as the gatekeeper for the rest of the
-	 * application.	 
-	 */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = request.getRequestURI(); //Stores the url in a string
+		
+		String url = request.getRequestURI(); 
 		System.out.println(url);
 		RequestDispatcher rd;
-
-		System.out.println("=====" + this.getServletName() + "=====");
-		System.out.println("ConfigVariable: " + this.getInitParameter("ConfigVar"));
-		System.out.println("ConfigVariableForLogin: " + this.getInitParameter("loginVar"));
-		System.out.println("ContextVariable: " + this.getServletContext().getInitParameter("ContextBob"));
-
+		
 		String[] tokens = url.split("/");
 		String action = (tokens[tokens.length-1]);
 		action = action.substring(0, action.length()-3).toLowerCase();
 		
 		System.out.println(action);
-		
 		switch(action){
 		case "login":
-			rd = request.getRequestDispatcher("LoginServlet");
+			System.out.println("frontcontroller login");
+			rd = request.getRequestDispatcher("login");
 			rd.forward(request, response);
 			break;
+		case "register":
+			System.out.println("frontcontroller register");
+			rd = request.getRequestDispatcher("Register");
+			rd.forward(request, response);
+			break;
+		case "tuition":
+			System.out.println("frontcontroller tuition");
+			rd = request.getRequestDispatcher("Tuition");
+			System.out.println("request dispather");
+			rd.forward(request, response);
+			break;
+		case "logout":
+			System.out.println("frontcontroller logout");
+			HttpSession session = request.getSession(false);
+			System.out.println(session.getAttribute("username"));
+			session.invalidate();
+			System.out.println("Session deleted");
+			response.sendRedirect("../index.html");
+			break;
 		default:
+			System.out.println("error");
 			response.sendError(404);
 		}
 		
