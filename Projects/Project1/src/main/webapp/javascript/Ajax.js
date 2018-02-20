@@ -1,14 +1,11 @@
 function sendAJAX(){
-	var xhr = new XMLHttpRequest(); //State = 0
+	var xhr = new XMLHttpRequest();
 	console.log(xhr.readyState);
-	xhr.open("GET","GetEmployees"); //State == 1
+	xhr.open("GET","GetEmployees");
 	xhr.onreadystatechange = function(){
 		console.log("READY STATE CHANGE: " + xhr.readyState);
+		var resp = xhr.responseText;
 		if(xhr.readyState == 4 && xhr.status == 200){
-			/*
-			 * In the event of a successful request/response, as indicated by state = 4, and
-			 * status = 200, we will then take the data as XML.
-			 */
 			var xmlText = xhr.responseXML;
 			var response = xmlText.getElementsByTagName("employee");
 			var resultTable = document.getElementById("results");
@@ -40,23 +37,13 @@ function sendAJAX(){
 			console.log("ERROR, STATUS: " + xhr.status);
 			document.getElementById("AJAXError").innerHTML=xhr.status;
 		}
-		/*
-		 * The open method is used to configure the actual XMLHttpRequest object.
-		 * We configure what kind of HTTP method we are using, and where it is going.
-		 * The parameters look like:
-		 * 	open(HTTPMETHOD, ENDPOINT, UseAsynchronous)
-		 * 			-note, UseAsynchronous is optional and will default to true.
-		 * 
-		 */
-
 	}
-	
-	xhr.send(); //State == 2
+	xhr.send();
 }
 
 function postAjax(){
-	var xhr = new XMLHttpRequest(); //State = 0
-	xhr.open("POST","RegisterEmployee"); //State == 1
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST","RegisterEmployee");
 	
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4 && xhr.status == 200){
@@ -80,9 +67,15 @@ function postAjax(){
 	
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	
-	var name = document.forms["register"]["name"].value;
-	var salary = document.forms["register"]["salary"].value;
-	var title = document.forms["register"]["title"].value;
+	var email = document.forms["register"]["email"].value;
+	var firstname = document.forms["register"]["firstname"].value;
+	var lastname = document.forms["register"]["lastname"].value;
+	var address = document.forms["register"]["address"].value;
+	var jobtitle = document.forms["register"]["jobtitle"].value;
+	var date = document.forms["register"]["date"].value;
 	
-	xhr.send("name=" + name + "&salary=" + salary + "&title=" + title);
+	
+	xhr.send("email=" + email + "&firstname=" + firstname + "&lastname=" 
+			+ lastname + "&address=" + address + "&jobtitle=" + jobtitle
+			+ "&date=" + date);
 }

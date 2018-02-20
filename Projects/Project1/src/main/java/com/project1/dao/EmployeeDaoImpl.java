@@ -21,27 +21,29 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	String sql;
 	//final static Logger logger = Logger.getLogger(AccountDaoImpl.class);
 	
-/*//======================= INSERTION METHODS =================================//
+//======================= INSERTION METHODS =================================//
 	@Override
-	public void insertIntoUserInfo(String email, String fname, String lname) {
+	public void insertInto(String email, String firstName, String lastName, String address, String jobTitle, String date ) {
 		try (Connection conn = Connections.getConnection()) {
-			sql = "INSERT INTO user_info VALUES (?,?,?)";
+			sql = "INSERT INTO personal_info VALUES (?,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, email);
-			ps.setString(2, fname);
-			ps.setString(3, lname);
+			ps.setString(2, firstName);
+			ps.setString(3, lastName);
+			ps.setString(1, address);
+			ps.setString(2, jobTitle);
+			ps.setString(3, date);
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(ps);
-			logger.info("New account entered into database.");
 		}
 	}
 
 
-	@Override
+/*	@Override
 	public void insertIntoAccountInfo(String email, String uname, String pw, int isAd, int isAc, int isCl) {
 		try (Connection conn = Connections.getConnection()) {
 			sql = "INSERT INTO account_info VALUES (?,?,?,?,?,?)";
