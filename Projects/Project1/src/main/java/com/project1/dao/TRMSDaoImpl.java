@@ -15,8 +15,6 @@ import com.project1.util.Connections;
 
 public class TRMSDaoImpl implements TRMSDao {
 
-	List<Employee> employees;
-	Employee employee;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	String sql;
@@ -35,6 +33,72 @@ public class TRMSDaoImpl implements TRMSDao {
 			ps.setString(4, address);
 			ps.setString(5, jobTitle);
 			ps.setString(6, date);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+	}
+	
+	@Override
+	public void insertIntoAccount(String email, String uname, String pw, int isBenCo, int isDirSup, int isDepHead) {
+		try (Connection conn = Connections.getConnection()) {
+			sql = "INSERT INTO account_info VALUES (?,?,?,?,?,?)";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			ps.setString(2, uname);
+			ps.setString(3, pw);
+			ps.setInt(4, isBenCo);
+			ps.setInt(5, isDirSup);
+			ps.setInt(6, isDepHead);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+	}
+	
+	@Override
+	public void insertIntoEvent(String email, String event, String depHeadEmail, String benCoEmail, String dirSupEmail, 
+			String approvalEmail, String justification, String grade, String passFail, String startDate, String endDate) {
+		try (Connection conn = Connections.getConnection()) {
+			sql = "INSERT INTO events VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			ps.setString(2, event);
+			ps.setString(3, depHeadEmail);
+			ps.setString(4, benCoEmail);
+			ps.setString(5, dirSupEmail);
+			ps.setString(6, approvalEmail);
+			ps.setString(7, justification);
+			ps.setString(8, grade);
+			ps.setString(9, passFail);
+			ps.setString(10, startDate);
+			ps.setString(11, endDate);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+	}
+	
+	@Override
+	public void insertIntoReimbursements(String email, double available, double pending, double awarded, double total, String lastReimDate) {
+		try (Connection conn = Connections.getConnection()) {
+			sql = "INSERT INTO reimbursements VALUES (?,?,?,?,?,?)";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			ps.setDouble(2, available);
+			ps.setDouble(3, pending);
+			ps.setDouble(4, awarded);
+			ps.setDouble(5, total);
+			ps.setString(6, lastReimDate);
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
@@ -81,7 +145,7 @@ public class TRMSDaoImpl implements TRMSDao {
 			close(ps);
 		}
 	}
-*/
+
 	
 //======================= RETRIEVAL METHODS =================================//
 	

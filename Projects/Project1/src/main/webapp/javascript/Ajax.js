@@ -1,7 +1,7 @@
 function sendAJAX(){
 	var xhr = new XMLHttpRequest();
 	console.log(xhr.readyState);
-	xhr.open("GET","GetEmployees");
+	xhr.open("GET","GetPersonalInfo");
 	xhr.onreadystatechange = function(){
 		console.log("READY STATE CHANGE: " + xhr.readyState);
 		var resp = xhr.responseText;
@@ -43,7 +43,7 @@ function sendAJAX(){
 
 function postAjax(){
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST","RegisterEmployee");
+	xhr.open("POST","PostPersonalInfo");
 	
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4 && xhr.status == 200){
