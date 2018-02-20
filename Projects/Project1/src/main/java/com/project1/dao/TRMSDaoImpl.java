@@ -13,7 +13,7 @@ import java.util.List;
 import com.project1.beans.Employee;
 import com.project1.util.Connections;
 
-public class EmployeeDaoImpl implements EmployeeDao {
+public class TRMSDaoImpl implements TRMSDao {
 
 	List<Employee> employees;
 	Employee employee;

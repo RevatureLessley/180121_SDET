@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.project1.dao.EmployeeDaoImpl;
+import com.project1.dao.TRMSDaoImpl;
 
 /**
  * Servlet implementation class RegisterEmployee
@@ -27,8 +27,8 @@ public class PostPersonalInfo extends HttpServlet {
 		String jobTitle = request.getParameter("jobtitle");
 		String date = request.getParameter("date");
 		
-		EmployeeDaoImpl emp = new EmployeeDaoImpl();
-		emp.insertInto(email, firstName, lastName, address, jobTitle, date);
+		TRMSDaoImpl emp = new TRMSDaoImpl();
+		emp.insertIntoPersonal(email, firstName, lastName, address, jobTitle, date);
 	}
 
 	/**
