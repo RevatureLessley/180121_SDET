@@ -9,6 +9,8 @@ public interface ReimbursementDao {
 
 	public boolean checkEmpty();
 	public int totalReimbursements();
+	public boolean checkReimbursement(int reid);
+	public int getCost(int emp_id);
 
 	public void addReimbursement(Reimbursement reim);
 	public int editReimbursement(Reimbursement reim);
@@ -19,7 +21,7 @@ public interface ReimbursementDao {
 	
 	public Reimbursement getReimbursement(String username);
 	public Reimbursement getReimbursement(int id);
-	public boolean checkReimbursement(int reid);
+	
 	
 	public List<Reimbursement> getAllReimbursement (); 
 	public List<Reimbursement> getAllReimbursementUser(int emp_id);

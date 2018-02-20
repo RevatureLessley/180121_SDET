@@ -129,3 +129,57 @@ function allReimAJAX(){
 	
 	xhr.send(); 
 }
+
+function costAJAX(){
+	if (generation != 0) {
+		clearTable("costtabletable");
+		total = 0;
+	}
+	
+	var xhr = new XMLHttpRequest(); 
+	xhr.open("GET","Cost"); 
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			
+			var table = document.createElement("table");
+			 table.setAttribute("border","4px");
+			 table.setAttribute("id","costtabletable");
+			 
+			 var title = document.createElement("tr");
+			 var td2 = document.createElement("td")
+			 var text = document.createTextNode("AVIALABLE REIMBURSEMENT AMOUNT : ");
+			 td2.appendChild(text);
+			 title.appendChild(td2);
+			 table.appendChild(title);
+			 
+			var xmlText = xhr.responseXML;
+			var response = xmlText.getElementsByTagName("amount");
+			var resultTable = document.getElementById("costtable");
+				resultTable.setAttribute("class","well");
+		
+				var row = document.createElement("tr");
+				var td1 = document.createElement("td");
+				
+				console.log(response[0].childNodes[0].innerHTML);
+				td1.innerHTML = response[0].childNodes[0].innerHTML;
+
+				row.appendChild(td1);
+
+				table.appendChild(row);
+				resultTable.appendChild(table);
+				
+				generation = 1;
+			
+		}else if(xhr.readyState == 4 && xhr.status!=200){
+			console.log("ERROR, STATUS: " + xhr.status);
+			document.getElementById("AJAXError").innerHTML=xhr.status;
+		}
+		
+		
+	}
+	
+	xhr.send(); 
+}
+
+var generation = 0;
+function clearTable(elementID) {document.getElementById(elementID).remove();}

@@ -92,4 +92,9 @@ public class DataService {
 		
 	};
 	
+	public static int getCostAmount(int emp_id) {
+		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
+		return reimDao.getCost(emp_id);
+	}
+	
 }

@@ -78,6 +78,25 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	
 	
 	
+	@Override
+	public int getCost(int emp_id) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int cost = 0;
+		try(Connection conn = Bridge.connect()){
+			
+			String sql = "SELECT AMOUNT FROM employees WHERE EMP_ID = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, emp_id);
+			rs = ps.executeQuery();
+			while(rs.next()) {cost = rs.getInt(1);}
+			}
+		catch(SQLException e){e.printStackTrace();}
+		finally{close(ps);close(rs);}
+		return cost;
+	}
+	
+	
 	/**This function is used to add reimbursements in the database using a Reimbursement object.**/
 	
 	public void addReimbursement(Reimbursement reim) {
@@ -324,6 +343,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 		return reimbursementList;
 	}
+
+
+
 
 
 

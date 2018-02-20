@@ -59,4 +59,14 @@
     <servlet-name>EditReimbursement</servlet-name>
     <url-pattern>/editrei</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Cost</display-name>
+    <servlet-name>Cost</servlet-name>
+    <servlet-class>com.revature.servlets.Cost</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cost</servlet-name>
+    <url-pattern>/Cost</url-pattern>
+  </servlet-mapping>
 </web-app>
