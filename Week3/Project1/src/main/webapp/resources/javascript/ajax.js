@@ -85,7 +85,22 @@ function getGradeFormats() {
 			
 			var div = document.getElementById("formattype");
 			
-			
+			for(var i = 0; i < jsonObj.length; i++){
+				var label = document.createElement("label");
+				var input = document.createElement("input");
+				var span = document.createElement("span");
+				
+				span.className = "radio-inline";
+				label.innerHTML = jsonObj[i].formatname;
+				input.type = "radio";
+				input.value = jsonObj[i].formatid;
+				input.required = true;
+				input.name = "formattype";
+				
+				span.appendChild(input);
+				span.appendChild(label);
+				div.appendChild(span);
+			}
 		}
 	}
 	
