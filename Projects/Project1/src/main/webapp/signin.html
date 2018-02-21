@@ -26,7 +26,7 @@
 </head>
 <title>RRose Inc</title>
 <body style="background-color:#2C3A50">
-<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -50,44 +50,37 @@
         <li><a href="#">Page 2</a></li>
         <li><a href="#">Page 3</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="signin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
     </div>
   </div>
 </nav>
-	<div class="container-fluid">
-		<div class="well" style="width:500px; float:right">
-			<h3>Please Register To Use This Site</h3>
-			<form action="#" id="register">
-				<div class="form-group" id="email">
-					<label for="email">Email:</label> <input type="text"
-						class="form-control" name="email" required>
-				</div>
-				<div class="form-group" id="firstname">
-					<label for="firstname">First Name:</label> <input type="text"
-						class="form-control" name="firstname" required>
-				</div>
-				<div class="form-group" id="lastname">
-					<label for="lastname">Last Name:</label> <input type="text"
-						class="form-control" name="lastname" required>
-				</div>
-				<div class="form-group" id="address">
-					<label for="address">Address:</label> <input type="text"
-						class="form-control" name="address" required>
-				</div>
-				<div class="form-group" id="jobtitle">
-					<label for="jobtitle">Job Title:</label> <input type="text"
-						class="form-control" name="jobtitle" required>
-				</div>
-				<div class="form-group" id="date">
-					<label for="date">Date:</label> <input type="date"
-						class="form-control" name="date" required>
-				</div>
-				<button type="button" class="btn btn-default" onclick="window.location.href='signin.html'">Default</button>	
-			</form>
-		</div>
-	</div>
+<div class="container" style="width:500px">
+  <h2>Horizontal form</h2>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email" style="color:white">Email:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="Enter email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd" style="color:white">Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label style="color:white"><input type="checkbox"> Remember me</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
 </body>
 </html>
