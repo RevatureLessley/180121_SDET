@@ -253,14 +253,42 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 
 	@Override
 	public int setApproveId(int rId, int empId) {
-		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement ps = null;
+		int result = -1;
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "UPDATE reimbursements SET reimburse_approveid = ? WHERE reimburse_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, empId);
+			ps.setInt(2, rId);
+			result = ps.executeUpdate();
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+		}
+		
+		return result;
 	}
 
 	@Override
 	public int setApproveLvl(int rId, int newLvl) {
-		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement ps = null;
+		int result = -1;
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "UPDATE reimbursements SET reimburse_approvelvl = ? WHERE reimburse_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, newLvl);
+			ps.setInt(2, rId);
+			result = ps.executeUpdate();
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+		}
+		
+		return result;
 	}
 	
 	

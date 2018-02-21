@@ -38,9 +38,6 @@ public class LoginServlet extends HttpServlet {
 				//response.sendRedirect("user/userhome.html");
 				RequestDispatcher rd = request.getRequestDispatcher("/UserReimburseServlet");
 				rd.forward(request, response);
-				
-				
-				// TODO figure out where to send the Employee object to use the information in it
 			} else {
 				session.invalidate();
 				out.println("<head> <meta http-equiv='Refresh' content='2;url=index.html'>"

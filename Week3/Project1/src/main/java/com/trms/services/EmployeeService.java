@@ -29,4 +29,16 @@ public class EmployeeService {
 		
 		return null;
 	}
+	
+	public static int getDepartmentHead(int departId) {
+		EmployeeDao dao = new EmployeeDaoImpl();
+		
+		return dao.getDepartmentHeadIdBy(departId);
+	}
+	
+	public static int updateAvailReimb(int rId, int empId) {
+		EmployeeDao dao = new EmployeeDaoImpl();
+		
+		return dao.updateAvailReimb(rId, empId);
+	}
 }

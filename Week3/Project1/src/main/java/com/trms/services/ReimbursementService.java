@@ -99,17 +99,26 @@ public class ReimbursementService {
 	public static int updateApproval(int rId, int response, int empIdApprvr) {
 		ReimbursementDao dao = new ReimbursementDaoImpl();
 		Employee e = EmployeeService.getDepartTitle(empIdApprvr);
+		int result = -1;
 		// Get reimbursements approval lvl
 		// If direct supervisor then get department and find department head using select statement
 		// pass that to set approveid
 		
 		if(e.getTitleId() == 200) {
 			dao.updateApproved(rId, response);
+			result = EmployeeService.updateAvailReimb(rId, dao.getEmpIdByReimburse(rId)); // This returns rows updated should be one
 		} else {
 			
+			if(e.getTitleId() == 50) {
+				dao.setApproveLvl(rId, 0);
+				result = dao.setApproveId(rId, 3); //3 is the current BENCO emp id
+			} else {
+				dao.setApproveLvl(rId, 1);
+				result = dao.setApproveId(rId, EmployeeService.getDepartmentHead(e.getDepartmentId()));
+			}
 		}
 		
-		return -1;
+		return result;
 	}
 }
 

@@ -145,5 +145,46 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return e;
 	}
 
+	@Override
+	public int getDepartmentHeadIdBy(int departId) {
+		PreparedStatement ps = null;
+		int departHeadId = -1;
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "SELECT emp_id FROM employees WHERE emp_department = ? AND (emp_title_id = 0 OR emp_title_id = 50);";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, departId);
+			departHeadId = ps.executeUpdate();
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+		}
+		
+		return departHeadId;
+	}
+
+	@Override
+	public int updateAvailReimb(int rId, int empId) {
+		PreparedStatement ps = null;
+		int result = -1;
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "UPDATE employees SET emp_availreim = "
+					+ "(-(SELECT reimburse_projreimb FROM reimbursements WHERE reimburse_id = ?) + emp_availreim) "
+					+ "WHERE emp_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, rId);
+			ps.setInt(2, empId);
+			result = ps.executeUpdate();
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
+
 
 }

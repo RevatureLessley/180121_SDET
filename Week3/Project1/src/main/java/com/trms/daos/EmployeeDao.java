@@ -8,4 +8,6 @@ public interface EmployeeDao {
 	public int getSubordinates(int empId);
 	public int getReportsTo(int empId);
 	public Employee getDepartAndTitle(int empId);
+	public int getDepartmentHeadIdBy(int departId);
+	public int updateAvailReimb(int rId, int empId);
 }

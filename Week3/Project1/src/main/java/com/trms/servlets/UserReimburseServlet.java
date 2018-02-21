@@ -22,7 +22,6 @@ public class UserReimburseServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/*
-		 * TODO Change method to use AJAX and xml build xml file that js will read from
 		 * Reimbursement Service and dao need to be created
 		 * Mockito for testing???
 		 * Then get relevant data from database to display via ajax.js
