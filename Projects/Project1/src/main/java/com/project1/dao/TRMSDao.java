@@ -17,10 +17,10 @@ public interface TRMSDao {
 	public List<Account>getAllAccounts();
 	public List<Event>getAllEvents();
 	public List<Reimbursement>getAllReimbursements();
-//	public void updateLastName(String email, String last);
-//	public void updatePassword(String email, String pass);
-//	public void updateBalanceInfo(String email, String col, double newVal);
-//	public void updateAccountStatusInfo(String email, String col, int newVal);
+	public Personal selectPersonalByEmail(String email);
+	public Account selectAccountByEmail(String email);
+	public Event selectEventByEmail(String email);
+	public Reimbursement selectReimbursementByEmail(String email);
 //	public Account selectAccountByEmail(String email);	//retrieves entire account using email (PK)
 //	public List<Employee> getAllEmployees();	//admin only (Use Join statement)
 	//public void deleteAccountByEmail(String email);	//admin only

@@ -55,4 +55,12 @@ public class Reimbursement {
 	public void setLastReibursementDate(String lastReibursementDate) {
 		this.lastReibursementDate = lastReibursementDate;
 	}
+
+	@Override
+	public String toString() {
+		return "Reimbursement [email=" + email + ", available=" + available + ", pending=" + pending + ", awarded="
+				+ awarded + ", total=" + total + ", lastReibursementDate=" + lastReibursementDate + "]";
+	}
+	
+	
 }

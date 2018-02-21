@@ -52,9 +52,18 @@ CREATE TABLE reimbursements(
 package com.project1.beans;
 
 import java.util.List;
+import com.project1.beans.Personal;
+import com.project1.beans.Account;
+import com.project1.beans.Event;
+import com.project1.beans.Reimbursement;
 import com.project1.dao.TRMSDaoImpl;
 
 public class TestMain {
 	public static void main(String args[]) {
+		TRMSDaoImpl x = new TRMSDaoImpl();
+		System.out.println(x.getAllReimbursements());
+		System.out.println(x.getAllEvents());
+		System.out.println(x.getAllAccounts());
+		System.out.println(x.getAllPersonal());
 	}
 }

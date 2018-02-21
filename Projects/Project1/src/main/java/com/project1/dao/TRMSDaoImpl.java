@@ -118,7 +118,7 @@ public class TRMSDaoImpl implements TRMSDao {
 
 
 
-//======================= RETRIEVAL METHODS =================================//
+//======================= RETRIEVAL METHODS (ALL) =================================//
 	
 	@Override
 	public List<Personal> getAllPersonal() {
@@ -200,52 +200,40 @@ public class TRMSDaoImpl implements TRMSDao {
 		}
 		return reimbursements;
 	}
-/*
+	
+//======================= RETRIEVAL METHODS (SINGLE) =================================//
+	
 	@Override
-	public List<Account> getAllAccounts() {
-		accounts = new ArrayList<>();
+	public Personal selectPersonalByEmail(String email) {
 		try (Connection conn = Connections.getConnection()) {
-			sql = "SELECT * FROM user_info " + 
-					"FULL OUTER JOIN account_info " + 
-					"ON user_info.u_email = account_info.a_email " + 
-					"FULL OUTER JOIN balance_info " + 
-					"ON account_info.a_email = balance_info.b_email";
+			sql = "SELECT * FROM personal_info WHERE email = ?";
 			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
 			rs = ps.executeQuery();
-
-			while (rs.next()) {
-				accounts.add(new Account(rs.getString(1), rs.getString(2), rs.getString(3), 
-				rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8), 
-				rs.getInt(9), rs.getDouble(11), rs.getDouble(12)));
-			}
-
+			rs.next();
+			
+			employee = new Personal(rs.getString(1), rs.getString(2), rs.getString(3), 
+					rs.getString(4), rs.getString(5), rs.getString(6));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(ps);
 			close(rs);
 		}
-		logger.info("Accounts retrieved from database.");
-		return accounts;
+		return employee;
 	}
-
+	
 	@Override
 	public Account selectAccountByEmail(String email) {
 		try (Connection conn = Connections.getConnection()) {
-			sql = "SELECT * FROM user_info " + 
-					"FULL OUTER JOIN account_info " + 
-					"ON user_info.u_email = account_info.a_email " + 
-					"FULL OUTER JOIN balance_info " + 
-					"ON account_info.a_email = balance_info.b_email " + 
-					"WHERE b_email = ?";
+			sql = "SELECT * FROM account_info WHERE email = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, email);
 			rs = ps.executeQuery();
 			rs.next();
 			
 			account = new Account(rs.getString(1), rs.getString(2), rs.getString(3), 
-				rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8), 
-				rs.getInt(9), rs.getDouble(11), rs.getDouble(12));
+					rs.getInt(4), rs.getInt(5), rs.getInt(6));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -254,10 +242,52 @@ public class TRMSDaoImpl implements TRMSDao {
 		}
 		return account;
 	}
-
 	
+	@Override
+	public Event selectEventByEmail(String email) {
+		try (Connection conn = Connections.getConnection()) {
+			sql = "SELECT * FROM events WHERE email = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			rs = ps.executeQuery();
+			rs.next();
+			
+			event = new Event(rs.getString(1), rs.getString(2), rs.getString(3), 
+					rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
+					rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return event;
+	}
+	
+	@Override
+	public Reimbursement selectReimbursementByEmail(String email) {
+		try (Connection conn = Connections.getConnection()) {
+			sql = "SELECT * FROM reimbursements WHERE email = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			rs = ps.executeQuery();
+			rs.next();
+			
+			reimbursement = new Reimbursement(rs.getString(1), rs.getDouble(2), rs.getDouble(3), 
+					rs.getDouble(4), rs.getDouble(5), rs.getString(6));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return reimbursement;
+	}
+
+/*	
 	
 //======================= UPDATE METHODS =================================//
+
 	@Override
 	public void updateFirstName(String email, String first) {
 		try (Connection conn = Connections.getConnection()) {

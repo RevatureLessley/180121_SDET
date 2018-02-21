@@ -54,4 +54,12 @@ public class Personal {
 	public void setJoinDate(String joinDate) {
 		this.joinDate = joinDate;
 	}
+
+	@Override
+	public String toString() {
+		return "Personal [email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", address="
+				+ address + ", jobTitle=" + jobTitle + ", joinDate=" + joinDate + "]";
+	}
+	
+	
 }

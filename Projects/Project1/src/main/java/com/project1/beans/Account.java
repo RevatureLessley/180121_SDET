@@ -65,4 +65,12 @@ public class Account {
 	public void setIsDepHead(int isDepHead) {
 		this.isDepHead = isDepHead;
 	}
+
+	@Override
+	public String toString() {
+		return "Account [email=" + email + ", username=" + username + ", password=" + password + ", isBenCo=" + isBenCo
+				+ ", isDirSup=" + isDirSup + ", isDepHead=" + isDepHead + "]";
+	}
+	
+	
 }

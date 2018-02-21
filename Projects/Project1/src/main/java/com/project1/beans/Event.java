@@ -96,4 +96,14 @@ public class Event {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
+
+	@Override
+	public String toString() {
+		return "Event [email=" + email + ", event=" + event + ", depHeadEmail=" + depHeadEmail + ", benCoEmail="
+				+ benCoEmail + ", dirSupEmail=" + dirSupEmail + ", approvalEmail=" + approvalEmail + ", justification="
+				+ justification + ", grade=" + grade + ", passFail=" + passFail + ", startDate=" + startDate
+				+ ", endDate=" + endDate + "]";
+	}
+	
+	
 }
