@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.project.beans.Tuition;
+import com.project.dao.TuitionDao;
+import com.project.dao.TuitionDaoImp;
 
 /**
  * Servlet implementation class Tuition
@@ -33,13 +35,10 @@ public class TuitionForm extends HttpServlet {
 		String username = (String) session.getAttribute("username");
 		System.out.println(username);
 		
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.print("<h1>hi</h1>");
-		
 		Tuition t = new Tuition ();
 		t.setUsername(username); 
 		System.out.println(username);
+		
 		t.setStart_date(LocalDate.parse(request.getParameter("start_date")));
 		t.setEnd_date(LocalDate.parse(request.getParameter("end_date")));
 		t.setCost((Double.parseDouble(request.getParameter("cost"))));
@@ -52,9 +51,6 @@ public class TuitionForm extends HttpServlet {
 		System.out.println(t);
 		
 		Part content = request.getPart("attachment");
-		
-		System.out.println("got part");
-		
 		InputStream is = null;
 		ByteArrayOutputStream os = null;
 
@@ -64,11 +60,10 @@ public class TuitionForm extends HttpServlet {
 
 			byte[] buffer = new byte[1024];
 			
-			System.out.println("going to write");
 			while (is.read(buffer) != -1) {
 				os.write(buffer);
 			}
-			System.out.println("done write");
+			System.out.println("file done writing");
 			t.setAttachment((os.toByteArray()));
 
 		} catch (IOException e) {
@@ -81,7 +76,20 @@ public class TuitionForm extends HttpServlet {
 				os.close();
 		}
 		
-		System.out.println(t);
+		//System.out.println(t);
+		
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		TuitionDao dao = new TuitionDaoImp();
+		if(dao.addTuition(t)) {
+			out.print("<h1>Tuition Reimbursement request SUCCESSFUL</h1>");
+			out.println("<hr><input type='button' value='GO BACK' onclick='goBack()'>"
+					+ "<script>function goBack(){ window.history.back(); }</script>");
+		}else {
+			out.print("<h1>Tuition Reimbursement request FAILED</h1>");
+			out.println("<hr><input type='button' value='GO BACK' onclick='goBack()'>"
+					+ "<script>function goBack(){ window.history.back(); }</script>");
+		}
 		
 	
 	}

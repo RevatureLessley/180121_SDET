@@ -55,7 +55,7 @@ public class TuitionDaoImp implements TuitionDao {
 		
 		CallableStatement stmt = null;
 		try(Connection conn = Connections.getConnection()){
-			stmt = conn.prepareCall("{call INSERT_TUITION(?,?,?,?,?,?,?,?)}");
+			stmt = conn.prepareCall("{call INSERT_TUITION(?,?,?,?,?,?,?,?,?)}");
 			stmt.setString(1, t.getUsername());
 			stmt.setDate(2, Date.valueOf(t.getStart_date()));
 			stmt.setDate(3, Date.valueOf(t.getEnd_date()));
