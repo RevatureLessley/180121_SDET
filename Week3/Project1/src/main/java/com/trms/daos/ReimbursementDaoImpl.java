@@ -173,4 +173,36 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		return totalFiles;
 	}
 
+	@Override
+	public List<Reimbursement> getReimburse(int empId) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Reimbursement> lr = new ArrayList<>();
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "SELECT reimburse_id, reimburse_datetime, event_name, center_name, format_type, " + 
+					"reimburse_cost, reimburse_projreimb, reimburse_approved " + 
+					"FROM reimbursements a, eventtypes b, gradingformats c, learningcenters d " + 
+					"WHERE a.reimburse_approveid = ? AND a.reimburse_event_id = b.event_id AND a.reimburse_format_id = c.format_id " + 
+					"AND a.reimburse_center_id = d.center_id";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, empId);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				lr.add(new Reimbursement(rs.getInt(1), rs.getString(3), rs.getString(5), rs.getString(4),
+						rs.getFloat(6), rs.getFloat(7), rs.getDate(2), rs.getInt(8)));
+				boolean f = getNumberAttachments(lr.get(lr.size()-1).getReimburseId()) > 0;
+				lr.get(lr.size()-1).setFiles(f);
+				logger.info("getReimburse() : in while");
+			}			
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return lr;
+	}
+
 }

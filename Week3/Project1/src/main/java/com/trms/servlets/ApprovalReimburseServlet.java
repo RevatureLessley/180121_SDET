@@ -32,8 +32,7 @@ public class ApprovalReimburseServlet extends HttpServlet {
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		
-		// TODO change what the call to the database is the query
-		List<Reimbursement> lr = ReimbursementService.getPersonalReimb((int)session.getAttribute("empid"));
+		List<Reimbursement> lr = ReimbursementService.getReimburse((int)session.getAttribute("empid"));
 		
 		JSONArray jarr = new JSONArray();
 		

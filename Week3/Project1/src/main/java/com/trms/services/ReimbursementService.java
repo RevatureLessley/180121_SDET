@@ -63,5 +63,30 @@ public class ReimbursementService {
 		
 		return lr;
 	}
+	
+	public static List<Reimbursement> getReimburse(int empId) {
+		ReimbursementDao dao = new ReimbursementDaoImpl();
+		List<Reimbursement> lr = dao.getReimburse(empId);
+		
+		for(Reimbursement r : lr) {
+			//logger.info("getPersonalReimb() : approvedNum=" + r.getApproved());
+			switch (r.getApproved()) {
+			case 2:
+				r.setApproveStr("PENDING");
+				//logger.info("getPersonalReimb() : set Pending string");
+				break;
+			case 1:
+				r.setApproveStr("APPROVED");
+				break;
+			case 0:
+				r.setApproveStr("REJECTED");
+				break;
+			default:
+				r.setApproveStr("UNKNOWN");
+			}
+		}
+		
+		return lr;
+	}
 }
 

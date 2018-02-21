@@ -3,7 +3,6 @@ package com.trms.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,22 +27,12 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		logger.info("doGet() : session == " + session.getAttribute("empid"));
 		session.invalidate();
-
-	
-		// response.sendRedirect("../index.html");
-
+		
 		out.println("<head> <meta http-equiv='Refresh' content='2;url=index.html'>" + "</head>");
 		out.print("You have been logged out");
 
 		out.close();
 		return;
-		
-		/*RequestDispatcher rd = request.getRequestDispatcher("index.html");
-		rd.forward(request, response);
-		//rd.forward(request, response);
-		if(rd == null) {
-			logger.warn("doGet() : the requestDispatcher is null");
-		}*/
 
 	}
 
