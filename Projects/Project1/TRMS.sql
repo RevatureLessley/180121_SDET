@@ -16,23 +16,22 @@ CREATE TABLE account_info(
     email VARCHAR2(100) PRIMARY KEY,
     username VARCHAR2(100),
     pw VARCHAR2(100),
-    regular VARCHAR2(1),
-    ben_co VARCHAR2(1),
-    dir_sup VARCHAR2(1),
-    dep_head VARCHAR2(1),
+    ben_co NUMBER(1),
+    dir_sup NUMBER(1),
+    dep_head NUMBER(1),
     CONSTRAINT a_email_fk FOREIGN KEY (email) REFERENCES personal_info(email)
 );
 
-CREATE TABLE event_status(
+CREATE TABLE events(
     email VARCHAR2(100) PRIMARY KEY,
     event VARCHAR2(100),
     dep_head_email VARCHAR2(100),
     ben_co_email VARCHAR2(100),
     dir_sup_email VARCHAR2(100),
+    approval_email VARCHAR2(100),
     justification VARCHAR2(300),
     grade VARCHAR2(2),
     pass_fail VARCHAR2(2),
-    approval_email VARCHAR2(100),
     start_date VARCHAR2(20),
     end_date VARCHAR2(20),
     CONSTRAINT e_email_fk FOREIGN KEY (email) REFERENCES personal_info(email)

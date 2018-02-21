@@ -17,10 +17,9 @@ CREATE TABLE account_info(
     email VARCHAR2(100) PRIMARY KEY,
     username VARCHAR2(100),
     pw VARCHAR2(100),
-    regular VARCHAR2(1),
-    ben_co VARCHAR2(1),
-    dir_sup VARCHAR2(1),
-    dep_head VARCHAR2(1),
+    ben_co NUMBER(1),
+    dir_sup NUMBER(1),
+    dep_head NUMBER(1),
     CONSTRAINT a_email_fk FOREIGN KEY (email) REFERENCES personal_info(email)
 );
 
