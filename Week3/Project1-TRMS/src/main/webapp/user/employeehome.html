@@ -51,16 +51,34 @@
 			<h3>Please select one of the options below:</h3>
 		</div>
 		<div class="well">
-				<p><a href="reimbursements/submitnew.html">Submit A NEW Reimbursement</a></p>
-				
-				<p><button type="button" class="btn btn-default"
-								onclick="allReimAJAX()">Check ALL your Submitted Reimbursements</button></p>
-				<p><div class="well" id="reimtable"></div></p>
-				
-				<p><button type="button" onclick="costAJAX()">Check Available Reimbursement Amount</button></p>
+			<div class="well">
+				<p>
+					<a href="reimbursements/submitnew.html">Submit A NEW
+						Reimbursement</a>
+				</p>
+				<p>
+					<a href="reimbursements/edit.html">Edit Submitted Reimbursement</a>
+				</p>
+			</div>
+			<div class="well">
+
+				<p>
+					<button type="button" class="btn btn-default" onclick="costAJAX()">Check
+						Available Reimbursement Amount</button>
+				</p>
 				<div id="costtable"></div>
-				<p><a href="reimbursements/edit.html">Edit Submitted Reimbursement</a></p>
-			
+
+				<p>
+					<button type="button" class="btn btn-default"
+						onclick="allReimAJAX()">Check ALL Your Reimbursements</button>
+				</p>
+				<p>
+				<div id="reimtable"></div>
+				</p>
+
+
+
+			</div>
 		</div>
 
 		<div class="well">

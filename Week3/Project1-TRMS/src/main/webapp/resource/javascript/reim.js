@@ -1,4 +1,10 @@
 function allReimAJAX(){
+	if (tabling != 0) {
+		clearTable("reimbursementtable");
+		tabling = 0;
+	}
+	
+	
 	var xhr = new XMLHttpRequest(); 
 	xhr.open("GET","getreimburse"); 
 
@@ -9,13 +15,14 @@ function allReimAJAX(){
 			var response = xmlText.getElementsByTagName("reimbursement");
 			//response is a collection of all reimbursement tags.
 			var resultTable = document.getElementById("reimtable");
-			//variable referencing our end table.
+				resultTable.setAttribute("class","well");
 			
 			
 			var table = document.createElement("table");
 			 table.setAttribute("border","4px");
 			 table.setAttribute("id","reimbursementtable");
-			var row1st = document.createElement("tr");
+			
+			 var row1st = document.createElement("tr");
 			
 			var	til1 = document.createElement("th"); // rei_id
 			var text1 = document.createTextNode("REIMBURSEMENT_ID");
@@ -75,7 +82,7 @@ function allReimAJAX(){
 			
 			table.appendChild(row1st);
 			
-			for(e in response){
+			for(r = 0; r < response.length; r ++){
 				
 				var row = document.createElement("tr");
 				var td1 = document.createElement("td");
@@ -90,17 +97,17 @@ function allReimAJAX(){
 				var td10 = document.createElement("td");
 				var td11 = document.createElement("td");
 			
-				td1.innerHTML = response[e].childNodes[0].innerHTML;
-				td2.innerHTML = response[e].childNodes[1].innerHTML;
-				td3.innerHTML = response[e].childNodes[2].innerHTML;
-				td4.innerHTML = response[e].childNodes[3].innerHTML;
-				td5.innerHTML = response[e].childNodes[4].innerHTML;
-				td6.innerHTML = response[e].childNodes[5].innerHTML;
-				td7.innerHTML = response[e].childNodes[6].innerHTML;
-				td8.innerHTML = response[e].childNodes[7].innerHTML;
-				td9.innerHTML = response[e].childNodes[8].innerHTML;
-				td10.innerHTML = response[e].childNodes[9].innerHTML;
-				td11.innerHTML = response[e].childNodes[10].innerHTML;
+				td1.innerHTML = response[r].childNodes[0].innerHTML;
+				td2.innerHTML = response[r].childNodes[1].innerHTML;
+				td3.innerHTML = response[r].childNodes[2].innerHTML;
+				td4.innerHTML = response[r].childNodes[3].innerHTML;
+				td5.innerHTML = response[r].childNodes[4].innerHTML;
+				td6.innerHTML = response[r].childNodes[5].innerHTML;
+				td7.innerHTML = response[r].childNodes[6].innerHTML;
+				td8.innerHTML = response[r].childNodes[7].innerHTML;
+				td9.innerHTML = response[r].childNodes[8].innerHTML;
+				td10.innerHTML = response[r].childNodes[9].innerHTML;
+				td11.innerHTML = response[r].childNodes[10].innerHTML;
 				
 				row.appendChild(td1);
 				row.appendChild(td2);
@@ -119,6 +126,7 @@ function allReimAJAX(){
 			}
 			
 			resultTable.appendChild(table);
+			tabling = 1;
 			
 		}else if(xhr.readyState == 4 && xhr.status!=200){
 		
@@ -133,7 +141,7 @@ function allReimAJAX(){
 function costAJAX(){
 	if (generation != 0) {
 		clearTable("costtabletable");
-		total = 0;
+		generation = 0;
 	}
 	
 	var xhr = new XMLHttpRequest(); 
@@ -160,7 +168,6 @@ function costAJAX(){
 				var row = document.createElement("tr");
 				var td1 = document.createElement("td");
 				
-				console.log(response[0].childNodes[0].innerHTML);
 				td1.innerHTML = response[0].childNodes[0].innerHTML;
 
 				row.appendChild(td1);
@@ -182,4 +189,5 @@ function costAJAX(){
 }
 
 var generation = 0;
+var tabling = 0;
 function clearTable(elementID) {document.getElementById(elementID).remove();}
