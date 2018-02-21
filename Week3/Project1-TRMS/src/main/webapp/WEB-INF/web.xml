@@ -69,4 +69,24 @@
     <servlet-name>Cost</servlet-name>
     <url-pattern>/Cost</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetSupervisorReimbursements</display-name>
+    <servlet-name>GetSupervisorReimbursements</servlet-name>
+    <servlet-class>com.revature.servlets.GetSupervisorReimbursements</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetSupervisorReimbursements</servlet-name>
+    <url-pattern>/getsuperreimburse</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetDepartmentReimbursements</display-name>
+    <servlet-name>GetDepartmentReimbursements</servlet-name>
+    <servlet-class>com.revature.servlets.GetDepartmentReimbursements</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetDepartmentReimbursements</servlet-name>
+    <url-pattern>/getdepreimburse</url-pattern>
+  </servlet-mapping>
 </web-app>

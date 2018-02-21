@@ -25,7 +25,8 @@ public interface ReimbursementDao {
 	
 	public List<Reimbursement> getAllReimbursement (); 
 	public List<Reimbursement> getAllReimbursementUser(int emp_id);
-
+	public List<Reimbursement> getSuperReimbursementUser(int emp_id);
+	public List<Reimbursement> getDepartmentReimbursementUser(String department);
 
 	
 }

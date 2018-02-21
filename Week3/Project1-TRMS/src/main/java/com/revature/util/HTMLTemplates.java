@@ -35,6 +35,32 @@ public class HTMLTemplates {
 				);
 	}
 
+	public static void navbarEmp(PrintWriter out){
+		out.println(
+				"<div class=\"container-fluid\" style=\"margin-top: 50px\"\">\r\n" + 
+				"		<nav class=\"navbar navbar-inverse navbar-fixed-top\">\r\n" + 
+				"			<div class=\"container-fluid\">\r\n" + 
+				"				<div class=\"navbar-header\">\r\n" + 
+				"					<a class=\"navbar-brand\" href=\"#\">TRMS</a>\r\n" + 
+				"				</div>\r\n" + 
+				"				<ul class=\"nav navbar-nav\">\r\n" + 
+				"					<li class=\"active\"><a href=\"user/employeehome.html\">Employee Home Page</a></li>\r\n" + 
+				"					<li><a href=\"#\">Info</a></li>\r\n" + 
+				"					<li><a href=\"ReimCo.html\">Reimbursement Coverage</a></li>\r\n" + 
+				"				</ul>\r\n" + 
+				"				<ul class=\"nav navbar-nav navbar-right\">\r\n" + 
+				"					<li><a href=\"registration.html\"><span\r\n" + 
+				"							class=\"glyphicon glyphicon-user\"></span> Register</a></li>\r\n" + 
+				"					<li><a href=\"login.html\"><span\r\n" + 
+				"							class=\"glyphicon glyphicon-log-in\"></span> Login</a></li>\r\n" + 
+				"				</ul>\r\n" + 
+				"			</div>\r\n" + 
+				"		</nav>"
+				);
+	}
+	
+	
+	
 	public static void headers (PrintWriter out) {
 		out.println(
 				"<head>\r\n" + 

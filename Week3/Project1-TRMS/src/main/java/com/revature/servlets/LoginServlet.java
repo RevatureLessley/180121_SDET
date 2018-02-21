@@ -74,6 +74,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("password", emp.getPassword()); // Stores password in session cookie 
 			session.setAttribute("email", emp.getEmail()); // Stores email in session cookie 
 			session.setAttribute("role", emp.getRole()); // Stores role in session cookie 
+			session.setAttribute("department", emp.getDepartment()); // Stores Department in session cookie
 			session.setAttribute("supid", emp.getSup_id()); // Stores sup_id in session cookie 
 			session.setAttribute("amount", emp.getAmount()); // Stores amount in session cookie 
 			
@@ -93,6 +94,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("password", emp.getPassword()); // Stores password in session cookie 
 			session.setAttribute("email", emp.getEmail()); // Stores email in session cookie 
 			session.setAttribute("role", emp.getRole()); // Stores role in session cookie 
+			session.setAttribute("department", emp.getDepartment()); // Stores Department in session cookie
 			session.setAttribute("supid", emp.getSup_id()); // Stores sup_id in session cookie 
 			session.setAttribute("amount", emp.getAmount()); // Stores amount in session cookie 
 			
@@ -111,6 +113,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("password", emp.getPassword()); // Stores password in session cookie 
 			session.setAttribute("email", emp.getEmail()); // Stores email in session cookie 
 			session.setAttribute("role", emp.getRole()); // Stores role in session cookie 
+			session.setAttribute("department", emp.getDepartment()); // Stores Department in session cookie
 			session.setAttribute("supid", emp.getSup_id()); // Stores sup_id in session cookie 
 			session.setAttribute("amount", emp.getAmount()); // Stores amount in session cookie 
 			
@@ -129,6 +132,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("password", emp.getPassword()); // Stores password in session cookie 
 			session.setAttribute("email", emp.getEmail()); // Stores email in session cookie 
 			session.setAttribute("role", emp.getRole()); // Stores role in session cookie 
+			session.setAttribute("department", emp.getDepartment()); // Stores Department in session cookie
 			session.setAttribute("supid", emp.getSup_id()); // Stores sup_id in session cookie 
 			session.setAttribute("amount", emp.getAmount()); // Stores amount in session cookie 
 			

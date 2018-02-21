@@ -345,6 +345,98 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	}
 
 
+	@Override
+	public List<Reimbursement> getSuperReimbursementUser(int emp_id) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Reimbursement> reimbursementList = new ArrayList<Reimbursement>();
+		
+		try(Connection conn = Bridge.connect()){
+			
+			String sql = " SELECT REIMBURSEMENTS.REI_ID, REIMBURSEMENTS.EMP_ID, REIMBURSEMENTS.FNAME, REIMBURSEMENTS.LNAME, REIMBURSEMENTS.DATEOF, REIMBURSEMENTS.TIME, REIMBURSEMENTS.LOCATION, REIMBURSEMENTS.DESCRIPTION, REIMBURSEMENTS.COST, REIMBURSEMENTS.GRADING_FORMAT, REIMBURSEMENTS.TYPE_OF_EVENT , REIMBURSEMENTS.WORK_RELATED_JUSTIFICATION, REIMBURSEMENTS.APRROVAL_STATE, REIMBURSEMENTS.NOTE\r\n" + 
+					"FROM REIMBURSEMENTS\r\n" + 
+					"INNER JOIN EMPLOYEES ON REIMBURSEMENTS.EMP_ID = EMPLOYEES.EMP_ID\r\n" + 
+					"WHERE EMPLOYEES.SUP_ID = ? ";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, emp_id);
+			rs = ps.executeQuery(); 
+			
+			while(rs.next()){
+				
+				reimbursementList.add(new Reimbursement (
+						rs.getInt(1), // rei_id
+						rs.getInt(2), //emp_id
+						rs.getString(3), // First name
+						rs.getString(4), // Last name
+						rs.getString(5), // Date Of Event 
+						rs.getString(6), // Time Of event
+						rs.getString(7), // Location of event
+						rs.getString(8), // Description of event
+						rs.getInt(9), 	 // Cost of event
+						rs.getString(10), // Grading Format
+						rs.getString(11), // type of event
+						rs.getString(12),  // Work related Justification
+						rs.getInt(13), // Approval status
+						rs.getString(14) // note
+						));
+				
+				
+				
+				}
+			}
+		catch(SQLException e){e.printStackTrace();}
+		finally{close(ps);close(rs);}
+		
+		return reimbursementList;
+	}
+
+
+	@Override
+	public List<Reimbursement> getDepartmentReimbursementUser(String department) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Reimbursement> reimbursementList = new ArrayList<Reimbursement>();
+		
+		try(Connection conn = Bridge.connect()){
+			
+			String sql = " SELECT REIMBURSEMENTS.REI_ID, REIMBURSEMENTS.EMP_ID, REIMBURSEMENTS.FNAME, REIMBURSEMENTS.LNAME, REIMBURSEMENTS.DATEOF, REIMBURSEMENTS.TIME, REIMBURSEMENTS.LOCATION, REIMBURSEMENTS.DESCRIPTION, REIMBURSEMENTS.COST, REIMBURSEMENTS.GRADING_FORMAT, REIMBURSEMENTS.TYPE_OF_EVENT , REIMBURSEMENTS.WORK_RELATED_JUSTIFICATION, REIMBURSEMENTS.APRROVAL_STATE, REIMBURSEMENTS.NOTE\r\n" + 
+					"FROM REIMBURSEMENTS\r\n" + 
+					"INNER JOIN EMPLOYEES ON REIMBURSEMENTS.EMP_ID = EMPLOYEES.EMP_ID\r\n" + 
+					"WHERE EMPLOYEES.DEPARTMENT = ? ";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, department);
+			rs = ps.executeQuery(); 
+			
+			while(rs.next()){
+				
+				reimbursementList.add(new Reimbursement (
+						rs.getInt(1), // rei_id
+						rs.getInt(2), //emp_id
+						rs.getString(3), // First name
+						rs.getString(4), // Last name
+						rs.getString(5), // Date Of Event 
+						rs.getString(6), // Time Of event
+						rs.getString(7), // Location of event
+						rs.getString(8), // Description of event
+						rs.getInt(9), 	 // Cost of event
+						rs.getString(10), // Grading Format
+						rs.getString(11), // type of event
+						rs.getString(12),  // Work related Justification
+						rs.getInt(13), // Approval status
+						rs.getString(14) // note
+						));
+				
+				
+				
+				}
+			}
+		catch(SQLException e){e.printStackTrace();}
+		finally{close(ps);close(rs);}
+		
+		return reimbursementList;
+	}
+
+
 
 
 

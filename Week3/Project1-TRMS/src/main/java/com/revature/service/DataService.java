@@ -89,9 +89,17 @@ public class DataService {
 	public static List<Reimbursement> userReimbursements(int emp_id){
 		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
 		return reimDao.getAllReimbursementUser(emp_id);
-		
 	};
 	
+	public static List<Reimbursement> superReimbursements(int emp_id){
+		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
+		return reimDao.getSuperReimbursementUser(emp_id);
+	};
+	
+	public static List<Reimbursement> departmentReimbursements(String department){
+		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
+		return reimDao.getDepartmentReimbursementUser(department);
+	};
 	public static int getCostAmount(int emp_id) {
 		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
 		return reimDao.getCost(emp_id);

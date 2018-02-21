@@ -41,7 +41,7 @@ public class EditReimbursement extends HttpServlet {
 		if(DataService.editReimbursement(reiid, empid, fname, lname, dateof, timeof, location,
 				desc, cost, gradingFormat, typeofevent, work) == 1) {
 			HTMLTemplates.headers(out);
-			HTMLTemplates.navbar(out);
+			HTMLTemplates.navbarEmp(out);
 			out.print("<h1>SUCCESS! YOUR REIMBURSEMENT WAS EDITED! PLEASE RETURN TO THE HOME PAGE.</h1>");
 			
 		}else {
