@@ -27,7 +27,7 @@ public class EmployeeService {
 	public static Employee getDepartTitle(int empId) {
 		EmployeeDao dao = new EmployeeDaoImpl();
 		
-		return null;
+		return dao.getDepartAndTitle(empId);
 	}
 	
 	public static int getDepartmentHead(int departId) {

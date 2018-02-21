@@ -45,7 +45,7 @@ public class SingleReEmpInfoServlet extends HttpServlet {
 		member.put("department", e.getDepartment());
 		member.put("title", e.getTitle());
 
-		logger.info("doGet() : " + member.toString());
+		//logger.info("doGet() : " + member.toString());
 		out.print(member.toString());
 	}
 

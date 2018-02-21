@@ -151,10 +151,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		int departHeadId = -1;
 		
 		try(Connection conn = Connections.getConnection()) {
-			String sql = "SELECT emp_id FROM employees WHERE emp_department = ? AND (emp_title_id = 0 OR emp_title_id = 50);";
+			String sql = "SELECT emp_id FROM employees WHERE emp_department = ? AND (emp_title_id = 0 OR emp_title_id = 50)";
 			ps = conn.prepareStatement(sql);
+			logger.info("getDepartmentHeadIdBy() : departId=" + departId);
 			ps.setInt(1, departId);
 			departHeadId = ps.executeUpdate();
+			logger.info("departHeadId=" + departHeadId);
 		} catch(SQLException e) {
 			logger.error(e.getMessage());
 		} finally {

@@ -195,7 +195,6 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 						rs.getFloat(6), rs.getFloat(7), rs.getDate(2), rs.getInt(8)));
 				boolean f = getNumberAttachments(lr.get(lr.size()-1).getReimburseId()) > 0;
 				lr.get(lr.size()-1).setFiles(f);
-				logger.info("getReimburse() : in while");
 			}			
 		} catch(SQLException e) {
 			logger.error(e.getMessage());
@@ -288,6 +287,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			close(ps);
 		}
 		
+		logger.info("setApproveLvl() : result=" + result); 
 		return result;
 	}
 	

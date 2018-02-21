@@ -32,6 +32,7 @@ public class PersonalReimburseServlet extends HttpServlet {
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		
+		// TODO if possible make it so that the benco goes straight to the approval page
 		List<Reimbursement> lr = ReimbursementService.getPersonalReimb((int)session.getAttribute("empid"));
 		
 		JSONArray jarr = new JSONArray();

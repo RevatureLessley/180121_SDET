@@ -17,7 +17,7 @@ import com.trms.daos.ReimbursementDao;
 import com.trms.daos.ReimbursementDaoImpl;
 
 public class ReimbursementService {
-	//private final static Logger logger = Logger.getLogger(ReimbursementService.class);
+	private final static Logger logger = Logger.getLogger(ReimbursementService.class);
 	
 	public static int insertReimbursement(Reimbursement r) {
 		
@@ -107,14 +107,17 @@ public class ReimbursementService {
 		if(e.getTitleId() == 200) {
 			dao.updateApproved(rId, response);
 			result = EmployeeService.updateAvailReimb(rId, dao.getEmpIdByReimburse(rId)); // This returns rows updated should be one
+			logger.info("For benco");
 		} else {
 			
-			if(e.getTitleId() == 50) {
+			if(e.getTitleId() == 50 || e.getTitleId() == 0) {
 				dao.setApproveLvl(rId, 0);
 				result = dao.setApproveId(rId, 3); //3 is the current BENCO emp id
+				logger.info("for department head");
 			} else {
 				dao.setApproveLvl(rId, 1);
 				result = dao.setApproveId(rId, EmployeeService.getDepartmentHead(e.getDepartmentId()));
+				logger.info("for direct supervisor");
 			}
 		}
 		

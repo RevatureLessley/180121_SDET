@@ -61,7 +61,7 @@ function getEmpInfo(x) {
 
 function getReimbInfo(x) {
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "../../ApproveReimburse");
+	//xhr.open("POST", "../../ApproveReimburse");
 	
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4 && xhr.status == 200) {
@@ -69,13 +69,26 @@ function getReimbInfo(x) {
 		}
 	}
 	
-	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	
-	xhr.send("rid=" + x);
+	//xhr.send("rid=" + x);
 }
 
 function appResponse() {
-	console.log("update in db");
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "../../ApproveReimburse");
+	
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4 && xhr.status == 200) {
+			console.log("update approval info");
+		}
+	}
+	
+	var r = document.getElementById("response").value;
+	
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	
+	xhr.send("rid=" + id + "&response=" + r); //app response & emp id
 }
 
 function infoReq() {

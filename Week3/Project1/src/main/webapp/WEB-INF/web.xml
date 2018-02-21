@@ -149,15 +149,6 @@
     <servlet-name>ApprovalReimburseServlet</servlet-name>
     <url-pattern>/ApprovalReimburseServlet</url-pattern>
   </servlet-mapping>
-  <filter>
-    <display-name>SingleApproveFilter</display-name>
-    <filter-name>SingleApproveFilter</filter-name>
-    <filter-class>com.trms.filters.SingleApproveFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>SingleApproveFilter</filter-name>
-    <url-pattern>/SingleApproveFilter</url-pattern>
-  </filter-mapping>
   <servlet>
     <description></description>
     <display-name>SingleReEmpInfoServlet</display-name>
