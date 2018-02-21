@@ -89,4 +89,14 @@
     <servlet-name>GetDepartmentReimbursements</servlet-name>
     <url-pattern>/getdepreimburse</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetBenefitsReimbursements</display-name>
+    <servlet-name>GetBenefitsReimbursements</servlet-name>
+    <servlet-class>com.revature.servlets.GetBenefitsReimbursements</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetBenefitsReimbursements</servlet-name>
+    <url-pattern>/getbenreimburse</url-pattern>
+  </servlet-mapping>
 </web-app>

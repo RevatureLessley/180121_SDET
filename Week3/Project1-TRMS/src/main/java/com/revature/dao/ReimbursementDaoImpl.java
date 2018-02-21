@@ -271,7 +271,8 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 		try(Connection conn = Bridge.connect()){
 			
-			String sql = "SELECT * FROM REIMBURSEMENTS";
+			//String sql = "SELECT * FROM REIMBURSEMENTS";
+			String sql = "SELECT REI_ID, EMP_ID, FNAME, LNAME, DATEOF, TIME, LOCATION, DESCRIPTION, COST, GRADING_FORMAT, TYPE_OF_EVENT , WORK_RELATED_JUSTIFICATION, APRROVAL_STATE, NOTE FROM REIMBURSEMENTS";
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql); 
 			
@@ -291,8 +292,8 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 						rs.getString(11), // type of event
 						rs.getString(12),  // Work related Justification
 						rs.getInt(13),
-						rs.getString(14),
-						rs.getString(15)
+						rs.getString(14)
+						//rs.getString(15)
 						));
 				}
 			}

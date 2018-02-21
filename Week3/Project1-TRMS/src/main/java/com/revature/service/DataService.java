@@ -100,6 +100,12 @@ public class DataService {
 		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
 		return reimDao.getDepartmentReimbursementUser(department);
 	};
+	
+	public static List<Reimbursement> allReimbursements(){
+		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
+		return reimDao.getAllReimbursement();
+	};
+	
 	public static int getCostAmount(int emp_id) {
 		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
 		return reimDao.getCost(emp_id);
