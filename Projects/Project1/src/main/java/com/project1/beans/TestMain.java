@@ -51,11 +51,6 @@ CREATE TABLE reimbursements(
 
 package com.project1.beans;
 
-import java.util.List;
-import com.project1.beans.Personal;
-import com.project1.beans.Account;
-import com.project1.beans.Event;
-import com.project1.beans.Reimbursement;
 import com.project1.dao.TRMSDaoImpl;
 
 public class TestMain {

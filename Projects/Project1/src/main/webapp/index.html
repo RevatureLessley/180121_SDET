@@ -25,22 +25,21 @@
 <script src="javascript/Ajax.js"></script>
 </head>
 <title>RRose Inc</title>
-<body>
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">RRose Inc</a>
-	    </div>
-	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="#">Home</a></li>
-	      <li><a href="#">Log in</a></li>
-	      <li><a href="#">Page 2</a></li>
-	      <li><a href="#">Page 3</a></li>
-	    </ul>
-	  </div>
+<body style="background-color:#152E58">
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="#">WebSiteName</a>
+    		</div>
+    		<ul class="nav navbar-nav">
+      			<li class="active"><a href="#">Home</a></li>
+      			<li><a href="#">Sign in</a></li>
+      			<li><a href="#">FAQ</a></li>
+   	 		</ul>
+  		</div>
 	</nav>
 	<div class="container-fluid">
-		<div class="well">
+		<div class="well" style="width:500px; float:right">
 			<h3>Please Register To Use This Site</h3>
 			<form action="#" id="register">
 				<div class="form-group" id="email">
@@ -69,21 +68,6 @@
 				</div>
 				<button type="button" class="btn btn-default" onclick="postAjax()">Submit</button>	
 			</form>
-		</div>
-		<div class="well">
-			<h3>Employees!!</h3>
-			<button onclick="sendAJAX()">Get Employees</button>
-			<table border=2px id=results>
-				<tr>
-					<th>email</th>
-					<th>first</th>
-					<th>last</th>
-					<th>address</th>
-					<th>jobtitle</th>
-					<th>date</th>
-				</tr>
-			</table>
-			<p id=AJAXError></p>
 		</div>
 	</div>
 </body>
