@@ -20,7 +20,7 @@ import com.trms.services.EventTypeService;
  * Servlet implementation class EventTypesServlet
  */
 public class EventTypesServlet extends HttpServlet {
-	private static final Logger logger = Logger.getLogger(EventTypesServlet.class);
+	//private static final Logger logger = Logger.getLogger(EventTypesServlet.class);
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -40,7 +40,7 @@ public class EventTypesServlet extends HttpServlet {
 			member.put("eventname", et.getEventName());
 			member.put("eventcoverage", et.getEventCoverage());
 			jarr.put(member);
-			logger.info("doGet() : " + member.toString());
+			//logger.info("doGet() : " + member.toString());
 		}
 		
 		out.print(jarr.toString());
