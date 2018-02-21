@@ -9,3 +9,14 @@
 body {
 	background-color: #f5f5f5;
 }
+
+.form-table {
+	border-collapse: separate;
+	border-spacing: 10px;
+}
+
+.sized-btn {
+	width: 120px;
+	height: 40px;
+	background-color:Ivory;
+}

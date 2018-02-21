@@ -36,23 +36,23 @@ public class Connections {
 		 * for execution.
 		 */
 		//We forcibly bring in the OracleDriver class from our ojdbc7 jar.
-		String props[] = System.getenv("DBProps").split(";");
+//		String props[] = System.getenv("DBProps").split(";");
 
 		try {
-			//Class.forName(prop.getProperty("class"));
-			Class.forName(props[0]);
+			Class.forName(prop.getProperty("class"));
+//			Class.forName(props[0]);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		
 		
 		return DriverManager.getConnection(
-				props[1],
-				props[2],
-				props[3]
-					//prop.getProperty("url"),
-					//prop.getProperty("username"),
-					//prop.getProperty("password")
+//				props[1],
+//				props[2],
+//				props[3]
+					prop.getProperty("url"),
+					prop.getProperty("username"),
+					prop.getProperty("password")
 				);
 	}
 }

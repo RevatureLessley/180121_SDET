@@ -11,7 +11,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/javascript/main.js"></script>
 <script type="text/javascript" src="resources/javascript/ajax.js"></script>
-<title>TRMS</title>
+<title>TRMS Register</title>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-default navbar-fixed-top">
@@ -32,29 +32,53 @@
 		<div class="well row">
 			<h1 class="text-center">Tuition Reinburstment Management System</h1>
 			<hr>
-			<div class="text-center col-md-6 col-md-offset-3">
-				<h4>Please sign in:</h4>
-				<form id="loginForm" action="Login.do" method="POST">
-					<table class='form-table' align="center">
+			<div class="col-md-8 col-md-offset-2">
+				<h4>Register an account</h4>
+				<hr>
+				<form id="registerForm" action="Register.do" method="POST">
+					<table class="form-table">
+						<tr>
+							<td><label>First Name:</label></td>
+							<td><input class="form-control" type="text" name="firstname"
+								size=35 required></td>
+						</tr>
+						<tr>
+							<td><label>Last Name:</label></td>
+							<td><input class="form-control" type="text" name="lastname"
+								required></td>
+						</tr>
+						<tr>
+							<td><label>E-mail:</label></td>
+							<td><input class="form-control" type="email" name="email"
+								required></td>
+						</tr>
 						<tr>
 							<td><label>Username:</label></td>
 							<td><input class="form-control" type="text" name="username"
-								id="username" required>
+								id="username" oninput="checkUsername()" required></td>
+							<td><span id="usernameAvail"></span></td>
 						</tr>
 						<tr>
 							<td><label>Password:</label></td>
 							<td><input class="form-control" type="password"
-								name="password" id="password" required>
+								name="password" id="password" required></td>
+						</tr>
+						<tr>
+							<td><label>Confirm Password:</label></td>
+							<td><input class="form-control" type="password"
+								name="password2" id="password2" onblur="checkPasswordMatch()"
+								required></td>
+							<td><span id="pwMismatchMsg" class="text-danger"></span></td>
 						</tr>
 					</table>
-					<button class="btn sized-btn btn-warning" type="submit">Sign
-						in</button>
+					<hr>
+					<button class="btn sized-btn btn-warning" type="submit">Register</button>
+					<a href="index.html" class="pull-right"><button class="btn sized-btn btn-secondary"
+						type="button">Back</button></a>
 				</form>
-				<hr>
-				<h3 class="text-center">- OR -</h3>
-				<h4>For first time user, please register:</h4>
-				<a href="register.html"><button class="btn sized-btn btn-warning"
-						type="button">Register</button></a>
+					
+
+
 			</div>
 		</div>
 

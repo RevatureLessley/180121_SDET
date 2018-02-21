@@ -4,7 +4,6 @@ public class Employee {
 	private long empId;
 	private String fname;
 	private String lname;
-	private String mi;
 	private String username;
 	private String password;
 	private String title;
@@ -13,19 +12,18 @@ public class Employee {
 	private String state;
 	private String tel;
 	private String email;
-	
+
 	public Employee() {
 		super();
 	}
 
-	public Employee(long empId, String fname, String lname, String mi,
-			String username, String password, String title, String address,
-			String city, String state, String tel, String email) {
+	public Employee(long empId, String fname, String lname, String username,
+			String password, String title, String address, String city,
+			String state, String tel, String email) {
 		super();
 		this.empId = empId;
 		this.fname = fname;
 		this.lname = lname;
-		this.mi = mi;
 		this.username = username;
 		this.password = password;
 		this.title = title;
@@ -44,7 +42,8 @@ public class Employee {
 	}
 
 	/**
-	 * @param empId the empId to set
+	 * @param empId
+	 *            the empId to set
 	 */
 	public void setEmpId(long empId) {
 		this.empId = empId;
@@ -58,7 +57,8 @@ public class Employee {
 	}
 
 	/**
-	 * @param fname the fname to set
+	 * @param fname
+	 *            the fname to set
 	 */
 	public void setFname(String fname) {
 		this.fname = fname;
@@ -72,24 +72,11 @@ public class Employee {
 	}
 
 	/**
-	 * @param lname the lname to set
+	 * @param lname
+	 *            the lname to set
 	 */
 	public void setLname(String lname) {
 		this.lname = lname;
-	}
-
-	/**
-	 * @return the mi
-	 */
-	public String getMi() {
-		return mi;
-	}
-
-	/**
-	 * @param mi the mi to set
-	 */
-	public void setMi(String mi) {
-		this.mi = mi;
 	}
 
 	/**
@@ -100,7 +87,8 @@ public class Employee {
 	}
 
 	/**
-	 * @param username the username to set
+	 * @param username
+	 *            the username to set
 	 */
 	public void setUsername(String username) {
 		this.username = username;
@@ -114,7 +102,8 @@ public class Employee {
 	}
 
 	/**
-	 * @param password the password to set
+	 * @param password
+	 *            the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;
@@ -128,7 +117,8 @@ public class Employee {
 	}
 
 	/**
-	 * @param title the title to set
+	 * @param title
+	 *            the title to set
 	 */
 	public void setTitle(String title) {
 		this.title = title;
@@ -142,7 +132,8 @@ public class Employee {
 	}
 
 	/**
-	 * @param address the address to set
+	 * @param address
+	 *            the address to set
 	 */
 	public void setAddress(String address) {
 		this.address = address;
@@ -156,7 +147,8 @@ public class Employee {
 	}
 
 	/**
-	 * @param city the city to set
+	 * @param city
+	 *            the city to set
 	 */
 	public void setCity(String city) {
 		this.city = city;
@@ -170,7 +162,8 @@ public class Employee {
 	}
 
 	/**
-	 * @param state the state to set
+	 * @param state
+	 *            the state to set
 	 */
 	public void setState(String state) {
 		this.state = state;
@@ -184,7 +177,8 @@ public class Employee {
 	}
 
 	/**
-	 * @param tel the tel to set
+	 * @param tel
+	 *            the tel to set
 	 */
 	public void setTel(String tel) {
 		this.tel = tel;
@@ -198,23 +192,25 @@ public class Employee {
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param email
+	 *            the email to set
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "Employee [empId=" + empId + ", fname=" + fname + ", lname="
-				+ lname + ", mi=" + mi + ", username=" + username
-				+ ", password=" + password + ", title=" + title + ", address="
-				+ address + ", city=" + city + ", state=" + state + ", tel="
-				+ tel + ", email=" + email + "]";
+				+ lname + ", username=" + username + ", password=" + password
+				+ ", title=" + title + ", address=" + address + ", city="
+				+ city + ", state=" + state + ", tel=" + tel + ", email="
+				+ email + "]";
 	}
-	
-		
+
 }
