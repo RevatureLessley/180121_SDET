@@ -50,18 +50,20 @@ public class FrontController extends HttpServlet {
 			rd = request.getRequestDispatcher("Register");
 			rd.forward(request, response);
 			break;
-		case "tuition":
+		case "tuitionform":
 			System.out.println("frontcontroller tuition");
-			rd = request.getRequestDispatcher("Tuition");
+			rd = request.getRequestDispatcher("TuitionForm");
 			System.out.println("request dispather");
 			rd.forward(request, response);
 			break;
 		case "logout":
 			System.out.println("frontcontroller logout");
 			HttpSession session = request.getSession(false);
-			System.out.println(session.getAttribute("username"));
-			session.invalidate();
-			System.out.println("Session deleted");
+			if(session!=null){
+				System.out.println(session.getAttribute("username"));
+				session.invalidate();
+				System.out.println("Session deleted");
+			}
 			response.sendRedirect("../index.html");
 			break;
 		default:

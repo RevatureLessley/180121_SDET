@@ -29,11 +29,36 @@
 <div class = "container-fluid">
 	<div class ="well">	<h3><strong>Tuition Reimbursement Form</strong></h3> </div>
 	<div class = "well">
-		<form action="../Tuition" method="post">
-			<div class="form-group"><label for="date">Start Date:</label>
-  				<input type="date" class="form-control" id="start_date" ></div>  	
-  			<div class="form-group"><label for="date">End Date:</label>
-  				<input type="date" class="form-control" id="end_date" ></div>  		
+		<form action="../TuitionForm" method="post" enctype="multipart/form-data">
+			<div class="col-sm-3" class="form-group"><label for="date">Start Date:</label>
+  				<input type="date" class="form-control" name="start_date"  ></div>  	
+  			<div class="col-sm-3" class="form-group"><label for="date">End Date:</label>
+  				<input type="date" class="form-control" name="end_date" ></div>
+  			<div class="col-sm-3" class="form-group"><label for="text">Location:</label>
+  				<input type="text" class="form-control" name="location"  ></div> 
+  			<div class="col-sm-3" class="form-group"><label for="text">Cost:</label>
+  				<input type="number" class="form-control" name="cost" ></div>
+  			<div style="margin-top: 15px;" class="col-sm-12" class="form-group"><label for="text">Description:</label>
+  				<input type="text" class="form-control" name="description" ></div>  	
+  			<div style="margin-top: 15px;" class="col-sm-2" class="form-group"><label for="text">Grading Format:</label><br>
+  				<select name="grading_formate">
+    				<option value="PASSING_GRADE">PASSING_GRADE</option>
+    				<option value="PRESENATION">PRESENATION</option>
+				</select>
+			</div>
+			<div style="margin-top: 15px;" class="col-sm-4" class="form-group"><label for="text">Event Type:</label><br>
+  				<select name="event_type">
+    				<option value="UNIVERSITY_COURSE">UNIVERSITY_COURSE</option>
+    				<option value="SEMINAR">SEMINAR</option>
+    				<option value="CERTIFICATE_PREPARATION_CLASSES">CERTIFICATE_PREPARATION_CLASSES</option>
+    				<option value="CERTIFICATION">CERTIFICATION</option>
+    				<option value="TECHNICAL_TRAINING">TECHNICAL_TRAINING</option>
+    				<option value="OTHERS">OTHERS</option>
+				</select>
+			</div>
+			<div style="margin-top: 15px;" class="col-sm-6" class="form-group"><label for="file">Attachment:</label><br>
+				<input type="file" class="form-control" id = "attachment" placeholder= "attachment" accept="file_extension" name="attachment">
+			</div> 	
   			<button style="margin-top: 15px;" type="submit" class="btn btn-success">Register</button>			
 		</form>
 	</div>

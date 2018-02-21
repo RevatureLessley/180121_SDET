@@ -41,12 +41,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>Tuition</display-name>
-    <servlet-name>Tuition</servlet-name>
-    <servlet-class>com.project.servlets.Tuition</servlet-class>
+    <display-name>TuitionForm</display-name>
+    <servlet-name>TuitionForm</servlet-name>
+    <servlet-class>com.project.servlets.TuitionForm</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Tuition</servlet-name>
-    <url-pattern>/Tuition</url-pattern>
+    <servlet-name>TuitionForm</servlet-name>
+    <url-pattern>/TuitionForm</url-pattern>
   </servlet-mapping>
 </web-app>
