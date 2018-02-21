@@ -1,7 +1,7 @@
 DROP TABLE personal_info;
 DROP TABLE account_info;
 DROP TABLE reimbursements;
-DROP TABLE event_status;
+DROP TABLE events;
 
 CREATE TABLE personal_info( --parent table
     email VARCHAR2(100) PRIMARY KEY,
@@ -39,10 +39,10 @@ CREATE TABLE events(
 
 CREATE TABLE reimbursements(
     email VARCHAR2(100) PRIMARY KEY,
-    available NUMBER(4),
-    pending NUMBER(4),
-    awarded NUMBER(5),
-    total NUMBER(4),
+    available BINARY_DOUBLE,
+    pending BINARY_DOUBLE,
+    awarded BINARY_DOUBLE,
+    total BINARY_DOUBLE,
     last_reimb VARCHAR2(20),
     CONSTRAINT r_email_fk FOREIGN KEY (email) REFERENCES personal_info(email)
 );
@@ -52,9 +52,23 @@ VALUES ('RRose@zmail.com', 0, 0, 0, 0, '25.Feb.1996');
 
 SELECT * FROM reimbursements;
 SELECT * FROM personal_info;
+SELECT * FROM account_info;
+SELECT * FROM events;
 commit;
 
 INSERT INTO personal_info
 VALUES ('RRose@zmail.com', 'rich', 'rose', '1232', 'bloop', '25.Feb.1996');
 INSERT INTO personal_info
 VALUES ('tto@zmail.com', 'treh', 'rse', '1lld232', 'bldf', '24.Mar.1991');
+INSERT INTO account_info
+VALUES ('RRose@zmail.com', 'rich', 'rose', 0, 0, 0);
+INSERT INTO account_info
+VALUES ('tto@zmail.com', 'treh', 'rse', 0, 0, 0);
+INSERT INTO events
+VALUES ('RRose@zmail.com', 'kjhl', 'kkjkj', 'jhg', 'bloop', '25.Feb.1996', 'dff', 'f', 'd', 'dfgtres', 'fdswqa');
+INSERT INTO events
+VALUES ('tto@zmail.com', 'kjhl', 'kkjkj', 'jhg', 'bloop', '25.Feb.1996', 'dff', 's', 'd', 'dfgtres', 'fdswqa');
+INSERT INTO reimbursements
+VALUES ('RRose@zmail.com', 3434, 4343, 3443, 3334, '25.Feb.1996');
+INSERT INTO reimbursements
+VALUES ('tto@zmail.com', 3424, 2344, 2343, 343, '24.Mar.1991');

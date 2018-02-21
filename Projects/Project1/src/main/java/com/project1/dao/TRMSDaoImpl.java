@@ -284,18 +284,18 @@ public class TRMSDaoImpl implements TRMSDao {
 		return reimbursement;
 	}
 
-/*	
+
 	
-//======================= UPDATE METHODS =================================//
+//======================= UPDATE METHOD =================================//
 
 	@Override
-	public void updateFirstName(String email, String first) {
+	public void updateStringColumn(String email, String table, String column, String value) {
 		try (Connection conn = Connections.getConnection()) {
-				sql = "UPDATE user_info " + 
-						"SET u_first_name = ? " + 
-						"WHERE u_email = ?"; 
+				sql = "UPDATE " + table + 
+						" SET " + column + " = ? " + 
+						"WHERE email = ?"; 
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, first);
+			ps.setString(1, value);
 			ps.setString(2, email);
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -307,13 +307,13 @@ public class TRMSDaoImpl implements TRMSDao {
 	}
 	
 	@Override
-	public void updateLastName(String email, String last) {
+	public void updateDoubleColumn(String email, String table, String column, double value) {
 		try (Connection conn = Connections.getConnection()) {
-				sql = "UPDATE user_info " + 
-						"SET u_last_name = ? " + 
-						"WHERE u_email = ?"; 
+				sql = "UPDATE " + table + 
+						" SET " + column + " = ? " + 
+						"WHERE email = ?"; 
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, last);
+			ps.setDouble(1, value);
 			ps.setString(2, email);
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -325,13 +325,13 @@ public class TRMSDaoImpl implements TRMSDao {
 	}
 	
 	@Override
-	public void updatePassword(String email, String pass) {
+	public void updateIntColumn(String email, String table, String column, int value) {
 		try (Connection conn = Connections.getConnection()) {
-				sql = "UPDATE account_info " + 
-						"SET a_password = ? " + 
-						"WHERE a_email = ?"; 
+				sql = "UPDATE " + table + 
+						" SET " + column + " = ? " + 
+						"WHERE email = ?"; 
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, pass);
+			ps.setInt(1, value);
 			ps.setString(2, email);
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -341,54 +341,4 @@ public class TRMSDaoImpl implements TRMSDao {
 			close(rs);
 		}
 	}
-	
-	@Override
-	public void updateAccountStatusInfo(String email, String col, int newVal) {
-		try (Connection conn = Connections.getConnection()) {
-			if (col == "a_is_admin")
-				sql = "UPDATE account_info " + 
-						"SET a_is_admin = ? " + 
-						"WHERE a_email = ?"; 
-			else if (col == "a_is_active")
-				sql = "UPDATE account_info " + 
-						"SET a_is_active = ? " + 
-						"WHERE a_email = ?"; 
-			else
-				sql = "UPDATE account_info " + 
-						"SET a_is_closed = ? " + 
-						"WHERE a_email = ?"; 
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, newVal);
-			ps.setString(2, email);
-			ps.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(ps);
-			close(rs);
-		}
-	}
-	
-	@Override
-	public void updateBalanceInfo(String email, String col, double newVal) {
-		try (Connection conn = Connections.getConnection()) {
-			if (col == "b_checkings")
-				sql = "UPDATE balance_info " + 
-						"SET b_checkings = ? " + 
-						"WHERE b_email = ?"; 
-			else
-				sql = "UPDATE balance_info " + 
-						"SET b_savings = ? " + 
-						"WHERE b_email = ?"; 
-			ps = conn.prepareStatement(sql);
-			ps.setDouble(1, newVal);
-			ps.setString(2, email);
-			ps.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(ps);
-			close(rs);
-		}
-	}*/
 }

@@ -65,5 +65,6 @@ public class TestMain {
 		System.out.println(x.getAllEvents());
 		System.out.println(x.getAllAccounts());
 		System.out.println(x.getAllPersonal());
+		x.updateDoubleColumn("tto@zmail.com", "reimbursements", "total", 345.32);
 	}
 }
