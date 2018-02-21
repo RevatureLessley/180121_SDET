@@ -6,7 +6,9 @@ public class Employee {
 	private String lname;
 	private int reportsTo;
 	private String department;
+	private int departmentId;
 	private String title;
+	private int titleId;
 	private float availReimburse;
 	private String addr;
 	private String city;
@@ -14,6 +16,9 @@ public class Employee {
 	private int zipCode;
 	
 	
+	public Employee() {
+	}
+
 	public Employee(int id, String fname, String lname, int reportsTo, String department, String title,
 			float availReimburse, String addr, String city, String state, int zipCode) {
 		this.id = id;
@@ -47,6 +52,25 @@ public class Employee {
 	public String getTitle() {
 		return title;
 	}
+	
+	
+	
+	public int getDepartmentId() {
+		return departmentId;
+	}
+
+	public void setDepartmentId(int departmentId) {
+		this.departmentId = departmentId;
+	}
+
+	public int getTitleId() {
+		return titleId;
+	}
+
+	public void setTitleId(int titleId) {
+		this.titleId = titleId;
+	}
+
 	public float getAvailReimburse() {
 		return availReimburse;
 	}

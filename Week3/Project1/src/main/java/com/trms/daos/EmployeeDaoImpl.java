@@ -119,4 +119,31 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return rt;
 	}
 
+	@Override
+	public Employee getDepartAndTitle(int empId) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Employee e = new Employee();
+		
+		try (Connection conn = Connections.getConnection()) {
+			String sql = "SELECT emp_department, emp_title_id FROM employees WHERE emp_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, empId);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				e.setDepartmentId(rs.getInt(1));
+				e.setTitleId(rs.getInt(2));
+			}
+		} catch(SQLException er) {
+			logger.error(er.getMessage());
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		
+		return e;
+	}
+
+
 }

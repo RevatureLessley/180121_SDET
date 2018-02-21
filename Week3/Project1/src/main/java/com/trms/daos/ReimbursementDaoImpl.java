@@ -179,6 +179,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		ResultSet rs = null;
 		List<Reimbursement> lr = new ArrayList<>();
 		
+		// TODO make it so that approved or denied reimbursements don't appear in approver views
 		try(Connection conn = Connections.getConnection()) {
 			String sql = "SELECT reimburse_id, reimburse_datetime, event_name, center_name, format_type, " + 
 					"reimburse_cost, reimburse_projreimb, reimburse_approved " + 
@@ -204,5 +205,64 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		}
 		return lr;
 	}
+
+	@Override
+	public int getEmpIdByReimburse(int rId) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int empId = -1;
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "SELECT reimburse_emp_id FROM reimbursements WHERE reimburse_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, rId);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				empId = rs.getInt(1);
+			}
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		
+		return empId;
+	}
+
+	@Override
+	public int updateApproved(int rId, int response) {
+		PreparedStatement ps = null;
+		int result = -1;
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "UPDATE reimbursements SET reimburse_approved = ? WHERE reimburse_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, response);
+			ps.setInt(2, rId);
+			result = ps.executeUpdate();
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
+
+	@Override
+	public int setApproveId(int rId, int empId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int setApproveLvl(int rId, int newLvl) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
 
 }

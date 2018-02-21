@@ -21,12 +21,95 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="../../resources/css/main.css">
+<link rel="stylesheet" type="text/css"
+	href="../../resources/css/main.css">
 <script src="../../resources/javascript/ajax_singlereimb.js"></script>
 
 <title>TRMS</title>
 </head>
 <body>
-	1 reimburse
+	<div class='container'>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">TRMS</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right" id='user-options'>
+					<!-- add the aprover link back -->
+					<li><a href="../Logout.do"><span
+							class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class='well'>
+			<table class='table-bordered' id="empinfo">
+				<tr>
+					<th>FIRST NAME</th>
+					<th>LAST NAME</th>
+					<th>DEPARTMENT</th>
+					<th>TITLE</th>
+					<th>AVAILABLE</th>
+					<th>ADDRESS</th>
+					<th>CITY</th>
+					<th>STATE</th>
+					<th>ZIP CODE</th>
+				</tr>
+			</table>
+			<hr>
+			<table class='table-bordered' id="reimbinfo00">
+				<tr>
+					<th>EVENT</th>
+					<th>CENTER NAME</th>
+					<!-- ADD ADDRESS AND OTHER INFO FOR CENTER LATER -->
+					<th>COST</th>
+					<th>PROJECTED REIMBURSEMENT</th>
+					<th>GRADE</th>
+					<th>PASSING GRADE</th>
+				</tr>
+			</table>
+			<hr>
+			<table class='table-bordered' id="reimbinfo00">
+				<tr>
+					<th>REIMBURSE ID</th>
+					<th>DESCRIPTION</th>
+					<th>WORK JUSTIFICATION</th>
+					<th>WORK DAYS MISSED</th>
+					<th>DATE</th>
+				</tr>
+			</table>
+			<hr>
+			<label>EXTRA INFORMATION</label>
+			<p id='extrainfo'></p>
+
+			<div class='row'>
+				<form class='col-sm-6'>
+					<div class="form-group">
+						<label for="inforeq">REQUEST MORE INFO</label> <select
+							class="form-control" name="inforeq" id="inforeq" required>
+							<!-- Generate -->
+						</select>
+
+						<button type=button onclick="infoReq()">SUBMIT</button>
+					</div>
+				</form>
+
+				<form class='col-sm-6'>
+					<div class="form-group">
+						<label for="response">RESPONSE</label> <select
+							class="form-control" name="response" id="response" required>
+							<option value=1>APPROVE</option>
+							<option value=0>DENY</option>
+						</select>
+
+						<button type=button onclick="appResponse()">SUBMIT</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

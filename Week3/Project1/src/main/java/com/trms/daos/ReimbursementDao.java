@@ -12,4 +12,8 @@ public interface ReimbursementDao {
 	public List<Reimbursement> getPersonalReimb(int empId);
 	public List<Reimbursement> getReimburse(int empId);
 	public int getNumberAttachments(int rId);
+	public int getEmpIdByReimburse(int rId);
+	public int updateApproved(int rId, int response);
+	public int setApproveId(int rId, int empId);
+	public int setApproveLvl(int rId, int newLvl);
 }

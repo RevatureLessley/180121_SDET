@@ -7,4 +7,5 @@ public interface EmployeeDao {
 	public int getTitle(int empId);
 	public int getSubordinates(int empId);
 	public int getReportsTo(int empId);
+	public Employee getDepartAndTitle(int empId);
 }

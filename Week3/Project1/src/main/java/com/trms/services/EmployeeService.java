@@ -23,4 +23,10 @@ public class EmployeeService {
 	
 		return dao.getReportsTo(empId);
 	}
+	
+	public static Employee getDepartTitle(int empId) {
+		EmployeeDao dao = new EmployeeDaoImpl();
+		
+		return null;
+	}
 }

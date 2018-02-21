@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.trms.beans.Employee;
 import com.trms.beans.Reimbursement;
 import com.trms.daos.ReimbursementDao;
 import com.trms.daos.ReimbursementDaoImpl;
@@ -87,6 +88,28 @@ public class ReimbursementService {
 		}
 		
 		return lr;
+	}
+	
+	public static int getEmpIdByReimburse(int rId) {
+		ReimbursementDao dao = new ReimbursementDaoImpl();
+		
+		return dao.getEmpIdByReimburse(rId);
+	}
+	
+	public static int updateApproval(int rId, int response, int empIdApprvr) {
+		ReimbursementDao dao = new ReimbursementDaoImpl();
+		Employee e = EmployeeService.getDepartTitle(empIdApprvr);
+		// Get reimbursements approval lvl
+		// If direct supervisor then get department and find department head using select statement
+		// pass that to set approveid
+		
+		if(e.getTitleId() == 200) {
+			dao.updateApproved(rId, response);
+		} else {
+			
+		}
+		
+		return -1;
 	}
 }
 
