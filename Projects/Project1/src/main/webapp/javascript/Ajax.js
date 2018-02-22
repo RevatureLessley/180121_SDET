@@ -1,13 +1,14 @@
 function getName(){
 	var xhr = new XMLHttpRequest();
 	console.log(xhr.readyState);
-	xhr.open("GET","GetPersonalInfo");
+	xhr.open("GET","GetStringValue");
 	xhr.onreadystatechange = function(){
 		console.log("READY STATE CHANGE: " + xhr.readyState);
 		var resp = xhr.responseText;
 		if(xhr.readyState == 4 && xhr.status == 200){
 			var xmlText = xhr.responseXML;
 			var response = xmlText.getElementsByTagName("stringval");
+			console.log(response);
 		}else if(xhr.readyState == 4 && xhr.status!=200){
 			console.log("ERROR, STATUS: " + xhr.status);
 			window.location.href = "index.html";

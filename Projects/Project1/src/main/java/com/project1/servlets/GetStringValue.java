@@ -19,11 +19,9 @@ public class GetStringValue extends HttpServlet {
 		
 		response.setContentType("text/xml");
 		PrintWriter out = response.getWriter();
-			String myXml = "<root><stringval></strigval></root>";
-			//Manually create the xml file.
-			out.print(myXml); //State == 4
+			String myXml = "<root><stringval>bloop gang</stringval></root>";
+			out.print(myXml);
 	}
-	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

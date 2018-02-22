@@ -21,6 +21,7 @@ public class TRMSDaoImpl implements TRMSDao {
 	List<Account> accounts;
 	List<Event> events;
 	List<Reimbursement> reimbursements;
+	List<String> emails;
 	Personal employee;
 	Account account;
 	Event event;
@@ -198,6 +199,28 @@ public class TRMSDaoImpl implements TRMSDao {
 			close(rs);
 		}
 		return reimbursements;
+	}
+	
+	@Override
+	public List<String> getAllEmails() {
+		int i = 1;
+		emails = new ArrayList<>();
+		try (Connection conn = Connections.getConnection()) {
+			sql = "SELECT email FROM personal_info";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			rs.next();
+			while (rs.next()) {
+				emails.add(rs.getString(i));
+				i++;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return emails;
 	}
 	
 //======================= RETRIEVAL METHODS (SINGLE) =================================//

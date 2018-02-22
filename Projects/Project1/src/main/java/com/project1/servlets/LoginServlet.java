@@ -23,23 +23,23 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("login servlet reached");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println(email + " " + password);
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
-		HttpSession session = request.getSession();
-		if(!session.isNew()){
-			out.println("<h1>Stop being weird.</h1>");
-		}
-		else if(ValidateLogin.validate(email, password)){
-			session.setAttribute("username", email);
+//		HttpSession session = request.getSession();
+//		if(!session.isNew()){
+//			out.println("<h1>Stop being weird.</h1>");
+//			session.invalidate();
+		
+		if(ValidateLogin.validate(email, password)){
+			//session.setAttribute("username", email);
 			RequestDispatcher rd = request.getRequestDispatcher("account.html");
 			rd.forward(request, response);
 		}else{
-			session.invalidate();
+			//session.invalidate();
 			
 			out.print("<h1>INVALID CREDENTIALS</h1>");
 			//HtmlTemplates.goBackButton(out);

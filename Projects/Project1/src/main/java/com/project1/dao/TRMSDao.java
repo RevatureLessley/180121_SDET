@@ -27,4 +27,5 @@ public interface TRMSDao {
 	public String getStringValue(String email, String table, String column);
 	public double getDoubleValue(String email, String table, String column);
 	public int getIntValue(String email, String table, String column);
+	public List<String> getAllEmails();
 }

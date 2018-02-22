@@ -1,5 +1,7 @@
 package com.project1.services;
 
+import java.util.List;
+
 import com.project1.dao.TRMSDaoImpl;
 
 public class ValidateLogin {
@@ -7,7 +9,16 @@ public class ValidateLogin {
 
 	public static boolean validate(String email, String password){
 		TRMSDaoImpl dao = new TRMSDaoImpl();
+		List<String> emails = dao.getAllEmails();
+		
+		for (String e : emails) {
+			if (email.equals(e)) break;
+			else return false;
+		}
+		
 		String pw = dao.getStringValue(email, "account_info", "pw");
+		System.out.println(pw);
+		if (pw == null) return false;
 		
 		if(pw.equals(password)){
 			System.out.println("Successful login");
