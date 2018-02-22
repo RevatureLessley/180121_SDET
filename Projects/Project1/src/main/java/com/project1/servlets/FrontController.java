@@ -13,31 +13,24 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	/*
-	 * Front controller:
-	 * -Is a design pattern.
-	 * -The front controller design pattern is built to designate a single servlet
-	 * for handling all requests and dispatching to proper servlets for handling.
-	 * The goal is ensure that one servlets acts as the gatekeeper for the rest of the
-	 * application.	 
-	 */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("front controller reached");
-		String username = request.getParameter("email");
-		String password = request.getParameter("password");
-		System.out.println(username + " " + password);
 		String url = request.getRequestURI(); //Stores the url in a string
+		System.out.println(url);
 		RequestDispatcher rd;
+		
 		String[] tokens = url.split("/");
 		String action = (tokens[tokens.length-1]);
 		action = action.substring(0, action.length()-3).toLowerCase();
+		System.out.println(action);
 		
-		//servlets to handle request
 		switch(action){
 		case "login":
 			rd = request.getRequestDispatcher("LoginServlet");
+			rd.forward(request, response);
+			break;
+		case "signup":
+			rd = request.getRequestDispatcher("SignupServlet");
 			rd.forward(request, response);
 			break;
 		default:

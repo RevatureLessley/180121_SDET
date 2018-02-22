@@ -48,18 +48,16 @@ CREATE TABLE reimbursements(
     CONSTRAINT r_email_fk FOREIGN KEY (email) REFERENCES personal_info(email)
 );
 */
-
 package com.project1.beans;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import com.project1.dao.TRMSDaoImpl;
 
 public class TestMain {
 	public static void main(String args[]) {
-		TRMSDaoImpl x = new TRMSDaoImpl();
-		System.out.println(x.getAllReimbursements());
-		System.out.println(x.getAllEvents());
-		System.out.println(x.getAllAccounts());
-		System.out.println(x.getAllPersonal());
-		x.updateDoubleColumn("tto@zmail.com", "reimbursements", "total", 345.32);
+		Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MMM.yyyy");
+        System.out.println(sdf.format(cal.getTime()));
 	}
 }
