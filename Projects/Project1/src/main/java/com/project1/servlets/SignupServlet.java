@@ -48,8 +48,8 @@ public class SignupServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String confirm = request.getParameter("confirm");
 		
-		if (!password.equals(confirm)) {
-			System.out.print("unmatching passwords");
+		if (!password.equals(confirm) || NewAccount.uniqueEmail(email)) {
+			System.out.print("unmatching passwords/email exists");
 			RequestDispatcher rd = request.getRequestDispatcher("signuperror.html");
 			rd.forward(request, response);
 		} else {
