@@ -2,9 +2,118 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
 
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+	
+<!--  notes for project:
+		1) Use a front controller (filter) for the authentication page. -->
+<script src="javascript/Ajax.js"></script>
+</head>
+<title>RRose Inc</title>
+<body style="background-color:#2C3A50">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Rich Inc</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Info<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Events</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="signin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container" style="width:500px">
+  <h2 style="color:white">Sign into your account</h2>
+  <form data-toggle="validator" role="form">
+  <div class="form-group">
+    <label for="firstname" class="control-label" style="color:white">First name</label>
+    <input type="text" class="form-control" id="firstame" name="firstname" placeholder="First name" required>
+  </div>
+  <div class="form-group">
+    <label for="lastname" class="control-label" style="color:white">Last name</label>
+    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Last name" required>
+  </div>
+  <div class="radio">
+  		<label><input type="radio" name="optradio">Option 1</label>
+	</div>
+	<div class="radio">
+  		<label><input type="radio" name="optradio">Option 2</label>
+	</div>
+	<div class="radio">
+  		<label><input type="radio" name="optradio">Option 3</label>
+	</div>
+	<div class="radio">
+  		<label><input type="radio" name="optradio">Option 3</label>
+	</div>
+  <div class="form-group has-feedback">
+    <label for="inputTwitter" class="control-label">Twitter</label>
+    <div class="input-group">
+      <span class="input-group-addon">@</span>
+      <input type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control" id="inputTwitter" placeholder="1000hz" required>
+    </div>
+    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    <div class="help-block with-errors">Hey look, this one has feedback icons!</div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail" class="control-label">Email</label>
+    <input type="email" class="form-control" name="email" placeholder="Email" data-error="invalid email" required>
+    <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword" class="control-label">Password</label>
+    <div class="form-inline row">
+      <div class="form-group col-sm-6">
+        <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" required>
+        <div class="help-block">Minimum of 6 characters</div>
+      </div>
+      <div class="form-group col-sm-6">
+        <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm" required>
+        <div class="help-block with-errors"></div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" onclick="getName()" class="btn btn-default">Submit</button>
+  </div>
+</form>
+</div>
+<div style="width:500px" class="container-fluid" class ="float-right">
+		<div class="well" style="background-color:#161D23; border-color:black">
+			<h1 style="color:white">Already have an account?</h1>
+			<h2><a style="color:#A1BFDE" href="signin.html">Sign in here!</a></h2>
+		</div>
+</div>
 </body>
 </html>
