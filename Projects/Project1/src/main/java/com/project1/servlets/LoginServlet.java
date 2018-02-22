@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 		if(ValidateLogin.validate(email, password)){
 			//session.setAttribute("username", email);
 			RequestDispatcher rd = request.getRequestDispatcher("account.html");
-			rd.forward(request, response);
+			rd.include(request, response);
 		}else{
 			//session.invalidate();
 			

@@ -17,7 +17,6 @@ public class ValidateLogin {
 		}
 		
 		String pw = dao.getStringValue(email, "account_info", "pw");
-		System.out.println(pw);
 		if (pw == null) return false;
 		
 		if(pw.equals(password)){
