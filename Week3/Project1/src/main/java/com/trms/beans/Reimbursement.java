@@ -1,9 +1,9 @@
 package com.trms.beans;
 
 import java.io.File;
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.sql.Date;
 import java.util.List;
 
 public class Reimbursement {
@@ -33,6 +33,7 @@ public class Reimbursement {
 	private int urgent;
 	private int approved;
 	private String approveStr;
+	private List<AddedInfo> addedInfo;
 	private List<File> attachments;
 	private boolean files;
 	
@@ -376,5 +377,17 @@ public class Reimbursement {
 	public void setFiles(boolean files) {
 		this.files = files;
 	}
+
+
+	public List<AddedInfo> getAddedInfo() {
+		return addedInfo;
+	}
+
+
+	public void setAddedInfo(List<AddedInfo> addedInfo) {
+		this.addedInfo = addedInfo;
+	}
+	
+	
 	
 }

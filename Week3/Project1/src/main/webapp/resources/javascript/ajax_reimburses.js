@@ -35,9 +35,6 @@ function getReimburse() {
 				a.innerHTML = jsonObj[i].reimburseid;
 				a.setAttribute("id", "rlink"+a.innerHTML);
 				a.setAttribute("onclick", "singleapp(event)");
-				//a.setAttribute("href", "appreimburse.html");
-				//a.setAttribute("href", "ApproveReimburse/" + a.innerHTML);
-				//a.setAttribute("href", "ApproveReimburse/" + a.innerHTML + "/allreimburse.html");
 				
 				td0.appendChild(a);
 				//td0.innerHTML = jsonObj[i].reimburseid;

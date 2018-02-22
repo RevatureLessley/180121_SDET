@@ -273,4 +273,8 @@ INSERT INTO learningcenters VALUES(3, 'NEW HORIZONS', '462 Seventh Ave, 6th Floo
 INSERT INTO learningcenters VALUES(4, 'WESTERN GOVERNORS UNIVERSITY', '4001 S 700 E #700', 'Salt Lake City', 'UT', 84107, 'USA');
 INSERT INTO learningcenters VALUES(5, 'ORACLE UNIVERSITY', '-', '-', '-', -1, '-');
 
-UPDATE reimbursements SET reimburse_approvelvl = 0 WHERE reimburse_id = 3;
+SELECT b.event_name, d.format_type, c.center_name a.reimburse_cost, a.reimburse_projreimb, a.reimburse_desc, 
+a.reimburse_grade, a.reimburse_passgrade, a.reimburse_workmissed, a.reimburse_datetime, a.reimburse_workjustify 
+FROM reimbursements a, eventtypes b, learningcenters c, gradingformats d 
+WHERE a.reimburse_id = ? AND a.reimburse_event_id = b.event_id 
+AND a.reimburse_center_id = c.center_id AND a.reimburse_format_id = d.format_id;

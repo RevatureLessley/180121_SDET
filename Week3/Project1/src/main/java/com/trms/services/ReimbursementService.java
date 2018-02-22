@@ -90,6 +90,14 @@ public class ReimbursementService {
 		return lr;
 	}
 	
+	public static Reimbursement getReimbursement(int rId) {
+		ReimbursementDao dao = new ReimbursementDaoImpl();
+		Reimbursement r = dao.getReimbBy(rId);
+		r.setAddedInfo(dao.getAddedInfoBy(rId));
+		
+		return r;
+	}
+	
 	public static int getEmpIdByReimburse(int rId) {
 		ReimbursementDao dao = new ReimbursementDaoImpl();
 		

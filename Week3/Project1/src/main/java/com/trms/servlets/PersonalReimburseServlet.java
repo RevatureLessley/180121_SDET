@@ -48,11 +48,11 @@ public class PersonalReimburseServlet extends HttpServlet {
 			member.put("projReimb", r.getProjectedReimb());
 			member.put("attachments", r.isFiles());
 			member.put("status", r.getApproveStr());
-			logger.info("doGet() : status=" + r.getApproveStr());
+			//logger.info("doGet() : status=" + r.getApproveStr());
 			jarr.put(member);
 		}
 		
-		logger.info(jarr.toString());
+		//logger.info(jarr.toString());
 		out.print(jarr.toString());
 	}
 

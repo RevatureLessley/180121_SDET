@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.trms.beans.AddedInfo;
 import com.trms.beans.Reimbursement;
 import com.trms.services.EmployeeService;
 import com.trms.util.Connections;
@@ -287,8 +288,75 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			close(ps);
 		}
 		
-		logger.info("setApproveLvl() : result=" + result); 
+		logger.debug("setApproveLvl() : result=" + result); 
 		return result;
+	}
+
+	@Override
+	public Reimbursement getReimbBy(int rId) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Reimbursement r = new Reimbursement();
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "SELECT b.event_name, d.format_type, c.center_name, a.reimburse_cost, a.reimburse_projreimb, "
+					+ "a.reimburse_desc, a.reimburse_grade, a.reimburse_passgrade, a.reimburse_workmissed, "
+					+ "a.reimburse_datetime, a.reimburse_workjustify, a.reimburse_inforeq "
+					+ "FROM reimbursements a, eventtypes b, learningcenters c, gradingformats d "
+					+ "WHERE a.reimburse_id = ? AND a.reimburse_event_id = b.event_id "
+					+ "AND a.reimburse_center_id = c.center_id AND a.reimburse_format_id = d.format_id";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, rId);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				r.setEventStr(rs.getString(1));
+				r.setFormatStr(rs.getString(2));
+				r.setCenterStr(rs.getString(3));
+				r.setCost(rs.getFloat(4));
+				r.setProjectedReimb(rs.getFloat(5));
+				r.setDescription(rs.getString(6));
+				r.setGrade(rs.getFloat(7));
+				r.setPassGrade(rs.getFloat(8));
+				r.setWorkDaysMissed(rs.getInt(9));
+				r.setDate(rs.getDate(10));
+				r.setWorkJustification(rs.getString(11));
+				r.setNextInfoReq(rs.getInt(12));
+			}
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		
+		return r;
+	}
+
+	@Override
+	public List<AddedInfo> getAddedInfoBy(int rId) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<AddedInfo> ls = new ArrayList<>(); //created an info bean
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "SELECT a.info_id, a.addinfo_reimburse, b.emp_fname, b.emp_lname FROM reimburseaddedinfo a, employees b " + 
+					"WHERE a.in_reimburse_id = ? AND a.info_added_by_emp = b.emp_id";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, rId);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				ls.add(new AddedInfo(rs.getInt(1), rs.getString(3), rs.getString(4), rs.getString(2)));
+			}
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		
+		return ls;
 	}
 	
 	

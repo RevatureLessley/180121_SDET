@@ -170,7 +170,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	public int updateAvailReimb(int rId, int empId) {
 		PreparedStatement ps = null;
 		int result = -1;
-		
+		// TODO make a check ensure that available reimburse is enough to cover the projected amount
 		try(Connection conn = Connections.getConnection()) {
 			String sql = "UPDATE employees SET emp_availreim = "
 					+ "(-(SELECT reimburse_projreimb FROM reimbursements WHERE reimburse_id = ?) + emp_availreim) "

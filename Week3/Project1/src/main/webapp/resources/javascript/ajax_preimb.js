@@ -31,7 +31,13 @@ function getPersonalReimb() {
 					span.className = "glyphicon glyphicon-remove";
 				}
 				
-				td0.innerHTML = jsonObj[i].reimburseid;
+				var a = document.createElement("a");
+				a.innerHTML = jsonObj[i].reimburseid;
+				a.setAttribute("id", "rlink"+a.innerHTML);
+				a.setAttribute("onclick", "singleapp(event)");
+				
+				//td0.innerHTML = jsonObj[i].reimburseid;
+				td0.appendChild(a);
 				td1.innerHTML = jsonObj[i].date;
 				td2.innerHTML = jsonObj[i].eventtype;
 				td3.innerHTML = jsonObj[i].learncenter;
@@ -58,4 +64,12 @@ function getPersonalReimb() {
 	}
 	
 	xhr.send();
+}
+
+function singleapp(e) {
+	console.log(e.target.id);
+	var a = document.getElementById(e.target.id).innerHTML;
+	var url = "http://localhost:8089/TRMS/user/editpersonalreimburse.jsp?rid=" + encodeURIComponent(a);
+	
+	document.location.href = url;
 }
