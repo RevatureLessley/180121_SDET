@@ -69,4 +69,14 @@
     <servlet-name>GetStringValue</servlet-name>
     <url-pattern>/GetStringValue</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SignupServlet</display-name>
+    <servlet-name>SignupServlet</servlet-name>
+    <servlet-class>com.project1.servlets.SignupServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignupServlet</servlet-name>
+    <url-pattern>/SignupServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

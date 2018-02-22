@@ -55,8 +55,8 @@
   </div>
 </nav>
 <div class="container" style="width:500px">
-  <h2 style="color:white">Create account</h2>
-  <form data-toggle="validator" role="form" method="POST" action="signup.do">
+  <h2 style="color:white">Passwords don't match! Try again.</h2>
+  <form data-toggle="validator" role="form">
   <div class="form-group">
     <label for="firstname" class="control-label" style="color:white">First name</label>
     <input type="text" class="form-control" id="firstame" name="firstname" placeholder="First name" required>
@@ -70,13 +70,13 @@
     <input type="text" class="form-control" id="address" name="address" placeholder="Address" required>
   </div>
   <div class="radio">
-  		<label style="color:white"><input type="radio" name="regular">Regular account</label>
+  		<label style="color:white"><input type="radio" name="optradio">Regular account</label>
 	</div>
 	<div class="radio">
-  		<label style="color:white"><input type="radio" name="supervisor">Supervisor</label>
+  		<label style="color:white"><input type="radio" name="optradio">Supervisor</label>
 	</div>
 	<div class="radio">
-  		<label style="color:white"><input type="radio" name="departmenthead">Department Head</label>
+  		<label style="color:white"><input type="radio" name="optradio">Department Head</label>
 	</div>
   <div class="form-group">
     <label for="inputEmail" class="control-label" style="color:white">Email</label>
@@ -87,7 +87,7 @@
     <label for="inputPassword" class="control-label" style="color:white">Password</label>
     <div class="form-inline row">
       <div class="form-group col-sm-6">
-        <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" required>
+        <input type="password" data-minlength="6" class="form-control" name="password" id="inputPassword" placeholder="Password" required>
       </div>
       <div class="form-group col-sm-6">
         <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm" required>

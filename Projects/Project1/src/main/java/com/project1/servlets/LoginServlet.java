@@ -40,9 +40,8 @@ public class LoginServlet extends HttpServlet {
 			rd.include(request, response);
 		}else{
 			//session.invalidate();
-			
-			out.print("<h1>INVALID CREDENTIALS</h1>");
-			//HtmlTemplates.goBackButton(out);
+			RequestDispatcher rd = request.getRequestDispatcher("signinerror.html");
+			rd.include(request, response);
 			
 		}
 		
