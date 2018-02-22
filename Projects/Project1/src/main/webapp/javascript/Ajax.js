@@ -1,4 +1,4 @@
-function sendAJAX(){
+function getName(){
 	var xhr = new XMLHttpRequest();
 	console.log(xhr.readyState);
 	xhr.open("GET","GetPersonalInfo");
@@ -7,12 +7,10 @@ function sendAJAX(){
 		var resp = xhr.responseText;
 		if(xhr.readyState == 4 && xhr.status == 200){
 			var xmlText = xhr.responseXML;
-			var response = xmlText.getElementsByTagName("employee");
-			
-			}
+			var response = xmlText.getElementsByTagName("stringval");
 		}else if(xhr.readyState == 4 && xhr.status!=200){
 			console.log("ERROR, STATUS: " + xhr.status);
-			document.getElementById("AJAXError").innerHTML=xhr.status;
+			window.location.href = "index.html";
 		}
 	}
 	xhr.send();

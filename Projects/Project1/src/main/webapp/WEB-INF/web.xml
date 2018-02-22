@@ -9,7 +9,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <description></description>
     <display-name>RegisterEmployee</display-name>
@@ -59,5 +58,15 @@
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetStringValue</display-name>
+    <servlet-name>GetStringValue</servlet-name>
+    <servlet-class>com.project1.servlets.GetStringValue</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetStringValue</servlet-name>
+    <url-pattern>/GetStringValue</url-pattern>
   </servlet-mapping>
 </web-app>
