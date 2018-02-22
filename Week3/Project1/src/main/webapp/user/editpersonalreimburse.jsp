@@ -30,6 +30,24 @@
 </head>
 <body>
 	<div class='container'>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">TRMS</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">Page 1</a></li>
+					<li><a href="#">Page 2</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right" id='user-options'>
+
+					<li><a href="Logout.do"><span
+							class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+		
 		<div class='well' style='margin-top: 50px'>
 			<%@page import="com.trms.services.ReimbursementService"%>
 			<%@page import="com.trms.beans.Reimbursement"%>
@@ -39,85 +57,127 @@
 				String s = request.getQueryString();
 				int rId = Integer.parseInt(s.split("=")[1]);
 				Reimbursement r = ReimbursementService.getReimbursement(rId);
+				if (r.getDescription() == null) {
+					r.setDescription("N/A");
+				}
 				// TODO make filter so can't access any reimbursement to edit
 			%>
 
-			<h3>Reimbursement #<span id='rid'><%=rId%></span></h3>
+			<h3>
+				Reimbursement #<span id='rid'><%=rId%></span>
+			</h3>
+			<div class='row'>
+				Display User Information
+			</div>
 			<div class='row'>
 				<div class='col-sm-8'>
-					<label>DESCRIPTION : </label> <%= r.getDescription() %>
+					<label>DESCRIPTION : </label>
+					<%=r.getDescription()%>
 				</div>
 				<div class='col-sm-2'>
-					<label>GRADE : </label><input type='number' step='0.1' min='0' width='8' id='grade' value=<%= r.getGrade() %>>
+					<label>GRADE : </label><input type='number' step='0.1' min='0'
+						width='8' id='grade' value=<%=r.getGrade()%>>
 				</div>
 				<div class='col-sm-2'>
-					<label>PASS GRADE : </label> <%= r.getPassGrade() %>
+					<label>PASS GRADE : </label>
+					<%=r.getPassGrade()%>
 				</div>
 			</div>
-			
+
 			<div class='row'>
 				<div class='col-sm-4'>
-					<label>EVENT : </label> <%= r.getEventStr() %>
+					<label>EVENT : </label>
+					<%=r.getEventStr()%>
 				</div>
 				<div class='col-sm-4'>
-					<label>LEARNING CENTER : </label> <%= r.getCenterStr() %>
+					<label>LEARNING CENTER : </label>
+					<%=r.getCenterStr()%>
 				</div>
 				<div class='col-sm-4'>
-					<label>GRADING FORMAT : </label> <%= r.getFormatStr() %>
+					<label>GRADING FORMAT : </label>
+					<%=r.getFormatStr()%>
 				</div>
 			</div>
-			
+
 			<div class='row'>
 				<div class='col-sm-6'>
-					<label>WORK MISSED : </label> <%= r.getWorkDaysMissed() %>
+					<label>WORK MISSED : </label>
+					<%=r.getWorkDaysMissed()%>
 				</div>
 				<div class='col-sm-6'>
-					<label>JUSTIFICATION : </label> <%= r.getWorkJustification() %>
+					<label>JUSTIFICATION : </label>
+					<%=r.getWorkJustification()%>
 				</div>
 			</div>
-			
+
 			<div class='row'>
 				<div class='col-sm-4'>
-					<label>DATE : </label> <%= r.getDate() %>
+					<label>DATE : </label>
+					<%=r.getDate()%>
 				</div>
 				<div class='col-sm-4'>
-					<label>COST : $</label> <%= r.getCost() %>
+					<label>COST : $</label>
+					<%=r.getCost()%>
 				</div>
 				<div class='col-sm-4'>
-					<label>PROJECTED REIMBURSEMENT : </label> <%= r.getProjectedReimb() %>
+					<label>PROJECTED REIMBURSEMENT : </label>
+					<%=r.getProjectedReimb()%>
 				</div>
 			</div>
-			
+
 			<%
 				if (r.getAddedInfo().size() != 0) {
 					List<AddedInfo> lai = r.getAddedInfo();
 			%>
-				<h4>ADDITIONAL INFO</h4>
-				<%
-					for (AddedInfo ai : lai) {
-				%>
-					<label>AUTHOR : </label> <%=ai.getInfoEmpName()%>
-					<br>
-					<label>MESSAGE : </label> <%=ai.getInfoMessage()%>
-					<hr>
+			<h4>ADDITIONAL INFO</h4>
 			<%
-					}
+				for (AddedInfo ai : lai) {
+			%>
+			<label>AUTHOR : </label>
+			<%=ai.getInfoEmpName()%>
+			<br> <label>MESSAGE : </label>
+			<%=ai.getInfoMessage()%>
+			<hr>
+			<%
+				}
 				}
 			%>
+
+			<%
+				if (r.getNextInfoReq() == (Integer) session.getAttribute("empid")) {
+			%>
+			<label>PLEASE ENTER ADDITIONAL INFO</label> <input type='text'
+				id='addinfo'>
+			<%
+				}
+			%>
+
+			<%
+				if (r.getNextApprovalId() == (Integer) session.getAttribute("empid")) {
+			%>
+				<div class='row'>
+					<label>REQUEST ADDITIONAL INFO</label> <input type='text'
+						id='reqinfo'> <select>
+						<option value=<%=r.getEmpId()%>>REQUESTOR</option>
+					</select> <label for="response">RESPONSE</label> 
+					
+					<!-- Approve/Deny Request -->
+					<div class='col-sm-5'>
+					<select
+						class="form-control" name="response" id="response" required>
+						<option value=1>APPROVE</option>
+						<option value=0>DENY</option>
+					</select>
 			
-			<% if(r.getNextInfoReq() == (Integer)session.getAttribute("empid")) { %>
-				<label>PLEASE ENTER ADDITIONAL INFO</label>
-				<input type='text' id='addinfo'>
-			<% } %>
-			
-			<% if(r.getNextApprovalId() == (Integer)session.getAttribute("empid")) {%>
-				<label>REQUEST ADDITIONAL INFO</label>
-				<input type='text' id='reqinfo'>
-				<select>
-					<option value=<%= r.getEmpId() %>>REQUESTOR</option>
-				</select>
-			<% } %>
-			
+					<button type=button onclick="appResponse()">SUBMIT</button>
+					</div>
+					</div>
+
+			<%
+				}
+			%>
+
+			<button type='button' id='back' onclick="goBack()">BACK</button>
 			<button type='button' id='save' onclick="readPageChanges()">SAVE</button>
 		</div>
 	</div>

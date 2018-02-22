@@ -68,7 +68,8 @@ function getReimburse() {
 function singleapp(e) {
 	console.log(e.target.id);
 	var a = document.getElementById(e.target.id).innerHTML;
-	var url = "http://localhost:8089/TRMS/user/approver/appreimburse.html?rid=" + encodeURIComponent(a);
+	//var url = "http://localhost:8089/TRMS/user/approver/appreimburse.html?rid=" + encodeURIComponent(a);
+	var url = "http://localhost:8089/TRMS/user/editpersonalreimburse.jsp?rid=" + encodeURIComponent(a);
 	
 	document.location.href = url;
 }
