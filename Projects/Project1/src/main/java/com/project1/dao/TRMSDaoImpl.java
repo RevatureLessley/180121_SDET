@@ -51,16 +51,15 @@ public class TRMSDaoImpl implements TRMSDao {
 	}
 	
 	@Override
-	public void insertIntoAccounts(String email, String uname, String pw, int isBenCo, int isDirSup, int isDepHead) {
+	public void insertIntoAccounts(String email, String pw, int isBenCo, int isDirSup, int isDepHead) {
 		try (Connection conn = Connections.getConnection()) {
 			sql = "INSERT INTO account_info VALUES (?,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, email);
-			ps.setString(2, uname);
-			ps.setString(3, pw);
-			ps.setInt(4, isBenCo);
-			ps.setInt(5, isDirSup);
-			ps.setInt(6, isDepHead);
+			ps.setString(2, pw);
+			ps.setInt(3, isBenCo);
+			ps.setInt(4, isDirSup);
+			ps.setInt(5, isDepHead);
 			ps.executeUpdate();
 
 		} catch (SQLException e) {

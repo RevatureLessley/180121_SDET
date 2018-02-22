@@ -29,7 +29,7 @@ CREATE TABLE events(
     ben_co_email VARCHAR2(100),
     dir_sup_email VARCHAR2(100),
     approval_email VARCHAR2(100),
-    justification VARCHAR2(300),
+    justification CLOB,
     grade VARCHAR2(2),
     pass_fail VARCHAR2(2),
     start_date VARCHAR2(20),

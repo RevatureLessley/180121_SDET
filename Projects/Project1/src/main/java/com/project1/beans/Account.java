@@ -2,7 +2,6 @@ package com.project1.beans;
 
 public class Account {
 	String email;
-    String username;
     String password;
     int isBenCo;
     int isDirSup;
@@ -11,7 +10,6 @@ public class Account {
 	public Account(String email, String username, String password, int isBenCo, int isDirSup, int isDepHead) {
 		super();
 		this.email = email;
-		this.username = username;
 		this.password = password;
 		this.isBenCo = isBenCo;
 		this.isDirSup = isDirSup;
@@ -24,14 +22,6 @@ public class Account {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getPassword() {
@@ -68,7 +58,7 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [email=" + email + ", username=" + username + ", password=" + password + ", isBenCo=" + isBenCo
+		return "Account [email=" + email + ", password=" + password + ", isBenCo=" + isBenCo
 				+ ", isDirSup=" + isDirSup + ", isDepHead=" + isDepHead + "]";
 	}
 	

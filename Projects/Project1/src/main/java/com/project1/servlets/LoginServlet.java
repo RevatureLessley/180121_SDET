@@ -24,9 +24,9 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String username = request.getParameter("email");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println(username + " " + password);
+		System.out.println(email + " " + password);
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
@@ -34,8 +34,8 @@ public class LoginServlet extends HttpServlet {
 		if(!session.isNew()){
 			out.println("<h1>Stop being weird.</h1>");
 		}
-		else if(ValidateLogin.validate(username, password)){
-			session.setAttribute("username", username);
+		else if(ValidateLogin.validate(email, password)){
+			session.setAttribute("username", email);
 			RequestDispatcher rd = request.getRequestDispatcher("account.html");
 			rd.forward(request, response);
 		}else{
