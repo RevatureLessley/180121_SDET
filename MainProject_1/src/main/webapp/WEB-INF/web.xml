@@ -102,4 +102,24 @@
     <servlet-name>AdminLoginServlet</servlet-name>
     <url-pattern>/AdminLoginServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserViewRequest</display-name>
+    <servlet-name>UserViewRequest</servlet-name>
+    <servlet-class>com.servlets.UserViewRequest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserViewRequest</servlet-name>
+    <url-pattern>/UserViewRequest</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SubmitGradeServlet</display-name>
+    <servlet-name>SubmitGradeServlet</servlet-name>
+    <servlet-class>com.servlets.SubmitGradeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SubmitGradeServlet</servlet-name>
+    <url-pattern>/SubmitGradeServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

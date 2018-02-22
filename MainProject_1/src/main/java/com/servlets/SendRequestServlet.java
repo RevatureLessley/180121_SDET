@@ -47,19 +47,70 @@ public class SendRequestServlet extends HttpServlet {
 		String TimeMissed = request.getParameter("TimeMissed");
 		Integer supervisorRef = (Integer) session.getAttribute("SupervisorRef");
 		
+		
+		Integer ReimbursmentAmt = 0;
 		System.out.print(supervisorRef);
 		
 		//Integer SV_Ref = Integer.parseInt(SupervisorRef);
+		RequestTR tr = null; 
 		
-		RequestTR tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, Price, Balance_Available,
-										EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
+		if(ApplyTR.checkBalance(Price, EmployeeID) >= 0 ) {
 		
-		
-		if(ApplyTR.SendRequest(tr))
-			out.print("<h1>REQUEST SENT</h1>");
-		else
-			out.print("<h1>Something Went Wrong</h1>");	
+			
+			if(EventType.equals("University Course")) {
 				
+				ReimbursmentAmt = (int)(Price*(80.0f/100.0f));
+				 tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
+										EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
+			
+			}else if(EventType.equals("Seminar")) {
+				
+				ReimbursmentAmt = (int)(Price*(60.0f/100.0f));
+				 tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
+										EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
+				
+			}else if(EventType.equals("Certification Preparation Class")) {
+				
+				ReimbursmentAmt = (int)(Price*(75.0f/100.0f));
+				 tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
+										EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
+			
+			}else if(EventType.equals("Certification")) {
+				
+				 tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, Price, Balance_Available,
+										EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
+			
+			}else if(EventType.equals("Technical Training")) {
+				
+				ReimbursmentAmt = (int)(Price*(90.0f/100.0f));
+				 tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
+										EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
+				
+			}else {
+				
+				ReimbursmentAmt = (int)(Price*(30.0f/100.0f));
+				 tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
+										EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
+			}
+			
+		} else if(ApplyTR.checkBalance(Price, EmployeeID) <= 0 ) {
+			 ReimbursmentAmt = ApplyTR.adjustedBalance(EmployeeID);
+			 tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
+						EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
+		}
+		
+		System.out.println(tr.getAmount_Requested());
+		
+		if(ApplyTR.SendRequest(tr)) {
+			
+			ApplyTR.adjustAssociateBalance(tr.getAmount_Requested(), tr.getEmployeeId());
+			
+			out.print("<h1>REQUEST SENT</h1>");
+			HtmlTemplates.goBackButton(out);
+		}else{
+			out.print("<h1>Something Went Wrong</h1>");
+			HtmlTemplates.goBackButton(out);
+		}
 			   	
 				
 	}	

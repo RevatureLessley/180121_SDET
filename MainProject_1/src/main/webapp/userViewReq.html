@@ -21,7 +21,7 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 
-<script src="resources/JavaScript/RequestAjax.js" ></script>
+<script src="resources/JavaScript/RequestStatusAjax.js" ></script>
 
 </head>
 <body onload="sendAJAX()">
@@ -31,15 +31,16 @@
 				<a class="navbar-brand">Tuition Reimbursement System</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="apply.html">Pending Requests</a></li>
-				<li><a href="#">Check Status</a></li>
+				<li><a href="#">Home</a></li>
+				<li class="active"><a href="#">Check Status</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="register.html"><span
 						class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				
+				
 				<li><a href="index.html"><span
-						class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -47,22 +48,17 @@
 	<div class="container-fluid" style="margin-top: 100px">
 		<div class="well">
 			
-			<h1>View All Pending Requests</h1>
+			<h1>View Your Request Status</h1>
 						
 			<button onclick="sendAJAX()">View</button><br><br>
 			<table border=2px id=results>
 				<tr>
 					<th>Request ID</th>
-					<th>Employee ID</th>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Email</th>
-					<th>Phone Number</th>
 					<th>Event Type</th>
-					<th>Event Costs</th>
-					<th>Grading Format</th>
-					<th>Event Work Related Justification</th>
-					<th>Employee TR Balance Available</th>
+					<th>Reimbursement Amount Pending</th>
+					<th>Request Statues</th>
+					<th>Documentation Required</th>
+				
 					
 				</tr>
 				
@@ -74,9 +70,10 @@
 			
 			<div class="col-sm-5">
 			<div class=well>
-			<h3>Enter a Request ID below to Approve/Deny it</h3>
+			<h3>Edit Your Request - Submit Documentation</h3>
+			<br>
 			
-			<form method="POST" action="SuperUpdateRequest.do">
+			<form action="ReqDoc.do">
 			
 			<div class="form-group">
 					<label for="req_ID">REQUEST ID: </label> <input type="number"
@@ -84,26 +81,62 @@
 				</div><br>
 				
 			<div class="row">
-			<label for="UpdateAction" style= "margin-left:13px"> Choose to Approve/Decline or Ask For More Documents:</label> 
-			<select class="form-control" name="UpdateAction" style= "width:95%; margin-left:13px">
-				<option>Approve</option>
-				<option>Decline</option>
-				<option>Documentation</option>
-			</select>
-			</div>
-			<br><br>
-		
-			<div class="form-group">
-					<label for="Docs">If you Choose more Documentation, Specify which are required: </label> 
-					<input type="Text" class="form-control" name="Docs">
-				</div><br>
-		
-			<button type="submit" class="btn btn-default">VIEW REQUEST</button>
+					<label for="File1" style="margin-left:15px">Submit Documentation</label>
+						<input class="form-control" type="file" name="FileAttach1"
+							accept="media_type" style= "width:94%; margin-left:15px"> <br> 
+							
+							</div>
+							<br><br>
+			
+			<button type="submit" class="btn btn-default">SUBMIT</button>
 			</form>
 			
 		</div>
-			</div>
+	</div>
+	
+			<div class="col-sm-5">
+			<div class=well>
+			<h3>Edit Your Request - Submit Grade</h3>
+			<br>
+			
+			<form action="#" id="SubmitGrade">
+			
+			<div class="form-group">
+					<label for="req_ID">REQUEST ID: </label> <input type="number"
+						class="form-control" name="req_ID">
+				</div><br>
+
+		
+			
+
+					<label for="Grade" >Submit Grade</label> <input
+						class="form-control" name="Grade" style= "width:20%;">
+						
+					<br><br>
+			
+			
+			<!-- 
+			<div class="row" style="display: none" name="0to100Row">
+
+					<label for="0to100" style="margin-left:15px">Submit Grade [0 - 100]</label> <select
+						class="form-control" name="0to100" style= "width:94%; margin-left:15px">
+						<option>0 - 64</option>
+						<option>65 - 74</option>
+						<option>75 - 84</option>
+						<option>85 - 90</option>
+						<option>90 - 100</option>
+					</select>
+					<br><br>
+			</div>  -->
+			
+			<button type="submit" class="btn btn-default" onclick="postAJAX()">SUBMIT</button>
+			</form>
+			
+			</div> 
 		</div>
+	</div>
+	
+</div>
 		
 </body>
 </html>

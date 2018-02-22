@@ -93,6 +93,16 @@ public class RequestTR {
 		Grading_Format = grading_Format;
 		 
 	}
+	
+	
+
+	public RequestTR(Integer requestId, Integer amount_Requested, String event_Type) {
+		super();
+		RequestId = requestId;
+		Amount_Requested = amount_Requested;
+		Event_Type = event_Type;
+	}
+
 
 	public Integer getRequestId() {
 		return RequestId;

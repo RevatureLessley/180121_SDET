@@ -14,9 +14,9 @@ import com.request.RequestTR;
 import com.services.RequestService;
 
 /**
- * Servlet implementation class GetRequests
+ * Servlet implementation class UserViewRequest
  */
-public class GetRequests extends HttpServlet {
+public class UserViewRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -24,14 +24,12 @@ public class GetRequests extends HttpServlet {
 		
 		response.setContentType("text/xml");
 		PrintWriter out = response.getWriter();
-		//System.out.println("Im here");
 		
 		HttpSession session = request.getSession(false);
-		Integer supervisorRef = (Integer) session.getAttribute("ReferenceID");
-		Integer supervisorRef1 = 22222;
+		Integer AccountID = (Integer) session.getAttribute("AccountID");
 		
 		
-		List<RequestTR> reqs = RequestService.displayRequests(supervisorRef);
+		List<RequestTR> reqs = RequestService.displayUserRequests(AccountID);
 		
 		System.out.println(reqs);
 		
@@ -39,17 +37,11 @@ public class GetRequests extends HttpServlet {
 			String myXml = "<root>";
 			//Manually create the xml file.
 			for(RequestTR r : reqs){
-				myXml += "<req><r_id>" + r.getRequestId() + "</r_id>"
-								+ "<e_id>" + r.getEmployeeId() + "</e_id>"
-								+ "<e_fname>" + r.getFirstName() + "</e_fname>"
-								+ "<e_lname>" + r.getLastName() + "</e_lname>"
-								+ "<e_email>" + r.getEmail() + "</e_email>"
-								+ "<e_phone>" + r.getPhone() + "</e_phone>"
+				myXml += "<view><r_id>" + r.getRequestId() + "</r_id>"
 								+ "<e_type>" + r.getEvent_Type() + "</e_type>"
 								+ "<e_price>" + r.getAmount_Requested() + "</e_price>"
-								+ "<e_format>" + r.getGrading_Format() + "</e_format>"
-								+ "<e_just>" + r.getEvent_Justification() + "</e_just>"
-								+ "<e_balance>" + r.getBalance_Available() + "</e_balance></req>";			
+								+ "<e_status>" + RequestService.checkStatus(r.getRequestId()) + "</e_status>"
+								+ "<e_docs>" +  RequestService.getDoc(r.getRequestId()) + "</e_docs></view>";			
 								
 			}
 			myXml += "</root>";
@@ -58,10 +50,9 @@ public class GetRequests extends HttpServlet {
 			
 			out.print(myXml); //State == 4
 			
-			
 		}else{
 			
-			out.print("<root></root>"); //State == 4
+		out.print("<root></root>"); //State == 4
 			}
 		}
 			
@@ -82,4 +73,3 @@ public class GetRequests extends HttpServlet {
 	}
 
 }
-

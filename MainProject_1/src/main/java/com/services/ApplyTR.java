@@ -14,4 +14,24 @@ public class ApplyTR {
 		else
 			return false;
 }
+
+	public static Integer checkBalance(Integer price, Integer employeeID) {
+		RequestDao dao = new RequestDaoImp();
+		
+			return dao.getBalance(price, employeeID);
+		
+	}
+
+	public static Integer adjustedBalance(Integer employeeID) {
+		RequestDao dao = new RequestDaoImp();
+		
+		return dao.setReimbursment(employeeID);
+	}
+
+	public static void adjustAssociateBalance(Integer amount_Requested, Integer employeeId) {
+		
+		RequestDao dao = new RequestDaoImp();
+		
+		dao.adjustBalance(amount_Requested, employeeId);		
+	}
 }
