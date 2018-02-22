@@ -24,6 +24,7 @@ public interface TRMSDao {
 	public void updateStringColumn(String email, String table, String column, String value);
 	public void updateDoubleColumn(String email, String table, String column, double value);
 	public void updateIntColumn(String email, String table, String column, int value);
-//	public List<Employee> getAllEmployees();	//admin only (Use Join statement)
-	//public void deleteAccountByEmail(String email);	//admin only
+	public String getStringValue(String email, String table, String column);
+	public double getDoubleValue(String email, String table, String column);
+	public int getIntValue(String email, String table, String column);
 }

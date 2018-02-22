@@ -9,6 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
   <servlet>
     <description></description>
     <display-name>RegisterEmployee</display-name>
@@ -38,5 +39,25 @@
   <servlet-mapping>
     <servlet-name>PostPersonalInfo</servlet-name>
     <url-pattern>/PostPersonalInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FrontController</display-name>
+    <servlet-name>FrontController</servlet-name>
+    <servlet-class>com.project1.servlets.FrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FrontController</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.project1.servlets.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
 </web-app>

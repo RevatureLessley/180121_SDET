@@ -286,7 +286,7 @@ public class TRMSDaoImpl implements TRMSDao {
 
 
 	
-//======================= UPDATE METHOD =================================//
+//======================= UPDATE METHODS (BY TYPE) =================================//
 
 	@Override
 	public void updateStringColumn(String email, String table, String column, String value) {
@@ -340,5 +340,69 @@ public class TRMSDaoImpl implements TRMSDao {
 			close(ps);
 			close(rs);
 		}
+	}
+	
+//======================= SELECT COLUMN VALUE METHODS (BY TYPE) =================================//
+	@Override
+	public String getStringValue(String email, String table, String column) {
+		String value = null;
+		try (Connection conn = Connections.getConnection()) {
+				sql = "SELECT " + column + " FROM " + table 
+						+ " WHERE email = ?"; 
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			rs = ps.executeQuery();
+			rs.next();
+			value = rs.getString(1);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return value;
+	}
+	
+	@Override
+	public double getDoubleValue(String email, String table, String column) {
+		double value = 0.0;
+		try (Connection conn = Connections.getConnection()) {
+				sql = "SELECT " + column + " FROM " + table 
+						+ " WHERE email = ?"; 
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			rs = ps.executeQuery();
+			rs.next();
+			value = rs.getDouble(1);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return value;
+	}
+	
+	@Override
+	public int getIntValue(String email, String table, String column) {
+		int value = 0;
+		try (Connection conn = Connections.getConnection()) {
+				sql = "SELECT " + column + " FROM " + table 
+						+ " WHERE email = ?"; 
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			rs = ps.executeQuery();
+			rs.next();
+			value = rs.getInt(1);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return value;
 	}
 }
