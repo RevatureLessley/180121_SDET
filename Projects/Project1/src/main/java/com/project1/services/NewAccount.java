@@ -12,6 +12,6 @@ public class NewAccount {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MMM.yyyy");
         String date = sdf.format(cal.getTime());
 		TRMSDaoImpl dao = new TRMSDaoImpl();
-		dao.insertIntoPersonal(email, firstname, lastname, address, "whatever", date);
+		dao.insertIntoPersonal(email, firstname, lastname, address, date);
 	}
 }

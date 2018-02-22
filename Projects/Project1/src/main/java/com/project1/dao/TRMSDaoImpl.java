@@ -32,16 +32,15 @@ public class TRMSDaoImpl implements TRMSDao {
 	
 //======================= INSERTION METHODS =================================//
 	@Override
-	public void insertIntoPersonal(String email, String firstName, String lastName, String address, String jobTitle, String date ) {
+	public void insertIntoPersonal(String email, String firstName, String lastName, String address, String date ) {
 		try (Connection conn = Connections.getConnection()) {
-			sql = "INSERT INTO personal_info VALUES (?,?,?,?,?,?)";
+			sql = "INSERT INTO personal_info VALUES (?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, email);
 			ps.setString(2, firstName);
 			ps.setString(3, lastName);
 			ps.setString(4, address);
-			ps.setString(5, jobTitle);
-			ps.setString(6, date);
+			ps.setString(5, date);
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
@@ -129,7 +128,7 @@ public class TRMSDaoImpl implements TRMSDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				employees.add(new Personal(rs.getString(1), rs.getString(2), rs.getString(3), 
-						rs.getString(4), rs.getString(5), rs.getString(6)));
+						rs.getString(4), rs.getString(5)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -235,7 +234,7 @@ public class TRMSDaoImpl implements TRMSDao {
 			rs.next();
 			
 			employee = new Personal(rs.getString(1), rs.getString(2), rs.getString(3), 
-					rs.getString(4), rs.getString(5), rs.getString(6));
+					rs.getString(4), rs.getString(5));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

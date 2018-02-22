@@ -5,16 +5,14 @@ public class Personal {
     String firstName;
     String lastName;
     String address;
-    String jobTitle;
     String joinDate;
     
-	public Personal(String email, String firstName, String lastName, String address, String jobTitle, String joinDate) {
+	public Personal(String email, String firstName, String lastName, String address, String joinDate) {
 		super();
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
-		this.jobTitle = jobTitle;
 		this.joinDate = joinDate;
 	}
 	
@@ -42,24 +40,11 @@ public class Personal {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getJobTitle() {
-		return jobTitle;
-	}
-	public void setJobTitle(String jobTitle) {
-		this.jobTitle = jobTitle;
-	}
 	public String getJoinDate() {
 		return joinDate;
 	}
 	public void setJoinDate(String joinDate) {
 		this.joinDate = joinDate;
 	}
-
-	@Override
-	public String toString() {
-		return "Personal [email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", address="
-				+ address + ", jobTitle=" + jobTitle + ", joinDate=" + joinDate + "]";
-	}
-	
 	
 }

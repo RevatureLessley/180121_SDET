@@ -8,7 +8,7 @@ import com.project1.beans.Event;
 import com.project1.beans.Reimbursement;
 
 public interface TRMSDao {
-	public void insertIntoPersonal(String email, String firstName, String lastName, String address, String jobTitle, String date);
+	public void insertIntoPersonal(String email, String firstName, String lastName, String address, String date);
 	public void insertIntoAccounts(String email, String pw, int isBenCo, int isDirSup, int isDepHead);
 	public void insertIntoEvents(String email, String event, String depHeadEmail, String benCoEmail, String dirSupEmail, 
 			String approvalEmail, String justification, String grade, String passFail, String startDate, String endDate);
