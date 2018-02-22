@@ -159,4 +159,14 @@
     <servlet-name>SingleReEmpInfoServlet</servlet-name>
     <url-pattern>/SingleReEmpInfoServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateGradeServlet</display-name>
+    <servlet-name>UpdateGradeServlet</servlet-name>
+    <servlet-class>com.trms.servlets.UpdateGradeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateGradeServlet</servlet-name>
+    <url-pattern>/UpdateGradeServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -301,7 +301,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		try(Connection conn = Connections.getConnection()) {
 			String sql = "SELECT b.event_name, d.format_type, c.center_name, a.reimburse_cost, a.reimburse_projreimb, "
 					+ "a.reimburse_desc, a.reimburse_grade, a.reimburse_passgrade, a.reimburse_workmissed, "
-					+ "a.reimburse_datetime, a.reimburse_workjustify, a.reimburse_inforeq "
+					+ "a.reimburse_datetime, a.reimburse_workjustify, a.reimburse_inforeq, a.reimburse_emp_id, a.reimburse_approveid "
 					+ "FROM reimbursements a, eventtypes b, learningcenters c, gradingformats d "
 					+ "WHERE a.reimburse_id = ? AND a.reimburse_event_id = b.event_id "
 					+ "AND a.reimburse_center_id = c.center_id AND a.reimburse_format_id = d.format_id";
@@ -322,6 +322,8 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				r.setDate(rs.getDate(10));
 				r.setWorkJustification(rs.getString(11));
 				r.setNextInfoReq(rs.getInt(12));
+				r.setEmpId(rs.getInt(13));
+				r.setNextApprovalId(rs.getInt(14));
 			}
 		} catch(SQLException e) {
 			logger.error(e.getMessage());
@@ -357,6 +359,26 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		}
 		
 		return ls;
+	}
+
+	@Override
+	public int updateGrade(int rId, float grade) {
+		PreparedStatement ps = null;
+		int result = -1;
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "UPDATE reimbursements SET reimburse_grade = ? WHERE reimburse_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setFloat(1, grade);
+			ps.setInt(2, rId);
+			result = ps.executeUpdate();
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+		}
+		
+		return result;
 	}
 	
 	

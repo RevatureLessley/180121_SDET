@@ -131,5 +131,11 @@ public class ReimbursementService {
 		
 		return result;
 	}
+	
+	public static int updateGrade(int rId, int grade) {
+		ReimbursementDao dao = new ReimbursementDaoImpl();
+		
+		return dao.updateGrade(rId, grade);
+	}
 }
 

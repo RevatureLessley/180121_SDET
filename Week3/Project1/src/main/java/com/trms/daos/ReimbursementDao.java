@@ -14,12 +14,16 @@ public interface ReimbursementDao {
 	// Info related methods
 	public List<AddedInfo> getAddedInfoBy(int rId);
 	
+	// Get
 	public int getReimburseByEmpId(int empId);
 	public Reimbursement getReimbBy(int rId);
 	public List<Reimbursement> getPersonalReimb(int empId);
 	public List<Reimbursement> getReimburse(int empId);
 	public int getNumberAttachments(int rId);
 	public int getEmpIdByReimburse(int rId);
+	
+	// Set
+	public int updateGrade(int rId, float grade);
 	
 	// Approval related methods
 	public int updateApproved(int rId, int response);
