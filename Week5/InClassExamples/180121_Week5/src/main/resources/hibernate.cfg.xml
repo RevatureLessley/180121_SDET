@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration> <!-- ROOT TAG -->
+	<session-factory> <!-- Configuration details for session factory objects -->
+
+		<!-- Configuring the database -->
+		<!-- This is like the jdbc class.forName() -->
+		<property name="hibernate.connection.driver_class">
+			oracle.jdbc.OracleDriver
+		</property>
+		<!-- Configures the databse engine we intend to use -->
+		<!-- If you ever change languages, this property must change as well -->
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.Oracle10gDialect
+		</property>
+		<!-- Typical JDBC url requirement -->
+		<property name="hibernate.connection.url">
+			jdbc:oracle:thin:@localhost:1521:xe
+			<!-- AWS connections: 
+				jdbc:oracle:thin:@AWS_ENDPOINT:1521:orcl 
+			-->
+		</property>
+		<property name="hibernate.connection.username">
+			animals
+		</property>
+		<property name="hibernate.connection.password">
+			animals
+		</property>
+		
+		<!-- This determines how many connections a single user can have to the database.
+			Allowing for multiple connections allows for concurrent, and therfore faster,
+			database interaction.
+			However, you can quickly reach the database cap in AWS if you let each user have
+			a large amount of connections. -->
+		<property name="hibernate.connection.pool_size">5</property>
+		
+		<!-- Shows SQL queries that hibernate is using behind the scenes for us to see -->
+		<property name="show_sql">true</property>
+		<!-- hibernate mapping to data definition language -->
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		<!-- There are 4 different states you can place it as:
+			update: perform hibernate actions on an existing database 
+			create: wipe any existing database tables, and create them from scratch as needed
+			validate: creates the schema, destroying old data
+			create-drop: database is cleared and emptied upon server shutdown-->
+
+		<mapping resource="food.hbm.xml"/>
+	
+	</session-factory>
+</hibernate-configuration>
