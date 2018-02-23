@@ -44,7 +44,11 @@
 			validate: creates the schema, destroying old data
 			create-drop: database is cleared and emptied upon server shutdown-->
 
-		<mapping resource="food.hbm.xml"/>
+		<!-- <mapping resource="food.hbm.xml"/> -->
+		<mapping class="com.revature.beans.Food"/>
+		<mapping class="com.revature.beans.Bear"/>
+		<mapping class="com.revature.beans.Cave"/>
+		<mapping class="com.revature.beans.HoneyPot"/>
 	
 	</session-factory>
 </hibernate-configuration>
