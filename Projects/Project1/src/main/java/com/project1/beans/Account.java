@@ -3,11 +3,11 @@ package com.project1.beans;
 public class Account {
 	String email;
     String password;
-    int isBenCo;
-    int isDirSup;
-    int isDepHead;
+    String isBenCo;
+    String isDirSup;
+    String isDepHead;
     
-	public Account(String email, String username, String password, int isBenCo, int isDirSup, int isDepHead) {
+	public Account(String email, String username, String password, String isBenCo, String isDirSup, String isDepHead) {
 		super();
 		this.email = email;
 		this.password = password;
@@ -32,27 +32,27 @@ public class Account {
 		this.password = password;
 	}
 
-	public int getIsBenCo() {
+	public String getIsBenCo() {
 		return isBenCo;
 	}
 
-	public void setIsBenCo(int isBenCo) {
+	public void setIsBenCo(String isBenCo) {
 		this.isBenCo = isBenCo;
 	}
 
-	public int getIsDirSup() {
+	public String getIsDirSup() {
 		return isDirSup;
 	}
 
-	public void setIsDirSup(int isDirSup) {
+	public void setIsDirSup(String isDirSup) {
 		this.isDirSup = isDirSup;
 	}
 
-	public int getIsDepHead() {
+	public String getIsDepHead() {
 		return isDepHead;
 	}
 
-	public void setIsDepHead(int isDepHead) {
+	public void setIsDepHead(String isDepHead) {
 		this.isDepHead = isDepHead;
 	}
 

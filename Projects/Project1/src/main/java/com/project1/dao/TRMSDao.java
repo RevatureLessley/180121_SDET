@@ -9,7 +9,7 @@ import com.project1.beans.Reimbursement;
 
 public interface TRMSDao {
 	public void insertIntoPersonal(String email, String firstName, String lastName, String address, String date);
-	public void insertIntoAccounts(String email, String pw, int isBenCo, int isDirSup, int isDepHead);
+	public void insertIntoAccounts(String email, String pw, String isBenCo, String isDirSup, String isDepHead);
 	public void insertIntoEvents(String email, String event, String depHeadEmail, String benCoEmail, String dirSupEmail, 
 			String approvalEmail, String justification, String grade, String passFail, String startDate, String endDate);
 	public void insertIntoReimbursements(String email, double available, double pending, double awarded, double total, String lastReimDate);
@@ -23,9 +23,7 @@ public interface TRMSDao {
 	public Reimbursement selectReimbursementByEmail(String email);
 	public void updateStringColumn(String email, String table, String column, String value);
 	public void updateDoubleColumn(String email, String table, String column, double value);
-	public void updateIntColumn(String email, String table, String column, int value);
 	public String getStringValue(String email, String table, String column);
 	public double getDoubleValue(String email, String table, String column);
-	public int getIntValue(String email, String table, String column);
 	public List<String> getAllEmails();
 }

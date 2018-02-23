@@ -51,15 +51,15 @@ public class TRMSDaoImpl implements TRMSDao {
 	}
 	
 	@Override
-	public void insertIntoAccounts(String email, String pw, int isBenCo, int isDirSup, int isDepHead) {
+	public void insertIntoAccounts(String email, String pw, String isBenCo, String isDirSup, String isDepHead) {
 		try (Connection conn = Connections.getConnection()) {
 			sql = "INSERT INTO account_info VALUES (?,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, email);
 			ps.setString(2, pw);
-			ps.setInt(3, isBenCo);
-			ps.setInt(4, isDirSup);
-			ps.setInt(5, isDepHead);
+			ps.setString(3, isBenCo);
+			ps.setString(4, isDirSup);
+			ps.setString(5, isDepHead);
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
@@ -148,7 +148,7 @@ public class TRMSDaoImpl implements TRMSDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				accounts.add(new Account(rs.getString(1), rs.getString(2), rs.getString(3), 
-						rs.getInt(4), rs.getInt(5), rs.getInt(6)));
+						rs.getString(4), rs.getString(5), rs.getString(6)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -254,7 +254,7 @@ public class TRMSDaoImpl implements TRMSDao {
 			rs.next();
 			
 			account = new Account(rs.getString(1), rs.getString(2), rs.getString(3), 
-					rs.getInt(4), rs.getInt(5), rs.getInt(6));
+					rs.getString(4), rs.getString(5), rs.getString(6));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -345,24 +345,6 @@ public class TRMSDaoImpl implements TRMSDao {
 		}
 	}
 	
-	@Override
-	public void updateIntColumn(String email, String table, String column, int value) {
-		try (Connection conn = Connections.getConnection()) {
-				sql = "UPDATE " + table + 
-						" SET " + column + " = ? " + 
-						"WHERE email = ?"; 
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, value);
-			ps.setString(2, email);
-			ps.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(ps);
-			close(rs);
-		}
-	}
-	
 //======================= SELECT COLUMN VALUE METHODS (BY TYPE) =================================//
 	@Override
 	public String getStringValue(String email, String table, String column) {
@@ -396,27 +378,6 @@ public class TRMSDaoImpl implements TRMSDao {
 			rs = ps.executeQuery();
 			rs.next();
 			value = rs.getDouble(1);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(ps);
-			close(rs);
-		}
-		return value;
-	}
-	
-	@Override
-	public int getIntValue(String email, String table, String column) {
-		int value = 0;
-		try (Connection conn = Connections.getConnection()) {
-				sql = "SELECT " + column + " FROM " + table 
-						+ " WHERE email = ?"; 
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, email);
-			rs = ps.executeQuery();
-			rs.next();
-			value = rs.getInt(1);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

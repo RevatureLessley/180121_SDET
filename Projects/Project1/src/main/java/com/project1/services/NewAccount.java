@@ -7,7 +7,7 @@ import java.util.List;
 
 public class NewAccount {
 	static TRMSDaoImpl dao;
-	public static void insertNewAccount(String firstname, String lastname, String address, int accountType, 
+	public static void insertNewAccount(String firstname, String lastname, String address, String accountType, 
 			String email, String password, String confirm) {
 		Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MMM.yyyy");

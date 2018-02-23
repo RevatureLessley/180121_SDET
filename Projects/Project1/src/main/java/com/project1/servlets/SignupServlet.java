@@ -1,14 +1,14 @@
 package com.project1.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpSession;
 
 import com.project1.services.NewAccount;
 
@@ -39,11 +39,10 @@ public class SignupServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("signup servlet reached");
-		doGet(request, response);
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String address = request.getParameter("address");
-		int accountType = Integer.parseInt(request.getParameter("radio"));
+		String accountType = request.getParameter("radio");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String confirm = request.getParameter("confirm");
