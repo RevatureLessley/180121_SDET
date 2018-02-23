@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.revature.beans.Food" table="FOOD">
+		<meta attribute="class-description">
+			This table houses all food.
+		</meta>
+		<!--  In this element, we describe out table's primary key-->
+		<!-- The name attribute should match the java bean field variable name to be used 
+			type is what java datatype you want to map for the key.  (primative types)
+			The column attribute is optional.  It designates what you want the column name
+			to be, but if omitted, the column will use the "name" attribute instead-->
+		<id name="id" type="int" column="f_id">
+			<generator class="native"></generator>
+		</id>
+		
+		<property name="name" type="string"></property>
+		<property name="type" type="string"></property>
+		<property name="price" type="int"></property>
+	</class>
+</hibernate-mapping>
