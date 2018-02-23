@@ -169,4 +169,24 @@
     <servlet-name>UpdateGradeServlet</servlet-name>
     <url-pattern>/UpdateGradeServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertNewAddedInfoServlet</display-name>
+    <servlet-name>InsertNewAddedInfoServlet</servlet-name>
+    <servlet-class>com.trms.servlets.InsertNewAddedInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertNewAddedInfoServlet</servlet-name>
+    <url-pattern>/InsertNewAddedInfoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateInfoReqServlet</display-name>
+    <servlet-name>UpdateInfoReqServlet</servlet-name>
+    <servlet-class>com.trms.servlets.UpdateInfoReqServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateInfoReqServlet</servlet-name>
+    <url-pattern>/UpdateInfoReqServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,3 +1,4 @@
+<%@page import="com.trms.services.EmployeeService"%>
 <%@page import="com.trms.services.ReimbursementService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -50,13 +51,18 @@
 		
 		<div class='well' style='margin-top: 50px'>
 			<%@page import="com.trms.services.ReimbursementService"%>
+			<%@page import="com.trms.services.EmployeeService"%>
 			<%@page import="com.trms.beans.Reimbursement"%>
 			<%@page import="com.trms.beans.AddedInfo"%>
+			<%@page import="com.trms.beans.Employee"%>
 			<%@page import="java.util.List"%>
 			<%
+				int empId = (Integer)session.getAttribute("empid");
 				String s = request.getQueryString();
 				int rId = Integer.parseInt(s.split("=")[1]);
 				Reimbursement r = ReimbursementService.getReimbursement(rId);
+				Employee e = EmployeeService.getUserEmpId(r.getEmpId());
+				Employee user = EmployeeService.getUserEmpId(empId);
 				if (r.getDescription() == null) {
 					r.setDescription("N/A");
 				}
@@ -65,10 +71,41 @@
 
 			<h3>
 				Reimbursement #<span id='rid'><%=rId%></span>
+				<% if(r.getUrgent() == 1) { %>
+					<span style='color:red'><strong>!</strong></span>
+				<% } 
+					// TODO also display urgencey on all reimbursements displayed page
+				%>
 			</h3>
 			<div class='row'>
-				Display User Information
+				<div class='col-sm-12'>
+				<table class='table-bordered' id="empinfo">
+				<tr>
+					<th>FIRST NAME</th>
+					<th>LAST NAME</th>
+					<th>DEPARTMENT</th>
+					<th>TITLE</th>
+					<th>AVAILABLE</th>
+					<th>ADDRESS</th>
+					<th>CITY</th>
+					<th>STATE</th>
+					<th>ZIP CODE</th>
+				</tr>
+				<tr>
+					<td> <%= e.getFname() %> </td>
+					<td> <%= e.getLname() %> </td>
+					<td> <%= e.getDepartment() %> </td>
+					<td> <%= e.getTitle() %> </td>
+					<td> <%= e.getAvailReimburse() %> </td>
+					<td> <%= e.getAddr() %> </td>
+					<td> <%= e.getCity() %> </td>
+					<td> <%= e.getState() %> </td>
+					<td> <%= e.getZipCode() %> </td>
+				</tr>
+				</table>
+				</div>
 			</div>
+			<br>
 			<div class='row'>
 				<div class='col-sm-8'>
 					<label>DESCRIPTION : </label>
@@ -83,7 +120,7 @@
 					<%=r.getPassGrade()%>
 				</div>
 			</div>
-
+			<br>
 			<div class='row'>
 				<div class='col-sm-4'>
 					<label>EVENT : </label>
@@ -121,7 +158,12 @@
 				</div>
 				<div class='col-sm-4'>
 					<label>PROJECTED REIMBURSEMENT : </label>
-					<%=r.getProjectedReimb()%>
+					<% if(user.getTitle().equals("BENEFITS COORDINATOR")) {%>
+						<input type='number' step='0.01' min='0' placeholder=<%=r.getProjectedReimb()%> id='projreimb'>
+					<% } else {%>
+						<%=r.getProjectedReimb()%>
+					<% } %>
+					
 				</div>
 			</div>
 
@@ -140,7 +182,7 @@
 			<hr>
 			<%
 				}
-				}
+			}
 			%>
 
 			<%
@@ -156,22 +198,28 @@
 				if (r.getNextApprovalId() == (Integer) session.getAttribute("empid")) {
 			%>
 				<div class='row'>
-					<label>REQUEST ADDITIONAL INFO</label> <input type='text'
-						id='reqinfo'> <select>
-						<option value=<%=r.getEmpId()%>>REQUESTOR</option>
-					</select> <label for="response">RESPONSE</label> 
-					
+					<div class='col-sm-7'>
+						<label>REQUEST ADDITIONAL INFO</label> 
+						<div>
+						<input type='text'
+							id='reqinfo'> 
+							<select id='reqinfoemp'>
+							<option value=<%=r.getEmpId()%>>REQUESTOR</option>
+						</select>
+						</div> 
+					</div>
 					<!-- Approve/Deny Request -->
-					<div class='col-sm-5'>
+					<div class='col-sm-5' id='resdiv'>
+					<label for="response">RESPONSE</label> 
 					<select
-						class="form-control" name="response" id="response" required>
+						class="form-control" name="response" id="response" onchange="denyRe()" required>
+						<option value=-1>---</option>
 						<option value=1>APPROVE</option>
 						<option value=0>DENY</option>
 					</select>
 			
-					<button type=button onclick="appResponse()">SUBMIT</button>
 					</div>
-					</div>
+				</div>
 
 			<%
 				}

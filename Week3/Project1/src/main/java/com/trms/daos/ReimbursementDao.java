@@ -12,7 +12,9 @@ public interface ReimbursementDao {
 	public int insertAttachment(File f, int r_id);
 	
 	// Info related methods
+	public int insertAddedInfo(AddedInfo ai);
 	public List<AddedInfo> getAddedInfoBy(int rId);
+	public int updateReqInfo(int rId, int empId);
 	
 	// Get
 	public int getReimburseByEmpId(int empId);

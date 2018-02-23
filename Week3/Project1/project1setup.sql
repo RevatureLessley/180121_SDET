@@ -178,6 +178,16 @@ BEGIN
 END;
 /
 
+CREATE OR REPLACE TRIGGER rxinfo_insert_trig
+BEFORE INSERT ON reimburseaddedinfo
+FOR EACH ROW
+BEGIN
+    IF :new.info_id IS NULL THEN
+    SELECT reimbinfo_seq.NEXTVAL INTO :new.info_id FROM dual;
+    END IF;
+END;
+/
+
 CREATE OR REPLACE TRIGGER rattach_insert_trig
 BEFORE INSERT ON reimburseattachments
 FOR EACH ROW
@@ -273,5 +283,4 @@ INSERT INTO learningcenters VALUES(3, 'NEW HORIZONS', '462 Seventh Ave, 6th Floo
 INSERT INTO learningcenters VALUES(4, 'WESTERN GOVERNORS UNIVERSITY', '4001 S 700 E #700', 'Salt Lake City', 'UT', 84107, 'USA');
 INSERT INTO learningcenters VALUES(5, 'ORACLE UNIVERSITY', '-', '-', '-', -1, '-');
 
-SELECT a.addinfo_reimburse, b.emp_fname, b.emp_lname FROM reimburseaddedinfo a, employees b 
-WHERE a.in_reimburse_id = 8 AND a.info_added_by_emp = b.emp_id;
+SELECT emp_id FROM employees WHERE emp_department = 7 AND (emp_title_id = 50 OR emp_title_id = 0)

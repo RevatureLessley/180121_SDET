@@ -7,10 +7,12 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.trms.beans.AddedInfo;
 import com.trms.beans.Employee;
 import com.trms.beans.Reimbursement;
 import com.trms.daos.ReimbursementDao;
@@ -28,6 +30,8 @@ public class ReimbursementService {
 		if(s.length == 3) {
 			t = String.join(":", s[0], s[1]);
 		}
+		
+		// Converting date from string into something that can be stored in the database
 		String result = LocalTime.parse(t, DateTimeFormatter.ofPattern("HH:mm")).format(DateTimeFormatter.ofPattern("hh:mm a"));
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a");
 		LocalDateTime ldt = LocalDateTime.parse((r.getDateStr() + " " + result), dtf);
@@ -35,8 +39,21 @@ public class ReimbursementService {
 		Date d = new Date(zdt.toInstant().toEpochMilli());
 		r.setDateTime(ldt);
 		r.setDate(d);
+
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(d);
+		cal.add(Calendar.DATE, +14);
+		java.util.Date twoWeeks = cal.getTime();
+		logger.info("insertReimbursementDaoImpl() : rDate=" + d + " 2wks=" + twoWeeks); 
 		
-		r.setUrgent(0);
+		java.util.Date rDate = new java.util.Date(d.getTime());
+		if(rDate.before(twoWeeks)) {
+			logger.debug("insertReimbursementDaoImpl() : is urgent=" + rDate.before(twoWeeks));
+			r.setUrgent(1);
+		} else {
+			r.setUrgent(0);
+		}
+		
 		return dao.insertReimbursement(r);
 	}
 	
@@ -136,6 +153,18 @@ public class ReimbursementService {
 		ReimbursementDao dao = new ReimbursementDaoImpl();
 		
 		return dao.updateGrade(rId, grade);
+	}
+	
+	public static int insertExtraInfo(AddedInfo ai) {
+		ReimbursementDao dao = new ReimbursementDaoImpl();
+		
+		return dao.insertAddedInfo(ai);
+	}
+	
+	public static int updateInfoReq(int rId, int empId) {
+		ReimbursementDao dao = new ReimbursementDaoImpl();
+		
+		return dao.updateReqInfo(rId, empId);
 	}
 }
 

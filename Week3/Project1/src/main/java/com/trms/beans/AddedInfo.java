@@ -13,6 +13,14 @@ public class AddedInfo {
 	
 	
 	
+	public AddedInfo(int infoRid, int infoEmpId, String infoMessage) {
+		this.infoRid = infoRid;
+		this.infoEmpId = infoEmpId;
+		this.infoMessage = infoMessage;
+	}
+
+
+
 	public AddedInfo(int infoId, String fName, String lName, String infoMessage) {
 		this.infoId = infoId;
 		this.infoEmpName = fName + " " + lName;

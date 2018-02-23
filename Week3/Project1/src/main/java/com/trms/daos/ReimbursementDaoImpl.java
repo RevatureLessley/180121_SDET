@@ -301,7 +301,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		try(Connection conn = Connections.getConnection()) {
 			String sql = "SELECT b.event_name, d.format_type, c.center_name, a.reimburse_cost, a.reimburse_projreimb, "
 					+ "a.reimburse_desc, a.reimburse_grade, a.reimburse_passgrade, a.reimburse_workmissed, "
-					+ "a.reimburse_datetime, a.reimburse_workjustify, a.reimburse_inforeq, a.reimburse_emp_id, a.reimburse_approveid "
+					+ "a.reimburse_datetime, a.reimburse_workjustify, a.reimburse_inforeq, a.reimburse_emp_id, a.reimburse_approveid, a.reimburse_urgent "
 					+ "FROM reimbursements a, eventtypes b, learningcenters c, gradingformats d "
 					+ "WHERE a.reimburse_id = ? AND a.reimburse_event_id = b.event_id "
 					+ "AND a.reimburse_center_id = c.center_id AND a.reimburse_format_id = d.format_id";
@@ -324,6 +324,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				r.setNextInfoReq(rs.getInt(12));
 				r.setEmpId(rs.getInt(13));
 				r.setNextApprovalId(rs.getInt(14));
+				r.setUrgent(rs.getInt(15));
 			}
 		} catch(SQLException e) {
 			logger.error(e.getMessage());
@@ -336,6 +337,41 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	}
 
 	@Override
+	public int updateReqInfo(int rId, int empId) {
+		PreparedStatement ps = null;
+		int result = -1;
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "UPDATE reimbursements SET reimburse_inforeq = ? WHERE reimburse_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, empId);
+			ps.setInt(2, rId);
+			result = ps.executeUpdate();
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		}
+		return result;
+	}
+	
+	@Override
+	public int insertAddedInfo(AddedInfo ai) {
+		PreparedStatement ps = null;
+		int result = -1;
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "INSERT INTO reimburseaddedinfo (in_reimburse_id, info_added_by_emp, addinfo_reimburse) VALUES (?,?,?)";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, ai.getInfoRid());
+			ps.setInt(2, ai.getInfoEmpId());
+			ps.setString(3, ai.getInfoMessage());
+			result = ps.executeUpdate();
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		}
+		return result;
+	}
+	
+	@Override
 	public List<AddedInfo> getAddedInfoBy(int rId) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -343,7 +379,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 		try(Connection conn = Connections.getConnection()) {
 			String sql = "SELECT a.info_id, a.addinfo_reimburse, b.emp_fname, b.emp_lname FROM reimburseaddedinfo a, employees b " + 
-					"WHERE a.in_reimburse_id = ? AND a.info_added_by_emp = b.emp_id";
+					"WHERE a.in_reimburse_id = ? AND a.info_added_by_emp = b.emp_id ORDER BY a.info_id";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, rId);
 			rs = ps.executeQuery();

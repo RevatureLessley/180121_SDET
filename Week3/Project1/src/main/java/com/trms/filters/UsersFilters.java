@@ -37,7 +37,7 @@ public class UsersFilters implements Filter {
 			logger.info("doFilter() : Session Doesn't Exist");
 			response.sendRedirect("../index.html");
 		} else {
-			logger.info("doFilter() : User Logged In");
+			//logger.info("doFilter() : User Logged In");
 			response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 	        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 	        response.setDateHeader("Expires", 0);
