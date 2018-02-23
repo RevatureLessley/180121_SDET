@@ -1,0 +1,165 @@
+package com.revaturebank.systemclass;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
+
+import org.apache.log4j.Logger;
+
+import com.revaturebank.util.Connections;
+import com.revaturebank.util.CloseStreams;
+
+public class UserAccountList implements Exportable{
+	//Using a logger in this.class
+	final static Logger logger=Logger.getLogger(UserAccountList.class);
+	//private data consist of HashMap to load data with key username 
+	private static UserAccountList usersList;
+	private HashMap <String, UserAccount> users;
+    
+	//public method to instantiate an object and only allows one in entire application
+	public static UserAccountList getUserAccountList() {
+    	if (usersList==null)
+			try {
+				usersList=new UserAccountList();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	return usersList;
+    		
+    }
+	//private constructor to load data from the files
+	private UserAccountList() throws SQLException{
+		this.users = new HashMap<>();
+		this.dataLoad();
+	}
+	//get a collection 
+    public HashMap<String,UserAccount> getUsers() {
+    	return this.users;
+    }
+	//search through the accounts by username(key)
+	public UserAccount search(String key) throws Exception{
+		try {
+		    return users.get(key);
+		}
+		catch (Exception e){
+		    throw new Exception(); 
+		      }
+		}
+	//add user to the list by UserAcount
+	public boolean add(UserAccount UA){
+		 return users.putIfAbsent(UA.getUsername(), UA) == null;
+		}
+	//add user to the list by parameter
+	public boolean add(String ssNumber, String firsName, String lastName, String phone, String email,
+		 String username, String password, Double amount) {
+		   UserAccount user=new UserAccount(ssNumber, firsName, lastName, phone, email,
+				   username, password, amount);
+		   return users.put(username, user)==null;       
+		  }
+		//activate
+	public boolean edit(String username,String accountNumber, boolean bool ) {
+		   try{ 
+		        if (users.get(username)!=null){
+		                 users.get(username).setAccountNumber(accountNumber);
+		                 return true;       
+		            }
+		    }
+		   catch (Exception obj){
+		    obj.getStackTrace();
+		    }
+		  return false;
+		}
+	// to delete an account
+	public boolean remove(String username) throws Exception{
+		   try{
+		       return users.remove(username)!=null;
+		   }
+		   catch (Exception e){
+		    throw new Exception();
+		      }    
+		}
+	//to clear data
+	public void clear() throws Exception{
+		 try{ users.clear();  
+		     }
+		 catch (Exception e){
+		    throw new Exception(" Error!!:" + e.toString() );
+		      }
+	}
+
+	
+	public UserAccount authenticate(String username,String password) throws Exception{
+		try{    
+		   dataLoad();
+		   return users.get(username);
+		   
+		   }
+		catch (Exception e){
+		    throw new Exception(e.toString() );
+		    }
+
+		}
+	
+		@Override
+		public void dataLoad() throws SQLException {
+			Statement stmt=null;
+			ResultSet rs =null;
+			
+			try(Connection conn= Connections.getConnection()){ 
+				String sql="SELECT * FROM USERS";
+				stmt=conn.createStatement();
+				rs=stmt.executeQuery(sql);
+				
+               while(rs.next()){
+               
+               UserAccount ua= new UserAccount();
+               ua.setSsNumber(rs.getString(1));
+               ua.setFirsName(rs.getString(2));
+               ua.setLastName(rs.getString(3));
+               ua.setEmail(rs.getString(4));
+               ua.setPhone(rs.getString(5));
+               ua.setAccountNumber(rs.getString(6));
+               ua.setUsername(rs.getString(7));
+               ua.setPassword(rs.getString(8));
+               ua.setBalanceAccount(rs.getDouble(9));
+               
+               this.add(ua);
+			   
+                
+              }
+            
+           }
+           catch (SQLException ex){
+        	   throw (ex);
+        	  // ex.getMessage();
+        	   //ex.getStackTrace();
+        	  // ex.getCause();
+        	  // logger.warn("Can estabilsh database connect");
+        	   
+           } 
+           finally {
+        	   CloseStreams.close(stmt);
+   			   CloseStreams.close(rs);
+           }
+		
+     
+			
+		}
+
+		@Override
+		public void dataSave() {
+			
+			
+		}
+		
+			  
+				
+		
+	
+		
+	
+    
+}

@@ -1,0 +1,114 @@
+package com.revaturebank.systemclass;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Random;
+
+import org.apache.log4j.Logger;
+
+import com.revaturebank.dao.AdminDAOClass;
+import com.revaturebank.ui.UILogin;
+import com.revaturebank.util.CloseStreams;
+import com.revaturebank.util.Connections;
+
+public class AdminList implements Exportable{
+	//logger of this class
+	final static Logger logger=Logger.getLogger(UserAccountList.class);
+	private HashMap <String,Admin>  adminList;
+	private AdminDAOClass AdDao =new AdminDAOClass();
+	public AdminList() {
+		this.adminList=new HashMap<>();
+	}
+	
+	public Admin authenticate(String username,String password) throws Exception{
+		try{    
+			   dataLoad();
+			   return adminList.get(username);
+			   }
+			catch (Exception e){
+			    throw new Exception(e );
+			    }
+
+	}
+	// add an admin to the system
+    public boolean add(Admin a) {
+    	return adminList.putIfAbsent(a.getUsername(), a) == null;
+		}
+    
+	public void clear() {
+		 try{ adminList.clear();  
+		     }
+		 catch (Exception e){
+		    e.printStackTrace();
+		   }
+	}
+	  
+	//to approve an account by making it and associated with account number
+	public void activateAccount(String username) {
+		Random rand=new Random();
+      int num=rand.nextInt(10000)+10000;
+      String accountNumber="4321"+num;
+      try {
+      UserAccount ua=AdDao.search(username);
+      ua.setAccountNumber(accountNumber);
+      if (AdDao)
+	  System.out.println("account still inactive");
+      }catch(SQLException ex) {
+    	  ex.getStackTrace();
+      }
+	}
+
+	@Override
+	public void dataLoad() {
+		Statement stmt=null;
+		ResultSet rs=null;
+		
+		try(Connection conn =Connections.getConnection()){
+			String sql="SELECT * FROM ADMINS";
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+		  		     
+        while(rs.next()){
+           Admin a= new Admin(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
+           this.add(a);
+		   
+          }
+         
+       }
+       catch (SQLException ex){
+          logger.error("Connection failed!!");
+       }finally {
+    	      CloseStreams.close(stmt);
+    	      CloseStreams.close(rs);
+    	   
+		}
+		
+		
+	}
+
+	@Override
+	public void dataSave() {
+		try {
+	        PrintWriter output;
+	        output = new PrintWriter( new BufferedWriter( new FileWriter("src\\com\\revaturebank\\data\\AdminData.txt")));
+	        adminList.entrySet().stream().forEach((admin) -> {
+	            output.println(adminList.get(admin.getKey()).getSsNumber()+","+adminList.get(admin.getKey()).getFirsName()+
+	            		","+adminList.get(admin.getKey()).getLastName()+","+adminList.get(admin.getKey()).getPhone()+","
+	            		+adminList.get(admin.getKey()).getEmail()+","+adminList.get(admin.getKey()).getAdminId()+","
+	            		+adminList.get(admin.getKey()).getUsername()+","+adminList.get(admin.getKey()).getPassword());
+	        });
+	        output.close();
+	    } catch (IOException ex) {
+	    	logger.error("IOS proble in saving admin data ");
+	        ex.getStackTrace();
+	    }
+		
+	}
+	
+}

@@ -1,0 +1,31 @@
+package com.revaturebank.dao;
+
+import com.revaturebank.systemclass.Admin;
+
+public class AdminDAOClass implements AdminDAO {
+
+	@Override
+	public boolean insertAdmin() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateAdmin() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Admin authenticate(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean deleteAdmin(String Accountnumbre, String username) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

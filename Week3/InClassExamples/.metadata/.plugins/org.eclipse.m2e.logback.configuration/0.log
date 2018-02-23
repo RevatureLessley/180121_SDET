@@ -1,0 +1,128 @@
+2018-02-08 09:51:53,503 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-02-08 09:53:53,370 [Worker-9] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2018-02-08 09:53:58,277 [Worker-9] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.revature:180121_Week3:0.0.1-SNAPSHOT @ C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\pom.xml.
+2018-02-08 09:54:00,833 [Worker-14] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.revature:180121_First_Maven:0.0.1-SNAPSHOT @ C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\pom.xml.
+2018-02-08 09:54:01,081 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:01,095 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\main\resources
+2018-02-08 09:54:01,097 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:01,107 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\test\resources
+2018-02-08 09:54:01,169 [Worker-9] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /180121_Week3/src/main/java
+2018-02-08 09:54:01,176 [Worker-9] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /180121_Week3/src/test/java
+2018-02-08 09:54:02,099 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.revature:180121_First_Maven:0.0.1-SNAPSHOT @ C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\pom.xml.
+2018-02-08 09:54:02,321 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:02,341 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\main\resources
+2018-02-08 09:54:02,342 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:02,358 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\test\resources
+2018-02-08 09:54:02,376 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:02,396 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\main\resources
+2018-02-08 09:54:02,397 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:02,457 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\test\resources
+2018-02-08 09:54:04,406 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:04,455 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\main\resources
+2018-02-08 09:54:04,465 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:04,486 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\test\resources
+2018-02-08 09:54:05,467 [Worker-9] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 12 sec
+2018-02-08 09:54:05,497 [Worker-9] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2018-02-08 09:54:06,734 [Worker-9] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.revature:180121_Week3:0.0.1-SNAPSHOT @ C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\pom.xml.
+2018-02-08 09:54:07,357 [Worker-9] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.revature:180121_First_Maven:0.0.1-SNAPSHOT @ C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\pom.xml.
+2018-02-08 09:54:08,590 [Worker-9] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /180121_Week3/src/main/java
+2018-02-08 09:54:08,599 [Worker-9] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /180121_Week3/src/test/java
+2018-02-08 09:54:08,887 [Worker-10] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:08,910 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\main\resources
+2018-02-08 09:54:08,912 [Worker-10] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:08,926 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\test\resources
+2018-02-08 09:54:09,055 [Worker-9] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /180121_First_Maven/src/main/java
+2018-02-08 09:54:09,056 [Worker-9] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /180121_First_Maven/src/test/java
+2018-02-08 09:54:09,999 [Worker-9] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 4 sec
+2018-02-08 09:54:10,515 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:10,622 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\main\resources
+2018-02-08 09:54:10,944 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:11,236 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\test\resources
+2018-02-08 09:54:11,298 [Worker-3] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of 180121_First_Maven
+2018-02-08 09:54:11,311 [Worker-3] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for 180121_First_Maven
+2018-02-08 09:54:11,372 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:13,190 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:13,325 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\main\resources
+2018-02-08 09:54:13,357 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:13,450 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\test\resources
+2018-02-08 09:54:13,492 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:14,324 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\main\resources
+2018-02-08 09:54:14,383 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:54:14,667 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\test\resources
+2018-02-08 09:54:14,771 [Worker-14] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of 180121_Week3
+2018-02-08 09:54:14,941 [Worker-14] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for 180121_Week3
+2018-02-08 09:54:14,953 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:58:48,192 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:58:48,200 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\main\resources
+2018-02-08 09:58:48,211 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:58:48,223 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\test\resources
+2018-02-08 09:58:48,240 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:58:48,248 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\main\resources
+2018-02-08 09:58:48,255 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-08 09:58:48,260 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\test\resources
+2018-02-09 13:21:03,957 [Worker-220] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.revature:180121_Week3:0.0.1-SNAPSHOT @ C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\pom.xml.
+2018-02-09 13:21:06,823 [Worker-220] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/javax/servlet/servlet-api/2.5/servlet-api-2.5.pom
+2018-02-09 13:21:06,866 [Worker-220] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/javax/servlet/servlet-api/2.5/servlet-api-2.5.pom
+2018-02-09 13:21:06,901 [Worker-220] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar
+2018-02-09 13:21:06,992 [Worker-220] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar
+2018-02-09 13:21:07,519 [Worker-220] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 13:21:07,532 [Worker-220] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\main\resources
+2018-02-09 13:21:07,533 [Worker-220] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 13:21:07,540 [Worker-220] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\test\resources
+2018-02-09 13:21:07,541 [Worker-220] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of 180121_Week3
+2018-02-09 13:21:07,547 [Worker-220] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for 180121_Week3
+2018-02-09 13:21:07,551 [Worker-220] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 13:21:09,028 [Worker-225] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 13:21:09,042 [Worker-225] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\main\resources
+2018-02-09 13:21:09,043 [Worker-225] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 13:21:09,054 [Worker-225] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\test\resources
+2018-02-09 13:26:00,303 [Worker-228] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.revature:180121_Week3:0.0.1-SNAPSHOT @ C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\pom.xml.
+2018-02-09 13:26:00,490 [Worker-228] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 13:26:00,506 [Worker-228] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\main\resources
+2018-02-09 13:26:00,506 [Worker-228] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 13:26:00,522 [Worker-228] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\test\resources
+2018-02-09 13:26:00,522 [Worker-228] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of 180121_Week3
+2018-02-09 13:26:00,522 [Worker-228] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for 180121_Week3
+2018-02-09 13:26:00,522 [Worker-228] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 15:47:55,484 [Worker-235] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 15:47:55,499 [Worker-235] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\main\resources
+2018-02-09 15:47:55,499 [Worker-235] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 15:47:55,531 [Worker-235] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\test\resources
+2018-02-09 15:47:55,624 [Worker-235] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 15:47:55,624 [Worker-235] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\main\resources
+2018-02-09 15:47:55,640 [Worker-235] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 15:47:55,656 [Worker-235] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\test\resources
+2018-02-09 21:59:49,083 [Worker-2] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-02-09 22:00:57,610 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 22:00:57,621 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\main\resources
+2018-02-09 22:00:57,623 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 22:00:57,632 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\test\resources
+2018-02-09 22:00:59,219 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 22:00:59,234 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\main\resources
+2018-02-09 22:00:59,236 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-09 22:00:59,250 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\test\resources
+2018-02-10 13:35:24,512 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-10 13:35:34,115 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 13:35:34,269 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\main\resources
+2018-02-10 13:35:34,272 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 13:35:34,280 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\test\resources
+2018-02-10 13:35:37,612 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 13:35:37,865 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\main\resources
+2018-02-10 13:35:37,870 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 13:35:37,909 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\test\resources
+2018-02-12 10:14:42,698 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-02-12 10:14:53,859 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-12 10:14:53,870 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\main\resources
+2018-02-12 10:14:53,873 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-12 10:14:53,879 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_First_Maven\src\test\resources
+2018-02-12 10:14:54,921 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-12 10:14:54,930 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\main\resources
+2018-02-12 10:14:54,931 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-12 10:14:54,939 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\test\resources
+2018-02-12 13:59:38,448 [Worker-29] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/javax/servlet/servlet-api/2.5/servlet-api-2.5-sources.jar
+2018-02-12 13:59:38,502 [Worker-29] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/javax/servlet/servlet-api/2.5/servlet-api-2.5-sources.jar
+2018-02-12 13:59:38,653 [Worker-29] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for javax.servlet:servlet-api:2.5
+2018-02-12 13:59:38,940 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-12 13:59:38,951 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\main\resources
+2018-02-12 13:59:38,953 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-12 13:59:38,964 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\180121_Week3\src\test\resources

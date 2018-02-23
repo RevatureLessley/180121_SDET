@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;com.revaturebank.systemclass.Transaction.description&apos; in &apos;com.revaturebank.systemclass.Transaction&apos;&#x0D;&#x0A;- Original project: &apos;RevatureBank&apos;&#x0D;&#x0A;- Original element: &apos;com.revaturebank.systemclass.Transaction.description&apos;&#x0D;&#x0A;- Getter method name: &apos;getDescription&apos;&#x0D;&#x0A;- Setter method name: &apos;setDescription&apos;&#x0D;&#x0A;- Field visibility: &apos;public&apos;&#x0D;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;description&apos;" flags="589830" getter="getDescription" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;com.revaturebank.systemclass{Transaction.java[Transaction^description" insertion="6" setter="setDescription" stamp="1517887058357" version="1.0" visibility="1"/>
+</session>

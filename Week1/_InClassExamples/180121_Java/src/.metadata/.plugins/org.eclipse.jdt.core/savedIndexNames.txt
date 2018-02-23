@@ -1,0 +1,1 @@
+INDEX VERSION 1.127+C:\Users\kamel\Desktop\revatureWork\Week1\_InClassExamples\180121_Java\src\.metadata\.plugins\org.eclipse.jdt.core

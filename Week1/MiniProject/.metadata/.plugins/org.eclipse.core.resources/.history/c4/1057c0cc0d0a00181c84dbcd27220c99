@@ -1,0 +1,128 @@
+package com.revaturebank.ui;
+
+import java.sql.SQLException;
+import com.revaturebank.systemclass.UserAccount;
+
+/* user interface after the authentication is granted.
+ * this class is final 
+ * all its methods are statics and its constructor private preventing the instantiation the class.
+ */
+public final class UIMainApp {
+	
+	public static void userAccount(UserAccount userAccount) {
+		
+		System.out.println("----------Welcome to your account----------");
+		System.out.println("---Take an action:");
+		String key;
+		do {
+		
+		System.out.println("1. Check your balance\n" +
+                "2. Make a deposit\n" +
+                "3. Withdraw cash \n" +
+                "0. Save & logout");
+		key = UILogin.input.next();
+		switch (key) {
+		case "0":
+			System.out.println("Back to login interface");
+			break;
+		case "1":
+			System.out.println("Your balance is: " + userAccount.getBalanceAccount());
+			break;
+		case "2":
+			System.out.println("please enter your deposit");
+			userAccount.deposit(UILogin.input.nextDouble());
+			break;
+		case "3":
+			System.out.println("please enter amount to withdaw:");
+			userAccount.withdraw(UILogin.input.nextDouble());
+			break;
+		default:
+			System.out.println(key +"this is not an option. Please select: ");
+			break;
+		} 
+		}while(!key.equals("0"));
+		
+	}
+
+	public static void requestAccount() {
+		
+		System.out.println("Welcome to ravetureBank to open an account please provide with the following information:");
+		System.out.println("Enter username:");
+		String username=UILogin.input.next();
+		System.out.println("please enter your password");
+		String password=UILogin.input.next();
+		System.out.println("please enter your first name:");
+		String fName=UILogin.input.next();
+		System.out.println("please enter your last name:");
+		String lName=UILogin.input.next();
+		System.out.println("please enter your email:");
+			String email=UILogin.input.next();
+		System.out.println("please enter your phone number:");
+			String phone=UILogin.input.next();
+		System.out.println("please enter your ssn:");
+		String ssn =UILogin.input.next();
+		try {
+		if (!UILogin.ual.search(username)) {
+			UILogin.ual.add(ssn, fName, lName, phone, email, username, password);
+			System.out.println("Your request is taken in consideration Please wait for account approval");
+		    System.out.println("Back to login interface");	}
+		else
+			do {
+			System.out.println("denied!!!!. Enter a different USERNAME or enter -1 to dismiss");
+			System.out.println("Enter username:");
+			username=UILogin.input.next();
+			
+			}while((UILogin.ual.add(ssn, fName, lName, phone, email, username, password))||username.equals("-1"));
+		
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+	}
+//Admin account is limited to activate or remove an account or add another admin to the system
+	public static void adminAccount() {
+		System.out.println("----------Welcome to ----------");
+		System.out.println("---Take an action:");
+		String key;
+		do { 
+		System.out.println(                
+                "1. List  all the accounts\n" +
+                "2. Grant an account \n" +
+                "3. to remove an account\n"+
+                "4. Add an admin to the system\n" +
+                "0. Exit & Save ");
+		key = UILogin.input.next();
+		switch (key) {
+		case "0":
+			System.out.println("Back to login interface");
+			break;
+		case "1":
+			System.out.println("Account requsets:");
+			UILogin.adl.AllAccountRequest();
+			break;
+		case "2":
+			System.out.println("Enter username to activate an account:");
+			String username=UILogin.input.next();
+			UILogin.adl.activateAccount(username);
+			break;
+		case "3":
+			System.out.println("enter username to remove from the account");
+			username =UILogin.input.next();
+			System.out.println("Enter account Numbe");
+			String accountNumber=UILogin.input.next();
+			UILogin.adl.remove(accountNumber,username);
+				
+			break;
+		case "4":
+			
+			break;
+		default:
+			System.out.println(key +" that is not an option. Please select: ");
+			break;
+		} 
+		}while(!key.equals("0"));
+	}
+   
+    
+
+}

@@ -1,0 +1,67 @@
+package com.revaturebank.systemclass;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Random;
+
+import org.apache.log4j.Logger;
+
+import com.revaturebank.dao.AdminDAOClass;
+
+public class AdminList {
+	//logger of this class
+	final static Logger logger=Logger.getLogger(UserAccountList.class);
+	
+	private AdminDAOClass AdDao =new AdminDAOClass();
+	public AdminList() {
+		}
+	
+	public Admin authenticate(String username,String password) throws Exception{
+		return AdDao.authenticate(username, password);
+
+	}
+	// add an Admin to the system
+	
+    public boolean add(Admin a) {
+    	return AdDao.insertAdmin(a.getAdminId(),a.getUsername(), a.getPassword(), a.getSsNumber(),
+    			a.getFirsName(), a.getLastName(), a.getEmail(), a.getPhone());
+		}
+    
+		  
+	//to approve an account and associate it with account number
+	public void activateAccount(String username) {
+		
+      try {
+      UserAccount ua=AdDao.search(username);
+      if (ua!=null) {
+    	  Random rand=new Random();
+          int num=rand.nextInt(10000)+10000;
+          String accountNumber="4321"+num;
+          ua.setAccountNumber(accountNumber);
+          if (AdDao.insertUserAccount(ua))
+	          System.out.println("Account added");
+          else System.out.println("Account is not added");
+               }
+      }catch(SQLException ex) {
+    	  ex.getStackTrace();
+      }
+	}
+	public void AllAccountRequest() {
+		try {
+		HashMap<String,UserAccount> m=AdDao.allAccountRequest();
+				m.entrySet().stream().forEach((user) -> {
+                  System.out.println((m.get(user.getKey())).getSsNumber()+"	| " +m.get(user.getKey()).getFirsName()+
+                		  "	| " +  m.get(user.getKey()).getLastName()+"	| "+m.get(user.getKey()).getEmail()+
+                		  "	| " +  m.get(user.getKey()).getPhone()   +"	| " +  m.get(user.getKey()).getUsername()+
+                		  "	| " + m.get(user.getKey()).getPassword() );
+        });
+		}catch(SQLException ex) {
+			ex.getStackTrace();
+		}
+		}
+	public boolean remove(String accountNumber,String username){
+		return AdDao.deleteUserAccount(accountNumber, username);
+		      
+		}
+	
+	
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Styles!</title>
+
+<script
+			  src="http://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Bring Bootstrap 3 libraries -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Bring in supplemental javascript for bootstrap -->
+
+</head>
+<body bgcolor="#333333" text="#7fff00">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Ryan's Example</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="index.html">HOME</a></li>
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">USEFUL LINKS <span
+						class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="https://www.w3schools.com/html/">W3SCHOOLS</a></li>
+						<li><a
+							href="https://www.w3schools.com/cssref/css_selectors.asp">CSS
+								Selectors</a></li>
+						<li><a href="https://www.w3schools.com/bootstrap/default.asp">BOOTSTRAP</a></li>
+					</ul></li>
+				<li class="active"><a href="styles.html" style="color: cyan">STYLES</a></li>
+				<li><a href="forms.html" style="color: cyan">FORMS</a></li>
+				<li><a href="servletHub.html">SERVLET HUB</a></li>
+			</ul>
+		</div>
+	</nav>
+	<h3 style="margin-top: 50px">LISTSS</h3>
+	<p>We can format our pages by utilizing a plethora of tags.
+		examples of suchs tags include:</p>
+
+	<table border="2px">
+		<tr>
+			<th>TAG</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td>&lt;table&gt;<br>&lt;tr&gt;<br>&lt;th&gt; OR
+				&lt;td&gt;
+			</td>
+			<td>Tags for creating tables</td>
+		</tr>
+		<tr>
+			<td>&lt;b&gt;</td>
+			<td><b>This bolds any text within!</b></td>
+		</tr>
+		<tr>
+			<td>&lt;i&gt;</td>
+			<td><i>This italicizes any text within!</i></td>
+		</tr>
+		<tr>
+			<td>&lt;b&gt;</td>
+			<td><u>This underlines any text within!</u></td>
+		</tr>
+	</table>
+	<p>
+		We can also create lists of stuff and things and junk. <br> You
+		have two options, ordered lists &lt;ol&gt; which will make numbered
+		list of elements. <br> You also have unordered lists &lt;ul&gt;
+		which will make a symbol list of stuff. <br>(Never use the word
+		stuff, things, or junk, unless you are Ryan)
+	</p>
+	<p>Ryans favorite types of huskies</p>
+	<ol>
+		<li>Husky</li>
+		<li>Klee Kai</li>
+		<li>Malemutes (Not huskies)</li>
+		<ol style="list-style-type: upper-roman">
+			<li>Sub husky</li>
+			<li>Sub Klee Kai</li>
+		</ol>
+	</ol>
+	<p>These are NOT huskies, but still are pretty cool</p>
+	<ul>
+		<li>German Shepherds</li>
+		<li>Corgis</li>
+		<li>Scooby dog</li>
+	</ul>
+</body>
+</html>

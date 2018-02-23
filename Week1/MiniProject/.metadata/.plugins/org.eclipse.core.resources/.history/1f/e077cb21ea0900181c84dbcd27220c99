@@ -1,0 +1,90 @@
+package com.revaturebank.systemclass;
+
+import java.sql.SQLException;
+import java.util.HashMap;
+import com.revaturebank.dao.UserAccountDAOClass;
+import org.apache.log4j.Logger;
+
+public class UserAccountList implements Exportable{
+	//Using a logger in this.class
+	final static Logger logger=Logger.getLogger(UserAccountList.class);
+	//private data consist of HashMap to load data with key username 
+	private static UserAccountList usersList;
+	private HashMap <String, UserAccount> users;
+    private UserAccountDAOClass uaDao =new UserAccountDAOClass();
+	//public method to instantiate an object and only allows one in entire application
+	public static UserAccountList getUserAccountList() {
+    	if (usersList==null)
+			try {
+				usersList=new UserAccountList();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	return usersList;
+    		
+    }
+	//private constructor to load data from the files
+	private UserAccountList() throws SQLException{
+		this.users = new HashMap<>();
+		this.dataLoad();
+	}
+	//get a collection 
+    public HashMap<String,UserAccount> getUsers() {
+    	return this.users;
+    }
+	
+	//add user by UserAcount
+	public boolean add(UserAccount ua){
+		 return uaDao.requestUserAccount(ua.getUsername(), ua.getPassword(),ua.getSsNumber(), ua.getFirsName(), ua.getLastName(),
+                 ua.getEmail(), ua.getPhone());
+		}
+	//add user to the by parameter
+	public boolean add(String ssNumber, String firstName, String lastName, String phone, String email,
+		 String username, String password) {
+		return uaDao.requestUserAccount(username, password,ssNumber,firstName, lastName,email, phone);       
+		  }
+		//activate
+	public boolean edit(String username,String password ) {
+		   
+		       return uaDao.updateUserAccuntUP(username, password);
+		  }
+	// to delete an account
+	public boolean remove(String accountNumber,String username){
+		return uaDao.deleteUserAccount(accountNumber, username);
+		      
+		}
+	//to clear data
+	public void clear() throws Exception{
+		 try{ users.clear();  
+		     }
+		 catch (Exception e){
+		    throw new Exception(" Error!!:" + e.toString() );
+		      }
+	}
+
+	
+	public UserAccount authenticate(String username,String password) throws Exception{
+		return uaDao.authenticate(username, password);
+
+		}
+	
+		@Override
+		public void dataLoad() throws SQLException {
+						
+		}
+
+		@Override
+		public void dataSave() {
+			
+			
+		}
+		
+			  
+				
+		
+	
+		
+	
+    
+}

@@ -1,0 +1,2 @@
+123,kamel,berrani,bk@eple.com,123,null,kam,ber,0.0,false
+ssn,firstname,lastname,email,phone,null,username,password,0.0,false

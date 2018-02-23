@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\Users\kamel\Desktop\revatureWork\Week3\InClassExamples\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3059610115.index
+1261264685.index
+368230412.index
+1066638034.index
+4237912172.index
+3825266853.index
+1202484642.index

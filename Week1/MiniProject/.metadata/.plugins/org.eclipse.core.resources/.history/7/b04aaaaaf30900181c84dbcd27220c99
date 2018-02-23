@@ -1,0 +1,15 @@
+package com.revaturebank.dao;
+
+import java.sql.SQLException;
+
+import com.revaturebank.systemclass.Admin;
+
+public interface AdminDAO {
+	public boolean insertAdmin(String adminId,String username,String password,String ssn,String firstName,String lastName,String email,String phone);
+	public boolean updateAdmin(String username, String password);
+	public Admin authenticate(String username,String password) throws SQLException;
+	public boolean deleteAdmin(String adminId, String username);
+	
+	
+
+}

@@ -1,0 +1,5 @@
+package com.revaturebank.dao;
+
+public interface UserAccountDAO {
+
+}

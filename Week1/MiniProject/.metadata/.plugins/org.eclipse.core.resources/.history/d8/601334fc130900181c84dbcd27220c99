@@ -1,0 +1,17 @@
+package com.revaturebank.util;
+
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import sun.rmi.transport.Connection;
+
+public class Connections {
+	public static Connection getConnection() throws SQLException{
+		try {
+			
+		}
+		
+		return DriverManager.getConnection("jdbc:oracle:thin@localhost:1521:xe","system","kamel");
+	}
+
+}

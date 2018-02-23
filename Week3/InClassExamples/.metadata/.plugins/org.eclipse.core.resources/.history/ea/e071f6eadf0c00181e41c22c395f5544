@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="180121_First_Maven">
+        <property name="context-root" value="180121_First_Maven"/>
+        <property name="java-output-path" value="/180121_First_Maven/target/classes"/>
+    </wb-module>
+</project-modules>

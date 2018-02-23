@@ -1,0 +1,14 @@
+package com.revaturebank.systemclass;
+
+import java.sql.Date;
+
+public class Transaction {
+	private String trans_id;
+	private String trans_date;
+	private String AccountNum;
+	private Double Amount;
+	
+	
+	
+
+}

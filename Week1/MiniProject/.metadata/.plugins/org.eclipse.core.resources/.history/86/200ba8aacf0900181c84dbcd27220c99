@@ -1,0 +1,54 @@
+package com.revaturebank.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.revaturebank.systemclass.Admin;
+import com.revaturebank.util.Connections;
+
+public class AdminDAOClass implements AdminDAO {
+
+		@Override
+	public boolean updateAdmin() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Admin authenticate(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean deleteAdmin(String Accountnumbre, String username) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean insertAdmin(String adminId, String username, String password,String ssn,String firstName, String lastName,
+			String email, String phone) {
+		PreparedStatement ps=null;
+		int bool=0;
+		try(Connection conn= Connections.getConnection()){
+			String sql="INSERT INTO ADMIN(USERNAME,PASSWORD, SSN,FIRST_NAME,LAST_NAME,EMAIL,PHONE,ADMIN_ID) VALUES (?,?,?,?,?,?,?,?)";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ps.setString(3, ssn);
+	    	ps.setString(4, firstName);
+			ps.setString(5, lastName);
+			ps.setString(6, email);
+			ps.setString(7, phone);
+			ps.setString(8, adminId);
+			bool=ps.executeUpdate();
+			
+		}catch (SQLException ex) {
+			ex.getStackTrace();
+		}
+		return (bool !=1);
+		}
+
+}

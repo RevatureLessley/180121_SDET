@@ -1,0 +1,14 @@
+package com.revaturebank.dao;
+
+import com.revaturebank.systemclass.UserAccount;
+
+public interface UserAccountDAO {
+	public boolean requestUserAccount(String username,String password,String ssn,String firtName,String lastName,String email,String phone);
+	public boolean updateUserAccountPI(String ssn,String firtName,String lastName,String email,String phone);
+	public boolean updateUserAccuntUP(String username,String password);
+	public UserAccount authenticate(String username, String password);
+	public boolean deleteUserAccount(String Accountnumbre, String username);
+	
+	
+
+}

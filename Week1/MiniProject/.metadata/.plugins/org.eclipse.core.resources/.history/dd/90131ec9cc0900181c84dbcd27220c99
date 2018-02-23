@@ -1,0 +1,12 @@
+package com.revaturebank.dao;
+
+import com.revaturebank.systemclass.Admin;
+
+public interface AdminDAO {
+	public boolean insertAdmin();
+	public boolean updateAdmin();
+	public Admin authenticate(String username,String password);
+	public boolean deleteAdmin(String Accountnumbre, String username);
+	
+
+}

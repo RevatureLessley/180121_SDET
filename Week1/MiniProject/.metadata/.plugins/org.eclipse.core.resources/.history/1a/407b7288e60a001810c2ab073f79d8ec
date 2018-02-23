@@ -1,0 +1,45 @@
+package com.revaturebank.systemclass;
+
+
+public class Transaction {
+	private String trans_id;
+	private String trans_date;
+	private String AccountNum;
+	private Double Amount;
+	public Transaction(String trans_id, String trans_date, String accountNum, Double amount) {
+		super();
+		this.trans_id = trans_id;
+		this.trans_date = trans_date;
+		AccountNum = accountNum;
+		Amount = amount;
+	}
+	public String getTrans_id() {
+		return trans_id;
+	}
+	public void setTrans_id(String trans_id) {
+		this.trans_id = trans_id;
+	}
+	public String getTrans_date() {
+		return trans_date;
+	}
+	public void setTrans_date(String trans_date) {
+		this.trans_date = trans_date;
+	}
+	public String getAccountNum() {
+		return AccountNum;
+	}
+	public void setAccountNum(String accountNum) {
+		AccountNum = accountNum;
+	}
+	public Double getAmount() {
+		return Amount;
+	}
+	public void setAmount(Double amount) {
+		Amount = amount;
+	}
+
+	
+	
+	
+
+}
