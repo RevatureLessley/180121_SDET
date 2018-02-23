@@ -21,27 +21,6 @@ function denyRe() {
 	}
 }
 
-function appResponse() {
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "../ApproveReimburse");
-	
-	xhr.onreadystatechange = function() {
-		if(xhr.readyState == 4 && xhr.status == 200) {
-			console.log("update approval info");
-		}
-	}
-	
-	var id = document.getElementById("rid").innerHTML;
-	var r = document.getElementById("response").value;
-	
-	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	
-	xhr.send("rid=" + id + "&response=" + r); //app response & emp id
-	
-	// TODO not back but like redirect
-	window.history.back();
-}
-
 function readPageChanges() {
 	var grade = document.getElementById("grade").value;
 	var r = document.getElementById("response");
@@ -73,8 +52,29 @@ function readPageChanges() {
 		insertAddInfo();
 	}
 	if(projreimb != null) {
-		
+		updateProjReimb();
 	}
+}
+
+function appResponse() {
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "../ApproveReimburse");
+	
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4 && xhr.status == 200) {
+			console.log("update approval info");
+		}
+	}
+	
+	var id = document.getElementById("rid").innerHTML;
+	var r = document.getElementById("response").value;
+	
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	
+	xhr.send("rid=" + id + "&response=" + r); //app response & emp id
+	
+	// TODO not back but like redirect
+	window.history.back();
 }
 
 function aPostGradeUpdate() {
@@ -151,7 +151,7 @@ function updateInfoReq() {
 
 function updateProjReimb() {
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "../-"); // TODO create servlet for updateProjReimb()
+	xhr.open("POST", "../UpdateProjReimb");
 	
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4 && xhr.status == 200) {
@@ -160,9 +160,27 @@ function updateProjReimb() {
 	}
 	
 	var r = document.getElementById("rid").innerHTML;
-	var pr = document.getElementById("projreimb").innerHTML;
+	var pr = document.getElementById("projreimb").value;
 	
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	
 	xhr.send("rid=" + r + "&projreimb=" + pr); 
+}
+
+function awardAmount() {
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "../-");
+	
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4 && xhr.status == 200) {
+			console.log("Award reimburse amount");
+		}
+	}
+	
+	var id = document.getElementById("rid").innerHTML;
+	var a = document.getElementById("award").value;
+	
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	
+	xhr.send("rid=" + id + "&award=" + a); //app response & emp id
 }

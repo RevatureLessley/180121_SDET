@@ -197,8 +197,9 @@
 			<%
 				if (r.getNextApprovalId() == (Integer) session.getAttribute("empid")) {
 			%>
+			<br>
 				<div class='row'>
-					<div class='col-sm-7'>
+					<div class='col-sm-6'>
 						<label>REQUEST ADDITIONAL INFO</label> 
 						<div>
 						<input type='text'
@@ -208,8 +209,18 @@
 						</select>
 						</div> 
 					</div>
+					<div class='col-sm-3' id='awardiv'>
+					<label for="award">AWARD AMOUNT</label> 
+					<select
+						class="form-control" name="award" id="award" onchange="" required>
+						<option value=-1>---</option>
+						<option value=1>YES</option>
+						<option value=0>NO</option>
+					</select>
+			
+					</div>
 					<!-- Approve/Deny Request -->
-					<div class='col-sm-5' id='resdiv'>
+					<div class='col-sm-3' id='resdiv'>
 					<label for="response">RESPONSE</label> 
 					<select
 						class="form-control" name="response" id="response" onchange="denyRe()" required>
@@ -224,7 +235,7 @@
 			<%
 				}
 			%>
-
+			<hr>
 			<button type='button' id='back' onclick="goBack()">BACK</button>
 			<button type='button' id='save' onclick="readPageChanges()">SAVE</button>
 		</div>

@@ -26,6 +26,7 @@ public interface ReimbursementDao {
 	
 	// Set
 	public int updateGrade(int rId, float grade);
+	public int updateProjReimb(int rId, float projReimb);
 	
 	// Approval related methods
 	public int updateApproved(int rId, int response);

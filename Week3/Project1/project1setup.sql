@@ -135,6 +135,7 @@ CREATE TABLE reimburseaddedinfo (
     CONSTRAINT info_by_emp_fk FOREIGN KEY(info_added_by_emp)
     REFERENCES employees(emp_id) ON DELETE CASCADE
 );
+ALTER TABLE reimburseaddedinfo ADD info_subject VARCHAR2(50) DEFAULT 'GENERAL';
 
 -- SEQUENCES
 DROP SEQUENCE useremp_seq;

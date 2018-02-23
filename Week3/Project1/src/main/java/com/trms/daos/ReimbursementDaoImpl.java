@@ -416,6 +416,26 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 		return result;
 	}
+
+	@Override
+	public int updateProjReimb(int rId, float projReimb) {
+		PreparedStatement ps = null;
+		int result = -1;
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "UPDATE reimbursements SET reimburse_projreimb = ? WHERE reimburse_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setFloat(1, projReimb);
+			ps.setInt(2, rId);
+			result = ps.executeUpdate();
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
 	
 	
 

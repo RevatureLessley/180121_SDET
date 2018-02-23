@@ -149,7 +149,7 @@ public class ReimbursementService {
 		return result;
 	}
 	
-	public static int updateGrade(int rId, int grade) {
+	public static int updateGrade(int rId, float grade) {
 		ReimbursementDao dao = new ReimbursementDaoImpl();
 		
 		return dao.updateGrade(rId, grade);
@@ -165,6 +165,12 @@ public class ReimbursementService {
 		ReimbursementDao dao = new ReimbursementDaoImpl();
 		
 		return dao.updateReqInfo(rId, empId);
+	}
+	
+	public static int updateProjReimburse(int rId, float pReimb) {
+		ReimbursementDao dao = new ReimbursementDaoImpl();
+		
+		return dao.updateProjReimb(rId, pReimb);
 	}
 }
 

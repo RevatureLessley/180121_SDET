@@ -189,4 +189,14 @@
     <servlet-name>UpdateInfoReqServlet</servlet-name>
     <url-pattern>/UpdateInfoReqServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateProjReimb</display-name>
+    <servlet-name>UpdateProjReimb</servlet-name>
+    <servlet-class>com.trms.servlets.UpdateProjReimb</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateProjReimb</servlet-name>
+    <url-pattern>/UpdateProjReimb</url-pattern>
+  </servlet-mapping>
 </web-app>
