@@ -96,7 +96,7 @@
 					<td> <%= e.getLname() %> </td>
 					<td> <%= e.getDepartment() %> </td>
 					<td> <%= e.getTitle() %> </td>
-					<td> <%= e.getAvailReimburse() %> </td>
+					<td id="availreimb"> <%= e.getAvailReimburse() %> </td>
 					<td> <%= e.getAddr() %> </td>
 					<td> <%= e.getCity() %> </td>
 					<td> <%= e.getState() %> </td>
@@ -159,7 +159,7 @@
 				<div class='col-sm-4'>
 					<label>PROJECTED REIMBURSEMENT : </label>
 					<% if(user.getTitle().equals("BENEFITS COORDINATOR")) {%>
-						<input type='number' step='0.01' min='0' placeholder=<%=r.getProjectedReimb()%> id='projreimb'>
+						<input type='number' step='0.01' min='0' value=<%=r.getProjectedReimb()%> id='projreimb'>
 					<% } else {%>
 						<%=r.getProjectedReimb()%>
 					<% } %>
@@ -209,16 +209,19 @@
 						</select>
 						</div> 
 					</div>
+					
+					<%  if(user.getTitle().equals("BENEFITS COORDINATOR")) { %>
 					<div class='col-sm-3' id='awardiv'>
 					<label for="award">AWARD AMOUNT</label> 
 					<select
-						class="form-control" name="award" id="award" onchange="" required>
+						class="form-control" name="award" id="award" required>
 						<option value=-1>---</option>
 						<option value=1>YES</option>
 						<option value=0>NO</option>
 					</select>
-			
 					</div>
+					<% } %>
+					
 					<!-- Approve/Deny Request -->
 					<div class='col-sm-3' id='resdiv'>
 					<label for="response">RESPONSE</label> 

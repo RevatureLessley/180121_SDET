@@ -32,4 +32,5 @@ public interface ReimbursementDao {
 	public int updateApproved(int rId, int response);
 	public int setApproveId(int rId, int empId);
 	public int setApproveLvl(int rId, int newLvl);
+	public int awardReimburse(int rId, int response);
 }

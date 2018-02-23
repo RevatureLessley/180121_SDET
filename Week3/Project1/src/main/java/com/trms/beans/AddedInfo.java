@@ -6,6 +6,7 @@ public class AddedInfo {
 	private int infoEmpId;
 	private String infoEmpName;
 	private String infoMessage;
+	private String infoSubject;
 	
 	
 	public AddedInfo() {
@@ -63,6 +64,18 @@ public class AddedInfo {
 	}
 	public void setInfoMessage(String infoMessage) {
 		this.infoMessage = infoMessage;
+	}
+
+
+
+	public String getInfoSubject() {
+		return infoSubject;
+	}
+
+
+
+	public void setInfoSubject(String infoSubject) {
+		this.infoSubject = infoSubject;
 	}
 	
 	

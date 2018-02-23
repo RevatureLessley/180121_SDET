@@ -359,11 +359,16 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		int result = -1;
 		
 		try(Connection conn = Connections.getConnection()) {
-			String sql = "INSERT INTO reimburseaddedinfo (in_reimburse_id, info_added_by_emp, addinfo_reimburse) VALUES (?,?,?)";
+			String sql = "INSERT INTO reimburseaddedinfo (in_reimburse_id, info_added_by_emp, addinfo_reimburse, info_subject) VALUES (?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, ai.getInfoRid());
 			ps.setInt(2, ai.getInfoEmpId());
 			ps.setString(3, ai.getInfoMessage());
+			
+			if(ai.getInfoSubject() != null) {
+				ps.setString(4, ai.getInfoSubject());
+			}
+			
 			result = ps.executeUpdate();
 		} catch(SQLException e) {
 			logger.error(e.getMessage());
@@ -426,6 +431,26 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			String sql = "UPDATE reimbursements SET reimburse_projreimb = ? WHERE reimburse_id = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setFloat(1, projReimb);
+			ps.setInt(2, rId);
+			result = ps.executeUpdate();
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
+
+	@Override
+	public int awardReimburse(int rId, int response) {
+		PreparedStatement ps = null;
+		int result = -1;
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "UPDATE reimbursements SET reimburse_awarded = ? WHERE reimburse_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setFloat(1, response);
 			ps.setInt(2, rId);
 			result = ps.executeUpdate();
 		} catch(SQLException e) {

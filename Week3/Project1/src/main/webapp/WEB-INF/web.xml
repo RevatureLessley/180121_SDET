@@ -199,4 +199,14 @@
     <servlet-name>UpdateProjReimb</servlet-name>
     <url-pattern>/UpdateProjReimb</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AwardAmountServlet</display-name>
+    <servlet-name>AwardAmountServlet</servlet-name>
+    <servlet-class>com.trms.servlets.AwardAmountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AwardAmountServlet</servlet-name>
+    <url-pattern>/AwardAmountServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -27,6 +27,7 @@ function readPageChanges() {
 	var ai = document.getElementById("reqinfo");
 	var addinfo = document.getElementById("addinfo");
 	var pr = document.getElementById("projreimb");
+	var award = document.getElementById("award");
 
 	
 	if(grade != "") {
@@ -54,6 +55,10 @@ function readPageChanges() {
 	if(projreimb != null) {
 		updateProjReimb();
 	}
+	if(award != null) {
+		awardAmount();
+	}
+	
 }
 
 function appResponse() {
@@ -96,7 +101,8 @@ function aPostGradeUpdate() {
 	xhr.send("rid=" + r + "&grade=" + g);
 }
 
-// TODO parameterize function
+// TODO parameterize function maybe
+// TODO send subject to servlet and modify infoadd servlet to take parameter
 function insertAddInfo() {
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "../InsertNewAddedInfoServlet");
@@ -164,12 +170,15 @@ function updateProjReimb() {
 	
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	
-	xhr.send("rid=" + r + "&projreimb=" + pr); 
+	if(pr != "") {
+		xhr.send("rid=" + r + "&projreimb=" + pr); 
+	}
+	
 }
 
 function awardAmount() {
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "../-");
+	xhr.open("POST", "../AwardAmountServlet");  // TODO servlet to award amount also change what approve does in terms of money
 	
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4 && xhr.status == 200) {
@@ -179,8 +188,14 @@ function awardAmount() {
 	
 	var id = document.getElementById("rid").innerHTML;
 	var a = document.getElementById("award").value;
+	var pr = document.getElementById("projreimb").value;
+	var ar = document.getElementById("availreimb").innerHTML;
 	
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	
-	xhr.send("rid=" + id + "&award=" + a); //app response & emp id
+	if(a != -1) {
+		console.log(pr);
+		xhr.send("rid=" + id + "&award=" + a + "&projreimb=" + pr + "&availreimb=" + ar);
+	}
+	
 }

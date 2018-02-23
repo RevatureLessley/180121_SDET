@@ -113,6 +113,8 @@ CREATE TABLE reimbursements(
     CONSTRAINT reimb_center_fk FOREIGN KEY (reimburse_center_id)
     REFERENCES learningcenters(center_id) ON DELETE CASCADE
 );
+ALTER TABLE reimbursements ADD reimburse_awarded NUMBER(1) DEFAULT 0;
+ALTER TABLE reimbursements MODIFY reimburse_awarded NUMBER(1) DEFAULT 2;
 
 CREATE TABLE reimburseattachments(
     attach_id NUMBER(9),

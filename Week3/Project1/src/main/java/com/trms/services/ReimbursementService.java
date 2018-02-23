@@ -131,7 +131,6 @@ public class ReimbursementService {
 		
 		if(e.getTitleId() == 200) {
 			dao.updateApproved(rId, response);
-			result = EmployeeService.updateAvailReimb(rId, dao.getEmpIdByReimburse(rId)); // This returns rows updated should be one
 			logger.info("For benco");
 		} else {
 			
@@ -171,6 +170,34 @@ public class ReimbursementService {
 		ReimbursementDao dao = new ReimbursementDaoImpl();
 		
 		return dao.updateProjReimb(rId, pReimb);
+	}
+	
+	/*
+	 * Award or deny amount to user and log message if awarded amount exceeded available amount
+	 */
+	public static int awardReimbAmount(int rId, float pReimb, int response, float aReimb, int empId) {
+		ReimbursementDao dao = new ReimbursementDaoImpl();
+		
+		if(response == 1) {
+			EmployeeService.updateAvailReimb(rId, dao.getEmpIdByReimburse(rId)); // This returns rows updated should be one
+			dao.awardReimburse(rId, response);
+			if(pReimb > aReimb) {
+				AddedInfo ai = new AddedInfo();
+				
+				ai.setInfoRid(rId);
+				ai.setInfoEmpId(empId);
+				ai.setInfoSubject("FUNDS EXCEEDED");
+				ai.setInfoMessage("$" + pReimb + " was awarded which exceeded availble amount $" + aReimb + " of the employee");
+				insertExtraInfo(ai);
+			}
+		} else if (response == 0) {
+			dao.awardReimburse(rId, response);
+			// TODO if time, make is so that BenCo can submit reason why reimbursement not awarded
+		} else {
+			logger.warn("awardReimbAmount() : This is not a proper response to award reimbursement");
+		}
+		
+		return 0;
 	}
 }
 
