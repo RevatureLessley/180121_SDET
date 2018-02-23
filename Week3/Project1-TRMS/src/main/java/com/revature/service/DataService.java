@@ -6,9 +6,11 @@ import java.util.ListIterator;
 
 import com.revature.beans.Employee;
 import com.revature.beans.Reimbursement;
+import com.revature.beans.CustomGrade;
 
 import com.revature.dao.EmployeeDaoImpl;
 import com.revature.dao.ReimbursementDaoImpl;
+import com.revature.dao.CustomGradeDaoImpl;
 
 import com.revature.util.Bridge;
 import static com.revature.util.CloseStreams.close;
@@ -60,7 +62,7 @@ public class DataService {
 	
 	
 	
-	public static void insertNewReimbursement(int empid, String fname, String lname, String dateof, String time, String location,
+	public static int insertNewReimbursement(int empid, String fname, String lname, String dateof, String time, String location,
 						String desc, int cost, String gradingFormat, String typeOfEvent, String work) {
 		
 		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
@@ -74,6 +76,7 @@ public class DataService {
 		Reimbursement reim = new Reimbursement(rei_id, empid, fname, lname, dateof, time, location, desc, cost, gradingFormat, typeOfEvent, work, approval_state, attachment, note);
 		
 		reimDao.addReimbursement(reim);
+		return rei_id;
 	}
 	
 	public static int editReimbursement(int rei_id, int empid, String fname, String lname, String dateof, String timeof, String location,
@@ -111,4 +114,19 @@ public class DataService {
 		return reimDao.getCost(emp_id);
 	}
 	
+	public static void insertCustomGradingFormat(int reid, int empid, String fname, String lname, String customFormat, String formatDesc) {
+		CustomGrade cust = new CustomGrade(reid, empid, fname, lname, customFormat, formatDesc); 
+		CustomGradeDaoImpl custDao = new CustomGradeDaoImpl();
+		custDao.addCustomFormat(cust);
+	}
+	
+	public static List<CustomGrade> getCustomGrading(int reid){
+		CustomGradeDaoImpl custDao = new CustomGradeDaoImpl();
+		return custDao.getCustomFormatById(reid);
+	};
+	
+	public static List<CustomGrade> getAllCustomGrading(int emp_id){
+		CustomGradeDaoImpl custDao = new CustomGradeDaoImpl();
+		return custDao.getAllCustomFormatById(emp_id);
+	};
 }

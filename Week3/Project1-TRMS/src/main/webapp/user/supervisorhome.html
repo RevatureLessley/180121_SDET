@@ -80,22 +80,37 @@
 
 			</div>
 		</div>
-		
+
 		<div class="well">
-			<div class="well"><h1>SUPERVISOR OPTIONS</h1></div>
-			<p><button type="button" class="btn btn-default"
-						onclick="supReimAJAX()">Check Associate Reimbursements</button>
-				</p>
+			<div class="well">
+				<h1>SUPERVISOR OPTIONS</h1>
+			</div>
+			<p>
+				<button type="button" class="btn btn-default"
+					onclick="supReimAJAX()">Check Associate Reimbursements</button>
+			</p>
+			<p>
+			<div id="supreimtable"></div>
+			</p>
+			<div>
+				<form id="cgview">
+					<button type="button" class="btn btn-default"
+						onclick="cgviewAJAX()">Check Custom Grading Format for A
+						Reimbursement</button>
+					<input type=number id="creid" name="cried">
+				</form>
 				<p>
-				<div id="supreimtable"></div>
-				</p>
-					<p><button type="button" class="btn btn-default"
-						onclick=""">Approve A Reimbursement</button>
-				</p>
-					<p><button type="button" class="btn btn-default"
-						onclick=""">Reject A Reimbursement</button>
+				<div id="cgvdiv"></div>
 				</p>
 			</div>
+
+			<p>
+				<a href="../reimbursements/approve.html">Approve A Reimbursement</a>
+			</p>
+			<p>
+				<a href="../reimbursements/reject.html">Reject A Reimbursement</a>
+			</p>
+		</div>
 
 		<div class="well">
 			<p>TRMS is a "Tuition Reimbursement Management System" that

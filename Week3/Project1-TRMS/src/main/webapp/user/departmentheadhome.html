@@ -91,13 +91,24 @@
 				</p>
 					<p><button type="button" class="btn btn-default"
 						onclick=""">Check ALL Reimbursements Awaiting Your Approval</button>
+			<div>
+				<form id="cgview">
+					<button type="button" class="btn btn-default"
+						onclick="cgviewAJAX()">Check Custom Grading Format for A
+						Reimbursement</button>
+					<input type=number id="creid" name="cried">
+				</form>
+				<p>
+				<div id="cgvdiv"></div>
 				</p>
-					<p><button type="button" class="btn btn-default"
-						onclick=""">Approve A Reimbursement</button>
-				</p>
-					<p><button type="button" class="btn btn-default"
-						onclick=""">Reject A Reimbursement</button>
-				</p>
+			</div>
+
+			<p>
+				<a href="../reimbursements/approve.html">Approve A Reimbursement</a>
+			</p>
+			<p>
+				<a href="../reimbursements/reject.html">Reject A Reimbursement</a>
+			</p>
 			</div>
 
 		<div class="well">

@@ -51,12 +51,13 @@ function registerAjax(){
 function reimburseAjax(){
 	
 	var xhr = new XMLHttpRequest(); //Creating new XMLHttpRequest object.
-	xhr.open("POST","../NewReimbursement"); //Configuring new XMLHttpRequest object to send a post to the servlet "NewReimbursement"
+	xhr.open("POST","../newreimburse"); //Configuring new XMLHttpRequest object to send a post to the servlet "NewReimbursement"
 	
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4 && xhr.status == 200){ // If successful,
 			var d = document.createElement("div"); // Create div element
 			d.setAttribute("class","well"); // Give this div the the attribute class="well"
+			d.setAttribute("id","sucess");
 			var p = document.createElement("h3"); // Create a h3 element
 			var t = document.createTextNode("SUCCESS! Your reimbursement has been sumbitted! Please use the navigation bar above to return to the home page!");
 			p.appendChild(t); // Append the above message in the h3 that was created.
@@ -75,12 +76,15 @@ function reimburseAjax(){
 	var typeofevent = document.forms["reimburse"]["typeofevent"].value; // Obtain the value of typeofevent from the form
 	var desc = document.forms["reimburse"]["desc"].value; // Obtain the value of desc from the form
 	var work = document.forms["reimburse"]["work"].value; // Obtain the value of work from the form
+	var grade = document.forms["reimburse"]["grade"].value; // Obtain the value of location from the form
 	var location = document.forms["reimburse"]["location"].value; // Obtain the value of location from the form
 	var dateof = document.forms["reimburse"]["dateof"].value; // Obtain the value of dateof from the form
 	var timeof = document.forms["reimburse"]["timeof"].value; // Obtain the value of timeof from the form
 	var cost = document.forms["reimburse"]["cost"].value; // Obtain the value of typeofevent from the form
+	var customgradeformat = document.forms["reimburse"]["customgradeformat"].value; // Obtain the value of location from the form
+	var customgradedesc = document.forms["reimburse"]["customgradedesc"].value; // Obtain the value of location from the form
 
 	//Send the httprequest object using the information obtained from the form.
-	xhr.send("typeofevent=" + typeofevent + "&desc=" + desc + "&work=" + work + "&location=" + location
-			+ "&dateof=" + dateof + "&timeof=" + timeof + "&cost=" + cost);
+	xhr.send("typeofevent=" + typeofevent + "&desc=" + desc + "&work=" + work + "&grade=" + grade + "&location=" + location
+			+ "&dateof=" + dateof + "&timeof=" + timeof + "&cost=" + cost + "&customgradeformat=" + customgradeformat + "&customgradedesc=" + customgradedesc);
 }

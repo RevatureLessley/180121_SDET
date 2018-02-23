@@ -37,7 +37,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>NewReimbursement</servlet-name>
-    <url-pattern>/NewReimbursement</url-pattern>
+    <url-pattern>/newreimburse</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -98,5 +98,25 @@
   <servlet-mapping>
     <servlet-name>GetBenefitsReimbursements</servlet-name>
     <url-pattern>/getbenreimburse</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetCustomGrading</display-name>
+    <servlet-name>GetCustomGrading</servlet-name>
+    <servlet-class>com.revature.servlets.GetCustomGrading</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCustomGrading</servlet-name>
+    <url-pattern>/getcustom</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetAllCustomGrading</display-name>
+    <servlet-name>GetAllCustomGrading</servlet-name>
+    <servlet-class>com.revature.servlets.GetAllCustomGrading</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAllCustomGrading</servlet-name>
+    <url-pattern>/getallcustom</url-pattern>
   </servlet-mapping>
 </web-app>

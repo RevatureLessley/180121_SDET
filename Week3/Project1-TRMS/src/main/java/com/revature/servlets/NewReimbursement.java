@@ -29,18 +29,25 @@ public class NewReimbursement extends HttpServlet {
 		int empid = (int) session.getAttribute("empid");
 		String fname = (String) session.getAttribute("fname");
 		String lname = (String) session.getAttribute("lname");
-		String gradingFormat = "Unsure";
+		
 		
 		String dateof = request.getParameter("dateof");
 		String timeof = request.getParameter("timeof");
 		String location = request.getParameter("location");
 		String desc = request.getParameter("desc");
+		String gradingFormat = request.getParameter("grade");
 		int cost = Integer.parseInt(request.getParameter("cost"));
 		String typeofevent = request.getParameter("typeofevent");
 		String work = request.getParameter("work");
 			
-		DataService.insertNewReimbursement(empid, fname, lname, dateof, timeof, location,
+		int reid = DataService.insertNewReimbursement(empid, fname, lname, dateof, timeof, location,
 				desc, cost, gradingFormat, typeofevent, work);
+		
+		if(gradingFormat.equals("Other")) {	
+		String customFormat = request.getParameter("customgradeformat");
+		String formatDesc = request.getParameter("customgradedesc");
+		DataService.insertCustomGradingFormat(reid, empid, fname, lname, customFormat, formatDesc);
+		}
 	}
 
 }
