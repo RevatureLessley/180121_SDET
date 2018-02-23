@@ -3,8 +3,10 @@ package com.revature.dao;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import com.revature.beans.Food;
@@ -212,5 +214,52 @@ public class FoodDao {
 		}
 	}
 
+	public void HQLExample(){
+		Session session = HibernateUtil.getSession();
+		Query query;
+		String hql;
+		Transaction tx;
+		
+		System.out.println("======GET ALL FOOD=====");
+		hql = "FROM Food";
+		query = session.createQuery(hql);
+		System.out.println(query.list().get(0));
+		
+		
+		System.out.println("======PARAMETERIZED HQL=====");
+		hql = "FROM Food WHERE f_id= :fid";
+		query = session.createQuery(hql);
+		query.setParameter("fid", 51);
+		System.out.println(query.uniqueResult());
+		
+	}
 	
+	public void projections(){
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+		
+		
+		/*
+		 * If you all remember the board notes, you will recall one of the features
+		 * of Hibernate was database statistics. (As well as aggragate functions)
+		 * We access such statistics with the projections library.
+		 */
+		
+		System.out.println("=====FOOD COUNT=====");
+		Long foodcount = (Long)session.createCriteria(Food.class).setProjection(
+					Projections.count("id")
+				).uniqueResult();
+		System.out.println(foodcount);
+	}
+	
+	public void executeNameQueries(){
+		Session session = HibernateUtil.getSession();
+		Query query = session.getNamedQuery("getAllHoneypots");
+		Query nativeQuery = session.getNamedQuery("getSmallHoneypots");
+		nativeQuery.setParameter("maxVolume", 40);
+		System.out.println("====NAMED QUERIES=====");
+		System.out.println(query.list());
+		System.out.println("=====NATIVE NAMED QUERIES===");
+		System.out.println(nativeQuery.list());
+	}
 }

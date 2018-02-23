@@ -1,6 +1,7 @@
 package com.revature.main;
 
 import com.revature.beans.Food;
+import com.revature.dao.BearDao;
 import com.revature.dao.FoodDao;
 
 public class Driver {
@@ -21,8 +22,15 @@ public class Driver {
 		System.out.println(fd.getFoodById(id));
 		
 		
-		fd.getVsLoad();
+		//fd.getVsLoad();
 		
+		fd.HQLExample();
+		fd.projections();
+		
+		BearDao bd = new BearDao();
+		bd.insertBears();
+		
+		fd.executeNameQueries();
 		System.out.println("Application ends.");
 		System.exit(0);
 	}
