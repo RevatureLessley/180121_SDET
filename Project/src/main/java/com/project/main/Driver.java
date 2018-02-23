@@ -10,14 +10,23 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.project.beans.Tuition;
+import com.project.dao.ReimbursementDao;
+import com.project.dao.ReimbursementDaoImp;
 import com.project.dao.TuitionDao;
 import com.project.dao.TuitionDaoImp;
+import com.project.services.ReimbursementServices;
 import com.project.util.Connections;
 
 public class Driver {
 
 	public static void main(String[] args) {
+		TuitionDao dao = new TuitionDaoImp();
+		System.out.println(dao.deleteTuitonByUsername("HARISH"));
 		
+		}
+	
+	public static void show_all_tuition() {
+
 		TuitionDao dao = new TuitionDaoImp();
 		List<Tuition> tuitions =  dao.getAllTuition();
 		for(Tuition t: tuitions) {

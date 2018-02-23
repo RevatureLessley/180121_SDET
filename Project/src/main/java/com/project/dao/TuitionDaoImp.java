@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.project.beans.Tuition;
+import com.project.services.EmployeeServices;
+import com.project.services.ReimbursementServices;
+import com.project.services.TuitionServices;
 import com.project.util.CloseStreams;
 import com.project.util.Connections;
 
@@ -29,15 +32,18 @@ public class TuitionDaoImp implements TuitionDao {
 			rs = stmt.executeQuery(sql); 
 		
 			while (rs.next()) {
-				tuitions.add(new Tuition(rs.getString(1),
-						rs.getDate(2).toLocalDate(),
+				tuitions.add(new Tuition(rs.getInt(1),
+						rs.getString(2),
 						rs.getDate(3).toLocalDate(),
-						rs.getString(4),
+						rs.getDate(4).toLocalDate(),
 						rs.getString(5),
-						rs.getDouble(6),
-						rs.getString(7),
+						rs.getString(6),
+						rs.getDouble(7),
 						rs.getString(8),
-						rs.getBytes(9)));
+						rs.getString(9),
+						rs.getBytes(10),
+						rs.getInt(11),
+						rs.getDouble(12) ));
 			}
 
 		} catch (SQLException e) {
@@ -55,7 +61,7 @@ public class TuitionDaoImp implements TuitionDao {
 		
 		CallableStatement stmt = null;
 		try(Connection conn = Connections.getConnection()){
-			stmt = conn.prepareCall("{call INSERT_TUITION(?,?,?,?,?,?,?,?,?)}");
+			stmt = conn.prepareCall("{call INSERT_TUITION(?,?,?,?,?,?,?,?,?,?,?)}");
 			stmt.setString(1, t.getUsername());
 			stmt.setDate(2, Date.valueOf(t.getStart_date()));
 			stmt.setDate(3, Date.valueOf(t.getEnd_date()));
@@ -65,6 +71,8 @@ public class TuitionDaoImp implements TuitionDao {
 			stmt.setString(7, t.getGrading_formate());
 			stmt.setString(8, t.getEvent_type());
 			stmt.setBytes(9, t.getAttachment());
+			stmt.setInt(10, EmployeeServices.getInital_approval(t.getUsername()));
+			stmt.setDouble(11, ReimbursementServices.getProject(t.getUsername(), t.getEvent_type(), t.getCost()));
 			stmt.execute();
 		}catch(SQLException e1){
 			e1.printStackTrace();
@@ -78,8 +86,41 @@ public class TuitionDaoImp implements TuitionDao {
 
 	@Override
 	public boolean deleteTuitonByUsername(String u) {
-		// TODO Auto-generated method stub
-		return false;
+		CallableStatement stmt = null;
+		try (Connection conn = Connections.getConnection()) {
+			stmt = conn.prepareCall("{call DELETE_TUITION_USERNAME(?)}");
+			stmt.setString(1,u);
+			stmt.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			CloseStreams.close(stmt);
+		}
+
+		return true;
 	}
 
+
+
+	@Override
+	public boolean deleteTuitonByTuitionId(int i) {
+		CallableStatement stmt = null;
+		try (Connection conn = Connections.getConnection()) {
+			stmt = conn.prepareCall( "DELETE TUITION WHERE T_ID = ?");
+			stmt.setInt(1,i);
+			stmt.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			CloseStreams.close(stmt);
+		}
+
+		return true;
+	}
+	
+	
 }

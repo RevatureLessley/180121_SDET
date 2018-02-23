@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="../resources/javascript/status.js"></script>
+
+
+
+<title>Status</title>
+</head>
+<body onload="getStatus();">
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Tuition Reimbursement</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><form action="logout.do"><button style="margin-top: 8px;" type="submit" class = "btn btn-danger"> Logout</button></form></li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li><a href="home.html">Home</a></li>
+      <li class="active"><a href="#">Status</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+<div class = "container-fluid">
+	<div class ="well">	<h3><strong>Tuition Reimbursement Status</strong></h3> </div>
+		<div class = "well">
+		<div class="table-responsive">          
+  		<table class="table">
+    		<thead>
+      		<tr>
+        		<th>Id</th>
+        		<th>Start</th>
+        		<th>End</th>
+        		<th>Location</th>
+        		<th>Description</th>
+        		<th>Cost</th>
+        		<th>Grading</th>
+        		<th>Event</th>
+        		<th>Cost</th>
+        		<th>Reimbursement</th>
+        		<th>Status</th>
+      		</tr>
+    		</thead>
+    		<tbody>
+      		<tr>
+        		<td>1</td>
+        		<td>Anna</td>
+        		<td>Pitt</td>
+        		<td>35</td>
+        		<td>New York</td>
+        		<td>USA</td>
+      		</tr>
+    		</tbody>
+  		</table>
+  	</div>
+  	</div>
+</div>
+</body>
+</html>

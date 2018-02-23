@@ -5,7 +5,7 @@ function genFizzBuzz(){
 	
 	//swap if start is bigger then end
 	if(start > end){
-		temp = start;
+		let temp = start;
 		start = end;
 		end = temp;
 	}

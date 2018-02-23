@@ -32,7 +32,7 @@ public class login extends HttpServlet {
 			System.out.println("login success");
 			session.setAttribute("username", username);
 			System.out.println(session.getAttribute("username"));
-			response.sendRedirect("user/tuitionForm.html");
+			response.sendRedirect("user/home.html");
 		}else{
 			session.invalidate();
 			System.out.println("session deleted");

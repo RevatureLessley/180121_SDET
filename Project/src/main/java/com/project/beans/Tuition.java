@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public class Tuition {
 	
+	private int t_id;
 	private String username;
 	private LocalDate start_date;
 	private LocalDate end_date;
@@ -14,10 +15,15 @@ public class Tuition {
 	private String grading_formate;
 	private String event_type;
 	private byte[] attachment;
+	private int approval;
+	private double projected;
 	
-	public Tuition(String username, LocalDate start_date, LocalDate end_date, String location, String description,
-			double cost, String grading_formate, String event_type, byte[] attachment) {
+	
+	public Tuition(int t_id, String username, LocalDate start_date, LocalDate end_date, String location,
+			String description, double cost, String grading_formate, String event_type, byte[] attachment, int approval,
+			double projected) {
 		super();
+		this.t_id = t_id;
 		this.username = username;
 		this.start_date = start_date;
 		this.end_date = end_date;
@@ -27,6 +33,32 @@ public class Tuition {
 		this.grading_formate = grading_formate;
 		this.event_type = event_type;
 		this.attachment = attachment;
+		this.approval = approval;
+		this.projected = projected;
+	}
+
+	public double getProjected() {
+		return projected;
+	}
+
+	public void setProjected(double projected) {
+		this.projected = projected;
+	}
+
+	public int getT_id() {
+		return t_id;
+	}
+
+	public void setT_id(int t_id) {
+		this.t_id = t_id;
+	}
+
+	public int getApproval() {
+		return approval;
+	}
+
+	public void setApproval(int approval) {
+		this.approval = approval;
 	}
 
 	public Tuition() {
@@ -107,15 +139,17 @@ public class Tuition {
 
 	@Override
 	public String toString() {
-		return "Tuition [username=" + username + ", start_date=" + start_date + ", end_date=" + end_date + ", location="
-				+ location + ", description=" + description + ", cost=" + cost + ", grading_formate=" + grading_formate
-				+ ", event_type=" + event_type + ", attachment=" + Arrays.toString(attachment) + "]";
+		return "Tuition [t_id=" + t_id + ", username=" + username + ", start_date=" + start_date + ", end_date="
+				+ end_date + ", location=" + location + ", description=" + description + ", cost=" + cost
+				+ ", grading_formate=" + grading_formate + ", event_type=" + event_type + ", attachment="
+				+ Arrays.toString(attachment) + ", approval=" + approval + ", projected=" + projected + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + approval;
 		result = prime * result + Arrays.hashCode(attachment);
 		long temp;
 		temp = Double.doubleToLongBits(cost);
@@ -125,7 +159,10 @@ public class Tuition {
 		result = prime * result + ((event_type == null) ? 0 : event_type.hashCode());
 		result = prime * result + ((grading_formate == null) ? 0 : grading_formate.hashCode());
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
+		temp = Double.doubleToLongBits(projected);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((start_date == null) ? 0 : start_date.hashCode());
+		result = prime * result + t_id;
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -139,6 +176,8 @@ public class Tuition {
 		if (getClass() != obj.getClass())
 			return false;
 		Tuition other = (Tuition) obj;
+		if (approval != other.approval)
+			return false;
 		if (!Arrays.equals(attachment, other.attachment))
 			return false;
 		if (Double.doubleToLongBits(cost) != Double.doubleToLongBits(other.cost))
@@ -168,10 +207,14 @@ public class Tuition {
 				return false;
 		} else if (!location.equals(other.location))
 			return false;
+		if (Double.doubleToLongBits(projected) != Double.doubleToLongBits(other.projected))
+			return false;
 		if (start_date == null) {
 			if (other.start_date != null)
 				return false;
 		} else if (!start_date.equals(other.start_date))
+			return false;
+		if (t_id != other.t_id)
 			return false;
 		if (username == null) {
 			if (other.username != null)

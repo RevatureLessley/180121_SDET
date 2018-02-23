@@ -29,4 +29,20 @@ public class EmployeeServices {
 		}
 		return false;
 	}
+
+	public static int getInital_approval(String username) {
+		List<Employee> emps = dao.getAllEmployee();
+		for(Employee emp : emps) {
+			if(emp.getUserName().equals(username)) {
+				if(emp.getTitle().equals("BENCO")) {
+					return 0;
+				}else if(emp.getTitle().equals("HEAD")) {
+					return 1;
+				}else if(emp.getTitle().equals("SUPERVISOR")) {
+					return 2;
+				}
+			}
+		}
+		return 3;
+	}
 }
