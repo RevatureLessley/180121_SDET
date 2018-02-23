@@ -70,7 +70,29 @@
 							<option>Other</option>
 						</select>
 					</div>
-
+					
+		<h5>What Type Of Grading Format Does This Event Use?</h5>
+				<div>
+				 <label class="radio-inline"><input type="radio" name="grade" value="Alphabetical" required>Alphabetical (grades from A-F)</label>
+				<label class="radio-inline"><input type="radio" name="grade" value="Numerical">Numerical (grades from 0-100)</label>
+				<label class="radio-inline"><input type="radio" name="grade" value="Pass/Fail">Pass/Fail (grade is either Pass or Fail)</label> 
+				<label class="radio-inline"><input type="radio" name="grade" value="Other">Other</label> 
+				</div>
+				<div class="control-group">
+						<!-- Description -->
+						<label class="control-label" for="customgrade">Other Grading Schemes</label>
+						
+						<div class="controls">
+							<textarea class="form-control" rows="1" id="customgradeformat" name="customgradeformat"
+								placeholder=""></textarea>
+								<p class="help-block">Please provide a name for this grading format</p>
+							<textarea class="form-control" rows="4" id="customgradedes" name="customgradedesc"
+								placeholder=""></textarea>
+							<p class="help-block">Please provide details of this grading format.</p>
+						</div>
+					</div>
+				<br>
+				
 					<div class="control-group">
 						<!-- Description -->
 						<label class="control-label" for="desc">Description Of

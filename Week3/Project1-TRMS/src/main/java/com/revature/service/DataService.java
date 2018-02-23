@@ -10,6 +10,7 @@ import com.revature.beans.CustomGrade;
 
 import com.revature.dao.EmployeeDaoImpl;
 import com.revature.dao.ReimbursementDaoImpl;
+import com.revature.dao.StatusUpdateDaoImpl;
 import com.revature.dao.CustomGradeDaoImpl;
 
 import com.revature.util.Bridge;
@@ -129,4 +130,9 @@ public class DataService {
 		CustomGradeDaoImpl custDao = new CustomGradeDaoImpl();
 		return custDao.getAllCustomFormatById(emp_id);
 	};
+	
+	public static int addStatus (int reiid, String afname, String alname, int status, String note) {
+		StatusUpdateDaoImpl su = new StatusUpdateDaoImpl();
+		return su.updateStatus(reiid, afname, alname, status, note);
+	}
 }

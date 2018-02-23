@@ -119,4 +119,14 @@
     <servlet-name>GetAllCustomGrading</servlet-name>
     <url-pattern>/getallcustom</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StatusUpdate</display-name>
+    <servlet-name>StatusUpdate</servlet-name>
+    <servlet-class>com.revature.servlets.StatusUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StatusUpdate</servlet-name>
+    <url-pattern>/arrei</url-pattern>
+  </servlet-mapping>
 </web-app>

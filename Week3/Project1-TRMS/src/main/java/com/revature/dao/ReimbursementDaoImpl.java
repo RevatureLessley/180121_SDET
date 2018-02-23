@@ -172,6 +172,25 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 	}
 
+	@Override
+	public int getStatus(int rei_id) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int status = 0;
+		try(Connection conn = Bridge.connect()){
+			
+			String sql = "SELECT aprroval_state FROM REIMBURSEMENTS WHERE REI_ID = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, rei_id);
+			rs = ps.executeQuery();
+			while(rs.next()) {status = rs.getInt(1);}
+			}
+		catch(SQLException e){e.printStackTrace();}
+		finally{close(ps);close(rs);}
+		return status;
+	}
+	
+	
 	/**This function deletes from reimbursements using the reimbursemnt's id number but using a reimbursement object as the argument**/
 	
 	public void deleteReimbursement(Reimbursement reim) {
@@ -187,68 +206,24 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 	}
 	
-	
-	public void aproveReimbursement(int id, int role) {
-		switch(role) {
-		
-		
-		
-		
-		
-		
-		case 1:// Supervisor approval
-			break;
-		case 2:// Head of Department approval
-			break;
-		case 3:// Benefits Coordinator approval
-			break;
-		}
-		
-		
+	@Override
+	public void updateStatus(int id,int s) {
 		PreparedStatement ps = null;
-		
-		try(Connection conn = Bridge.connect()){			
-			String sql = "UPDATE  SET VAL = ?" 
-					+ "WHERE USERNAME = ?";
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, "YEP");
-		//	ps.setString(2, user);
-			ps.execute(); 
-		}catch(SQLException e){e.printStackTrace();}
-		finally{close(ps);}
-		
-		
-		//PreparedStatement ps = null;
-		//int newId = totalReimbursements() + 1 ;
-		
-		/*try(Connection conn = Bridge.connect()){
-			String sql = "INSERT INTO REIMBURSEMENTS VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1,newId); //rei_id
-			ps.setInt(2,reim.getEmp_id()); //emp_id
-			ps.setString(3,reim.getFname()); // First Name
-			ps.setString(4, reim.getLname()); // Last Name
-			ps.setString(5,reim.getDateOf()); // Date of Reimbursement
-			ps.setString(6,reim.getTime()); // time of reimbursement
-			ps.setString(7,reim.getLocation()); // Location of reimbursement
-			ps.setString(8,reim.getDesc()); // Description of event
-			ps.setInt(9,reim.getCost()); // Cost
-			ps.setString(10,reim.getGradingFormat()); // Grading Format
-			ps.setString(11,reim.getTypeOfEvent()); // Type of Event
-			ps.setString(12,reim.getWork_related_justification()); // Work related Justification
-			ps.setString(13,null); // for attachments
-			ps.executeUpdate();
-		}catch(SQLException e){e.printStackTrace();}
-		finally{close(ps);}*/
-		
-	}
-
 	
-	public void rejectReimbursement(int id) {
-		// TODO Auto-generated method stub
+		try(Connection conn = Bridge.connect()){
+			String sql = "UPDATE REIMBURSEMENTS SET aprroval_state = ? WHERE REI_ID = ?";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1,s); 
+			ps.setInt(2,id);
 		
+			ps.execute();
+		
+		}catch(SQLException e){e.printStackTrace();}
+		finally{close(ps); }
+			
 	}
-
+	
 	
 	public Reimbursement getReimbursement(String username) {
 		// TODO Auto-generated method stub
@@ -261,8 +236,43 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		return null;
 	}
 
-	/** This function will go into the database and return a List object that contains a list of Reimbursement objects that correspond to all the elements in the 
-	 * Reimbursements table of the database.**/
+	
+	
+	@Override
+	public Employee getEmployeeByRid(int reid) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Employee emp = null;
+		try(Connection conn = Bridge.connect()){
+			
+			String sql = " SELECT EMP_ID, FNAME, LNAME FROM REIMBURSEMENTS WHERE REI_ID = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, reid);
+			rs = ps.executeQuery(); 
+			
+			while(rs.next()){
+				
+				emp = new Employee (
+						rs.getInt(1), // 
+						rs.getString(2), //
+						rs.getString(3), // 
+						"n/a",
+						"n/a",
+						"n/a",
+						"n/a",
+						"n/a",
+						0,
+						0);
+				
+				
+				
+				}
+			}
+		catch(SQLException e){e.printStackTrace();}
+		finally{close(ps);close(rs);}
+		
+		return emp;
+	}
 	
 	public List<Reimbursement> getAllReimbursement() {
 		Statement stmt = null;
@@ -436,6 +446,15 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 		return reimbursementList;
 	}
+
+
+	
+
+
+	
+
+
+
 
 
 

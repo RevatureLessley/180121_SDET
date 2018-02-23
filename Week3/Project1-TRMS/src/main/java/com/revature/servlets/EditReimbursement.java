@@ -27,7 +27,7 @@ public class EditReimbursement extends HttpServlet {
 		int empid = (int) session.getAttribute("empid");
 		String fname = (String) session.getAttribute("fname");
 		String lname = (String) session.getAttribute("lname");
-		String gradingFormat = "Unsure";
+		
 		
 		int reiid = Integer.parseInt(request.getParameter("reiid"));
 		String dateof = request.getParameter("dateof");
@@ -36,6 +36,7 @@ public class EditReimbursement extends HttpServlet {
 		String desc = request.getParameter("desc");
 		int cost = Integer.parseInt(request.getParameter("cost"));
 		String typeofevent = request.getParameter("typeofevent");
+		String gradingFormat = request.getParameter("grade");
 		String work = request.getParameter("work");
 		
 		if(DataService.editReimbursement(reiid, empid, fname, lname, dateof, timeof, location,
@@ -44,6 +45,11 @@ public class EditReimbursement extends HttpServlet {
 			HTMLTemplates.navbarEmp(out);
 			out.print("<h1>SUCCESS! YOUR REIMBURSEMENT WAS EDITED! PLEASE RETURN TO THE HOME PAGE.</h1>");
 			
+			if(gradingFormat.equals("Other")) {	
+				String customFormat = request.getParameter("customgradeformat");
+				String formatDesc = request.getParameter("customgradedesc");
+				DataService.insertCustomGradingFormat(reiid, empid, fname, lname, customFormat, formatDesc);
+				}
 		}else {
 			HTMLTemplates.headers(out);
 			HTMLTemplates.navbar(out);
