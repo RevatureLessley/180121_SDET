@@ -1,0 +1,12 @@
+navigate to jenkins.war file
+execute nohup java -jar -jenkins.war &
+then hit enter again
+
+in browser navigate to
+[Your public IP]:8080
+you should see unlock Jenkins
+copy path to cli. execute
+
+
+(in cli)
+execute cat pasted_path

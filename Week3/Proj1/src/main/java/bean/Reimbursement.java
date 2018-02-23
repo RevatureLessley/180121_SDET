@@ -17,6 +17,8 @@ public class Reimbursement {
 	private String benco;
 	private String bencocomment;
 	private int id;
+	private int rejected;
+	private int event;
 	
 	public String getUsername() {
 		return username;
@@ -96,8 +98,18 @@ public class Reimbursement {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public int getRejected() {
+		return rejected;
+	}
+	public void setRejected(int rejected) {
+		this.rejected = rejected;
+	}
+	public int getEvent() {
+		return event;
+	}
+	public void setEvent(int event) {
+		this.event = event;
+	}
 
-	
-	
 	
 }

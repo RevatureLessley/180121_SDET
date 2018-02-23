@@ -1,0 +1,35 @@
+Login
+ssh -i 180121_SDET.pem ec2-user@54.221.78.176
+
+Upload JDK
+scp -i 180121_SDET.pem jdk-8u161-linux-x64.rpm ec2-user@54.221.78.176:~
+
+Get Tomcat
+wget apache.mirrors.ionfish.org/tomcat/tomcat-7/v7.0.85/bin/apache-tomcat-7.0.85.tar.gz 
+
+Install Git
+sudo yum install git
+
+Maven
+
+sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
+
+sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
+
+sudo yum install -y apache-maven
+
+Install Java
+sudo rpm -ivh jdk-8u161-linux-x64.rpm
+
+Change PATH
+vim .bash_profile
+
+Unzip tar
+tar -zxvf apache-tomcat-7.0.85.tar.gz
+
+
+added below comments
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<user username="tomcatmanager" password="tomcatmanager" roles="manager-gui"/>
+<user username="tomcatscript" password="tomcatscript" roles="manager-script"/>

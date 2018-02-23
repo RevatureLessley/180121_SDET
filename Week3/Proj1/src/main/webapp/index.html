@@ -34,31 +34,42 @@
 				<a class="navbar-brand" href="index.html">Reimbursement</a>
 			</div>
 		</div>
-	</nav>
-	
-	
+	</nav>	
 	
 	<div class=container-fluid style="margin-top:50px">
-	
-	<div class = "well">
+
+		<div class="well">
 			<h3>Login or create employee account</h3>
 			<form action="LoggedIn" method="POST">
-					<input type="text" name="username">USERNAME
-					<input type="password" name="password">PASSWORD
-					<select name="createOrLogin">
-						<option value="login">Log In</option>
-						<option value="create">Create an account</option>			
-					</select>
-					<select name="type">
-						<option value="0">Employee</option>
-						<option value="1">Supervisor</option>
-						<option value="2">Dept Head</option>
-						<option value="3">Ben Co</option>
-					</select>
-					<input type="submit" value="GO">
-			</form>				
-	</div>	
+				<!-- Username<input class = "form-control" type="text" name="username"> -->
+				<!-- Password<input class="form-control" type="password" name="password"> -->
 
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-user"></i></span> <input id="username"
+						type="text" class="form-control" name="username"
+						placeholder="Username">
+				</div>
+
+
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-lock"></i></span> <input id="password"
+						type="password" class="form-control" name="password"
+						placeholder="Password">
+				</div>
+
+				<select name="createOrLogin">
+					<option value="login">Log In</option>
+					<option value="create">Create an account</option>
+				</select> <select class="dropdown-toggle" name="type">
+					<option value="0">Employee</option>
+					<option value="1">Supervisor</option>
+					<option value="2">Dept Head</option>
+					<option value="3">Ben Co</option>
+				</select> <input type="submit" value="GO">
+			</form>
+		</div>
 
 	</div>
 </body>

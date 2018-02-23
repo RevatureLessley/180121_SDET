@@ -18,6 +18,8 @@
 <link rel="stylesheet" type="text/css" href="resource/css/main.css">
 <script src="resource/OnReimLoad.js"></script>
 <script src="resource/GetRequest.js"></script>
+<script src="resource/GetToYear.js"></script>
+
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -46,16 +48,24 @@
 			Enter your name: <input type="text" name="username" value=""><br>
 			Today's Date: <input type="date" name="submitDate" value=""><br>
 			Course Start: <input type="date" name="startDate" value=""><br>
-			Amount: <input type="number" name="amount"><br>
+			Cost: <input type="number" name="cost"><br>
 			Comments <input type="text" name="description"><br>
 			Location <input type="text" name="location"> <br> 
+			<select name="event">
+				<option value = "1">University Course</option>
+				<option value = "2">Seminar</option>
+				<option value = "3">Certification Prep Course</option>
+				<option value = "4">Certification</option>
+				<option value = "5">Technical Training</option>
+				<option value = "6">Other</option>
+			</select><br>
 			<input type="submit">
 		</form>
 	</div>
 
 	<div class="well">
-		<h3>Reimbursement Requests</h3>
-		<button onclick="sendAJAX()">Get Employees</button>
+		<h3>View Your Reimbursement Requests</h3>
+		<button onclick="sendAJAX()">Fetch</button>
 		<table border=2px id=results>
 			<tr>
 				<th>Username</th>
@@ -63,6 +73,17 @@
 				<th>Supervisor</th>
 				<th>Dept Head</th>
 				<th>Benefits Coordinator</th>
+			</tr>
+		</table>
+		<p id=AJAXError>
+		
+		<h3>View Your To-Year statistics</h3>
+		<button onclick="GetToYear()">View</button>
+		<table border=2px id=toyear>
+			<tr>
+				<th>Yearly Maximum</th>
+				<th>Awarded</th>
+				<th>Pending</th>
 			</tr>
 		</table>
 		<p id=AJAXError>

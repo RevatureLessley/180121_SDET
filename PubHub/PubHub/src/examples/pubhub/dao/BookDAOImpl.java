@@ -33,7 +33,6 @@ public class BookDAOImpl implements BookDAO {
 		return (ArrayList<Book>) results.list();
 		
 	}
-
 	
 	/*------------------------------------------------------------------------------------------------*/
 

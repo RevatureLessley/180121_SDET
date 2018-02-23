@@ -35,7 +35,7 @@ function sendAJAX(){
 				form.setAttributeNode(formId);
 				
 				var formAction = document.createAttribute("action");
-				formAction.value = "CheckReim";
+				formAction.value = "ViewR";
 				form.setAttributeNode(formAction);
 				
 				var formMethod = document.createAttribute("method");
@@ -48,10 +48,15 @@ function sendAJAX(){
 				input.setAttribute("name","yolo");
 				input.setAttribute("value", "View Details");
 				
-				var hiddenInput = document.createElement("input");
-				hiddenInput.setAttribute("type","hidden");
-				hiddenInput.setAttribute("name","rid");
-				hiddenInput.setAttribute("value", response[e].childNodes[6].innerHTML);
+				var hiddenInput1 = document.createElement("input");
+				hiddenInput1.setAttribute("type","hidden");
+				hiddenInput1.setAttribute("name","rid");
+				hiddenInput1.setAttribute("value", response[e].childNodes[6].innerHTML);
+				
+				var hiddenInput2 = document.createElement("input");
+				hiddenInput2.setAttribute("type","hidden");
+				hiddenInput2.setAttribute("name","username");
+				hiddenInput2.setAttribute("value", response[e].childNodes[7].innerHTML);
 	//			var inputValue = document.createAttribute("value");
 	//			formId.value = "View R";
 	//			form.setAttributeNode(formId);
@@ -76,7 +81,8 @@ function sendAJAX(){
 				row.appendChild(td4);
 				row.appendChild(td5);
 				row.appendChild(form);
-				form.appendChild(hiddenInput);
+				form.appendChild(hiddenInput1);
+				form.appendChild(hiddenInput2);
 				form.appendChild(input);
 				
 				resultTable.appendChild(row);

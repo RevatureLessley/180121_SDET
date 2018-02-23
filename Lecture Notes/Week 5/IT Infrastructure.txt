@@ -1,0 +1,151 @@
+IT Infrastructure
+The combination of software, hardware platforms and services required to mae a functional IT environment
+
+Hardware
+Servers
+Computers
+Routers
+
+Software
+Office
+applications
+executables
+
+Network
+Shared internal connections
+intranet
+firewall and security measures
+
+Cloud Computing
+Having all/most IT needs on a server that we can utilize
+
+Software             Platform              Infrastructure
+Office		Runtime Environment		Processors
+Email client	Web servers			Operating Systems
+		Application servers		
+		RDBMS				
+
+PAAS
+Offering development tools and environment
+Using JDK, Web Servers, Application servers
+
+SAAS
+Salesforce
+Hewlett Packard-ALM
+OFfice
+
+IAAS
+handle system maintenance, backups
+and structure reliability
+Highly scalable resources that can
+be adjusted on the fly
+
+Amazon Web Services
+Large selection of computer services provided on the cloud
+Provides these services via 'availability zones'
+discrete data center locations
+where users can connect for services
+located at core parts of the world
+there can be multiple availability zones in a region
+
+Elastic Cloud Compute (EC2)
+Virtual machine on the cloud
+Pay only for what you use
+A virtual machine that has its own hardrive (EBS) and OS (AMI)
+We will use a linux AMI where we will SSH into it
+
+Elastic Block Store (EBS)
+Provides a persistent block level storage for EC2
+sort of like a hardrive
+High speed data transfer between EC2 and EBS
+secure and encrypted
+essentially the hard drive to your EC2
+EC2 attaches to an EBS
+
+Amazon Machine Image (AMI)
+The OS for an EC2
+
+Auto-Scaling groups
+Ensure you have enough EC2 to handle application load
+decrease/increase EC2 count as load increases/decreases
+Can set max/min amount of EC2's
+
+Elastic Load Balances (ELB)
+A component for distributing incoming traffic to other EC2's
+to ensure one does not get overloaded
+Aim to check current capacity of EC2's and react accordingly
+
+Relation Database Service (RDS)
+Database on the cloud
+Support for Oracle, SQL Server, Aurora, MySQL, PostgreSQL, MariaDB
+
+Simple Storage Service (S3)
+File server/storage
+Secure and durable
+Store backup files
+Disaster recovery
+
+Route 53 (R53)
+Amazon provides unique DNS - Domain Naming System
+Provides DNS for all of the separate EC2's
+Does health checks on EC2's
+
+Access Identity Manager (AIM)
+Manages / creates accounts with varying rates for
+access to your AWS Resources
+
+Development Operations (DevOps)
+Role that combines development with project operations
+Automation of processes for project testing and deployment
+Achieved through continuous integration and continuous deployment
+
+Continuous Integration & Deployment
+The secret to DevOps
+Continuously pushing code
+Continuously testing pushed code
+Continuously deploying tested code
+Why?
+-Exposes bugs faster
+-Finding bugs fast -> smaller bugs -> faster fixes
+-Ensuring tests are always passing
+never go home with failed tests
+
+Verification
+Am I doing the right thing
+
+Validation
+Did I do the right right
+
+CI Goals
+Maintain a single source code repository
+Automate builds
+	builds should be self testing
+keeps build fast
+test environments should be near perfect mimic
+of the production environment
+Constant automated notifications
+
+Continuous Development / Continuous Integration
+Source Code Manager (GitHub)
+Continuous Integration Server (EC2, Jenkins, JDK, Maven)
+Quality Gate Server (SonarQube)
+Dev Server (Tomcat, JDK)
+Production Server (EC2, Tomcat, JDK)
+
+1. Developers push code to SCM
+2. Jenkins detects change in SCM
+3. Jenkins pulls up to date code
+4. Jenkins uses Maven to build the application (compiling and unit testing the code)
+5. Send code to quality gate (SonarQube)
+6. Deploy to dev server, perform test automation, smoke tests, regression testing, e2e testing
+7. Deploy to the production server, send notification of success to all teams
+
+Note: If at any point a test, quality check or deployment fails, the whole process is aborted and team notified
+
+Jenkins
+-Continuous Integration Tool
+Jenkins is a forked version of Hudson
+Ultimately, Jenkins is better than Hudson
+has more build pushes than hudson
+has significantly less build errors
+open source

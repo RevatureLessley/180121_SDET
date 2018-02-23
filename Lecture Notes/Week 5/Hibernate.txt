@@ -1,0 +1,110 @@
+Hibernate
+High-performance object/relational persistence & query service
+
+Maps Java classes to database tables, also maps java datatypes to SQL
+datatypes
+
+Framework that aims to simplify java database interaction
+
+Advantages
+Open source & lightweight
+Fast performing - through use of caching
+Database independent
+Called HQL - Hibernate Query Language
+Object Oriented version of SQL
+Automatic table creation
+Fetch data from multiple tables easily
+Provide DB statistics
+
+
+Architecture
+
+Java App <-> Persistent Object - [[[  Session Factory, Transaction,
+Transaction Factory, Connection Provider, Session  ]]]
+
+Internal API used by Hibernate
+JNDI - Java Naming and Directory Interface
+JDBC - Java Database Connectivity
+JTA - Java Transaction API
+
+used to connect with database
+
+Session Factory
+Holds L2 cache
+Houses the connection provider
+
+Session
+Wraps a JDBC Connection
+Short lived
+Factory for transaction, query, & criteria
+Holds L1 caching (mandatory)
+
+Transaction
+Atomic unit of work
+
+Connection Provider
+Provides Connection
+
+Transaction Factory
+
+Configuration Object
+First object created
+Configures Hibernate
+
+Query
+Component that leverages HQL as coded by the developer
+
+Criteria
+Executes queries to retrieve objects
+
+Configuration object -> Session Factory -> Session & Connection Provider ->
+Transaction Factory -> Transaction - > Query -> Criteria
+
+ORM - Object Relational Mapping
+Programming technique (maybe a design pattern) for converting RDB data to
+object oriented language, such as Java, C#, Fetch
+
+Advantages
+Business logic accesses objects instead of the DB
+Hides SQL details from OO logic
+No need for DB implementations
+Entities based on business concepts instead of DB structure
+faster development for applications
+
+JDBC vs Hibernate
+Use code to query DB
+Mappings are done manually
+SQL language specific
+Changing DB language is a nightmare (tightly coupled)
+Resultsets manually translated
+
+
+Hibernate vs JDBC
+Use objects to map a DB using DRM
+Mapping is done automatically
+SQL language independent
+Just change the config file for different DB
+Automatic translation to object
+
+Caching
+Results of a given query are temporarily stored in the event
+that a duplicate is called
+This prevents a user from needlessly hitting a DB
+more than it has to
+L2 is in session factory
+L1 is in session
+
+Hibernate methods
+get() vs load()
+save() vs persist()
+update() vs merge()
+
+Get
+Hit DB directly and populate objects with contents
+If object not found, null
+
+Load
+Get a proxy from the DB
+
+Proxy object
+An implementation of the bean that would originally come from the DB

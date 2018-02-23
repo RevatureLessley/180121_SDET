@@ -1,0 +1,4 @@
+10 characters
+d                ---   ---   ---
+directory or not user group other
+                author

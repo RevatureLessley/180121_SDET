@@ -2,6 +2,7 @@ package dao;
 
 import static util.CloseStreams.close;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -11,13 +12,20 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import bean.Reimbursement;
 import util.Connections;
 
 public class ReimbursementDaoImpl implements ReimbursementDao {
-
+	
+	private static final Logger logger = LogManager.getLogger(ReimbursementDaoImpl.class);
+	
 	@Override
 	public void insertR(String username, String supername, Date submitDate, Date startDate, int isUrgent, int adjustedAmount) {
 		PreparedStatement stmt = null;
@@ -183,7 +191,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		List<Integer> rids = new ArrayList<>();
+		Set<Integer> rids = new HashSet<>();//Set has O(1) performance for contains() method
 
 		try{
 			Connection conn = Connections.getConnection();
@@ -225,8 +233,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		try{
 			Connection conn = Connections.getConnection();
 			String sql = "SELECT * FROM REIMBURSEMENT WHERE rid = ?";
-
 			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, id);
+
 			rs = stmt.executeQuery(); //Executing queries, brings back resultsets
 		
 			if (rs == null) {
@@ -260,5 +269,120 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				close(rs);
 			}
 	}
+
+	@Override
+	public void approveR(int id, String user, String reason) {
+		CallableStatement stmt = null;
+		ResultSet rs = null;
+
+		try{
+			Connection conn = Connections.getConnection();
+			String sql = "call approveR(?,?, ?)";
+			stmt = conn.prepareCall(sql);
+			stmt.setInt(1, id);
+			stmt.setString(2,user);
+			stmt.setString(3, reason);
+			stmt.execute(); //Executing queries, brings back resultsets
+			
+			}catch(SQLException e){
+//				logger.debug(e.getStackTrace());
+				e.printStackTrace();
+			}finally{
+				close(stmt);
+				close(rs);
+			}
+	}
+
+	//good place to use a stored procedure instead of making two calls
+	@Override
+	public void rejectR(int id, int level, String reason) {
+		CallableStatement stmt = null;
+		ResultSet rs = null;
+
+		try{
+			Connection conn = Connections.getConnection();
+			String sql = "call rejectR(?,?,?)";
+			stmt = conn.prepareCall(sql);
+			
+/*			String level2 = "";
+			switch(level) {
+				case 1: 
+					level2 = "superapp";
+					break;
+				case 2:
+					level2 = "deptapp";
+					break;
+				case 3:
+					level2 = "bencoapp";
+					break;		
+			}*/
+			
+			stmt.setInt(1, id);
+			stmt.setInt(2, level);
+			stmt.setString(3, reason);
+			stmt.execute(); //Executing queries, brings back resultsets			
+			
+			}catch(SQLException e){
+				logger.debug(e.getStackTrace());
+				e.printStackTrace();
+			}finally{
+				close(stmt);
+				close(rs);
+			}		
+	}
+
+	@Override
+	public void uploadFile(byte[] file, int id) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try{
+			Connection conn = Connections.getConnection();
+			String sql = "UPDATE REIMBURSEMENT SET upload = ? WHERE rid = ?";
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setBytes(1, file);
+			stmt.setInt(2, id);
+			stmt.executeQuery(); //Executing queries, brings back resultsets	
+
+			}catch(SQLException e){
+				logger.debug(e.getStackTrace());
+				e.printStackTrace();
+			}finally{
+				close(stmt);
+				close(rs);
+			}
+	}
+
+	@Override
+	public byte[] downloadFile(int id) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try{
+			Connection conn = Connections.getConnection();
+			String sql = "SELECT upload FROM REIMBURSEMENT WHERE rid = ?";
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery(); //Executing queries, brings back resultsets	
+
+			if(rs != null) {
+				rs.next();
+				return rs.getBytes("upload");
+			}
+			
+			}catch(SQLException e){
+				logger.debug(e.getStackTrace());
+				e.printStackTrace();
+			}finally{
+				close(stmt);
+				close(rs);
+			}
+		
+			return null;
+	}
+	
+	
 
 }

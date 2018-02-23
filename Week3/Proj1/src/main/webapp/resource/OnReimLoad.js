@@ -11,9 +11,7 @@ window.onload = function(){
 
 			var xmlText = xhr.responseXML;
 			var response = xmlText.getElementsByTagName("LoggedInUser");
-			//response is a collection of all employee tags.
 			var paragraph = document.getElementById("LoginName");
-			//variable referencing our end table.
 
 			for(e in response){
 				paragraph.innerHTML = response[e].childNodes[0].innerHTML;			

@@ -11,4 +11,8 @@ public interface ReimbursementDao {
 	public List<Reimbursement> getR(String username, int level);
 	public int getUniqueId();
 	public Reimbursement getR(int id);
+	public void approveR(int id, String user, String reason);
+	public void rejectR(int id, int level, String reason);
+	public void uploadFile(byte[] file, int id);
+	public byte[] downloadFile(int id);
 }

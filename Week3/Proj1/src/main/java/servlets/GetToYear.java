@@ -9,16 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.ToYear;
+import dao.ToYearDao;
+import dao.ToYearDaoImpl;
+
 /**
- * Servlet implementation class GetLoginName
+ * Servlet implementation class GetToYear
  */
-public class GetLoginName extends HttpServlet {
+public class GetToYear extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetLoginName() {
+    public GetToYear() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,21 +31,8 @@ public class GetLoginName extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(false);
-
-		response.setContentType("text/xml");
-		PrintWriter out = response.getWriter();
-		String username = String.valueOf(session.getAttribute("username"));
-		
-		if(session!=null){
-			String myXml = "<root>";
-			myXml += "<LoggedInUser> <Username>" + username + "</Username>" + "</LoggedInUser>";
-			myXml += "</root>";
-			
-			out.print(myXml);
-		}else{
-			out.print("<root><LoggedInUser><Username>No<Username></LoggedInUser></root>");
-		}
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -49,19 +40,25 @@ public class GetLoginName extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
-				
+
 		response.setContentType("text/xml");
 		PrintWriter out = response.getWriter();
+		ToYearDao tyDao = new ToYearDaoImpl();
 		String username = String.valueOf(session.getAttribute("username"));
+		ToYear ty = tyDao.getRecord(username);
 		
-		if(session!=null){
+		if(ty!=null){
 			String myXml = "<root>";
-			myXml += "<LoggedInUser> <Username>" + username + "</Username>" + "</LoggedInUser>";
+			myXml += "<toyear><maximum>" + ty.getMaximum() + "</maximum>"
+							+ "<awarded>" + ty.getAwarded() + "</awarded>"
+							+ "<pending>" + ty.getPending() + "</pending>"
+							+ "</toyear>";
+
 			myXml += "</root>";
 			
 			out.print(myXml);
 		}else{
-			out.print("<root><LoggedInUser><Username>No<Username></LoggedInUser></root>");
+			out.print("<root><toyear><Username>No Records<Username></toyear></root>");
 		}
 	}
 

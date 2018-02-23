@@ -201,6 +201,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			}
 	}
 
+	/**
+	 * Return 0 for employee
+	 * 1 for supervisor
+	 * 2 for dept head
+	 * 3 for benco
+	 */
 	@Override
 	public int getLevel(String username) {
 		PreparedStatement stmt = null;

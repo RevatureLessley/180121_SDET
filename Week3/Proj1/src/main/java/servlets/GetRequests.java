@@ -57,7 +57,9 @@ public class GetRequests extends HttpServlet {
 								+ "<dept>" + r.getDept() + "</dept>"
 								+ "<benco>" + r.getBenco() + "</benco>"
 								+ "<level>" + eDao.getLevel(username) + "</level>"
-								+ "<rId>" + r.getId() + "</rId></reimbursement>";
+								+ "<rId>" + r.getId() + "</rId>"
+								+ "<username>" + username +"</username>"
+								+ "</reimbursement>";
 
 			}
 			myXml += "</root>";
