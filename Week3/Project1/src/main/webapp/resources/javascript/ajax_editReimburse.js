@@ -28,7 +28,7 @@ function readPageChanges() {
 	var addinfo = document.getElementById("addinfo");
 	var pr = document.getElementById("projreimb");
 	var award = document.getElementById("award");
-
+	var fileUp = document.getElementById("inputFile");
 	
 	if(grade != "") {
 		aPostGradeUpdate();
@@ -52,11 +52,14 @@ function readPageChanges() {
 	if(addinfo != null) {
 		insertAddInfo();
 	}
-	if(projreimb != null) {
+	if(pr != null) {
 		updateProjReimb();
 	}
 	if(award != null) {
 		awardAmount();
+	}
+	if(fileUp != null) {
+		uploadFiles();
 	}
 	
 }
@@ -197,5 +200,39 @@ function awardAmount() {
 		console.log(pr);
 		xhr.send("rid=" + id + "&award=" + a + "&projreimb=" + pr + "&availreimb=" + ar);
 	}
+}
+
+function uploadFiles() {
+	var inFiles = document.getElementById("inputFile");
+	var files = inFiles.files;
 	
+	var formData = new FormData();
+	
+	var rid = document.getElementById("rid").innerHTML;
+	formData.append("rid", rid);
+	//var data = "rid=" + encodeURIComponent(rid);
+	
+	for(var i = 0; i < files.length; i++) {
+		var file = files[i];
+		
+		// TODO file type matching 
+		var input = "input" + i;
+		formData.append('inputs[]', file, file.name);
+		//data = data + "&" + input + "=" + encodeURIComponent(file);
+	}
+	
+
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "../UserAddAttachServlet");
+	
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4 && xhr.status == 200) {
+			console.log("Files uploaded");
+		}
+	}
+	
+	//xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	
+	xhr.send(formData);
 }

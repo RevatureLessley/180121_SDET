@@ -209,4 +209,14 @@
     <servlet-name>AwardAmountServlet</servlet-name>
     <url-pattern>/AwardAmountServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserAddAttachServlet</display-name>
+    <servlet-name>UserAddAttachServlet</servlet-name>
+    <servlet-class>com.trms.servlets.UserAddAttachServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserAddAttachServlet</servlet-name>
+    <url-pattern>/UserAddAttachServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

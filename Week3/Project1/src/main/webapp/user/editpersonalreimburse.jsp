@@ -48,7 +48,7 @@
 				</ul>
 			</div>
 		</nav>
-		
+
 		<div class='well' style='margin-top: 50px'>
 			<%@page import="com.trms.services.ReimbursementService"%>
 			<%@page import="com.trms.services.EmployeeService"%>
@@ -57,7 +57,7 @@
 			<%@page import="com.trms.beans.Employee"%>
 			<%@page import="java.util.List"%>
 			<%
-				int empId = (Integer)session.getAttribute("empid");
+				int empId = (Integer) session.getAttribute("empid");
 				String s = request.getQueryString();
 				int rId = Integer.parseInt(s.split("=")[1]);
 				Reimbursement r = ReimbursementService.getReimbursement(rId);
@@ -71,47 +71,50 @@
 
 			<h3>
 				Reimbursement #<span id='rid'><%=rId%></span>
-				<% if(r.getUrgent() == 1) { %>
-					<span style='color:red'><strong>!</strong></span>
-				<% } 
+				<%
+					if (r.getUrgent() == 1) {
+				%>
+				<span style='color: red'><strong>!</strong></span>
+				<%
+					}
 					// TODO also display urgencey on all reimbursements displayed page
 				%>
 			</h3>
 			<div class='row'>
 				<div class='col-sm-12'>
-				<table class='table-bordered' id="empinfo">
-				<tr>
-					<th>FIRST NAME</th>
-					<th>LAST NAME</th>
-					<th>DEPARTMENT</th>
-					<th>TITLE</th>
-					<th>AVAILABLE</th>
-					<th>ADDRESS</th>
-					<th>CITY</th>
-					<th>STATE</th>
-					<th>ZIP CODE</th>
-				</tr>
-				<tr>
-					<td> <%= e.getFname() %> </td>
-					<td> <%= e.getLname() %> </td>
-					<td> <%= e.getDepartment() %> </td>
-					<td> <%= e.getTitle() %> </td>
-					<td id="availreimb"> <%= e.getAvailReimburse() %> </td>
-					<td> <%= e.getAddr() %> </td>
-					<td> <%= e.getCity() %> </td>
-					<td> <%= e.getState() %> </td>
-					<td> <%= e.getZipCode() %> </td>
-				</tr>
-				</table>
+					<table class='table-bordered' id="empinfo">
+						<tr>
+							<th>FIRST NAME</th>
+							<th>LAST NAME</th>
+							<th>DEPARTMENT</th>
+							<th>TITLE</th>
+							<th>AVAILABLE</th>
+							<th>ADDRESS</th>
+							<th>CITY</th>
+							<th>STATE</th>
+							<th>ZIP CODE</th>
+						</tr>
+						<tr>
+							<td><%=e.getFname()%></td>
+							<td><%=e.getLname()%></td>
+							<td><%=e.getDepartment()%></td>
+							<td><%=e.getTitle()%></td>
+							<td id="availreimb"><%=e.getAvailReimburse()%></td>
+							<td><%=e.getAddr()%></td>
+							<td><%=e.getCity()%></td>
+							<td><%=e.getState()%></td>
+							<td><%=e.getZipCode()%></td>
+						</tr>
+					</table>
 				</div>
 			</div>
 			<br>
 			<div class='row'>
-				<div class='col-sm-8'>
+				<div class='col-sm-6'>
 					<label>DESCRIPTION : </label>
 					<%=r.getDescription()%>
 				</div>
-				<div class='col-sm-2'>
+				<div class='col-sm-4'>
 					<label>GRADE : </label><input type='number' step='0.1' min='0'
 						width='8' id='grade' value=<%=r.getGrade()%>>
 				</div>
@@ -158,12 +161,19 @@
 				</div>
 				<div class='col-sm-4'>
 					<label>PROJECTED REIMBURSEMENT : </label>
-					<% if(user.getTitle().equals("BENEFITS COORDINATOR")) {%>
-						<input type='number' step='0.01' min='0' value=<%=r.getProjectedReimb()%> id='projreimb'>
-					<% } else {%>
-						<%=r.getProjectedReimb()%>
-					<% } %>
-					
+					<%
+						if (user.getTitle().equals("BENEFITS COORDINATOR")) {
+					%>
+					<input type='number' step='0.01' min='0'
+						value=<%=r.getProjectedReimb()%> id='projreimb'>
+					<%
+						} else {
+					%>
+					<%=r.getProjectedReimb()%>
+					<%
+						}
+					%>
+
 				</div>
 			</div>
 
@@ -182,7 +192,7 @@
 			<hr>
 			<%
 				}
-			}
+				}
 			%>
 
 			<%
@@ -198,43 +208,54 @@
 				if (r.getNextApprovalId() == (Integer) session.getAttribute("empid")) {
 			%>
 			<br>
-				<div class='row'>
-					<div class='col-sm-6'>
-						<label>REQUEST ADDITIONAL INFO</label> 
-						<div>
-						<input type='text'
-							id='reqinfo'> 
-							<select id='reqinfoemp'>
+			<div class='row'>
+				<div class='col-sm-6'>
+					<label>REQUEST ADDITIONAL INFO</label>
+					<div>
+						<input type='text' id='reqinfo'> <select id='reqinfoemp'>
 							<option value=<%=r.getEmpId()%>>REQUESTOR</option>
 						</select>
-						</div> 
 					</div>
-					
-					<%  if(user.getTitle().equals("BENEFITS COORDINATOR")) { %>
-					<div class='col-sm-3' id='awardiv'>
-					<label for="award">AWARD AMOUNT</label> 
-					<select
+				</div>
+
+				<%
+					if (user.getTitle().equals("BENEFITS COORDINATOR")) {
+				%>
+				<div class='col-sm-3' id='awardiv'>
+					<label for="award">AWARD AMOUNT</label> <select
 						class="form-control" name="award" id="award" required>
 						<option value=-1>---</option>
 						<option value=1>YES</option>
 						<option value=0>NO</option>
 					</select>
-					</div>
-					<% } %>
-					
-					<!-- Approve/Deny Request -->
-					<div class='col-sm-3' id='resdiv'>
-					<label for="response">RESPONSE</label> 
-					<select
-						class="form-control" name="response" id="response" onchange="denyRe()" required>
+				</div>
+				<%
+					}
+				%>
+
+				<!-- Approve/Deny Request -->
+				<div class='col-sm-3' id='resdiv'>
+					<label for="response">RESPONSE</label> <select class="form-control"
+						name="response" id="response" onchange="denyRe()" required>
 						<option value=-1>---</option>
 						<option value=1>APPROVE</option>
 						<option value=0>DENY</option>
 					</select>
-			
-					</div>
-				</div>
 
+				</div>
+			</div>
+
+			<%
+				}
+			%>
+			<%
+				if (r.getEmpId() == user.getId()) {
+			%>
+					<label for="inputFile">ADDITIONAL ATTACHMENTS</label> <input
+						type="file" class="form-control-file" id="inputFile"
+						name='inputFiles'
+						accept=".png, .pdf, .jpeg, .jpg, .txt, .doc, .docx, .msg"
+						multiple>
 			<%
 				}
 			%>
