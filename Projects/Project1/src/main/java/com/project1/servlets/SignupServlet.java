@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 //import javax.servlet.http.HttpSession;
 
+import com.project1.services.AccountServices;
 import com.project1.services.NewAccount;
 
 /**
@@ -47,12 +48,12 @@ public class SignupServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String confirm = request.getParameter("confirm");
 		
-		if (!password.equals(confirm) || !NewAccount.uniqueEmail(email) || accountType == null) {
+		if (!password.equals(confirm) || !AccountServices.uniqueEmail(email) || accountType == null) {
 			System.out.print("unmatching passwords/email exists");
 			RequestDispatcher rd = request.getRequestDispatcher("signuperror.html");
 			rd.forward(request, response);
 		} else {
-			NewAccount.insertNewAccount(firstname, lastname, address, accountType, 
+			AccountServices.insertNewAccount(firstname, lastname, address, accountType, 
 					email, password, confirm);
 			RequestDispatcher rd = request.getRequestDispatcher("success.html");
 			rd.forward(request, response);

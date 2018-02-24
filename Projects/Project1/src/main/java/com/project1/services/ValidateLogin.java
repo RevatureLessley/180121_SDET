@@ -12,8 +12,8 @@ public class ValidateLogin {
 		List<String> emails = dao.getAllEmails();
 		
 		for (String e : emails) {
-			if (email.equals(e)) break;
-			else return false;
+			System.out.println(e);
+			if (email.equals(e)) return false;
 		}
 		
 		String pw = dao.getStringValue(email, "account_info", "pw");
@@ -26,6 +26,5 @@ public class ValidateLogin {
 			System.out.println("Sorry dawgz");
 			return false;
 		}
-		
 	}
 }

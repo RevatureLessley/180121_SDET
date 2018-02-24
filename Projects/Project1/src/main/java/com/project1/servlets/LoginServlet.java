@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.project1.services.AccountServices;
 import com.project1.services.ValidateLogin;
 
 /**
@@ -26,15 +27,13 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("login servlet reached");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
 		
 //		HttpSession session = request.getSession();
 //		if(!session.isNew()){
 //			out.println("<h1>Stop being weird.</h1>");
 //			session.invalidate();
 		
-		if(ValidateLogin.validate(email, password)){
+		if(AccountServices.validate(email, password)){
 			//session.setAttribute("username", email);
 			RequestDispatcher rd = request.getRequestDispatcher("account.html");
 			rd.include(request, response);

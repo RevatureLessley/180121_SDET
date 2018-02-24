@@ -354,8 +354,9 @@ public class TRMSDaoImpl implements TRMSDao {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, email);
 			rs = ps.executeQuery();
-			rs.next();
-			value = rs.getString(1);
+			while(rs.next()) {
+				value = rs.getString(1);
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
