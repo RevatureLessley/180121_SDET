@@ -129,4 +129,14 @@
     <servlet-name>StatusUpdate</servlet-name>
     <url-pattern>/arrei</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetAttachments</display-name>
+    <servlet-name>GetAttachments</servlet-name>
+    <servlet-class>com.revature.servlets.GetAttachments</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAttachments</servlet-name>
+    <url-pattern>/attach</url-pattern>
+  </servlet-mapping>
 </web-app>

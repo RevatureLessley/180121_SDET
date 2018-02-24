@@ -9,12 +9,23 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- jQuery library -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+
 
 <script src="../resource/javascript/AJAX.js"></script>
 
@@ -47,7 +58,7 @@
 
 
 		<div id="wholeform1">
-			<form action="#" class="form-horizontal" id="reimburse" method="post">
+			<form action="#" class="form-horizontal" id="reimburse" method="post" >
 				<fieldset>
 					<div id="legend">
 						<legend class="">Reimbursement Submission</legend>
@@ -65,28 +76,35 @@
 							<option>Other</option>
 						</select>
 					</div>
-					
+
 					<h5>What Type Of Grading Format Does This Event Use?</h5>
-				<div>
-				 <label class="radio-inline"><input type="radio" name="grade" value="Alphabetical" required>Alphabetical (grades from A-F)</label>
-				<label class="radio-inline"><input type="radio" name="grade" value="Numerical">Numerical (grades from 0-100)</label>
-				<label class="radio-inline"><input type="radio" name="grade" value="Pass/Fail">Pass/Fail (grade is either Pass or Fail)</label> 
-				<label class="radio-inline"><input type="radio" name="grade" value="Other">Other</label> 
-				</div>
-				<div class="control-group">
+					<div>
+						<label class="radio-inline"><input type="radio"
+							name="grade" value="Alphabetical" required>Alphabetical
+							(grades from A-F)</label> <label class="radio-inline"><input
+							type="radio" name="grade" value="Numerical">Numerical
+							(grades from 0-100)</label> <label class="radio-inline"><input
+							type="radio" name="grade" value="Pass/Fail">Pass/Fail
+							(grade is either Pass or Fail)</label> <label class="radio-inline"><input
+							type="radio" name="grade" value="Other">Other</label>
+					</div>
+					<div class="control-group">
 						<!-- Description -->
-						<label class="control-label" for="customgrade">Other Grading Schemes</label>
-						
+						<label class="control-label" for="customgrade">Other
+							Grading Schemes</label>
+
 						<div class="controls">
-							<textarea class="form-control" rows="1" id="customgradeformat" name="customgradeformat"
-								placeholder=""></textarea>
-								<p class="help-block">Please provide a name for this grading format</p>
-							<textarea class="form-control" rows="4" id="customgradedes" name="customgradedesc"
-								placeholder=""></textarea>
-							<p class="help-block">Please provide details of this grading format.</p>
+							<textarea class="form-control" rows="1" id="customgradeformat"
+								name="customgradeformat" placeholder=""></textarea>
+							<p class="help-block">Please provide a name for this grading
+								format</p>
+							<textarea class="form-control" rows="4" id="customgradedes"
+								name="customgradedesc" placeholder=""></textarea>
+							<p class="help-block">Please provide details of this grading
+								format.</p>
 						</div>
 					</div>
-				<br>
+					<br>
 
 					<div class="control-group">
 						<!-- Description -->
@@ -130,17 +148,21 @@
 						<!-- Date Of Event -->
 						<label class="control-label" for="dateof">Date Of Event?</label>
 						<div class="controls">
-							<input type="date" name="dateof" id="dateof" class="input-xlarge" required>
+							<input type="date" name="dateof" id="dateof">
 							<p class="help-block">Please select the date the Event will
 								occur</p>
 						</div>
 					</div>
 
+
+
+
 					<div class="control-group">
 						<!-- Time Of Event -->
 						<label class="control-label" for="timeof">Time Of Event?</label>
 						<div class="controls">
-							<input type="time" name="timeof" id="timeof" class="input-xlarge" required>
+							<input type="time" name="timeof" id="timeof" class="input-xlarge"
+								required>
 							<p class="help-block">Please select the time that the event
 								will begin</p>
 						</div>
@@ -150,16 +172,6 @@
 					<div>
 						<h5>Cost Of Event?</h5>
 						<input type="number" name="cost" id="cost" required>
-					</div>
-
-
-					<h3>Would You Like To Attach Any Files To This Reimbursement?</h3>
-					<h4>(pdf, png, jpeg, txt, msg, or doc file type)</h4>
-
-					<div class="fileinput fileinput-new" data-provides="fileinput" id=afile>
-						<span class="btn btn-default btn-file"><span>Choose
-								file</span><input type="file" /></span> <span class="fileinput-filename"></span><span
-							class="fileinput-new">No file chosen</span>
 					</div>
 					<br>
 

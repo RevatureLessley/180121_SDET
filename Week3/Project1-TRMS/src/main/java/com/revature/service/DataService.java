@@ -6,11 +6,13 @@ import java.util.ListIterator;
 
 import com.revature.beans.Employee;
 import com.revature.beans.Reimbursement;
+import com.revature.beans.Attachments;
 import com.revature.beans.CustomGrade;
 
 import com.revature.dao.EmployeeDaoImpl;
 import com.revature.dao.ReimbursementDaoImpl;
 import com.revature.dao.StatusUpdateDaoImpl;
+import com.revature.dao.AttachmentDaoImpl;
 import com.revature.dao.CustomGradeDaoImpl;
 
 import com.revature.util.Bridge;
@@ -134,5 +136,10 @@ public class DataService {
 	public static int addStatus (int reiid, String afname, String alname, int status, String note) {
 		StatusUpdateDaoImpl su = new StatusUpdateDaoImpl();
 		return su.updateStatus(reiid, afname, alname, status, note);
+	}
+	
+	public static int addAttachment (Attachments a) {
+		AttachmentDaoImpl attDao = new AttachmentDaoImpl();
+		return attDao.insertAttachment(a);
 	}
 }
