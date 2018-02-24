@@ -202,7 +202,6 @@ public class TRMSDaoImpl implements TRMSDao {
 	
 	@Override
 	public List<String> getAllEmails() {
-		int i = 1;
 		emails = new ArrayList<>();
 		try (Connection conn = Connections.getConnection()) {
 			sql = "SELECT email FROM personal_info";
@@ -210,8 +209,8 @@ public class TRMSDaoImpl implements TRMSDao {
 			rs = ps.executeQuery();
 			rs.next();
 			while (rs.next()) {
-				emails.add(rs.getString(i));
-				i++;
+				emails.add(rs.getString(1));
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
