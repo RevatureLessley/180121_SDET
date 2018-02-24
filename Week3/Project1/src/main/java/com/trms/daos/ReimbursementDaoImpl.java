@@ -16,6 +16,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.trms.beans.AddedInfo;
+import com.trms.beans.AttachedFile;
 import com.trms.beans.Reimbursement;
 import com.trms.services.EmployeeService;
 import com.trms.util.Connections;
@@ -117,6 +118,27 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			close(in);
 		}
 		return result;
+	}
+	
+	@Override
+	public List<AttachedFile> getAttachmentsBy(int rId) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<AttachedFile> laf = new ArrayList<>();
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "SELECT * FROM reimburseattachments";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				laf.add(new AttachedFile(rs.getInt(1), rs.getInt(2), rs.getBlob(3), rs.getString(4), rs.getString(5)));
+			}
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		}
+		
+		return laf;
 	}
 
 	@Override

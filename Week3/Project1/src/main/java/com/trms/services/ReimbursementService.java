@@ -15,6 +15,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.trms.beans.AddedInfo;
+import com.trms.beans.AttachedFile;
 import com.trms.beans.Employee;
 import com.trms.beans.Reimbursement;
 import com.trms.daos.ReimbursementDao;
@@ -113,6 +114,9 @@ public class ReimbursementService {
 		ReimbursementDao dao = new ReimbursementDaoImpl();
 		Reimbursement r = dao.getReimbBy(rId);
 		r.setAddedInfo(dao.getAddedInfoBy(rId));
+		if(dao.getNumberAttachments(rId) > 0) {
+			r.setFiles(true);
+		}
 		
 		return r;
 	}
@@ -219,6 +223,12 @@ public class ReimbursementService {
 		ReimbursementDao dao = new ReimbursementDaoImpl();
 		
 		return dao.getAllReimburse();
+	}
+	
+	public static List<AttachedFile> getAttachmentsByRid(int rId) {
+		ReimbursementDao dao = new ReimbursementDaoImpl();
+		
+		return dao.getAttachmentsBy(rId);
 	}
 }
 

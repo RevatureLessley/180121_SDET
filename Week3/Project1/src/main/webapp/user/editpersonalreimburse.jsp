@@ -266,6 +266,11 @@
 			<%
 				}
 			%>
+			
+			<% if (r.isFiles()) { %>
+				<label for="getFiles">DOWNLOAD FILES</label>
+				<button type="button" id="getFiles"> Get File(s)</button>
+			<% } %>
 			<hr>
 			<button type='button' id='back' onclick="goBack()">BACK</button>
 			<button type='button' id='save' onclick="readPageChanges()">SAVE</button>

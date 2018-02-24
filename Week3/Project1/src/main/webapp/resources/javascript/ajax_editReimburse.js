@@ -1,3 +1,7 @@
+window.onload = function() {
+	setUrl();
+}
+
 function goBack() {
 	window.history.back();
 }
@@ -18,6 +22,15 @@ function denyRe() {
 		if(i != null) {
 			i.remove();
 		}
+	}
+}
+
+function setUrl() {
+	var downloadButton = document.getElementById("getFiles");
+	var rid = document.getElementById("rid").innerHTML;
+	var link = "/TRMS/user/editpersonalreimburse.jsp/download?rid=" + rid;
+	downloadButton.onclick = function() {
+		window.location.href = link;
 	}
 }
 

@@ -12,7 +12,14 @@ import com.trms.services.ReimbursementService;
 
 public class AutoApprove extends TimerTask {
 	private static final Logger logger = Logger.getLogger(AutoApprove.class);
+	private int days;
+	private int mins;
 
+	public AutoApprove(int days, int mins) {
+		this.days = days;
+		this.mins = mins;
+	}
+	
 	@Override
 	public void run() {
 		List<Reimbursement> lr = ReimbursementService.getAllReimburseForUpdate();
@@ -21,7 +28,12 @@ public class AutoApprove extends TimerTask {
 		for(Reimbursement r : lr) {
 			Calendar actionCompleted = Calendar.getInstance();
 			actionCompleted.setTime(r.getSqlTimestamp());
-			actionCompleted.add(Calendar.DATE, +3);
+			if(this.days == 0) {
+				actionCompleted.add(Calendar.MINUTE, +mins);
+			} else {
+				actionCompleted.add(Calendar.DATE, +days);
+			}
+			
 			
 			if(todayDate.after(actionCompleted)) {
 				logger.info("Today's date " + todayDate.getTime() + " is after " + actionCompleted.getTime() + " so auto approve for super/head");

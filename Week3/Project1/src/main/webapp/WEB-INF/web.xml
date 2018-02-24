@@ -24,6 +24,18 @@
     <display-name>FrontController</display-name>
     <servlet-name>FrontController</servlet-name>
     <servlet-class>com.trms.servlets.FrontController</servlet-class>
+    <init-param>
+      <param-name>daysToApprove</param-name>
+      <param-value>3</param-value>
+    </init-param>
+    <init-param>
+      <param-name>minsToApprove</param-name>
+      <param-value>0</param-value>
+    </init-param>
+    <init-param>
+      <param-name>calendarMinute</param-name>
+      <param-value>30</param-value>
+    </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
@@ -218,5 +230,15 @@
   <servlet-mapping>
     <servlet-name>UserAddAttachServlet</servlet-name>
     <url-pattern>/UserAddAttachServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FileDownloadServlet</display-name>
+    <servlet-name>FileDownloadServlet</servlet-name>
+    <servlet-class>com.trms.servlets.FileDownloadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileDownloadServlet</servlet-name>
+    <url-pattern>/user/editpersonalreimburse.jsp/download</url-pattern>
   </servlet-mapping>
 </web-app>

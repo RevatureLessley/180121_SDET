@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import com.trms.beans.AddedInfo;
+import com.trms.beans.AttachedFile;
 import com.trms.beans.Reimbursement;
 
 public interface ReimbursementDao {
@@ -12,6 +13,7 @@ public interface ReimbursementDao {
 	public int insertReimbursement(Reimbursement r);
 	public int insertAttachment(File f, int r_id);
 	public int insertAttachmentWithType(File f, int rId, String type);
+	public List<AttachedFile> getAttachmentsBy(int rId);
 	
 	// Info related methods
 	public int insertAddedInfo(AddedInfo ai);

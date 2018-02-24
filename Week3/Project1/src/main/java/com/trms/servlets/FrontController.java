@@ -24,17 +24,17 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		logger.info("FRONT CONTOLLER|INIT(): LOADED");
-		AutoApprove aa = new AutoApprove();
-		Thread at = new Thread(aa, "AutoApprover");
-		//at.start();
+		int day = Integer.parseInt(this.getInitParameter("daysToApprove"));
+		int min = Integer.parseInt(this.getInitParameter("minsToApprove"));
+		int calMin = Integer.parseInt(this.getInitParameter("calendarMinute"));
 		
 		Timer timer = new Timer();
 		Calendar date = Calendar.getInstance();
 		//date.set(Calendar.HOUR_OF_DAY, 17);
-		date.set(Calendar.MINUTE, 8);
+		date.set(Calendar.MINUTE, calMin);
 		date.set(Calendar.SECOND, 0);
 		date.set(Calendar.MILLISECOND, 0);
-		timer.schedule(new AutoApprove(), date.getTime(), 1000*60);
+		timer.schedule(new AutoApprove(day, min), date.getTime(), 1000*60*60);
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,7 +45,7 @@ public class FrontController extends HttpServlet {
 		String action = (tokens[tokens.length - 1]);
 		action = action.substring(0, action.length() - 3).toLowerCase();
 		
-		logger.info("doGet(): " + action);
+		logger.debug("doGet(): " + action);
 		
 		switch(action) {
 		case "login":
