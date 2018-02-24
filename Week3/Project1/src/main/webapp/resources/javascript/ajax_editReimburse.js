@@ -129,12 +129,12 @@ function insertAddInfo() {
 		// TODO BUG message posting twice when denied
 		var dr = document.getElementById("denyres").value;
 		dr = "DENIED: " + dr;
-		xhr.send("rid=" + rid + "&info=" + dr);
+		xhr.send("rid=" + rid + "&info=" + dr + "&subject=" + "DENIED");
 	} else if(ai != null && ai.value != ""){
 		var ai = ai.value;
-		xhr.send("rid=" + rid + "&info=" + ai);
+		xhr.send("rid=" + rid + "&info=" + ai + "&subject=" + "REQUEST");
 	} else if(addinfo != null && addinfo.value != "") {
-		xhr.send("rid=" + rid + "&info=" + addinfo.value);
+		xhr.send("rid=" + rid + "&info=" + addinfo.value + "&subject=" + "RESPONSE");
 	}
 }
 
@@ -205,34 +205,51 @@ function awardAmount() {
 function uploadFiles() {
 	var inFiles = document.getElementById("inputFile");
 	var files = inFiles.files;
+	var formattype = document.getElementsByName("formattype");
+	var formatVal = -1;
+	var canUpload = false;
 	
-	var formData = new FormData();
-	
-	var rid = document.getElementById("rid").innerHTML;
-	formData.append("rid", rid);
-	//var data = "rid=" + encodeURIComponent(rid);
-	
-	for(var i = 0; i < files.length; i++) {
-		var file = files[i];
-		
-		// TODO file type matching 
-		var input = "input" + i;
-		formData.append('inputs[]', file, file.name);
-		//data = data + "&" + input + "=" + encodeURIComponent(file);
-	}
-	
-
-	
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "../UserAddAttachServlet");
-	
-	xhr.onreadystatechange = function() {
-		if(xhr.readyState == 4 && xhr.status == 200) {
-			console.log("Files uploaded");
+	for(var j = 0; j < formattype.length; j++) {
+		if(formattype[j].checked) {
+			formatVal = formattype[j].value;
+			canUpload = true;
+			break;
 		}
 	}
 	
-	//xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	if(canUpload) {
+		var formData = new FormData();
+		
+		var rid = document.getElementById("rid").innerHTML;
+		formData.append("rid", rid);
+		formData.append("format", formatVal);
+		//var data = "rid=" + encodeURIComponent(rid);
+		
+		for(var i = 0; i < files.length; i++) {
+			var file = files[i];
+			
+			// TODO file type matching 
+			var input = "input" + i;
+			formData.append('inputs[]', file, file.name);
+			//data = data + "&" + input + "=" + encodeURIComponent(file);
+		}
+		
+
+		
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "../UserAddAttachServlet");
+		
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState == 4 && xhr.status == 200) {
+				console.log("Files uploaded");
+			}
+		}
+		
+		//xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		
+		xhr.send(formData);
+	} else if(files.length > 0) {
+		alert("Must select attachment type to submit attachments!")
+	}
 	
-	xhr.send(formData);
 }

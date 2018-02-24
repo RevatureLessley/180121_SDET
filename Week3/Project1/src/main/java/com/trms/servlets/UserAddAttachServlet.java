@@ -32,6 +32,8 @@ public class UserAddAttachServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
+		Reimbursement r = new Reimbursement();
+		r.setEmpId((int)session.getAttribute("empid"));
 
 		//logger.info("doGet() : " + request.getParameter("rid")); 
 		
@@ -54,17 +56,27 @@ public class UserAddAttachServlet extends HttpServlet {
 						if(fileName != "") {
 							File uploadedFile = new File(fileName);
 							item.write(uploadedFile);
-							//r.addFile(uploadedFile);
+							r.addFile(uploadedFile);
 							logger.info("doGet() : filename="+fileName);
 						}	
 					} else {
 						name = item.getFieldName();
 						String value = item.getString();
 						logger.info("doGet() : name=" + name + " value=" + value);
+						switch(name) {
+						case "rid":
+							r.setReimburseId(Integer.parseInt(value));
+							break;
+						case "format":
+							r.setAttachmentType(value);
+							break;
+						default:
+							logger.warn("doGet() : unexpected field name");
+						}
 					}
 				}
 				
-				//ReimbursementService.insertReimbursement(r);
+				ReimbursementService.insertAttachments(r);
 			} catch(FileUploadException e) {
 				logger.error(e.getMessage());
 			} catch(Exception e) {

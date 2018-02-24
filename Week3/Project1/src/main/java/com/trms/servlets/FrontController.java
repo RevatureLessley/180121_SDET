@@ -1,6 +1,8 @@
 package com.trms.servlets;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Timer;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+
+import com.trms.util.AutoApprove;
 
 /**
  * Servlet implementation class FrontController
@@ -20,6 +24,17 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		logger.info("FRONT CONTOLLER|INIT(): LOADED");
+		AutoApprove aa = new AutoApprove();
+		Thread at = new Thread(aa, "AutoApprover");
+		//at.start();
+		
+		Timer timer = new Timer();
+		Calendar date = Calendar.getInstance();
+		//date.set(Calendar.HOUR_OF_DAY, 17);
+		date.set(Calendar.MINUTE, 8);
+		date.set(Calendar.SECOND, 0);
+		date.set(Calendar.MILLISECOND, 0);
+		timer.schedule(new AutoApprove(), date.getTime(), 1000*60);
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,6 +1,7 @@
 package com.trms.services;
 
 
+import java.io.File;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -8,6 +9,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -198,6 +200,25 @@ public class ReimbursementService {
 		}
 		
 		return 0;
+	}
+	
+	public static void insertAttachments(Reimbursement r) {
+		ReimbursementDao dao = new ReimbursementDaoImpl();
+		
+		List<File> l = r.getAttachments();
+		if(!l.isEmpty()) {
+			logger.info("insertAttachments() : list not empty");
+			Iterator<File> i = l.iterator();
+			while(i.hasNext()) {
+				dao.insertAttachmentWithType((File)i.next(), r.getReimburseId(), r.getAttachmentType());
+			}
+		}
+	}
+	
+	public static List<Reimbursement> getAllReimburseForUpdate() {
+		ReimbursementDao dao = new ReimbursementDaoImpl();
+		
+		return dao.getAllReimburse();
 	}
 }
 

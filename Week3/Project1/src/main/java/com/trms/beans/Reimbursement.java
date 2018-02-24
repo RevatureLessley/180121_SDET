@@ -2,6 +2,7 @@ package com.trms.beans;
 
 import java.io.File;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class Reimbursement {
 	private String dateStr;
 	private String timeStr;
 	private LocalDateTime timestamp;
+	private Timestamp sqlTimestamp;
 	private String workJustification;
 	private int nextApprovalId;
 	private int apprLvl;
@@ -36,6 +38,7 @@ public class Reimbursement {
 	private List<AddedInfo> addedInfo;
 	private List<File> attachments;
 	private boolean files;
+	private String attachmentType;
 	
 	public Reimbursement() {
 		attachments = new ArrayList<File>();
@@ -49,6 +52,20 @@ public class Reimbursement {
 	}
 	
 	
+	
+	public Reimbursement(int reimburseId, int empId, Date date, Timestamp timestamp, int nextApprovalId,
+			int apprLvl, int approved) {
+		this.reimburseId = reimburseId;
+		this.empId = empId;
+		this.date = date;
+		this.sqlTimestamp = timestamp;
+		this.nextApprovalId = nextApprovalId;
+		this.apprLvl = apprLvl;
+		this.approved = approved;
+	}
+
+
+
 	public Reimbursement(int reimburseId, String eventStr, String formatStr, String centerStr, float cost,
 			float projectedReimb, Date date, int approved) {
 		this.reimburseId = reimburseId;
@@ -245,6 +262,18 @@ public class Reimbursement {
 	public void setDateTime(LocalDateTime dateTime) {
 		this.dateTime = dateTime;
 	}
+	
+	
+	public Timestamp getSqlTimestamp() {
+		return sqlTimestamp;
+	}
+
+
+
+	public void setSqlTimestamp(Timestamp sqlTimestamp) {
+		this.sqlTimestamp = sqlTimestamp;
+	}
+
 
 
 	public Date getDate() {
@@ -386,6 +415,16 @@ public class Reimbursement {
 
 	public void setAddedInfo(List<AddedInfo> addedInfo) {
 		this.addedInfo = addedInfo;
+	}
+
+
+	public String getAttachmentType() {
+		return attachmentType;
+	}
+
+
+	public void setAttachmentType(String attachmentType) {
+		this.attachmentType = attachmentType;
 	}
 	
 	

@@ -256,6 +256,13 @@
 						name='inputFiles'
 						accept=".png, .pdf, .jpeg, .jpg, .txt, .doc, .docx, .msg"
 						multiple>
+						
+					<label for='formattype'>ATTACHMENT TYPE : </label>
+						<label class="radio-inline"><input type="radio"
+								name="formattype" value="EXAMINATION">EXAMINATION</label> <label
+								class="radio-inline"><input type="radio"
+								name="formattype" value="PRESENTATION">PRESENTATION</label>
+								
 			<%
 				}
 			%>

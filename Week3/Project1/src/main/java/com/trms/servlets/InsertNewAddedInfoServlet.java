@@ -21,6 +21,7 @@ public class InsertNewAddedInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		AddedInfo ai = new AddedInfo(Integer.parseInt(request.getParameter("rid")), (int)session.getAttribute("empid"), request.getParameter("info"));
+		ai.setInfoSubject(request.getParameter("subject"));
 		ReimbursementService.insertExtraInfo(ai);
 	}
 

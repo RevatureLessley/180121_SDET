@@ -91,6 +91,33 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		}
 		return 0;
 	}
+	
+	@Override
+	public int insertAttachmentWithType(File f, int rId, String type) {
+		PreparedStatement ps = null;
+		FileInputStream in = null;
+		int result = -1;
+		
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "INSERT into reimburseattachments (at_reimburse_id, reimburse_attach, attach_name, attach_subject) VALUES (?, ?, ?, ?)";
+			ps = conn.prepareStatement(sql);
+			in = new FileInputStream(f);
+			ps.setInt(1, rId);
+			ps.setBinaryStream(2, in, (int)f.length());
+			ps.setString(3, f.getName());
+			ps.setString(4, type);
+			logger.info("insertAttachment() : before executeUpdate");
+			result = ps.executeUpdate();
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} catch(FileNotFoundException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+			close(in);
+		}
+		return result;
+	}
 
 	@Override
 	public int getReimburseByEmpId(int empId) {
@@ -175,6 +202,32 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	}
 
 	@Override
+	public List<Reimbursement> getAllReimburse() {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Reimbursement> lr = new ArrayList<>();
+		
+		// TODO make it so that approved or denied reimbursements don't appear in approver views
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "SELECT reimburse_id, reimburse_emp_id, reimburse_datetime, reimburse_timestamp, " + 
+					"reimburse_approvelvl, reimburse_approveid, reimburse_approved FROM reimbursements";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				lr.add(new Reimbursement(rs.getInt(1), rs.getInt(2), rs.getDate(3),
+						rs.getTimestamp(4), rs.getInt(6), rs.getInt(5), rs.getInt(7)));
+			}			
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return lr;
+	}
+	
+	@Override
 	public List<Reimbursement> getReimburse(int empId) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -237,7 +290,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		int result = -1;
 		
 		try(Connection conn = Connections.getConnection()) {
-			String sql = "UPDATE reimbursements SET reimburse_approved = ? WHERE reimburse_id = ?";
+			String sql = "UPDATE reimbursements SET reimburse_approved = ?, reimburse_timestamp = SYSTIMESTAMP WHERE reimburse_id = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, response);
 			ps.setInt(2, rId);
@@ -257,7 +310,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		int result = -1;
 		
 		try(Connection conn = Connections.getConnection()) {
-			String sql = "UPDATE reimbursements SET reimburse_approveid = ? WHERE reimburse_id = ?";
+			String sql = "UPDATE reimbursements SET reimburse_approveid = ?, reimburse_timestamp = SYSTIMESTAMP WHERE reimburse_id = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, empId);
 			ps.setInt(2, rId);
@@ -367,6 +420,8 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			
 			if(ai.getInfoSubject() != null) {
 				ps.setString(4, ai.getInfoSubject());
+			} else {
+				ps.setString(4, "GENERAL");
 			}
 			
 			result = ps.executeUpdate();

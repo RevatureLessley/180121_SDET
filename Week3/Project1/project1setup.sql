@@ -125,6 +125,7 @@ CREATE TABLE reimburseattachments(
     CONSTRAINT attach_reimburse_fk FOREIGN KEY(at_reimburse_id)
     REFERENCES reimbursements(reimburse_id) ON DELETE CASCADE
 );
+ALTER TABLE reimburseattachments ADD attach_subject VARCHAR2(50) DEFAULT 'GENERAL';
 
 CREATE TABLE reimburseaddedinfo ( 
     info_id NUMBER(9),
@@ -286,6 +287,5 @@ INSERT INTO learningcenters VALUES(3, 'NEW HORIZONS', '462 Seventh Ave, 6th Floo
 INSERT INTO learningcenters VALUES(4, 'WESTERN GOVERNORS UNIVERSITY', '4001 S 700 E #700', 'Salt Lake City', 'UT', 84107, 'USA');
 INSERT INTO learningcenters VALUES(5, 'ORACLE UNIVERSITY', '-', '-', '-', -1, '-');
 
-SELECT a.info_id, a.addinfo_reimburse, b.emp_fname, b.emp_lname FROM reimburseaddedinfo a, employees b
-WHERE a.in_reimburse_id = 7 AND a.info_added_by_emp = b.emp_id
-ORDER BY a.info_id;
+SELECT reimburse_id, reimburse_emp_id, reimburse_datetime, reimburse_timestamp, 
+reimburse_approvelvl, reimburse_approveid, reimburse_approved FROM reimbursements;
