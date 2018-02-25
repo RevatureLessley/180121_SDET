@@ -4,6 +4,7 @@ import static com.revature.util.CloseStreams.close;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.revature.beans.Employee;
@@ -20,7 +21,7 @@ public class StatusUpdateDaoImpl implements StatusUpdateDao {
 		
 		if(!remDao.checkReimbursement(reiid)) {return 0;}
 		
-		if(remDao.getStatus(reiid) == status) {return 2;}
+		if(getStatus(reiid,status) == 1) {return 2;}
 		
 		PreparedStatement ps = null;
 		
@@ -37,11 +38,28 @@ public class StatusUpdateDaoImpl implements StatusUpdateDao {
 			ps.setString(8,note); //Department employee is part of 
 			ps.executeUpdate();
 			
-			remDao.updateStatus(reiid, status);
 		}catch(SQLException e){e.printStackTrace();}
 		finally{close(ps);}
 		
 		return 1;
+	}
+
+	public int getStatus(int s, int initial) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int status = 0;
+		try(Connection conn = Bridge.connect()){
+			
+			String sql = "SELECT count(approval_status) FROM r_status WHERE REI_ID = ? AND APPROVAL_STATUS = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, s);
+			ps.setInt(2, initial);
+			rs = ps.executeQuery();
+			while(rs.next()) {status = rs.getInt(1);}
+			}
+		catch(SQLException e){e.printStackTrace();}
+		finally{close(ps);close(rs);}
+return status;
 	}
 
 }

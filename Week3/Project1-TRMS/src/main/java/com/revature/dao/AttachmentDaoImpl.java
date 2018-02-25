@@ -29,13 +29,14 @@ public class AttachmentDaoImpl implements AttachmentDao {
 		while(it.hasNext()) {
 			File file = (File)it.next();
 		try(Connection conn = Bridge.connect()){
-			String sql = "INSERT INTO ATTACHMENTS VALUES(?,?,?)";
+			String sql = "INSERT INTO ATTACHMENTS VALUES(?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			in = new FileInputStream(file);
 			
 			ps.setInt(1, getAttachmentId()); //attachment_id
 			ps.setInt(2, a.getRei_id()); //rei_id
 			ps.setBinaryStream(3,in,(int)file.length());
+			ps.setString(4, file.getName());
 			ps.executeUpdate();
 			
 		}catch(FileNotFoundException e){e.printStackTrace();}

@@ -26,13 +26,11 @@ import java.sql.Statement;
 
 public class ReimbursementDaoImpl implements ReimbursementDao {
 	
-	
 	/**Utility function used to check if there are currently any reimbursements in the database, if so the total number is returned.**/
 	public boolean checkEmpty() {
 		if(totalReimbursements() == 0) {return true;}
 		else {return false;}
 	}
-	
 
 	/**Utility function used to return the total number of Reimbursements present in the database.**/
 	public int totalReimbursements() {
@@ -51,7 +49,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		return count;
 	}	
 	
-	@Override
+	/**Utility function used to check if a Reimbursement exist in the database.**/
 	public boolean checkReimbursement(int reid) {
 
 		PreparedStatement ps = null;
@@ -76,29 +74,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 	}
 	
-	
-	
-	@Override
-	public int getCost(int emp_id) {
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		int cost = 0;
-		try(Connection conn = Bridge.connect()){
-			
-			String sql = "SELECT AMOUNT FROM employees WHERE EMP_ID = ?";
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, emp_id);
-			rs = ps.executeQuery();
-			while(rs.next()) {cost = rs.getInt(1);}
-			}
-		catch(SQLException e){e.printStackTrace();}
-		finally{close(ps);close(rs);}
-		return cost;
-	}
-	
-	
 	/**This function is used to add reimbursements in the database using a Reimbursement object.**/
-	
 	public void addReimbursement(Reimbursement reim) {
 		
 		PreparedStatement ps = null;
@@ -118,16 +94,15 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			ps.setString(10,reim.getGradingFormat()); // Grading Format
 			ps.setString(11,reim.getTypeOfEvent()); // Type of Event
 			ps.setString(12,reim.getWork_related_justification()); // Work related Justification
-			ps.setInt(13, reim.getAprroval_state());
-			ps.setString(14,null); // for attachments
-			ps.setString(15, ""); // empty note
+			ps.setString(13, reim.getGrade_received()); // Grade_recieved
+			ps.setInt(14, reim.getGrade_attachment_bit()); // Grade_attachment_bit
+			ps.setInt(15, reim.getAttachment_bit());	// Attachment_bit
 			ps.executeUpdate();
 		}catch(SQLException e){e.printStackTrace();}
 		finally{close(ps);}
 	
 	}
 	
-	@Override
 	public int editReimbursement(Reimbursement reim) {
 		
 		
@@ -158,7 +133,6 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	
 	
 	/**This function deletes from reimbursements using the reimbursemnt's id number**/
-	
 	public void deleteReimbursement(int id) {
 		PreparedStatement ps = null;
 		
@@ -171,28 +145,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		finally{close(ps);}
 		
 	}
-
-	@Override
-	public int getStatus(int rei_id) {
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		int status = 0;
-		try(Connection conn = Bridge.connect()){
-			
-			String sql = "SELECT aprroval_state FROM REIMBURSEMENTS WHERE REI_ID = ?";
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, rei_id);
-			rs = ps.executeQuery();
-			while(rs.next()) {status = rs.getInt(1);}
-			}
-		catch(SQLException e){e.printStackTrace();}
-		finally{close(ps);close(rs);}
-		return status;
-	}
 	
 	
 	/**This function deletes from reimbursements using the reimbursemnt's id number but using a reimbursement object as the argument**/
-	
 	public void deleteReimbursement(Reimbursement reim) {
 		PreparedStatement ps = null;
 		
@@ -206,39 +161,26 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 	}
 	
+	/**Utility function used to return an employes avaialable Reimbursement from the database.**/
 	@Override
-	public void updateStatus(int id,int s) {
+	public int getAmountByEid(int emp_id) {
 		PreparedStatement ps = null;
-	
+		ResultSet rs = null;
+		int cost = 0;
 		try(Connection conn = Bridge.connect()){
-			String sql = "UPDATE REIMBURSEMENTS SET aprroval_state = ? WHERE REI_ID = ?";
 			
+			String sql = "SELECT AMOUNT FROM employees WHERE EMP_ID = ?";
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1,s); 
-			ps.setInt(2,id);
-		
-			ps.execute();
-		
-		}catch(SQLException e){e.printStackTrace();}
-		finally{close(ps); }
-			
+			ps.setInt(1, emp_id);
+			rs = ps.executeQuery();
+			while(rs.next()) {cost = rs.getInt(1);}
+			}
+		catch(SQLException e){e.printStackTrace();}
+		finally{close(ps);close(rs);}
+		return cost;
 	}
 	
-	
-	public Reimbursement getReimbursement(String username) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	public Reimbursement getReimbursement(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	
-	@Override
+	/**Utility function used to return an employee, using a reimbursement, from the database.**/
 	public Employee getEmployeeByRid(int reid) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -272,8 +214,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		finally{close(ps);close(rs);}
 		
 		return emp;
-	}
+}
 	
+	/**Utility function used to return all of the reimbursements listed in the reimbursements table.**/
 	public List<Reimbursement> getAllReimbursement() {
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -281,29 +224,28 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 		try(Connection conn = Bridge.connect()){
 			
-			//String sql = "SELECT * FROM REIMBURSEMENTS";
-			String sql = "SELECT REI_ID, EMP_ID, FNAME, LNAME, DATEOF, TIME, LOCATION, DESCRIPTION, COST, GRADING_FORMAT, TYPE_OF_EVENT , WORK_RELATED_JUSTIFICATION, APRROVAL_STATE, NOTE FROM REIMBURSEMENTS";
+			String sql = "SELECT * FROM REIMBURSEMENTS";
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql); 
 			
 			while(rs.next()){
 				
 				reimbursementList.add(new Reimbursement (
-						rs.getInt(1), // rei_id
-						rs.getInt(2), //emp_id
-						rs.getString(3), // First name
-						rs.getString(4), // Last name
-						rs.getString(5), // Date Of Event 
-						rs.getString(6), // Time Of event
-						rs.getString(7), // Location of event
-						rs.getString(8), // Description of event
-						rs.getInt(9), 	 // Cost of event
-						rs.getString(10), // Grading Format
-						rs.getString(11), // type of event
-						rs.getString(12),  // Work related Justification
-						rs.getInt(13),
-						rs.getString(14)
-						//rs.getString(15)
+						rs.getInt(1), 		// rei_id
+						rs.getInt(2), 		//emp_id
+						rs.getString(3), 	// First name
+						rs.getString(4), 	// Last name
+						rs.getString(5), 	// Date Of Event 
+						rs.getString(6), 	// Time Of event
+						rs.getString(7), 	// Location of event
+						rs.getString(8), 	// Description of event
+						rs.getInt(9), 	 	// Cost of event
+						rs.getString(10), 	// Grading Format
+						rs.getString(11), 	// type of event
+						rs.getString(12),  	// Work related Justification
+						rs.getString(13),		// Grade received
+						rs.getInt(14),	// Grade attachment bit
+						rs.getInt(15)	// Attachment bit
 						));
 				}
 			}
@@ -313,7 +255,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		return reimbursementList;
 	}
 	
-	
+	/**Utility function used to return all of the reimbursements of a specified employee, that are listed in the reimbursements table .**/
 	public List<Reimbursement> getAllReimbursementUser(int emp_id) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -321,7 +263,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 		try(Connection conn = Bridge.connect()){
 			
-			String sql = "SELECT REI_ID, EMP_ID, FNAME, LNAME, DATEOF, TIME, LOCATION, DESCRIPTION, COST, GRADING_FORMAT, TYPE_OF_EVENT ,WORK_RELATED_JUSTIFICATION, APRROVAL_STATE,NOTE FROM REIMBURSEMENTS WHERE EMP_ID = ? ";
+			String sql = "SELECT * WHERE EMP_ID = ? ";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, emp_id);
 			rs = ps.executeQuery(); 
@@ -329,20 +271,21 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			while(rs.next()){
 				
 				reimbursementList.add(new Reimbursement (
-						rs.getInt(1), // rei_id
-						rs.getInt(2), //emp_id
-						rs.getString(3), // First name
-						rs.getString(4), // Last name
-						rs.getString(5), // Date Of Event 
-						rs.getString(6), // Time Of event
-						rs.getString(7), // Location of event
-						rs.getString(8), // Description of event
-						rs.getInt(9), 	 // Cost of event
-						rs.getString(10), // Grading Format
-						rs.getString(11), // type of event
-						rs.getString(12),  // Work related Justification
-						rs.getInt(13), // Approval status
-						rs.getString(14) // note
+						rs.getInt(1), 		// rei_id
+						rs.getInt(2), 		//emp_id
+						rs.getString(3), 	// First name
+						rs.getString(4), 	// Last name
+						rs.getString(5), 	// Date Of Event 
+						rs.getString(6), 	// Time Of event
+						rs.getString(7), 	// Location of event
+						rs.getString(8), 	// Description of event
+						rs.getInt(9), 	 	// Cost of event
+						rs.getString(10), 	// Grading Format
+						rs.getString(11), 	// type of event
+						rs.getString(12),  	// Work related Justification
+						rs.getString(13),		// Grade received
+						rs.getInt(14),	// Grade attachment bit
+						rs.getInt(15)	// Attachment bit
 						));
 				
 				
@@ -355,8 +298,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		return reimbursementList;
 	}
 
-
-	@Override
+	/**Utility function used to return all of the reimbursements of a submitted by employees who are managed by the specified supervisor, that are listed in the reimbursements table .**/
 	public List<Reimbursement> getSuperReimbursementUser(int emp_id) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -364,7 +306,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 		try(Connection conn = Bridge.connect()){
 			
-			String sql = " SELECT REIMBURSEMENTS.REI_ID, REIMBURSEMENTS.EMP_ID, REIMBURSEMENTS.FNAME, REIMBURSEMENTS.LNAME, REIMBURSEMENTS.DATEOF, REIMBURSEMENTS.TIME, REIMBURSEMENTS.LOCATION, REIMBURSEMENTS.DESCRIPTION, REIMBURSEMENTS.COST, REIMBURSEMENTS.GRADING_FORMAT, REIMBURSEMENTS.TYPE_OF_EVENT , REIMBURSEMENTS.WORK_RELATED_JUSTIFICATION, REIMBURSEMENTS.APRROVAL_STATE, REIMBURSEMENTS.NOTE\r\n" + 
+			String sql = " SELECT REIMBURSEMENTS.REI_ID, REIMBURSEMENTS.EMP_ID, REIMBURSEMENTS.FNAME, REIMBURSEMENTS.LNAME, REIMBURSEMENTS.DATEOF, REIMBURSEMENTS.TIME, REIMBURSEMENTS.LOCATION, REIMBURSEMENTS.DESCRIPTION, REIMBURSEMENTS.COST, REIMBURSEMENTS.GRADING_FORMAT, REIMBURSEMENTS.TYPE_OF_EVENT , REIMBURSEMENTS.WORK_RELATED_JUSTIFICATION, REIMBURSEMENTS.grade_received, REIMBURSEMENTS.grade_attachment_bit, REIMBURSEMENTS.attachment_bit " + 
 					"FROM REIMBURSEMENTS\r\n" + 
 					"INNER JOIN EMPLOYEES ON REIMBURSEMENTS.EMP_ID = EMPLOYEES.EMP_ID\r\n" + 
 					"WHERE EMPLOYEES.SUP_ID = ? ";
@@ -375,20 +317,21 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			while(rs.next()){
 				
 				reimbursementList.add(new Reimbursement (
-						rs.getInt(1), // rei_id
-						rs.getInt(2), //emp_id
-						rs.getString(3), // First name
-						rs.getString(4), // Last name
-						rs.getString(5), // Date Of Event 
-						rs.getString(6), // Time Of event
-						rs.getString(7), // Location of event
-						rs.getString(8), // Description of event
-						rs.getInt(9), 	 // Cost of event
-						rs.getString(10), // Grading Format
-						rs.getString(11), // type of event
-						rs.getString(12),  // Work related Justification
-						rs.getInt(13), // Approval status
-						rs.getString(14) // note
+						rs.getInt(1), 		// rei_id
+						rs.getInt(2), 		//emp_id
+						rs.getString(3), 	// First name
+						rs.getString(4), 	// Last name
+						rs.getString(5), 	// Date Of Event 
+						rs.getString(6), 	// Time Of event
+						rs.getString(7), 	// Location of event
+						rs.getString(8), 	// Description of event
+						rs.getInt(9), 	 	// Cost of event
+						rs.getString(10), 	// Grading Format
+						rs.getString(11), 	// type of event
+						rs.getString(12),  	// Work related Justification
+						rs.getString(13),		// Grade received
+						rs.getInt(14),	// Grade attachment bit
+						rs.getInt(15)	// Attachment bit
 						));
 				
 				
@@ -402,7 +345,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	}
 
 
-	@Override
+	/**Utility function used to return all of the reimbursements of a submitted by employees who are apart of the specified department, that are listed in the reimbursements table .**/
 	public List<Reimbursement> getDepartmentReimbursementUser(String department) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -410,7 +353,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 		try(Connection conn = Bridge.connect()){
 			
-			String sql = " SELECT REIMBURSEMENTS.REI_ID, REIMBURSEMENTS.EMP_ID, REIMBURSEMENTS.FNAME, REIMBURSEMENTS.LNAME, REIMBURSEMENTS.DATEOF, REIMBURSEMENTS.TIME, REIMBURSEMENTS.LOCATION, REIMBURSEMENTS.DESCRIPTION, REIMBURSEMENTS.COST, REIMBURSEMENTS.GRADING_FORMAT, REIMBURSEMENTS.TYPE_OF_EVENT , REIMBURSEMENTS.WORK_RELATED_JUSTIFICATION, REIMBURSEMENTS.APRROVAL_STATE, REIMBURSEMENTS.NOTE\r\n" + 
+			String sql = " SELECT REIMBURSEMENTS.REI_ID, REIMBURSEMENTS.EMP_ID, REIMBURSEMENTS.FNAME, REIMBURSEMENTS.LNAME, REIMBURSEMENTS.DATEOF, REIMBURSEMENTS.TIME, REIMBURSEMENTS.LOCATION, REIMBURSEMENTS.DESCRIPTION, REIMBURSEMENTS.COST, REIMBURSEMENTS.GRADING_FORMAT, REIMBURSEMENTS.TYPE_OF_EVENT , REIMBURSEMENTS.WORK_RELATED_JUSTIFICATION, REIMBURSEMENTS.grade_received, REIMBURSEMENTS.grade_attachment_bit, REIMBURSEMENTS.attachment_bit " + 
 					"FROM REIMBURSEMENTS\r\n" + 
 					"INNER JOIN EMPLOYEES ON REIMBURSEMENTS.EMP_ID = EMPLOYEES.EMP_ID\r\n" + 
 					"WHERE EMPLOYEES.DEPARTMENT = ? ";
@@ -421,20 +364,21 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			while(rs.next()){
 				
 				reimbursementList.add(new Reimbursement (
-						rs.getInt(1), // rei_id
-						rs.getInt(2), //emp_id
-						rs.getString(3), // First name
-						rs.getString(4), // Last name
-						rs.getString(5), // Date Of Event 
-						rs.getString(6), // Time Of event
-						rs.getString(7), // Location of event
-						rs.getString(8), // Description of event
-						rs.getInt(9), 	 // Cost of event
-						rs.getString(10), // Grading Format
-						rs.getString(11), // type of event
-						rs.getString(12),  // Work related Justification
-						rs.getInt(13), // Approval status
-						rs.getString(14) // note
+						rs.getInt(1), 		// rei_id
+						rs.getInt(2), 		//emp_id
+						rs.getString(3), 	// First name
+						rs.getString(4), 	// Last name
+						rs.getString(5), 	// Date Of Event 
+						rs.getString(6), 	// Time Of event
+						rs.getString(7), 	// Location of event
+						rs.getString(8), 	// Description of event
+						rs.getInt(9), 	 	// Cost of event
+						rs.getString(10), 	// Grading Format
+						rs.getString(11), 	// type of event
+						rs.getString(12),  	// Work related Justification
+						rs.getString(13),		// Grade received
+						rs.getInt(14),	// Grade attachment bit
+						rs.getInt(15)	// Attachment bit
 						));
 				
 				

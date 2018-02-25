@@ -45,8 +45,6 @@ public class GetBenefitsReimbursements extends HttpServlet {
 						"<r_gradingFormat>" + r.getGradingFormat() +  "</r_gradingFormat>" +
 						"<r_typeOfEvent>" + r.getTypeOfEvent()  +  "</r_typeOfEvent>" +
 						"<r_workRelatedJustification>" + r.getWork_related_justification() +  "</r_workRelatedJustification>" +
-						"<r_approvalState>" + r.getAprroval_state()  +  "</r_approvalState>" +
-						"<r_note>" + r.getNote()  +  "</r_note>" +
 						"</benefitsreimbursement>";
 			}
 			myXml += "</root>";

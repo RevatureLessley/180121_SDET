@@ -66,28 +66,31 @@ public class DataService {
 	
 	
 	public static int insertNewReimbursement(int empid, String fname, String lname, String dateof, String time, String location,
-						String desc, int cost, String gradingFormat, String typeOfEvent, String work) {
+						String desc, int cost, String gradingFormat, String typeOfEvent, String work, int attachment_bit) {
 		
 		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
 		
 		int rei_id = reimDao.totalReimbursements();
+		String grade_received= "N/A";
+		int grade_attachment_bit = 0;
 		
-		int approval_state = 0;
-		String attachment = "";
-		String note = "";
-		
-		Reimbursement reim = new Reimbursement(rei_id, empid, fname, lname, dateof, time, location, desc, cost, gradingFormat, typeOfEvent, work, approval_state, attachment, note);
+		Reimbursement reim = new Reimbursement(rei_id, empid, fname, lname, dateof, time, location, desc, cost, gradingFormat, 
+												typeOfEvent, work, grade_received, grade_attachment_bit, attachment_bit);
 		
 		reimDao.addReimbursement(reim);
 		return rei_id;
 	}
 	
-	public static int editReimbursement(int rei_id, int empid, String fname, String lname, String dateof, String timeof, String location,
-			String desc, int cost, String gradingFormat, String typeofevent, String work) {
+	public static int editReimbursement(int rei_id, int empid, String fname, String lname, String dateof, String time, String location,
+			String desc, int cost, String gradingFormat, String typeOfEvent, String work,  int attachment_bit) {
 	
 		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
-		Reimbursement reim = new Reimbursement(rei_id, empid, fname, lname, dateof, timeof, location,
-				desc, cost, gradingFormat, typeofevent, work);
+		
+		String grade_received= "N/A";
+		int grade_attachment_bit = 0;
+		
+		Reimbursement reim = new Reimbursement(rei_id, empid, fname, lname, dateof, time, location, desc, cost, gradingFormat, 
+				typeOfEvent, work, grade_received, grade_attachment_bit, attachment_bit);
 		return reimDao.editReimbursement(reim);
 	
 	}
@@ -114,7 +117,7 @@ public class DataService {
 	
 	public static int getCostAmount(int emp_id) {
 		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
-		return reimDao.getCost(emp_id);
+		return reimDao.getAmountByEid(emp_id);
 	}
 	
 	public static void insertCustomGradingFormat(int reid, int empid, String fname, String lname, String customFormat, String formatDesc) {
