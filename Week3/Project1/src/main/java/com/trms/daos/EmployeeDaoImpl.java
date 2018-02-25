@@ -12,9 +12,22 @@ import org.apache.log4j.Logger;
 import com.trms.beans.Employee;
 import com.trms.util.Connections;
 
+/**
+ * The Data Access Object that connects with the Oracle database and get information related to the employees table
+ * @author Lynda
+ *
+ */
 public class EmployeeDaoImpl implements EmployeeDao {
 	final static Logger logger = Logger.getLogger(EmployeeDaoImpl.class);
 
+	//=======GET METHODS=======
+	
+	/**
+	 * Retrieves all the information about an employee into an Employee bean
+	 * @param empId	The primary key of the employee being retrieved
+	 * @return An Employee with all relevent information
+	 */
+	@Override
 	public Employee getEmployee(int empId) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -43,82 +56,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 		return emp;
 	}
-
-	@Override
-	public int getTitle(int empId) {
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		int titleNum = -1;
-
-		try (Connection conn = Connections.getConnection()) {
-			String sql = "SELECT emp_title_id FROM employees WHERE emp_id = ?";
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, empId);
-			rs = ps.executeQuery();
-
-			if (rs.next()) {
-				titleNum = rs.getInt(1);
-			}
-		} catch (SQLException e) {
-			logger.error(e.getMessage());
-		} finally {
-			close(ps);
-			close(rs);
-		}
-		
-		return titleNum;
-	}
-
-
-	@Override
-	public int getSubordinates(int empId) {
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		int subNum = -1;
-
-		try (Connection conn = Connections.getConnection()) {
-			String sql = "SELECT count(emp_reportsto) FROM employees WHERE emp_reportsto = ?"; // TODO modify to db query
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, empId);
-			rs = ps.executeQuery();
-
-			if (rs.next()) {
-				subNum = rs.getInt(1);
-			}
-		} catch(SQLException e) {
-			logger.error(e.getMessage());
-		} finally {
-			close(ps);
-			close(rs);
-		}
-		return subNum;
-	}
-
-	@Override
-	public int getReportsTo(int empId) {
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		int rt = -1;
-
-		try (Connection conn = Connections.getConnection()) {
-			String sql = "SELECT emp_reportsto FROM employees WHERE emp_id = ?";
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, empId);
-			rs = ps.executeQuery();
-			
-			if(rs.next()) {
-				rt = rs.getInt(1);
-			}
-		} catch(SQLException e) {
-			logger.error(e.getMessage());
-		} finally {
-			close(ps);
-			close(rs);
-		}
-		
-		return rt;
-	}
-
+	
+	/**
+	 * Retrieves the department and title ids of a specified employee from the employees table
+	 * @param empId The primary key of the employee being accessed
+	 * @return An Employee object with the department and title id set
+	 */
 	@Override
 	public Employee getDepartAndTitle(int empId) {
 		PreparedStatement ps = null;
@@ -145,6 +88,100 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return e;
 	}
 
+	/**
+	 * Retrieves just the title id of a specified employee from the employees table
+	 * @param empId The primary key of the employee being accessed
+	 * @return An int with the title id
+	 */
+	@Override
+	public int getTitle(int empId) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int titleNum = -1;
+
+		try (Connection conn = Connections.getConnection()) {
+			String sql = "SELECT emp_title_id FROM employees WHERE emp_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, empId);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				titleNum = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		
+		return titleNum;
+	}
+
+	/**
+	 * Retrieves the number of subordinates under a specified employee from the employees table
+	 * @param empid The primary key of the employee being accessed
+	 * @return An int with the count of employees
+	 */
+	@Override
+	public int getSubordinates(int empId) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int subNum = -1;
+
+		try (Connection conn = Connections.getConnection()) {
+			String sql = "SELECT count(emp_reportsto) FROM employees WHERE emp_reportsto = ?"; // TODO modify to db query
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, empId);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				subNum = rs.getInt(1);
+			}
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return subNum;
+	}
+
+	/**
+	 * Retrieves the employee id of the employee that the specified employee reports to
+	 * @param empId The primary key of the employee being accessed
+	 * @return An int with the employee id
+	 */
+	@Override
+	public int getReportsTo(int empId) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int rt = -1;
+
+		try (Connection conn = Connections.getConnection()) {
+			String sql = "SELECT emp_reportsto FROM employees WHERE emp_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, empId);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				rt = rs.getInt(1);
+			}
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		
+		return rt;
+	}
+
+	/**
+	 * Retrieves the employee id of the department head by the specified department id
+	 * @param departId The id for the department that will be checked
+	 * @return An int that represents the employee's id
+	 */
 	@Override
 	public int getDepartmentHeadIdBy(int departId) {
 		PreparedStatement ps = null;
@@ -170,6 +207,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return departHeadId;
 	}
 
+	//=======UPDATE METHODS=======
+	
+	/**
+	 * Updates the total available reimbursement for a specified employee based on the project reimbursement from the reimbursement specified
+	 * @param rId The primary key for the specified reimbursement
+	 * @param empId The employee id for the employee to be updated
+	 * @return An int with the number of records updated
+	 */
 	@Override
 	public int updateAvailReimb(int rId, int empId) {
 		PreparedStatement ps = null;
