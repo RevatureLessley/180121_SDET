@@ -26,7 +26,6 @@ public class ApprovalReimburseServlet extends HttpServlet {
 	private static final Logger logger = Logger.getLogger(ApprovalReimburseServlet.class);
 	private static final long serialVersionUID = 1L;
 
-	// TODO add JUnit testing
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		response.setContentType("application/json");
