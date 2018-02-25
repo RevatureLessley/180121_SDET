@@ -28,7 +28,7 @@
 </head>
 <body>
 	<div class='container'>
-		<nav class="navbar navbar-inverse">
+		<nav class="navbar">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="userhomeappr.html">TRMS</a>
@@ -36,8 +36,7 @@
 				<ul class="nav navbar-nav">
 				</ul>
 				<ul class="nav navbar-nav navbar-right" id='user-options'>
-				
-				<<li><a href="approver/allreimburse.html"><span class="glyphicon glyphicon-ok"></span> Approve</a></li>
+				<li><a href="approver/allreimburse.html"><span class="glyphicon glyphicon-ok"></span> Approve</a></li>
 				<li><a href="Logout.do"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 				</ul>
 			</div>
@@ -49,11 +48,12 @@
 			<h3>Display all reimbursements for <span id='empname'></span></h3>
 			<hr>
 			<!-- onload='retrieveReimbursements()' -->
-			<table class='table-bordered' id="reimbursements">
+			<table class='table-striped table-responsive table-hover' id="reimbursements">
+				<thead>
 				<tr>
 					<th>Reimburse Id</th>
 					<th>Date</th>
-					<th>Event Type</th>
+					<th class="th-width">Event Type</th>
 					<th>Learning Center</th>
 					<th>Grading Format</th>
 					<th>Cost</th>
@@ -61,10 +61,13 @@
 					<th>Attachments</th>
 					<th>Status</th>
 				</tr>
+				</thead>
 			</table>
 			<hr>
-			<div class='pull-right'>
-				<a href="newreimburse.html">New Reimbursement</a>
+			<div class='clearfix'>
+				<form action="newreimburse.html">
+					<button type="submit" class='btn btn-default pull-right'>New Reimbursement</button>
+				</form>
 			</div>
 		</div>
 	</div>

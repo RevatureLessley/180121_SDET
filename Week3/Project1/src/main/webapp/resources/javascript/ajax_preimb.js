@@ -26,7 +26,7 @@ function getPersonalReimb() {
 		if(xhr.readyState == 4 && xhr.status == 200) {
 			var jsonObj = JSON.parse(xhr.responseText);
 			
-			var table = document.getElementById("reimbursements");
+			var table = document.getElementById("reimbursetbody");
 			
 			for(var i = 0; i < jsonObj.length; i++) {
 				var tr = document.createElement("tr");
@@ -58,8 +58,8 @@ function getPersonalReimb() {
 				td2.innerHTML = jsonObj[i].eventtype;
 				td3.innerHTML = jsonObj[i].learncenter;
 				td4.innerHTML = jsonObj[i].gradeformat;
-				td5.innerHTML = jsonObj[i].cost.toFixed(2);
-				td6.innerHTML = jsonObj[i].projReimb.toFixed(2);
+				td5.innerHTML = "$" + jsonObj[i].cost.toFixed(2);
+				td6.innerHTML = "$" + jsonObj[i].projReimb.toFixed(2);
 				td7.appendChild(span);
 				td8.innerHTML = jsonObj[i].status;
 				

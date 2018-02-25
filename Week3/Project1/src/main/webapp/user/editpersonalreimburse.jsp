@@ -31,7 +31,7 @@
 </head>
 <body>
 	<div class='container'>
-		<nav class="navbar navbar-inverse">
+		<nav class="navbar navbar-shadow">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="#" onclick="goBack()">TRMS</a>
@@ -46,7 +46,7 @@
 			</div>
 		</nav>
 
-		<div class='well' style='margin-top: 50px'>
+		<div class='well well-shadow' style='margin-top: 50px'>
 			<%@page import="com.trms.services.ReimbursementService"%>
 			<%@page import="com.trms.services.EmployeeService"%>
 			<%@page import="com.trms.beans.Reimbursement"%>
@@ -63,7 +63,7 @@
 				if (r.getDescription() == null) {
 					r.setDescription("N/A");
 				}
-				if(r.getWorkJustification() == null) {
+				if (r.getWorkJustification() == null) {
 					r.setWorkJustification("N/A");
 				}
 				// TODO make filter so can't access any reimbursement to edit
@@ -80,37 +80,43 @@
 					// TODO also display urgencey on all reimbursements displayed page
 				%>
 			</h3>
+			<hr>
 			<div class='row'>
 				<div class='col-sm-12'>
-					<table class='table-bordered' id="empinfo">
-						<tr>
-							<th>FIRST NAME</th>
-							<th>LAST NAME</th>
-							<th>DEPARTMENT</th>
-							<th>TITLE</th>
-							<th>AVAILABLE</th>
-							<th>ADDRESS</th>
-							<th>CITY</th>
-							<th>STATE</th>
-							<th>ZIP CODE</th>
-						</tr>
-						<tr>
-							<td><%=e.getFname()%></td>
-							<td><%=e.getLname()%></td>
-							<td><%=e.getDepartment()%></td>
-							<td><%=e.getTitle()%></td>
-							<td id="availreimb"><%=e.getAvailReimburse()%></td>
-							<td><%=e.getAddr()%></td>
-							<td><%=e.getCity()%></td>
-							<td><%=e.getState()%></td>
-							<td><%=e.getZipCode()%></td>
-						</tr>
+					<table class='table-bordered table-responsive'
+						id="empinfo">
+						<thead>
+							<tr>
+								<th>FIRST NAME</th>
+								<th>LAST NAME</th>
+								<th>DEPARTMENT</th>
+								<th>TITLE</th>
+								<th>AVAILABLE</th>
+								<th>ADDRESS</th>
+								<th>CITY</th>
+								<th>STATE</th>
+								<th>ZIP CODE</th>
+							</tr>
+						<thead>
+						<tbody>
+							<tr>
+								<td><%=e.getFname()%></td>
+								<td><%=e.getLname()%></td>
+								<td><%=e.getDepartment()%></td>
+								<td><%=e.getTitle()%></td>
+								<td id="availreimb"><%=e.getAvailReimburse()%></td>
+								<td><%=e.getAddr()%></td>
+								<td><%=e.getCity()%></td>
+								<td><%=e.getState()%></td>
+								<td><%=e.getZipCode()%></td>
+							</tr>
+						</tbody>
 					</table>
 				</div>
 			</div>
 			<br>
 			<hr>
-			<div class='row'>
+			<div class='row row-centered'>
 				<div class='col-sm-6'>
 					<label>DESCRIPTION : </label>
 					<%=r.getDescription()%>
@@ -125,7 +131,7 @@
 				</div>
 			</div>
 			<br>
-			<div class='row'>
+			<div class='row row-centered'>
 				<div class='col-sm-4'>
 					<label>EVENT : </label>
 					<%=r.getEventStr()%>
@@ -139,10 +145,10 @@
 					<%=r.getFormatStr()%>
 				</div>
 			</div>
-			
+
 			<hr>
-			
-			<div class='row'>
+
+			<div class='row row-centered'>
 				<div class='col-sm-6'>
 					<label>WORK MISSED : </label>
 					<%=r.getWorkDaysMissed()%>
@@ -155,7 +161,7 @@
 
 			<hr>
 
-			<div class='row'>
+			<div class='row row-centered'>
 				<div class='col-sm-4'>
 					<label>DATE : </label>
 					<%=r.getDate()%>
@@ -181,7 +187,7 @@
 
 				</div>
 			</div>
-			
+
 			<hr>
 
 			<%
@@ -258,29 +264,39 @@
 			<%
 				if (r.getEmpId() == user.getId()) {
 			%>
-					<label for="inputFile">ADDITIONAL ATTACHMENTS</label> <input
-						type="file" class="form-control-file" id="inputFile"
-						name='inputFiles'
-						accept=".png, .pdf, .jpeg, .jpg, .txt, .doc, .docx, .msg"
-						multiple>
-						
-					<label for='formattype'>ATTACHMENT TYPE : </label>
-						<label class="radio-inline"><input type="radio"
-								name="formattype" value="EXAMINATION">EXAMINATION</label> <label
-								class="radio-inline"><input type="radio"
-								name="formattype" value="PRESENTATION">PRESENTATION</label>
-								
+			<div class='row row-centered'>
+				<div class='col-sm-6 col-sm-offset-3'>
+				<div class='text-center'>
+				<label for="inputFile">ADDITIONAL ATTACHMENTS</label> <input
+					type="file" class="form-control-file input-file-center" id="inputFile"
+					name='inputFiles'
+					accept=".png, .pdf, .jpeg, .jpg, .txt, .doc, .docx, .msg" multiple>
+
+				<label for='formattype'>ATTACHMENT TYPE : </label> <label
+					class="radio-inline"><input type="radio" name="formattype"
+					value="EXAMINATION">EXAMINATION</label> <label class="radio-inline"><input
+					type="radio" name="formattype" value="PRESENTATION">PRESENTATION</label>
+					</div>
+					</div>
+			</div>
+
 			<%
 				}
 			%>
-			
-			<% if (r.isFiles()) { %>
-				<label for="getFiles">DOWNLOAD FILES</label>
-				<button type="button" id="getFiles"> Get File(s)</button>
-			<% } %>
+
+			<%
+				if (r.isFiles()) {
+			%>
+			<label for="getFiles">DOWNLOAD FILES</label>
+			<button type="button" id="getFiles">Get File(s)</button>
+			<%
+				}
+			%>
 			<hr>
-			<button type='button' id='back' onclick="goBack()">BACK</button>
-			<button type='button' id='save' onclick="readPageChanges()">SAVE</button>
+			<div class='text-center'>
+				<button type='button' id='back' onclick="goBack()">BACK</button>
+				<button type='button' id='save' onclick="readPageChanges()">SAVE</button>
+			</div>
 		</div>
 	</div>
 

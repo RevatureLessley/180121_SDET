@@ -29,7 +29,7 @@
 </head>
 <body>
 	<div class='container'>
-		<nav class="navbar navbar-inverse">
+		<nav class="navbar">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="#" onclick="goBack()">TRMS</a>
@@ -46,12 +46,13 @@
 
 		<h2 class="text-center">All Reimbursements to Approve</h2>
 		<div class='well'>
-			<table class='table-bordered' id="reimbursements">
+			<table class='table-striped table-responsive table-hover' id="reimbursements">
+				<thead>
 				<tr>
 					<th>Reimburse Id</th>
 					<th>Urgent</th>
 					<th>Date</th>
-					<th>Event Type</th>
+					<th class="th-width">Event Type</th>
 					<th>Learning Center</th>
 					<th>Grading Format</th>
 					<th>Cost</th>
@@ -59,6 +60,8 @@
 					<th>Attachments</th>
 					<th>Status</th>
 				</tr>
+				</thead>
+				<tbody id="reimbursetbody"></tbody>
 			</table>
 		</div>
 	</div>

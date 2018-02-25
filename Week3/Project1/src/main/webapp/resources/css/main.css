@@ -13,3 +13,86 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.row-centered {
+	float: none;
+	margin: 0 auto;	
+}
+
+.navbar {
+	color: #fff;
+	background-color: #0b4f6c;
+}
+
+.navbar-shadow {
+	box-shadow: 5px 5px 10px #b9b9b9;
+}
+
+.navbar a {
+	color: #fff;
+}
+
+a.navbar-brand {
+	color: #fff;
+}
+
+.nav > li > a:hover, .navbar-nav > li > a:hover {
+	background-color: #638fa1;
+}
+.well {
+	border: 2px solid #000;
+	background: rgb(255, 255, 255);
+}
+
+.well-shadow {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+table {
+	margin: 0 auto;
+	float: none;
+	text-align: center;
+	border-color: #000000;
+}
+
+table th {
+	text-align: center;
+}
+
+table tr {
+	height: 50px;
+}
+
+.table-bordered > tbody > tr >td ,
+.table-bordered > tbody > tr > th ,
+.table-bordered > thead > tr > td ,
+.table-bordered > thead > tr > th ,
+.border-table-color > tbody > tr > td ,
+.border-table-color > tbody > tr > th ,
+.border-table-color > thead > tr > th ,
+.border-table-color > thead > tr > td ,
+.border-table-color > tfoot > tr > td {
+	border-color: black;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: #55dde0; /*#b2cd6a*/
+ }
+ 
+ .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #f6f9ee;
+}
+
+.th-width {
+	width: 20%;
+}
+
+.button-height {
+	height: 50px;
+}
+
+.input-file-center {
+	margin: 0 auto;
+	width: 230px;
+}

@@ -10,7 +10,7 @@ function getReimburse() {
 		if(xhr.readyState == 4 && xhr.status == 200) {
 			var jsonObj = JSON.parse(xhr.responseText);
 			
-			var table = document.getElementById("reimbursements");
+			var table = document.getElementById("reimbursetbody");
 			
 			for(var i = 0; i < jsonObj.length; i++) {
 				console.log("in loop");
