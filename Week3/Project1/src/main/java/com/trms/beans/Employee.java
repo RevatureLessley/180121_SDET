@@ -1,5 +1,10 @@
 package com.trms.beans;
 
+/**
+ * Beans class for the table that handles the employees of a company
+ * @author Lynda
+ *
+ */
 public class Employee {
 	private int id;
 	private String fname;

@@ -1,5 +1,10 @@
 package com.trms.beans;
 
+/**
+ * Beans class for the table that handles the types of events the reimbursement can have.
+ * @author Lynda
+ *
+ */
 public class EventType {
 	private int eventId;
 	private String eventName;

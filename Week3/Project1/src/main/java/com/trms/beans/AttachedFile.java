@@ -3,6 +3,11 @@ package com.trms.beans;
 import java.io.File;
 import java.sql.Blob;
 
+/**
+ * Beans class for the table that handles reimbursement's attached files
+ * @author Lynda
+ *
+ */
 public class AttachedFile {
 	private int fileId;
 	private int reimburseId;

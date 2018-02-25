@@ -1,5 +1,9 @@
 package com.trms.beans;
 
+/**
+ * Beans class for the table that handles reimbursements
+ * @author Lynda
+ */
 import java.io.File;
 import java.sql.Date;
 import java.sql.Timestamp;

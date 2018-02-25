@@ -1,5 +1,10 @@
 package com.trms.beans;
 
+/**
+ * Beans class for the table that handles reimbursement's added information
+ * @author Lynda
+ *
+ */
 public class AddedInfo {
 	private int infoId;
 	private int infoRid;

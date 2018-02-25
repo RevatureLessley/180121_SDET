@@ -1,5 +1,10 @@
 package com.trms.beans;
 
+/**
+ * Beans class for the table that handles the grade formats a reimbursement can have in order to pass.
+ * @author Lynda
+ *
+ */
 public class GradeFormat {
 	private int formatId;
 	private String formatName;

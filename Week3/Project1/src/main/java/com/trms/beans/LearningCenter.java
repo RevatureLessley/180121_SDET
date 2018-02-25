@@ -1,5 +1,10 @@
 package com.trms.beans;
 
+/**
+ * Beans class for the table that handles where the reimbursement events would be taking place.
+ * @author Lynda
+ *
+ */
 public class LearningCenter {
 	private int centerId;
 	private String centerName;

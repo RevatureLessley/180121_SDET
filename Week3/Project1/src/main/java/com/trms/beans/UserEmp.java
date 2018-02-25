@@ -1,14 +1,16 @@
 package com.trms.beans;
 
+/**
+ * Beans class for the table that handles the user's login information
+ * @author Lynda
+ *
+ */
 public class UserEmp {
 	private int userId;
 	private int empId;
 	private String username;
 	private String password;
 	private String email;
-	
-	
-	
 	
 	
 	public UserEmp(int userId, int empId, String username, String password, String email) {
