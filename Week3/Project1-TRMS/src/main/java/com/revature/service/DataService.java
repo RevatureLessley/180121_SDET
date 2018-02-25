@@ -1,6 +1,7 @@
 package com.revature.service;
 
 import java.util.List;
+import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -159,8 +160,25 @@ public class DataService {
 		return attDao.getCountById(id);
 	}
 	
+	public static int getAidByRid(int rei_id) {
+		AttachmentDaoImpl attDao = new AttachmentDaoImpl();
+		return attDao.getAid(rei_id);
+	}
 	
+	public static File getAttachmentByAid(int a_id) {
+		AttachmentDaoImpl attDao = new AttachmentDaoImpl();
+		return attDao.getFile(a_id);
+	}
 	
+	public static String getAttachmentNameByAid(int a_id) {
+		AttachmentDaoImpl attDao = new AttachmentDaoImpl();
+		return attDao.getFileName(a_id);
+	}
+	
+	public static String getAttachmentTypeByAid(int a_id) {
+		AttachmentDaoImpl attDao = new AttachmentDaoImpl();
+		return attDao.getFileType(a_id);
+	}
 	
 	public static void checkNewYear(){
 	

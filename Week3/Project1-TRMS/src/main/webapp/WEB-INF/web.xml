@@ -139,4 +139,14 @@
     <servlet-name>GetAttachments</servlet-name>
     <url-pattern>/attach</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DownloadAttachment</display-name>
+    <servlet-name>DownloadAttachment</servlet-name>
+    <servlet-class>com.revature.servlets.DownloadAttachment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownloadAttachment</servlet-name>
+    <url-pattern>/download</url-pattern>
+  </servlet-mapping>
 </web-app>

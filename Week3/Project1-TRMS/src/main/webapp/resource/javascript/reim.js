@@ -209,16 +209,20 @@ function allReimAJAX() {
 				} else {td11.innerHTML = response[r].childNodes[10].innerHTML;}
 
 				var firstCounta = parseInt(response[r].childNodes[11].innerHTML);
-				var secondCounta = 0;
+				var secondCounta = parseInt(response[r].childNodes[11].innerHTML);
 				if (firstCounta != 0) {
-					for (i = 0; i < firstCounta; i++) {
-						var b = document.createElement("button");
-						b.setAttribute("class", "button button2");
-						secondCounta++;
+						var form = document.createElement("form");
+						form.setAttribute("action","download");
+						form.setAttribute("method","GET" );
+						var b = document.createElement("input");
 						var btext = document.createTextNode(secondCounta);
+						b.setAttribute("type", "submit");
+						b.setAttribute("value",secondCounta );
+						b.setAttribute("name","abutton" );
+						b.setAttribute("class", "button button2");
 						b.appendChild(btext);
-						td12.appendChild(b);
-					}
+						form.appendChild(b)
+						td12.appendChild(form);
 				} else {td12.innerHTML = response[r].childNodes[11].innerHTML;}
 				
 				

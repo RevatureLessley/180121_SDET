@@ -46,7 +46,7 @@ public class GetReimbursements extends HttpServlet {
 								"<r_workRelatedJustification>" + r.getWork_related_justification() +  "</r_workRelatedJustification>" +
 								"<r_grade>" + r.getGrade_received()   + "</r_grade>" + 
 								"<r_gradeAttachmentBit>" + r.getGrade_attachment_bit() +  "</r_gradeAttachmentBit>"  + 
-								"<r_attachmentBit>" + r.getAttachment_bit() +   "</r_attachmentBit>"  + 
+								"<r_attachmentBit>" + DataService.getAidByRid(r.getRei_id()) +   "</r_attachmentBit>"  + 
 								 
 								"</reimbursement>";
 					}
