@@ -55,7 +55,7 @@ public class SignupServlet extends HttpServlet {
 		} else {
 			AccountServices.insertNewAccount(firstname, lastname, address, accountType, 
 					email, password, confirm);
-			RequestDispatcher rd = request.getRequestDispatcher("success.html");
+			RequestDispatcher rd = request.getRequestDispatcher("success.jsp");
 			rd.forward(request, response);
 		}
 	}

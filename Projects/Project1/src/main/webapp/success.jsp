@@ -47,6 +47,12 @@
     </div>
   </div>
 </nav>
+<div style="width:500px" class="container-fluid">
+		<div class="well" id="dtheme" style="text-align:center">
+			<h1 style="color:white">Success!</h1>
+			<h2 style="color:white">Sign in below</h2>
+		</div>
+</div>
 <div class="container" style="width:500px">
   <h2 style="color:white">Sign into your account</h2>
   <form class="form-horizontal" method="POST" action="Login.do">
@@ -68,12 +74,6 @@
       </div>
     </div>
   </form>
-</div>
-<div style="width:500px" class="container-fluid">
-		<div class="well" id="dtheme">
-			<h1 style="color:white">Don't have an account?</h1>
-			<h2><a style="color:#A1BFDE" href="signup.jsp">Click here to create one!</a></h2>
-		</div>
 </div>
 </body>
 </html>

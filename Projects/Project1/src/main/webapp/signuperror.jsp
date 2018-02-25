@@ -24,7 +24,7 @@
 	
 <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
 </head>
-<title>RRose Inc</title>
+<title>Error</title>
 <body style="background-color:#2C3A50">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -38,7 +38,14 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.jsp">Home</a></li>
+        <li class="active"><a href="#">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Info<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Events</a></li>
+          </ul>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -48,7 +55,7 @@
   </div>
 </nav>
 <div class="container" style="width:500px">
-  <h2 style="color:white">Create account</h2>
+  <h2 style="color:white">Error registering your account. Try again:</h2>
   <form data-toggle="validator" role="form" method="POST" action="signup.do">
   <div class="form-group">
     <label for="firstname" class="control-label" style="color:white">First name</label>
