@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.trms.util.AutoApprove;
+import com.trms.util.AutoAvailableReset;
 
 /**
  * Servlet implementation class FrontController
@@ -20,6 +21,7 @@ import com.trms.util.AutoApprove;
 public class FrontController extends HttpServlet {
 	final static Logger logger = Logger.getLogger(FrontController.class);
 	private Timer timer;
+	private Timer timer01;
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -29,13 +31,21 @@ public class FrontController extends HttpServlet {
 		int min = Integer.parseInt(this.getInitParameter("minsToApprove"));
 		int calMin = Integer.parseInt(this.getInitParameter("calendarMinute"));
 		
-		timer = new Timer();
+		timer = new Timer("AutoApprove");
 		Calendar date = Calendar.getInstance();
 		//date.set(Calendar.HOUR_OF_DAY, 17);
 		date.set(Calendar.MINUTE, calMin);
 		date.set(Calendar.SECOND, 0);
 		date.set(Calendar.MILLISECOND, 0);
 		timer.schedule(new AutoApprove(day, min), date.getTime(), 1000*60*60*24);
+		
+		timer01 = new Timer("NewYearReset");
+		Calendar date01 = Calendar.getInstance();
+		//date01.set(Calendar.MONTH, 2);
+		//date01.set(Calendar.DAY_OF_MONTH, 25);
+		//date01.set(Calendar.HOUR_OF_DAY, 0);
+		date01.set(Calendar.MINUTE, 45);
+		timer.schedule(new AutoAvailableReset(), date01.getTime(), 1000*60*60*24*365);
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -80,6 +90,8 @@ public class FrontController extends HttpServlet {
 	public void destroy() {
 		timer.cancel();
 		timer.purge();
+		timer01.cancel();
+		timer01.purge();
 	}
 
 }

@@ -45,6 +45,7 @@ CREATE TABLE employees(
     CONSTRAINT emp_depart_fk FOREIGN KEY (emp_department)
     REFERENCES empdepartments (depart_id) ON DELETE CASCADE
 );
+ALTER TABLE employees ADD reset_timestamp TIMESTAMP(5) DEFAULT SYSTIMESTAMP;
 
 CREATE TABLE usersemp(
     user_id NUMBER(9),
@@ -288,5 +289,5 @@ INSERT INTO learningcenters VALUES(3, 'NEW HORIZONS', '462 Seventh Ave, 6th Floo
 INSERT INTO learningcenters VALUES(4, 'WESTERN GOVERNORS UNIVERSITY', '4001 S 700 E #700', 'Salt Lake City', 'UT', 84107, 'USA');
 INSERT INTO learningcenters VALUES(5, 'ORACLE UNIVERSITY', '-', '-', '-', -1, '-');
 
-SELECT reimburse_id, reimburse_emp_id, reimburse_datetime, reimburse_timestamp, 
-reimburse_approvelvl, reimburse_approveid, reimburse_approved FROM reimbursements;
+SELECT EXTRACT(YEAR FROM reset_timestamp) FROM employees;
+UPDATE employees SET emp_availreim = 1000 WHERE EXTRACT(YEAR FROM reset_timestamp) = EXTRACT(YEAR FROM SYSTIMESTAMP);

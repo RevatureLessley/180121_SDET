@@ -41,4 +41,10 @@ public class EmployeeService {
 		
 		return dao.updateAvailReimb(rId, empId);
 	}
+	
+	public static int resetAllAvailReimb() {
+		EmployeeDao dao = new EmployeeDaoImpl();
+		
+		return dao.resetAllAvailReimb();
+	}
 }

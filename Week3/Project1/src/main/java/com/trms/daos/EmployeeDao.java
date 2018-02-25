@@ -13,4 +13,5 @@ public interface EmployeeDao {
 	
 	//update
 	public int updateAvailReimb(int rId, int empId);
+	public int resetAllAvailReimb();
 }

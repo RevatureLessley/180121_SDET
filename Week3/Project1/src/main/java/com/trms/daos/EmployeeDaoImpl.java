@@ -237,5 +237,21 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return result;
 	}
 
-
+	@Override
+	public int resetAllAvailReimb() {
+		PreparedStatement ps = null;
+		int result = -1;
+		// TODO make a check ensure that available reimburse is enough to cover the projected amount
+		try(Connection conn = Connections.getConnection()) {
+			String sql = "UPDATE employees SET emp_availreim = 1000 WHERE EXTRACT(YEAR FROM reset_timestamp) = EXTRACT(YEAR FROM SYSTIMESTAMP)";
+			ps = conn.prepareStatement(sql);
+			result = ps.executeUpdate();
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
 }
