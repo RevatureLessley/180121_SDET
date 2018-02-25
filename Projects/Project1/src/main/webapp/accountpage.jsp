@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<%@ page import="com.project1.services.AccountServices" %>
 <html>
 <head>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"
@@ -26,6 +27,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%
 	String email = request.getParameter("email");
+				System.out.println(email);
+	String name = AccountServices.getName(email);
 %>
 <title>Welcome!</title>
 
@@ -54,15 +57,13 @@
 </nav>
 	<div class="container-fluid">
 		<div class="well" id="dtheme">
-			<h1 style="color:white">Welcome, <%= email %>!!</h1>
+			<h1 style="color:white">Welcome, <%= name %>!!</h1>
 		</div>
 
 		<div class="well" id="dtheme" style="width:400px">
 
-			<h3><a style="color:#A1BFDE" href="signup.html">Click here</a></h3>
-			<h3><a style="color:#A1BFDE" href="signup.html">Click here</a></h3>
-			<h3><a style="color:#A1BFDE" href="signup.html">Click here</a></h3>
-			<h3><a style="color:#A1BFDE" href="signup.html">Click here</a></h3>
+			<h3><a style="color:#A1BFDE" href="signup.html">Account info</a></h3>
+			<h3><a style="color:#A1BFDE" href="signup.html">Events</a></h3>
 		</div>
 	</div>
 </body>

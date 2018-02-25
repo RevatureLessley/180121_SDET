@@ -33,7 +33,7 @@ public class AccountServices {
 	
 	public static boolean validate(String email, String password){
 		dao = new TRMSDaoImpl();
-		String pw = dao.getStringValue(email, "account_info", "pw");
+		String pw = dao.getStringValue(email, "pw", "account_info");
 		if (pw == null) return false;
 		
 		if(pw.equals(password)){
@@ -43,5 +43,10 @@ public class AccountServices {
 			System.out.println("Sorry dawgz");
 			return false;
 		}
+	}
+	
+	public static String getName(String email) {
+		dao = new TRMSDaoImpl();
+		return dao.getStringValue(email, "first_name", "personal_info");
 	}
 }

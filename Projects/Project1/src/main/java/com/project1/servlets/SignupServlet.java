@@ -50,7 +50,7 @@ public class SignupServlet extends HttpServlet {
 		
 		if (!password.equals(confirm) || !AccountServices.uniqueEmail(email) || accountType == null) {
 			System.out.print("unmatching passwords/email exists");
-			RequestDispatcher rd = request.getRequestDispatcher("signuperror.html");
+			RequestDispatcher rd = request.getRequestDispatcher("signuperror.jsp");
 			rd.forward(request, response);
 		} else {
 			AccountServices.insertNewAccount(firstname, lastname, address, accountType, 

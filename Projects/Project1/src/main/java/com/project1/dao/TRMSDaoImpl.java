@@ -346,7 +346,7 @@ public class TRMSDaoImpl implements TRMSDao {
 	
 //======================= SELECT COLUMN VALUE METHODS (BY TYPE) =================================//
 	@Override
-	public String getStringValue(String email, String table, String column) {
+	public String getStringValue(String email, String column, String table) {
 		String value = null;
 		try (Connection conn = Connections.getConnection()) {
 				sql = "SELECT " + column + " FROM " + table 

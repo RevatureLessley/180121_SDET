@@ -21,6 +21,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("login servlet reached");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		System.out.println(email + password);
 		RequestDispatcher rd;
 		//HttpSession session = request.getSession();
 		
@@ -31,8 +32,8 @@ public class LoginServlet extends HttpServlet {
 			rd.forward(request, response);
 		}else{
 			//session.invalidate();
-			//RequestDispatcher rd = request.getRequestDispatcher("signinerror.html");
-			//rd.include(request, response);
+			rd = request.getRequestDispatcher("signinerror.jsp");
+			rd.forward(request, response);
 			
 		}
 	}
