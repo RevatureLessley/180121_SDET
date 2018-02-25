@@ -714,18 +714,19 @@ public class RequestDaoImp implements RequestDao{
 	}
 
 	@Override
-	public void uploadDoc(byte[] file, Integer requestDocID) {
+	public void uploadDoc(byte[] file, Integer requestDocID, String docType) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 		
 		try{
 			Connection conn = Connections.getConnection();
-			String sql = "UPDATE RequestDocumentations SET Doc = ? WHERE DocRequestId = ?";
+			String sql = "UPDATE RequestDocumentations SET Doc = ?, DocType = ? WHERE DocRequestId = ?";
 
 			ps = conn.prepareStatement(sql);
 			ps.setBytes(1, file);
-			ps.setInt(2, requestDocID);
+			ps.setString(2, docType);
+			ps.setInt(3, requestDocID);
 			ps.executeQuery(); 
 
 			}catch(SQLException e){
@@ -784,7 +785,8 @@ public class RequestDaoImp implements RequestDao{
 
 			if(rs != null) {
 				rs.next();
-				return rs.getBytes(1);
+				
+				return rs.getBytes("Doc");
 			}
 			
 			}catch(SQLException e){
@@ -796,7 +798,42 @@ public class RequestDaoImp implements RequestDao{
 		
 			return null;
 	}
-	
+
+	@Override
+	public String getDocType(Integer requestDocID) {
+		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String DocType = null;
+
+		
+		try (Connection conn = Connections.getConnection()) {
+			
+
+			String sql = "SELECT DocType FROM RequestDocumentations"
+					+ " WHERE DocRequestId = ?";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, requestDocID);
+			rs = ps.executeQuery(); 
+
+			while (rs.next()) {
+				DocType = rs.getString(1); 
+			}
+			
+			System.out.println(DocType);
+			
+			return DocType;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+
+		return null;
+	}
 		
 
 

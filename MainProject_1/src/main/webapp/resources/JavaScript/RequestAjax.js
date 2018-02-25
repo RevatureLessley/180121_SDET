@@ -231,3 +231,42 @@ function sendAllAJAX(){
 	
 	xhr.send(); //State == 2
 }
+
+
+function DocAJAX(){
+	var xhr = new XMLHttpRequest(); //State = 0
+	console.log(xhr.readyState);
+	xhr.open("POST","DownloadDocs"); //State == 1
+	
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			var d = document.createElement("div");
+			var p = document.createElement("p");
+			var t = document.createTextNode("SUCCESS");
+			p.appendChild(t);
+			d.appendChild(p);
+			document.getElementById("download").appendChild(d);
+
+		}else if(xhr.readyState == 4 && xhr.status!=200){
+			var d = document.createElement("div");
+			var p = document.createElement("p");
+			var t = document.createTextNode("FAIL");
+			p.appendChild(t);
+			d.appendChild(p);
+			document.getElementById("download").appendChild(d);
+		}
+
+	}
+	
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	
+	var RequestDocID = document.forms["download"]["req_ID"].value;
+	
+	xhr.send("RequestDocID =" + RequestDocID);
+	
+	xhr.send(); //State == 2
+}
+
+
+

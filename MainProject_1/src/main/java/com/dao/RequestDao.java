@@ -53,7 +53,9 @@ public interface RequestDao {
 	
 	public Integer getEmployeeID(Integer RequestID);
 	
-	public void uploadDoc(byte[] file, Integer requestDocID);
+	public void uploadDoc(byte[] file, Integer requestDocID, String docType);
 
 	public byte[] downloadDoc(Integer requestDocID);
+	
+	public String getDocType(Integer requestDocID);
 }

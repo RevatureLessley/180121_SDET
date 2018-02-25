@@ -30,7 +30,6 @@ public class RegisterServlet extends HttpServlet {
 		String SupervisorRef = request.getParameter("SupervisorRef");
 		String AssociateID = request.getParameter("AssociateID");
 		
-		
 		Integer SV_Ref = Integer.parseInt(SupervisorRef);
 		Integer A_ID = Integer.parseInt(AssociateID);
 		

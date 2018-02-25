@@ -194,12 +194,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>DownloadDoc</display-name>
-    <servlet-name>DownloadDoc</servlet-name>
-    <servlet-class>com.servlets.DownloadDoc</servlet-class>
+    <display-name>DownloadDocs</display-name>
+    <servlet-name>DownloadDocs</servlet-name>
+    <servlet-class>com.servlets.DownloadDocs</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DownloadDoc</servlet-name>
-    <url-pattern>/DownloadDoc</url-pattern>
+    <servlet-name>DownloadDocs</servlet-name>
+    <url-pattern>/DownloadDocs</url-pattern>
   </servlet-mapping>
 </web-app>

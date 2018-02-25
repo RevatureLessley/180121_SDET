@@ -42,6 +42,7 @@ public class UploadDoc extends HttpServlet {
 		
 		Part file = request.getPart("FileAttach");
 		Integer RequestDocID =  Integer.parseInt(request.getParameter("req_Doc_ID"));
+		String DocType = request.getParameter("DocType");
 		
 		InputStream is = null;
 		ByteArrayOutputStream os = null;
@@ -60,7 +61,7 @@ public class UploadDoc extends HttpServlet {
 			
 		
 			RequestDao doc = new RequestDaoImp();
-			doc.uploadDoc(file_arr, RequestDocID);
+			doc.uploadDoc(file_arr, RequestDocID, DocType);
 			
 			
 		} catch (IOException e) {
