@@ -26,16 +26,13 @@ public class ToYearDaoImpl implements ToYearDao {
 			stmt.setString(1, username);
 			rs = stmt.executeQuery(); //Executing queries, brings back resultsets
 		
-			if (rs == null) {
-				return null;
+			if(rs.next()) {
+				ty.setMaximum(rs.getInt("maximum"));
+				ty.setPending(rs.getInt("pending"));
+				ty.setAwarded(rs.getInt("awarded"));
+				ty.setUsername(username);				
 			}
-			
-			rs.next();
-			
-			ty.setMaximum(rs.getInt("maximum"));
-			ty.setPending(rs.getInt("pending"));
-			ty.setAwarded(rs.getInt("awarded"));
-			ty.setUsername(username);
+
 			
 			return ty;
 			}catch(SQLException e){

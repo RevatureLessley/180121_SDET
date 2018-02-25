@@ -9,6 +9,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import dao.ReimbursementDao;
@@ -41,6 +42,7 @@ public class UploadFile extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession(false);
 		Part file = request.getPart("file");
 		
 		InputStream is = null;
@@ -60,7 +62,8 @@ public class UploadFile extends HttpServlet {
 			
 		
 			ReimbursementDao rDao = new ReimbursementDaoImpl();
-			rDao.uploadFile(arr, 2);
+			
+			rDao.uploadFile(arr, (int) session.getAttribute("id") );
 		} catch (IOException e) {
 			System.out.println("Could not upload file!");
 			e.printStackTrace();
@@ -70,6 +73,9 @@ public class UploadFile extends HttpServlet {
 			if (os != null)
 				os.close();
 		}
+
+		request.getRequestDispatcher("reimbursement.html").forward(request, response);											
+
 		
 	}
 

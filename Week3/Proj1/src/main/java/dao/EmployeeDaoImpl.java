@@ -88,17 +88,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			stmt.setString(1, username);
 			stmt.setString(2, password);
 			rs = stmt.executeQuery(); //Executing queries, brings back resultsets
+		
 			
-			if (rs == null) {
+			if(rs.next()) {
+				emp.setUsername(rs.getString("username"));
+				emp.setPassword(rs.getString("password"));	
+				return emp;
+			}
+			else {
 				return null;
 			}
-			
-			while(rs.next()) {
-				emp.setUsername(rs.getString("username"));
-				emp.setPassword(rs.getString("password"));				
-			}
 				
-			return emp;
 				
 			}catch(SQLException e){
 //				logger.debug(e.getStackTrace());
@@ -140,21 +140,20 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			rs = stmt.executeQuery(); //Executing queries, brings back resultsets
 			rs.next();
 			int size = rs.getInt(1);
-			
+			close(stmt);
+			close(rs);
+						
 			String sql = "SELECT * FROM EMPLOYEE "
 					+ "WHERE type = ?";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, level);
 			rs = stmt.executeQuery(); //Executing queries, brings back resultsets
 			
-			if (rs == null) {
-				return "-1";
-			}
-			
-			int randomIndex = (int) (Math.random() * size);
-			rs.next();
-			for(int i = 0; i < randomIndex;i++) {
-				rs.next();
+			if(rs.next()) {
+				int randomIndex = (int) (Math.random() * size);
+				for(int i = 0; i < randomIndex;i++) {
+					rs.next();
+				}
 			}
 			
 			return rs.getString("username");
@@ -182,14 +181,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			stmt.setString(1, username);
 			rs = stmt.executeQuery(); //Executing queries, brings back resultsets
 			
-			if (rs == null) {
+			if (rs.next()) {
+				return rs.getString("reportsto");
+			}	
+			else {
 				return null;
 			}
-			
-			rs.next();
-
-			return rs.getString("reportsto");
-				
 				
 			}catch(SQLException e){
 //				logger.debug(e.getStackTrace());
@@ -220,13 +217,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			stmt.setString(1, username);
 			rs = stmt.executeQuery(); //Executing queries, brings back resultsets
 			
-			if (rs == null) {
+			if(rs.next()) {
+				return rs.getInt("type");
+				
+			}
+			else {
 				return -1;
 			}
-			
-			rs.next();
-
-			return rs.getInt("type");
 				
 				
 			}catch(SQLException e){

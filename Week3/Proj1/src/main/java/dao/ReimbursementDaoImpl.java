@@ -27,7 +27,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	private static final Logger logger = LogManager.getLogger(ReimbursementDaoImpl.class);
 	
 	@Override
-	public void insertR(String username, String supername, Date submitDate, Date startDate, int isUrgent, int adjustedAmount) {
+	public void insertR(String username, String supername, Date submitDate, Date startDate, int isUrgent, int adjustedAmount, int event) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
@@ -67,9 +67,10 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 		try{
 			Connection conn = Connections.getConnection();
-			String sql = "INSERT INTO Reimbursement (username, submitDate, startDate, urgent, amount, supervisor, dept, benco, rid) "
-					+ "VALUES (?,?,?,?, ?,?,?,?,?)";
+			String sql = "INSERT INTO Reimbursement (username, submitDate, startDate, urgent, amount, supervisor, dept, benco, rid, event_id) "
+					+ "VALUES (?,?,?,?,?, ?,?,?,?,?)";
 			stmt = conn.prepareStatement(sql);
+			ReimbursementDao rDao = new ReimbursementDaoImpl();
 			stmt.setString(1, username);
 			stmt.setDate(2, submitDate);
 			stmt.setDate(3, startDate);
@@ -78,10 +79,10 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			stmt.setString(6, supervisor);
 			stmt.setString(7, dept);
 			stmt.setString(8, benco);
-			ReimbursementDao rDao = new ReimbursementDaoImpl();
 			stmt.setInt(9, rDao.getUniqueId());
-			rDao = null; //makes the object available for garbage collection
+			stmt.setInt(10, event);
 			stmt.executeUpdate(); 
+			rDao = null; //makes the object available for garbage collection
 		
 			}catch(SQLException e){
 //				logger.debug(e.getStackTrace());
@@ -151,10 +152,6 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, username);
 			rs = stmt.executeQuery(); //Executing queries, brings back resultsets
-		
-			if (rs == null) {
-				return null;
-			}
 			
 			while(rs.next()) {
 				Reimbursement r = new Reimbursement();
@@ -172,6 +169,17 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				r.setDept(rs.getString("dept"));
 				r.setBenco(rs.getString("benco"));
 				r.setId(rs.getInt("rid"));
+				r.setEmpcomment(rs.getString("empcomment"));
+				r.setSupcomment(rs.getString("supcomment"));
+				r.setDeptcomment(rs.getString("deptcomment"));
+				r.setBencocomment(rs.getString("bencocomment"));
+				r.setSuperapp( Integer.parseInt( rs.getString("superapp")));
+				r.setDeptapp( Integer.parseInt( rs.getString("deptapp")));
+				r.setBencoapp( Integer.parseInt( rs.getString("bencoapp")));
+				r.setEvent(rs.getInt("event_id"));
+				r.setFinalapp(rs.getInt("finalapp"));
+				r.setRejected(rs.getInt("rejected"));
+				
 				reims.add(r);
 			}
 				
@@ -199,10 +207,6 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 
 			stmt = conn.prepareStatement(sql);
 			rs = stmt.executeQuery(); //Executing queries, brings back resultsets
-		
-			if (rs == null) {
-				return -1;
-			}
 			
 			while(rs.next()) {
 				rids.add(rs.getInt("rid"));
@@ -237,26 +241,33 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			stmt.setInt(1, id);
 
 			rs = stmt.executeQuery(); //Executing queries, brings back resultsets
-		
-			if (rs == null) {
-				return null;
+
+			if(rs.next()) {
+				r.setAmount(rs.getInt("amount"));
+				r.setUrgent(rs.getInt("urgent"));
+				r.setStartDate(rs.getDate("startDate"));
+				r.setSubmitDate(rs.getDate("submitDate"));
+				r.setUsername(rs.getString("username"));
+				if(rs.getString("supervisor") == null) {
+					r.setSupervisor("Supervisor is Dept Head");
+				}else {
+					r.setSupervisor(rs.getString("supervisor"));					
+				}
+				r.setDept(rs.getString("dept"));
+				r.setBenco(rs.getString("benco"));
+				r.setId(rs.getInt("rid"));
+				r.setEmpcomment(rs.getString("empcomment"));
+				r.setSupcomment(rs.getString("supcomment"));
+				r.setDeptcomment(rs.getString("deptcomment"));
+				r.setBencocomment(rs.getString("bencocomment"));
+				r.setSuperapp( Integer.parseInt( rs.getString("superapp")));
+				r.setDeptapp( Integer.parseInt( rs.getString("deptapp")));
+				r.setBencoapp( Integer.parseInt( rs.getString("bencoapp")));
+				r.setEvent(rs.getInt("event_id"));
+				r.setFinalapp(rs.getInt("finalapp"));
+				r.setRejected(rs.getInt("rejected"));
+
 			}
-			
-			rs.next();
-			
-			r.setAmount(rs.getInt("amount"));
-			r.setUrgent(rs.getInt("urgent"));
-			r.setStartDate(rs.getDate("startDate"));
-			r.setSubmitDate(rs.getDate("submitDate"));
-			r.setUsername(rs.getString("username"));
-			if(rs.getString("supervisor") == null) {
-				r.setSupervisor("Supervisor is Dept Head");
-			}else {
-				r.setSupervisor(rs.getString("supervisor"));					
-			}
-			r.setDept(rs.getString("dept"));
-			r.setBenco(rs.getString("benco"));
-			r.setId(rs.getInt("rid"));
 
 				
 			return r;
@@ -269,18 +280,18 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				close(rs);
 			}
 	}
-
+	
 	@Override
-	public void approveR(int id, String user, String reason) {
+	public void approveR(int id, int level, String reason) {
 		CallableStatement stmt = null;
 		ResultSet rs = null;
 
 		try{
 			Connection conn = Connections.getConnection();
-			String sql = "call approveR(?,?, ?)";
+			String sql = "call appR(?,?, ?)";
 			stmt = conn.prepareCall(sql);
 			stmt.setInt(1, id);
-			stmt.setString(2,user);
+			stmt.setInt(2, level);
 			stmt.setString(3, reason);
 			stmt.execute(); //Executing queries, brings back resultsets
 			
@@ -381,6 +392,59 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			}
 		
 			return null;
+	}
+
+	@Override
+	public void addComment(String comment, int level, int id) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		String stringLevel = "";
+		switch(level) {
+			case 0:
+				stringLevel = "empcomment";
+				break;
+			case 1:
+				stringLevel = "supcomment";
+				break;
+			case 2:
+				stringLevel = "deptcomment";
+				break;
+			case 3:
+				stringLevel = "bencocomment";
+				break;
+		}
+		
+		try{
+			Connection conn = Connections.getConnection();
+			String sql = "UPDATE REIMBURSEMENT SET " + stringLevel + " = ? WHERE rid = ?";
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, comment);
+			stmt.setInt(2, id);
+			rs = stmt.executeQuery(); //Executing queries, brings back resultsets	
+
+			
+			}catch(SQLException e){
+				logger.debug(e.getStackTrace());
+				e.printStackTrace();
+			}finally{
+				close(stmt);
+				close(rs);
+			}
+		
+	}
+
+	@Override
+	public String getApprovalString(int num) {		
+		switch (num){
+			case 0:
+				return "Not Yet Approved";
+			case 1:
+				return "Approved";
+			default:
+				return null;
+		}
 	}
 	
 	

@@ -53,15 +53,15 @@ public class DoReimbursement extends HttpServlet {
 		String username = request.getParameter("username");
 
 		if(!session.getAttribute("username").equals(username)) {
-			out.println("<h1>Username did not match logged in user</h1>");
+			out.println("<h1>No match found for that username and password</h1>");
 			return;
 		}
 		
 		String submitDateForm = request.getParameter("submitDate");
 		String startDateForm = request.getParameter("startDate");
 		
-		int event = Integer.parseInt(request.getParameter("event"));
 		int cost = Integer.parseInt(request.getParameter("cost"));
+		int event = Integer.parseInt(request.getParameter("event"));
 		switch(event) {
 			case 1: //uni course
 				cost *= 0.8; //80% coverage
@@ -90,13 +90,13 @@ public class DoReimbursement extends HttpServlet {
 			HtmlTemplates.goBackButton(out);
 			return;
 		}
-		
+				
 		ToYearDao tyDao = new ToYearDaoImpl();
 		ToYear ty = tyDao.getRecord(username);
 		int adjustedClaim = tyDao.getMaxClaim(ty, cost );
 		if(adjustedClaim > 0) {
-			rDao.insertR(username, request.getParameter("super") ,Date.valueOf(submitDateForm), Date.valueOf(startDateForm), isUrgent, adjustedClaim);	
-			out.println("<h1>Reimbursement request submitted for " + session.getAttribute("username")  + "</h1>");			
+			rDao.insertR(username, request.getParameter("super") ,Date.valueOf(submitDateForm), Date.valueOf(startDateForm), isUrgent, adjustedClaim, event);	
+			out.println("<h1>Reimbursement request submitted for " + session.getAttribute("username") + " in the amount of " + adjustedClaim + "</h1>");			
 		}
 		else {
 			out.println("<h1>" + session.getAttribute("username")  + " has reached their yearly limit</h1>");			

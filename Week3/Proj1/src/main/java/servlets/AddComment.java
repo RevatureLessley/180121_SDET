@@ -1,29 +1,26 @@
 package servlets;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.ReimbursementDao;
 import dao.ReimbursementDaoImpl;
+import util.HtmlTemplates;
 
 /**
- * Servlet implementation class DownloadFile
+ * Servlet implementation class AddComment
  */
-public class DownloadFile extends HttpServlet {
+public class AddComment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DownloadFile() {
+    public AddComment() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,29 +37,20 @@ public class DownloadFile extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(false);
-		//response.setContentType("application/pdf");
-		//response.setHeader(arg0, arg1);
-		
+		String comment = request.getParameter("comment");
+		int level = Integer.parseInt(request.getParameter("level"));
+		int id = Integer.parseInt(request.getParameter("id"));
 		ReimbursementDao rDao = new ReimbursementDaoImpl();
 		
-		InputStream is = new ByteArrayInputStream(rDao.downloadFile((int) session.getAttribute("id")));
+		rDao.addComment(comment, level, id);
 		
-		// Create the output stream (OUT of the app TO the client)
-		OutputStream os = response.getOutputStream();
-				
-		// We're going to read and write 1KB at a time
-		byte[] buffer = new byte[1024];
-				
-		// Reading returns -1 when there's no more data left to read.
-		while (is.read(buffer) != -1) {
-			os.write(buffer);
+		if(level == 0) {
+			request.getRequestDispatcher("reimbursement.html").forward(request, response);											
+			
 		}
-		
-		// Always close your streams!
-		os.flush();
-		os.close();
-		is.close();
+		else {
+			request.getRequestDispatcher("supervisor.html").forward(request, response);											
+		}
 	}
 
 }

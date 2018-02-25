@@ -49,13 +49,34 @@ public class GetRequests extends HttpServlet {
 		
 		if(reims!=null){
 			String myXml = "<root>";
-			//Manually create the xml file.
 			for(Reimbursement r : reims){
+				String event = "";
+				switch(r.getEvent()) {
+					case 1: 
+						event = "University Course";
+						break;
+					case 2:
+						event = "Seminar";
+						break;
+					case 3: 
+						event = "Certification Prep";
+						break;
+					case 4:
+						event = "Certification";
+						break;
+					case 5: 
+						event = "Technical Training";
+						break;
+					case 6:
+						event = "Other";
+						break;		
+						
+				}
 				myXml += "<reimbursement><Username>" + r.getUsername() + "</Username>"
 								+ "<Amount>" + r.getAmount() + "</Amount>"
-								+ "<Supervisor>" + r.getSupervisor() + "</Supervisor>"
-								+ "<dept>" + r.getDept() + "</dept>"
-								+ "<benco>" + r.getBenco() + "</benco>"
+								+ "<SubmitDate>" + r.getSubmitDate() + "</SubmitDate>"
+								+ "<StartDate>" + r.getStartDate() + "</StartDate>"
+								+ "<Event>" + event + "</Event>"
 								+ "<level>" + eDao.getLevel(username) + "</level>"
 								+ "<rId>" + r.getId() + "</rId>"
 								+ "<username>" + username +"</username>"

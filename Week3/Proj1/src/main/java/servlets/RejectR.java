@@ -41,6 +41,14 @@ public class RejectR extends HttpServlet {
 		String reason = request.getParameter("reason");
 		ReimbursementDao rDao = new ReimbursementDaoImpl();
 		rDao.rejectR(id, level, reason);
+		
+		if(level == 0) {
+			request.getRequestDispatcher("reimbursement.html").forward(request, response);											
+			
+		}
+		else {
+			request.getRequestDispatcher("supervisor.html").forward(request, response);											
+		}
 	}
 
 }

@@ -53,16 +53,21 @@ public class LoggedIn extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		//Provides the created session for a whatever user accessed the site last.
-		//HOWEVER, if it is the first time this computer accessed the site, it will create
-		//a new session for this computer.
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
+		
+		int level = Integer.parseInt(request.getParameter("level"));
 		if(request.getParameter("createOrLogin").equals("create")) {
 			out.println("<h3>Chose to create</h3>");		
 			EmployeeDao eDao = new EmployeeDaoImpl();
-			eDao.createEmployee((String) request.getParameter("username"),(String) request.getParameter("password"), Integer.parseInt(request.getParameter("type")) );
+			eDao.createEmployee((String) request.getParameter("username"),(String) request.getParameter("password"), level );
 			setSessionAttributes(request, response, session);
+			if( ((String) request.getParameter("level")).equals("0")  ) {
+				request.getRequestDispatcher("reimbursement.html").forward(request, response);					
+			}
+			else {
+				request.getRequestDispatcher("supervisor.html").forward(request, response);											
+			}
 		}
 		
 		else if(request.getParameter("createOrLogin").equals("login")) {
@@ -70,29 +75,29 @@ public class LoggedIn extends HttpServlet {
 			EmployeeDao eDao = new EmployeeDaoImpl();
 			Employee emp = null;
 			emp = eDao.logIn((String) request.getParameter("username"),(String) request.getParameter("password"));
-			if(emp.getUsername() != null) {
+			if(emp != null) {
 				out.println("<h3>" + emp.getUsername() + "  " + emp.getPassword() + " </h3>");	
 				setSessionAttributes(request, response, session);
+				if(eDao.getLevel((String) request.getParameter("username")) == 0) {
+					request.getRequestDispatcher("reimbursement.html").forward(request, response);		
+					
+				}
+				else {
+					request.getRequestDispatcher("supervisor.html").forward(request, response);							
+				}
 			}
 			else {
-				out.println("<h3>User not found</h3>");	
+				out.println("<h3>No user exists. Try creating a new user</h3>");	
 				HtmlTemplates.goBackButton(out);
 			}
-		}
-		
+		}	
 	}
 	
 	private void setSessionAttributes(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
 		
 		session.setAttribute("username", request.getParameter("username"));
 		session.setAttribute("password", request.getParameter("password"));
 		//session.setMaxInactiveInterval(5);			
-
-
-
-		//HtmlTemplates.goBackButton(out);
-		request.getRequestDispatcher("reimbursement.html").forward(request, response);		
 
 	}
 

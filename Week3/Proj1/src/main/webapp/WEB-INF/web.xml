@@ -148,4 +148,14 @@
     <servlet-name>DownloadFile</servlet-name>
     <url-pattern>/DownloadFile</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddComment</display-name>
+    <servlet-name>AddComment</servlet-name>
+    <servlet-class>servlets.AddComment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddComment</servlet-name>
+    <url-pattern>/AddComment</url-pattern>
+  </servlet-mapping>
 </web-app>

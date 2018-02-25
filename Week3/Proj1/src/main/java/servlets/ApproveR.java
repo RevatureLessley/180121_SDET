@@ -36,10 +36,18 @@ public class ApproveR extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
+		int level = Integer.parseInt(request.getParameter("level"));
 		String reason = request.getParameter("reason");
-		String username = request.getParameter("username");
 		ReimbursementDao rDao = new ReimbursementDaoImpl();
-		rDao.approveR(id,username,reason);
+		rDao.approveR(id,level,reason);
+		
+		if(level == 0) {
+			request.getRequestDispatcher("reimbursement.html").forward(request, response);											
+			
+		}
+		else {
+			request.getRequestDispatcher("supervisor.html").forward(request, response);											
+		}
 	}
 
 }

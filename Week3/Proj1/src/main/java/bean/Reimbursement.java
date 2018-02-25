@@ -19,6 +19,11 @@ public class Reimbursement {
 	private int id;
 	private int rejected;
 	private int event;
+	private int superapp;
+	private int deptapp;
+	private int bencoapp;
+	private int finalapp;
+
 	
 	public String getUsername() {
 		return username;
@@ -110,6 +115,32 @@ public class Reimbursement {
 	public void setEvent(int event) {
 		this.event = event;
 	}
+	public int getSuperapp() {
+		return superapp;
+	}
+	public void setSuperapp(int superapp) {
+		this.superapp = superapp;
+	}
+	public int getDeptapp() {
+		return deptapp;
+	}
+	public void setDeptapp(int deptapp) {
+		this.deptapp = deptapp;
+	}
+	public int getBencoapp() {
+		return bencoapp;
+	}
+	public void setBencoapp(int bencoapp) {
+		this.bencoapp = bencoapp;
+	}
+	public int getFinalapp() {
+		return finalapp;
+	}
+	public void setFinalapp(int finalapp) {
+		this.finalapp = finalapp;
+	}
+	
+	
 
 	
 }
