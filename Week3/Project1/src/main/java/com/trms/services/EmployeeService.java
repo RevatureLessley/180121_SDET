@@ -6,7 +6,7 @@ import com.trms.daos.EmployeeDaoImpl;
 
 public class EmployeeService {
 	
-	public static Employee getUserEmpId(int empId) {
+	public static Employee getEmpByUserEmpId(int empId) {
 		EmployeeDao dao = new EmployeeDaoImpl();
 		
 		return dao.getEmployee(empId);

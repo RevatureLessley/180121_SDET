@@ -31,7 +31,7 @@ public class EmployeeInfoServlet extends HttpServlet {
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		
-		Employee e = EmployeeService.getUserEmpId((int)session.getAttribute("empid"));
+		Employee e = EmployeeService.getEmpByUserEmpId((int)session.getAttribute("empid"));
 		JSONObject member = new JSONObject();
 		
 		member.put("empid", e.getId());

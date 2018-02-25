@@ -29,7 +29,7 @@ public class UserReimburseServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		logger.info("doGet() : Emp Id # " + session.getAttribute("empid"));
 		int numSub = EmployeeService.getSubordinates((Integer)session.getAttribute("empid"));
-		Employee e = EmployeeService.getUserEmpId((Integer)session.getAttribute("empid"));
+		Employee e = EmployeeService.getEmpByUserEmpId((Integer)session.getAttribute("empid"));
 		logger.info("doGet() : " + e.getTitle());
 		logger.info("doGet() number Subord : " + numSub);
 		if(e.getTitle().equals("DEPARTMENT HEAD") || e.getTitle().equals("BENEFITS COORDINATOR") || numSub > 0) {

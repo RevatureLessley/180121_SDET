@@ -4,13 +4,8 @@ import static com.trms.util.CloseStreams.close;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -21,7 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
 import com.trms.beans.AttachedFile;
@@ -56,8 +50,6 @@ public class FileDownloadServlet extends HttpServlet {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ZipOutputStream zos = new ZipOutputStream(baos);
         byte[] buffer = new byte[B*25];
-        InputStream is = null;
-        OutputStream os = null;
 		FileInputStream fis = null;
 		BufferedInputStream bis = null;
 		

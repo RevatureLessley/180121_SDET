@@ -197,7 +197,7 @@ function updateProjReimb() {
 
 function sendEmail() {
 	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "../SendEmailServlet");
+	xhr.open("POST", "../SendEmailServlet");
 	
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4 && xhr.status == 200) {
@@ -205,7 +205,12 @@ function sendEmail() {
 		}
 	}	
 	
-	xhr.send();
+	var rid = document.getElementById("rid").innerHTML;
+	var pr = document.getElementById("projreimb").value;
+	
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	
+	xhr.send("rid=" + rid + "&projreimb=" + pr);
 }
 
 function awardAmount() {

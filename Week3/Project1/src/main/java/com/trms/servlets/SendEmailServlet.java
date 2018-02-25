@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.trms.services.ReimbursementService;
+import com.trms.services.UsersEmpService;
+
 /**
  * Servlet implementation class SendEmailServlet
  */
@@ -41,13 +44,20 @@ public class SendEmailServlet extends HttpServlet {
 
 		Session session = Session.getInstance(props, authenticator);
 
-		String to = "lyndaxj9@gmail.com";
+		int reEmpId = ReimbursementService.getEmpIdByReimburse(Integer.parseInt(request.getParameter("rid")));
+		
+		String to =  UsersEmpService.getUserEmail(reEmpId);
+		logger.info("doGet() : " + UsersEmpService.getUserEmail(reEmpId));
 		String subject = "New Reimburse";
 		Message msg = new MimeMessage(session);
 		try {
 			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			msg.setSubject(subject);
-			msg.setText("Hi,\n\nHow are you?");
+			String message = "Hello,\n" + "You are receiving this message because the project reimbursement amount for reimbursment request #" +
+							request.getParameter("rid") + " has been changed to $" + request.getParameter("projreimb") + ".\nPlease review your "
+									+ "reimbursment details.\n\n-TRMS NO REPLY\n\nDo not reply to this email.  This is an automatic message "
+									+ "sent from an unmonitered email.  You will not get a reply.";
+			msg.setText(message);
 
 			// Send the message.
 			Transport.send(msg);

@@ -31,7 +31,7 @@ public class SingleReEmpInfoServlet extends HttpServlet {
 		int rid = Integer.parseInt(request.getParameter("rid"));
 		
 		
-		Employee e = EmployeeService.getUserEmpId(ReimbursementService.getEmpIdByReimburse(rid));
+		Employee e = EmployeeService.getEmpByUserEmpId(ReimbursementService.getEmpIdByReimburse(rid));
 		JSONObject member = new JSONObject();
 		
 		member.put("empid", e.getId());

@@ -64,4 +64,26 @@ public class UserEmpDaoImpl implements UserEmpDao {
 		
 		return id;
 	}
+	
+	@Override
+	public String getEmail(int empid) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String email = null;
+		
+		try(Connection conn = Connections.getConnection()){
+			String sql = "SELECT user_email FROM usersemp WHERE useremp_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, empid);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				email = rs.getString(1);
+			}
+			logger.debug("getEmail() : " + email);
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		}
+		return email;
+	}
 }

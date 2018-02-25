@@ -17,4 +17,10 @@ public class UsersEmpService {
 		//validation
 		return dao.getUserEmpId(username, password);
 	}
+	
+	public static String getUserEmail(int empid) {
+		UserEmpDao dao = new UserEmpDaoImpl();
+		
+		return dao.getEmail(empid);
+	}
 }
