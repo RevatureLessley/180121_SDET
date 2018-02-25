@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +24,9 @@
 	
 <!--  notes for project:
 		1) Use a front controller (filter) for the authentication page. -->
-<script src="javascript/Ajax.js"></script>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
 </head>
-<title>RRose Inc</title>
+<title>R&R</title>
 <body style="background-color:#2C3A50">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -34,31 +36,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Rich Inc</a>
+      <a class="navbar-brand" href="index.jsp">R&R</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Info<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Events</a></li>
-          </ul>
-        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="signin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="signup.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="signin.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
 </nav>
-<div style="width:500px" class="container-fluid" class ="float-right">
-		<div class="well" style="background-color:#161D23; border-color:black">
-			<h1 style="color:white">Account Created!</h1>
-			<h2><a style="color:#A1BFDE" href="signin.html">Click here to sign in.</a></h2>
-		</div>
-</div>
 </body>
 </html>

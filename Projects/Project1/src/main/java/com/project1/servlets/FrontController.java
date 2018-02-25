@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("front controller reached");
 		String url = request.getRequestURI(); //Stores the url in a string
 		System.out.println(url);
 		RequestDispatcher rd;
@@ -22,7 +23,6 @@ public class FrontController extends HttpServlet {
 		String[] tokens = url.split("/");
 		String action = (tokens[tokens.length-1]);
 		action = action.substring(0, action.length()-3).toLowerCase();
-		System.out.println(action);
 		
 		switch(action){
 		case "login":
@@ -38,12 +38,6 @@ public class FrontController extends HttpServlet {
 		}
 		
 
-	}
-
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -19,10 +21,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
-	
-<!--  notes for project:
-		1) Use a front controller (filter) for the authentication page. -->
-<script src="javascript/Ajax.js"></script>
+
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
 </head>
 <title>RRose Inc</title>
 <body style="background-color:#2C3A50">
@@ -48,11 +48,39 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="signin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="signup.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="signin.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
 </nav>
+<div class="container" style="width:500px">
+  <h2 style="color:white">Sign into your account</h2>
+  <form class="form-horizontal" method="POST" action="Login.do">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email" style="color:white">Email:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" placeholder="Enter email" name="email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="password" style="color:white">Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" placeholder="Enter password" name="password">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Log in</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div style="width:500px" class="container-fluid">
+		<div class="well" id="dtheme">
+			<h1 style="color:white">Don't have an account?</h1>
+			<h2><a style="color:#A1BFDE" href="signup.jsp">Click here to create one!</a></h2>
+		</div>
+</div>
 </body>
 </html>

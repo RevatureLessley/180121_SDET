@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,9 +22,7 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 	
-<!--  notes for project:
-		1) Use a front controller (filter) for the authentication page. -->
-<script src="javascript/Ajax.js"></script>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
 </head>
 <title>RRose Inc</title>
 <body style="background-color:#2C3A50">
@@ -99,11 +99,11 @@
   </div>
 </form>
 </div>
-<div style="width:500px" class="container-fluid" class ="float-right">
-		<div class="well" style="background-color:#161D23; border-color:black">
+	<div class="container" style="width:500px">
+		<div class="well" id="dtheme">
 			<h1 style="color:white">Already have an account?</h1>
 			<h2><a style="color:#A1BFDE" href="signin.html">Sign in here!</a></h2>
 		</div>
-</div>
+	</div>
 </body>
 </html>

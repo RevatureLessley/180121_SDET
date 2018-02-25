@@ -11,36 +11,6 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>RegisterEmployee</display-name>
-    <servlet-name>RegisterEmployee</servlet-name>
-    <servlet-class>com.project1.servlets.RegisterEmployee</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RegisterEmployee</servlet-name>
-    <url-pattern>/RegisterEmployee</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>GetPersonalInfo</display-name>
-    <servlet-name>GetPersonalInfo</servlet-name>
-    <servlet-class>com.project1.servlets.GetPersonalInfo</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>GetPersonalInfo</servlet-name>
-    <url-pattern>/GetPersonalInfo</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>PostPersonalInfo</display-name>
-    <servlet-name>PostPersonalInfo</servlet-name>
-    <servlet-class>com.project1.servlets.PostPersonalInfo</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>PostPersonalInfo</servlet-name>
-    <url-pattern>/PostPersonalInfo</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>FrontController</display-name>
     <servlet-name>FrontController</servlet-name>
     <servlet-class>com.project1.servlets.FrontController</servlet-class>
@@ -58,16 +28,6 @@
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>GetStringValue</display-name>
-    <servlet-name>GetStringValue</servlet-name>
-    <servlet-class>com.project1.servlets.GetStringValue</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>GetStringValue</servlet-name>
-    <url-pattern>/GetStringValue</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
