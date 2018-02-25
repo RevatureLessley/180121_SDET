@@ -57,7 +57,7 @@
 					<!-- First Name -->
 					<label class="control-label" for="fname">First Name</label>
 					<div class="controls">
-						<input type="text" id="fname" name="fname" placeholder=""
+						<input type="text" id="fname" name="fname" required placeholder=""
 							class="input-xlarge">
 						<p class="help-block">Names are limited to 60 characters</p>
 					</div>
@@ -67,7 +67,7 @@
 					<!-- Last Name -->
 					<label class="control-label" for="lname">Last Name</label>
 					<div class="controls">
-						<input type="text" id="lname" name="lname" placeholder=""
+						<input type="text" id="lname" name="lname" required placeholder=""
 							class="input-xlarge">
 						<p class="help-block">Names are limited to 60 characters</p>
 					</div>
@@ -75,7 +75,7 @@
 
 				<h5>Please provide your Role</h5>
 				<div id="role">
-				<label class="radio-inline"><input type="radio" name="role" value="employee">employee</label> 
+				<label class="radio-inline"><input type="radio" name="role" required value="employee">employee</label> 
 				<label class="radio-inline"><input type="radio" name="role" value="supervisor">supervisor</label> 
 				<label class="radio-inline"><input type="radio" name="role" value="department head">department head</label>
 				<label class="radio-inline"><input type="radio"name="role" value="benefits coordinator">benefits coordinator</label>
@@ -85,7 +85,6 @@
 				<h5>What department do you work for?</h5>
 				<div id="departments">
 				<select name="departments">
-					<option>---</option>
 					<option>production</option>
 					<option>marketing</option>
 					<option>technical</option>
@@ -99,19 +98,19 @@
 				<br>
 				<div id="empid">
 				<h5>What is your Employee ID?</h5>
-					<input type="number" name="empid">
+					<input type="number"  name="empid" required>
 				</div>
 				
 				<div id="supid">
 					<h5>What is the ID of your Supervisor?</h5>
-					<input type="number" name="supid">
+					<input type="number" name="supid" required>
 				</div>
 				
 				<div class="control-group">
 					<!-- Username -->
 					<label class="control-label" for="username">Username</label>
 					<div class="controls">
-						<input type="text" id="username" name="username" placeholder=""
+						<input type="text" id="username" name="username"  requiredplaceholder=""
 							class="input-xlarge">
 						<p class="help-block">Username can contain any letters or
 							numbers, without spaces</p>
@@ -122,7 +121,7 @@
 					<!-- E-mail -->
 					<label class="control-label" for="email">E-mail</label>
 					<div class="controls">
-						<input type="text" id="email" name="email" placeholder=""
+						<input type="text" id="email" name="email" required placeholder=""
 							class="input-xlarge">
 						<p class="help-block">Please provide your E-mail</p>
 					</div>
@@ -132,7 +131,7 @@
 					<!-- Password-->
 					<label class="control-label" for="password">Password</label>
 					<div class="controls">
-						<input type="password" id="password" name="password"
+						<input type="password" id="password" name="password" required
 							placeholder="" class="input-xlarge">
 						<p class="help-block">Password should be at least 4 characters</p>
 					</div>
@@ -144,7 +143,7 @@
 						(Confirm)</label>
 					<div class="controls">
 						<input type="password" id="password_confirm"
-							name="password_confirm" placeholder="" class="input-xlarge">
+							name="password_confirm" required placeholder="" class="input-xlarge">
 						<p class="help-block">Please confirm password</p>
 					</div>
 				</div>

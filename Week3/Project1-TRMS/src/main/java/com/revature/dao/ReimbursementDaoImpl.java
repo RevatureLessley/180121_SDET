@@ -111,7 +111,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		PreparedStatement ps = null;
 	
 		try(Connection conn = Bridge.connect()){
-			String sql = "UPDATE REIMBURSEMENTS SET DATEOF = ? , TIME = ?, LOCATION = ?, DESCRIPTION = ? , COST = ?, GRADING_FORMAT = ?, TYPE_OF_EVENT = ?, WORK_RELATED_JUSTIFICATION = ? WHERE REI_ID = ?";
+			String sql = "UPDATE REIMBURSEMENTS SET DATEOF = ? , TIME = ?, LOCATION = ?, DESCRIPTION = ? , COST = ?, GRADING_FORMAT = ?, TYPE_OF_EVENT = ?, WORK_RELATED_JUSTIFICATION = ?, ATTACHMENT_BIT = ? WHERE REI_ID = ?";
 			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1,reim.getDateOf()); //Date Of
@@ -122,7 +122,8 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			ps.setString(6,reim.getGradingFormat()); // Grading Format
 			ps.setString(7,reim.getTypeOfEvent()); // Type Of Event
 			ps.setString(8,reim.getWork_related_justification()); // Work Related Justification
-			ps.setInt(9,reim.getRei_id()); // reim_id
+			ps.setInt(9,reim.getAttachment_bit()); // attachment bit
+			ps.setInt(10,reim.getRei_id()); // reim_id
 			ps.execute();
 		
 		}catch(SQLException e){e.printStackTrace();}
@@ -263,7 +264,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 		try(Connection conn = Bridge.connect()){
 			
-			String sql = "SELECT * WHERE EMP_ID = ? ";
+			String sql = "SELECT * FROM REIMBURSEMENTS WHERE EMP_ID = ? ";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, emp_id);
 			rs = ps.executeQuery(); 

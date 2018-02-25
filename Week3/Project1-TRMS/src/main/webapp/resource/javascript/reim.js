@@ -140,13 +140,18 @@ function allReimAJAX(){
 			
 			var	til10 = document.createElement("th"); // approval status
 			til10.setAttribute("scope","col");
-			var text10 = document.createTextNode("APPROVAL STATUS");
+			var text10 = document.createTextNode("GRADE");
 			til10.appendChild(text10);
 			
 			var	til11 = document.createElement("th"); // note
 			til11.setAttribute("scope","col");
-			var text11 = document.createTextNode("INTERAL NOTES");
+			var text11 = document.createTextNode("GRADE ATTACHMENTS?");
 			til11.appendChild(text11);
+			
+			var	til12 = document.createElement("th"); // note
+			til12.setAttribute("scope","col");
+			var text12 = document.createTextNode("OTHER ATTACHMENTS?");
+			til12.appendChild(text12);
 			
 			row1st.appendChild(til1);
 			row1st.appendChild(til2);
@@ -159,6 +164,7 @@ function allReimAJAX(){
 			row1st.appendChild(til9);
 			row1st.appendChild(til10);
 			row1st.appendChild(til11);
+			row1st.appendChild(til12);
 			
 			thead.appendChild(row1st)
 			table.appendChild(thead);
@@ -179,6 +185,7 @@ function allReimAJAX(){
 				var td9 = document.createElement("td");
 				var td10 = document.createElement("td");
 				var td11 = document.createElement("td");
+				var td12 = document.createElement("td");
 			
 				td1.innerHTML = response[r].childNodes[0].innerHTML;
 				td2.innerHTML = response[r].childNodes[1].innerHTML;
@@ -191,6 +198,7 @@ function allReimAJAX(){
 				td9.innerHTML = response[r].childNodes[8].innerHTML;
 				td10.innerHTML = response[r].childNodes[9].innerHTML;
 				td11.innerHTML = response[r].childNodes[10].innerHTML;
+				td12.innerHTML = response[r].childNodes[11].innerHTML;
 				
 				row.appendChild(td1);
 				row.appendChild(td2);
@@ -203,6 +211,7 @@ function allReimAJAX(){
 				row.appendChild(td9);
 				row.appendChild(td10);
 				row.appendChild(td11);
+				row.appendChild(td12);
 				
 				tbody.appendChild(row)
 				table.appendChild(tbody);

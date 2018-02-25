@@ -46,8 +46,15 @@
 		</div>
 
 
-		<div id="wholeform2">
-			<form class="form-horizontal" id="editreimburse" method="post" action="../editrei">
+			<input type='button' value='GO BACK' onclick='goBack()'>
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
+		<div id="wholeform1">
+			<form action="../editrei" class="form-horizontal" id="reimburse"
+				method="post" enctype='multipart/form-data'>
 				<fieldset>
 					<div id="legend">
 						<legend class="">Reimbursement Submission</legend>
@@ -55,13 +62,12 @@
 
 						<div>
 						<h5>Reimbursement Id?</h5>
-						<input type="number" name="reiid" id="reiid">
+						<input type="number" name="reiid" required id="reiid">
 					</div>
 
 					<h5>Type Of Event?</h5>
 					<div id="typeofevent">
-						<select name="typeofevent">
-							<option>---</option>
+						<select name="typeofevent" required>
 							<option>University Course</option>
 							<option>Seminar</option>
 							<option>Certification Preparation Class</option>
@@ -70,36 +76,43 @@
 							<option>Other</option>
 						</select>
 					</div>
-					
-		<h5>What Type Of Grading Format Does This Event Use?</h5>
-				<div>
-				 <label class="radio-inline"><input type="radio" name="grade" value="Alphabetical" required>Alphabetical (grades from A-F)</label>
-				<label class="radio-inline"><input type="radio" name="grade" value="Numerical">Numerical (grades from 0-100)</label>
-				<label class="radio-inline"><input type="radio" name="grade" value="Pass/Fail">Pass/Fail (grade is either Pass or Fail)</label> 
-				<label class="radio-inline"><input type="radio" name="grade" value="Other">Other</label> 
-				</div>
-				<div class="control-group">
+
+					<h5>What Type Of Grading Format Does This Event Use?</h5>
+					<div>
+						<label class="radio-inline" required><input type="radio"
+							name="grade" value="Alphabetical" required>Alphabetical
+							(grades from A-F)</label> <label class="radio-inline"><input
+							type="radio" name="grade" value="Numerical">Numerical
+							(grades from 0-100)</label> <label class="radio-inline"><input
+							type="radio" name="grade" value="Pass/Fail">Pass/Fail
+							(grade is either Pass or Fail)</label> <label class="radio-inline"><input
+							type="radio" name="grade" value="Other">Other</label>
+					</div>
+					<div class="control-group">
 						<!-- Description -->
-						<label class="control-label" for="customgrade">Other Grading Schemes</label>
-						
+						<label class="control-label" for="customgrade">Other
+							Grading Schemes</label>
+
 						<div class="controls">
-							<textarea class="form-control" rows="1" id="customgradeformat" name="customgradeformat"
-								placeholder=""></textarea>
-								<p class="help-block">Please provide a name for this grading format</p>
-							<textarea class="form-control" rows="4" id="customgradedes" name="customgradedesc"
-								placeholder=""></textarea>
-							<p class="help-block">Please provide details of this grading format.</p>
+							<textarea class="form-control" rows="1" id="customgradeformat"
+								name="customgradeformat" placeholder=""></textarea>
+							<p class="help-block">Please provide a name for this grading
+								format</p>
+							<textarea class="form-control" rows="4" id="customgradedes"
+								name="customgradedesc" placeholder=""></textarea>
+							<p class="help-block">Please provide details of this grading
+								format.</p>
 						</div>
 					</div>
-				<br>
-				
+					<br>
+
 					<div class="control-group">
 						<!-- Description -->
 						<label class="control-label" for="desc">Description Of
 							Event?</label>
 						<div class="controls">
-							<textarea class="form-control" rows="5" id="desc" name="desc"
-								placeholder=""></textarea>
+							<textarea class="form-control" rows="4" id="desc" name="desc"
+								required placeholder="" required></textarea>
 							<p class="help-block">Briefly provide a description for the
 								event.</p>
 						</div>
@@ -111,9 +124,9 @@
 						<label class="control-label" for="work">How Will This
 							Relate to your Current Employment?</label>
 						<div class="controls">
-							<textarea class="form-control" rows="5" id="work" name="work"
-								placeholder=""></textarea>
-							<p class="help-block">Briefly provide a work realted
+							<textarea class="form-control" rows="4" id="work" name="work"
+								required placeholder="" required></textarea>
+							<p class="help-block">Briefly provide a work related
 								justification.</p>
 						</div>
 					</div>
@@ -124,8 +137,8 @@
 						<label class="control-label" for="location">Location Of
 							Event?</label>
 						<div class="controls">
-							<textarea class="form-control" rows="5" id="location"
-								name="location" placeholder=""></textarea>
+							<textarea class="form-control" rows="2" id="location"
+								name="location" required placeholder="" required></textarea>
 							<p class="help-block">Please provide where the event will
 								take place</p>
 						</div>
@@ -135,17 +148,21 @@
 						<!-- Date Of Event -->
 						<label class="control-label" for="dateof">Date Of Event?</label>
 						<div class="controls">
-							<input type="date" name="dateof" id="dateof" class="input-xlarge">
+							<input type="date" name="dateof" required id="dateof">
 							<p class="help-block">Please select the date the Event will
 								occur</p>
 						</div>
 					</div>
 
+
+
+
 					<div class="control-group">
 						<!-- Time Of Event -->
 						<label class="control-label" for="timeof">Time Of Event?</label>
 						<div class="controls">
-							<input type="time" name="timeof" id="timeof" class="input-xlarge">
+							<input type="time" name="timeof" required id="timeof"
+								class="input-xlarge" required>
 							<p class="help-block">Please select the time that the event
 								will begin</p>
 						</div>
@@ -154,15 +171,31 @@
 					<br>
 					<div>
 						<h5>Cost Of Event?</h5>
-						<input type="number" name="cost" id="cost">
+						<input type="number" name="cost" required id="cost">
 					</div>
+					<br>
+
+					<h3>Would You Like To Attach Any Files To This Reimbursement?</h3>
+					<h4>(pdf, png, jpeg, txt, msg, or doc file type)</h4>
+
+					<div class="fileinput fileinput-new" data-provides="fileinput"
+						id=afile>
+						<span class="btn btn-default btn-file"><span>Choose
+								file</span><input type="file" class="form-control-file" id="ufile"
+							name="ufile"
+							accept=".png, .pdf, .jpeg, .jpg, .txt, .doc, .docx, .msg"
+							multiple></span> <span class="fileinput-filename"></span><span
+							class="fileinput-new">No file chosen</span>
+					</div>
+					<br>
 
 					<div class="control-group">
 						<!-- Button -->
 						<div class="controls">
-							<button type="submit" class="btn btn-default">Submit Edited Reimbursement</button>
+							<button type="submit" class="btn btn-default">Submit
+								Attachments</button>
 						</div>
-						<br>
+						<br> <br>
 					</div>
 				</fieldset>
 			</form>
