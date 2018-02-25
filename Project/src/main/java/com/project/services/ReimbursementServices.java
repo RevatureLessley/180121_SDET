@@ -3,6 +3,7 @@ package com.project.services;
 import java.util.List;
 
 import com.project.beans.Reimbursement;
+import com.project.beans.Tuition;
 import com.project.dao.ReimbursementDao;
 import com.project.dao.ReimbursementDaoImp;
 
@@ -41,5 +42,37 @@ public class ReimbursementServices {
 			}
 		}
 		return 0;
+	}
+
+	public static void updatePending(Tuition t) {
+		List<Reimbursement> rs = dao.getAllReimbursement();
+		for(Reimbursement r : rs) {
+			if(r.getUsername().equals(t.getUsername())){
+				r.setPending(r.getPending()+t.getProjected());
+				dao.UpdateReimbursement(r);
+			}
+		}
+		
+	}
+
+	public static void updateAwarded(Tuition t) {
+		List<Reimbursement> rs = dao.getAllReimbursement();
+		for(Reimbursement r : rs) {
+			if(r.getUsername().equals(t.getUsername())){
+				r.setPending(r.getPending()-t.getProjected());
+				r.setAwarded(r.getAwarded()+t.getProjected());
+				dao.UpdateReimbursement(r);
+			}
+		}
+	}
+
+	public static Reimbursement getReimburseByUsername(String username) {
+		List<Reimbursement> rs = dao.getAllReimbursement();
+		for(Reimbursement r : rs) {
+			if(r.getUsername().equals(username)){
+				return r;
+			}
+		}
+		return null;
 	}
 }

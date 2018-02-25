@@ -45,15 +45,49 @@ public class FrontController extends HttpServlet {
 			rd = request.getRequestDispatcher("login");
 			rd.forward(request, response);
 			break;
+		case "home":
+			System.out.println("frontcontroller home");
+			rd = request.getRequestDispatcher("Home");
+			rd.forward(request, response);
+			break;
 		case "register":
 			System.out.println("frontcontroller register");
 			rd = request.getRequestDispatcher("Register");
 			rd.forward(request, response);
 			break;
 		case "tuitionform":
-			System.out.println("frontcontroller tuition");
+			System.out.println("frontcontroller tuitionform");
 			rd = request.getRequestDispatcher("TuitionForm");
-			System.out.println("request dispather");
+			rd.forward(request, response);
+			break;
+		case "tuitionstatus":
+			System.out.println("frontcontroller tuitionStatus");
+			rd = request.getRequestDispatcher("TuitionStatus");
+			rd.forward(request, response);
+			break;
+		case "tuitionapprove":
+			System.out.println("frontcontroller tuitionapprove");
+			rd = request.getRequestDispatcher("TuitionApprove");
+			rd.forward(request, response);
+			break;
+		case "approverequest":
+			System.out.println("frontcontroller approverequest");
+			rd = request.getRequestDispatcher("ApproveRequest");
+			rd.forward(request, response);
+			break;
+		case "moreinfo":
+			System.out.println("frontcontroller moreinfo");
+			rd = request.getRequestDispatcher("MoreInfo");
+			rd.forward(request, response);
+			break;
+		case "reject":
+			System.out.println("frontcontroller reject");
+			rd = request.getRequestDispatcher("Reject");
+			rd.forward(request, response);
+			break;
+		case "deletetuition":
+			System.out.println("frontcontroller deletetuition");
+			rd = request.getRequestDispatcher("DeleteTuition");
 			rd.forward(request, response);
 			break;
 		case "logout":

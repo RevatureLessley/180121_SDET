@@ -38,3 +38,63 @@ END;
 delete tuition where e_id = 1020;
 
 call INSERT_TUITION('HARISH',current_date,current_date,'newyork','onlinecourse', 100.5, 'PASSING_GRADE','UNIVERSITY_COURSE');
+
+drop table reimbursement;
+create table reimbursement(
+    e_id number(10) PRIMARY KEY,
+    pending_reimbursement number (8,2) NOT NULL,
+    awarded_reimbursement number (8,2) NOT NULL,  
+    constraint e_id_re_fk foreign key (e_id) REFERENCES employee (e_id) ON DELETE CASCADE
+);
+
+UPDATE EMPLOYEE
+SET E_TITLE = 'HEAD' where e_first_name = 'PETAR';
+
+
+update tuition set approval = 3  where e_id = 1020; 
+
+insert into REIMBURSEMENT values((select e_id from login where e_username='PETAR'), 0, 0);
+
+drop table approval;
+create table approval(
+    t_id number(10) PRIMARY KEY,
+    status number(10),
+    constraint t_id_fk FOREIGN key (t_id) references tuition(t_id) on delete cascade
+);
+
+ALTER TABLE tuition
+  ADD projected_reimbursement number(10);
+  
+UPDATE TUITION
+SET APPROVAL = 3 WHERE E_ID = ();
+
+delete tuition where t_id = 1045;
+
+CREATE OR REPLACE FORCE VIEW "TUTION"."ALLTUITION" ("T_ID","E_USERNAME", "START_DATE", "END_DATE", "LOCATION", "DESCRIPTION", "COST", "GRADING_FORMATE", "EVENT_TYPE", "ATTACHMENT","APPROVAL","PROJECTED") AS 
+  select t_id, e_username, start_date, end_date, location, description, cost, grading_formate, event_type, attachment, approval, projected_reimbursement 
+from login natural inner join TUITION;
+
+select * from alltuition;
+
+create or replace view ALLREIMBURSEMENT as
+select e_username, pending_reimbursement, awarded_reimbursement from login natural inner join reimbursement;
+
+create or replace PROCEDURE DELETE_TUITION_TUITIONID(ID IN NUMBER)
+IS 
+BEGIN
+DELETE TUITION
+WHERE T_ID = (SELECT E_ID FROM LOGIN WHERE E_USERNAME = USERNAME);
+END;
+
+delete tuition where e_id = '1002';
+commit;
+
+create or replace PROCEDURE SELECT_SUB_EMPLOYEE(USERNAME IN VARCHAR2)
+IS 
+BEGIN
+select e_username from login where e_id = (select e_id from employee 
+where e_supervisior = (select e_id from login where e_username = 'USERNAME'));
+END;
+
+update tuition set approval = 0 , description = 'approved' where t_id = 1060;
+commit;

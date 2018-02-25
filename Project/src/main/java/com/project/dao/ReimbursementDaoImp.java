@@ -1,5 +1,6 @@
 package com.project.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -44,8 +45,22 @@ public class ReimbursementDaoImp implements ReimbursementDao {
 
 	@Override
 	public boolean UpdateReimbursement(Reimbursement r) {
-		// TODO Auto-generated method stub
-		return false;
+		CallableStatement stmt = null;
+		try (Connection conn = Connections.getConnection()) {
+			stmt = conn.prepareCall("{ call UPDATE_REIMBURSEMENT(?,?,?) }");
+			stmt.setDouble(2, r.getPending());
+			stmt.setDouble(3, r.getAwarded());
+			stmt.setString(1, r.getUsername());
+			stmt.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			CloseStreams.close(stmt);
+		}
+
+		return true;
 	}
 
 }

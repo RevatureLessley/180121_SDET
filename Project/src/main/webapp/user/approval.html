@@ -1,10 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="../resources/javascript/approve.js"></script>
+
+
+
+<title>Approve</title>
 </head>
-<body>
-<h1>Welcome to Approval form</h1>
+<body onload="getApprove();">
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Tuition Reimbursement</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><form action="logout.do"><button style="margin-top: 8px;margin-right: 20px;" type="submit" class = "btn btn-danger"> Logout</button></form></li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="status.html">Status</a></li>
+      <li class="active"><a href="#">Approve</a></li>
+      <li><a href="form.html">Form</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+<div class = "container-fluid">
+	<div class ="well">	<h3><strong>Tuition Reimbursement Approve</strong></h3></div>
+		<div class = "well">	        
+  		<table  class="table table-condensed" id=results>
+    		<thead>
+      		<tr>
+       			<th style="text-align:center">Name</th>
+        		<th style="text-align:center">Id</th>
+        		<th style="text-align:center">Start</th>
+        		<th style="text-align:center">End</th>
+        		<th style="text-align:center">Venue</th>
+        		<th style="text-align:center">Info</th>
+        		<th style="text-align:center">Grading</th>
+        		<th style="text-align:center">Event</th>
+        		<th style="text-align:center">Cost</th>
+        		<th style="text-align:center">Claim</th>
+       	  		<th style="text-align:center">Status</th> 
+      		</tr>
+    		</thead>
+  		</table>
+  		<p id=Error></p>
+  		</div>
+  	<div class = "well">
+			<strong>Tuition ID: </strong><input type="text" name="t_id" id="t_id">
+				<button onclick="approve()" class="btn btn-success"> Approve</button>
+				<button onclick="moreInfo()" class="btn btn-info">MoreInfo</button>
+				<button onclick="reject()" class="btn btn-danger">Reject</button>
+			<strong>Reason: </strong><input type="text" name="reason" id="reason">
+		<p style="margin-top: 5px; color: red"id=empty></p>
+		<p style="margin-top: 5px; color: green"id=success></p>
+  		<p style="margin-top: 5px; color: red"id=failed></p>	
+  	</div>
+  	<div class = "well">
+  		<form action="../Download" method="get">
+  			Tuition ID: <input type="text" name="d_id" id="d_id" required>
+  			<button class="btn btn-primary">Download</button>
+  		</form>
+  	</div>
+</div>
 </body>
 </html>

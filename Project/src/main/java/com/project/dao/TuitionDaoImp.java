@@ -43,7 +43,8 @@ public class TuitionDaoImp implements TuitionDao {
 						rs.getString(9),
 						rs.getBytes(10),
 						rs.getInt(11),
-						rs.getDouble(12) ));
+						rs.getDouble(12),
+						rs.getString(13)));
 			}
 
 		} catch (SQLException e) {
@@ -61,7 +62,7 @@ public class TuitionDaoImp implements TuitionDao {
 		
 		CallableStatement stmt = null;
 		try(Connection conn = Connections.getConnection()){
-			stmt = conn.prepareCall("{call INSERT_TUITION(?,?,?,?,?,?,?,?,?,?,?)}");
+			stmt = conn.prepareCall("{call INSERT_TUITION(?,?,?,?,?,?,?,?,?,?,?,?)}");
 			stmt.setString(1, t.getUsername());
 			stmt.setDate(2, Date.valueOf(t.getStart_date()));
 			stmt.setDate(3, Date.valueOf(t.getEnd_date()));
@@ -71,8 +72,9 @@ public class TuitionDaoImp implements TuitionDao {
 			stmt.setString(7, t.getGrading_formate());
 			stmt.setString(8, t.getEvent_type());
 			stmt.setBytes(9, t.getAttachment());
-			stmt.setInt(10, EmployeeServices.getInital_approval(t.getUsername()));
+			stmt.setInt(10, EmployeeServices.getInital_approval(t));
 			stmt.setDouble(11, ReimbursementServices.getProject(t.getUsername(), t.getEvent_type(), t.getCost()));
+			stmt.setString(12, t.getFile_type());
 			stmt.execute();
 		}catch(SQLException e1){
 			e1.printStackTrace();
@@ -121,6 +123,87 @@ public class TuitionDaoImp implements TuitionDao {
 
 		return true;
 	}
+
+	@Override
+	public boolean approveTution(Tuition t) {
+		CallableStatement stmt = null;
+		try (Connection conn = Connections.getConnection()) {
+			stmt = conn.prepareCall( "UPDATE TUITION SET APPROVAL = ? WHERE T_ID = ?");
+			stmt.setInt(1,t.getApproval());
+			stmt.setInt(2,t.getT_id());
+			stmt.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			CloseStreams.close(stmt);
+		}
+
+		return true;
+	}
+
+	@Override
+	public boolean MoreInfo(Tuition t) {
+		CallableStatement stmt = null;
+		try (Connection conn = Connections.getConnection()) {
+			stmt = conn.prepareCall( "UPDATE TUITION SET APPROVAL = ? , DESCRIPTION = ? WHERE T_ID = ?");
+			stmt.setInt(1,t.getApproval());
+			stmt.setString(2, t.getDescription());
+			stmt.setInt(3,t.getT_id());
+			stmt.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			CloseStreams.close(stmt);
+		}
+
+		return true;
+	}
+
+	@Override
+	public boolean reject(int t_id, String reason) {
+		CallableStatement stmt = null;
+		try (Connection conn = Connections.getConnection()) {
+			stmt = conn.prepareCall( "UPDATE TUITION SET APPROVAL = -2 , DESCRIPTION = ? WHERE T_ID = ?");
+			stmt.setString(1, reason);
+			stmt.setInt(2,t_id);
+			stmt.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			CloseStreams.close(stmt);
+		}
+
+		return true;
+	}
+
+	@Override
+	public boolean addFile(Tuition t) {
+		CallableStatement stmt = null;
+		try (Connection conn = Connections.getConnection()) {
+			stmt = conn.prepareCall( "UPDATE TUITION SET FILE_TYPE = ? , ATTACHMENT = ? WHERE T_ID = ?");
+			stmt.setString(1, t.getFile_type());
+			stmt.setBytes(2, t.getAttachment());
+			stmt.setInt(3,t.getT_id());
+			stmt.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			CloseStreams.close(stmt);
+		}
+
+		return true;
+
+	}
+
+
 	
 	
 }

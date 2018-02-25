@@ -10,5 +10,9 @@ public interface TuitionDao {
 	public boolean addTuition(Tuition t);
 	public boolean deleteTuitonByUsername(String u);
 	public boolean deleteTuitonByTuitionId(int i);
+	public boolean approveTution(Tuition t);
+	public boolean MoreInfo(Tuition t);
+	public boolean reject(int t_id, String reason);
+	public boolean addFile(Tuition t);
 	
 }

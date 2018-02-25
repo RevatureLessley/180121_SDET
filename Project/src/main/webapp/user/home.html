@@ -7,68 +7,44 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script src="../resources/javascript/register.js"></script>
-
+<script src="../resources/javascript/home.js"></script>
 
 
 <title>Home</title>
 </head>
-<body>
+<body onload="home();">
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Tuition Reimbursement</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <li><form action="logout.do"><button style="margin-top: 8px;" type="submit" class = "btn btn-danger"> Logout</button></form></li>
+      <li><form action="logout.do"><button style="margin-top: 8px;margin-right: 20px;" type="submit" class = "btn btn-danger"> Logout</button></form></li>
     </ul>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="status.html">Status</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
+      <li><a href="approval.html">Approve</a></li>
+      <li><a href="form.html">Form</a></li>
     </ul>
   </div>
 </nav>
 
 <div class = "container-fluid">
-	<div class ="well">	<h3><strong>Tuition Reimbursement Form</strong></h3> </div>
-	<div class = "well">
-		<form action="../TuitionForm" method="post" enctype="multipart/form-data">
-			<div class="col-sm-3" class="form-group"><label for="date">Start Date:</label>
-  				<input type="date" class="form-control" name="start_date" required></div>  	
-  			<div class="col-sm-3" class="form-group"><label for="date">End Date:</label>
-  				<input type="date" class="form-control" name="end_date" required></div>
-  			<div class="col-sm-3" class="form-group"><label for="text">Location:</label>
-  				<input type="text" class="form-control" name="location"  required></div> 
-  			<div class="col-sm-3" class="form-group"><label for="text">Cost:</label>
-  				<input type="number" class="form-control" name="cost" required></div>
-  			<div style="margin-top: 15px;" class="col-sm-12" class="form-group"><label for="text">Description:</label>
-  				<input type="text" class="form-control" name="description" required></div>  	
-  			<div style="margin-top: 15px;" class="col-sm-2" class="form-group"><label for="text">Grading Format:</label><br>
-  				<select name="grading_formate">
-    				<option value="PASSING_GRADE">PASSING_GRADE</option>
-    				<option value="PRESENATION">PRESENATION</option>
-				</select>
-			</div>
-			<div style="margin-top: 15px;" class="col-sm-4" class="form-group"><label for="text">Event Type:</label><br>
-  				<select name="event_type">
-    				<option value="UNIVERSITY_COURSE">UNIVERSITY_COURSE</option>
-    				<option value="SEMINAR">SEMINAR</option>
-    				<option value="CERTIFICATE_PREPARATION_CLASSES">CERTIFICATE_PREPARATION_CLASSES</option>
-    				<option value="CERTIFICATION">CERTIFICATION</option>
-    				<option value="TECHNICAL_TRAINING">TECHNICAL_TRAINING</option>
-    				<option value="OTHERS">OTHERS</option>
-				</select>
-			</div>
-			<div style="margin-top: 15px;" class="col-sm-6" class="form-group"><label for="file">Attachment:</label><br>
-				<input type="file" class="form-control" id = "attachment" placeholder= "attachment" accept="file_extension" name="attachment">
-			</div> 	
-  			<button style="margin-top: 15px;" type="submit" class="btn btn-success">Register</button>
-  			<button style="margin-top: 15px;" type="reset" class="btn btn-default">Reset</button>			
-		</form>
-	</div>
+	<div class ="well">	<h3><strong id="name"></strong></h3> </div>
+		<div class = "well">         
+  		<table  class="table table-condensed" id=reimburse>
+    		<thead>
+      		<tr>
+        		<th style="text-align:center">Available Reimbursement</th>
+        		<th style="text-align:center">Pending Reimbursement</th>
+        		<th style="text-align:center">Awarded Reimbursement</th>
+      		</tr>
+    		</thead>
+  		</table>
+  		<p id=Error></p>
+  	</div>
 </div>
 </body>
 </html>

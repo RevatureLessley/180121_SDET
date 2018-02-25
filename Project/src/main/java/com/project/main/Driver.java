@@ -15,13 +15,16 @@ import com.project.dao.ReimbursementDaoImp;
 import com.project.dao.TuitionDao;
 import com.project.dao.TuitionDaoImp;
 import com.project.services.ReimbursementServices;
+import com.project.services.TuitionServices;
 import com.project.util.Connections;
 
 public class Driver {
 
 	public static void main(String[] args) {
-		TuitionDao dao = new TuitionDaoImp();
-		System.out.println(dao.deleteTuitonByUsername("HARISH"));
+//		TuitionDao dao = new TuitionDaoImp();
+//		System.out.println(dao.deleteTuitonByUsername("HARISH"));
+//		show_all_tuition();
+//		System.out.println(TuitionServices.getTuitionByApprover("RICHARD"));
 		
 		}
 	
