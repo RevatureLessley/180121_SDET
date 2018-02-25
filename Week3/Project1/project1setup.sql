@@ -265,11 +265,12 @@ INSERT INTO employeetitles VALUES(804, 'HELP DESK');
 
 INSERT INTO employees VALUES(1, 'Jazmine', 'Sullivan', 0, 0, 0, 1000, '23 Johnson Ave', 'Philiadelphia', 'PA', 45677);
 INSERT INTO employees VALUES(2, 'Lynda', 'Ade', 1, 0, 1, 1000, '13 Bizza Court', 'Queens', 'NY', 13492);
-INSERT INTO employees VALUES(3, 'Myra', 'Santos', 0, 2, 200, 1000, '48 Jamestown Street', 'Denver', 'CO', 93368);
+INSERT INTO employees VALUES(3, 'Myra', 'Santos', 8, 2, 200, 0, '48 Jamestown Street', 'Denver', 'CO', 93368);
 INSERT INTO employees VALUES(4, 'Namjoon', 'Kim', 1, 0, 2, 1000, '3-93 Sacho Park', 'Goyang', 'PA', 53538);
 INSERT INTO employees VALUES(5, 'Dae-sung', 'Kang', 4, 7, 50, 1000, '23-75 Eastchester Ave', 'Incheon', 'NY', 10742);
 INSERT INTO employees VALUES(6, 'Yoon-gi', 'Min', 5, 7, 700, 1000, '27 Charlotte Road', 'Daegu', 'NY', 30582);
 INSERT INTO employees VALUES(7, 'Tae-hyung', 'Kim', 6, 7, 702, 1000, '78 Charlotte Road', 'Daegu', 'NY', 30582);
+INSERT INTO employees VALUES(8, 'Amy', 'Lee', 4, 2, 50, 0, '4 Enchanted Path', 'Charlotte', 'NC', 90382);
 
 INSERT INTO eventtypes VALUES(1, 'UNIVERSITY COURSES', 0.80);
 INSERT INTO eventtypes VALUES(2, 'SEMINARS', 0.60);

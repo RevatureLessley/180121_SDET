@@ -15,6 +15,7 @@ import com.trms.util.Connections;
 public class UserEmpDaoImpl implements UserEmpDao {
 	final static Logger logger = Logger.getLogger(UserEmpDaoImpl.class);
 	
+	//=======INSERT METHODS=======
 	public boolean insertUser(int empid, String email, String username, String password) {
 		logger.info("insertUser() : ENTERED");
 		CallableStatement cs = null;
@@ -39,6 +40,7 @@ public class UserEmpDaoImpl implements UserEmpDao {
 		return success;
 	}
 	
+	//=======GET METHODS=======
 	public int getUserEmpId(String username, String password) {
 		int id = -1;
 		PreparedStatement ps = null;
@@ -85,5 +87,47 @@ public class UserEmpDaoImpl implements UserEmpDao {
 			logger.error(e.getMessage());
 		}
 		return email;
+	}
+	
+	@Override
+	public String checkUsername(String username) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String uN = null;
+		
+		try(Connection conn = Connections.getConnection()){
+			String sql = "SELECT user_name FROM usersemp WHERE user_name = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, username);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				uN = rs.getString(1);
+			}
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		}
+		return uN;
+	}
+	
+	@Override
+	public int checkUserEmpId(int empId) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int empid = -1;
+		
+		try(Connection conn = Connections.getConnection()){
+			String sql = "SELECT useremp_id FROM usersemp WHERE useremp_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, empId);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				empid = rs.getInt(1);
+			}
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		}
+		return empid;
 	}
 }

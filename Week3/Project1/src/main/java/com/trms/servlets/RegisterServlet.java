@@ -25,7 +25,7 @@ public class RegisterServlet extends HttpServlet {
 			throws ServletException, IOException {
 		logger.info("doGet(): ENTERED");
 		boolean success = UsersEmpService.insertUser(Integer.parseInt(request.getParameter("empid")), request.getParameter("email"),
-				request.getParameter("username"), request.getParameter("password"));
+				request.getParameter("username"), request.getParameter("password"), request.getParameter("password01"));
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
@@ -33,12 +33,12 @@ public class RegisterServlet extends HttpServlet {
 		logger.info("doGet(): " + success);
 		if(success) {
 			//response.setHeader("Refresh", "5;url=/index.html");
-			out.println("<head> <meta http-equiv='Refresh' content='3;url=index.html'>"
+			out.println("<head> <meta http-equiv='Refresh' content='2;url=index.html'>"
 					+ "</head>");
 			out.println("Registartion complete! Redirecting!");
 			//response.sendRedirect("index.html");
 		} else {
-			out.println("<head> <meta http-equiv='Refresh' content='3;url=register.html'>"
+			out.println("<head> <meta http-equiv='Refresh' content='2;url=register.html'>"
 					+ "</head>"); //currently redirects but obviously don't keep input
 			out.println("Registration fail! Redirecting try again!");
 			// TODO redirect to same screen and keep the users input
