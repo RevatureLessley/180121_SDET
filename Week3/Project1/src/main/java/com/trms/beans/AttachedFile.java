@@ -1,11 +1,13 @@
 package com.trms.beans;
 
+import java.io.File;
 import java.sql.Blob;
 
 public class AttachedFile {
 	private int fileId;
 	private int reimburseId;
-	private Blob file;
+	private Blob blob;
+	private File file;
 	private String fileName;
 	private String subject;
 	
@@ -14,14 +16,21 @@ public class AttachedFile {
 	}
 
 
-	public AttachedFile(int fileId, int reimburseId, Blob file, String fileName, String subject) {
+	public AttachedFile(int fileId, int reimburseId, Blob blob, String fileName, String subject) {
+		this.fileId = fileId;
+		this.reimburseId = reimburseId;
+		this.blob = blob;
+		this.fileName = fileName;
+		this.subject = subject;
+	}
+
+	public AttachedFile(int fileId, int reimburseId, File file, String fileName, String subject) {
 		this.fileId = fileId;
 		this.reimburseId = reimburseId;
 		this.file = file;
 		this.fileName = fileName;
 		this.subject = subject;
 	}
-
 
 	public int getFileId() {
 		return fileId;
@@ -43,12 +52,22 @@ public class AttachedFile {
 	}
 
 
-	public Blob getFile() {
+	public Blob getBlob() {
+		return blob;
+	}
+
+
+	public void setBlob(Blob blob) {
+		this.blob = blob;
+	}
+
+
+	public File getFile() {
 		return file;
 	}
 
 
-	public void setFile(Blob file) {
+	public void setFile(File file) {
 		this.file = file;
 	}
 

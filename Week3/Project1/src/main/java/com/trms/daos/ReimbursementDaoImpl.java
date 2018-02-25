@@ -5,6 +5,10 @@ import static com.trms.util.CloseStreams.close;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
 import com.trms.beans.AddedInfo;
@@ -127,15 +132,27 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		List<AttachedFile> laf = new ArrayList<>();
 		
 		try(Connection conn = Connections.getConnection()) {
-			String sql = "SELECT * FROM reimburseattachments";
+			String sql = "SELECT * FROM reimburseattachments WHERE at_reimburse_id = ?";
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, rId);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				laf.add(new AttachedFile(rs.getInt(1), rs.getInt(2), rs.getBlob(3), rs.getString(4), rs.getString(5)));
+				InputStream is = null;
+		        OutputStream os = null;
+		        File f = new File(rs.getString(4));
+				is = rs.getBlob(3).getBinaryStream();
+				os = new FileOutputStream(f);
+				IOUtils.copy(is, os);
+				
+				laf.add(new AttachedFile(rs.getInt(1), rs.getInt(2), f, rs.getString(4), rs.getString(5)));
 			}
 		} catch(SQLException e) {
 			logger.error(e.getMessage());
+		} catch(FileNotFoundException fnfe) {
+			logger.error(fnfe.getMessage());
+		} catch(IOException ioe) {
+			logger.error(ioe.getMessage());
 		}
 		
 		return laf;

@@ -19,6 +19,7 @@ import com.trms.util.AutoApprove;
  */
 public class FrontController extends HttpServlet {
 	final static Logger logger = Logger.getLogger(FrontController.class);
+	//private Timer timer;
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -34,7 +35,7 @@ public class FrontController extends HttpServlet {
 		date.set(Calendar.MINUTE, calMin);
 		date.set(Calendar.SECOND, 0);
 		date.set(Calendar.MILLISECOND, 0);
-		timer.schedule(new AutoApprove(day, min), date.getTime(), 1000*60*60);
+		timer.schedule(new AutoApprove(day, min), date.getTime(), 1000*60*60*24);
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -73,6 +74,12 @@ public class FrontController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+	}
+	
+	@Override
+	public void destroy() {
+	/*	timer.cancel();
+		timer.purge();*/
 	}
 
 }

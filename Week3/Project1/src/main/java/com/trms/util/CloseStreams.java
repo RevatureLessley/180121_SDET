@@ -2,6 +2,7 @@ package com.trms.util;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -33,6 +34,16 @@ public class CloseStreams {
 		if (fis != null) {
 			try {
 				fis.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static void close(InputStream is) {
+		if (is != null) {
+			try {
+				is.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
