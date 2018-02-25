@@ -1,5 +1,21 @@
 window.onload = function() {
 	getPersonalReimb();
+	getEmployeeName();
+}
+
+function getEmployeeName() {
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "../EmployeeInfoServlet");
+	
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4 && xhr.status == 200) {
+			var jsonObj = JSON.parse(xhr.responseText);
+			
+			document.getElementById("empname").innerHTML = jsonObj.fname;
+		}
+	}
+	
+	xhr.send();
 }
 
 function getPersonalReimb() {

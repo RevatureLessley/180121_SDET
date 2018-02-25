@@ -32,10 +32,13 @@ public class UserReimburseServlet extends HttpServlet {
 		Employee e = EmployeeService.getEmpByUserEmpId((Integer)session.getAttribute("empid"));
 		logger.info("doGet() : " + e.getTitle());
 		logger.info("doGet() number Subord : " + numSub);
-		if(e.getTitle().equals("DEPARTMENT HEAD") || e.getTitle().equals("BENEFITS COORDINATOR") || numSub > 0) {
+		if(e.getTitle().equals("DEPARTMENT HEAD") || numSub > 0) {
 			session.setAttribute("approver", true);
 			response.sendRedirect("user/userhomeappr.html");
-		} else {
+		} else if( e.getTitle().equals("BENEFITS COORDINATOR")) {
+			session.setAttribute("approver", true);
+			response.sendRedirect("user/approver/allreimburse.html");
+		}	else {
 			session.setAttribute("approver", false);
 			response.sendRedirect("user/userhome.html");
 		}

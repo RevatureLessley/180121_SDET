@@ -23,12 +23,28 @@
 
 <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
 <script src="../resources/javascript/ajax.js"></script>
+<script src="../resources/javascript/general.js"></script>
 
 <title>NEW REIMBURSEMENT</title>
 </head>
 <body>
 
 	<div class='container'>
+	
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#" onclick="goBack()">TRMS</a>
+				</div>
+				<ul class="nav navbar-nav">
+				</ul>
+				<ul class="nav navbar-nav navbar-right" id='user-options'>
+				
+				<li><a href="Logout.do"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+	
 		<h1 class='text-center'>New Reimbursement</h1>
 		<div class='well'>
 			<form method="POST" action="NewReimburse.do" enctype='multipart/form-data'>
@@ -129,7 +145,7 @@
 							GRADE</label>
 						<div class="col-10">
 							<input class="form-control" type="number" name="passinggrade"
-								placeholder="0" step="0.01" value='75'>
+								placeholder="75" step="0.01" value='75'>
 						</div>
 					</div>
 				</div>
@@ -140,20 +156,20 @@
 							MISSED</label>
 						<div class="col-10">
 							<input class="form-control" type="number" name="workmissed"
-								placeholder="Days of work to be missed">
+								placeholder="Days of work to be missed" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="workjustification">WORK JUSTIFICATION:</label> <input
 							type="text" class="form-control" name="workjustification"
-							placeholder='Justification for company to reimburse'>
+							placeholder='Justification for company to reimburse' required>
 					</div>
 				</div>
 				
 				
 				<div class="form-group">
 					<label for="desc">DESCRIPTION</label>
-					<input class="form-control" type="text" name="desc" placeholder="Description" value=''>
+					<input class="form-control" type="text" name="desc" placeholder="Description" value='' required>
 				</div>
  
 				<div class="form-group">
@@ -162,7 +178,7 @@
 						name='inputFiles'
 						accept=".png, .pdf, .jpeg, .jpg, .txt, .doc, .docx, .msg" multiple>
 				</div>
-
+				<button type="button" class="btn btn-default" onclick="goBack()">Back</button>
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form>
 		</div>

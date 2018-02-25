@@ -119,8 +119,10 @@ function calculateProjectedReimburse() {
 	console.log("DBG: cost=" + cost_val + " coverage="
 			+ coverages[eventtype - 1]);
 	var cal_cover = cost_val * coverages[eventtype - 1];
-	if (cal_cover > availReimburse) {
+	if (cal_cover > availReimburse && availReimburse > 0) {
 		cal_cover = availReimburse;
+	} else if(availReimburse < 0) {
+		cal_cover = 0;
 	}
 	console.log(cal_cover);
 	document.getElementById("projectedreimburse").value = cal_cover.toFixed(2);

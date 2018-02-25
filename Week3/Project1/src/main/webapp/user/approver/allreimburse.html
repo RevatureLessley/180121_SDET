@@ -23,6 +23,7 @@
 
 <link rel="stylesheet" type="text/css" href="../../resources/css/main.css">
 <script src="../../resources/javascript/ajax_reimburses.js"></script>
+<script src="../../resources/javascript/general.js"></script>
 
 <title>TRMS</title>
 </head>
@@ -31,10 +32,9 @@
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#">TRMS</a>
+					<a class="navbar-brand" href="#" onclick="goBack()">TRMS</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right" id='user-options'>
 
@@ -44,6 +44,7 @@
 			</div>
 		</nav>
 
+		<h2 class="text-center">All Reimbursements to Approve</h2>
 		<div class='well'>
 			<table class='table-bordered' id="reimbursements">
 				<tr>
