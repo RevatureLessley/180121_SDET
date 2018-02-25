@@ -23,5 +23,7 @@ public interface EmployeeDao {
 	public List<Employee> getAllDepartmentHeads ();
 	public List<Employee> getAllBenefitsCoordinators ();
 	
+	public void refreshAmount();
+	
 	
 }

@@ -355,4 +355,19 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		
 		return headList;
 	}
+
+	@Override
+	public void refreshAmount() {
+		
+		PreparedStatement ps = null;
+		
+		try(Connection conn = Bridge.connect()){
+			String sql = "UPDATE EMPLOYEES SET AMOUNT = 1000)";
+			ps = conn.prepareStatement(sql);
+			ps.executeUpdate();
+		}catch(SQLException e){e.printStackTrace();}
+		finally{close(ps);}
+		
+		
+	}
 }

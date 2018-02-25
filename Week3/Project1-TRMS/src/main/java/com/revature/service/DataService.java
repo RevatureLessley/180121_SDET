@@ -1,6 +1,9 @@
 package com.revature.service;
 
 import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
@@ -68,6 +71,8 @@ public class DataService {
 	public static int insertNewReimbursement(int empid, String fname, String lname, String dateof, String time, String location,
 						String desc, int cost, String gradingFormat, String typeOfEvent, String work, int attachment_bit) {
 		
+		checkNewYear();
+		
 		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
 		
 		int rei_id = reimDao.totalReimbursements();
@@ -84,6 +89,8 @@ public class DataService {
 	public static int editReimbursement(int rei_id, int empid, String fname, String lname, String dateof, String time, String location,
 			String desc, int cost, String gradingFormat, String typeOfEvent, String work,  int attachment_bit) {
 	
+		checkNewYear();
+		
 		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
 		
 		String grade_received= "N/A";
@@ -116,6 +123,7 @@ public class DataService {
 	};
 	
 	public static int getCostAmount(int emp_id) {
+		checkNewYear();
 		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
 		return reimDao.getAmountByEid(emp_id);
 	}
@@ -149,5 +157,21 @@ public class DataService {
 	public static int totalAttachmentsPerReiId(int id) {
 		AttachmentDaoImpl attDao = new AttachmentDaoImpl();
 		return attDao.getCountById(id);
+	}
+	
+	
+	
+	
+	public static void checkNewYear(){
+	
+	LocalDate localDate = LocalDate.now();
+	String date = DateTimeFormatter.ofPattern("MM/dd").format(localDate);
+	
+	if(date.equals(01/01)) {
+		EmployeeDaoImpl empDao = new EmployeeDaoImpl();
+		empDao.refreshAmount();
+		
+		}
+	
 	}
 }
