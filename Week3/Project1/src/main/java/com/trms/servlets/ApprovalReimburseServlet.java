@@ -46,6 +46,7 @@ public class ApprovalReimburseServlet extends HttpServlet {
 			member.put("projReimb", r.getProjectedReimb());
 			member.put("attachments", r.isFiles());
 			member.put("status", r.getApproveStr());
+			member.put("urgent", r.getUrgent());
 			//logger.info("doGet() : status=" + r.getApproveStr());
 			jarr.put(member);
 		}

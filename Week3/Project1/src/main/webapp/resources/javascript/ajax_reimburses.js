@@ -16,6 +16,7 @@ function getReimburse() {
 				console.log("in loop");
 				var tr = document.createElement("tr");
 				var td0 = document.createElement("td");
+				var td9 = document.createElement("td");
 				var td1 = document.createElement("td");
 				var td2 = document.createElement("td");
 				var td3 = document.createElement("td");
@@ -38,6 +39,13 @@ function getReimburse() {
 				
 				td0.appendChild(a);
 				//td0.innerHTML = jsonObj[i].reimburseid;
+				if(jsonObj[i].urgent == 0) {
+					td9.innerHTML = "-";
+				} else {
+					td9.innerHTML = "!";
+					td9.setAttribute("style", "color:red");
+				}
+				
 				td1.innerHTML = jsonObj[i].date;
 				td2.innerHTML = jsonObj[i].eventtype;
 				td3.innerHTML = jsonObj[i].learncenter;
@@ -48,6 +56,7 @@ function getReimburse() {
 				td8.innerHTML = jsonObj[i].status;
 				
 				tr.appendChild(td0);
+				tr.appendChild(td9);
 				tr.appendChild(td1);
 				tr.appendChild(td2);
 				tr.appendChild(td3);

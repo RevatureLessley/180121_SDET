@@ -20,7 +20,6 @@ public class RegisterServlet extends HttpServlet {
 	final static Logger logger = Logger.getLogger(RegisterServlet.class);
 	private static final long serialVersionUID = 1L;
 
-	// TODO add validation for user name repeating and password matching.  Most likely done in ajax
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		logger.info("doGet(): ENTERED");

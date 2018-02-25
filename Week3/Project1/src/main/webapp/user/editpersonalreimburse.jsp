@@ -61,8 +61,8 @@
 				String s = request.getQueryString();
 				int rId = Integer.parseInt(s.split("=")[1]);
 				Reimbursement r = ReimbursementService.getReimbursement(rId);
-				Employee e = EmployeeService.getUserEmpId(r.getEmpId());
-				Employee user = EmployeeService.getUserEmpId(empId);
+				Employee e = EmployeeService.getEmpByUserEmpId(r.getEmpId());
+				Employee user = EmployeeService.getEmpByUserEmpId(empId);
 				if (r.getDescription() == null) {
 					r.setDescription("N/A");
 				}
