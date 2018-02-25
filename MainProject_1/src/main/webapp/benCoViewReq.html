@@ -21,18 +21,19 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 
-<script src="resources/JavaScript/RequestStatusAjax.js" ></script>
+<script src="resources/JavaScript/RequestAjax.js" ></script>
 
 </head>
-<body onload="sendAJAX()">
+<body onload="sendAllAJAX()">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand">Tuition Reimbursement System</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="#">Home</a></li>
-				<li class="active"><a href="#">Check Status</a></li>
+				<li><a href="admins/superHome">Home</a></li>
+				<li class="active"><a href="#">Pending Requests</a></li>
+				
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="register.html"><span
@@ -48,17 +49,22 @@
 	<div class="container-fluid" style="margin-top: 100px">
 		<div class="well">
 			
-			<h1>View Your Request Status</h1>
+			<h1>View All Pending Requests</h1>
 						
 			<button onclick="sendAJAX()">View</button><br><br>
 			<table border=2px id=results>
 				<tr>
 					<th>Request ID</th>
+					<th>Employee ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Phone Number</th>
 					<th>Event Type</th>
-					<th>Reimbursement Amount Pending</th>
-					<th>Request Statues</th>
-					<th>Documentation Required</th>
-				
+					<th>Event Costs</th>
+					<th>Grading Format</th>
+					<th>Event Work Related Justification</th>
+					<th>Employee TR Balance Available</th>
 					
 				</tr>
 				
@@ -70,73 +76,55 @@
 			
 			<div class="col-sm-5">
 			<div class=well>
-			<h3>Edit Your Request - Submit Documentation</h3>
-			<br>
+			<h3>Enter a Request ID below to Approve/Deny it</h3>
 			
-			<form method="POST" enctype="multipart/form-data" action="UploadDoc">
-			
-			<div class="form-group">
-					<label for="req_Doc_ID">REQUEST DOCUMENT ID: </label> <input type="number"
-						class="form-control" name="req_Doc_ID">
-				</div><br>
-				
-			<div class="row">
-					<label for="File" style="margin-left:15px">Submit Documentation</label>
-						<input class="form-control" type="file" name="FileAttach"
-							style= "width:94%; margin-left:15px"> <br> 
-							
-							</div>
-							<br><br>
-			
-			<button type="submit" class="btn btn-default">SUBMIT</button>
-			</form>
-			
-		</div>
-	</div>
-	
-			<div class="col-sm-5">
-			<div class=well>
-			<h3>Edit Your Request - Submit Grade</h3>
-			<br>
-			
-			<form action="#" id="SubmitGrade">
+			<form method="POST" action="UpdateRequest.do">
 			
 			<div class="form-group">
 					<label for="req_ID">REQUEST ID: </label> <input type="number"
 						class="form-control" name="req_ID">
 				</div><br>
+				
+			<div class="row">
+			<label for="UpdateAction" style= "margin-left:13px"> Choose to Approve/Decline or Ask For More Documents:</label> 
+			<select class="form-control" name="UpdateAction" style= "width:95%; margin-left:13px">
+				<option>Approve</option>
+				<option>Decline</option>
 
+			</select>
+			</div>
+			<br><br>
 		
-			
-
-					<label for="Grade" >Submit Grade</label> <input
-						class="form-control" name="Grade" style= "width:20%;">
-						
-					<br><br>
-			
-			
-			<!-- 
-			<div class="row" style="display: none" name="0to100Row">
-
-					<label for="0to100" style="margin-left:15px">Submit Grade [0 - 100]</label> <select
-						class="form-control" name="0to100" style= "width:94%; margin-left:15px">
-						<option>0 - 64</option>
-						<option>65 - 74</option>
-						<option>75 - 84</option>
-						<option>85 - 90</option>
-						<option>90 - 100</option>
-					</select>
-					<br><br>
-			</div>  -->
-			
-			<button type="submit" class="btn btn-default" onclick="postAJAX()">SUBMIT</button>
+		
+			<button type="submit" class="btn btn-default">SUBMIT</button>
 			</form>
 			
-			</div> 
+			</div>
 		</div>
-	</div>
-	
-</div>
+		
+			<div class="col-sm-5">
+			<div class=well>
+			<h3>Enter a Request ID below to Request Documentation</h3>
+			
+			<form method="POST" action="DocRequest.do">
+			
+			<div class="form-group">
+					<label for="req_ID">REQUEST ID: </label> <input type="number"
+						class="form-control" name="req_ID" required>
+				</div><br>
+				
+		
+			<div class="form-group">
+					<label for="Docs">Specify the Documentation needed below </label> 
+					<textarea class="form-control" rows="5" name="Docs" required></textarea>
+				</div><br>
+		
+			<button type="submit" class="btn btn-default">SUBMIT</button>
+			</form>
+			
+			</div>
+		</div>
+		</div>
 		
 </body>
 </html>

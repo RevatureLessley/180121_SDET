@@ -5,6 +5,7 @@ public class RequestTR {
 	private Integer RequestId;
 	private Integer EmployeeId;
 	private Integer SupervisorRef;
+	
 	private Integer DeptID;
 	private String LastName;
 	private String FirstName;
@@ -51,7 +52,7 @@ public class RequestTR {
 	}
 
 
-	public RequestTR(Integer employeeId, Integer supervisorRef, String lastName, String firstName, String phone,
+	public RequestTR(Integer employeeId, Integer supervisorRef, Integer deptID, String lastName, String firstName, String phone,
 			String email, Integer amount_Requested, Integer balance_Available,
 			String event_Type, String event_Justification, String grading_Format, Integer passing_Grade_Provided,
 			Integer supervisor_Approval, Integer department_Head_Approval, Integer benCo_Approval) {

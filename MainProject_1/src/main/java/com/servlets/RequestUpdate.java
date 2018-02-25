@@ -15,7 +15,7 @@ import com.util.HtmlTemplates;
 /**
  * Servlet implementation class SupervisorRequestUpdate
  */
-public class SupervisorRequestUpdate extends HttpServlet {
+public class RequestUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -26,13 +26,14 @@ public class SupervisorRequestUpdate extends HttpServlet {
 		String DocsNeeded = request.getParameter("Docs");
 		
 		Integer ReferenceID = (Integer) session.getAttribute("ReferenceID");
+		String EmployeeType = (String) session.getAttribute("EmployeeType");
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
 			
 			if(UpdateAction.equals("Approve"))
-				if(RequestService.approveRequest_S(RequestID)) {
+				if(RequestService.approveRequest(RequestID, EmployeeType)) {
 					out.print("<h1>REQUEST APPROVED</h1>");
 					HtmlTemplates.goBackButton(out);
 				}else {
@@ -41,9 +42,8 @@ public class SupervisorRequestUpdate extends HttpServlet {
 				}
 				
 			else if(UpdateAction.equals("Decline"))
-				RequestService.declineRequest_S(RequestID);
-			else if(UpdateAction.equals("Documentation"))
-				RequestService.docsNeeded_S(DocsNeeded, RequestID, ReferenceID);
+				RequestService.declineRequest(RequestID, EmployeeType);
+			
 	
 			
 	}

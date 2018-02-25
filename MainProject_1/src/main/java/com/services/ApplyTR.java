@@ -7,14 +7,14 @@ import com.request.RequestTR;
 public class ApplyTR {
 
 	public static boolean SendRequest(RequestTR tr) {
-		
+		//public Integer getDeptID(Integer supervisorRef)
 		RequestDao dao = new RequestDaoImp();
-		if(dao.addRequest(tr))
+		if(dao.addRequest(tr, dao.getDeptID(tr.getSupervisorRef())))
 			return true;
 		else
 			return false;
 }
-
+	
 	public static Integer checkBalance(Integer price, Integer employeeID) {
 		RequestDao dao = new RequestDaoImp();
 		
@@ -33,5 +33,14 @@ public class ApplyTR {
 		RequestDao dao = new RequestDaoImp();
 		
 		dao.adjustBalance(amount_Requested, employeeId);		
+	}
+
+
+
+	public static Integer getDeptID(Integer supervisorRef) {
+		
+		RequestDao dao = new RequestDaoImp();
+		
+		return dao.getDeptID(supervisorRef);
 	}
 }

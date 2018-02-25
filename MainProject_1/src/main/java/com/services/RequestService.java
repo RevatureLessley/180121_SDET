@@ -8,26 +8,51 @@ import com.request.RequestTR;
 
 public class RequestService {
 
-	public static List<RequestTR> displayRequests(Integer supervisorID) {
+	public static List<RequestTR> displayRequests(Integer AccountID, String usertype) {
 		RequestDao dao = new RequestDaoImp();
-		System.out.println(dao.getAllSuperVisorRequests(supervisorID));
-		return dao.getAllSuperVisorRequests(supervisorID);
-
+		
+		if (usertype.equals("Supervisor"))
+			return dao.getAllSuperVisorRequests(AccountID);
+		else if (usertype.equals("DeptHead"))
+			return dao.getAllDeptHeadRequests(AccountID);
+		else if (usertype.equals("BenCo"))
+			return dao.getAllBenCoRequests(AccountID);
+		else
+			return null;
 	}
 	
-	public static boolean approveRequest_S(Integer requestID) {
+	public static boolean approveRequest(Integer requestID, String usertype) {
 		RequestDao dao = new RequestDaoImp();
-		return dao.superApprove(requestID);	
+		
+		if (usertype.equals("Supervisor"))
+			return dao.superApprove(requestID);	
+		else if (usertype.equals("DeptHead"))
+			return dao.deptApprove(requestID);	
+		else if (usertype.equals("BenCo"))
+			return dao.bencoApprove(requestID);
+		else
+			return false;
 	}
 
-	public static void declineRequest_S(Integer requestID) {
+	public static void declineRequest(Integer requestID, String usertype) {
 		RequestDao dao = new RequestDaoImp();
-		dao.superDecline(requestID);		
+		if (usertype.equals("Supervisor"))
+			dao.superDecline(requestID);
+		else if (usertype.equals("DeptHead"))
+			dao.deptDecline(requestID);	
+		else if (usertype.equals("BenCo"))
+			dao.bencoDecline(requestID);	
 	}
 
-	public static void docsNeeded_S(String docsNeeded, Integer requestID, Integer referenceID) {
+	public static void docsNeeded(String docsNeeded, Integer requestID, String usertype, Integer AuthorizerID) {
 		RequestDao dao = new RequestDaoImp();
-		dao.superDocRequest(docsNeeded, requestID, referenceID);		
+		if (usertype.equals("Supervisor"))
+			dao.superDocRequest(docsNeeded, requestID, AuthorizerID);
+		else if (usertype.equals("DeptHead"))
+			dao.deptDocRequest(docsNeeded, requestID, AuthorizerID);
+		else if (usertype.equals("BenCo"))
+			dao.bencoDocRequest(docsNeeded, requestID, AuthorizerID);
+		
 	}
 
 	public static List<RequestTR> displayUserRequests(Integer accountID) {

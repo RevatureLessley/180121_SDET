@@ -46,7 +46,7 @@ public class SendRequestServlet extends HttpServlet {
 		String WRJcomment = request.getParameter("WRJcomment");
 		String TimeMissed = request.getParameter("TimeMissed");
 		Integer supervisorRef = (Integer) session.getAttribute("SupervisorRef");
-		
+		Integer deptID = ApplyTR.getDeptID(supervisorRef);
 		
 		Integer ReimbursmentAmt = 0;
 		System.out.print(supervisorRef);
@@ -60,42 +60,42 @@ public class SendRequestServlet extends HttpServlet {
 			if(EventType.equals("University Course")) {
 				
 				ReimbursmentAmt = (int)(Price*(80.0f/100.0f));
-				 tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
+				 tr = new RequestTR(EmployeeID, supervisorRef, deptID, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
 										EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
 			
 			}else if(EventType.equals("Seminar")) {
 				
 				ReimbursmentAmt = (int)(Price*(60.0f/100.0f));
-				 tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
+				 tr = new RequestTR(EmployeeID, supervisorRef, deptID, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
 										EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
 				
 			}else if(EventType.equals("Certification Preparation Class")) {
 				
 				ReimbursmentAmt = (int)(Price*(75.0f/100.0f));
-				 tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
+				 tr = new RequestTR(EmployeeID, supervisorRef, deptID, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
 										EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
 			
 			}else if(EventType.equals("Certification")) {
 				
-				 tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, Price, Balance_Available,
+				 tr = new RequestTR(EmployeeID, supervisorRef, deptID, LastName, FirstName, ContactNumber, Email, Price, Balance_Available,
 										EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
 			
 			}else if(EventType.equals("Technical Training")) {
 				
 				ReimbursmentAmt = (int)(Price*(90.0f/100.0f));
-				 tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
+				 tr = new RequestTR(EmployeeID, supervisorRef, deptID, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
 										EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
 				
 			}else {
 				
 				ReimbursmentAmt = (int)(Price*(30.0f/100.0f));
-				 tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
+				 tr = new RequestTR(EmployeeID, supervisorRef, deptID, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
 										EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
 			}
 			
 		} else if(ApplyTR.checkBalance(Price, EmployeeID) <= 0 ) {
 			 ReimbursmentAmt = ApplyTR.adjustedBalance(EmployeeID);
-			 tr = new RequestTR(EmployeeID, supervisorRef, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
+			 tr = new RequestTR(EmployeeID, supervisorRef, deptID, LastName, FirstName, ContactNumber, Email, ReimbursmentAmt, Balance_Available,
 						EventType, WRJcomment, GradingFormat, 0, 0, 0, 0);
 		}
 		

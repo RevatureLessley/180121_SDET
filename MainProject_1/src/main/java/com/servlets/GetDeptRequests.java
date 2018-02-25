@@ -16,7 +16,7 @@ import com.services.RequestService;
 /**
  * Servlet implementation class GetRequests
  */
-public class GetRequests extends HttpServlet {
+public class GetDeptRequests extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -27,11 +27,10 @@ public class GetRequests extends HttpServlet {
 		//System.out.println("Im here");
 		
 		HttpSession session = request.getSession(false);
-		Integer ReferenceID = (Integer) session.getAttribute("ReferenceID");
-		String visor = "Supervisor";
+		Integer deptID = (Integer) session.getAttribute("DeptID");
 		
 		
-		List<RequestTR> reqs = RequestService.displayRequests(ReferenceID, visor);
+		List<RequestTR> reqs = RequestService.displayRequests(deptID, "DeptHead");
 		
 		System.out.println(reqs);
 		

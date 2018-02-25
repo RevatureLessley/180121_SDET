@@ -49,8 +49,13 @@ public class FrontController extends HttpServlet {
 			rd.forward(request, response);
 			break;
 			
-		case "superupdaterequest":
-			rd = request.getRequestDispatcher("SupervisorRequestUpdate");
+		case "updaterequest":
+			rd = request.getRequestDispatcher("RequestUpdate");
+			rd.forward(request, response);
+			break;
+			
+		case "docrequest":
+			rd = request.getRequestDispatcher("RequestDoc");
 			rd.forward(request, response);
 			break;
 			

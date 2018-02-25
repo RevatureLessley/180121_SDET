@@ -7,7 +7,7 @@ import com.request.RequestTR;
 
 public interface RequestDao {
 
-	public boolean addRequest(RequestTR tr);
+	public boolean addRequest(RequestTR tr, Integer DeptID);
 	
 	public List<RequestTR> getAllSuperVisorRequests(Integer SupervisorRef);
 
@@ -15,7 +15,7 @@ public interface RequestDao {
 
 	public void superDecline(Integer requestID);
 
-	public void superDocRequest(String docsNeeded, Integer requestID, Integer referenceID);
+	public void superDocRequest(String docsNeeded, Integer requestID, Integer authorizerID);
 
 	public Integer getBalance(Integer price, Integer employeeID);
 
@@ -32,4 +32,28 @@ public interface RequestDao {
 	public boolean insertLetterGrade(Integer requestId, String letterGradeFormat);
 
 	public boolean insertNumberGrade(Integer requestId, Integer numberGradeFormat);
+
+	public List<RequestTR> getAllDeptHeadRequests(Integer accountID);
+
+	public List<RequestTR> getAllBenCoRequests(Integer accountID);
+
+	public boolean deptApprove(Integer requestID);
+
+	public boolean bencoApprove(Integer requestID);
+
+	public void deptDecline(Integer requestID);
+
+	public void bencoDecline(Integer requestID);
+
+	public void deptDocRequest(String docsNeeded, Integer requestID, Integer authorizerID);
+
+	public void bencoDocRequest(String docsNeeded, Integer requestID, Integer authorizerID);
+
+	public Integer getDeptID(Integer supervisorRef);
+	
+	public Integer getEmployeeID(Integer RequestID);
+	
+	public void uploadDoc(byte[] file, Integer requestDocID);
+
+	public byte[] downloadDoc(Integer requestDocID);
 }

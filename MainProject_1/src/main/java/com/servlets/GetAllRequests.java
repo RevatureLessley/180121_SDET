@@ -14,11 +14,13 @@ import com.request.RequestTR;
 import com.services.RequestService;
 
 /**
- * Servlet implementation class GetRequests
+ * Servlet implementation class GetAllRequests
  */
-public class GetRequests extends HttpServlet {
+public class GetAllRequests extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
+
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -27,11 +29,10 @@ public class GetRequests extends HttpServlet {
 		//System.out.println("Im here");
 		
 		HttpSession session = request.getSession(false);
-		Integer ReferenceID = (Integer) session.getAttribute("ReferenceID");
-		String visor = "Supervisor";
+	
 		
 		
-		List<RequestTR> reqs = RequestService.displayRequests(ReferenceID, visor);
+		List<RequestTR> reqs = RequestService.displayRequests(1, "BenCo");
 		
 		System.out.println(reqs);
 		
@@ -65,11 +66,7 @@ public class GetRequests extends HttpServlet {
 			}
 		}
 			
-			
-			
-			
-		
-	
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -80,6 +77,5 @@ public class GetRequests extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+	
 }
-
