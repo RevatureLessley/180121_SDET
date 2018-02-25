@@ -145,4 +145,9 @@ public class DataService {
 		AttachmentDaoImpl attDao = new AttachmentDaoImpl();
 		return attDao.insertAttachment(a);
 	}
+	
+	public static int totalAttachmentsPerReiId(int id) {
+		AttachmentDaoImpl attDao = new AttachmentDaoImpl();
+		return attDao.getCountById(id);
+	}
 }

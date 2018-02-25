@@ -45,8 +45,9 @@ public class GetReimbursements extends HttpServlet {
 								"<r_typeOfEvent>" + r.getTypeOfEvent()  +  "</r_typeOfEvent>" +
 								"<r_workRelatedJustification>" + r.getWork_related_justification() +  "</r_workRelatedJustification>" +
 								"<r_grade>" + r.getGrade_received()   + "</r_grade>" + 
-								"<r_gradeAttachmentBit>" + r.getGrade_attachment_bit()   + "</r_gradeAttachmentBit>" + 
-								"<r_attachmentBit>" + r.getAttachment_bit()   + "</r_attachmentBit>" + 
+								"<r_gradeAttachmentBit>" + r.getGrade_attachment_bit() +  "</r_gradeAttachmentBit>"  + 
+								"<r_attachmentBit>" + r.getAttachment_bit() +   "</r_attachmentBit>"  + 
+								 
 								"</reimbursement>";
 					}
 					myXml += "</root>";
@@ -56,13 +57,4 @@ public class GetReimbursements extends HttpServlet {
 					out.print("<root></root>"); //State == 4
 				}
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }
