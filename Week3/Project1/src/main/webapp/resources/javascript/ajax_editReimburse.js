@@ -27,10 +27,13 @@ function denyRe() {
 
 function setUrl() {
 	var downloadButton = document.getElementById("getFiles");
-	var rid = document.getElementById("rid").innerHTML;
-	var link = "/TRMS/user/editpersonalreimburse.jsp/download?rid=" + rid;
-	downloadButton.onclick = function() {
-		window.location.href = link;
+	
+	if(downloadButton != null) {
+		var rid = document.getElementById("rid").innerHTML;
+		var link = "/TRMS/user/editpersonalreimburse.jsp/download?rid=" + rid;
+		downloadButton.onclick = function() {
+			window.location.href = link;
+		}
 	}
 }
 
@@ -188,8 +191,21 @@ function updateProjReimb() {
 	
 	if(pr != "") {
 		xhr.send("rid=" + r + "&projreimb=" + pr); 
-	}
+		sendEmail();
+	}	
+}
+
+function sendEmail() {
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "../SendEmailServlet");
 	
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4 && xhr.status == 200) {
+			console.log("send an email");
+		}
+	}	
+	
+	xhr.send();
 }
 
 function awardAmount() {

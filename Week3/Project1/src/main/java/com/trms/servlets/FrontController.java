@@ -19,7 +19,7 @@ import com.trms.util.AutoApprove;
  */
 public class FrontController extends HttpServlet {
 	final static Logger logger = Logger.getLogger(FrontController.class);
-	//private Timer timer;
+	private Timer timer;
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -29,7 +29,7 @@ public class FrontController extends HttpServlet {
 		int min = Integer.parseInt(this.getInitParameter("minsToApprove"));
 		int calMin = Integer.parseInt(this.getInitParameter("calendarMinute"));
 		
-		Timer timer = new Timer();
+		timer = new Timer();
 		Calendar date = Calendar.getInstance();
 		//date.set(Calendar.HOUR_OF_DAY, 17);
 		date.set(Calendar.MINUTE, calMin);
@@ -78,8 +78,8 @@ public class FrontController extends HttpServlet {
 	
 	@Override
 	public void destroy() {
-	/*	timer.cancel();
-		timer.purge();*/
+		timer.cancel();
+		timer.purge();
 	}
 
 }

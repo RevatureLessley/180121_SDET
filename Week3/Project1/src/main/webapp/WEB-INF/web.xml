@@ -241,4 +241,14 @@
     <servlet-name>FileDownloadServlet</servlet-name>
     <url-pattern>/user/editpersonalreimburse.jsp/download</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>SendEmailServlet</display-name>
+    <servlet-name>SendEmailServlet</servlet-name>
+    <servlet-class>com.trms.servlets.SendEmailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SendEmailServlet</servlet-name>
+    <url-pattern>/SendEmailServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
