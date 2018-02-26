@@ -192,7 +192,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 		try(Connection conn = Connections.getConnection()) {
 			String sql = "SELECT reimburse_id, reimburse_datetime, event_name, center_name, format_type, " + 
-					"reimburse_cost, reimburse_projreimb, reimburse_approved, reimburse_urgent " + 
+					"reimburse_cost, reimburse_projreimb, reimburse_approved, reimburse_urgent, reimburse_awarded " + 
 					"FROM reimbursements a, eventtypes b, gradingformats c, learningcenters d " + 
 					"WHERE a.reimburse_emp_id = ? AND a.reimburse_event_id = b.event_id AND a.reimburse_format_id = c.format_id " + 
 					"AND a.reimburse_center_id = d.center_id";
@@ -206,6 +206,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				boolean f = getNumberAttachments(lr.get(lr.size()-1).getReimburseId()) > 0;
 				lr.get(lr.size()-1).setFiles(f);
 				lr.get(lr.size()-1).setUrgent(rs.getInt(9));
+				lr.get(lr.size()-1).setAwarded(rs.getInt(10));
 			}			
 		} catch(SQLException e) {
 			logger.error(e.getMessage());
@@ -276,7 +277,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		// TODO make it so that approved or denied reimbursements don't appear in approver views
 		try(Connection conn = Connections.getConnection()) {
 			String sql = "SELECT reimburse_id, reimburse_datetime, event_name, center_name, format_type, " + 
-					"reimburse_cost, reimburse_projreimb, reimburse_approved, reimburse_urgent " + 
+					"reimburse_cost, reimburse_projreimb, reimburse_approved, reimburse_urgent, reimburse_awarded " + 
 					"FROM reimbursements a, eventtypes b, gradingformats c, learningcenters d " + 
 					"WHERE a.reimburse_approveid = ? AND a.reimburse_event_id = b.event_id AND a.reimburse_format_id = c.format_id " + 
 					"AND a.reimburse_center_id = d.center_id";
@@ -290,6 +291,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				boolean f = getNumberAttachments(lr.get(lr.size()-1).getReimburseId()) > 0;
 				lr.get(lr.size()-1).setFiles(f);
 				lr.get(lr.size()-1).setUrgent(rs.getInt(9));
+				lr.get(lr.size()-1).setAwarded(rs.getInt(10));
 			}			
 		} catch(SQLException e) {
 			logger.error(e.getMessage());

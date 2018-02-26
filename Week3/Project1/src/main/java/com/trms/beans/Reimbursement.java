@@ -38,6 +38,7 @@ public class Reimbursement {
 	private int nextInfoReq;
 	private int urgent;
 	private int approved;
+	private int awarded;
 	private String approveStr;
 	private List<AddedInfo> addedInfo;
 	private List<File> attachments;
@@ -387,6 +388,16 @@ public class Reimbursement {
 
 	public void setApproved(int approved) {
 		this.approved = approved;
+	}
+
+
+	public int getAwarded() {
+		return awarded;
+	}
+
+
+	public void setAwarded(int awarded) {
+		this.awarded = awarded;
 	}
 
 

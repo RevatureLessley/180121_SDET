@@ -72,13 +72,17 @@ public class ReimbursementService {
 				//logger.info("getPersonalReimb() : set Pending string");
 				break;
 			case 1:
-				r.setApproveStr("APPROVED");
+				r.setApproveStr("PENDING");
 				break;
 			case 0:
 				r.setApproveStr("REJECTED");
 				break;
 			default:
 				r.setApproveStr("UNKNOWN");
+			}
+			
+			if(r.getAwarded() == 1) {
+				r.setApproveStr("APPROVED");
 			}
 		}
 		
@@ -97,13 +101,17 @@ public class ReimbursementService {
 				//logger.info("getPersonalReimb() : set Pending string");
 				break;
 			case 1:
-				r.setApproveStr("APPROVED");
+				r.setApproveStr("PENDING");
 				break;
 			case 0:
 				r.setApproveStr("REJECTED");
 				break;
 			default:
 				r.setApproveStr("UNKNOWN");
+			}
+			
+			if(r.getAwarded() == 1) {
+				r.setApproveStr("APPROVED");
 			}
 		}
 		

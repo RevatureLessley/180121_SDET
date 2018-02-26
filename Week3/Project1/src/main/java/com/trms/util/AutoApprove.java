@@ -8,7 +8,9 @@ import java.util.TimerTask;
 import org.apache.log4j.Logger;
 
 import com.trms.beans.Reimbursement;
+import com.trms.services.EmployeeService;
 import com.trms.services.ReimbursementService;
+import com.trms.services.UsersEmpService;
 
 public class AutoApprove extends TimerTask {
 	private static final Logger logger = Logger.getLogger(AutoApprove.class);
@@ -40,7 +42,15 @@ public class AutoApprove extends TimerTask {
 				if(r.getApprLvl() == 2 || r.getApprLvl() == 1) {
 					ReimbursementService.updateApproval(r.getReimburseId(), 1, r.getNextApprovalId());
 				} else if(r.getApprLvl() == 0) {
+					int bencoSuper = EmployeeService.getDepartmentHead(2); //Magic number department of benco is 2
+					String email =  UsersEmpService.getUserEmail(bencoSuper);
+					String subject = "Reimbursement Approval Escalation";
+					String message = "Hello,\nThe benefits coordinator has not taken action on reimbursment number " + r.getReimburseId() +
+							" please take action.\n\n-TRMS NO REPLY\n\nDo not reply to this email.  This is an automatic message sent from "
+							+ "an unmonitered email.  You will not get a reply.";
+					SendEmail.sendEmail(email, subject, message);
 					logger.info("EMAIL BENCO DIRECT SUPERVISOR");
+					
 				}
 			} else {
 				logger.info("There is still time");

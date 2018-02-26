@@ -237,6 +237,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return result;
 	}
 
+	/**
+	 * Updates all employees available reimbursement amounts to 1000
+	 * @return An int with the number of tables that were updated
+	 */
 	@Override
 	public int resetAllAvailReimb() {
 		PreparedStatement ps = null;
