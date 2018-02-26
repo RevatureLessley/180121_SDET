@@ -94,6 +94,14 @@ more than it has to
 L2 is in session factory
 L1 is in session
 
+Hibernate Object States
+Transient
+Object created, but not attached to a session
+Persisted
+Object represents data in the database
+Detached
+Session closed, object doesn't represent data from DB anymore
+
 Hibernate methods
 get() vs load()
 save() vs persist()

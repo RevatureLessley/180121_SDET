@@ -39,6 +39,7 @@ handle system maintenance, backups
 and structure reliability
 Highly scalable resources that can
 be adjusted on the fly
+Processors, OS and hard drives
 
 Amazon Web Services
 Large selection of computer services provided on the cloud
