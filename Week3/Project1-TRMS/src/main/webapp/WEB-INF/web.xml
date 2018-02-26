@@ -169,4 +169,14 @@
     <servlet-name>GetStatusReimbursements</servlet-name>
     <url-pattern>/getallar</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetAwaitingStatus</display-name>
+    <servlet-name>GetAwaitingStatus</servlet-name>
+    <servlet-class>com.revature.servlets.GetAwaitingStatus</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAwaitingStatus</servlet-name>
+    <url-pattern>/getallawd</url-pattern>
+  </servlet-mapping>
 </web-app>

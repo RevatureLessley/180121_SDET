@@ -102,4 +102,82 @@ return status;
 		return statusList;
 	}
 
+	@Override
+	public List<Status> getAwaitingReimbursements(String role) {
+		
+		if(role.equals("department head")) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Status> statusList = new ArrayList<Status>();
+		
+		try(Connection conn = Bridge.connect()){
+			
+			String sql = "SELECT * FROM R_Status WHERE Approval_status = ? ";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, 1);
+			rs = ps.executeQuery(); 
+			
+			while(rs.next()){
+				
+				statusList.add(new Status (
+						rs.getInt(1), 		// rei_id
+						rs.getInt(2), 		//emp_id
+						rs.getString(3), 	// First name
+						rs.getString(4), 	// Last name
+						rs.getString(5), 	// Date Of Event 
+						rs.getString(6), 	// Time Of event
+						rs.getInt(7), 	// Location of event
+						rs.getString(8) 	// Description of event
+						));
+				
+				
+				
+				}
+			}
+		catch(SQLException e){e.printStackTrace();}
+		finally{close(ps);close(rs);}
+		
+		return statusList;
+		
+		
+		}
+		
+		else if(role.equals("benefits coordinator")) {
+		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Status> statusList = new ArrayList<Status>();
+		
+		try(Connection conn = Bridge.connect()){
+			
+			String sql = "SELECT * FROM R_Status WHERE Approval_status = ? ";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, 2);
+			rs = ps.executeQuery(); 
+			
+			while(rs.next()){
+				
+				statusList.add(new Status (
+						rs.getInt(1), 		// rei_id
+						rs.getInt(2), 		//emp_id
+						rs.getString(3), 	// First name
+						rs.getString(4), 	// Last name
+						rs.getString(5), 	// Date Of Event 
+						rs.getString(6), 	// Time Of event
+						rs.getInt(7), 	// Location of event
+						rs.getString(8) 	// Description of event
+						));
+				
+				
+				
+				}
+			}
+		catch(SQLException e){e.printStackTrace();}
+		finally{close(ps);close(rs);}
+		
+		return statusList;
+		}
+		return null;
+	}
+
 }

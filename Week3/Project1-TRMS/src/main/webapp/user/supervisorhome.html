@@ -19,151 +19,160 @@
 <script src="resource/javascript/reim.js"></script>
 <style>
 .button1 {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 5px 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    margin: 1px 1px;
-    cursor: pointer;
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 10px;
+	margin: 1px 1px;
+	cursor: pointer;
 }
 
 .button2 {
-    background-color: #008CBA; /* blue */
-    border: none;
-    color: white;
-    padding: 5px 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    margin: 1px 1px;
-    cursor: pointer;
+	background-color: #008CBA; /* blue */
+	border: none;
+	color: white;
+	padding: 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 10px;
+	margin: 1px 1px;
+	cursor: pointer;
 }
-
 </style>
 </head>
 <body>
 	<div class="container-fluid" style="margin-top: 50px"">
-
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#">TRMS</a>
+		<div class="well">
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">TRMS</a>
+					</div>
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#">Info</a></li>
+						<li><a href="ReimCo.html">Reimbursement Coverage</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="registration.html"><span
+								class="glyphicon glyphicon-user"></span> Register</a></li>
+						<li><a href="login.html"><span
+								class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+					</ul>
 				</div>
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Info</a></li>
-					<li><a href="ReimCo.html">Reimbursement Coverage</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="registration.html"><span
-							class="glyphicon glyphicon-user"></span> Register</a></li>
-					<li><a href="login.html"><span
-							class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-				</ul>
-			</div>
-		</nav>
+			</nav>
 
 
 
 
-		<div class="well">
 			<div class="well">
-			<h1>Welcome To Your Login Page!</h1>
-		</div>
-		<div class="well">
-			<h3>Please select one of the options below:</h3>
-		</div>
-		<div class="well">
-			<div class="well">
-				<p>
-					<a href="reimbursements/submitnew.html">Submit A NEW
-						Reimbursement</a>
-				</p>
-				<p>
-					<a href="reimbursements/grade.html">Add Grade To A Submitted Reimbursement</a>
-				</p>
-				<p>
-					<a href="reimbursements/edit.html">Edit Submitted Reimbursement</a>
-				</p>
-			</div>
-			<div class="well">
+				<div class="well">
+					<h1>Welcome To Your Login Page!</h1>
+				</div>
+				<div class="well">
+					<h3>Please select one of the options below:</h3>
+				</div>
+				<div class="well">
+					<div class="well">
+						<p>
+							<a href="reimbursements/submitnew.html">Submit A NEW
+								Reimbursement</a>
+						</p>
+						<p>
+							<a href="reimbursements/grade.html">Add Grade To A Submitted
+								Reimbursement</a>
+						</p>
+						<p>
+							<a href="reimbursements/edit.html">Edit Submitted
+								Reimbursement</a>
+						</p>
+					</div>
+					<div class="well">
 
-				<p>
-					<button type="button" class="btn btn-default" onclick="costAJAX()">Check
-						Available Reimbursement Amount</button>
-				</p>
-				<div id="costtable"></div>
+						<p>
+							<button type="button" class="btn btn-default"
+								onclick="costAJAX()">Check Available Reimbursement
+								Amount</button>
+						</p>
+						<div id="costtable"></div>
 
-				<p>
-					<button type="button" class="btn btn-default"
-						onclick="allReimAJAX()">Check ALL Your Reimbursements</button>
-				</p>
-				<p>
-				<div id="reimtable"></div>
-				</p>
+						<p>
+							<button type="button" class="btn btn-default"
+								onclick="allReimAJAX()">Check ALL Your Reimbursements</button>
+						</p>
+						<p>
+						<div id="reimtable"></div>
+						</p>
+						<form id="arview">
+							<button type="button" class="btn btn-default"
+								onclick="arviewAJAX()">Check Status Of Reimbursements</button>
+						</form>
+						<p>
+						<div id="arvdiv"></div>
+						</p>
+						<div>
+							<form id="cgaview">
+								<button type="button" class="btn btn-default"
+									onclick="cgaviewAJAX()">Check Custom Grading Format
+									for A Reimbursement</button>
+							</form>
+							<p>
+							<div id="cgavdiv"></div>
+							</p>
 
+						</div>
+					</div>
+
+					<br>
+
+				</div>
+
+				<div class="well">
+					<div class="well">
+						<h1>SUPERVISOR OPTIONS</h1>
+					</div>
+					<p>
+						<button type="button" class="btn btn-default"
+							onclick="supReimAJAX()">Check Associate Reimbursements</button>
+					</p>
+					<p>
+					<div id="supreimtable"></div>
+					</p>
 					<div>
-				<form id="cgaview">
-					<button type="button" class="btn btn-default"
-						onclick="cgaviewAJAX()">Check Custom Grading Format for A
-						Reimbursement</button>
-				</form>
-				<p>
-				<div id="cgavdiv"></div>
-				</p>
+						<form id="cgview">
+							<button type="button" required class="btn btn-default"
+								onclick="cgviewAJAX()">Check Custom Grading Format for
+								A Reimbursement</button>
+							<input type=number id="creid" name="cried">
+						</form>
+						<p>
+						<div id="cgvdiv"></div>
+						</p>
+					</div>
 
+					<p>
+						<a href="reimbursements/arstatus.html">Approve/Reject A
+							Reimbursement</a>
+					</p>
+				</div>
+
+				<div class="well">
+					<p>TRMS is a "Tuition Reimbursement Management System" that
+						allows many employed individuals like yourself become much more
+						valued assets through continued education. We aim to provide
+						employees with the peace of mind of no longer worrying about the
+						high cost of learning, and only focus on their continued efforts
+						to increase their knowledge,skills and experience. Please use the
+						"Reimbursement Coverage" link at the top of this page for more
+						information on how we can help cover the cost of your pursuit for
+						higher learning!</p>
+				</div>
 			</div>
 		</div>
-
-<br>
-
-	</div>
-
-		<div class="well">
-			<div class="well">
-				<h1>SUPERVISOR OPTIONS</h1>
-			</div>
-			<p>
-				<button type="button" class="btn btn-default"
-					onclick="supReimAJAX()">Check Associate Reimbursements</button>
-			</p>
-			<p>
-			<div id="supreimtable"></div>
-			</p>
-			<div>
-				<form id="cgview">
-					<button type="button" required class="btn btn-default"
-						onclick="cgviewAJAX()">Check Custom Grading Format for A
-						Reimbursement</button>
-					<input type=number id="creid" name="cried">
-				</form>
-				<p>
-				<div id="cgvdiv"></div>
-				</p>
-			</div>
-
-			<p>
-				<a href="reimbursements/arstatus.html">Approve/Reject A Reimbursement</a>
-			</p>
-		</div>
-
-		<div class="well">
-			<p>TRMS is a "Tuition Reimbursement Management System" that
-				allows many employed individuals like yourself become much more
-				valued assets through continued education. We aim to provide
-				employees with the peace of mind of no longer worrying about the
-				high cost of learning, and only focus on their continued efforts to
-				increase their knowledge,skills and experience. Please use the
-				"Reimbursement Coverage" link at the top of this page for more
-				information on how we can help cover the cost of your pursuit for
-				higher learning!</p>
-		</div>
-
-	</div>
 </body>
 </html>

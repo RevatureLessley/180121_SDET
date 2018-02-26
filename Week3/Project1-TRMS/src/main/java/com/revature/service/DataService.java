@@ -213,7 +213,10 @@ public class DataService {
 		return staDao.getReimbursements(emp_id);
 	};
 	
-	
+	public static List<Status> statusAWReimbursements(String role){
+		StatusUpdateDaoImpl staDao = new StatusUpdateDaoImpl();
+		return staDao.getAwaitingReimbursements(role);
+	}
 	public static void checkNewYear(){
 	
 	LocalDate localDate = LocalDate.now();

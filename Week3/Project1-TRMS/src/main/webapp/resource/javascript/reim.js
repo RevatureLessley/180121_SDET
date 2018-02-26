@@ -6,6 +6,7 @@ var tabling4 = 0;
 var tabling5 = 0;
 var tabling6 = 0;
 var tabling7 = 0;
+var tabling8 = 0;
 
 function clearTable(elementID) {
 	document.getElementById(elementID).remove();
@@ -1187,6 +1188,103 @@ function arviewAJAX() {
 
 			resultTable.appendChild(table);
 			tabling7 = 1;
+
+		} else if (xhr.readyState == 4 && xhr.status != 200) {
+		}
+	}
+	xhr.send();
+}
+
+function awdviewAJAX() {
+	if (tabling8 != 0) {
+		clearTable("awdtable");
+		tabling8 = 0;
+	}
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "getallawd");
+
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+
+			var xmlText = xhr.responseXML;
+			var response = xmlText.getElementsByTagName("status");
+			var resultTable = document.getElementById("awddiv");
+			resultTable.setAttribute("class", "well");
+
+			var table = document.createElement("table");
+			table.setAttribute("class", "table table-striped");
+			table.setAttribute("id", "awdtable");
+
+			var thead = document.createElement("thead");
+			thead.setAttribute("class", "thead-light");
+
+			var row1st = document.createElement("tr");
+
+			var til1 = document.createElement("th"); // rei_id
+			til1.setAttribute("scope", "col");
+			var text1 = document.createTextNode("REIMBURSEMENT_ID");
+			til1.appendChild(text1);
+
+			var til2 = document.createElement("th");
+			til2.setAttribute("scope", "col");
+			var text2 = document.createTextNode("APPROVER FIRST NAME");
+			til2.appendChild(text2);
+
+			var til3 = document.createElement("th");
+			til3.setAttribute("scope", "col");
+			var text3 = document.createTextNode("APPROVER LAST NAME");
+			til3.appendChild(text3);
+			
+			var til4 = document.createElement("th");
+			til4.setAttribute("scope", "col");
+			var text4 = document.createTextNode("STATUS");
+			til4.appendChild(text4);
+			
+			var til5 = document.createElement("th");
+			til5.setAttribute("scope", "col");
+			var text5 = document.createTextNode("NOTE");
+			til5.appendChild(text5);
+
+			row1st.appendChild(til1);
+			row1st.appendChild(til2);
+			row1st.appendChild(til3);
+			row1st.appendChild(til4);
+			row1st.appendChild(til5);
+
+			thead.appendChild(row1st)
+			table.appendChild(thead);
+
+			for (r = 0; r < response.length; r++) {
+
+				var tbody = document.createElement("tbody");
+				var row = document.createElement("tr");
+				row.setAttribute("scope", "row");
+				var td1 = document.createElement("td");
+				var td2 = document.createElement("td");
+				var td3 = document.createElement("td");
+				var td4 = document.createElement("td");
+				var td5 = document.createElement("td");
+
+				td1.innerHTML = response[r].childNodes[0].innerHTML;
+				td2.innerHTML = response[r].childNodes[1].innerHTML;
+				td3.innerHTML = response[r].childNodes[2].innerHTML;
+				td4.innerHTML = response[r].childNodes[3].innerHTML;
+				td5.innerHTML = response[r].childNodes[4].innerHTML;
+
+				row.appendChild(td1);
+				row.appendChild(td2);
+				row.appendChild(td3);
+				row.appendChild(td4);
+				row.appendChild(td5);
+
+				tbody.appendChild(row)
+				table.appendChild(tbody);
+
+			}
+
+			resultTable.appendChild(table);
+			tabling8 = 1;
 
 		} else if (xhr.readyState == 4 && xhr.status != 200) {
 		}
