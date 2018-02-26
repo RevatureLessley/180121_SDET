@@ -196,7 +196,7 @@ public class ReimbursementService {
 		ReimbursementDao dao = new ReimbursementDaoImpl();
 		
 		if(response == 1) {
-			EmployeeService.updateAvailReimb(rId, dao.getEmpIdByReimburse(rId)); // This returns rows updated should be one
+			//EmployeeService.updateAvailReimb(rId, dao.getEmpIdByReimburse(rId)); // This returns rows updated should be one
 			dao.awardReimburse(rId, response);
 			if(pReimb > aReimb) {
 				AddedInfo ai = new AddedInfo();
@@ -209,6 +209,7 @@ public class ReimbursementService {
 			}
 		} else if (response == 0) {
 			dao.awardReimburse(rId, response);
+			// TODO give back initial subtracted amount
 			// TODO if time, make is so that BenCo can submit reason why reimbursement not awarded
 		} else {
 			logger.warn("awardReimbAmount() : This is not a proper response to award reimbursement");

@@ -280,10 +280,11 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			String sql = "SELECT reimburse_id, reimburse_datetime, event_name, center_name, format_type, " + 
 					"reimburse_cost, reimburse_projreimb, reimburse_approved, reimburse_urgent, reimburse_awarded " + 
 					"FROM reimbursements a, eventtypes b, gradingformats c, learningcenters d " + 
-					"WHERE a.reimburse_approveid = ? AND a.reimburse_event_id = b.event_id AND a.reimburse_format_id = c.format_id " + 
+					"WHERE (a.reimburse_approveid = ? OR a.reimburse_inforeq = ?) AND a.reimburse_event_id = b.event_id AND a.reimburse_format_id = c.format_id " + 
 					"AND a.reimburse_center_id = d.center_id";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, empId);
+			ps.setInt(2, empId);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -399,7 +400,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			String sql = "SELECT b.event_name, d.format_type, c.center_name, a.reimburse_cost, a.reimburse_projreimb, "
 					+ "a.reimburse_desc, a.reimburse_grade, a.reimburse_passgrade, a.reimburse_workmissed, "
 					+ "a.reimburse_datetime, a.reimburse_workjustify, a.reimburse_inforeq, a.reimburse_emp_id, "
-					+ "a.reimburse_approveid, a.reimburse_urgent, a.reimburse_awarded "
+					+ "a.reimburse_approveid, a.reimburse_urgent, a.reimburse_awarded, a.reimburse_approved "
 					+ "FROM reimbursements a, eventtypes b, learningcenters c, gradingformats d "
 					+ "WHERE a.reimburse_id = ? AND a.reimburse_event_id = b.event_id "
 					+ "AND a.reimburse_center_id = c.center_id AND a.reimburse_format_id = d.format_id";
@@ -424,6 +425,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				r.setNextApprovalId(rs.getInt(14));
 				r.setUrgent(rs.getInt(15));
 				r.setAwarded(rs.getInt(16));
+				r.setApproved(rs.getInt(17));
 			}
 		} catch(SQLException e) {
 			logger.error(e.getMessage());

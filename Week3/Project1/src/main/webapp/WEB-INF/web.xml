@@ -26,7 +26,7 @@
     <servlet-class>com.trms.servlets.FrontController</servlet-class>
     <init-param>
       <param-name>daysToApprove</param-name>
-      <param-value>3</param-value>
+      <param-value>2</param-value>
     </init-param>
     <init-param>
       <param-name>minsToApprove</param-name>

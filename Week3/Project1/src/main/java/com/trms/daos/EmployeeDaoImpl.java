@@ -35,7 +35,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 		try (Connection conn = Connections.getConnection()) {
 			String sql = "SELECT a.emp_fname, a.emp_lname, a.emp_reportsto, b.depart_name, c.title, a.emp_availreim,"
-					+ " a.emp_addr, a.emp_city, a.emp_state, a.emp_zip"
+					+ " a.emp_addr, a.emp_city, a.emp_state, a.emp_zip, a.emp_department, a.emp_title_id "
 					+ " FROM employees a, empdepartments b, employeetitles c"
 					+ " WHERE emp_id = ? AND a.emp_department = b.depart_id AND a.emp_title_id = c.title_id";
 			ps = conn.prepareStatement(sql);
@@ -46,6 +46,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				emp = new Employee(empId, rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4),
 						rs.getString(5), rs.getFloat(6), rs.getString(7), rs.getString(8), rs.getString(9),
 						rs.getInt(10));
+				emp.setDepartmentId(rs.getInt(11));
+				emp.setTitleId(rs.getInt(12));
 			}
 		} catch (SQLException e) {
 			logger.error(e.getMessage());

@@ -229,16 +229,22 @@
 					<div>
 						<input type='text' id='reqinfo'> <select id='reqinfoemp'>
 							<option value=<%=r.getEmpId()%>>REQUESTOR</option>
+							<% if(user.getTitle().equals("DEPARTMENT HEAD") || user.getTitle().equals("BENEFITS COORDINATOR")) { %> 
+							<option value=<%=e.getReportsTo() %>>DIRECT SUPERVISOR</option>
+							<% } %>
+							<% if(user.getTitle().equals("BENEFITS COORDINATOR")) { %> 
+							<option value=<%=EmployeeService.getDepartmentHead(e.getDepartmentId()) %>>DEPARTMENT HEAD</option>
+							<% } %>
 						</select>
 					</div>
 				</div>
 
 				<%
-					if (user.getTitle().equals("BENEFITS COORDINATOR") && r.getApproved() != 0) {
+					if (user.getTitle().equals("BENEFITS COORDINATOR") && r.getApproved() == 1) {
 				%>
 				<div class='col-sm-3' id='awardiv'>
 					<label for="award">AWARD AMOUNT</label> <select
-						class="form-control" name="award" id="award" required>
+						class="form-control" name="award" id="award" onchange=awardMessage() required>
 						<option value=-1>---</option>
 						<option value=1>YES</option>
 						<option value=0>NO</option>
@@ -248,6 +254,7 @@
 					}
 				%>
 
+				<% System.out.println("getApproved() : " + r.getApproved()); if (r.getApproved() == 2) { %>
 				<!-- Approve/Deny Request -->
 				<div class='col-sm-3' id='resdiv'>
 					<label for="response">RESPONSE</label> <select class="form-control"
@@ -256,8 +263,8 @@
 						<option value=1>APPROVE</option>
 						<option value=0>DENY</option>
 					</select>
-
 				</div>
+				<% } %>
 			</div>
 
 			<%
