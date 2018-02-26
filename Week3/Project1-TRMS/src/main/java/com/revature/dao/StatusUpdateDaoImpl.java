@@ -105,7 +105,7 @@ return status;
 	@Override
 	public List<Status> getAwaitingReimbursements(String role) {
 		
-		if(role.equals("department head")) {
+		if(role.equals("head")) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Status> statusList = new ArrayList<Status>();
@@ -142,7 +142,7 @@ return status;
 		
 		}
 		
-		else if(role.equals("benefits coordinator")) {
+		else {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -177,7 +177,6 @@ return status;
 		
 		return statusList;
 		}
-		return null;
 	}
 
 }

@@ -23,6 +23,8 @@ public interface EmployeeDao {
 	public List<Employee> getAllDepartmentHeads ();
 	public List<Employee> getAllBenefitsCoordinators ();
 	
+	public void reimburseAmount (int amount , int emp_id);
+	public int getAmount(int emp_id);
 	public void refreshAmount();
 	
 	

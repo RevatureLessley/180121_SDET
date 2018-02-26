@@ -362,12 +362,46 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		PreparedStatement ps = null;
 		
 		try(Connection conn = Bridge.connect()){
-			String sql = "UPDATE EMPLOYEES SET AMOUNT = 1000)";
+			String sql = "UPDATE EMPLOYEES SET AMOUNT = 1000";
 			ps = conn.prepareStatement(sql);
 			ps.executeUpdate();
 		}catch(SQLException e){e.printStackTrace();}
 		finally{close(ps);}
 		
 		
+	}
+
+	@Override
+	public void reimburseAmount(int amount, int emp_id) {
+		PreparedStatement ps = null;
+		int refund = getAmount(emp_id) - amount;
+		try(Connection conn = Bridge.connect()){
+			String sql = "UPDATE EMPLOYEES SET AMOUNT = ? WHERE EMP_ID = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, refund);
+			ps.setInt(2, emp_id);
+			ps.executeUpdate();
+		}catch(SQLException e){e.printStackTrace();}
+		finally{close(ps);}
+		
+		
+	}
+
+	@Override
+	public int getAmount(int emp_id) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int count = 0;
+		try(Connection conn = Bridge.connect()){
+			
+			String sql = "SELECT AMOUNT FROM EMPLOYEES WHERE EMP_ID = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, emp_id);
+			rs = ps.executeQuery();
+			while(rs.next()) {count = rs.getInt(1);}
+			}
+		catch(SQLException e){e.printStackTrace();}
+		finally{close(ps);close(rs);}
+		return count;
 	}
 }

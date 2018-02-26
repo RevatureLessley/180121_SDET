@@ -684,7 +684,10 @@ function depReimAJAX() {
 				row.appendChild(td14);
 				row.appendChild(td15);
 				
-				table.appendChild(row);
+				var tbody = document.createElement("tbody");
+				
+				tbody.appendChild(row)
+				table.appendChild(tbody);
 
 			}
 
@@ -719,57 +722,77 @@ function benReimAJAX() {
 			var resultTable = document.getElementById("benreimtable");
 			resultTable.setAttribute("class", "well");
 
+			
 			var table = document.createElement("table");
-			table.setAttribute("border", "4px");
+			table.setAttribute("class", "table table-striped");
 			table.setAttribute("id", "benereimbursementtable");
 
+			var thead = document.createElement("thead");
+			thead.setAttribute("class", "thead-light");
+
+			
+			
+			
+			
 			var row1st = document.createElement("tr");
 
 			var til1 = document.createElement("th"); // rei_id
+			til1.setAttribute("scope", "col");
 			var text1 = document.createTextNode("EMPLOYEE_ID");
 			til1.appendChild(text1);
 
 			var til2 = document.createElement("th"); // rei_id
+			til2.setAttribute("scope", "col");
 			var text2 = document.createTextNode("FIRST_NAME");
 			til2.appendChild(text2);
 
 			var til3 = document.createElement("th"); // rei_id
+			til3.setAttribute("scope", "col");
 			var text3 = document.createTextNode("LAST_NAME");
 			til3.appendChild(text3);
 
 			var til4 = document.createElement("th"); // rei_id
+			til4.setAttribute("scope", "col");
 			var text4 = document.createTextNode("REIMBURSEMENT_ID");
 			til4.appendChild(text4);
 
 			var til5 = document.createElement("th"); // date
+			til5.setAttribute("scope", "col");
 			var text5 = document.createTextNode("DATE OF EVENT");
 			til5.appendChild(text5);
 
 			var til6 = document.createElement("th"); // time
+			til6.setAttribute("scope", "col");
 			var text6 = document.createTextNode("TIME OF EVENT");
 			til6.appendChild(text6);
 
 			var til7 = document.createElement("th"); // location
+			til7.setAttribute("scope", "col");
 			var text7 = document.createTextNode("LOCATION OF EVENT");
 			til7.appendChild(text7);
 
 			var til8 = document.createElement("th"); // desc
+			til8.setAttribute("scope", "col");
 			var text8 = document.createTextNode("DESCRIPTION");
 			til8.appendChild(text8);
 
 			var til9 = document.createElement("th"); // cost
+			til9.setAttribute("scope", "col");
 			var text9 = document.createTextNode("COST");
 			til9.appendChild(text9);
 
 			var til10 = document.createElement("th"); // grading format
+			til10.setAttribute("scope", "col");
 			var text10 = document.createTextNode("GRADING FORMAT");
 			til10.appendChild(text10);
 
 			var til11 = document.createElement("th"); // type
+			til11.setAttribute("scope", "col");
 			var text11 = document.createTextNode("TYPE OF EVENT");
 			til11.appendChild(text11);
 
 			var til12 = document.createElement("th"); // work
+			til12.setAttribute("scope", "col");
 			var text12 = document.createTextNode("WORK RELATED JUSTIFCATION");
 			til12.appendChild(text12);
 
@@ -803,12 +826,15 @@ function benReimAJAX() {
 			row1st.appendChild(til13);
 			row1st.appendChild(til14);
 			row1st.appendChild(til15);
-
-			table.appendChild(row1st);
+			
+			thead.appendChild(row1st);
+			table.appendChild(thead);
 
 			for (r = 0; r < response.length; r++) {
-
+				
+				var tbody = document.createElement("tbody");
 				var row = document.createElement("tr");
+				row.setAttribute("scope", "row");
 				var td1 = document.createElement("td");
 				var td2 = document.createElement("td");
 				var td3 = document.createElement("td");
@@ -823,7 +849,7 @@ function benReimAJAX() {
 				var td12 = document.createElement("td");
 				var td13 = document.createElement("td");
 				var td14 = document.createElement("td");
-				var td14 = document.createElement("td");
+				var td15 = document.createElement("td");
 
 				td1.innerHTML = response[r].childNodes[0].innerHTML;
 				td2.innerHTML = response[r].childNodes[1].innerHTML;
@@ -888,7 +914,11 @@ function benReimAJAX() {
 				row.appendChild(td14);
 				row.appendChild(td15);
 				
-				table.appendChild(row);
+
+				
+				tbody.appendChild(row)
+				table.appendChild(tbody);
+
 
 			}
 

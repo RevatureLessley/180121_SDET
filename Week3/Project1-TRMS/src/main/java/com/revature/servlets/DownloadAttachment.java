@@ -21,7 +21,7 @@ public class DownloadAttachment extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int a_id = Integer.parseInt(request.getParameter("gbutton"));
+		int a_id = Integer.parseInt(request.getParameter("abutton"));
 		
          String fileName = DataService.getAttachmentNameByAid(a_id);
          String fileType = DataService.getAttachmentTypeByAid(a_id);

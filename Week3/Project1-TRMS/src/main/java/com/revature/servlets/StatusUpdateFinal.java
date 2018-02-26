@@ -12,8 +12,10 @@ import javax.servlet.http.HttpSession;
 import com.revature.service.DataService;
 import com.revature.util.HTMLTemplates;
 
-public class StatusUpdate extends HttpServlet {
+
+public class StatusUpdateFinal extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
@@ -23,16 +25,23 @@ public class StatusUpdate extends HttpServlet {
 		String afname = (String) session.getAttribute("fname");
 		String alname = (String) session.getAttribute("lname");
 		String role = (String) session.getAttribute("role");
-	
-		
+		System.out.println(request.getParameter("status"));
+		System.out.println("=======================");
+		System.out.println(role);
+		System.out.println("=======================");
 		int reiid = Integer.parseInt(request.getParameter("reiid"));
+		int amount = Integer.parseInt(request.getParameter("amount"));
+		System.out.println(amount);
 		int status = interpretStatus(request.getParameter("status"), role);
-		
-		
-
-		
+		System.out.println("=======================");
+		System.out.println(status);
 		String note = request.getParameter("note");
+		
 		int result = DataService.addStatus(reiid, afname, alname,status, note);
+		if(status == 3) {
+			System.out.println("Made it");
+			DataService.reimburseEmployee(reiid,amount);
+		}
 		
 		if( result == 1) {
 			HTMLTemplates.headers(out);
@@ -52,10 +61,7 @@ public class StatusUpdate extends HttpServlet {
 			out.print("<h1>REIMBURSEMENT ALREADY HAD THIS STATUS!</h1>");
 			HTMLTemplates.goBackButton(out);
 		}
-		
 	}
-
-	
 	private int interpretStatus (String status, String r) {
 		if(status.equals("Approve") && r.equals("supervisor")) {return 1;}
 		else if(status.equals("Approve")&& r.equals("head")) {return 2;}

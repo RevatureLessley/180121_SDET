@@ -179,4 +179,14 @@
     <servlet-name>GetAwaitingStatus</servlet-name>
     <url-pattern>/getallawd</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StatusUpdateFinal</display-name>
+    <servlet-name>StatusUpdateFinal</servlet-name>
+    <servlet-class>com.revature.servlets.StatusUpdateFinal</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StatusUpdateFinal</servlet-name>
+    <url-pattern>/suf</url-pattern>
+  </servlet-mapping>
 </web-app>

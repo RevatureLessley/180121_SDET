@@ -217,6 +217,19 @@ public class DataService {
 		StatusUpdateDaoImpl staDao = new StatusUpdateDaoImpl();
 		return staDao.getAwaitingReimbursements(role);
 	}
+	
+	
+	public static void reimburseEmployee(int reiid, int amount) {
+		ReimbursementDaoImpl reimDao = new ReimbursementDaoImpl();
+		Employee e = reimDao.getEmployeeByRid(reiid);
+		
+		EmployeeDaoImpl empDao = new EmployeeDaoImpl();
+		empDao.reimburseAmount(amount, e.getEmp_id());
+	}
+	
+	
+	
+	
 	public static void checkNewYear(){
 	
 	LocalDate localDate = LocalDate.now();
