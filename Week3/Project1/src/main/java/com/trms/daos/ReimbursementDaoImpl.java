@@ -397,7 +397,8 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		try(Connection conn = Connections.getConnection()) {
 			String sql = "SELECT b.event_name, d.format_type, c.center_name, a.reimburse_cost, a.reimburse_projreimb, "
 					+ "a.reimburse_desc, a.reimburse_grade, a.reimburse_passgrade, a.reimburse_workmissed, "
-					+ "a.reimburse_datetime, a.reimburse_workjustify, a.reimburse_inforeq, a.reimburse_emp_id, a.reimburse_approveid, a.reimburse_urgent "
+					+ "a.reimburse_datetime, a.reimburse_workjustify, a.reimburse_inforeq, a.reimburse_emp_id, "
+					+ "a.reimburse_approveid, a.reimburse_urgent, a.reimburse_awarded "
 					+ "FROM reimbursements a, eventtypes b, learningcenters c, gradingformats d "
 					+ "WHERE a.reimburse_id = ? AND a.reimburse_event_id = b.event_id "
 					+ "AND a.reimburse_center_id = c.center_id AND a.reimburse_format_id = d.format_id";
@@ -421,6 +422,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				r.setEmpId(rs.getInt(13));
 				r.setNextApprovalId(rs.getInt(14));
 				r.setUrgent(rs.getInt(15));
+				r.setAwarded(rs.getInt(16));
 			}
 		} catch(SQLException e) {
 			logger.error(e.getMessage());
@@ -481,7 +483,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		List<AddedInfo> ls = new ArrayList<>(); //created an info bean
 		
 		try(Connection conn = Connections.getConnection()) {
-			String sql = "SELECT a.info_id, a.addinfo_reimburse, b.emp_fname, b.emp_lname FROM reimburseaddedinfo a, employees b " + 
+			String sql = "SELECT a.info_id, a.addinfo_reimburse, b.emp_fname, b.emp_lname, a.info_subject FROM reimburseaddedinfo a, employees b " + 
 					"WHERE a.in_reimburse_id = ? AND a.info_added_by_emp = b.emp_id ORDER BY a.info_id";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, rId);
@@ -489,6 +491,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			
 			while(rs.next()) {
 				ls.add(new AddedInfo(rs.getInt(1), rs.getString(3), rs.getString(4), rs.getString(2)));
+				ls.get(ls.size()-1).setInfoSubject(rs.getString(5));
 			}
 		} catch(SQLException e) {
 			logger.error(e.getMessage());

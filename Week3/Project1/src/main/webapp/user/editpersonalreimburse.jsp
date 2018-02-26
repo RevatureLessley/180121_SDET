@@ -200,6 +200,8 @@
 			%>
 			<label>AUTHOR : </label>
 			<%=ai.getInfoEmpName()%>
+			<br> <label>SUBJECT : </label>
+			<%=ai.getInfoSubject()%>
 			<br> <label>MESSAGE : </label>
 			<%=ai.getInfoMessage()%>
 			<hr>
@@ -218,7 +220,7 @@
 			%>
 
 			<%
-				if (r.getNextApprovalId() == (Integer) session.getAttribute("empid")) {
+				if (r.getNextApprovalId() == (Integer) session.getAttribute("empid") && r.getAwarded() != 1) {
 			%>
 			<br>
 			<div class='row'>
@@ -232,7 +234,7 @@
 				</div>
 
 				<%
-					if (user.getTitle().equals("BENEFITS COORDINATOR")) {
+					if (user.getTitle().equals("BENEFITS COORDINATOR") && r.getApproved() != 0) {
 				%>
 				<div class='col-sm-3' id='awardiv'>
 					<label for="award">AWARD AMOUNT</label> <select
@@ -287,8 +289,11 @@
 			<%
 				if (r.isFiles()) {
 			%>
+			<hr>
+			<div class='text-center'>
 			<label for="getFiles">DOWNLOAD FILES</label>
 			<button type="button" id="getFiles">Get File(s)</button>
+			</div>
 			<%
 				}
 			%>
