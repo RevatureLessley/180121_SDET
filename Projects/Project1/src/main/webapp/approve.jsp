@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<%@ page import="com.project1.services.AccountServices" %>
 <html>
 <head>
+<meta charset="ISO-8859-1">
+
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"
 	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	crossorigin="anonymous"></script>
@@ -22,14 +21,9 @@
 	crossorigin="anonymous"></script>
 
 <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Welcome!</title>
-<% String email = (String)session.getAttribute("email");
-   String name = AccountServices.getName(email); 
- %>
 </head>
+<title>RRTech Home</title>
 <body style="background-color:#2C3A50">
-
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -45,22 +39,38 @@
         <li class="active"><a href="index.html">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="LogOutServlet"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       </ul>
     </div>
   </div>
 </nav>
-	<div class="container-fluid">
+<div class="container" style="width:500px">
+  <h2 style="color:white">Sign into your account</h2>
+  <form class="form-horizontal" method="POST" action="LoginServlet">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email" style="color:white">Email:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" placeholder="Enter email" name="email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="password" style="color:white">Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" placeholder="Enter password" name="password">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Log in</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div style="width:500px" class="container-fluid">
 		<div class="well" id="dtheme">
-			<h1 style="color:white">Welcome, <%= name %>!!</h1>
+			<h1 style="color:white">Don't have an account?</h1>
+			<h2><a style="color:#A1BFDE" href="signup.html">Click here to create one!</a></h2>
 		</div>
-
-		<div class="well" id="dtheme" style="width:400px">
-
-			<h3><a style="color:#A1BFDE" href="accountinfo.jsp">Account info</a></h3>
-			<h3><a style="color:#A1BFDE" href="Events.jsp">Events</a></h3>
-			<h3><a style="color:#A1BFDE" href="approve.jsp">Approve Account</a></h3>
-		</div>
-	</div>
+</div>
 </body>
 </html>
