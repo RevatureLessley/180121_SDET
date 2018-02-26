@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
 		}else{
 			session.invalidate();
 			
-			out.print("<h1>INVALID CREDENTIALS</h1>");
+			out.print("<h1>INVALID PASSWORD OR USERNAME</h1>");
 			HtmlTemplates.goBackButton(out);
 			
 		}
