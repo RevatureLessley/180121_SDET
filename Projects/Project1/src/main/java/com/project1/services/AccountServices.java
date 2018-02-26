@@ -4,10 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import com.project1.beans.Account;
 import com.project1.dao.TRMSDaoImpl;
 
 public class AccountServices {
 	static TRMSDaoImpl dao;
+	Account account;
 	
 	public static boolean uniqueEmail(String email) {
 		dao = new TRMSDaoImpl();
@@ -48,5 +50,31 @@ public class AccountServices {
 	public static String getName(String email) {
 		dao = new TRMSDaoImpl();
 		return dao.getStringValue(email, "first_name", "personal_info");
+	}
+	
+	public static String getDate(String email) {
+		dao = new TRMSDaoImpl();
+		return dao.getStringValue(email, "join_date", "personal_info");
+	}
+	
+	public static String getFullName(String email) {
+		dao = new TRMSDaoImpl();
+		String first = dao.getStringValue(email, "first_name", "personal_info");
+		String last = dao.getStringValue(email, "last_name", "personal_info");
+		return first + " " + last;
+	}
+	
+	public static double getReimbursements(String email, String column) {
+		dao = new TRMSDaoImpl();
+		return dao.getDoubleValue(email, "reimbursements", column);
+	}
+	
+	public static String accountStatus(String email) {
+		dao = new TRMSDaoImpl();
+		Account account = dao.selectAccountByEmail(email);
+		if (account.getIsBenCo() == "1") return "Benefits Coordinator";
+		if (account.getIsDepHead() == "1") return "Department";
+		if (account.getIsDirSup() == "1") return "Direct Supervisor";
+		return "Regular Account";
 	}
 }

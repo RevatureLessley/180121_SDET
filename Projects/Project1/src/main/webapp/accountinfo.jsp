@@ -24,8 +24,15 @@
 <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome!</title>
-<% String email = (String)session.getAttribute("email");
-   String name = AccountServices.getName(email); 
+<% 
+   String email = (String)session.getAttribute("email");
+   String name = AccountServices.getFullName(email);
+   String accountStatus = AccountServices.accountStatus(email);
+   String join_date = AccountServices.getDate(email);
+   double available = AccountServices.getReimbursements(email, "available"); 
+   double pending = AccountServices.getReimbursements(email, "pending"); 
+   double awarded = AccountServices.getReimbursements(email, "awarded"); 
+   double total = AccountServices.getReimbursements(email, "total"); 
  %>
 </head>
 <body style="background-color:#2C3A50">
@@ -50,16 +57,18 @@
     </div>
   </div>
 </nav>
-	<div class="container-fluid">
-		<div class="well" id="dtheme">
-			<h1 style="color:white">Welcome, <%= name %>!!</h1>
-		</div>
-
-		<div class="well" id="dtheme" style="width:400px">
-
-			<h3><a style="color:#A1BFDE" href="accountinfo.jsp">Account info</a></h3>
-			<h3><a style="color:#A1BFDE" href="Events.jsp">Events</a></h3>
-		</div>
-	</div>
+	<div class="container" style="width:800px">
+  <h1 style="color:white">Account Info</h1>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+           <h2 style="color:#D0DEED">Name: <%= name %> <br></h2>
+           <h2 style="color:#D0DEED">Join date:  <%= join_date %> <br></h2>
+           <h2 style="color:#D0DEED">Account Type:  <%= accountStatus %> <br></h2>
+           <h2 style="color:#D0DEED">Available for reimbursement:  <%= available %> <br></h2>
+           <h2 style="color:#D0DEED">Pending reimbursement:  <%= pending %> <br></h2>
+           <h2 style="color:#D0DEED">Awarded reimbursements:  <%= awarded %> <br></h2>
+      </div>
+    </div>
+</div>
 </body>
 </html>

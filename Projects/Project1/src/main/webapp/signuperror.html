@@ -20,8 +20,7 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 	
-<!--  notes for project:
-		1) Use a front controller (filter) for the authentication page. -->
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
 <script src="javascript/Ajax.js"></script>
 </head>
 <title>Sign Up</title>
@@ -41,8 +40,7 @@
         <li class="active"><a href="#">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="signin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="events.html">Events</a></li>
       </ul>
     </div>
   </div>
@@ -92,11 +90,14 @@
   </div>
 </form>
 </div>
-<div style="width:500px" class="container-fluid" class ="float-right">
-		<div class="well" style="background-color:#161D23; border-color:black">
+<div class="container" style="width:500px">
+		<div class="well" id="dtheme">
+		<form class="form-horizontal" method="POST" action="LoginServlet">
 			<h1 style="color:white">Already have an account?</h1>
-			<h2><a style="color:#A1BFDE" href="signin.html">Sign in here!</a></h2>
+			<button type="submit" class="btn btn-default"><h2>Log in here!</h2></button>
+		</form>
 		</div>
+	</div>
 </div>
 </body>
 </html>

@@ -6,8 +6,9 @@ public class Account {
     String isBenCo;
     String isDirSup;
     String isDepHead;
+    String approved;
     
-	public Account(String email, String username, String password, String isBenCo, String isDirSup, String isDepHead) {
+	public Account(String email, String password, String isBenCo, String isDirSup, String isDepHead, String approved) {
 		super();
 		this.email = email;
 		this.password = password;
@@ -54,6 +55,14 @@ public class Account {
 
 	public void setIsDepHead(String isDepHead) {
 		this.isDepHead = isDepHead;
+	}
+	
+	public String getApproved() {
+		return approved;
+	}
+
+	public void setApproved(String approved) {
+		this.approved = approved;
 	}
 
 	@Override
