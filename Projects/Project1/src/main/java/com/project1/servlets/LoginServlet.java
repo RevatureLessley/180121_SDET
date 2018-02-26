@@ -35,6 +35,7 @@ public class LoginServlet extends HttpServlet {
 			rd = request.getRequestDispatcher("accountpage.jsp");
 			rd.forward(request, response);
 		}else{
+			session.invalidate();
 			rd = request.getRequestDispatcher("signin.html");
 			rd.forward(request, response);
 		}
