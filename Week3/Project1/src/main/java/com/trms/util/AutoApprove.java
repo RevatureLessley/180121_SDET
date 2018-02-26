@@ -47,7 +47,7 @@ public class AutoApprove extends TimerTask {
 					String subject = "Reimbursement Approval Escalation";
 					String message = "Hello,\nThe benefits coordinator has not taken action on reimbursment number " + r.getReimburseId() +
 							" please take action.\n\n-TRMS NO REPLY\n\nDo not reply to this email.  This is an automatic message sent from "
-							+ "an unmonitered email.  You will not get a reply.";
+							+ "an unmonitored email.  You will not get a reply.";
 					SendEmail.sendEmail(email, subject, message);
 					logger.info("EMAIL BENCO DIRECT SUPERVISOR");
 					

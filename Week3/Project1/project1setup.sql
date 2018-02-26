@@ -276,6 +276,14 @@ INSERT INTO employees VALUES(8, 'Amy', 'Lee', 4, 2, 50, 0, '4 Enchanted Path', '
 INSERT INTO employees VALUES(9, 'Jay', 'Hope', 10, 3, 301, 1000, '4 Enchanted Path', 'Charlotte', 'NC', 90382, SYSTIMESTAMP);
 INSERT INTO employees VALUES(10, 'David', 'Adeleke', 11, 3, 300, 1000, '4 Enchanted Path', 'Charlotte', 'NC', 90382, SYSTIMESTAMP);
 INSERT INTO employees VALUES(11, 'Tiwatope', 'Balogun', 4, 3, 50, 1000, '4 Enchanted Path', 'Charlotte', 'NC', 90382, SYSTIMESTAMP);
+INSERT INTO employees VALUES(12, 'Vivian', 'Doe', 4, 8, 50, 1000, '48 Jamestown Street', 'Denver', 'CO', 93368, SYSTIMESTAMP);
+INSERT INTO employees VALUES(13, 'Emmanual', 'Jefferson', 12, 8, 800, 1000, '48 Jamestown Street', 'Denver', 'CO', 93368, SYSTIMESTAMP);
+INSERT INTO employees VALUES(14, 'Mary', 'Jane', 13, 8, 801, 1000, '48 Jamestown Street', 'Denver', 'CO', 93368, SYSTIMESTAMP);
+INSERT INTO employees VALUES(15, 'Sara', 'Jane', 13, 8, 802, 1000, '48 Jamestown Street', 'Denver', 'CO', 93368, SYSTIMESTAMP);
+INSERT INTO employees VALUES(16, 'Liz', 'Lane', 13, 8, 803, 1000, '48 Jamestown Street', 'Denver', 'CO', 93368, SYSTIMESTAMP);
+INSERT INTO employees VALUES(17, 'Bobbert', 'Trebbob', 13, 8, 804, 1000, '48 Jamestown Street', 'Denver', 'CO', 93368, SYSTIMESTAMP);
+INSERT INTO employees VALUES(18, 'Scoops', 'Iciere', 4, 2, 50, 1000, '78 Charlotte Road', 'Daegu', 'NY', 30582, SYSTIMESTAMP);
+INSERT INTO employees VALUES(19, 'Joshua', 'Pete', 18, 2, 201, 1000, '78 Charlotte Road', 'Daegu', 'NY', 30582, SYSTIMESTAMP);
 
 INSERT INTO eventtypes VALUES(1, 'UNIVERSITY COURSES', 0.80);
 INSERT INTO eventtypes VALUES(2, 'SEMINARS', 0.60);

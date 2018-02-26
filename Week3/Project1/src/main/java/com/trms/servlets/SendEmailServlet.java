@@ -40,7 +40,7 @@ public class SendEmailServlet extends HttpServlet {
 				+ request.getParameter("rid") + " has been changed to $" + request.getParameter("projreimb")
 				+ ".\nPlease review your "
 				+ "reimbursment details.\n\n-TRMS NO REPLY\n\nDo not reply to this email.  This is an automatic message "
-				+ "sent from an unmonitered email.  You will not get a reply.";
+				+ "sent from an unmonitored email.  You will not get a reply.";
 		
 		SendEmail.sendEmail(to, subject, message);
 
