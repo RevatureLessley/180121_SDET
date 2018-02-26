@@ -23,18 +23,20 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		System.out.println(email + password);
 		RequestDispatcher rd;
-		//HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
+		System.out.println(session.isNew());
 		
-		if(AccountServices.validate(email, password)){
-			//session.setAttribute("username", email);
+		if(session.isNew() && AccountServices.validate(email, password)){
+			session.setAttribute("email", email);
 			System.out.println("sloop gang");
 			rd = request.getRequestDispatcher("accountpage.jsp");
 			rd.forward(request, response);
-		}else{
-			//session.invalidate();
-			rd = request.getRequestDispatcher("signinerror.jsp");
+		} else if(!session.isNew()){
+			rd = request.getRequestDispatcher("accountpage.jsp");
 			rd.forward(request, response);
-			
+		}else{
+			rd = request.getRequestDispatcher("signin.html");
+			rd.forward(request, response);
 		}
 	}
 

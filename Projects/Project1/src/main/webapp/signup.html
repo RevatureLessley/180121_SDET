@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +22,7 @@
 	
 <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
 </head>
-<title>Error</title>
+<title>Sign up</title>
 <body style="background-color:#2C3A50">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -34,11 +32,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="index.jsp">RRTech</a>
+      <a class="navbar-brand" href="index.html">RRTech</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.jsp">Home</a></li>
+        <li class="active"><a href="index.html">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -48,8 +46,8 @@
   </div>
 </nav>
 <div class="container" style="width:500px">
-  <h2 style="color:white">Error registering your account. Try again:</h2>
-  <form data-toggle="validator" role="form" method="POST" action="signup.do">
+  <h2 style="color:white">Create account</h2>
+  <form data-toggle="validator" role="form" method="POST" action="SignupServlet">
   <div class="form-group">
     <label for="firstname" class="control-label" style="color:white">First name</label>
     <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" required>
@@ -88,7 +86,7 @@
     </div>
   </div>
   <div class="form-group">
-    <button type="submit" onclick="getName()" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-default">Submit</button>
   </div>
 </form>
 </div>

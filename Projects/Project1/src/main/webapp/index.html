@@ -22,9 +22,9 @@
 	
 <!--  notes for project:
 		1) Use a front controller (filter) for the authentication page. -->
-<script src="javascript/Ajax.js"></script>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
 </head>
-<title>RRose Inc</title>
+<title>Home</title>
 <body style="background-color:#2C3A50">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -34,18 +34,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Rich Inc</a>
+      <a class="navbar-brand" href="index.html">RRTech</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Info<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Events</a></li>
-          </ul>
-        </li>
+        <li class="active"><a href="index.html">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -55,31 +48,19 @@
   </div>
 </nav>
 <div class="container" style="width:500px">
-  <h2 style="color:white">Wrong email/password! Try again.</h2>
-  <form class="form-horizontal" method="POST" action="Login.do">
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email" style="color:white">Email:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" placeholder="Enter email" name="email">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="password" style="color:white">Password:</label>
-      <div class="col-sm-10">          
-        <input type="password" class="form-control" placeholder="Enter password" name="password">
-      </div>
-    </div>
+  <h1 style="color:white">Welcome to RRTech's Tuition Reimbursement site!</h1>
+  <form class="form-horizontal" method="POST" action="LoginServlet">
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" onclick="getName()" class="btn btn-default">Log in</button>
+        <button type="submit" class="btn btn-default"><h2>Log in here!</h2></button>
       </div>
     </div>
   </form>
 </div>
-<div style="width:500px" class="container-fluid" class ="float-right">
-		<div class="well" style="background-color:#161D23; border-color:black">
-			<h1 style="color:white">Don't have an account?</h1>
-			<h2><a style="color:#A1BFDE" href="signup.html">Click here to create one!</a></h2>
+<div style="width:500px" class="container-fluid">
+		<div class="well" id="dtheme">
+			<h1 style="color:white">Haven't created an account yet?</h1>
+			<h2><a style="color:#A1BFDE" href="signup.jsp">Click here to create one!</a></h2>
 		</div>
 </div>
 </body>

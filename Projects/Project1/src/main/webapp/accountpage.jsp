@@ -22,18 +22,14 @@
 	crossorigin="anonymous"></script>
 
 <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
-<!--  notes for project:
-		1) Use a front controller (filter) for the authentication page. -->
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<%
-	String email = request.getParameter("email");
-				System.out.println(email);
-	String name = AccountServices.getName(email);
-%>
 <title>Welcome!</title>
-
+<% String email = (String)session.getAttribute( "email" );
+   String name = AccountServices.getName(email); 
+ %>
 </head>
 <body style="background-color:#2C3A50">
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -42,15 +38,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="index.jsp">Rich Inc</a>
+      <a class="navbar-brand" href="index.html">RRTech</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.jsp">Home</a></li>
+        <li class="active"><a href="index.html">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="signup.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="signin.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="LogOutServlet"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>
     </div>
   </div>
