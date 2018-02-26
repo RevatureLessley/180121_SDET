@@ -10,4 +10,10 @@ public class HtmlTemplates {
 				+ "<script>function goBack(){ window.history.back(); }</script>"
 				);
 	}
+	
+	public static void logoutButton(PrintWriter out){
+		out.println(
+				"<hr><input type='button' value='Logout' onclick='./index.html'>"
+				);
+	}
 }

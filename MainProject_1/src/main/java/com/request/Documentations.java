@@ -8,38 +8,44 @@ public class Documentations {
 	private Integer DocRequestId;
 	private Integer RequestId;
 	private Integer EmployeeId;
+	private Integer AuthorizerId;
 	private String AuthorizerTitle;
-	private String DocumentRequested;
+	private String Document;
+	private String DocumentType;
 	private Blob Doc;
-	private File file;
-	private String FileName;
 	private Integer FileAttached;
 	
-	public Documentations(Integer docRequestId, Integer requestId, Integer employeeId, String authorizerTitle,
-			String documentRequested, Blob doc, File file, String fileName, Integer fileAttached) {
+	public Documentations(Integer docRequestId, Integer requestId, Integer employeeId, Integer authorizerId,
+			String authorizerTitle, String document, String documentType, Blob doc, Integer fileAttached) {
 		super();
 		DocRequestId = docRequestId;
 		RequestId = requestId;
 		EmployeeId = employeeId;
+		AuthorizerId = authorizerId;
 		AuthorizerTitle = authorizerTitle;
-		DocumentRequested = documentRequested;
+		Document = document;
+		DocumentType = documentType;
 		Doc = doc;
-		this.file = file;
-		FileName = fileName;
 		FileAttached = fileAttached;
 	}
 
-	public Documentations(Integer requestId, Integer employeeId, String authorizerTitle, String documentRequested,
-			Blob doc, File file, String fileName, Integer fileAttached) {
+	public Documentations(Integer docRequestId, Integer requestId, Integer employeeId,
+			String document, String documentType) {
 		super();
+		DocRequestId = docRequestId;
 		RequestId = requestId;
 		EmployeeId = employeeId;
+		Document = document;
+		DocumentType = documentType;
+	}
+	
+
+	public Documentations(Integer docRequestId, Integer requestId, String authorizerTitle, String document) {
+		super();
+		DocRequestId = docRequestId;
+		RequestId = requestId;
 		AuthorizerTitle = authorizerTitle;
-		DocumentRequested = documentRequested;
-		Doc = doc;
-		this.file = file;
-		FileName = fileName;
-		FileAttached = fileAttached;
+		Document = document;
 	}
 
 	public Integer getDocRequestId() {
@@ -66,6 +72,14 @@ public class Documentations {
 		EmployeeId = employeeId;
 	}
 
+	public Integer getAuthorizerId() {
+		return AuthorizerId;
+	}
+
+	public void setAuthorizerId(Integer authorizerId) {
+		AuthorizerId = authorizerId;
+	}
+
 	public String getAuthorizerTitle() {
 		return AuthorizerTitle;
 	}
@@ -74,12 +88,20 @@ public class Documentations {
 		AuthorizerTitle = authorizerTitle;
 	}
 
-	public String getDocumentRequested() {
-		return DocumentRequested;
+	public String getDocument() {
+		return Document;
 	}
 
-	public void setDocumentRequested(String documentRequested) {
-		DocumentRequested = documentRequested;
+	public void setDocument(String document) {
+		Document = document;
+	}
+
+	public String getDocumentType() {
+		return DocumentType;
+	}
+
+	public void setDocumentType(String documentType) {
+		DocumentType = documentType;
 	}
 
 	public Blob getDoc() {
@@ -90,22 +112,6 @@ public class Documentations {
 		Doc = doc;
 	}
 
-	public File getFile() {
-		return file;
-	}
-
-	public void setFile(File file) {
-		this.file = file;
-	}
-
-	public String getFileName() {
-		return FileName;
-	}
-
-	public void setFileName(String fileName) {
-		FileName = fileName;
-	}
-
 	public Integer getFileAttached() {
 		return FileAttached;
 	}
@@ -113,6 +119,12 @@ public class Documentations {
 	public void setFileAttached(Integer fileAttached) {
 		FileAttached = fileAttached;
 	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

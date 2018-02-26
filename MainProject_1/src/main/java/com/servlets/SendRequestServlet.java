@@ -30,7 +30,6 @@ public class SendRequestServlet extends HttpServlet {
 		
 		//out.print("<h3>Tuition Reimbursment Application for " + session.getAttribute("username") + "!</h3>");
 		
-		
 		Integer EmployeeID = (Integer) session.getAttribute("AccountID");
 		Integer Balance_Available = (Integer) session.getAttribute("Balance_Available");
 

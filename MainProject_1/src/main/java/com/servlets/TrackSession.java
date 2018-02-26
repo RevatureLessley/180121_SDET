@@ -33,7 +33,7 @@ public class TrackSession extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		if(session==null){
-			out.println("<h1>WHO ARE YOU, GET OUR OF HERE!</h1>");
+			
 			HtmlTemplates.goBackButton(out);
 			
 			//session.invalidate(); //Deletes created session

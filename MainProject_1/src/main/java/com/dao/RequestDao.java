@@ -2,6 +2,7 @@ package com.dao;
 
 import java.util.List;
 
+import com.request.Documentations;
 import com.request.RequestTR;
 
 
@@ -58,4 +59,8 @@ public interface RequestDao {
 	public byte[] downloadDoc(Integer requestDocID);
 	
 	public String getDocType(Integer requestDocID);
+
+	public List<Documentations> getDocRequestsAdmin(Integer authorizerId);
+
+	public List<Documentations> getDocRequestsUser(Integer employeeID);
 }

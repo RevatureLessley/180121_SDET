@@ -21,10 +21,12 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 
-<script src="resources/JavaScript/RequestStatusAjax.js" ></script>
+
+<script src="resources/JavaScript/RequestStatusAJAX.js" ></script>
+
 
 </head>
-<body onload="sendAJAX()">
+<body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -50,7 +52,7 @@
 			
 			<h1>View Your Request Status</h1>
 						
-			<button onclick="sendAJAX()">View</button><br><br>
+			<br><br>
 			<table border=2px id=results>
 				<tr>
 					<th>Request ID</th>
@@ -68,8 +70,43 @@
 			
 			</div>
 			
+			
+			<div class="well">
+			
+			<h1>View Requested Documents</h1>
+			
+			<div class="well">
+			
+			<h1>View Your Request Status</h1>
+						
+			<br><br>
+			<table border=2px id=docResults>
+				<tr>
+					<th>Request ID</th>
+					<th>Event Type</th>
+					<th>Reimbursement Amount Pending</th>
+					<th>Request Statues</th>
+					
+				
+					
+				</tr>
+				
+			</table>
+			
+			<p id=AJAXError></p>
+			
+			</div>
+			
+			<!-- <form method="POST" action="ViewDocRequests.do">
+		
+			<button type="submit" class="btn btn-default">View</button>
+			</form> -->
+			</div>
+</div>
+
+		
 			<div class="col-sm-5">
-			<div class=well>
+			<div class="well">
 			<h3>Edit Your Request - Submit Documentation</h3>
 			<br>
 			
@@ -116,44 +153,25 @@
 			<h3>Edit Your Request - Submit Grade</h3>
 			<br>
 			
-			<form action="#" id="SubmitGrade">
+			<form method="POST" action="SubmitGrade.do">
 			
 			<div class="form-group">
-					<label for="req_ID">REQUEST ID: </label> <input type="number"
-						class="form-control" name="req_ID">
+					<label for="req_ID">REQUEST ID: </label> 
+					<input type="number" class="form-control" name="req_ID" required>
 				</div><br>
 
-		
-			
-
 					<label for="Grade" >Submit Grade</label> <input
-						class="form-control" name="Grade" style= "width:20%;">
-						
+						class="form-control" name="Grade" style= "width:20%;" required>	
 					<br><br>
 			
-			
-			<!-- 
-			<div class="row" style="display: none" name="0to100Row">
-
-					<label for="0to100" style="margin-left:15px">Submit Grade [0 - 100]</label> <select
-						class="form-control" name="0to100" style= "width:94%; margin-left:15px">
-						<option>0 - 64</option>
-						<option>65 - 74</option>
-						<option>75 - 84</option>
-						<option>85 - 90</option>
-						<option>90 - 100</option>
-					</select>
-					<br><br>
-			</div>  -->
-			
-			<button type="submit" class="btn btn-default" onclick="postAJAX()">SUBMIT</button>
+			<button type="submit" class="btn btn-default">SUBMIT</button>
 			</form>
 			
 			</div> 
 		</div>
 	</div>
 	
-</div>
+
 		
 </body>
 </html>

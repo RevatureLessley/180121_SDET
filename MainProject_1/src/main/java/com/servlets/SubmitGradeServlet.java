@@ -23,13 +23,16 @@ public class SubmitGradeServlet extends HttpServlet {
 		
 		response.setContentType("text");
 		PrintWriter out = response.getWriter();
-		Integer requestId = Integer.parseInt(request.getParameter("requestId"));
-		String grade = request.getParameter("grade");
+		Integer requestId = Integer.parseInt(request.getParameter("req_ID"));
 		
-		if(!RequestService.correctGrade(requestId, grade)){
-				out.print("Edit Submitted");
+		String grade = request.getParameter("Grade");
+		
+		System.out.println(requestId + grade);
+		
+		if(RequestService.correctGrade(requestId, grade)){
+				out.print("Grade Submitted");
 			}else{
-				out.print("Edit Submitted Failed");
+				out.print("Wrong Grading Format Submitted");
 			}
 	}
 

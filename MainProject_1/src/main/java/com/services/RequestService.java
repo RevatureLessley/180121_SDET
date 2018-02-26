@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dao.RequestDao;
 import com.dao.RequestDaoImp;
+import com.request.Documentations;
 import com.request.RequestTR;
 
 public class RequestService {
@@ -104,6 +105,16 @@ public class RequestService {
 			{ return false; }
 
 		}
+	}
+
+	public static List<Documentations> displayDocRequests(Integer AuthorizerId) {
+		RequestDao dao = new RequestDaoImp();
+		return dao.getDocRequestsAdmin(AuthorizerId);
+	}
+
+	public static List<Documentations> displayUserDocRequests(Integer employeeID) {
+		RequestDao dao = new RequestDaoImp();
+		return dao.getDocRequestsUser(employeeID);
 	}
 
 }

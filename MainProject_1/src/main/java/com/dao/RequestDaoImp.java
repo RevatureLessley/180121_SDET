@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.request.Documentations;
 import com.request.RequestTR;
 import com.util.Connections;
 
@@ -721,7 +722,7 @@ public class RequestDaoImp implements RequestDao{
 		
 		try{
 			Connection conn = Connections.getConnection();
-			String sql = "UPDATE RequestDocumentations SET Doc = ?, DocType = ? WHERE DocRequestId = ?";
+			String sql = "UPDATE RequestDocumentations SET Doc = ?, DocType = ?, RequestDone = 1 WHERE DocRequestId = ?";
 
 			ps = conn.prepareStatement(sql);
 			ps.setBytes(1, file);
@@ -832,6 +833,72 @@ public class RequestDaoImp implements RequestDao{
 			close(rs);
 		}
 
+		return null;
+	}
+
+	@Override
+	public List<Documentations> getDocRequestsAdmin(Integer authorizerId) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Documentations> docs = new ArrayList<>();
+
+		
+		try (Connection conn = Connections.getConnection()) {
+			
+
+			String sql = "SELECT DocRequestId, RequestId, EmployeeId, Document_Requested, DocType FROM RequestDocumentations"
+					+ " WHERE Authorizer_Id = ? AND RequestDone = 1";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, authorizerId);
+			rs = ps.executeQuery(); 
+
+			while (rs.next()) {
+				docs.add(new Documentations(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5)));
+			}
+			
+			System.out.println(docs);
+			return docs;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return null;
+	}
+
+	@Override
+	public List<Documentations> getDocRequestsUser(Integer employeeID) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Documentations> docs = new ArrayList<>();
+
+		
+		try (Connection conn = Connections.getConnection()) {
+			
+
+			String sql = "SELECT DocRequestId, RequestId, Authorizer_Title, Document_Requested FROM RequestDocumentations"
+					+ " WHERE EmployeeId = ? AND RequestDone = 0";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, employeeID);
+			rs = ps.executeQuery(); 
+
+			while (rs.next()) {
+				docs.add(new Documentations(rs.getInt(1), rs.getInt(2),rs.getString(3), rs.getString(4)));
+			}
+			
+			System.out.println(docs);
+			return docs;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
 		return null;
 	}
 		

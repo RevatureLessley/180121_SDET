@@ -84,13 +84,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>SupervisorRequestUpdate</display-name>
-    <servlet-name>SupervisorRequestUpdate</servlet-name>
-    <servlet-class>com.servlets.SupervisorRequestUpdate</servlet-class>
+    <display-name>RequestUpdate</display-name>
+    <servlet-name>RequestUpdate</servlet-name>
+    <servlet-class>com.servlets.RequestUpdate</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SupervisorRequestUpdate</servlet-name>
-    <url-pattern>/SupervisorRequestUpdate</url-pattern>
+    <servlet-name>RequestUpdate</servlet-name>
+    <url-pattern>/RequestUpdate</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -201,5 +201,25 @@
   <servlet-mapping>
     <servlet-name>DownloadDocs</servlet-name>
     <url-pattern>/DownloadDocs</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetDocRequests</display-name>
+    <servlet-name>GetDocRequests</servlet-name>
+    <servlet-class>com.servlets.GetDocRequests</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetDocRequests</servlet-name>
+    <url-pattern>/GetDocRequests</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserViewDocRequest</display-name>
+    <servlet-name>UserViewDocRequest</servlet-name>
+    <servlet-class>com.servlets.UserViewDocRequest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserViewDocRequest</servlet-name>
+    <url-pattern>/UserViewDocRequest</url-pattern>
   </servlet-mapping>
 </web-app>

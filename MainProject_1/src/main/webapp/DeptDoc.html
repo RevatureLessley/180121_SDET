@@ -21,6 +21,8 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 
+<script src="resources/JavaScript/RequestDocAJAX.js" ></script>
+
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -29,54 +31,60 @@
 				<a class="navbar-brand">Tuition Reimbursement System</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="superViewReq.html">Pending Requests</a></li>
+				<li><a href="admins/superHome">Home</a></li>
+				<li class="active"><a href="#">Pending Requests</a></li>
 				
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="register.html"><span
 						class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				
+				
 				<li><a href="LogoutServlet"><span
 						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			</ul>
 		</div>
 	</nav>
+	
 	<div class="container-fluid" style="margin-top: 100px">
-		<div class="well">
-			<h1>You are logged in!</h1>
-		</div>
-		<br>
-		<br>
-		<div class="well">
-			<h2>Check Subordinates Pending Requests</h2>
+		
+			<div class="well">
+			<h2>Download Requested Documents</h2>
 			<br>
-			<form action="benCoViewReq.html">
+			
+			
+			<label > SUBMITTED DOCUMENTS:</label> <br>
+			<table border=2px id=docResults>
+				<tr>
+					<th>Document-Request ID</th>
+					<th>Request ID</th>
+					<th>Employee ID</th>
+					<th>Document Requested</th>
+					<th>Document Type</th>
+					
+				</tr>
+				
+			</table>  <br>  <br>
+			
+			<form method="POST" action="DownloadDocs.do">
+			
+				<!-- enctype="multipart/form-data" -->
+				<div class="form-group">
+					<label for="req_ID">REQUEST Document ID: </label> 
+					<input type="number" class="form-control" name="req_ID">
+				</div><br>
+				
+				<input type="hidden" name="AttachFile">
 				<button type="submit" class="btn btn-default btn-lg"
-					style="margin-left: 150px">Check Requests</button>
-			</form>
-		</div>
-		<br>
-		<br>
-	<div class="well">
-			<h2>Download Documents</h2>
-			<br>
-			<form action="bencoDoc.html">
-				<button type="submit" class="btn btn-default btn-lg"
-					style="margin-left: 120px">Check Status</button>
-			</form>
+					style="margin-left: 150px">DownLoad</button>
+			</form> 
+			
 			
 			</div>
-			</div>
-	<br> <br> <br> <br> <br>
-			<div class="well">
-			<h2>Check Your Account Info Here</h2><br>
-			<form action="TrackSession">
-				<button type="submit" class="btn btn-default btn-lg"
-					style="margin-left: 120px">Account Info</button>
-			</form>
-		</div>
-		<br>
-		<br>
+			
 	
+			
+		</div>
+		
 </body>
 </html>

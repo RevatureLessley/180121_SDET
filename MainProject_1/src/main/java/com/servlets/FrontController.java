@@ -58,14 +58,23 @@ public class FrontController extends HttpServlet {
 			rd = request.getRequestDispatcher("RequestDoc");
 			rd.forward(request, response);
 			break;
-		
+			
+		case "submitgrade":
+			rd = request.getRequestDispatcher("SubmitGradeServlet");
+			rd.forward(request, response);
+			break;
+			
+		/*case "viewdocrequests":
+			rd = request.getRequestDispatcher("UserViewDocRequest");
+			rd.forward(request, response);
+			break;*/
+			
 		case "downloaddocs":
 			rd = request.getRequestDispatcher("DownloadDocs");
 			rd.forward(request, response);
 			break;
 	
 		default:
-			System.out.println("I ended up down here");
 			response.sendError(404);
 		}
 		

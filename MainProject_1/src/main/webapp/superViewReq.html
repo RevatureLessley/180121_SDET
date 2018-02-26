@@ -21,10 +21,10 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 
-<script src="resources/JavaScript/RequestAjax.js" ></script>
+<script src="resources/JavaScript/RequestAJAX.js" ></script>
 
 </head>
-<body onload="sendSuperAJAX()">
+<body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -51,7 +51,7 @@
 			
 			<h1>View All Pending Requests</h1>
 						
-			<button onclick="sendSuperAJAX()">View</button><br><br>
+			<br><br>
 			<table border=2px id=results>
 				<tr>
 					<th>Request ID</th>
@@ -78,6 +78,20 @@
 			<h2>Download Requested Documents</h2>
 			<br>
 			<form method="POST" action="DownloadDocs.do">
+			
+			<label > SUBMITTED DOCUMENTS:</label> <br>
+			<table border=2px id=docResults>
+				<tr>
+					<th>Document-Request ID</th>
+					<th>Request ID</th>
+					<th>Employee ID</th>
+					<th>Document Requested</th>
+					<th>Document Type</th>
+					
+				</tr>
+				
+			</table>  <br>  <br>
+			
 				<!-- enctype="multipart/form-data" -->
 				<div class="form-group">
 					<label for="req_ID">REQUEST Document ID: </label> 
