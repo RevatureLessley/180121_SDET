@@ -24,9 +24,11 @@ public class LogoutServlet extends HttpServlet {
 			//Deletes session details on the server side.
 			response.setContentType("text/html");
 			PrintWriter out = response.getWriter();
+			
+			
 			out.println("<h1>Logout</h1>");
 			
-			HtmlTemplates.goBackButton(out);
+			HtmlTemplates.logoutButton(out);
 			
 	}
 

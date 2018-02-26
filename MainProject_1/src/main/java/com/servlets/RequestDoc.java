@@ -27,11 +27,12 @@ public class RequestDoc extends HttpServlet {
 		String EmployeeType = (String) session.getAttribute("EmployeeType");
 		
 		response.setContentType("text/html");
-		//PrintWriter out = response.getWriter();
+		PrintWriter out = response.getWriter();
 		
 			
 		RequestService.docsNeeded(DocsNeeded, RequestID, EmployeeType, AuthorizerID);
-	
+		out.print("<h1>REQUEST SENT</h1>");
+		HtmlTemplates.goBackButton(out);
 			
 	}
 

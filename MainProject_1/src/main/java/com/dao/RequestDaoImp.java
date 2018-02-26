@@ -386,11 +386,7 @@ public class RequestDaoImp implements RequestDao{
 	}
 	
 	
-	@Override
-	public String getReqDoc(Integer requestId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 
 	@Override
@@ -902,6 +898,35 @@ public class RequestDaoImp implements RequestDao{
 		return null;
 	}
 		
+	@Override
+	public Integer getReqDoc(Integer requestId) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Documentations> docs = new ArrayList<>();
 
+		
+		try (Connection conn = Connections.getConnection()) {
+			
+
+			String sql = "SELECT * FROM RequestDocumentations"
+					+ " WHERE RequestId = ?";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, requestId);
+			rs = ps.executeQuery(); 
+
+			if(rs.next()) {
+				
+				return 1;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+			close(rs);
+		}
+		return null;
+	}
 
 }

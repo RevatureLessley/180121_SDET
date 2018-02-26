@@ -13,7 +13,17 @@ public class HtmlTemplates {
 	
 	public static void logoutButton(PrintWriter out){
 		out.println(
-				"<hr><input type='button' value='Logout' onclick='./index.html'>"
+				"<form action=\"index.html\">\r\n" + 
+				"<button type=\"submit\">Return Home</button>\r\n" + 
+				"</form>"
 				);
 	}
+
+
+
+
+			
+		
+
 }
+

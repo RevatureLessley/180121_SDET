@@ -28,7 +28,7 @@ public interface RequestDao {
 
 	public String checkRequestStatus(Integer requestId);
 
-	public String getReqDoc(Integer requestId);
+	public Integer getReqDoc(Integer requestId);
 
 	public boolean insertLetterGrade(Integer requestId, String letterGradeFormat);
 

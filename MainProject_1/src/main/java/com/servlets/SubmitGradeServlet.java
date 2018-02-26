@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.services.RequestService;
+import com.util.HtmlTemplates;
 
 /**
  * Servlet implementation class SubmitGradeServlet
@@ -30,9 +31,11 @@ public class SubmitGradeServlet extends HttpServlet {
 		System.out.println(requestId + grade);
 		
 		if(RequestService.correctGrade(requestId, grade)){
-				out.print("Grade Submitted");
+				out.print("<h1> Grade Submitted </h1>");
+				HtmlTemplates.goBackButton(out);
 			}else{
-				out.print("Wrong Grading Format Submitted");
+				out.print("<h1> Wrong Grading Format Submitted </h1>");
+				HtmlTemplates.goBackButton(out);
 			}
 	}
 

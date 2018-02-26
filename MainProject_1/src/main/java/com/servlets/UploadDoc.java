@@ -3,6 +3,7 @@ package com.servlets;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -13,6 +14,7 @@ import javax.servlet.http.Part;
 
 import com.dao.RequestDao;
 import com.dao.RequestDaoImp;
+import com.util.HtmlTemplates;
 
 @MultipartConfig
 
@@ -40,6 +42,8 @@ public class UploadDoc extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		PrintWriter out = response.getWriter();
+		
 		Part file = request.getPart("FileAttach");
 		Integer RequestDocID =  Integer.parseInt(request.getParameter("req_Doc_ID"));
 		String DocType = request.getParameter("DocType");
@@ -63,6 +67,9 @@ public class UploadDoc extends HttpServlet {
 			RequestDao doc = new RequestDaoImp();
 			doc.uploadDoc(file_arr, RequestDocID, DocType);
 			
+			
+			out.print("<h1> File Uploaded  <h1>");
+			HtmlTemplates.goBackButton(out);
 			
 		} catch (IOException e) {
 			System.out.println("Could not upload file!");

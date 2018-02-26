@@ -74,9 +74,9 @@ public class RequestService {
 		
 		if(dao.getReqDoc(requestId) != null)
 			
-			return "Doc Needed";
+			return "YES";
 		else
-			return "N/A";
+			return "NO";
 	}
 
 	public static boolean correctGrade(Integer requestId, String grade) {

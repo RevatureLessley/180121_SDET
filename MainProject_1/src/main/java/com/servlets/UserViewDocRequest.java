@@ -58,6 +58,7 @@ public class UserViewDocRequest extends HttpServlet {
 			String myXml = "<root>";
 			//Manually create the xml file.
 			for(Documentations d : docs){
+				
 				myXml += "<doc><r_d_id>" + d.getDocRequestId() + "</d_id>"
 								+ "<r_id>" + d.getRequestId() + "</r_id>"
 								+ "<e_id>" + d.getAuthorizerTitle() + "</e_id>"
@@ -65,6 +66,7 @@ public class UserViewDocRequest extends HttpServlet {
 										
 								
 			}
+			
 			myXml += "</root>";
 			
 			System.out.println(myXml);
@@ -72,22 +74,16 @@ public class UserViewDocRequest extends HttpServlet {
 			out.print(myXml); //State == 4
 			
 			
-		}else{
-			
+		}
+		
+		else	
 			out.print("<root></root>"); //State == 4
-			}
+
 		}
 			
 			
 			
 			
-		
-	
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
