@@ -39,13 +39,12 @@ public class LoginServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 		} else if(!session.isNew()){
-			rd = request.getRequestDispatcher("accountpage.jsp");
-			rd.forward(request, response);
-		}else{
+				rd = request.getRequestDispatcher("accountpageadmin.jsp");
+				rd.forward(request, response);
+		} else {
 			session.invalidate();
 			rd = request.getRequestDispatcher("signin.html");
 			rd.forward(request, response);
 		}
 	}
-
 }

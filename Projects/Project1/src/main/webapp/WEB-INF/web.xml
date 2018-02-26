@@ -49,4 +49,24 @@
     <servlet-name>LogOutServlet</servlet-name>
     <url-pattern>/LogOutServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetAccounts</display-name>
+    <servlet-name>GetAccounts</servlet-name>
+    <servlet-class>com.project1.servlets.GetAccounts</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAccounts</servlet-name>
+    <url-pattern>/GetAccounts</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Approve</display-name>
+    <servlet-name>Approve</servlet-name>
+    <servlet-class>com.project1.servlets.Approve</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Approve</servlet-name>
+    <url-pattern>/Approve</url-pattern>
+  </servlet-mapping>
 </web-app>
