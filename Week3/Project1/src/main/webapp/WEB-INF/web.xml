@@ -34,7 +34,7 @@
     </init-param>
     <init-param>
       <param-name>calendarMinute</param-name>
-      <param-value>27</param-value>
+      <param-value>22</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
