@@ -41,7 +41,7 @@ public class AutoApprove extends TimerTask {
 				logger.info("Today's date " + todayDate.getTime() + " is after " + actionCompleted.getTime() + " so auto approve for super/head");
 				if(r.getApprLvl() == 2 || r.getApprLvl() == 1) {
 					ReimbursementService.updateApproval(r.getReimburseId(), 1, r.getNextApprovalId());
-				} else if(r.getApprLvl() == 0) {
+				} else if(r.getApprLvl() == 0 && r.getApproved() == 2) {
 					int bencoSuper = EmployeeService.getDepartmentHead(2); //Magic number department of benco is 2
 					String email =  UsersEmpService.getUserEmail(bencoSuper);
 					String subject = "Reimbursement Approval Escalation";

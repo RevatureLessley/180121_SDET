@@ -284,6 +284,9 @@ INSERT INTO employees VALUES(16, 'Liz', 'Lane', 13, 8, 803, 1000, '48 Jamestown 
 INSERT INTO employees VALUES(17, 'Bobbert', 'Trebbob', 13, 8, 804, 1000, '48 Jamestown Street', 'Denver', 'CO', 93368, SYSTIMESTAMP);
 INSERT INTO employees VALUES(18, 'Scoops', 'Iciere', 4, 2, 50, 1000, '78 Charlotte Road', 'Daegu', 'NY', 30582, SYSTIMESTAMP);
 INSERT INTO employees VALUES(19, 'Joshua', 'Pete', 18, 2, 201, 1000, '78 Charlotte Road', 'Daegu', 'NY', 30582, SYSTIMESTAMP);
+INSERT INTO employees VALUES(20, 'Yemi', 'Alade', 19, 2, 202, 1000, '78 Charlotte Road', 'Ondo', 'NY', 30582, SYSTIMESTAMP);
+INSERT INTO employees VALUES(21, 'Ayodeji', 'Balogun', 19, 2, 203, 1000, '78 Charlotte Road', 'Akure', 'NY', 30582, SYSTIMESTAMP);
+INSERT INTO employees VALUES(22, 'Korede', 'Bello', 19, 2, 204, 1000, '78 Charlotte Road', 'Lagos', 'NY', 30582, SYSTIMESTAMP);
 
 INSERT INTO eventtypes VALUES(1, 'UNIVERSITY COURSES', 0.80);
 INSERT INTO eventtypes VALUES(2, 'SEMINARS', 0.60);

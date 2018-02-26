@@ -34,10 +34,10 @@ public class FrontController extends HttpServlet {
 		timer = new Timer("AutoApprove");
 		Calendar date = Calendar.getInstance();
 		//date.set(Calendar.HOUR_OF_DAY, 17);
-		date.set(Calendar.MINUTE, 20);
+		date.set(Calendar.MINUTE, calMin);
 		date.set(Calendar.SECOND, 0);
 		date.set(Calendar.MILLISECOND, 0);
-		timer.schedule(new AutoApprove(day, min), date.getTime(), 1000*60*60*24);
+		timer.schedule(new AutoApprove(day, min), date.getTime(), 1000*60*3);
 		
 		timer01 = new Timer("NewYearReset");
 		Calendar date01 = Calendar.getInstance();

@@ -26,15 +26,15 @@
     <servlet-class>com.trms.servlets.FrontController</servlet-class>
     <init-param>
       <param-name>daysToApprove</param-name>
-      <param-value>2</param-value>
-    </init-param>
-    <init-param>
-      <param-name>minsToApprove</param-name>
       <param-value>0</param-value>
     </init-param>
     <init-param>
-      <param-name>calendarMinute</param-name>
+      <param-name>minsToApprove</param-name>
       <param-value>3</param-value>
+    </init-param>
+    <init-param>
+      <param-name>calendarMinute</param-name>
+      <param-value>27</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
