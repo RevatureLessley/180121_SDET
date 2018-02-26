@@ -23,9 +23,13 @@ public class StatusUpdate extends HttpServlet {
 		String afname = (String) session.getAttribute("fname");
 		String alname = (String) session.getAttribute("lname");
 		String role = (String) session.getAttribute("role");
-			
+		System.out.println(role);
+		System.out.println("========================");
 		int reiid = Integer.parseInt(request.getParameter("reiid"));
 		int status = interpretStatus(request.getParameter("status"), role);
+		System.out.println(request.getParameter("status"));
+		System.out.println("========================");
+		System.out.println(status);
 		
 		String note = request.getParameter("note");
 		int result = DataService.addStatus(reiid, afname, alname,status, note);
@@ -33,13 +37,15 @@ public class StatusUpdate extends HttpServlet {
 		if( result == 1) {
 			HTMLTemplates.headers(out);
 			HTMLTemplates.navbarEmp(out);
-			out.print("<h1>SUCCESS! YOUR REIMBURSEMENT WAS EDITED! PLEASE RETURN TO THE HOME PAGE.</h1>");
+			out.print("<h1>SUCCESS! REIMBURSEMENT WAS UPDATED! PLEASE RETURN TO THE HOME PAGE.</h1>");
+			HTMLTemplates.goBackButton(out);
 			
 		}else if(result == 0){
 			HTMLTemplates.headers(out);
 			HTMLTemplates.navbar(out);
 			out.print("<h1>REI_ID WAS NOT FOUND! PLEASE TRY AGAIN!</h1>");
 			HTMLTemplates.goBackButton(out);
+			
 		}else if (result == 2) {
 			HTMLTemplates.headers(out);
 			HTMLTemplates.navbar(out);
@@ -52,10 +58,10 @@ public class StatusUpdate extends HttpServlet {
 	
 	private int interpretStatus (String status, String r) {
 		if(status.equals("Approve") && r.equals("supervisor")) {return 1;}
-		else if(status.equals("Approve")&& r.equals("department head")) {return 2;}
+		else if(status.equals("Approve")&& r.equals("head")) {return 2;}
 		else if(status.equals("Approve")&& r.equals("benefits coordinator")) {return 3;}
 		else if(status.equals("Reject") && r.equals("supervisor")) {return 4;}
-		else if(status.equals("Reject") && r.equals("department head")) {return 5;}
+		else if(status.equals("Reject") && r.equals("head")) {return 5;}
 		else {return 6;}
 	}
 }

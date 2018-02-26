@@ -9,6 +9,7 @@ import com.revature.beans.Attachments;
 import com.revature.beans.CustomGrade;
 import com.revature.beans.Employee;
 import com.revature.beans.Reimbursement;
+import com.revature.beans.Status;
 import com.revature.dao.AttachmentDaoImpl;
 import com.revature.dao.CustomGradeDaoImpl;
 import com.revature.dao.EmployeeDaoImpl;
@@ -207,7 +208,10 @@ public class DataService {
 		return graDao.getFile(a_id);
 	}
 	
-	
+	public static List<Status> statusReimbursements(int emp_id){
+		StatusUpdateDaoImpl staDao = new StatusUpdateDaoImpl();
+		return staDao.getReimbursements(emp_id);
+	};
 	
 	
 	public static void checkNewYear(){

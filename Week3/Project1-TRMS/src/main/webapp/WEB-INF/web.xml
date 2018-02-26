@@ -159,4 +159,14 @@
     <servlet-name>DownloadGradeAttachment</servlet-name>
     <url-pattern>/graddownload</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetStatusReimbursements</display-name>
+    <servlet-name>GetStatusReimbursements</servlet-name>
+    <servlet-class>com.revature.servlets.GetStatusReimbursements</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetStatusReimbursements</servlet-name>
+    <url-pattern>/getallar</url-pattern>
+  </servlet-mapping>
 </web-app>

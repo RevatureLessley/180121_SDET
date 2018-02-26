@@ -6,8 +6,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.revature.beans.Employee;
+import com.revature.beans.Reimbursement;
+import com.revature.beans.Status;
 import com.revature.util.Bridge;
 
 public class StatusUpdateDaoImpl implements StatusUpdateDao {
@@ -60,6 +64,42 @@ public class StatusUpdateDaoImpl implements StatusUpdateDao {
 		catch(SQLException e){e.printStackTrace();}
 		finally{close(ps);close(rs);}
 return status;
+	}
+
+	@Override
+	public List<Status> getReimbursements(int emp_id) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Status> statusList = new ArrayList<Status>();
+		
+		try(Connection conn = Bridge.connect()){
+			
+			String sql = "SELECT * FROM R_Status WHERE EMP_ID = ? ";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, emp_id);
+			rs = ps.executeQuery(); 
+			
+			while(rs.next()){
+				
+				statusList.add(new Status (
+						rs.getInt(1), 		// rei_id
+						rs.getInt(2), 		//emp_id
+						rs.getString(3), 	// First name
+						rs.getString(4), 	// Last name
+						rs.getString(5), 	// Date Of Event 
+						rs.getString(6), 	// Time Of event
+						rs.getInt(7), 	// Location of event
+						rs.getString(8) 	// Description of event
+						));
+				
+				
+				
+				}
+			}
+		catch(SQLException e){e.printStackTrace();}
+		finally{close(ps);close(rs);}
+		
+		return statusList;
 	}
 
 }

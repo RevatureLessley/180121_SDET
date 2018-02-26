@@ -42,7 +42,12 @@
 		<div class="well">
 			<h1>Welcome To TRMS Reimbursement Approval/Rejection Page!</h1>
 		</div>
-
+		<input type='button' value='GO BACK' onclick='goBack()'>
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
 
 		<div id="statusform">
 			<form class="form-horizontal" id="arreimburse" method="post" action="../arrei">

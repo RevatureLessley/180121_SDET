@@ -5,6 +5,7 @@ var tabling3 = 0;
 var tabling4 = 0;
 var tabling5 = 0;
 var tabling6 = 0;
+var tabling7 = 0;
 
 function clearTable(elementID) {
 	document.getElementById(elementID).remove();
@@ -207,7 +208,7 @@ function allReimAJAX() {
 						bg.setAttribute("value",secondCountg );
 						bg.setAttribute("name","gbutton" );
 						bg.setAttribute("class", "button button1");
-						bg.appendChild(btext);
+						bg.appendChild(bgtext);
 						formg.appendChild(bg)
 						td11.appendChild(formg);
 				} else {td11.innerHTML = response[r].childNodes[10].innerHTML;}
@@ -351,14 +352,20 @@ function supReimAJAX() {
 
 			var til13 = document.createElement("th"); // approval status
 			til13.setAttribute("scope", "col");
-			var text13 = document.createTextNode("APPROVAL STATUS");
+			var text13 = document.createTextNode("GRADE");
 			til13.appendChild(text13);
 
 			var til14 = document.createElement("th"); // note
 			til14.setAttribute("scope", "col");
-			var text14 = document.createTextNode("INTERAL NOTES");
+			var text14 = document.createTextNode("GRADE ATTACHMENTS?");
 			til14.appendChild(text14);
 
+			var til15 = document.createElement("th"); // note
+			til15.setAttribute("scope", "col");
+			var text15 = document.createTextNode("OTHER ATTACHMENTS?");
+			til15.appendChild(text15);
+
+			
 			row1st.appendChild(til1);
 			row1st.appendChild(til2);
 			row1st.appendChild(til3);
@@ -373,6 +380,7 @@ function supReimAJAX() {
 			row1st.appendChild(til12);
 			row1st.appendChild(til13);
 			row1st.appendChild(til14);
+			row1st.appendChild(til15);
 
 			thead.appendChild(row1st)
 			table.appendChild(thead);
@@ -397,6 +405,7 @@ function supReimAJAX() {
 				var td12 = document.createElement("td");
 				var td13 = document.createElement("td");
 				var td14 = document.createElement("td");
+				var td15 = document.createElement("td");
 
 				td1.innerHTML = response[r].childNodes[0].innerHTML;
 				td2.innerHTML = response[r].childNodes[1].innerHTML;
@@ -411,7 +420,40 @@ function supReimAJAX() {
 				td11.innerHTML = response[r].childNodes[10].innerHTML;
 				td12.innerHTML = response[r].childNodes[11].innerHTML;
 				td13.innerHTML = response[r].childNodes[12].innerHTML;
-				td14.innerHTML = response[r].childNodes[13].innerHTML;
+				
+				var firstCountg = parseInt(response[r].childNodes[13].innerHTML);
+				var secondCountg = parseInt(response[r].childNodes[13].innerHTML);
+				if (firstCountg != 0) {
+						var formg = document.createElement("form");
+						formg.setAttribute("action","graddownload");
+						formg.setAttribute("method","GET" );
+						var bg = document.createElement("input");
+						var bgtext = document.createTextNode("view");
+						bg.setAttribute("type", "submit");
+						bg.setAttribute("value",secondCountg );
+						bg.setAttribute("name","gbutton" );
+						bg.setAttribute("class", "button button1");
+						bg.appendChild(bgtext);
+						formg.appendChild(bg)
+						td14.appendChild(formg);
+				} else {td14.innerHTML = response[r].childNodes[13].innerHTML;}
+				
+				var firstCounta = parseInt(response[r].childNodes[14].innerHTML);
+				var secondCounta = parseInt(response[r].childNodes[14].innerHTML);
+				if (firstCounta != 0) {
+						var form = document.createElement("form");
+						form.setAttribute("action","download");
+						form.setAttribute("method","GET" );
+						var b = document.createElement("input");
+						var btext = document.createTextNode("view");
+						b.setAttribute("type", "submit");
+						b.setAttribute("value",secondCounta );
+						b.setAttribute("name","abutton" );
+						b.setAttribute("class", "button button2");
+						b.appendChild(btext);
+						form.appendChild(b)
+						td15.appendChild(form);
+				} else {td15.innerHTML = response[r].childNodes[14].innerHTML;}
 
 				row.appendChild(td1);
 				row.appendChild(td2);
@@ -427,6 +469,7 @@ function supReimAJAX() {
 				row.appendChild(td12);
 				row.appendChild(td13);
 				row.appendChild(td14);
+				row.appendChild(td15);
 
 				tbody.appendChild(row)
 				table.appendChild(tbody);
@@ -465,8 +508,11 @@ function depReimAJAX() {
 			resultTable.setAttribute("class", "well");
 
 			var table = document.createElement("table");
-			table.setAttribute("border", "4px");
-			table.setAttribute("id", "depreimbursementtable");
+			table.setAttribute("class", "table table-striped");
+			table.setAttribute("id", "supreimbursementtable");
+
+			var thead = document.createElement("thead");
+			thead.setAttribute("class", "thead-light");
 
 			var row1st = document.createElement("tr");
 
@@ -519,12 +565,19 @@ function depReimAJAX() {
 			til12.appendChild(text12);
 
 			var til13 = document.createElement("th"); // approval status
-			var text13 = document.createTextNode("APPROVAL STATUS");
+			til13.setAttribute("scope", "col");
+			var text13 = document.createTextNode("GRADE");
 			til13.appendChild(text13);
 
 			var til14 = document.createElement("th"); // note
-			var text14 = document.createTextNode("INTERAL NOTES");
+			til14.setAttribute("scope", "col");
+			var text14 = document.createTextNode("GRADE ATTACHMENTS?");
 			til14.appendChild(text14);
+
+			var til15 = document.createElement("th"); // note
+			til15.setAttribute("scope", "col");
+			var text15 = document.createTextNode("OTHER ATTACHMENTS?");
+			til15.appendChild(text15);
 
 			row1st.appendChild(til1);
 			row1st.appendChild(til2);
@@ -540,12 +593,16 @@ function depReimAJAX() {
 			row1st.appendChild(til12);
 			row1st.appendChild(til13);
 			row1st.appendChild(til14);
+			row1st.appendChild(til15);
 
-			table.appendChild(row1st);
+			thead.appendChild(row1st)
+			table.appendChild(thead);
 
 			for (r = 0; r < response.length; r++) {
 
+				var tbody = document.createElement("tbody");
 				var row = document.createElement("tr");
+				row.setAttribute("scope", "row");
 				var td1 = document.createElement("td");
 				var td2 = document.createElement("td");
 				var td3 = document.createElement("td");
@@ -560,6 +617,7 @@ function depReimAJAX() {
 				var td12 = document.createElement("td");
 				var td13 = document.createElement("td");
 				var td14 = document.createElement("td");
+				var td15 = document.createElement("td");
 
 				td1.innerHTML = response[r].childNodes[0].innerHTML;
 				td2.innerHTML = response[r].childNodes[1].innerHTML;
@@ -574,7 +632,40 @@ function depReimAJAX() {
 				td11.innerHTML = response[r].childNodes[10].innerHTML;
 				td12.innerHTML = response[r].childNodes[11].innerHTML;
 				td13.innerHTML = response[r].childNodes[12].innerHTML;
-				td14.innerHTML = response[r].childNodes[13].innerHTML;
+				
+				var firstCountg = parseInt(response[r].childNodes[13].innerHTML);
+				var secondCountg = parseInt(response[r].childNodes[13].innerHTML);
+				if (firstCountg != 0) {
+						var formg = document.createElement("form");
+						formg.setAttribute("action","graddownload");
+						formg.setAttribute("method","GET" );
+						var bg = document.createElement("input");
+						var bgtext = document.createTextNode("view");
+						bg.setAttribute("type", "submit");
+						bg.setAttribute("value",secondCountg );
+						bg.setAttribute("name","gbutton" );
+						bg.setAttribute("class", "button button1");
+						bg.appendChild(bgtext);
+						formg.appendChild(bg)
+						td14.appendChild(formg);
+				} else {td14.innerHTML = response[r].childNodes[13].innerHTML;}
+				
+				var firstCounta = parseInt(response[r].childNodes[14].innerHTML);
+				var secondCounta = parseInt(response[r].childNodes[14].innerHTML);
+				if (firstCounta != 0) {
+						var form = document.createElement("form");
+						form.setAttribute("action","download");
+						form.setAttribute("method","GET" );
+						var b = document.createElement("input");
+						var btext = document.createTextNode("view");
+						b.setAttribute("type", "submit");
+						b.setAttribute("value",secondCounta );
+						b.setAttribute("name","abutton" );
+						b.setAttribute("class", "button button2");
+						b.appendChild(btext);
+						form.appendChild(b)
+						td15.appendChild(form);
+				} else {td15.innerHTML = response[r].childNodes[14].innerHTML;}
 
 				row.appendChild(td1);
 				row.appendChild(td2);
@@ -590,7 +681,8 @@ function depReimAJAX() {
 				row.appendChild(td12);
 				row.appendChild(td13);
 				row.appendChild(td14);
-
+				row.appendChild(td15);
+				
 				table.appendChild(row);
 
 			}
@@ -681,12 +773,19 @@ function benReimAJAX() {
 			til12.appendChild(text12);
 
 			var til13 = document.createElement("th"); // approval status
-			var text13 = document.createTextNode("APPROVAL STATUS");
+			til13.setAttribute("scope", "col");
+			var text13 = document.createTextNode("GRADE");
 			til13.appendChild(text13);
 
 			var til14 = document.createElement("th"); // note
-			var text14 = document.createTextNode("INTERAL NOTES");
+			til14.setAttribute("scope", "col");
+			var text14 = document.createTextNode("GRADE ATTACHMENTS?");
 			til14.appendChild(text14);
+
+			var til15 = document.createElement("th"); // note
+			til15.setAttribute("scope", "col");
+			var text15 = document.createTextNode("OTHER ATTACHMENTS?");
+			til15.appendChild(text15);
 
 			row1st.appendChild(til1);
 			row1st.appendChild(til2);
@@ -702,6 +801,7 @@ function benReimAJAX() {
 			row1st.appendChild(til12);
 			row1st.appendChild(til13);
 			row1st.appendChild(til14);
+			row1st.appendChild(til15);
 
 			table.appendChild(row1st);
 
@@ -722,6 +822,7 @@ function benReimAJAX() {
 				var td12 = document.createElement("td");
 				var td13 = document.createElement("td");
 				var td14 = document.createElement("td");
+				var td14 = document.createElement("td");
 
 				td1.innerHTML = response[r].childNodes[0].innerHTML;
 				td2.innerHTML = response[r].childNodes[1].innerHTML;
@@ -736,7 +837,39 @@ function benReimAJAX() {
 				td11.innerHTML = response[r].childNodes[10].innerHTML;
 				td12.innerHTML = response[r].childNodes[11].innerHTML;
 				td13.innerHTML = response[r].childNodes[12].innerHTML;
-				td14.innerHTML = response[r].childNodes[13].innerHTML;
+				var firstCountg = parseInt(response[r].childNodes[13].innerHTML);
+				var secondCountg = parseInt(response[r].childNodes[13].innerHTML);
+				if (firstCountg != 0) {
+						var formg = document.createElement("form");
+						formg.setAttribute("action","graddownload");
+						formg.setAttribute("method","GET" );
+						var bg = document.createElement("input");
+						var bgtext = document.createTextNode("view");
+						bg.setAttribute("type", "submit");
+						bg.setAttribute("value",secondCountg );
+						bg.setAttribute("name","gbutton" );
+						bg.setAttribute("class", "button button1");
+						bg.appendChild(bgtext);
+						formg.appendChild(bg)
+						td14.appendChild(formg);
+				} else {td14.innerHTML = response[r].childNodes[13].innerHTML;}
+				
+				var firstCounta = parseInt(response[r].childNodes[14].innerHTML);
+				var secondCounta = parseInt(response[r].childNodes[14].innerHTML);
+				if (firstCounta != 0) {
+						var form = document.createElement("form");
+						form.setAttribute("action","download");
+						form.setAttribute("method","GET" );
+						var b = document.createElement("input");
+						var btext = document.createTextNode("view");
+						b.setAttribute("type", "submit");
+						b.setAttribute("value",secondCounta );
+						b.setAttribute("name","abutton" );
+						b.setAttribute("class", "button button2");
+						b.appendChild(btext);
+						form.appendChild(b)
+						td15.appendChild(form);
+				} else {td15.innerHTML = response[r].childNodes[14].innerHTML;}
 
 				row.appendChild(td1);
 				row.appendChild(td2);
@@ -752,7 +885,8 @@ function benReimAJAX() {
 				row.appendChild(td12);
 				row.appendChild(td13);
 				row.appendChild(td14);
-
+				row.appendChild(td15);
+				
 				table.appendChild(row);
 
 			}
@@ -955,6 +1089,104 @@ function cgaviewAJAX() {
 
 			resultTable.appendChild(table);
 			tabling6 = 1;
+
+		} else if (xhr.readyState == 4 && xhr.status != 200) {
+		}
+	}
+	xhr.send();
+}
+
+
+function arviewAJAX() {
+	if (tabling7 != 0) {
+		clearTable("artable");
+		tabling7 = 0;
+	}
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "getallar");
+
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+
+			var xmlText = xhr.responseXML;
+			var response = xmlText.getElementsByTagName("status");
+			var resultTable = document.getElementById("arvdiv");
+			resultTable.setAttribute("class", "well");
+
+			var table = document.createElement("table");
+			table.setAttribute("class", "table table-striped");
+			table.setAttribute("id", "artable");
+
+			var thead = document.createElement("thead");
+			thead.setAttribute("class", "thead-light");
+
+			var row1st = document.createElement("tr");
+
+			var til1 = document.createElement("th"); // rei_id
+			til1.setAttribute("scope", "col");
+			var text1 = document.createTextNode("REIMBURSEMENT_ID");
+			til1.appendChild(text1);
+
+			var til2 = document.createElement("th");
+			til2.setAttribute("scope", "col");
+			var text2 = document.createTextNode("APPROVER FIRST NAME");
+			til2.appendChild(text2);
+
+			var til3 = document.createElement("th");
+			til3.setAttribute("scope", "col");
+			var text3 = document.createTextNode("APPROVER LAST NAME");
+			til3.appendChild(text3);
+			
+			var til4 = document.createElement("th");
+			til4.setAttribute("scope", "col");
+			var text4 = document.createTextNode("STATUS");
+			til4.appendChild(text4);
+			
+			var til5 = document.createElement("th");
+			til5.setAttribute("scope", "col");
+			var text5 = document.createTextNode("NOTE");
+			til5.appendChild(text5);
+
+			row1st.appendChild(til1);
+			row1st.appendChild(til2);
+			row1st.appendChild(til3);
+			row1st.appendChild(til4);
+			row1st.appendChild(til5);
+
+			thead.appendChild(row1st)
+			table.appendChild(thead);
+
+			for (r = 0; r < response.length; r++) {
+
+				var tbody = document.createElement("tbody");
+				var row = document.createElement("tr");
+				row.setAttribute("scope", "row");
+				var td1 = document.createElement("td");
+				var td2 = document.createElement("td");
+				var td3 = document.createElement("td");
+				var td4 = document.createElement("td");
+				var td5 = document.createElement("td");
+
+				td1.innerHTML = response[r].childNodes[0].innerHTML;
+				td2.innerHTML = response[r].childNodes[1].innerHTML;
+				td3.innerHTML = response[r].childNodes[2].innerHTML;
+				td4.innerHTML = response[r].childNodes[3].innerHTML;
+				td5.innerHTML = response[r].childNodes[4].innerHTML;
+
+				row.appendChild(td1);
+				row.appendChild(td2);
+				row.appendChild(td3);
+				row.appendChild(td4);
+				row.appendChild(td5);
+
+				tbody.appendChild(row)
+				table.appendChild(tbody);
+
+			}
+
+			resultTable.appendChild(table);
+			tabling7 = 1;
 
 		} else if (xhr.readyState == 4 && xhr.status != 200) {
 		}

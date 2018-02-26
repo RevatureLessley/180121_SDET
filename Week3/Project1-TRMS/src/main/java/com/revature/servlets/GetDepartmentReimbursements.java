@@ -48,6 +48,9 @@ public class GetDepartmentReimbursements extends HttpServlet {
 						"<r_gradingFormat>" + r.getGradingFormat() +  "</r_gradingFormat>" +
 						"<r_typeOfEvent>" + r.getTypeOfEvent()  +  "</r_typeOfEvent>" +
 						"<r_workRelatedJustification>" + r.getWork_related_justification() +  "</r_workRelatedJustification>" +
+						"<r_grade>" + r.getGrade_received()   + "</r_grade>" + 
+						"<r_gradeAttachmentBit>" + DataService.getGaidByRid(r.getRei_id()) +  "</r_gradeAttachmentBit>"  + 
+						"<r_attachmentBit>" + DataService.getAidByRid(r.getRei_id()) +   "</r_attachmentBit>"  +
 						"</departmentreimbursement>";
 			}
 			myXml += "</root>";

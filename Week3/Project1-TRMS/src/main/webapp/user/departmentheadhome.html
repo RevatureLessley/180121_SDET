@@ -17,7 +17,34 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script src="resource/javascript/reim.js"></script>
+<style>
+.button1 {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 1px 1px;
+    cursor: pointer;
+}
 
+.button2 {
+    background-color: #008CBA; /* blue */
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 1px 1px;
+    cursor: pointer;
+}
+
+</style>
 </head>
 <body>
 	<div class="container-fluid" style="margin-top: 50px"">
@@ -43,8 +70,7 @@
 
 
 
-
-		<div class="well">
+	<div class="well">
 			<h1>Welcome To Your Login Page!</h1>
 		</div>
 		<div class="well">
@@ -55,6 +81,9 @@
 				<p>
 					<a href="reimbursements/submitnew.html">Submit A NEW
 						Reimbursement</a>
+				</p>
+				<p>
+					<a href="reimbursements/grade.html">Add Grade To A Submitted Reimbursement</a>
 				</p>
 				<p>
 					<a href="reimbursements/edit.html">Edit Submitted Reimbursement</a>
@@ -76,11 +105,20 @@
 				<div id="reimtable"></div>
 				</p>
 
-
+					<div>
+				<form id="cgaview">
+					<button type="button" class="btn btn-default"
+						onclick="cgaviewAJAX()">Check Custom Grading Format for A
+						Reimbursement</button>
+				</form>
+				<p>
+				<div id="cgavdiv"></div>
+				</p>
 
 			</div>
 		</div>
-		
+<br>
+	</div>
 		<div class="well">
 			<div class="well"><h1>DEPARTMENT HEAD OPTIONS</h1></div>
 			<p><button type="button" class="btn btn-default"
@@ -104,10 +142,7 @@
 			</div>
 
 			<p>
-				<a href="../reimbursements/approve.html">Approve A Reimbursement</a>
-			</p>
-			<p>
-				<a href="../reimbursements/reject.html">Reject A Reimbursement</a>
+				<a href="reimbursements/arstatus.html">Approve/Reject A Reimbursement</a>
 			</p>
 			</div>
 
