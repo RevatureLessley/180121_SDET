@@ -25,8 +25,8 @@ public class ReimbursementService {
 	private final static Logger logger = Logger.getLogger(ReimbursementService.class);
 	
 	public static int insertReimbursement(Reimbursement r) {
-		
 		ReimbursementDao dao = new ReimbursementDaoImpl();
+		int val = -1;
 		
 		String[] s = r.getTimeStr().split(":");
 		String t = r.getTimeStr();
@@ -57,7 +57,10 @@ public class ReimbursementService {
 			r.setUrgent(0);
 		}
 		
-		return dao.insertReimbursement(r);
+		val = dao.insertReimbursement(r);
+		EmployeeService.updateAvailReimb(dao.getReimburseByEmpId(r.getEmpId()), r.getEmpId());
+		
+		return val;
 	}
 	
 	public static List<Reimbursement> getPersonalReimb(int empId) {

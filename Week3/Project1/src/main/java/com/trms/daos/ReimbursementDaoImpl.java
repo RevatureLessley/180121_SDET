@@ -32,6 +32,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	@Override
 	public int insertReimbursement(Reimbursement r) {
 		PreparedStatement ps = null;
+		int result = -1;
 		r.setNextApprovalId(EmployeeService.getReportsTo(r.getEmpId()));
 		
 		try(Connection conn = Connections.getConnection()) {
@@ -53,7 +54,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			ps.setInt(12, r.getEventId());
 			ps.setInt(13, r.getCenterId());
 			ps.setInt(14, r.getFormatId());
-			ps.executeUpdate();	
+			result = ps.executeUpdate();	
 			
 			List<File> l = r.getAttachments();
 			if(!l.isEmpty()) {
@@ -71,7 +72,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		} finally {
 			close(ps);
 		}
-		return 0;
+		return result;
 	}
 	
 	public int insertAttachment(File f, int r_id) {

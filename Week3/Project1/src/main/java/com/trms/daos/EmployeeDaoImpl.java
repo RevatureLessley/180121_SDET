@@ -247,7 +247,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		int result = -1;
 		// TODO make a check ensure that available reimburse is enough to cover the projected amount
 		try(Connection conn = Connections.getConnection()) {
-			String sql = "UPDATE employees SET emp_availreim = 1000 WHERE EXTRACT(YEAR FROM reset_timestamp) = EXTRACT(YEAR FROM SYSTIMESTAMP)";
+			String sql = "UPDATE employees SET emp_availreim = 1000, reset_timestamp = SYSTIMESTAMP "
+					+ "WHERE EXTRACT(YEAR FROM reset_timestamp) < EXTRACT(YEAR FROM SYSTIMESTAMP)";
 			ps = conn.prepareStatement(sql);
 			result = ps.executeUpdate();
 		} catch(SQLException e) {
