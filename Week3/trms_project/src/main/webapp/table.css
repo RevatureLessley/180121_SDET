@@ -1,0 +1,41 @@
+h1{
+	color: #7c795d; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 1; margin-left: 0.5cm; margin-top: 10px;
+}
+
+body{
+	background-color:#f7fdfa;
+}
+table {
+	border-collapse: separate;
+	border-spacing: 1px;
+	margin-top: 20px;
+	margin-left: 1cm;
+	border: hidden;
+	column-gap: 5px;
+}
+th{
+ 	padding: 8px;
+    background: #DFDFDF;  /* Darken header a bit */
+    font-weight: bold;
+	border: none;
+}
+td {
+	border: none;
+	padding: 5px, 5px, 5px, 5px;
+	text-align: center;
+}
+tr{
+	border-radius: 10px;
+	border: 3px solid black;
+}
+
+tr:nth-child(even) td { background: #FeFeFe; }   
+
+tr:nth-child(odd) td { background: #F1F1F1; } 
+.noreimbursements {
+	margin-left: 1cm;
+	
+}
+button {
+	border-radius: 8px;
+}

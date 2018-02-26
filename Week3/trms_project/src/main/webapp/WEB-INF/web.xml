@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>TRMS</display-name>
+   <welcome-file-list>
+    <welcome-file>login.html</welcome-file>
+  </welcome-file-list> 
+  <servlet>
+    <servlet-name>EmployeeViewServlet</servlet-name>
+    <servlet-class>com.revature.controllers.EmployeeViewServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeptHeadViewServlet</servlet-name>
+    <servlet-class>com.revataure.controllers.DeptHeadViewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeViewServlet</servlet-name>
+    <url-pattern>/employeeview</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeptHeadViewServlet</servlet-name>
+    <url-pattern>/deptheadview</url-pattern>
+  </servlet-mapping>
+</web-app>
