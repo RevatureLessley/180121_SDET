@@ -1,5 +1,11 @@
 package com.project.beans;
 
+/**
+ * Reimbursement bean 
+ * @author haris
+ *
+ */
+
 public class Reimbursement {
 	private String username;
 	private double pending;

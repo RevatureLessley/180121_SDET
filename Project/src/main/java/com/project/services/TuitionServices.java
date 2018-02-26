@@ -8,7 +8,12 @@ import com.project.dao.TuitionDao;
 import com.project.dao.TuitionDaoImp;
 
 public class TuitionServices {
-
+	
+	/**
+	 * this method the returns approval status in text when number is given
+	 * @param approval
+	 * @return
+	 */
 	public static String getStatus(int approval) {
 		
 		switch(approval) {
@@ -29,6 +34,11 @@ public class TuitionServices {
 		}
 	}
 
+	/**
+	 * this method returns the list of all the tuition forms  info for the given user name 
+	 * @param username
+	 * @return
+	 */
 	public static List<Tuition> getTuitionByUsername(String username) {
 		TuitionDao dao = new TuitionDaoImp();
 		List<Tuition> tuitions= dao.getAllTuition();
@@ -40,7 +50,12 @@ public class TuitionServices {
 		}
 		return tuitionsUsername;
 	}
-
+	
+	/**
+	 * this method returns list of tuition form info that the given approver has to approve
+	 * @param username
+	 * @return
+	 */
 	public static List<Tuition> getTuitionByApprover(String username) {
 		String title = EmployeeServices.getTitle(username);
 		TuitionDao dao = new TuitionDaoImp();
@@ -56,7 +71,11 @@ public class TuitionServices {
 		return tuitionsUsername;
 	}
 
-
+	/**
+	 * this method approves tuition form given the tuition id
+	 * @param t_id
+	 * @return
+	 */
 	public static boolean approveTuition(int t_id) {
 		TuitionDao dao = new TuitionDaoImp();
 		List<Tuition> tuitions= dao.getAllTuition();
@@ -75,7 +94,14 @@ public class TuitionServices {
 		}
 		return false;
 	}
-
+	
+	
+	/**
+	 * this method request more MoreInfo given the tuition id and reason 
+	 * @param t_id
+	 * @param reason
+	 * @return
+	 */
 	public static boolean moreInfo(int t_id, String reason) {
 		TuitionDao dao = new TuitionDaoImp();
 		List<Tuition> tuitions= dao.getAllTuition();
@@ -100,7 +126,13 @@ public class TuitionServices {
 		}
 		return false;
 	}
-
+	
+	
+	/**
+	 * this method return the tuition form info for given tuition id
+	 * @param t_id
+	 * @return
+	 */
 	public static Tuition getTuitionById(int t_id) {
 		TuitionDao dao = new TuitionDaoImp();
 		List<Tuition> tuitions= dao.getAllTuition();

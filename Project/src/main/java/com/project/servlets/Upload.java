@@ -17,17 +17,13 @@ import com.project.dao.TuitionDao;
 import com.project.dao.TuitionDaoImp;
 import com.project.services.TuitionServices;
 
-/**
- * Servlet implementation class Upload
- */
-
 
 @MultipartConfig
 public class Upload extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * this servlet helps to upload the file attachment to tuition form
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("In Upload servlet");

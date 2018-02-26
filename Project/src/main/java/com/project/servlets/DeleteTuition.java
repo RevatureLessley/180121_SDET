@@ -11,15 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.dao.TuitionDao;
 import com.project.dao.TuitionDaoImp;
 
-/**
- * Servlet implementation class DeleteTuition
- */
+
 public class DeleteTuition extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * this servlet deletes the tuition form given the id of the tuition form
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("In delete tuition servlet");

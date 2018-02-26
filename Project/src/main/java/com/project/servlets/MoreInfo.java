@@ -18,7 +18,7 @@ public class MoreInfo extends HttpServlet {
        
   
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * this servlet request More info form the employee on tuition request
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("In servlet Moreinfo");

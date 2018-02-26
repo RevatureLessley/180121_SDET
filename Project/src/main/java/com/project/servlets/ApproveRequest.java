@@ -8,22 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.project.dao.TuitionDao;
-import com.project.dao.TuitionDaoImp;
 import com.project.services.TuitionServices;
 
-/**
- * Servlet implementation class ApproveRequest
- */
+
 public class ApproveRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
+	
+	
+	//final static Logger logger = Logger.getAnonymousLogger();
+
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * this servlet approves the approves the Tuition form with tuition id input
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("In approverequest servlet");
+		
 		
 		int t_id = Integer.parseInt(request.getParameter("t_id"));
 		
@@ -33,6 +33,8 @@ public class ApproveRequest extends HttpServlet {
 		if(TuitionServices.approveTuition(t_id)){
 			out.print("<root><result id='rs'>success</result></root>");
 			System.out.println("success");
+			//logger.info("tuition id "+t_id+" approved");
+	
 		}else {
 			out.print("<root><result id='rs'>failed</result></root>");
 			System.out.println("failed");

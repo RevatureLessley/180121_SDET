@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.project.beans.Reimbursement;
-import com.project.beans.Tuition;
 import com.project.services.EmployeeServices;
 import com.project.services.ReimbursementServices;
-import com.project.services.TuitionServices;
 
 /**
  * Servlet implementation class Home
@@ -22,7 +20,8 @@ public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * this servlet is home page of user that shows the reimbursement status
+	 * 
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("In Home servlet");

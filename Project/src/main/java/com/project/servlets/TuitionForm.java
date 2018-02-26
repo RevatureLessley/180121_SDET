@@ -26,7 +26,7 @@ public class TuitionForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * this servlet loads the tuition form page to get form data
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

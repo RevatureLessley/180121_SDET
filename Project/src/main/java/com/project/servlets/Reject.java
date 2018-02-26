@@ -18,7 +18,7 @@ public class Reject extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * this servelt changes the status of tuition to reject
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("In Reject servlet");

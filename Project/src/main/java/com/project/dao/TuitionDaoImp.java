@@ -12,12 +12,15 @@ import java.util.List;
 import com.project.beans.Tuition;
 import com.project.services.EmployeeServices;
 import com.project.services.ReimbursementServices;
-import com.project.services.TuitionServices;
 import com.project.util.CloseStreams;
 import com.project.util.Connections;
 
 public class TuitionDaoImp implements TuitionDao {
-
+	
+	
+	/**
+	 * Getting all Tuition form information form database
+	 */
 	@Override
 	public List<Tuition> getAllTuition() {
 		
@@ -57,6 +60,9 @@ public class TuitionDaoImp implements TuitionDao {
 		return tuitions;
 	}
 
+	/**
+	 * Adding new Tuition form info to the database
+	 */
 	@Override
 	public boolean addTuition(Tuition t) {
 		
@@ -85,7 +91,11 @@ public class TuitionDaoImp implements TuitionDao {
 		return true;
 		
 	}
-
+	
+	
+	/**
+	 * Deleting all Tuition form in single employee
+	 */
 	@Override
 	public boolean deleteTuitonByUsername(String u) {
 		CallableStatement stmt = null;
@@ -104,7 +114,9 @@ public class TuitionDaoImp implements TuitionDao {
 		return true;
 	}
 
-
+	/**
+	 * Deleting tuition info by tuition id
+	 */
 
 	@Override
 	public boolean deleteTuitonByTuitionId(int i) {
@@ -123,6 +135,10 @@ public class TuitionDaoImp implements TuitionDao {
 
 		return true;
 	}
+	
+	/**
+	 * Approve a tuition status to next step
+	 */
 
 	@Override
 	public boolean approveTution(Tuition t) {
@@ -143,6 +159,9 @@ public class TuitionDaoImp implements TuitionDao {
 		return true;
 	}
 
+	/**
+	 * Change tuition state to MoreInfo to get more info about the request 
+	 */
 	@Override
 	public boolean MoreInfo(Tuition t) {
 		CallableStatement stmt = null;
@@ -162,7 +181,11 @@ public class TuitionDaoImp implements TuitionDao {
 
 		return true;
 	}
-
+	
+	
+	/**
+	 * Set the Tuition state to Reject after rejected by approver
+	 */
 	@Override
 	public boolean reject(int t_id, String reason) {
 		CallableStatement stmt = null;
@@ -181,7 +204,11 @@ public class TuitionDaoImp implements TuitionDao {
 
 		return true;
 	}
-
+	
+	
+	/**
+	 * Upload a document to Tuition form info 
+	 */
 	@Override
 	public boolean addFile(Tuition t) {
 		CallableStatement stmt = null;

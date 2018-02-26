@@ -1,5 +1,8 @@
 package com.project.beans;
 
+/**
+ * Tuition form bean
+ */
 import java.time.LocalDate;
 import java.util.Arrays;
 

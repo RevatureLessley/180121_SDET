@@ -9,12 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.project.beans.Reimbursement;
-import com.project.beans.Tuition;
 import com.project.util.CloseStreams;
 import com.project.util.Connections;
 
 public class ReimbursementDaoImp implements ReimbursementDao {
-
+	
+	/**
+	 * Getting all Reimbursement information from database
+	 */
 	@Override
 	public List<Reimbursement> getAllReimbursement() {
 		Statement stmt = null;
@@ -42,6 +44,10 @@ public class ReimbursementDaoImp implements ReimbursementDao {
 
 		return reimbursements;
 	}
+	
+	/**
+	 * Updating reimbursement data in database
+	 */
 
 	@Override
 	public boolean UpdateReimbursement(Reimbursement r) {

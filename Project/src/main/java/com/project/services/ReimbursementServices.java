@@ -11,6 +11,11 @@ public class ReimbursementServices {
 	
 	static ReimbursementDao dao = new ReimbursementDaoImp();
 	
+	/**
+	 * this method return the percent of allowable reimbursement for given event
+	 * @param event
+	 * @return
+	 */
 	public static double getEvent(String event) {
 		if(event.equals("UNIVERSITY_COURSE")) 
 			return 0.8;
@@ -26,6 +31,13 @@ public class ReimbursementServices {
 			return 0.3;
 	}
 	
+	/**
+	 * this method calculates the projected reimbursement form event cost and employee name
+	 * @param username
+	 * @param event
+	 * @param cost
+	 * @return
+	 */
 	public static double getProject(String username, String event, double cost) {
 		List<Reimbursement> rs = dao.getAllReimbursement();
 		for(Reimbursement r : rs) {
@@ -43,7 +55,11 @@ public class ReimbursementServices {
 		}
 		return 0;
 	}
-
+	
+	/**
+	 * this method updates the pending reimbursement column in reimbursement table
+	 * @param t
+	 */
 	public static void updatePending(Tuition t) {
 		List<Reimbursement> rs = dao.getAllReimbursement();
 		for(Reimbursement r : rs) {
@@ -54,7 +70,11 @@ public class ReimbursementServices {
 		}
 		
 	}
-
+	
+	/**
+	 * this method updates the awarded reimbursement column in reimbursement table
+	 * @param t
+	 */
 	public static void updateAwarded(Tuition t) {
 		List<Reimbursement> rs = dao.getAllReimbursement();
 		for(Reimbursement r : rs) {
@@ -65,7 +85,12 @@ public class ReimbursementServices {
 			}
 		}
 	}
-
+	
+	/**
+	 * this method returns the reimbursement status of the given user name
+	 * @param username
+	 * @return
+	 */
 	public static Reimbursement getReimburseByUsername(String username) {
 		List<Reimbursement> rs = dao.getAllReimbursement();
 		for(Reimbursement r : rs) {
