@@ -72,9 +72,30 @@ public class AccountServices {
 	public static String accountStatus(String email) {
 		dao = new TRMSDaoImpl();
 		Account account = dao.selectAccountByEmail(email);
-		if (account.getIsBenCo() == "1") return "Benefits Coordinator";
-		if (account.getIsDepHead() == "1") return "Department";
-		if (account.getIsDirSup() == "1") return "Direct Supervisor";
+		if (account.getIsBenCo().equals("1")) return "Benefits Coordinator";
+		if (account.getIsDepHead().equals("1")) return "Department";
+		if (account.getIsDirSup().equals("1")) return "Direct Supervisor";
 		return "Regular Account";
+	}
+	
+	public static void approve(String email) {
+		dao = new TRMSDaoImpl();
+		dao.updateStringColumn(email, "account_info", "approved", "1");
+	}
+	
+	public static boolean approved(String email) {
+		dao = new TRMSDaoImpl();
+		String approved = dao.getStringValue(email, "approved", "account_info");
+		if (approved.equals("1")) return true;
+		else return false;
+	}
+	
+	public static boolean specialAccount(String email) {
+		dao = new TRMSDaoImpl();
+		Account account = dao.selectAccountByEmail(email);
+		if (account.getIsBenCo().equals("1")) return true;
+		if (account.getIsDepHead().equals("1")) return true;
+		if (account.getIsDirSup().equals("1")) return true;
+		return false;
 	}
 }

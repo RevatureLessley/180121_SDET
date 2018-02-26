@@ -53,13 +53,14 @@ public class TRMSDaoImpl implements TRMSDao {
 	@Override
 	public void insertIntoAccounts(String email, String pw, String isBenCo, String isDirSup, String isDepHead) {
 		try (Connection conn = Connections.getConnection()) {
-			sql = "INSERT INTO account_info VALUES (?,?,?,?,?)";
+			sql = "INSERT INTO account_info VALUES (?,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, email);
 			ps.setString(2, pw);
 			ps.setString(3, isBenCo);
 			ps.setString(4, isDirSup);
 			ps.setString(5, isDepHead);
+			ps.setString(6, "0");
 			ps.executeUpdate();
 
 		} catch (SQLException e) {

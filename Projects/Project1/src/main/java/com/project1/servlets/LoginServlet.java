@@ -21,16 +21,23 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("login servlet reached");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println(email + password);
 		RequestDispatcher rd;
 		HttpSession session = request.getSession(true);
 		System.out.println(session.isNew());
 		
 		if(session.isNew() && AccountServices.validate(email, password)){
-			session.setAttribute("email", email);
-			System.out.println("sloop gang");
-			rd = request.getRequestDispatcher("accountpage.jsp");
-			rd.forward(request, response);
+			if (!AccountServices.approved(email)) {
+				session.invalidate();
+				response.sendRedirect("notapproved.html");
+			} else if (AccountServices.specialAccount(email)){
+				session.setAttribute("email", email);
+				rd = request.getRequestDispatcher("accountpageadmin.jsp");
+				rd.forward(request, response);
+			} else {
+				session.setAttribute("email", email);
+				rd = request.getRequestDispatcher("accountpage.jsp");
+				rd.forward(request, response);
+			}
 		} else if(!session.isNew()){
 			rd = request.getRequestDispatcher("accountpage.jsp");
 			rd.forward(request, response);
