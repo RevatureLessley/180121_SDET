@@ -116,6 +116,7 @@ CREATE TABLE reimbursements(
 );
 ALTER TABLE reimbursements ADD reimburse_awarded NUMBER(1) DEFAULT 0;
 ALTER TABLE reimbursements MODIFY reimburse_awarded NUMBER(1) DEFAULT 2;
+ALTER TABLE reimbursements MODIFY reimburse_inforeq NUMBER(9);
 
 CREATE TABLE reimburseattachments(
     attach_id NUMBER(9),
@@ -272,6 +273,9 @@ INSERT INTO employees VALUES(5, 'Dae-sung', 'Kang', 4, 7, 50, 1000, '23-75 Eastc
 INSERT INTO employees VALUES(6, 'Yoon-gi', 'Min', 5, 7, 700, 1000, '27 Charlotte Road', 'Daegu', 'NY', 30582);
 INSERT INTO employees VALUES(7, 'Tae-hyung', 'Kim', 6, 7, 702, 1000, '78 Charlotte Road', 'Daegu', 'NY', 30582);
 INSERT INTO employees VALUES(8, 'Amy', 'Lee', 4, 2, 50, 0, '4 Enchanted Path', 'Charlotte', 'NC', 90382);
+INSERT INTO employees VALUES(9, 'Jay', 'Hope', 10, 3, 301, 1000, '4 Enchanted Path', 'Charlotte', 'NC', 90382, SYSTIMESTAMP);
+INSERT INTO employees VALUES(10, 'David', 'Adeleke', 11, 3, 300, 1000, '4 Enchanted Path', 'Charlotte', 'NC', 90382, SYSTIMESTAMP);
+INSERT INTO employees VALUES(11, 'Tiwatope', 'Balogun', 4, 3, 50, 1000, '4 Enchanted Path', 'Charlotte', 'NC', 90382, SYSTIMESTAMP);
 
 INSERT INTO eventtypes VALUES(1, 'UNIVERSITY COURSES', 0.80);
 INSERT INTO eventtypes VALUES(2, 'SEMINARS', 0.60);

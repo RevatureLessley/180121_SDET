@@ -24,7 +24,7 @@ public class AwardAmountServlet extends HttpServlet {
 		
 		ReimbursementService.awardReimbAmount(Integer.parseInt(request.getParameter("rid")), Float.parseFloat(request.getParameter("projreimb")), 
 				Integer.parseInt(request.getParameter("award")), Float.parseFloat(request.getParameter("availreimb")), (int)session.getAttribute("empid"));
-		logger.info("doGet() : request to servlet");
+		logger.info("doGet() : request to servlet. award : " + Integer.parseInt(request.getParameter("award")));
 	}
 
 	/**

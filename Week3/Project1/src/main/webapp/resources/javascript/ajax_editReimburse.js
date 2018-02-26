@@ -95,6 +95,7 @@ function readPageChanges() {
 	if(ai != null && ai.value != "") {
 		insertAddInfo(ai.value, "REQUEST");
 		var rei = document.getElementById("reqinfoemp").value;
+		rei = parseInt(rei);
 		updateInfoReq(rei);
 	}
 	if(addinfo != null) {
@@ -110,7 +111,7 @@ function readPageChanges() {
 		var ar = document.getElementById('awardres');
 		console.log(ar);
 		if(ar == null) {
-			appResponse();
+			awardAmount();
 		} else if(award.value == 1 && ar.value == ""){
 			document.getElementById('awardres').placeholder = "MUST ENTER A REASON!";
 		} else if(award.value == 1 && ar.value != "") {
@@ -148,6 +149,7 @@ function appResponse() {
 	
 	// TODO not back but like redirect
 	//window.history.back();
+	location.reload();
 }
 
 function aPostGradeUpdate() {

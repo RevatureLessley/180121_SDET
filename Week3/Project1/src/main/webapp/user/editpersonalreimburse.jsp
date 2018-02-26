@@ -229,7 +229,8 @@
 					<div>
 						<input type='text' id='reqinfo'> <select id='reqinfoemp'>
 							<option value=<%=r.getEmpId()%>>REQUESTOR</option>
-							<% if(user.getTitle().equals("DEPARTMENT HEAD") || user.getTitle().equals("BENEFITS COORDINATOR")) { %> 
+							<% if(user.getTitle().equals("DEPARTMENT HEAD") || user.getTitle().equals("BENEFITS COORDINATOR") ||
+									user.getTitle().equals("CEO")) { %> 
 							<option value=<%=e.getReportsTo() %>>DIRECT SUPERVISOR</option>
 							<% } %>
 							<% if(user.getTitle().equals("BENEFITS COORDINATOR")) { %> 
@@ -240,7 +241,7 @@
 				</div>
 
 				<%
-					if (user.getTitle().equals("BENEFITS COORDINATOR") && r.getApproved() == 1) {
+					if (user.getTitle().equals("BENEFITS COORDINATOR") && r.getApproved() == 1 && r.getAwarded() == 2) {
 				%>
 				<div class='col-sm-3' id='awardiv'>
 					<label for="award">AWARD AMOUNT</label> <select
@@ -254,7 +255,7 @@
 					}
 				%>
 
-				<% System.out.println("getApproved() : " + r.getApproved()); if (r.getApproved() == 2) { %>
+				<% if (r.getApproved() == 2 && r.getNextApprovalId() == empId) { %>
 				<!-- Approve/Deny Request -->
 				<div class='col-sm-3' id='resdiv'>
 					<label for="response">RESPONSE</label> <select class="form-control"

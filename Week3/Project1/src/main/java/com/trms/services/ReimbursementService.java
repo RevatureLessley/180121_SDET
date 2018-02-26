@@ -44,7 +44,6 @@ public class ReimbursementService {
 		r.setDate(d);
 
 		Calendar cal = Calendar.getInstance();
-		cal.setTime(d);
 		cal.add(Calendar.DATE, +14);
 		java.util.Date twoWeeks = cal.getTime();
 		logger.info("insertReimbursementDaoImpl() : rDate=" + d + " 2wks=" + twoWeeks); 
@@ -209,7 +208,7 @@ public class ReimbursementService {
 			}
 		} else if (response == 0) {
 			dao.awardReimburse(rId, response);
-			// TODO give back initial subtracted amount
+			// TODO give back initial subtracted amount	
 			// TODO if time, make is so that BenCo can submit reason why reimbursement not awarded
 		} else {
 			logger.warn("awardReimbAmount() : This is not a proper response to award reimbursement");
