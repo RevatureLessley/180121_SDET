@@ -86,6 +86,7 @@ function readPageChanges() {
 			document.getElementById('denyres').placeholder = "MUST ENTER A REASON!";
 		} else if(r.value == 0 && dr.value != "") {
 			insertAddInfo(dr.value, "DENIED");
+			console.log("deny here?");
 			appResponse();
 		} else {
 			appResponse();
@@ -146,10 +147,6 @@ function appResponse() {
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	
 	xhr.send("rid=" + id + "&response=" + r); //app response & emp id
-	
-	// TODO not back but like redirect
-	//window.history.back();
-	location.reload();
 }
 
 function aPostGradeUpdate() {
