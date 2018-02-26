@@ -384,4 +384,45 @@ public class FormDao {
 		return false;
 		
 	}
+
+	public List<Application> getAllForms() {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Application> apps = new ArrayList<Application>();
+
+		try (Connection conn = Connections.getConnection()) {
+
+			String sql = "SELECT * FROM ApplicationView";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				apps.add(new Application(rs.getLong("app_id"), rs
+						.getLong("emp_id"), rs.getString("firstname"), rs
+						.getString("lastname"), rs.getString("email"), rs
+						.getString("address"), rs.getString("city"), rs
+						.getString("state"), rs.getString("tel"), rs
+						.getDate("event_date"), rs.getString("event_location"),
+						rs.getString("event_type"), rs
+								.getString("event_relation"), rs
+								.getDouble("event_cost"), rs
+								.getString("grading_format"), rs
+								.getString("description"), rs
+								.getString("status"), rs
+								.getString("sv_decision"), rs
+								.getString("sv_comment"), rs
+								.getString("dh_decision"), rs
+								.getString("dh_comment"), rs
+								.getString("bc_decision"), rs
+								.getString("bc_comment"), rs
+								.getDate("submit_date")));
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+		return apps;
+	}
 }

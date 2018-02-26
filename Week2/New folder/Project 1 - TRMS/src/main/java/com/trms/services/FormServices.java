@@ -60,8 +60,12 @@ public class FormServices {
 			FormDao dao = new FormDao();
 			return dao.getBCForms(username);
 		}
-		
 		return null;
+	}
+	
+	public static List<Application> getAllForms(){
+		FormDao dao = new FormDao();
+		return dao.getAllForms();
 	}
 
 	public static void updateDhAction(Long appId, String Decision,

@@ -43,7 +43,7 @@
 							<li><label>Manage</label>
 								<ul class="nav nav-bar nav-stacked">
 									<li><a href="manageUser.jsp">Manager Users</a></li>
-									<li><a href="viewAll.jsp">View All Applications</a></li>
+									<li><a href="allApplication.jsp">View All Applications</a></li>
 								</ul></li>
 							<li><label>Help</label>
 								<ul class="nav nav-bar nav-stacked">

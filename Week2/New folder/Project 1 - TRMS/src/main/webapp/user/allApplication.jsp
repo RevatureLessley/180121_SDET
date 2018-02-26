@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.trms.services.FormServices"%>
+<%@ page import="com.trms.beans.Application"%>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +16,14 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../resources/javascript/main.js"></script>
 <script type="text/javascript" src="../resources/javascript/ajax.js"></script>
-<title>TRMS - Home</title>
+<title>TRMS - All Applications</title>
 </head>
 <body>
+	<%
+		String username = (String) session.getAttribute("username");
+		List<Application> apps = FormServices.getAllForms();
+		pageContext.setAttribute("apps", apps);
+	%>
 	<div>
 		<nav class="navbar navbar-inverse navbar-default navbar-fixed-top">
 			<div class="container">
@@ -78,7 +86,40 @@
 			</div>
 
 			<div class="col-md-9">
-				<h3>Welcome ${sessionScope.username}</h3>
+				<h3>All Applications</h3>
+				<hr>
+				<div class="">
+					<c:choose>
+						<c:when test="${apps} == null">
+							No application History.
+						</c:when>
+						<c:otherwise>
+							<table class="table table-hover" style="width: 100%">
+								<tr>
+									<th>Application ID</th>
+									<th>Date Submitted</th>
+									<th>Type</th>
+									<th>Cost</th>
+									<th>Status</th>
+								</tr>
+								<c:forEach items="${apps}" var="app">
+									<tr onclick="viewApplicationDetail(${app.appId})">
+										<td>${app.appId}</td>
+										<td>${app.submitDate}</td>
+										<td>${app.type}</td>
+										<td>${app.cost}</td>
+										<td>${app.status}</td>
+									</tr>
+								</c:forEach>
+							</table>
+
+
+						</c:otherwise>
+					</c:choose>
+
+
+
+				</div>
 			</div>
 		</div>
 	</div>
