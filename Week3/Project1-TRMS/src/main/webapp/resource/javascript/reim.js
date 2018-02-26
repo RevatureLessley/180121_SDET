@@ -196,18 +196,23 @@ function allReimAJAX() {
 				td10.innerHTML = response[r].childNodes[9].innerHTML;
 
 				var firstCountg = parseInt(response[r].childNodes[10].innerHTML);
-				var secondCountg = 0;
+				var secondCountg = parseInt(response[r].childNodes[10].innerHTML);
 				if (firstCountg != 0) {
-					for (i = 0; i < firstCountg; i++) {
-						var g = document.createElement("button");
-						g.setAttribute("class", "button button1");
-						secondCountg++;
-						var atext = document.createTextNode(secondCountg);
-						b.appendChild(atext);
-						td11.appendChild(g);
-					}
+						var formg = document.createElement("form");
+						formg.setAttribute("action","graddownload");
+						formg.setAttribute("method","GET" );
+						var bg = document.createElement("input");
+						var bgtext = document.createTextNode("view");
+						bg.setAttribute("type", "submit");
+						bg.setAttribute("value",secondCountg );
+						bg.setAttribute("name","gbutton" );
+						bg.setAttribute("class", "button button1");
+						bg.appendChild(btext);
+						formg.appendChild(bg)
+						td11.appendChild(formg);
 				} else {td11.innerHTML = response[r].childNodes[10].innerHTML;}
-
+				
+				
 				var firstCounta = parseInt(response[r].childNodes[11].innerHTML);
 				var secondCounta = parseInt(response[r].childNodes[11].innerHTML);
 				if (firstCounta != 0) {
@@ -215,7 +220,7 @@ function allReimAJAX() {
 						form.setAttribute("action","download");
 						form.setAttribute("method","GET" );
 						var b = document.createElement("input");
-						var btext = document.createTextNode(secondCounta);
+						var btext = document.createTextNode("view");
 						b.setAttribute("type", "submit");
 						b.setAttribute("value",secondCounta );
 						b.setAttribute("name","abutton" );

@@ -1,26 +1,20 @@
 package com.revature.service;
 
-import java.util.List;
 import java.io.File;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.ListIterator;
+import java.util.List;
 
-import com.revature.beans.Employee;
-import com.revature.beans.Reimbursement;
 import com.revature.beans.Attachments;
 import com.revature.beans.CustomGrade;
-
-import com.revature.dao.EmployeeDaoImpl;
-import com.revature.dao.ReimbursementDaoImpl;
-import com.revature.dao.StatusUpdateDaoImpl;
+import com.revature.beans.Employee;
+import com.revature.beans.Reimbursement;
 import com.revature.dao.AttachmentDaoImpl;
 import com.revature.dao.CustomGradeDaoImpl;
-
-import com.revature.util.Bridge;
-import static com.revature.util.CloseStreams.close;
+import com.revature.dao.EmployeeDaoImpl;
+import com.revature.dao.GradeDaoImpl;
+import com.revature.dao.ReimbursementDaoImpl;
+import com.revature.dao.StatusUpdateDaoImpl;
 /**
  * @author Christian Diaz
  *
@@ -179,6 +173,42 @@ public class DataService {
 		AttachmentDaoImpl attDao = new AttachmentDaoImpl();
 		return attDao.getFileType(a_id);
 	}
+	
+	
+	public static int addGrade(Attachments attachment,String grade_received, int grade_bit) {
+		GradeDaoImpl graDao = new GradeDaoImpl();
+		
+		if(grade_bit == 1) {graDao.insertGradeAttachment(attachment);}
+		else {}
+		return graDao.insertGrade(grade_received, attachment.getRei_id(), grade_bit);
+	}
+	
+	
+	
+	public static int getGaidByRid(int rei_id){
+		GradeDaoImpl graDao = new GradeDaoImpl();
+		return graDao.getAid(rei_id);
+	}
+	
+	public static String getGradeAttachmentNameByAid(int a_id) {
+		GradeDaoImpl graDao = new GradeDaoImpl();
+		return graDao.getFileName(a_id);
+	}
+	
+	
+	public static String getGradeAttachmentTypeByAid(int a_id) {
+		GradeDaoImpl graDao = new GradeDaoImpl();
+		return graDao.getFileType(a_id);
+	}
+	
+	
+	public static File getGradeAttachmentByAid(int a_id) {
+		GradeDaoImpl graDao = new GradeDaoImpl();
+		return graDao.getFile(a_id);
+	}
+	
+	
+	
 	
 	public static void checkNewYear(){
 	

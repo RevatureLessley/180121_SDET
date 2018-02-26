@@ -149,4 +149,14 @@
     <servlet-name>DownloadAttachment</servlet-name>
     <url-pattern>/download</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DownloadGradeAttachment</display-name>
+    <servlet-name>DownloadGradeAttachment</servlet-name>
+    <servlet-class>com.revature.servlets.DownloadGradeAttachment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownloadGradeAttachment</servlet-name>
+    <url-pattern>/graddownload</url-pattern>
+  </servlet-mapping>
 </web-app>

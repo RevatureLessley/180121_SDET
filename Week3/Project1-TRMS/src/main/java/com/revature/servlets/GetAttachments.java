@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,7 +31,9 @@ public class GetAttachments extends HttpServlet {
 	
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-
+		int grade_bit = 0;
+		int rei_id = 0;
+		String grade_received = "N/A";
 
 		boolean isMultipartContent = ServletFileUpload.isMultipartContent(request);
 		if (!isMultipartContent) {
@@ -47,28 +50,41 @@ public class GetAttachments extends HttpServlet {
 			List<FileItem> fields = upload.parseRequest(request); // Parse the request into a list of FileItems
 			List<File> attachments = new ArrayList<File>();
 			Iterator<FileItem> it = fields.iterator();			// Create an iterator for the list that was created above
-			int rei_id = 0;
+			
+			
 			
 			while(it.hasNext()) { // iterate through the list while there are still elements within the list of FileItems.
 				FileItem file = (FileItem)it.next(); //Pull the next object in line in the list that the iterator is pointing too
 					if(!file.isFormField()) {
-				
+						if(!file.getName().equals("")) {
 						String fileName = file.getName(); // Acquire name of the file and save it in a string.
 						File attachedFile = new File(fileName); // Create a new file with the name of the attachment file from the list.
 						file.write(attachedFile); // Write the file that was in the list, into the newly created file with the files name.
 						attachments.add(attachedFile);
-				} else {
-					if(file.getFieldName().equals("reiid")   );
-					rei_id = Integer.parseInt(file.getString());
-				}
+						grade_bit = 1;
+					}
+				} else{
+					if(file.getFieldName().equals("reiid")) {rei_id = Integer.parseInt(file.getString());}
+					else if(file.getFieldName().equals("grader")) {grade_received = file.getString();}
 			}
 			
+		}	
+		
 			
 			Attachments attachment = new Attachments(rei_id,attachments);
 			
-			int status = DataService.addAttachment(attachment);
+			int status = DataService.addGrade(attachment, grade_received, grade_bit);
 			
-		} catch (FileUploadException e) {
+			HTMLTemplates.headers(out);
+			HTMLTemplates.navbarEmp(out);
+			out.print("<h1>SUCCESS! YOUR GRADE HAS BEEN ADDED! PLEASE RETURN TO THE HOME PAGE.</h1>");
+			HTMLTemplates.goBackButton(out);
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		catch (FileUploadException e) {
 			e.printStackTrace();
 		}
 		 catch (Exception e) {

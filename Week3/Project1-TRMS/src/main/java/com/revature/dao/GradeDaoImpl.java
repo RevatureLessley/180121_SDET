@@ -23,27 +23,29 @@ import org.apache.commons.io.FilenameUtils;
 import com.revature.beans.Attachments;
 import com.revature.util.Bridge;
 
-public class AttachmentDaoImpl implements AttachmentDao {
+public class GradeDaoImpl implements GradeDao {
 
-	public int totalAttachments() {
-		Statement stmt = null;
-		ResultSet rs = null;
-		int count = 0;
-		try(Connection conn = Bridge.connect()){
-			
-			String sql = "SELECT COUNT(*) FROM ATTACHMENTS";
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			while(rs.next()) {count = rs.getInt(1);}
-			}
-		catch(SQLException e){e.printStackTrace();}
-		finally{close(stmt);close(rs);}
-		return count;
-	}
-	
-	
 	@Override
-	public int insertAttachment(Attachments a) {
+	public int insertGrade(String grade, int rei_id, int b) {
+		PreparedStatement ps = null;
+		
+		try(Connection conn = Bridge.connect()){
+			String sql = "UPDATE REIMBURSEMENTS SET  grade_received = ? , grade_attachment_bit = ? WHERE REI_ID = ?";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1,grade); //Date Of
+			ps.setInt(2,b); // Time of
+			ps.setInt (3,rei_id); // Location
+			ps.execute();
+		
+		}catch(SQLException e){e.printStackTrace();}
+		finally{close(ps); }
+		
+		return 1;
+	}
+
+	@Override
+	public int insertGradeAttachment(Attachments a) {
 		PreparedStatement ps = null;
 		FileInputStream in = null;
 		
@@ -53,11 +55,11 @@ public class AttachmentDaoImpl implements AttachmentDao {
 		while(it.hasNext()) {
 			File file = (File)it.next();
 		try(Connection conn = Bridge.connect()){
-			String sql = "INSERT INTO ATTACHMENTS VALUES(?,?,?,?,?)";
+			String sql = "INSERT INTO GRADE_ATTACHMENTS VALUES(?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			in = new FileInputStream(file);
 			
-			ps.setInt(1, totalAttachments() + 1); //attachment_id
+			ps.setInt(1, totalGradeAttachments() + 1); //attachment_id
 			ps.setInt(2, a.getRei_id()); //rei_id
 			ps.setBinaryStream(3,in,(int)file.length());
 			ps.setString(4, file.getName());
@@ -71,25 +73,22 @@ public class AttachmentDaoImpl implements AttachmentDao {
 		return 1;
 	}
 
-
 	@Override
-	public int getCountById(int id) {
-		PreparedStatement ps = null;
+	public int totalGradeAttachments() {
+		Statement stmt = null;
 		ResultSet rs = null;
-		int cost = 0;
+		int count = 0;
 		try(Connection conn = Bridge.connect()){
 			
-			String sql = "SELECT COUNT(*) FROM ATTACHMENTS WHERE REI_ID = ?";
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, id);
-			rs = ps.executeQuery();
-			while(rs.next()) {cost = rs.getInt(1);}
+			String sql = "SELECT COUNT(*) FROM GRADE_ATTACHMENTS";
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {count = rs.getInt(1);}
 			}
 		catch(SQLException e){e.printStackTrace();}
-		finally{close(ps);close(rs);}
-		return cost;
+		finally{close(stmt);close(rs);}
+		return count;
 	}
-
 
 	@Override
 	public int getAid(int rei_id) {
@@ -98,7 +97,7 @@ public class AttachmentDaoImpl implements AttachmentDao {
 		int a_id = 0;
 		try(Connection conn = Bridge.connect()){
 			
-			String sql = "SELECT A_ID FROM ATTACHMENTS WHERE REI_ID = ?";
+			String sql = "SELECT A_ID FROM GRADE_ATTACHMENTS WHERE REI_ID = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, rei_id);
 			rs = ps.executeQuery();
@@ -109,7 +108,6 @@ public class AttachmentDaoImpl implements AttachmentDao {
 		return a_id;
 	}
 
-
 	@Override
 	public File getFile(int a_id) {
 		PreparedStatement ps = null;
@@ -118,7 +116,7 @@ public class AttachmentDaoImpl implements AttachmentDao {
 		 File file = new File(fileName);
 		try(Connection conn = Bridge.connect()){
 			
-			String sql = "SELECT ATTACHMENT FROM ATTACHMENTS WHERE A_ID = ?";
+			String sql = "SELECT ATTACHMENT FROM GRADE_ATTACHMENTS WHERE A_ID = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, a_id);
 			rs = ps.executeQuery();
@@ -153,7 +151,7 @@ public class AttachmentDaoImpl implements AttachmentDao {
 		String filename = "";
 		try(Connection conn = Bridge.connect()){
 			
-			String sql = "SELECT A_NAME FROM ATTACHMENTS WHERE A_ID = ?";
+			String sql = "SELECT A_NAME FROM GRADE_ATTACHMENTS WHERE A_ID = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, a_id);
 			rs = ps.executeQuery();
@@ -163,7 +161,7 @@ public class AttachmentDaoImpl implements AttachmentDao {
 		finally{close(ps);close(rs);}
 		return filename;
 	}
-	
+
 	@Override
 	public String getFileType(int a_id) {
 		PreparedStatement ps = null;
@@ -171,7 +169,7 @@ public class AttachmentDaoImpl implements AttachmentDao {
 		String filetype = "";
 		try(Connection conn = Bridge.connect()){
 			
-			String sql = "SELECT A_TYPE FROM ATTACHMENTS WHERE A_ID = ?";
+			String sql = "SELECT A_TYPE FROM GRADE_ATTACHMENTS WHERE A_ID = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, a_id);
 			rs = ps.executeQuery();
@@ -181,5 +179,5 @@ public class AttachmentDaoImpl implements AttachmentDao {
 		finally{close(ps);close(rs);}
 		return filetype;
 	}
-	
+
 }

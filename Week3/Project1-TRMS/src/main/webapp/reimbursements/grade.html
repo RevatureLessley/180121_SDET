@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>TRMS Reimbursement Submission Page</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="../resource/javascript/AJAX.js"></script>
+
+</head>
+<body>
+	<div class="container-fluid" style="margin-top: 50px">
+
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">TRMS</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="../index.html">Home</a></li>
+					<li><a href="#">Info</a></li>
+					<li><a href="ReimCo.html">Reimbursement Coverage</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="registration.html"><span
+							class="glyphicon glyphicon-user"></span> Register</a></li>
+					<li><a href="login.html"><span
+							class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="well">
+			<h1>Welcome To TRMS Reimbursement Grade Submission Page!</h1>
+		</div>
+<input type='button' value='GO BACK' onclick='goBack()'>
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
+
+		<div id="wholeform2">
+			<form class="form-horizontal" id="attachreimburse" method="post"
+				action="../attach" enctype='multipart/form-data'>
+				<fieldset>
+					<div id="legend">
+						<legend class="">You May A Grade To An Already
+							Submitted Reimbursement From This Page</legend>
+					</div>
+
+					<div>
+						<h5>Reimbursement Id?</h5>
+						<input type="number" name="reiid" required id="reiid">
+					</div>
+					
+					<div class="control-group">
+						<!-- Work Related Jutstification-->
+						<label class="control-label" for="work">Please enter the grade you received below</label>
+						<div class="controls">
+							<textarea class="form-control" rows="2" id="grader" name="grader"
+								required placeholder="" required></textarea>
+							<p class="help-block">This grade will be added to you reimbursement</p>
+						</div>
+					</div>
+					
+
+					<h3>Would You Like To Attach Any Files For This Grade Submission?</h3>
+					<h4>(pdf, png, jpeg, txt, msg, or doc file type)</h4>
+
+					<div class="fileinput fileinput-new" data-provides="fileinput"
+						id=afile>
+						<span class="btn btn-default btn-file"><span>Choose
+								file</span><input type="file" class="form-control-file" id="ufile" 
+							name="ufile"
+							accept=".png, .pdf, .jpeg, .jpg, .txt, .doc, .docx, .msg"
+							multiple></span> <span class="fileinput-filename"></span><span
+							class="fileinput-new">No file chosen</span>
+					</div>
+					<br>
+
+					<div class="control-group">
+						<!-- Button -->
+						<div class="controls">
+							<button type="submit" class="btn btn-default">Submit Grade</button>
+						</div>
+						<br>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+
+	</div>
+</body>
+</html>
