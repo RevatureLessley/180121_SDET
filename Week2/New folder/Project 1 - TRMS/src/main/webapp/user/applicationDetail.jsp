@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.trms.services.FormServices"%>
+<%@ page import="com.trms.beans.Application"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +15,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../resources/javascript/main.js"></script>
 <script type="text/javascript" src="../resources/javascript/ajax.js"></script>
-<title>TRMS - Home</title>
+<title>TRMS - Application Detail</title>
 </head>
 <body>
 	<div>
@@ -78,7 +80,101 @@
 			</div>
 
 			<div class="col-md-9">
-				<h3>Welcome ${sessionScope.username}</h3>
+				<%
+					long appId = Long.parseLong(request.getParameter("appId"));
+					Application app = FormServices.getFormByAppId(appId);
+					pageContext.setAttribute("app", app);
+				%>
+				<h3>Application Detail</h3>
+				<hr>
+				<table class="table-bordered">
+					<tr>
+						<td><label>Application ID: </label></td>
+						<td>${app.appId}</td>
+					</tr>
+					<tr>
+						<td><label>Submit Date: </label></td>
+						<td>${app.submitDate}</td>
+					</tr>
+					<tr>
+						<td><label>Status: </label></td>
+						<td>${app.status}</td>
+					</tr>
+					<tr>
+						<td><label>Applicant: </label></td>
+						<td>${app.firstname} ${app.lastname}</td>
+					</tr>
+					<tr>
+						<td><label>Email: </label></td>
+						<td>${app.email }</td>
+					</tr>
+					<tr>
+						<td><label>Address: </label></td>
+						<td>${app.address }</td>
+					</tr>
+					<tr>
+						<td><label>City: </label></td>
+						<td>${app.city }</td>
+					</tr>
+					<tr>
+						<td><label>State: </label></td>
+						<td>${app.state }</td>
+					</tr>
+					<tr>
+						<td><label>Event Date: </label></td>
+						<td>${app.eventDate}</td>
+					</tr>
+					<tr>
+						<td><label>Event Location: </label></td>
+						<td>${app.location }</td>
+					</tr>
+					<tr>
+						<td><label>Event Type: </label></td>
+						<td>${app.type}</td>
+					</tr>
+					<tr>
+						<td><label>Work-related Justification: </label></td>
+						<td>${app.relation}</td>
+					</tr>
+					<tr>
+						<td><label>Cost: </label></td>
+						<td>$${app.cost}</td>
+					</tr>
+					<tr>
+						<td><label>Grading Format: </label></td>
+						<td>${app.gradingFormat }</td>
+					</tr>
+					<tr>
+						<td><label>Description: </label></td>
+						<td>${app.description}</td>
+					</tr>
+					<tr>
+						<td><label>Supervisor Approval: </label></td>
+						<td>${app.svDecision }</td>
+					</tr>
+					<tr>
+						<td><label>Supervisor Comment: </label></td>
+						<td>${app.svComment}</td>
+					</tr>
+					<tr>
+						<td><label>Department Head Approval: </label></td>
+						<td>${app.dhDecision }</td>
+					</tr>
+					<tr>
+						<td><label>Department Head Comment: </label></td>
+						<td>${app.dhComment}</td>
+					</tr>
+					<tr>
+						<td><label>BenCo Approval: </label></td>
+						<td>${app.bcDecision }</td>
+					</tr>
+					<tr>
+						<td><label>BenCo Comment: </label></td>
+						<td>${app.bcComment}</td>
+					</tr>
+				</table>
+				<hr>
+				<button type=button class="btn btn-md btn-secondary" onclick="history.back()">Back</button>
 			</div>
 		</div>
 	</div>

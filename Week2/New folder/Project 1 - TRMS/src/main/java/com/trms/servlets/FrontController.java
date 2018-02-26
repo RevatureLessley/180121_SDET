@@ -31,16 +31,29 @@ public class FrontController extends HttpServlet {
 			rd = request.getRequestDispatcher("RegisterServlet");
 			rd.forward(request, response);
 			break;
+		case "submitform":
+			rd = request.getRequestDispatcher("../SubmitForm");
+			rd.forward(request, response);
+			break;
+		case "svaction":
+			rd = request.getRequestDispatcher("/SupervisorAction");
+			rd.forward(request, response);
+			break;
+		case "dhaction":
+			rd = request.getRequestDispatcher("/DhAction");
+			rd.forward(request, response);
+			break;
+		case "bcaction":
+			rd = request.getRequestDispatcher("/BcAction");
+			rd.forward(request, response);
+			break;
 		default:
 			response.sendError(404);
 		}
-		
-
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

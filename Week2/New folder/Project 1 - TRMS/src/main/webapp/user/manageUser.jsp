@@ -11,11 +11,10 @@
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../resources/javascript/main.js"></script>
 <script type="text/javascript" src="../resources/javascript/ajax.js"></script>
-<title>TRMS - Home</title>
+<title>TRMS - Manage Users</title>
 </head>
-<body>
+<body onload="loadUsers()">
 	<div>
 		<nav class="navbar navbar-inverse navbar-default navbar-fixed-top">
 			<div class="container">
@@ -35,10 +34,11 @@
 			</div>
 		</nav>
 		<div class="container" id="maincontainer">
+
 			<div class="col-md-3 left-nav">
 				<ul class="nav nav-bar nav-stacked">
 					<c:choose>
-						<%-- admin leftnav--%>
+						<%-- admin leftnav --%>
 						<c:when test="${sessionScope.username == 'admin'}">
 							<li><label>Manage</label>
 								<ul class="nav nav-bar nav-stacked">
@@ -56,10 +56,8 @@
 							<li><label class="">Application</label>
 								<ul class="nav nav-bar nav-stacked">
 									<li><a href="newApplication.jsp">Start an Application</a></li>
-									<li><a href="applicationHistory.jsp">Application
-											History</a></li>
-									<li><a href="manageApplication.jsp">Manage
-											Applications</a></li>
+									<li><a href="#">Application History</a></li>
+									<li><a href="#">Manage Applications</a></li>
 								</ul></li>
 							<li><label>Profile</label>
 								<ul class="nav nav-bar nav-stacked">
@@ -78,7 +76,28 @@
 			</div>
 
 			<div class="col-md-9">
-				<h3>Welcome ${sessionScope.username}</h3>
+				<h3>All Users</h3>
+				<div class="well">
+					<table class="table table-bordered" id="userTable">
+						<tr>
+							<th>ID</th>
+							<th>Username</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Title</th>
+							<th>Supervisor</th>
+							<th>E-mail</th>
+							<th>Address</th>
+							<th>City</th>
+							<th>State</th>
+							<th>Tel</th>
+						</tr>
+
+					</table>
+
+					<hr>
+					<span id="updateMsg"></span>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -2,8 +2,8 @@
 
 #maincontainer {
 	margin-top: 50px;
-	padding-top: 20px;
-	background-color: white;	
+	background-color: white;
+	padding-left:0;
 }
 
 body {
@@ -19,4 +19,38 @@ body {
 	width: 120px;
 	height: 40px;
 	background-color:Ivory;
+}
+
+.left-nav {
+	background-color: rgb(180, 180, 180);
+	padding-top: 50px;
+	height: -webkit-fill-available;
+}
+.left-nav label {
+	font-size: 20px;
+	margin-top: 30px;
+}
+.left-nav ul {
+	margin-bottom: 10px;
+}
+#subcontainer {
+	background-color: rgb(240, 240, 240);
+}
+#application_form button {
+	margin-left:auto;
+}
+
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6;
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+  border-bottom-width: 2px;
 }

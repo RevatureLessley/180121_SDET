@@ -20,32 +20,34 @@ public class GetEmployees extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//State == 3
-		
-		/*
-		 * In the case of a default AJAX request, we will return back to it,
-		 * an xml file, so we need to set the response type to reflect that.
-		 */
+
 		response.setContentType("text/xml");
 		PrintWriter out = response.getWriter();
 		
 		List<Employee> emps = EmployeeService.getAllEmployees();
-		
-		
+
 		if(emps!=null){
 			String myXml = "<root>";
-			//Manually create the xml file.
-//			for(Employee e : emps){
-//				myXml += "<employee><e_id>" + e.getEmpId() + "</e_id>" +
-//						"<e_name>" + e.getEmpName() + "</e_name>"
-//								+ "<e_sal>" + e.getEmpSalary() + "</e_sal>"
-//								+ "<e_title>" + e.getTitle() + "</e_title></employee>";
-//			}
+			for(Employee emp : emps){
+				myXml += "<employee>"
+						+ "<empid>" + emp.getEmpId() + "</empid>"
+						+ "<username>" + emp.getUsername() + "</username>"
+						+ "<firstname>" + emp.getFname()+ "</firstname>" 
+						+ "<lastname>" + emp.getLname() + "</lastname>"
+						+ "<title>" + emp.getTitle() + "</title>"
+						+ "<supervisor>" + emp.getSupervisor() + "</supervisor>"
+						+ "<email>" + emp.getEmail() + "</email>"
+						+ "<address>" + (emp.getAddress() == null ? " ": emp.getAddress()) + "</address>"
+						+ "<city>" + (emp.getCity() == null ? " " : emp.getCity())+ "</city>"
+						+ "<state>" + (emp.getState()==null?" ":emp.getState())+ "</state>"
+						+ "<tel>" + (emp.getTel()==null?" ":emp.getTel())+ "</tel>"
+						+ "</employee>";
+			}
 			myXml += "</root>";
 			
-			out.print(myXml); //State == 4
+			out.print(myXml); 
 		}else{
-			out.print("<root></root>"); //State == 4
+			out.print("<root></root>"); 
 		}
 	}
 

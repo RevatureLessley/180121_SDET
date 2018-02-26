@@ -1,7 +1,3 @@
-//import {getUser} from 'ajax';
-//window.onload = function(){
-//	getUser();
-//}
 
 function checkPasswordMatch(){
 	var pass = document.getElementById("password").value;
@@ -16,3 +12,15 @@ function checkPasswordMatch(){
 	}
 }
 
+function viewApplicationDetail(appid){
+	window.location = "applicationDetail.jsp?appId=" + appid;
+}
+
+function checkTitle(title){
+	if (title == "Department Head"){
+		document.forms["app_form"].action = "dhAction.do";
+	}else if (title=="BenCo"){
+		document.forms["app_form"].action = "bcAction.do";
+	}
+	document.forms["app_form"].submit();
+}

@@ -36,7 +36,7 @@ public class RegisterServlet extends HttpServlet {
 			System.out.println("Register Failed!");
 		}
 		
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("register_success.html");
 		
 	}
 

@@ -36,7 +36,7 @@
 	</nav>
 	<div id="maincontainer" class="container">
 		<div class="well row">
-			<h1 class="text-center">Tuition Reinburstment Management System</h1>
+			<h1 class="text-center">Tuition Reinbursement Management System</h1>
 			<hr>
 			<div class="text-center col-md-6 col-md-offset-3">
 				<h4>Please sign in:</h4>
@@ -53,8 +53,11 @@
 								name="password" id="password" required>
 						</tr>
 					</table>
+<%-- 					<span class="text-danger"><strong>${response }</strong></span><br> --%>
 					<c:if test="${requestScope.invalid == 'true' }">
-						<span id="invalidCredential" class="text-danger"><strong>Invalid Cretentials.</strong></span><br>
+						<span id="invalidCredential" class="text-danger"><strong>Invalid
+								Cretentials.</strong></span>
+						<br>
 					</c:if>
 					<button class="btn sized-btn btn-warning" type="submit">Sign
 						in</button>

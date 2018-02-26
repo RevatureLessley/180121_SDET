@@ -12,11 +12,12 @@ public class Employee {
 	private String state;
 	private String tel;
 	private String email;
+	private String supervisor;
 
 	public Employee() {
 		super();
 	}
-
+	
 	public Employee(long empId, String fname, String lname, String username,
 			String password, String title, String address, String city,
 			String state, String tel, String email) {
@@ -32,6 +33,24 @@ public class Employee {
 		this.state = state;
 		this.tel = tel;
 		this.email = email;
+	}
+
+	public Employee(long empId, String fname, String lname, String username,
+			String password, String title, String address, String city,
+			String state, String tel, String email, String supervisor) {
+		super();
+		this.empId = empId;
+		this.fname = fname;
+		this.lname = lname;
+		this.username = username;
+		this.password = password;
+		this.title = title;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.tel = tel;
+		this.email = email;
+		this.supervisor = supervisor;
 	}
 
 	/**
@@ -199,18 +218,23 @@ public class Employee {
 		this.email = email;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
+	public String getSupervisor() {
+		return supervisor;
+	}
+
+	public void setSupervisor(String supervisor) {
+		this.supervisor = supervisor;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [empId=" + empId + ", fname=" + fname + ", lname="
 				+ lname + ", username=" + username + ", password=" + password
 				+ ", title=" + title + ", address=" + address + ", city="
 				+ city + ", state=" + state + ", tel=" + tel + ", email="
-				+ email + "]";
+				+ email + ", supervisor=" + supervisor + "]";
 	}
+
+	
 
 }
