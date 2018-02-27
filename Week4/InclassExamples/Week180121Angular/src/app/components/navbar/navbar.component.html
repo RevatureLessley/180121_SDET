@@ -1,0 +1,21 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" routerLink="/home">Ryans Angular Example</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li [class]="homeActive">
+                <a routerLink="/home" (click)=activeHome()>Home</a>
+            </li>
+            <li [class]="interActive">
+                <a routerLink="/interpolation" (click)=activeInter()>Interpolation</a>
+            </li>
+            <li [class]="dirActive">
+                <a routerLink="/directives" (click)=activeDir()>Directives</a>
+            </li>
+            <li>
+                <a routerLink="/pokeapi">Poke API</a>
+            </li>
+        </ul>
+    </div>
+</nav>

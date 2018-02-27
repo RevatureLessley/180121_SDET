@@ -32,7 +32,9 @@ public class Silence {
 	 * ---if on class, all methods are strictfp
 	 * ---all floating points conform to IEEE standards
 	 * -volatile
-	 * ---make accessible by unsynchronized threads
+	 * ---An volatile variable must be accessed via main memory, not an individual
+	 * ---thread's stack memory. It essentially marks the variable as an important
+	 * ---resource that will be hit my multiple threads.
 	 * -synchronized
 	 * ---Limits amount of threads that can access resource to one at a time
 	 * -transient
