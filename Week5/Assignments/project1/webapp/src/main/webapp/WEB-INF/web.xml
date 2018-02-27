@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>webapp</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+        <servlet-name>GenreicServlet</servlet-name>
+        <servlet-class>Servlets.GenreicServlet</servlet-class>    
+ 
+    </servlet>
+ 
+    <servlet-mapping>
+            <servlet-name>GenreicServlet</servlet-name>
+            <url-pattern>/show</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>TRF</servlet-name>
+        <servlet-class>Servlets.TuitionReimbursementFormServlet</servlet-class>    
+ 
+    </servlet>
+ 
+    <servlet-mapping>
+            <servlet-name>TRF</servlet-name>
+            <url-pattern>/form</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>InsertEmployee</servlet-name>
+        <servlet-class>MyServlets.InsertEmployee</servlet-class>    
+ 
+    </servlet>
+ 
+    <servlet-mapping>
+            <servlet-name>InsertEmployee</servlet-name>
+            <url-pattern>/insert-employee</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>GetEmployee</servlet-name>
+        <servlet-class>MyServlets.GetEmployee</servlet-class>    
+ 
+    </servlet>
+ 
+    <servlet-mapping>
+            <servlet-name>GetEmployee</servlet-name>
+            <url-pattern>/get-employee</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>GetClaim</servlet-name>
+        <servlet-class>MyServlets.GetClaim</servlet-class>    
+ 
+    </servlet>
+ 
+    <servlet-mapping>
+            <servlet-name>GetClaim</servlet-name>
+            <url-pattern>/get-claim</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>InsertClaim</servlet-name>
+        <servlet-class>MyServlets.InsertClaim</servlet-class>    
+ 
+    </servlet>
+ 
+    <servlet-mapping>
+            <servlet-name>InsertClaim</servlet-name>
+            <url-pattern>/insert-claim</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UpdateClaim</servlet-name>
+        <servlet-class>MyServlets.UpdateClaim</servlet-class>    
+ 
+    </servlet>
+ 
+    <servlet-mapping>
+            <servlet-name>UpdateClaim</servlet-name>
+            <url-pattern>/update-claim</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UpdateEmployee</servlet-name>
+        <servlet-class>MyServlets.UpdateEmployee</servlet-class>    
+ 
+    </servlet>
+ 
+    <servlet-mapping>
+            <servlet-name>UpdateEmployee</servlet-name>
+            <url-pattern>/update-employee</url-pattern>
+    </servlet-mapping>
+    
+    <filter>
+
+     <filter-name>corsFilter</filter-name>
+
+     <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+
+     <init-param>
+
+         <param-name>cors.allowed.origins</param-name>
+
+         <param-value>http://localhost:4200</param-value>
+
+     </init-param>
+
+     <!--
+
+     <init-param>
+
+         <param-name>cors.allowed.methods</param-name>
+
+         <param-value>GET, POST, PUT, DELETE, OPTIONS, HEAD</param-value>
+
+     </init-param>
+
+     -->
+
+ </filter>
+
+<filter-mapping>
+
+      <filter-name>corsFilter</filter-name>
+
+      <url-pattern>/*</url-pattern>
+
+  </filter-mapping>
+    
+</web-app>

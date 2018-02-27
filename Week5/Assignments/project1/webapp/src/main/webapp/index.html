@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<form action="show" method="post">
+  <font face="verdana" size="2">
+     Enter Table Name :<input type="text" name="table"> 
+                       <input type="submit" value="Display">
+  </font>
+</form>
+<br>
+<br>
+<form action="insert-employee" method="post">
+  <font face="verdana" size="2">
+     Enter Username :<input type="text" name="username"> 
+     Enter Password :<input type="password" name="password">
+                       <input type="submit" value="Submit">
+  </font>
+</form>
+
+<br>
+<br>
+<form action="get-employee" method="post">
+  <font face="verdana" size="2">
+     Get Enter Username :<input type="text" name="username"> 
+     Enter Password :<input type="password" name="password">
+                       <input type="submit" value="Submit">
+  </font>
+</form>
+
+<h2> Tuition Reimbursement Form </h2>
+<form action="form" method="get" enctype="multipart/form-data">
+  <font face="verdana" size="2">
+     Enter Location :<input type="text" name="location"><br>
+     Enter Description :<input type="text" name="description"><br>
+     Enter Cost :<input type="text" name="cost"><br>
+     Enter Grading Format :<input type="text" name="grade"><br>
+     Enter Type of event :<input type="text" name="type"><br>
+     Enter Work Related Justification :<input type="text" name="justification"><br>
+     Event Related Attachment:<input type="file" name="my_file"><br>
+     Type Of Approval: <input type="text" name="file_approval_type"><br>
+     Enter Work time Missed (days) :<input type="number" name="days_missed"><br>     
+                       <input type="submit" value="Submit">
+  </font>
+</form>
+</body>
+</html>
