@@ -5,8 +5,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+@NamedQueries({
+			@NamedQuery(name="getAllHoneypots", query="FROM HoneyPot")
+})
+@NamedNativeQueries({
+	@NamedNativeQuery(name="getSmallHoneypots",
+			query="SELECT * FROM HONEYPOT WHERE VOLUME < :maxVolume",
+			resultClass=HoneyPot.class)
+})
 
 @Entity
 @Table(name="HONEYPOT")
