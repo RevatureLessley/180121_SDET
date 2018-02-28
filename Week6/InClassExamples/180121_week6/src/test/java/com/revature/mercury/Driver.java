@@ -14,7 +14,7 @@ public class Driver {
 		driver = new ChromeDriver();
 
 		
-		//Starts the driver and opens it at the specified url.
+		//Starts the driver and opens it at the specified url./
 		driver.get(url);
 		
 		Thread.sleep(5000);
