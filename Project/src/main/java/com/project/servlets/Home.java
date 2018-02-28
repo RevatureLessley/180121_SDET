@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.project.beans.Reimbursement;
 import com.project.services.EmployeeServices;
 import com.project.services.ReimbursementServices;
@@ -18,6 +20,8 @@ import com.project.services.ReimbursementServices;
  */
 public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	final static Logger logger = Logger.getLogger(ApproveRequest.class);
     
 	/**
 	 * this servlet is home page of user that shows the reimbursement status
@@ -33,6 +37,7 @@ public class Home extends HttpServlet {
 		Reimbursement r = ReimbursementServices.getReimburseByUsername(username);
 		String title = EmployeeServices.getTitle(username);
 		System.out.println(r);
+		logger.info(username+" logged In");
 		
 		if(r!=null){
 			String myXml = "<root><name id='user'>" + username +" ( "+title+" ) " + "</name>";

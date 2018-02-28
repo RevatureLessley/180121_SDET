@@ -8,13 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.project.services.TuitionServices;
 
 
 public class ApproveRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-
+	
+	final static Logger logger = Logger.getLogger(ApproveRequest.class);
+	
 	/**
 	 * this servlet approves the approves the Tuition form with tuition id input
 	 */
@@ -30,6 +33,7 @@ public class ApproveRequest extends HttpServlet {
 		if(TuitionServices.approveTuition(t_id)){
 			out.print("<root><result id='rs'>success</result></root>");
 			System.out.println("success");
+			logger.info("Tuition id "+t_id+" approved");
 	
 		}else {
 			out.print("<root><result id='rs'>failed</result></root>");
