@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="12983" started-at="2018-02-28T17:07:51Z" finished-at="2018-02-28T17:08:04Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="12983" started-at="2018-02-28T17:07:51Z" finished-at="2018-02-28T17:08:04Z">
+      <class name="com.revature.testng.MercuryDriver">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.revature.testng.MercuryDriver@5b275dab]" name="setup" is-config="true" duration-ms="6577" started-at="2018-02-28T17:07:51Z" finished-at="2018-02-28T17:07:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="confirmHomepage()[pri:0, instance:com.revature.testng.MercuryDriver@5b275dab]" name="confirmHomepage" duration-ms="12" started-at="2018-02-28T17:07:58Z" finished-at="2018-02-28T17:07:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- confirmHomepage -->
+        <test-method status="PASS" signature="logInToMercury()[pri:0, instance:com.revature.testng.MercuryDriver@5b275dab]" name="logInToMercury" duration-ms="3043" started-at="2018-02-28T17:07:58Z" finished-at="2018-02-28T17:08:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logInToMercury -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.revature.testng.MercuryDriver@5b275dab]" name="teardown" is-config="true" duration-ms="3331" started-at="2018-02-28T17:08:01Z" finished-at="2018-02-28T17:08:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.revature.testng.MercuryDriver -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
