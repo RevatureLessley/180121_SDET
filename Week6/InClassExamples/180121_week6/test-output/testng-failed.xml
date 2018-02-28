@@ -6,8 +6,8 @@
       <class name="com.revature.testng.MercuryDriver">
         <methods>
           <include name="teardown"/>
+          <include name="logInToMercury"/>
           <include name="setup"/>
-          <include name="confirmHomepage"/>
         </methods>
       </class> <!-- com.revature.testng.MercuryDriver -->
     </classes>
