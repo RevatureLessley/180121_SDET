@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="3" total="8" passed="5">
+  <reporter-output>
+  </reporter-output>
+  <suite name="MercurySuite" duration-ms="31885" started-at="2018-02-28T20:52:46Z" finished-at="2018-02-28T20:53:18Z">
+    <groups>
+      <group name="everything">
+        <method signature="MercuryDriverNewAndImproved.doEverything(java.lang.String, java.lang.String, double, double)[pri:8, instance:com.revature.testng.MercuryDriverNewAndImproved@6093dd95]" name="doEverything" class="com.revature.testng.MercuryDriverNewAndImproved"/>
+      </group> <!-- everything -->
+    </groups>
+    <test name="TestWithGroups" duration-ms="31885" started-at="2018-02-28T20:52:46Z" finished-at="2018-02-28T20:53:18Z">
+      <class name="com.revature.testng.MercuryDriverNewAndImproved">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.revature.testng.MercuryDriverNewAndImproved@6093dd95]" name="setup" is-config="true" duration-ms="8209" started-at="2018-02-28T20:52:46Z" finished-at="2018-02-28T20:52:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="doEverything(java.lang.String, java.lang.String, double, double)[pri:8, instance:com.revature.testng.MercuryDriverNewAndImproved@6093dd95]" name="doEverything" duration-ms="4863" started-at="2018-02-28T20:52:54Z" data-provider="mercuryData" finished-at="2018-02-28T20:52:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[bobbert]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[bobbert]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[0.0]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[0.0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doEverything -->
+        <test-method status="PASS" signature="doEverything(java.lang.String, java.lang.String, double, double)[pri:8, instance:com.revature.testng.MercuryDriverNewAndImproved@6093dd95]" name="doEverything" duration-ms="2971" started-at="2018-02-28T20:52:59Z" data-provider="mercuryData" finished-at="2018-02-28T20:53:02Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[dogbert]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[dogbert]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[1.0]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[1.0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doEverything -->
+        <test-method status="PASS" signature="doEverything(java.lang.String, java.lang.String, double, double)[pri:8, instance:com.revature.testng.MercuryDriverNewAndImproved@6093dd95]" name="doEverything" duration-ms="2053" started-at="2018-02-28T20:53:02Z" data-provider="mercuryData" finished-at="2018-02-28T20:53:04Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[goodbye]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[hello]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[1.0]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[2.0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doEverything -->
+        <test-method status="PASS" signature="doEverything(java.lang.String, java.lang.String, double, double)[pri:8, instance:com.revature.testng.MercuryDriverNewAndImproved@6093dd95]" name="doEverything" duration-ms="4413" started-at="2018-02-28T20:53:04Z" data-provider="mercuryData" finished-at="2018-02-28T20:53:09Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ryanbob]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[bob]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[0.0]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[1.0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doEverything -->
+        <test-method status="PASS" signature="doEverything(java.lang.String, java.lang.String, double, double)[pri:8, instance:com.revature.testng.MercuryDriverNewAndImproved@6093dd95]" name="doEverything" duration-ms="5606" started-at="2018-02-28T20:53:09Z" data-provider="mercuryData" finished-at="2018-02-28T20:53:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[tropicana]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[tropicana]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[1.0]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[1.0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doEverything -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.revature.testng.MercuryDriverNewAndImproved@6093dd95]" name="teardown" is-config="true" duration-ms="3350" started-at="2018-02-28T20:53:14Z" finished-at="2018-02-28T20:53:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.revature.testng.MercuryDriverNewAndImproved -->
+    </test> <!-- TestWithGroups -->
+  </suite> <!-- MercurySuite -->
+</testng-results>

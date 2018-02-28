@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [MercurySuite]">
+  <test thread-count="5" name="TestWithGroups(failed)">
+    <groups>
+      <run>
+        <include name="everything"/>
+        <exclude name="something"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.revature.testng.MercuryDriverNewAndImproved">
+        <methods>
+          <include name="doEverything" invocation-numbers="0 1 2 3 4"/>
+        </methods>
+      </class> <!-- com.revature.testng.MercuryDriverNewAndImproved -->
+    </classes>
+  </test> <!-- TestWithGroups(failed) -->
+</suite> <!-- Failed suite [MercurySuite] -->
