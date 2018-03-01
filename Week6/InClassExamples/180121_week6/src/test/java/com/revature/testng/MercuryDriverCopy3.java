@@ -1,41 +1,27 @@
 package com.revature.testng;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 
-public class MercuryDriver {
+public class MercuryDriverCopy3 {
 	public static WebDriver driver;
 	public final String url = "http://newtours.demoaut.com/";
-	
-	WebDriverWait wait;
 	
 	@BeforeTest
 	public void setup(){
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		driver = new ChromeDriver();
-		
-		//We can configure our driver's implicit wait as soon as it is instantiated.
-		//For any element, wait 4 seconds before determining a fail
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		
-		//For a specific action, wait 7 seconds before a fail
-		wait = new WebDriverWait(driver, 7);
-		
 		driver.get(url);
 	}
 	
@@ -62,20 +48,6 @@ public class MercuryDriver {
 		 * -xpath
 		 * -cssSelector
 		 */
-		
-		//Implicit wait test
-		//driver.findElement(By.id("bobbert"));
-		
-		//explicit wait test
-		//WebElement e1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("bobbert")));
-		
-		//fluentwait test
-/*		Wait fwait = new FluentWait(driver)
-				.withTimeout(7, TimeUnit.SECONDS)
-				.pollingEvery(750, TimeUnit.MILLISECONDS) //NOTE: fluent wait has custom check times.
-				.ignoring(NoSuchElementException.class);
-		WebElement e1 = (WebElement)fwait.until(ExpectedConditions.visibilityOfElementLocated(By.id("bobbert")));
-	*/	
 		
 		//.sendKeys() simulates typing. Use with any text fields
 		//.click() simulates clicking. Use when you should click.
