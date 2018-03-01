@@ -14,7 +14,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 
-public class MercuryDriver {
+public class MercuryDriverCopy3 {
 	public static WebDriver driver;
 	public final String url = "http://newtours.demoaut.com/";
 	
