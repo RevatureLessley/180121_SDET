@@ -1,7 +1,7 @@
-var="m"
+var=""
 for i in $@
 do
-var+=i
+var+=$i
 done
 git add *
 git commit -m $var
