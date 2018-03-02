@@ -1,5 +1,4 @@
 var=""
-space="-"
 for i in $@
 do
 var+=$i
