@@ -18,6 +18,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.automercury.pages.MercuryBookFlight;
+import com.automercury.pages.MercuryFlight;
 import com.automercury.pages.MercuryFlightFinder;
 import com.automercury.pages.MercuryLogin;
 
@@ -26,6 +28,8 @@ public class MercuryDriver {
 	public final String url = "http://newtours.demoaut.com/";
 	MercuryLogin mercuryLoginPg;
 	MercuryFlightFinder mercuryFFPg;
+	MercuryFlight mercuryFlightPg;
+	MercuryBookFlight mercuryBFPg;
 
 	@BeforeTest
 	public void setup() {
@@ -44,29 +48,48 @@ public class MercuryDriver {
 		AssertJUnit.assertEquals(driver.getTitle(), "Welcome: Mercury Tours");
 	}
 	
-	@Test(dependsOnMethods = "confirmHomepage", dataProvider = "loginData")
-	public void loginToMercury(String inUsername, String inPassword) {
+	@Test(dependsOnMethods = "confirmHomepage", dataProvider = "loginData", enabled = false)
+	public void loginToMercuryData(String inUsername, String inPassword) {
 		driver.findElement(By.xpath("//a[text()='Home']")).click();
 		mercuryLoginPg = new MercuryLogin(driver);
 		mercuryLoginPg.login(inUsername, inPassword);
 		AssertJUnit.assertEquals(driver.getTitle(), "Find a Flight: Mercury Tours:");
 	}
 	
+	@Test(dependsOnMethods = "confirmHomepage")
+	public void loginToMercury() {
+		mercuryLoginPg = new MercuryLogin(driver);
+		mercuryLoginPg.login("bobbert", "bobbert");
+		AssertJUnit.assertEquals(driver.getTitle(), "Find a Flight: Mercury Tours:");
+	}
+	
+	@Test(dependsOnMethods = "loginToMercury", dataProvider = "flightData", enabled = false)
+	public void flightDetailsAndPrefsData(int type, int amnt, int loc0, int month0, int loc1, int month1, int service, int line) {
+		mercuryFFPg = new MercuryFlightFinder(driver);
+		mercuryFFPg.selectFlightDetails(type, amnt, loc0, month0, loc1, month1, service, line);
+		AssertJUnit.assertEquals(driver.getTitle(), "Select a Flight: Mercury Tours");
+		driver.navigate().back();
+	}
+	
 	@Test(dependsOnMethods = "loginToMercury")
 	public void flightDetailsAndPrefs() {
 		mercuryFFPg = new MercuryFlightFinder(driver);
-		mercuryFFPg.selectFlightDetails(1, 2, 3, 4, 5, 6, 1, 1);
+		mercuryFFPg.selectFlightDetails(1, 2, 3, 4, 4, 6, 1, 2);
 		AssertJUnit.assertEquals(driver.getTitle(), "Select a Flight: Mercury Tours");
 	}
 	
-	@Test
+	@Test(dependsOnMethods = "flightDetailsAndPrefs")
 	public void selectDepartAndReturn() {
-		
+		mercuryFlightPg = new MercuryFlight(driver);
+		mercuryFlightPg.selectDepartReturnFlights(1, 2);
+		AssertJUnit.assertEquals(driver.getTitle(), "Book a Flight: Mercury Tours");
 	}
 	
-	@Test
+	@Test(dependsOnMethods = "selectDepartAndReturn")
 	public void bookFlight() {
-		
+		mercuryBFPg = new MercuryBookFlight(driver);
+		mercuryBFPg.bookAFlight(1, "473289479439", 3, 2);
+		AssertJUnit.assertEquals(driver.getTitle(), "Flight Confirmation: Mercury Tours");
 	}
 	
 	@Test
@@ -113,20 +136,48 @@ public class MercuryDriver {
 		return data;
 	}
 	
-	@DataProvider(name="loginData")
+	@DataProvider(name="flightData")
 	public Object[][] provideFlightDetails() throws IOException{
 		Object[][] data = null;
 		Workbook workbook = openWorkbook();
 		
-		Sheet sheet = workbook.getSheet("LoginPage");
+		Sheet sheet = workbook.getSheet("FlightFinder");
 		int rowcount = sheet.getLastRowNum() - sheet.getFirstRowNum();
 		data = new Object[rowcount][2];
 		
 		for(int i = 1; i <= rowcount; i++) {
 			Row row = sheet.getRow(i);
 			data[i-1] = new Object[] {
-					row.getCell(0).getStringCellValue(),
-					row.getCell(1).getStringCellValue()
+					(int)row.getCell(0).getNumericCellValue(),
+					(int)row.getCell(1).getNumericCellValue(),
+					(int)row.getCell(2).getNumericCellValue(),
+					(int)row.getCell(3).getNumericCellValue(),
+					(int)row.getCell(4).getNumericCellValue(),
+					(int)row.getCell(5).getNumericCellValue(),
+					(int)row.getCell(6).getNumericCellValue(),
+					(int)row.getCell(7).getNumericCellValue()
+			};
+		}
+		
+		workbook.close();
+		
+		return data;
+	}
+	
+	@DataProvider(name="flightTimeData")
+	public Object[][] provideFlightTimes() throws IOException{
+		Object[][] data = null;
+		Workbook workbook = openWorkbook();
+		
+		Sheet sheet = workbook.getSheet("Flight");
+		int rowcount = sheet.getLastRowNum() - sheet.getFirstRowNum();
+		data = new Object[rowcount][2];
+		
+		for(int i = 1; i <= rowcount; i++) {
+			Row row = sheet.getRow(i);
+			data[i-1] = new Object[] {
+					(int)row.getCell(0).getNumericCellValue(),
+					(int)row.getCell(1).getNumericCellValue()
 			};
 		}
 		
