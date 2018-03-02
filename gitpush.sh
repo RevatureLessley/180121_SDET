@@ -1,8 +1,8 @@
-var1=""
+var="m"
 for i in $@
 do
-var1+= i
+var+=i
 done
 git add *
-git commit -m var1
+git commit -m var
 git push origin petar
