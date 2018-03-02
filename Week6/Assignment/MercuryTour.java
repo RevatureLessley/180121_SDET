@@ -89,14 +89,14 @@ public class MercuryTour {
 		driver.findElement(By.name("billCity")).sendKeys("SunnySide");
 		driver.findElement(By.name("billState")).sendKeys("NY");
 		driver.findElement(By.name("billZip")).sendKeys("10010");
-		iterateSelect("billCountry");
+		//iterateSelect("billCountry");
 		driver.findElement(By.name("delAddress1")).sendKeys("820 Street Rd");
 		driver.findElement(By.name("delAddress2")).sendKeys("5th Floor");
 		driver.findElement(By.name("delCity")).sendKeys("SunnySide");
 		driver.findElement(By.name("delState")).sendKeys("NY");
 		driver.findElement(By.name("delZip")).sendKeys("10010");
-		iterateSelect("delCountry");
-		//driver.findElement(By.name("buyFlights")).click();
+		//iterateSelect("delCountry");
+		driver.findElement(By.name("buyFlights")).click();
 	}
 	
 	public void iterateSelect(String name) {
