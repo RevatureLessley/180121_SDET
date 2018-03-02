@@ -2,11 +2,17 @@ package com.revature.gluecode;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.revature.keywordframework.keywords;
 import com.revature.pages.MercuryLogin;
 
+import cucumber.api.DataTable;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -30,10 +36,16 @@ public class MercuryLoginGlue {
 		assertEquals("Welcome: Mercury Tours", driver.getTitle());
 	}
 
-	@When("^a user shall input a \"([^\"]*)\" and a \"([^\"]*)\" and click submit$")
-	public void inputCredentials(String username, String password) throws Throwable {
-		loginPage = new MercuryLogin(driver);
-		loginPage.driverLogInToMercury(username, password);
+	@When("^a user shall input a username and a password and click submit$")
+	public void inputCredentials(DataTable table) throws Throwable {
+
+	
+		//loginPage.driverLogInToMercury(data.get(1).get(0), data.get(1).get(1));
+/*		driver.findElement(By.name(data.get(1).get(0))).sendKeys(data.get(1).get(1));
+		driver.findElement(By.name(data.get(2).get(0))).sendKeys(data.get(2).get(1));
+		driver.findElement(By.name(data.get(3).get(0))).click();*/
+		
+		keywords.performAction(driver, table);
 	}
 
 	@Then("^a user shall be redirected to the find flights page$")
