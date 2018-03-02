@@ -72,27 +72,31 @@ public class MercuryTour {
 		iterateSelect("creditCard");
 		driver.findElement(By.name("creditnumber")).sendKeys("1111222233331919");
 		iterateSelect("cc_exp_dt_mn");
-		
-//		**Still trying to figure out why this isn't working...
-//		List<WebElement> els = driver.findElements(By.xpath("//select[@name='cc_exp_dt_yr']/option"));
-//		for(WebElement e : els) {
-//			e.click();
-//			if(driver.switchTo().alert() != null) {
-//				Alert alert = driver.switchTo().alert();
-//				alert.accept();
-//			}
-//		}
+//		for year
+//		still trying to make sense of this...
+//		WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+//        wait.Until(ExpectedConditions.ElementIsVisible(By.Id("csclose")));
+//
+//        driver.FindElement(By.Id("csclose")).Click();
 		
 		driver.findElement(By.name("cc_frst_name")).sendKeys("Rick");
 		driver.findElement(By.name("cc_mid_name")).sendKeys("Rickity");
 		driver.findElement(By.name("cc_last_name")).sendKeys("Ross");
-		driver.findElement(By.name("ticketLess")).click();
+		driver.findElements(By.name("ticketLess")).get(0).click();
+		driver.findElements(By.name("ticketLess")).get(1).click();
 		driver.findElement(By.name("billAddress1")).sendKeys("820 Street Rd");
 		driver.findElement(By.name("billAddress2")).sendKeys("5th Floor");
 		driver.findElement(By.name("billCity")).sendKeys("SunnySide");
 		driver.findElement(By.name("billState")).sendKeys("NY");
 		driver.findElement(By.name("billZip")).sendKeys("10010");
-		iterateSelect("billCountry");
+		//iterateSelect("billCountry");
+		driver.findElement(By.name("delAddress1")).sendKeys("820 Street Rd");
+		driver.findElement(By.name("delAddress2")).sendKeys("5th Floor");
+		driver.findElement(By.name("delCity")).sendKeys("SunnySide");
+		driver.findElement(By.name("delState")).sendKeys("NY");
+		driver.findElement(By.name("delZip")).sendKeys("10010");
+		//iterateSelect("delCountry");
+		driver.findElement(By.name("buyFlights")).click();
 	}
 	
 	public void iterateSelect(String name) {
@@ -109,11 +113,4 @@ public class MercuryTour {
 			e.click();
 		}
 	}
-//	if(driver.switchTo().alert() != null)
-//	{
-//	    Alert alert = driver.switchTo().alert();
-//	    String alertText = alert.getText();
-//	    alert.dismiss(); // alert.accept();
-//
-//	}
 }
