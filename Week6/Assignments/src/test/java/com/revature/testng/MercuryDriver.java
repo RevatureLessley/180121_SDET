@@ -7,6 +7,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import com.revature.pages.MercuryBookFlight;
 import com.revature.pages.MercuryFlightFinder;
 import com.revature.pages.MercuryLogin;
 import com.revature.pages.MercurySelectFlight;
@@ -18,6 +19,7 @@ public class MercuryDriver {
 	public MercuryLogin LoginPage;
 	public MercuryFlightFinder flightPage;
 	public MercurySelectFlight selectFlight;
+	public MercuryBookFlight bookFlight;
 	
 	@Test(priority = 0)
 	public void confirmHomepage() {
@@ -49,6 +51,14 @@ public class MercuryDriver {
 		Thread.sleep(1000);
 		selectFlight.submitSelectFlight();
 		AssertJUnit.assertEquals(driver.getTitle(), "Book a Flight: Mercury Tours");
+	}
+
+	@Test(dependsOnMethods = { "confirmHomepage", "logInToMercury", "findFlights","selectFlight" })
+	public void bookFlight() throws InterruptedException {
+		bookFlight = new MercuryBookFlight(driver);
+		Thread.sleep(1000);
+		bookFlight.submitBookFlights();
+		AssertJUnit.assertEquals(driver.getTitle(), "Flight Confirmation: Mercury Tours");
 	}
 	  
 	@BeforeTest
