@@ -11,8 +11,11 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/javascript/main.js"></script>
 <script type="text/javascript" src="resources/javascript/ajax.js"></script>
-<title>TRMS</title>
+<title>TRMS - Register Success</title>
 </head>
+<script>
+	setTimeout("location.href = 'index.jsp';", 3000);
+</script>
 <body>
 	<nav class="navbar navbar-inverse navbar-default navbar-fixed-top">
 		<div class="container">
@@ -32,30 +35,12 @@
 		<div class="well row">
 			<h1 class="text-center">Tuition Reinburstment Management System</h1>
 			<hr>
-			<div class="text-center col-md-6 col-md-offset-3">
-				<h4>Please sign in:</h4>
-				<form id="loginForm" action="Login.do" method="POST">
-					<table class='form-table' align="center">
-						<tr>
-							<td><label>Username:</label></td>
-							<td><input class="form-control" type="text" name="username"
-								id="username" required>
-						</tr>
-						<tr>
-							<td><label>Password:</label></td>
-							<td><input class="form-control" type="password"
-								name="password" id="password" required>
-						</tr>
-					</table>
-					<button class="btn sized-btn btn-warning" type="submit">Sign
-						in</button>
-				</form>
-				<hr>
-				<h3 class="text-center">- OR -</h3>
-				<h4>For first time user, please register:</h4>
-				<a href="register.html"><button class="btn sized-btn btn-warning"
-						type="button">Register</button></a>
-			</div>
+			<h4>You have successfully registered.</h4>
+			<br>
+			<p>Redirecting to login page...</p>
+			<p>
+				Or <a href="index.jsp">manually go to login page</a>
+			</p>
 		</div>
 
 	</div>
