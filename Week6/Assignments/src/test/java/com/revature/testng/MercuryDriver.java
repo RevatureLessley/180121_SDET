@@ -56,6 +56,9 @@ public class MercuryDriver {
 	@Test(dependsOnMethods = { "confirmHomepage", "logInToMercury", "findFlights","selectFlight" })
 	public void bookFlight() throws InterruptedException {
 		bookFlight = new MercuryBookFlight(driver);
+		bookFlight.firstName("HARISH");
+		bookFlight.lastName("CHANDRAMOHAN");
+		bookFlight.cNumber("1234567890123456");
 		Thread.sleep(1000);
 		bookFlight.submitBookFlights();
 		AssertJUnit.assertEquals(driver.getTitle(), "Flight Confirmation: Mercury Tours");
