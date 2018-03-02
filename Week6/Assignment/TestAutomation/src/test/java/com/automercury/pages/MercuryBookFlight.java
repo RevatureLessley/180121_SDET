@@ -60,6 +60,12 @@ public class MercuryBookFlight {
 		PageFactory.initElements(driver, this);
 	}
 	
+	public void checkAcceptAlert() {
+		if(ExpectedConditions.alertIsPresent().apply(driver)!=null){
+			driver.switchTo().alert().accept();
+		}
+	}
+	
 	public void selectCardType(int type) {
 		cardTypeSelect.get(type).click();
 	}
@@ -75,9 +81,7 @@ public class MercuryBookFlight {
 	public void selectYearExpire(int year) {
 		cardExpireMonth.get(year).click();
 		
-		if(ExpectedConditions.alertIsPresent().apply(driver)!=null){
-			driver.switchTo().alert().accept();
-		}
+		checkAcceptAlert();
 	}
 	
 	public void enterFirstname(String inFirstname) {
@@ -132,12 +136,39 @@ public class MercuryBookFlight {
 		}
 	}
 	
+	public void enterDelAddress1(String addr) {
+		delAddress1.sendKeys(addr);
+	}
+	
+	public void enterDelAddress2(String addr) {
+		delAddress2.sendKeys(addr);
+	}
+	
+	public void enterDelCity(String city) {
+		delCity.sendKeys(city);
+	}
+	
+	public void enterDelState(String state) {
+		delState.sendKeys(state);
+	}
+	
+	public void enterDelPostalCode(String zip) {
+		delZip.sendKeys(zip);
+	}
+	
+	public void selectCountryDel(int country) {
+		selectDelCountry.get(country).click();
+		
+		checkAcceptAlert();
+	}
+	
 	public void securePurchase() {
 		buyFlights.click();
 	}
 	
 	public void bookAFlight(int type, String number, int month, int year, String fname, String mname, String lname, int isTicketless, String addr1,
-			String addr2, String city, String state, String zip, int country, int isSameBill) {
+			String addr2, String city, String state, String zip, int country, int isSameBill, String addr3, String addr4, String city1,
+			String state1, String zip1, int country1) {
 		cardTypeSelect.get(type).click();
 		enterCardNumber(number);
 		selectMonthExpire(month);
@@ -153,12 +184,15 @@ public class MercuryBookFlight {
 		enterBillPostalCode(zip);
 		selectCountryBill(country);
 		isSameAsBillAddr(isSameBill);
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(isSameBill == 0) {
+			enterDelAddress1(addr3);
+			enterDelAddress2(addr4);
+			enterDelCity(city1);
+			enterDelState(state1);
+			enterDelPostalCode(zip1);
+			selectCountryDel(country1);
 		}
+
 		securePurchase();
 	}
 }

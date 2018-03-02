@@ -88,13 +88,21 @@ public class MercuryDriver {
 	@Test(dependsOnMethods = "selectDepartAndReturn")
 	public void bookFlight() {
 		mercuryBFPg = new MercuryBookFlight(driver);
-		mercuryBFPg.bookAFlight(1, "473289479439", 3, 4, "Dylan", "L", "Eda", 1, "23B Hert Street", "", "Bronx", "NY", "07427", 5, 0);
+		mercuryBFPg.bookAFlight(1, "473289479439", 3, 4, "Dylan", "L", "Eda", 1, "23B Hert Street", "", "Bronx", "NY", "07427", 5, 
+				0, "24 Mat Street", "", "Queens", "NY", "08934", 5);
 		AssertJUnit.assertEquals(driver.getTitle(), "Flight Confirmation: Mercury Tours");
 	}
 	
-	@Test
+	@Test(dependsOnMethods = "bookFlight")
 	public void logOut() {
-		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		driver.findElement(By.xpath("//img[@src='/images/forms/Logout.gif']")).click();
+		AssertJUnit.assertEquals(driver.getTitle(), "Sign-on: Mercury Tours");
 	}
 	
 	public Workbook openWorkbook() {
