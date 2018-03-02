@@ -18,8 +18,6 @@ public class MercuryLogin {
 	 * 
 	 */
 	
-	
-	
 	//First you need a variable to place your driver in.
 	private WebDriver driver;
 	
