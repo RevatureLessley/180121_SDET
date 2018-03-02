@@ -4,11 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class BookFlightspage {
+public class BookFlightsPage {
 	
 	private  WebDriver driver;
 	
-	public BookFlightspage(WebDriver driver) {this.driver = driver;}
+	public BookFlightsPage(WebDriver driver) {this.driver = driver;}
 	
 	public void inputPassengerInfo(int totalPass, String firstName1, String firstName2, String firstName3, String firstName4,
 									String lastName1, String lastName2, String lastName3, String lastName4) {
@@ -62,25 +62,43 @@ public class BookFlightspage {
 		  driver.findElement(By.name("cc_last_name")).sendKeys(cardLastName);
 	}
 	
-	public void input billing
-		  driver.findElement(By.name("billAddress1")).sendKeys("101-09 bob street");
-		  driver.findElement(By.name("billCity")).sendKeys("bob City");
+	public void inputBilling(String bilAddress, String bilCity, String bilState, Integer bilZip, String bilCountry) {
+		  driver.findElement(By.name("billAddress1")).sendKeys(bilAddress);
+		  driver.findElement(By.name("billCity")).sendKeys(bilCity);
 		  driver.findElement(By.name("billState")).clear();
-		  driver.findElement(By.name("billState")).sendKeys("BB");
+		  driver.findElement(By.name("billState")).sendKeys(bilState);
 		  driver.findElement(By.name("billZip")).clear();
-		  driver.findElement(By.name("billZip")).sendKeys("111111");
+		  driver.findElement(By.name("billZip")).sendKeys(bilZip.toString());
 		  Select billCountry = new Select(driver.findElement(By.name("billCountry")));
-		  billCountry.selectByVisibleText("UNITED STATES");
-		  
-		  driver.findElement(By.name("delAddress1")).sendKeys("101-09 bob street");
-		  driver.findElement(By.name("delCity")).sendKeys("bob City");
+		  billCountry.selectByVisibleText(bilCountry);
+	}
+	
+	public void inputDelivery (String delAddress, String delCity, String delState, Integer delZip, String delCountry) {
+		  driver.findElement(By.name("delAddress1")).sendKeys(delAddress);
+		  driver.findElement(By.name("delCity")).sendKeys(delCity);
 		  driver.findElement(By.name("delState")).clear();
-		  driver.findElement(By.name("delState")).sendKeys("BB");
+		  driver.findElement(By.name("delState")).sendKeys(delState);
 		  driver.findElement(By.name("delZip")).clear();
-		  driver.findElement(By.name("delZip")).sendKeys("111111");
-		  Select delCountry = new Select(driver.findElement(By.name("delCountry")));
-		  delCountry.selectByVisibleText("UNITED STATES");
-		  
+		  driver.findElement(By.name("delZip")).sendKeys(delZip.toString());
+		  Select dCountry = new Select(driver.findElement(By.name("delCountry")));
+		  dCountry.selectByVisibleText(delCountry);
+	}
+	
+	public void clickSecurePurchase() {
 		  driver.findElement(By.name("buyFlights")).click();
-		 
+	}
+	
+	public void book (int totalPass, String firstName1, String firstName2, String firstName3, String firstName4,
+			String lastName1, String lastName2, String lastName3, String lastName4, String cardType, 
+			Integer cardNumber, Integer cardMonth, Integer cardYear, String cardFirstname, String cardMiddleName, 
+			String cardLastName, String bilAddress, String bilCity, String bilState, Integer bilZip, String bilCountry,
+			String delAddress, String delCity, String delState, Integer delZip, String delCountry) {
+		
+		inputPassengerInfo(totalPass, firstName1, firstName2, firstName3, firstName4,
+			lastName1, lastName2, lastName3, lastName4);
+		inputCreditCard(cardType, cardNumber, cardMonth, cardYear, cardFirstname, cardMiddleName, cardLastName );
+		inputBilling(bilAddress, bilCity, bilState, bilZip,  bilCountry);
+		inputDelivery (delAddress, delCity, delState,  delZip, delCountry);
+		clickSecurePurchase();
+	}
 }
