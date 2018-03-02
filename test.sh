@@ -1,4 +1,4 @@
 git add *
-git commit -m 'committed with a bash script'
+git commit -m '$1'
 git push origin petar
 PAUSE
