@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="MercurySuite">
+<!--   <test thread-count="5" name="ImprovedTest">
+    <classes>
+      <class name="com.revature.testng.MercuryDriverNewAndImproved"/>
+      <class name="com.revature.testng.MercuryDriver"/>
+      <class name="com.revature.testng.MercuryDriverCopy1"/>
+      <class name="com.revature.testng.MercuryDriverCopy2"/>
+      <class name="com.revature.testng.MercuryDriverCopy3"/>
+    </classes>
+  </test> ImprovedTest -->
+    <test thread-count="5" name="TestWithGroups">
+    <groups>
+    	<run>
+    		<exclude name="something"></exclude>
+    		<include name="setup"></include>
+    		<include name="teardown"></include>
+    		<include name="everything"></include>
+    	</run>
+    </groups>
+    <classes>
+      <class name="com.revature.testng.MercuryDriverNewAndImproved"/>
+    </classes>
+  </test> <!-- ImprovedTest -->
+  
+</suite> <!-- MercurySuite -->
