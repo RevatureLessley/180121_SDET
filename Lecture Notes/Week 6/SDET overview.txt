@@ -1,0 +1,155 @@
+SDET - Software Development Engineer in Test
+Tester must be very at programming
+
+guru99 - great website for testing, manual and automated
+
+Develop frameworks / applications that handle other applications
+to handle their functionality automatically
+
+Develop testing frameworks for automating applications
+in order to ensure they function correctly
+
+Frameworks are typically written in Java (selenium webdriver)
+or typescript/javascript (Protractor)
+
+Automation testing
+Any testing that utilizes automated scripts
+that run through an application and generates detailed reports
+of test results
+
+Manual testing
+A tester manually performs actions on an application
+and documents results as compared to requirements
+
+Unit testing: most micro of testing (developer)
+Integration testing: multiple methods together (developer)
+System Integration testing (developer / tester)
+User acceptance testing - last testing
+
+User acceptance testing categories:
+1. Alpha testing
+	- Application is tested in-house by staff of IT
+2. Beta testing
+	- Application tested out of house by possible consumers
+
+Regression Testing
+Testing old functionality to ensure new functionality didnt break old functionality
+
+Smoke testing (Sanity testing)
+Any testing done to see if the application even works
+Simple login
+Do pages even show?
+
+Positive testing
+Does the expected result occur when the proper action executes
+Does the right thing happen when the right action occurs
+The happy path - any testing with the perfect user
+Correct login details yield a logged in user
+
+Negative testing
+Does the expected result occur when an improper action executes
+Incorrect login details yield an error message
+
+Functional Testing
+Any testing done for validating
+actual functionality of an application
+
+Non-functional testing
+Testing performed on the metrics and states of a application
+performance testing
+- load - typical use on heavy traffic day
+- stress - approach capacity and go past it
+- spike 2 - 1000 users all at once
+- ramp up / ramp down - gradually more users or gradually less users
+
+Security testing
+Malicious use
+penetration testing
+
+Entry criteria
+Tasks to be satisfied in order to begin a phase
+Plan documentation
+
+Exit Criteria
+Tasks to be complete before a phase is considered finished
+Summary documentation
+
+Test Plan
+Documentation of how a team intends to test a specific application
+What will be teseted
+How long will each test phase be?
+Who will be testing?
+
+Test Strategy
+A document detailing strategies for testing
+What do we do when we find a bug?
+What formats are followed for test documentation
+May be applied to multiple projects
+
+LOE - Level of Effort
+Test plan - 4 h
+Test strategy - 4 h
+SiT - depends on application size 80 hours
+Regression - 80 hours
+UAT - 60h
+Summary - 3
+
+Knowledge Transfer (KT)
+
+Requirements Traceability Matrix
+A document that shows requirements coverage by test case
+as well as whether or not the test case passed
+
+Test Case Document
+Suite        Name             Step         Task          Expected Result      Result
+TRMS_Smoke  TC_001_login       1     navigate to HP        HP displayed        check
+                               2     input username       Field filled         check
+                               3     input password           |                check
+                               4       submit         Navigate to user page     no
+
+Test suite contains test cases
+
+Defect - an implemented functionality does not meet a requirement
+Therefore yielded a bug/fault/failure
+
+Fault
+Is the portion of a program that caused the abnormality
+Result of miscommunication or misunderstanding
+
+Bug
+The line of codes that caused our defect
+
+Error
+Incorrect code itself
+
+Failure
+defect that made it to production
+
+e2e testing
+Testing application from start to finish
+Can I successfully finish a full user interaction from start to finish
+
+Black Box Testing
+Testing an application without being able to reference its code
+
+White box
+Referencing its code
+
+Selenium Webdriver
+An automation framework for automating application use
+for testing purposes
+
+Selenium IDE
+Selenium RC
+Selenium Webdriver
+Selenium grid
+
+IDE
+An IDE used in browser as an extension
+record & playback
+
+Selenium Webdriver
+Library for writing automation code for automating web apps
+
+Selenium RC
+Remote Control

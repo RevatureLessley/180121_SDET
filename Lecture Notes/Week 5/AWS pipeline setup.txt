@@ -1,8 +1,11 @@
+Scp -i [name.pem] [file to transfer] [location to transfer] : [tilda]
+for jenkins and jdk
+
 Login
-ssh -i 180121_SDET.pem ec2-user@54.221.78.176
+ssh -i 180121_SDET.pem ec2-user@54.144.236.210
 
 Upload JDK
-scp -i 180121_SDET.pem jdk-8u161-linux-x64.rpm ec2-user@54.221.78.176:~
+scp -i 180121_SDET.pem jdk-8u161-linux-x64.rpm ec2-user@54.144.236.210:~
 
 Get Tomcat
 wget apache.mirrors.ionfish.org/tomcat/tomcat-7/v7.0.85/bin/apache-tomcat-7.0.85.tar.gz 
@@ -33,3 +36,16 @@ added below comments
 <role rolename="manager-script"/>
 <user username="tomcatmanager" password="tomcatmanager" roles="manager-gui"/>
 <user username="tomcatscript" password="tomcatscript" roles="manager-script"/>
+
+Angular
+ng build --prod      //easier on memory
+
+Fix OJDBC problem
+run this in your ec2
+
+mvn install:install-file -Dfile={Path/to/your/ojdbc7.jar}
+
+   
+ -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0 -Dpackaging=jar
+
+ for the ojdbc7.jar problem

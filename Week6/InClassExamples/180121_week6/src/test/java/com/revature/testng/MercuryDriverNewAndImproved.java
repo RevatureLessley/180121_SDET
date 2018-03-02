@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -31,6 +32,10 @@ public class MercuryDriverNewAndImproved {
 	public void setup() {
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		driver = new ChromeDriver();
+		
+		//Can configure implicit wait as sson as it is instantiated
+		//driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
 		driver.get(url);
 	}
 
@@ -87,8 +92,7 @@ public class MercuryDriverNewAndImproved {
 	public Object[][] provideAccountDetailsDynamic() throws Exception{
 		Object[][] data = null;
 		File file = new File("src/test/resources/MercuryData.xlsx");
-		FileInputStream fis = new FileInputStream(file);
-		
+		FileInputStream fis = new FileInputStream(file);	
 		
 		try(Workbook workbook = new XSSFWorkbook(fis)){
 			

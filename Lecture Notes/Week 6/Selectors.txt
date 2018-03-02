@@ -1,0 +1,28 @@
+id
+name
+linkTest
+PartialLinkTest
+ClassName
+TagName
+
+Xpath
+<html>
+<body>
+<div>
+  <div>
+     <input id=tim>
+  </div>
+  <div>
+     <input id=tim>
+  </div>
+</div>
+</body>
+</html>
+
+absolute xpath:
+html/body/div/div[1]/input[@id="tim"]
+
+relative xpath:
+//div[1]/input
+
+CSSSelector

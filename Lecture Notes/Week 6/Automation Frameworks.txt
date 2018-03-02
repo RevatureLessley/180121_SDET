@@ -1,0 +1,22 @@
+Data Driven Framework
+Script provides user a way to customize input content & input amount
+Script should run x amount of times with each different input
+username     password
+bobbert       bobbert
+uname1        p2
+uname2        p3
+uname3        p4
+can put in excel file
+will run 4 times
+
+Keyword Driven Framework
+Use external source with keywords inputted that determine what actions the test does
+
+keyword     identityType      identityVal      val
+text         name               userName      bobbert
+text         name               Password      bobbert
+button       name               login         
+
+
+Hybrid framework
+Data driven and keyword driven into one

@@ -1,0 +1,24 @@
+Project 2 Requirements
+
+Java
+Oracle
+Angular
+Server
+JSP
+REST -> Jersey recommended or servlets
+Hibernate
+AWS
+Fully Functional Pipeline
+JUnit
+Logging
+A full automation framework
+Pivotal Tracker
+
+Optional:
+Node Server (to connect database)
+Jersey (or Spring REST to fail project)
+
+Project Pitch:
+High Level overview
+Complex enough to stay busy for two weeks
+Must have at least 3 user roles

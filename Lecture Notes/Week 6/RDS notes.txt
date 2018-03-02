@@ -1,0 +1,26 @@
+Amazon aws page ->
+RDS under database ->
+Instances ->
+Launch DB instance ->
+Oracle Enterprise edition ->
+no backup maybe ->
+Endpoint
+
+
+astrogroup
+astropassword
+
+In oracle DB
+change hostname
+move port and sid to appropriate column
+
+connection name doesn't matter
+
+Create new user to login to your account with
+that does not have system capabilities (on ORACLE)
+inserting and deleting only
+big security risk
+bash profile environment variables
+do not upload system username and password to github
+
+Check security groups to make sure 1521 is forwarded

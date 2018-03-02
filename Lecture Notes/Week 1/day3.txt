@@ -1,0 +1,24 @@
+* A design pattern is a tried and true development style that was created to efficiently 
+ * accomplish different tasks
+ * 
+ * An example of one pattern would be the POJO
+ * 
+ * Characteristics of a POJO are simply a JAVA object that has fields and getters and setters
+ * Simply to host data
+ * 
+ * On top of POJO's there is another, more used design pattern called Beans.
+ * A Bean is just like a POJO in that fact they typically have fields getters and setters.
+ * However, in the case of Beans, they are more restrictive in naming convention
+ * - getters and setters MUST be named getVarname ....
+ * no args constructor. Accurate camel casing
+ */
+
+/*
+ * In Java we can serialize objects which essentially converts them to a byte code format
+ * for compressing them as files. This aids in sending them across servers to other applications 
+ * or user where, assuming they have the proper deserialization method, can convert it back into an object for use
+ * Useful for a specific Revature project
+ * 
+ * How do we serialize an object?
+ * First step is to have a class be a candidate for serialization, by default objects cannot be serialized
+ * We need to have our candidates implement the MARKER INTERFACE serializable

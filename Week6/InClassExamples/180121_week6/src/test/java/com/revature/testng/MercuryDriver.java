@@ -6,8 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -18,10 +18,15 @@ public class MercuryDriver {
 	public static WebDriver driver;
 	public final String url = "http://newtours.demoaut.com/";
 	
+	WebDriverWait wait;
+	
 	@BeforeTest
 	public void setup(){
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		driver = new ChromeDriver();
+		
+		wait = new WebDriverWait(driver,7);
+		
 		driver.get(url);
 	}
 	
