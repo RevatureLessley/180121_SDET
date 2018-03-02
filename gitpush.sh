@@ -3,8 +3,8 @@ space="-"
 for i in $@
 do
 var+=$i
-var+="-"
+var+=" "
 done
 git add *
-git commit -m $var
+git commit -m "$var"
 git push origin petar
