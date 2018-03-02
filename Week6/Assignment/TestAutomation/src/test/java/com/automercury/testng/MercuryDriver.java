@@ -88,7 +88,7 @@ public class MercuryDriver {
 	@Test(dependsOnMethods = "selectDepartAndReturn")
 	public void bookFlight() {
 		mercuryBFPg = new MercuryBookFlight(driver);
-		mercuryBFPg.bookAFlight(1, "473289479439", 3, 2);
+		mercuryBFPg.bookAFlight(1, "473289479439", 3, 4, "Dylan", "L", "Eda", 1, "23B Hert Street", "", "Bronx", "NY", "07427", 5, 0);
 		AssertJUnit.assertEquals(driver.getTitle(), "Flight Confirmation: Mercury Tours");
 	}
 	

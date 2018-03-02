@@ -6,8 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class MercuryBookFlight {
+	WebDriver driver;
 	@FindBy(xpath="//select[@name='creditCard']/option")
 	List<WebElement> cardTypeSelect;
 	@FindBy(xpath="//input[@name='creditnumber']")
@@ -22,7 +24,7 @@ public class MercuryBookFlight {
 	WebElement middlename;
 	@FindBy(xpath="//input[@name='cc_last_name']")
 	WebElement lastname;
-	@FindBy(xpath="/tr[7]/td[2]/input")
+	@FindBy(xpath="//td[2]/input[@name='ticketLess']") 
 	WebElement checkTicketless;
 	@FindBy(xpath="//input[@name='billAddress1']")
 	WebElement billAddress1;
@@ -36,7 +38,7 @@ public class MercuryBookFlight {
 	WebElement billZip;
 	@FindBy(xpath="//select[@name='billCountry']/option")
 	List<WebElement> selectBillCountry;
-	@FindBy(xpath="/tr[13]/td[2]/input")
+	@FindBy(xpath="//tr[13]/td[2]/input")
 	WebElement checkSameBillAddr;
 	@FindBy(xpath="//input[@name='delAddress1']")
 	WebElement delAddress1;
@@ -54,6 +56,7 @@ public class MercuryBookFlight {
 	WebElement buyFlights;
 	
 	public MercuryBookFlight(WebDriver driver) {
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 	
@@ -71,19 +74,91 @@ public class MercuryBookFlight {
 	
 	public void selectYearExpire(int year) {
 		cardExpireMonth.get(year).click();
+		
+		if(ExpectedConditions.alertIsPresent().apply(driver)!=null){
+			driver.switchTo().alert().accept();
+		}
 	}
 	
+	public void enterFirstname(String inFirstname) {
+		firstname.sendKeys(inFirstname);
+	}
+	
+	public void enterMiddlename(String inMiddlename) {
+		middlename.sendKeys(inMiddlename);
+	}
+	
+	public void enterLastname(String inLastname) {
+		lastname.sendKeys(inLastname);
+	}
+	
+	public void isTicketlessTravel(int is) {
+		if(checkTicketless.isSelected() && is == 0) {
+			checkTicketless.click();
+		} else if(!checkTicketless.isSelected() && is == 1) {
+			checkTicketless.click();
+		}
+	}
+	
+	public void enterBillAddress1(String addr) {
+		billAddress1.sendKeys(addr);
+	}
+	
+	public void enterBillAddress2(String addr) {
+		billAddress2.sendKeys(addr);
+	}
+	
+	public void enterBillCity(String city) {
+		billCity.sendKeys(city);
+	}
+	
+	public void enterBillState(String state) {
+		billState.sendKeys(state);
+	}
+	
+	public void enterBillPostalCode(String zip) {
+		billZip.sendKeys(zip);
+	}
+	
+	public void selectCountryBill(int country) {
+		selectBillCountry.get(country).click();
+	}
+	
+	public void isSameAsBillAddr(int is) {
+		if(checkSameBillAddr.isSelected() && is == 0) {
+			checkSameBillAddr.click();
+		} else if(!checkSameBillAddr.isSelected() && is == 1) {
+			checkSameBillAddr.click();
+		}
+	}
 	
 	public void securePurchase() {
 		buyFlights.click();
 	}
 	
-	public void bookAFlight(int type, String number, int month, int year) {
+	public void bookAFlight(int type, String number, int month, int year, String fname, String mname, String lname, int isTicketless, String addr1,
+			String addr2, String city, String state, String zip, int country, int isSameBill) {
 		cardTypeSelect.get(type).click();
 		enterCardNumber(number);
 		selectMonthExpire(month);
 		selectYearExpire(month);
-		
+		enterFirstname(fname);
+		enterMiddlename(mname);
+		enterLastname(lname);
+		isTicketlessTravel(isTicketless);
+		enterBillAddress1(addr1);
+		enterBillAddress2(addr2);
+		enterBillCity(city);
+		enterBillState(state);
+		enterBillPostalCode(zip);
+		selectCountryBill(country);
+		isSameAsBillAddr(isSameBill);
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		securePurchase();
 	}
 }
