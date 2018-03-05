@@ -1,3 +1,4 @@
+
 --2.1-----------------------------------------------------------------------------------------------
 SELECT * FROM Employee;
 SELECT * FROM Employee WHERE LASTNAME = 'King';
