@@ -1,0 +1,45 @@
+<?XML version=“4.0” encoding=“utf-8”?>
+<bookstore>
+	<book genre=“real fictions”>
+		<title>
+			animal farm
+		<title lang=“english”>
+		<year>
+			1984
+		</year>
+		<author>
+			jeff sessions
+		</author>
+		<price>
+			30 dongs
+		</price>
+	</book>
+	<book genre=“ horror”>
+		<title lang=“english”>
+			happiness project
+		</title>
+		<year>
+			2016
+		</year>
+		<author>
+			miguel smith
+		</author>
+		<price>
+			40$ USD
+		</price>
+	</book>	
+	<book genre=“fiction”>
+		<title lang=“english”>
+			apple story
+		</title>
+		<year>
+			2020
+		</year>
+		<author>
+			herman melville 
+		</author>
+		<price>
+			46 apps
+		</price>
+	</book>
+</bookstore>
