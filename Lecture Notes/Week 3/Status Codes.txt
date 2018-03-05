@@ -1,0 +1,24 @@
+Find examples of each for interview
+Status Codes
+A number to communicated client/server state to one another
+
+1XX series - Informative
+100 - Continue - request is being sent in pairs
+
+2XX Series - Success
+200 - OK - Successful request/response communication
+201 - Created - Successfully created a server side resource
+
+3XX Series - Redirection
+301 - Page moved permanently
+302 - Page temporarily moved
+
+4XX Series - Client Errors
+400 - Bad request
+401 - Unauthorized - need a user/pass
+403 - Forbidden - correct user/pass but not allowed
+404 - Not Found
+
+5XX Series - Server errors
+500 - Exception on server
+503 - Server down or overloaded

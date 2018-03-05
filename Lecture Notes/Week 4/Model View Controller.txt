@@ -1,0 +1,6 @@
+MVC Model View Controller
+A design pattern that accomplishes separation of concerns for components of 
+an application
+
+View    <-    Model    ->   Controller
+html      data binding       business logic

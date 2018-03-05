@@ -1,0 +1,12 @@
+Routing is a feature that Angular uses to achieve true
+single page application format (SPA)
+
+Routing is where we set up a tag that will take injections of separate html
+code/pages dynamically. This lets the user stay on the same page,
+while new content is replaced throughout navigation
+The pages and content get cached client side so that the user does not need
+to hit the server for new pages or old ones
+
+Worth noting: The caching utilizes browser bookmarks to maintain page history
+This allows us to use the back/forward buttons on the page even though,
+technically, the page is never actually changed

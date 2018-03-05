@@ -1,0 +1,14 @@
+Generate FizzBuzz
+an input for some number
+another input for another number
+when user submits their 2 numbers,
+generate fizzbuzz from low number to high number
+do not generate for null values 
+new generations clear old ones
+no numbers below 0 or above 100 
+each value goes into a dynamic table with one column
+being the number and the other being the fizzbuzz state
+
+all multiples off 3 fizz
+all multiples of 5 buzz
+all multiples of each fizzbuzz

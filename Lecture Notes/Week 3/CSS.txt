@@ -1,0 +1,7 @@
+CSS Cascading Style Sheets
+Language for styling HTML
+Not a programming language
+Three ways to use CSS
+inline CSS
+internal style sheet
+External style sheet- import a file that holds CSS (BEST way)

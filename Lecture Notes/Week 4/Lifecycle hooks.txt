@@ -1,0 +1,15 @@
+Angular Lifecycle hooks
+Methods that are called at different points of a components creation/execution/destruction
+
+Purely for purposes of fine tuning properties at different points
+
+ngOnChanges() - executed anytime a change is detected on a data binding
+ngOnInit() - occurs when component is initializing
+ngDoCheck() - trigger upon ngOnChanges() being triggered as well as any methods
+that may change the page or attributes
+ngAfterContentInit() - after content is created for view
+ngAfterContentChecked - after content is checked
+ngAfterViewInit() - after view gets initialized for user
+ngAfterViewChecked() - 
+ngOnDestroy() - same as java destroy
+

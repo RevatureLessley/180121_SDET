@@ -1,0 +1,13 @@
+pipe is like a function
+
+dog, cat, dog -> uppercase pipe -> DOG, CAT, DOG
+
+Pure Pipes
+triggers if user changes input to pipe
+
+Impure pipe
+triggers for anything
+ content changes
+ mouse click
+ mouse movement
+ key press

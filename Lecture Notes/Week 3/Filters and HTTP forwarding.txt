@@ -1,0 +1,47 @@
+ServletConfig     Servlet    Serializable    Filter
+	|	    |             |
+	-------	GenericServlet----       methods:Init(), Service(),destroy()
+		    |
+		    |
+		HttpServlet              methods:doPost, doGet, etc
+
+Servlet Config
+The object that represents data used by a specific servlet
+
+Servlet Context
+The object containing data shared by all servlet
+
+Filter
+A servlet that will execute before &/or after 
+
+Service Layer
+Take user input and compare it to data offered by the DAO layer
+
+DAO layer
+- queries the database to provide the service layer with data to work with
+ from the backend
+
+RequestDispatcher
+Uses the forward method
+Works server side
+All redirection is done on the server therefore faster
+Handled via request object
+
+Client -> Server -> WC -> Servlet A -> WC -> Servlet B
+
+
+
+SendRedirect
+Declared in the response
+Redirects client request in a different location
+Creates new request and response object
+Creates new URL
+
+Client -> Server -> WC -> Servlet A -> WC -> Server
+ -> Client-> Server -> WC -> Servlet B
+
+HTTP is Stateless
+This means for every page received by the server a separate connection is
+ made to the server
+Any information pertaining to the last connection is lost
+

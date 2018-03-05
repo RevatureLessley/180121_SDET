@@ -1,0 +1,16 @@
+Front Controller
+
+Is a design pattern
+The front controller design pattern is built to designate a single servlet
+for handling all requests and dispatching to proper servlets for handling
+The goal is to ensure that one servlet acts as the gatekeeper for the rest of the application
+
+<load-on-startup>. Lower numbers have priority
+
+Preloading a servlet
+<load-on-startup>
+config.getInitParameter
+
+Preinitializing a servlet
+Providing servlet customization prior to config
+initialization via overriding the init(config) method

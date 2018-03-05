@@ -1,0 +1,19 @@
+Angular 4{
+components
+Services
+Pipes
+modules
+injectable
+Promise vs observable
+Node.js
+webpack
+package.json
+one/two way data binding
+HttpClient
+Routing
+Templates
+}
+JavaScript
+AJAX
+Typescript
+SDLC-Agile

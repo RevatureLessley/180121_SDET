@@ -1,0 +1,14 @@
+Prototypical inheritance
+Objects inherit traits & features from a base implementation --the prototype
+
+Constructor
+Invoking 'new' on a function will use it as an object constructor
+That constructor is then used as the prototype for all objects made
+from that constructor
+
+e1 = new emp('bob',22);
+
+emp.prototype.age = 44;
+
+e1.age
+->44

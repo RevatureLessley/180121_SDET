@@ -1,0 +1,59 @@
+Angular 4
+
+Front framework for developing single page applications
+
+As well as dynamic frontends
+
+Uses typescript to build the application
+
+Once ready, Anuglar transpiles the typescript into javascript
+
+Angular components represent a section of you application. Typically
+multiple components are brought together in a module to make a full application.
+The component helps bind a view with a controller
+
+Any annotated words are called decorators in Angular
+They serve to provide metadata for the angular application
+For instance this tells Angular that its contents are to be used for the component bundle
+
+The selector is needed in order to inject the views. The selector indicates what the tag
+name should be for the injection site of this componenet
+
+Template URL is used to point at a specific file to be used as the front end
+for the specific component
+
+Angular uses a concept called data binding
+This boils down to how we can connect our front end (View)
+to our backends. (Components)
+Any data in our components needs to have a way to to be transferred to use string interpolation
+We can use interpolation like a form of expression language.
+
+Property binding makes a valie of some element equal to a results as defined in the typsscript file
+eg spring interpolation
+property binding is used to take values from the backand and apply them as properties to elements
+
+Event binding is a form of one way binding that foes from the frontend to the components. 
+We take action from the html and have it call a function in the compoenent
+In order to bind to an event, we use parenthesis
+
+Directives are ways that we can invoke Angular functionality within an html file. They act as syntax that can be used in
+html format without breaking the front end
+Any directive that has an asterisk means it is a structiral directive. Can change the structure of html itself
+Can add/remove elements on the page
+
+By encasing the selector with square brackets, we tell Angular to use
+it as an element property instead of an element itself
+
+Note: Access modifiers in typescript
+Public is accessible outside of typescript file
+Private is for use within typescript only
+No modifier defaults to public
+Note: Constructors with private parameters
+
+Design pattern: Dependency injection
+
+3 types of directives
+Attribute
+Structural
+Component
+Serve as templates to be used

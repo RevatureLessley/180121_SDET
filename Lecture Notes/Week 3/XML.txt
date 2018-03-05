@@ -1,0 +1,58 @@
+XML
+Often used for distributing info over the internet
+Designed to store and transport data
+Self descriptive
+Doesn't do anything. Gets read.
+XML carries data, html displays data
+
+Syntax
+Must have one and only one root element
+Should have a prolog as the 1st line <?xml version="1.0" encoding"UTF-8"?>
+ALL elements MUST have closing tags
+Tag open/closing are case sensitive
+attributes must be quoted
+Entity references for reserved symbols (&"<>' etc)
+no improperly overlapping tags
+whitespace is preserved <p>   bob</p>
+WELL FORMED: conforms to proper syntax
+
+DOM
+Document Object Model
+
+Namespaces & Prefixes
+To avoid clashing words that are already used for other scenarios
+A specific namespace can be referenced by using a prefix
+
+Document Type Definition
+
+<!DOCTYPE book system book.dtd>
+<book>
+<title></
+
+book.dtd
+<!DOCTYPE book[
+	<!ELEMENT book (title, author, price)>
+	<!ELEMENT title (#PCData) Parsable Computer Data
+	<!ELEMENT author
+
+
+XML SCHEMA
+XS
+XSchema
+<xs:element name="book">
+<xs:complex type>
+	<xs:sequence>
+	<xs:element name="title" type="xs:string">
+pros stronger than dtd
+supports datatypes
+supports namespace
+
+INTERVIEW QUESTION
+When an XML documents conforms perfectly to a 
+DTD &or XML schema & 
+is well formed, 
+your XML document is valid
+Well formed: syntax rules. No closing
+
+
+

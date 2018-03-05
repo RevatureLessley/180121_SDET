@@ -53,6 +53,7 @@ public class Bear {
 	private String type;
 	private Double weight;
 	private Double height;
+	
 	public Integer getBearId() {
 		return bearId;
 	}

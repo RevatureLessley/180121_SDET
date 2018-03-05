@@ -1,0 +1,58 @@
+JavaScript
+Interpreted, runtime language
+Most browsers can run JS
+Originally called mocha, then livescript, then shipped with netscape as javascript
+Created in 10 days
+Still weakly typed due to a failure of backwards compatibility should it change
+
+Change nothing server side, change client side
+
+Only 6 errors in javascript
+TypeError - mismatch of type conversion
+ReferenceError - undefined object
+SyntaxError - code syntax is wrong
+EvalError - uses Syntax error instead
+RangeError - create a number outside of an allowed range
+URIError - illegal char in URI
+
+foreach loop in JS scrolls through index
+
+{} is an object
+
+myObj = {
+	name:"bobbert",
+	age:88,
+	occupation:{
+		title: "Professional Bob",	
+		salary: "Smiles"
+	}
+}
+
+Global Scope and function scope(local)
+a = ...
+b = ...
+function func(){
+c = ... <- global declaration
+}
+
+let -> lexical scope variable can only be accessed
+within the curly braces it was created at
+
+Variable hoisting
+Declares variables first, assigns value when encountered
+
+JavaScript DOM Events
+-Any situation where a user action is listened
+for and a function triggers as a result
+
+-onclick
+-onkeypress
+-onmouseover
++ 50ish more
+
+Variable guarding
+Based on user input,
+have a variable default to another
+value if input is bad
+
+

@@ -1,0 +1,21 @@
+HTTP Methods
+
+Get - Grab info //default
+Post - insert info
+Put - update
+delete - delete
+head - get only header info
+options - get list of possible http methods
+trace - list of destinations
+patch - 
+
+GET
+Send encoded user info appended to the page request
+URL separates into '?': url?key=value&key2=val2
+URL size limited to 1024 bytes - risk of passing too much info
+Stored in a key called "Query_String" in the request file
+
+POST
+Same as get, but instead of a string in the URL it sends info in the body of the request
+
+Request File

@@ -1,0 +1,3 @@
+pokeapi - resource
+
+pokeAPI/stuff/3/

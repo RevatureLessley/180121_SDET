@@ -1,0 +1,12 @@
+Angular new project commands
+ng new projectName
+
+cd projectName
+
+ng serve
+
+localhost://4200 on web browser
+
+-------------------------------------------
+
+ng g c [folder or file] means ng generate component

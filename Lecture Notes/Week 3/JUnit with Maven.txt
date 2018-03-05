@@ -1,0 +1,7 @@
+JUnit with Maven
+1) Create a test case
+2) Place it in the test folder
+3) Have the file named one of the following
+Test......
+........Test
+4)mvn install

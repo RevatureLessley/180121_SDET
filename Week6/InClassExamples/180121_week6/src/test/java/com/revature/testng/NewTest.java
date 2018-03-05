@@ -36,12 +36,12 @@ public class NewTest {
 	  
   }
   
-  @Test(groups={"group2"})
+  @Test(groups={"group1"})
   public void test3() {
 	  System.out.println("TEST3");
 	  
   }
-  @Test(groups={"group1"})
+  @Test(groups={"group2"})
   public void test2() {
 	  System.out.println("TEST2");
 	  

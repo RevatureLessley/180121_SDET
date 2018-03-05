@@ -1,0 +1,29 @@
+Servlets
+A java servlet is a program that runs on a web/application server that acts as a middleman between
+a request from a client (browser) and databases or applications
+Allows us to collect input from forms, present records from a DB, or create web pages dynamically
+
+Client (browser)
+ -> Request to server. 
+A request is simply a flat file (no extension)
+with details of the request 
+-> Server takes request, creates an empty
+response file and sends both to the Web Container
+-> web container checks the deployment descriptor to determine which servlet
+gets to handle this request
+-> Web container wraps the request and response as java objects
+WC then sends both objects to the specified servlet
+-> If servlet is not instantiated, call init() for servlet
+-> Call the service method to handle the requests
+-> Servlet passes altered response and request object back to web container
+-> Web container unwraps objects and sends request + response to server
+-> Server passes request and response back to client who displays response
+
+
+Client browser -> server -> web container reads web.xml -> servlets 
+-> eg Servlet A (init(), service(), destroy()) -> thread pool (T1, T2, T3) -> web container
+
+Servlet Tasks
+Read explicit data from the client (form data)
+Read metadata from the client (head tag)
+Processes data and generates a result

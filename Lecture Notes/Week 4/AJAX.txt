@@ -1,0 +1,25 @@
+AJAX
+Asynchronous JavaScript and XML
+
+Synchronous is any situation where you perform a task
+and wait for the result
+
+Asynchronous is any situation where a task is started and
+a user does other things and comes back later for the result
+
+5 states of XMlHttpRequest object
+0 request is not initialized / created but not configured
+
+1 request has been configured. Called open method but not called the send()
+
+2 Request has been sent. We have called send()
+
+3 Request is being processed. 
+	Communication with the server has been established
+	Not recieved full response
+4 Request has been sent and proper response has been received
+Request/response lifecycle is complete
+
+
+open (HTTPMETHOD, ENDPOINT, UseAsynchronous)
+	-UseAsynchronous defaults to true

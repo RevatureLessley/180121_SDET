@@ -1,0 +1,6 @@
+Bootstrap
+Frontend framework
+Includes HTML/CSS design templates for most HTML content
+
+Grid System
+Bootstrap CAN segment site horizontally by 12 pieces

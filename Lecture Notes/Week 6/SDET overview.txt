@@ -1,5 +1,5 @@
 SDET - Software Development Engineer in Test
-Tester must be very at programming
+Tester must be very skilled at programming
 
 guru99 - great website for testing, manual and automated
 

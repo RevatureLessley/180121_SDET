@@ -1,0 +1,83 @@
+Software Development Lifecycle
+
+Waterfall
+Userful small-medium apps
+Requirements must be well documented & set in time
+
+Requirements -> Design -> Implementation -> Testing -> Deployment & Maintenance
+	$1	  $10		$100	    $1,000	    $10,000
+exponentially more expensive to fix later in a stage
+
+Reverse waterfall: opposite order
+
+V Model (drawn like a V)
+
+Requirements     ->    High level design -> low level design -> implementation
+     |				|
+User Acceptance Tests -> System integration design->		-> implementation
+
+
+Big Bang theory
+Requirements->  	<-Testing
+	All at once
+Design->	<-Implementation
+
+Agile
+-adaptation
+-great for changing reqs
+-iterative
+- No requirement! only user stories
+
+Product back log
+As a _____
+      noun
+
+When I _________
+	perform action
+
+then ___________
+     result happens
+
+User story
+- a micro level requirement
+
+Feature
+-a large requirement
+-may be able to be broken down into other user stories
+
+Epics
+-a huge user story that must be broken into smaller stories
+
+Core Team---------------|
+-dev team		|
+-BA team		|
+-test team		|
+    |			|
+Scrum Master		|
+    |			|
+Product Owner ---------	|
+
+Product Back log
+
+Iteration backlog
+
+design -> code -> test -> repeat
+2-4 weeks
+
+Deploy iteration or new iteration backlog
+
+
+
+Project Kickoff -> Product backlog meeting -> Scoring session    ->   Iteration planning     ->		 Scrum		-> Retrospective		
+-meet the team				   -score the user stories	- decide which user stories    - Every day:		What went well
+- decide how long iterations will be					will be completed		daily standup		or poorly
+									in 3 weeks
+S S   M M   L L   Epic Epic
+1 2   3 5   8 13  20 40 80
+
+Velocity
+Total points completed per iteration
+
+
+Burndown charts
+Consistent progress everyday

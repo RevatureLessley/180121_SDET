@@ -1,0 +1,24 @@
+Maven
+Dependency & Project Management tool
+Build Automation Tool
+Maven can download and reference any libraries/jars you tell it to
+You can trigger maven to automate build application
+	-compile to code
+	-run unit tests
+	-deploy a working application to a remote server
+	-can trigger front end automation tests
+
+pom.xml
+
+Project Object Model . extensible markup language
+
+- The main configuration file for managing project dependencies
+and determining how a project is built
+
+All project made from now on:
+Projects and Examples
+New Maven Project
+	[Check] Create simple project .. hit next
+Group ID Package structure (eg com.revature)
+Artifact ID Project name
+packaging = war

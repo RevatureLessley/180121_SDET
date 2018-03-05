@@ -1,0 +1,17 @@
+Session Tracking
+Any state on a web application reserved for a specific user
+
+URL Rewriting
+-Append a custom session ID to the URL parameters to keep track
+Closing browsers loses ID
+You would have to manually ensure a unique ID for user
+
+Hidden Fields
+<input type="hidden" name=sessionID>
+ID exposed in source code
+
+Cookies
+Some browsers do not support cookies
+
+JSession
+Servlet can use the session interface to keep track throughout multiple pages
