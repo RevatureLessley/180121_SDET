@@ -1,0 +1,30 @@
+Exhaustive testing
+Input a number from 1-3
+All possible correct paths (happy path)
+1,2,3
+
+Boundary tests: 
+0,1,3,4
+Both sides of right answer
+
+Defect Lifecycle
+Test Application -> Find defect -> is defect? (if no close defect.) -> if yes. open defect ->
+assign to dev -> is defect? if no argue. If yes fix defect -> retest -> defect persists -> 
+yes reassign, if no close defect
+
+STLC - Software Testing Lifecycle
+
+Requirements Gathering -> 
+What are we testing against?
+
+Test Design -> 
+What our tests actually do
+
+Test Execution -> 
+Execute tests
+
+Result Analysis
+Requirement Traceability Matrix
+Did we find bugs?
+Have we performed full coverage?
+Have all requirements been met?
