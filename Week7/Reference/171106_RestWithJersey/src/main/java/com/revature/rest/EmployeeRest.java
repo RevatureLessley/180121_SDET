@@ -13,10 +13,25 @@ import javax.ws.rs.core.MediaType;
 
 import com.revature.beans.Employee;
 
+//Path annotation denotes what url will be used to access THIS class's REST methods.
+//So typical path includes the ip & port for the server,
+//the name of the project (Which is either the ArtifactID as indicated in the pom.xml,
+//OR
+/*
+ * 	<build>
+		<finalName>PROJECTNAME</finalName>
+	</build>
+ */
+/*
+ * Followed by whatever URL pattern provided in the web.xml under the
+ * dispatcher servlet for Jersey. (In this case we wrote /rest/*)
+ * Convention suggests you have at least SOMETHING to separate rest endpoints
+ * from actual server url mappings.
+ */
 @Path("/emp") //http://localhost:8085/ArtifactId/rest/emp
 public class EmployeeRest {
 	public static List<Employee> emps = new ArrayList<>();
-	@GET
+	@GET //The method below is GET allowed (As offered by Jax_rs)
 	@Path("/get/all")
 	//http://localhost:8085/ArtifactId/rest/emp/get/all
 	@Produces(MediaType.APPLICATION_JSON)
@@ -36,15 +51,17 @@ public class EmployeeRest {
 	}
 	
 	@GET
-	@Path("/get/{empId}")
+	@Path("/get/{arrayListIndex}") //Note the curly notation in this endpoint, this marks
+						  //A variable in the url, making it dynamic
 	@Produces(MediaType.APPLICATION_JSON)
-	public Employee getEmployeeIndex(@PathParam("empId") int id){
+	//Use PathParm in the parameter to pass the url content as the variable
+	public Employee getEmployeeIndex(@PathParam("arrayListIndex") int index){
 		
-		if(emps.size()<id){
+		if(emps.size()<index){
 			return null;
 		}
 		
-		return emps.get(id);
+		return emps.get(index);
 	}
 	
 	@POST

@@ -24,7 +24,7 @@
 		urls/uris we need to make an exception in the browser to allow it.
 		Below is a filter servlet that sets header details to allow resource
 		sharing for other locations. In this case, a generic angular 4 application.
-		We allow from an angular application on localhost form port 4200.
+		We allow from an angular application on localhost from port 4200.
 	-->
 	<filter>
 		<filter-name>corsFilter</filter-name>
