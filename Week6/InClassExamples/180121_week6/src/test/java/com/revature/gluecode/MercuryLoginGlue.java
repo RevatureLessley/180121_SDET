@@ -19,17 +19,13 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import static com.revature.gluecode.MercuryDriverUtility.driver;
 
 public class MercuryLoginGlue {
-	public static WebDriver driver;
+
 	public static MercuryLogin loginPage;
 	
-	@Before
-	public void setup(){
-		System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.get("http://newtours.demoaut.com");		
-	}
+
 	
 	@Given("^a user is at the login screen for mercury tours\\.$")
 	public void reachLoginPage() throws Throwable {
@@ -53,12 +49,6 @@ public class MercuryLoginGlue {
 		assertEquals("Find a Flight: Mercury Tours:", driver.getTitle());
 	}
 	
-	//After runs at the end of the test.
-	@After
-	public void teardown(Scenario scenario){
-		if(driver!=null){
-			driver.quit();
-		}
-	}
+
 
 }

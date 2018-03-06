@@ -12,8 +12,8 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-			features="Features", //I point to where my feature files are
-			glue="com.revature.gluecode" //I point to where my feature implementation is
+			features={"Features/MercuryLogin.feature"}, //I point to where my feature files are
+			glue={"com.revature.gluecode"} //I point to where my feature implementation is
 		)
 public class TestRunner {
 
