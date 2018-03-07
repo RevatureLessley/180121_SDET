@@ -13,6 +13,11 @@ import javax.ws.rs.core.MediaType;
 
 import com.revature.beans.Employee;
 
+// Path annotation denotes what urlk will be used to access THIS class' REST METHODs
+//So typcially path includes the ip & port for the sever, the name of the project 
+//(Which is either the ArtifactId which is defined in the POM of the project or the finalName (trumps artifactID))
+//followed by whatever URL pattern provided in the web.xml under the dispatchter servlet for Jersery. (In this case we wrote /rest/*)
+//Convention suggest you have a least SOMETHING to separate
 @Path("/emp") //http://localhost:8085/ArtifactId/rest/emp
 public class EmployeeRest {
 	public static List<Employee> emps = new ArrayList<>();
@@ -35,9 +40,12 @@ public class EmployeeRest {
 		return emps;
 	}
 	
+	//The method below is GET Allowed  (as offered by Jax_rs)
 	@GET
-	@Path("/get/{empId}")
+	@Path("/get/{empId}") // Note the curly notation in this endpoint, this marks
+						// a variable in the url, making it dynamic
 	@Produces(MediaType.APPLICATION_JSON)
+	//
 	public Employee getEmployeeIndex(@PathParam("empId") int id){
 		
 		if(emps.size()<id){
