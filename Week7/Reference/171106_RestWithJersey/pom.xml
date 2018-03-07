@@ -5,12 +5,20 @@
 	<artifactId>171106_RestWithJersey</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
+	
+	
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<jersey.version>2.26</jersey.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	<!-- 
+		A BOM is a bundling of like dependencies that allow you to specify a 
+		consistent version to use for each one. Typically, we will use a bom, 
+		indicate what version to use, then label each dependency we want below,
+		omitting the version number.
+	 -->
 
 	<!-- 
 		A BOM is a bundling of like dependencies that allow you to specify a consistent version to use for each one.

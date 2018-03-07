@@ -32,8 +32,13 @@ public class Employee {
 	public String toString() {
 		return "Employee [fname=" + fname + ", lname=" + lname + ", empId=" + empId + "]";
 	}
+<<<<<<< HEAD
 	// Is the MOST important constructor as the JSON converter will create the
 	//no-agrs verison of the okbject before populating it.
+=======
+	//This is the most important constructor as the JSON converter will create the
+	//no-args version of the object before populating it.
+>>>>>>> c379323b8095d7f29594268f8d7c3a0e8adce5d5
 	public Employee() {
 		super();
 	}
