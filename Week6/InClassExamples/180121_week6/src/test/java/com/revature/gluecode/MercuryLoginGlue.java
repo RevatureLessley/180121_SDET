@@ -2,6 +2,7 @@ package com.revature.gluecode;
 
 import static org.junit.Assert.assertEquals;
 
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,17 +20,11 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import static com.revature.gluecode.MercuryDriverUtil.driver;
 
 public class MercuryLoginGlue {
-	public static WebDriver driver;
-	public static MercuryLogin loginPage;
 	
-	@Before
-	public void setup(){
-		System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.get("http://newtours.demoaut.com");		
-	}
+	public static MercuryLogin loginPage;
 	
 	@Given("^a user is at the login screen for mercury tours\\.$")
 	public void reachLoginPage() throws Throwable {
@@ -51,14 +46,6 @@ public class MercuryLoginGlue {
 	@Then("^a user shall be redirected to the find flights page$")
 	public void ConfirmLanding() throws Throwable {
 		assertEquals("Find a Flight: Mercury Tours:", driver.getTitle());
-	}
-	
-	//After runs at the end of the test.
-	@After
-	public void teardown(Scenario scenario){
-		if(driver!=null){
-			driver.quit();
-		}
 	}
 
 }
