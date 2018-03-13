@@ -1,0 +1,97 @@
+Web Service
+A piece of software that makes itself available over the internet
+& uses standardized xml messaging system
+Every machine, every language can read xml. No need to install any library
+
+Self-contained, modular, distributed, dynamic applications that can be described,
+published located, or invoked over a network to create products, processes, and supply
+chains
+
+A service that is available over internet/private network
+
+Is not tied to any OS programming language
+Typically self-describing
+
+Clients		Servers
+IOS		Android
+Java		C#
+C++		C
+etc		etc
+doesnt matter
+
+Components of SOAP Webservices
+SOAP - Simple Object Access Protocol
+- Communication Protocol
+- Communication between applications
+- Format for sending messages
+- Platform independent
+- Language dependent
+- Allows you to get around a firewall
+(banks use SOAP)
+
+UDDI - Universal Description, Discovery & Integration
+- A registry listing various web service server paths
+
+WSDL - Web Service Description Language
+- The contract
+- Describes what the web service offers/accepts
+
+WSDL Tages
+Definitions - root
+- Types - describe data type definitions
+- Message - defines how data is communicated
+- Porttypes - describe operations that can be performed and what messages 
+are used for each
+- Binding - protocol and data format for each porttype
+- Service - describe the ports supported by the WS
+
+Contract First SOAP
+- Write the SWDC xml and generate java methods for the contract
+
+Contract Last SOAP
+Write the Java methods and generate a SWDL from them
+
+SOAP Messages
+Envelope - Root Tag
+Head - Stores metadata about server
+Body - stores actual data to be transmitted
+Fault - inside the body tag, deals with about exceptions
+
+SOAP
+- Allows loosely coupled relations
+- Little bit more coupled than REST
+- Comes with WS-Security (SSL)
+	Rest does not come with security
+Contracts. Typically used for secure applications like banking, government contracts
+
+REST
+Representational State Transfer
+- Web Service type
+- Uses http methods to perform web service actions
+- Stateless
+- Everything is a resource
+	- Each resource accessed through a unique URL
+	- a mediatype (text, html, css, JSON, xml)
+
+Jax_rs API
+_restful API
+Jersey
+REST framework
+
+HTTP Methods	SAFE  IDEMPOTENT
+GET		Yes	Yes
+POST		No	NO
+PUT		No	Yes
+DELETE		No	Yes
+TRACE		Yes	Yes
+HEAD		Yes	Yes
+OPTIONS		Yes	Yes
+PATCH		No	NO
+Safe: does it change anything
+
+Cross-Origin Resource sharing
+CORS Servlet
+Pasted in a server's web.xml
+Tells the server what external IPs are allowed to connect
+If you wanted your angular front-end to send REST to your server,
+you would all requests from http://localhost:4200

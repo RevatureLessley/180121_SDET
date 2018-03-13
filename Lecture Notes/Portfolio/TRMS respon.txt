@@ -1,0 +1,13 @@
+Created Beans for each table to represent one record
+
+
+Used DAO interfaces and DAO implementation with JDBC and Oracle database
+
+
+Created PreparedStatements to for DML, DQL and call SQL views
+
+
+Created CallableStatements to call Stored Procedures
+
+
+Implemented Log4J throughout the application to provide helpful log messages

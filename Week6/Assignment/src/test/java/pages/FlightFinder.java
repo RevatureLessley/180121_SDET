@@ -17,10 +17,10 @@ public class FlightFinder {
 	@FindBy(xpath="//input[@name='findFlights']")
 	WebElement submitFindFlights;
 	
-	@FindBy(xpath="//select[@name='fromPort']")
-	WebElement fromPort;	
-	@FindBy(xpath="//select[@name='toPort']")
-	WebElement toPort;	
+	@FindBy(xpath="//select[@name='fromPort']/option")
+	List<WebElement> fromPort;	
+	@FindBy(xpath="//select[@name='toPort']/option")
+	List<WebElement> toPort;	
 	@FindBy(xpath="//select[@name='toDay']")
 	WebElement toDay;
 	@FindBy(xpath="//select[@name='toMonth']")
@@ -39,13 +39,11 @@ public class FlightFinder {
 	}
 	
 	public void selectFromPort(int port){
-		Select clickThis = new Select(fromPort);
-		clickThis.selectByIndex(port);
+		fromPort.get(port).click();
 	}
 	
 	public void selectToPort(int port) {
-		Select clickThis = new Select(toPort);
-		clickThis.selectByIndex(port);
+		toPort.get(port).click();
 	}
 	
 	public void selectToDay(int day) {

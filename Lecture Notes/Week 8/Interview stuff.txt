@@ -1,0 +1,6 @@
+What kind of projects would I be working on?
+What would my first week be like?
+
+oracle.jdbc.driver.OracleDriver;org.hibernate.dialect.Oracle10gDialect;
+jdbc:oracle:thin:@astro.ci1hafdwwc5y.us-east-1.rds.amazonaws.com:1521:orcl;
+astrogroup;astropassword

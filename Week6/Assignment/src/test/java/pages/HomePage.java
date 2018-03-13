@@ -8,7 +8,8 @@ public class HomePage {
 	
 	private By username = By.xpath("//input[@name='userName']");
 	private By password = By.xpath("//input[@name='password']");
-	private By login = By.xpath("//input[@name='login']");
+//	private By login = By.xpath("//input[@name='login']");
+	private By login = By.name("login");
 	
 	public HomePage(WebDriver driver){
 		this.driver = driver;

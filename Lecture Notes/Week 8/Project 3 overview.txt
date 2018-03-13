@@ -1,0 +1,20 @@
+Trackforce
+Status of people after bootcamp
+"Staging Tool"
+
+Caliber - evaluation tool
+
+AssignForce - Batch assignment tool
+
+BAM - Bootcamp agenda manager
+- Associate for tracking bootcamp topics
+
+Janus and Hydra - infrastructure applications
+
+Janus
+Application that acts as the wrapper for all above's frontend
+Get to any app from Janus
+
+Hydra
+Decoupling applications and converting them to microservices
+
