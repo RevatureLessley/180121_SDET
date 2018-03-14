@@ -32,6 +32,8 @@ public class Employee {
 	public String toString() {
 		return "Employee [fname=" + fname + ", lname=" + lname + ", empId=" + empId + "]";
 	}
+	//This is the most important constructor as the JSON converter will create the
+	//no-args version of the object before populating it.
 	public Employee() {
 		super();
 	}
